@@ -29,7 +29,7 @@ const CounterControls = () => {
         onClick={decrementCounter}
         variant="outline"
         size="icon"
-        className="h-12 w-12 rounded-full hover:bg-muted hover:border-muted-foreground"
+        className="h-12 w-12 rounded-full btn-enhanced hover:bg-muted hover:border-muted-foreground"
         disabled={counter <= 0}
         aria-label="Decrease counter"
       >
@@ -40,7 +40,7 @@ const CounterControls = () => {
         onClick={resetCounter}
         variant="outline"
         size="icon"
-        className="h-10 w-10 rounded-full hover:bg-muted hover:border-muted-foreground"
+        className="h-10 w-10 rounded-full btn-enhanced hover:bg-muted hover:border-muted-foreground"
         disabled={counter === 0}
         aria-label="Reset counter"
         title="Reset to 0"
@@ -51,7 +51,7 @@ const CounterControls = () => {
       <Button
         onClick={incrementCounter}
         size="icon"
-        className="h-12 w-12 rounded-full"
+        className="h-12 w-12 rounded-full btn-enhanced"
         aria-label="Increase counter"
       >
         <Plus size={24} />

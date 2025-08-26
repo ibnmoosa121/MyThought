@@ -21,7 +21,7 @@ export const ThemeSelector = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
+        <Button variant="outline" size="sm" className="gap-2 btn-enhanced">
           <Palette size={16} />
           <span className="hidden sm:inline">{THEME_LABELS[theme]}</span>
         </Button>
@@ -62,7 +62,7 @@ export const CompactThemeSelector = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="h-8 w-8">
+        <Button variant="ghost" size="icon" className="h-8 w-8 btn-enhanced">
           <Palette size={16} />
         </Button>
       </DropdownMenuTrigger>

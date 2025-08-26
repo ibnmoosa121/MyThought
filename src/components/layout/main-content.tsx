@@ -103,7 +103,7 @@ const HeroSection = () => {
         <Button
           onClick={handleGetStarted}
           size="lg"
-          className="gap-2"
+          className="gap-2 btn-enhanced"
         >
           <Rocket size={20} />
           Get Started
@@ -111,7 +111,7 @@ const HeroSection = () => {
         <Button 
           variant="secondary"
           size="lg"
-          className="gap-2"
+          className="gap-2 btn-enhanced"
           onClick={handleTestNotifications}
         >
           <Sparkles size={20} />
@@ -120,13 +120,13 @@ const HeroSection = () => {
         <Button 
           variant="outline" 
           size="lg" 
-          className="gap-2"
+          className="gap-2 btn-enhanced"
           onClick={handleColorTest}
         >
           <Palette size={20} />
           Test Primary Colors
         </Button>
-        <Button variant="outline" size="lg" className="gap-2">
+        <Button variant="outline" size="lg" className="gap-2 btn-enhanced">
           <Heart size={20} />
           View on GitHub
         </Button>

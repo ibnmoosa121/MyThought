@@ -20,12 +20,12 @@ const ToastProvider = ({ ...props }: CustomToasterProps) => {
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
-          description: "group-[.toast]:text-muted-foreground",
+            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg transition-smooth hover:shadow-xl",
+          description: "group-[.toast]:text-muted-foreground transition-smooth",
           actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
+            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground transition-smooth hover:scale-105 active:scale-95",
           cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground transition-smooth hover:bg-muted/80",
         },
       }}
       {...props}

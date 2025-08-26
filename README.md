@@ -1,34 +1,36 @@
-# Modern React Template with DaisyUI
+# Modern React Template with Shadcn/UI
 
-A clean, production-ready React template built with modern development practices using TypeScript, Vite, DaisyUI, and Zustand. This template provides a solid foundation for building scalable React applications with proper naming conventions and organized structure.
+A clean, production-ready React template built with modern development practices using TypeScript, Vite, Shadcn/UI, and Zustand. This template provides a solid foundation for building scalable React applications with proper naming conventions and organized structure.
 
 ## 🚀 Tech Stack
 
-- **[React 18+](https://react.dev/)** - Modern React with hooks and concurrent features
+- **[React 19+](https://react.dev/)** - Modern React with hooks and concurrent features
 - **[TypeScript](https://www.typescriptlang.org/)** - Strict type safety with comprehensive type definitions
 - **[Vite](https://vitejs.dev/)** - Lightning-fast build tool with HMR and optimized bundling
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapid styling
-- **[DaisyUI](https://daisyui.com/)** - Semantic component library with 30+ beautiful themes
+- **[Shadcn/UI](https://ui.shadcn.com/)** - Beautiful, accessible component library built on Radix UI
+- **[Sonner](https://sonner.emilkowal.ski/)** - An opinionated toast component for React
 - **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight state management with localStorage persistence
 - **[Lucide React](https://lucide.dev/)** - Beautiful, consistent icon library
+- **[next-themes](https://github.com/pacocoursey/next-themes)** - Perfect dark mode in 2 lines of code
 
 ## ✨ Key Features
 
 ### 🎨 **Dynamic Theme System**
-- 30+ DaisyUI themes with real-time switching
+- Light and dark theme switching with real-time updates
 - localStorage persistence across page refreshes
-- Responsive theme selector with grid and dropdown variants
+- Seamless theme transitions with next-themes integration
 
 ### 🔔 **Smart Notification System**
-- Toast notifications with auto-removal
+- Sonner toast notifications with auto-removal
 - Multiple notification types (success, error, warning, info)
-- Zustand-powered state management with unique ID generation
+- Beautiful animations and positioning with Sonner
 
 ### 🧩 **Comprehensive Component Library**
-- **UI Components**: Button, Card, LoadingSpinner, ThemeSelector, NotificationDisplay
-- **Layout Components**: Container, Header, Footer, Sidebar, MainLayout
+- **UI Components**: Shadcn/UI components (Button, Card, etc.), ThemeSelector, NotificationDisplay
+- **Layout Components**: Header, MainContent with responsive design
 - **Feature Components**: InteractiveCounter with statistics and history
-- All components fully typed with TypeScript and DaisyUI integration
+- All components fully typed with TypeScript and Shadcn/UI integration
 
 ### 📱 **Responsive Design**
 - Mobile-first approach with Tailwind breakpoints
@@ -137,25 +139,20 @@ src/
 ## 🧩 Components
 
 ### UI Components (`src/components/ui/`)
-Basic, reusable UI building blocks with DaisyUI integration:
+Basic, reusable UI building blocks with Shadcn/UI integration:
 
-- **NotificationDisplay**: Toast notification system
+- **Sonner Toaster**: Modern toast notification system
+  - Built with Sonner for beautiful animations
   - Auto-removal with configurable duration
   - Multiple types: success, error, warning, info
-  - Smooth enter/exit animations
-  - Integrated with Zustand store
+  - Theme-aware styling with next-themes integration
+  - Accessible and performant
 
-- **ThemeSelector**: Interactive theme switcher
-  - Grid and dropdown display variants
-  - Real-time theme preview
-  - localStorage persistence
-  - All 30+ DaisyUI themes supported
-
-- **ToastNotifications**: Toast notification component
-  - Auto-dismiss with configurable timeout
-  - Multiple types: success, error, warning, info
-  - Positioning: customizable placement on screen
-  - Animation: smooth slide-in and fade-out effects
+- **Shadcn/UI Components**: Core UI building blocks
+  - Button, Card, Separator, and other Radix-based components
+  - Fully accessible with ARIA support
+  - Customizable with CSS variables
+  - TypeScript-first with excellent DX
 
 ### Layout Components (`src/components/layout/`)
 Structural components for application layout:
@@ -234,15 +231,19 @@ The template includes a clean, focused demo application showcasing core function
 
 ### Component Usage
 
-#### Theme Selector
+#### Theme Switching
 ```tsx
-import { ThemeSelector, CompactThemeSelector } from './components/ui/theme-selector';
+import { useTheme } from 'next-themes';
 
-// Full theme selector with preview
-<ThemeSelector />
-
-// Compact version for headers/toolbars
-<CompactThemeSelector />
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  
+  return (
+    <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      Toggle {theme === 'dark' ? 'Light' : 'Dark'} Mode
+    </button>
+  );
+}
 ```
 
 #### Interactive Counter
@@ -258,26 +259,25 @@ import { InteractiveCounter, CompactCounter } from './components/features/intera
 
 #### Notification System
 ```tsx
-import { NotificationDisplay } from './components/ui/notification-display';
-import { useAppStore } from './stores/app-store';
+import { showToast } from './components/common/toast-notifications';
+import { toast } from 'sonner';
 
-const { addNotification } = useAppStore();
+// Using the custom showToast function
+showToast('success', 'Success!', 'Operation completed successfully');
 
-// Add notifications
-addNotification({
-  type: 'success',
-  title: 'Success!',
-  message: 'Operation completed successfully',
+// Or using Sonner directly
+toast.success('Success!', {
+  description: 'Operation completed successfully',
   duration: 5000
 });
 
-// Display notifications
-<NotificationDisplay />
+// Toast Provider is already included in App.tsx
 ```
 
 ### State Management Usage
 ```tsx
 import { useAppStore } from './stores/app-store'
+import { showToast } from './components/common/toast-notifications'
 
 function MyComponent() {
   const { 
@@ -286,19 +286,13 @@ function MyComponent() {
     count,
     increment,
     decrement,
-    addNotification, 
     isLoading, 
     setLoading 
   } = useAppStore()
 
   const handleThemeChange = (newTheme: string) => {
     setTheme(newTheme)
-    addNotification({
-      type: 'success',
-      title: 'Theme Changed',
-      message: `Switched to ${newTheme} theme`,
-      duration: 3000
-    })
+    showToast('success', 'Theme Changed', `Switched to ${newTheme} theme`)
   }
 
   return (
@@ -316,7 +310,13 @@ function MyComponent() {
 ### Project Organization
 The template includes well-organized directories for scalable development:
 
-- **`src/utils/`**: Ready for utility functions and helpers (currently empty)
+- **`src/components/ui/`**: Shadcn/UI base components (Button, Card, Badge, etc.)
+- **`src/components/layout/`**: Layout components (Header, MainContent)
+- **`src/components/features/`**: Feature-specific components (InteractiveCounter, ThemeSelector)
+- **`src/components/common/`**: Reusable common components (ToastNotifications, ToastProvider)
+- **`src/stores/`**: Zustand state management stores
+- **`src/lib/`**: Utility functions and configurations
+- **`src/utils/`**: Ready for additional utility functions (currently empty)
 - **`src/constants/`**: Ready for application constants (currently empty)
 - **`src/types/`**: Ready for TypeScript type definitions (currently empty)
 - **`src/hooks/`**: Ready for custom React hooks (currently empty)
@@ -329,8 +329,8 @@ These directories provide a solid foundation for expanding your application with
 
 ### Tailwind CSS
 Tailwind is configured with PostCSS. The configuration files are:
-- `tailwind.config.cjs` - Tailwind configuration
-- `postcss.config.cjs` - PostCSS configuration with Tailwind and Autoprefixer
+- `tailwind.config.js` - Tailwind configuration
+- `postcss.config.js` - PostCSS configuration with Tailwind and Autoprefixer
 
 ### TypeScript
 Strict mode is enabled with additional linting rules:
@@ -346,14 +346,14 @@ Configured with React and TypeScript support:
 
 ## 🎨 Styling
 
-### Tailwind CSS + DaisyUI
-The template uses Tailwind CSS with DaisyUI for styling:
+### Tailwind CSS + Shadcn/UI
+The template uses Tailwind CSS with Shadcn/UI for styling:
 
-- **30+ DaisyUI themes** including light, dark, and colorful variants
+- **Light/Dark theme system** with next-themes integration
 - **Semantic color system** with CSS custom properties
-- **Component classes** for rapid UI development
+- **Accessible components** built on Radix UI primitives
 - **Responsive utilities** for mobile-first design
-- **Theme switching** with persistent user preferences via Zustand store
+- **Theme switching** with persistent user preferences via next-themes
 
 ### Key Features
 - **Automatic theme persistence**: User's theme choice is saved to localStorage
@@ -367,16 +367,20 @@ The template uses Tailwind CSS with DaisyUI for styling:
 - `react` & `react-dom` - React 19 with modern features
 - `zustand` - Lightweight state management with persistence
 - `lucide-react` - Beautiful, consistent icon library
+- `sonner` - Modern toast notification library
+- `next-themes` - Perfect dark mode implementation
+- `@radix-ui/react-*` - Accessible UI primitives for Shadcn/UI
+- `class-variance-authority` - CVA for component variants
 - `clsx` - Conditional class name utility
 - `tailwind-merge` - Tailwind class conflict resolution
 
 ### Development Dependencies
 - `@vitejs/plugin-react` - Vite React plugin with fast refresh
 - `typescript` - TypeScript compiler with strict mode
-- `tailwindcss` - Utility-first CSS framework
-- `daisyui` - Semantic component library with 30+ themes
+- `tailwindcss` - Utility-first CSS framework with v4
+- `@tailwindcss/vite` - Tailwind CSS v4 Vite plugin
 - `eslint` - Code linting with React and TypeScript rules
-- `autoprefixer` & `postcss` - CSS processing and vendor prefixes
+- `typescript-eslint` - TypeScript-specific ESLint rules
 
 ## 🏗️ Why Use This Template?
 
@@ -394,9 +398,9 @@ The template uses Tailwind CSS with DaisyUI for styling:
 - **Best practices**: Follows React and TypeScript best practices
 
 ### Design System
-- **DaisyUI integration**: 30+ beautiful themes with semantic components
-- **Theme flexibility**: Easy theme switching with persistence
-- **Consistent UI**: Cohesive design language across components
+- **Shadcn/UI integration**: Beautiful, accessible components built on Radix UI
+- **Theme flexibility**: Light/dark mode switching with next-themes
+- **Consistent UI**: Cohesive design language with CSS variables
 - **Responsive design**: Mobile-first approach with proper breakpoints
 
 ### State Management
@@ -490,6 +494,6 @@ This project is licensed under the **MIT License**.
 ---
 
 <div align="center">
-  <p><strong>Built with ❤️ using React, TypeScript, Vite, and DaisyUI</strong></p>
+  <p><strong>Built with ❤️ using React, TypeScript, Vite, and Shadcn/UI</strong></p>
   <p>A clean, modern template for building scalable React applications</p>
 </div>
