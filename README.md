@@ -4,15 +4,15 @@ A clean, production-ready React template built with modern development practices
 
 ## 🚀 Tech Stack
 
-- **[React 19+](https://react.dev/)** - Modern React with hooks and concurrent features
-- **[TypeScript](https://www.typescriptlang.org/)** - Strict type safety with comprehensive type definitions
-- **[Vite](https://vitejs.dev/)** - Lightning-fast build tool with HMR and optimized bundling
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapid styling
+- **[React 19.1+](https://react.dev/)** - Modern React with hooks and concurrent features
+- **[TypeScript 5.8+](https://www.typescriptlang.org/)** - Strict type safety with comprehensive type definitions
+- **[Vite 7.1+](https://vitejs.dev/)** - Lightning-fast build tool with HMR and optimized bundling
+- **[Tailwind CSS 4.1+](https://tailwindcss.com/)** - Utility-first CSS framework with v4 features
 - **[Shadcn/UI](https://ui.shadcn.com/)** - Beautiful, accessible component library built on Radix UI
-- **[Sonner](https://sonner.emilkowal.ski/)** - An opinionated toast component for React
-- **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight state management with localStorage persistence
+- **[Sonner 2.0+](https://sonner.emilkowal.ski/)** - An opinionated toast component for React
+- **[Zustand 5.0+](https://zustand-demo.pmnd.rs/)** - Lightweight state management with localStorage persistence
 - **[Lucide React](https://lucide.dev/)** - Beautiful, consistent icon library
-- **[next-themes](https://github.com/pacocoursey/next-themes)** - Perfect dark mode in 2 lines of code
+- **[next-themes 0.4+](https://github.com/pacocoursey/next-themes)** - Perfect dark mode implementation
 
 ## ✨ Key Features
 
@@ -23,13 +23,14 @@ A clean, production-ready React template built with modern development practices
 
 ### 🔔 **Smart Notification System**
 - Sonner toast notifications with auto-removal
-- Multiple notification types (success, error, warning, info)
+- Toast provider with centralized notification management
 - Beautiful animations and positioning with Sonner
 
 ### 🧩 **Comprehensive Component Library**
-- **UI Components**: Shadcn/UI components (Button, Card, etc.), ThemeSelector, NotificationDisplay
+- **UI Components**: Shadcn/UI components (Button, Card, Badge, Dropdown Menu, Separator, Sonner)
 - **Layout Components**: Header, MainContent with responsive design
-- **Feature Components**: InteractiveCounter with statistics and history
+- **Feature Components**: InteractiveCounter, ThemeSelector, NotificationDisplay
+- **Common Components**: ToastNotifications, ToastProvider
 - All components fully typed with TypeScript and Shadcn/UI integration
 
 ### 📱 **Responsive Design**
@@ -39,9 +40,9 @@ A clean, production-ready React template built with modern development practices
 
 ### 🏗️ **Modern Architecture**
 - Clean separation of concerns with organized folder structure
-- Custom hooks for reusable logic
-- Utility functions with proper TypeScript typing
-- Constants management for maintainable code
+- Utility functions with proper TypeScript typing (lib/utils.ts)
+- Ready-to-use directories for hooks, constants, types, services, and pages
+- Modular component organization by type (ui, layout, features, common)
 
 ### 🔄 **State Management**
 - Zustand store with devtools integration
@@ -61,7 +62,7 @@ A clean, production-ready React template built with modern development practices
 1. **Clone or download the template**
    ```bash
    git clone <repository-url>
-   cd template-1-daisyui
+   cd template-1-shadcnui
    ```
 
 2. **Install dependencies**
@@ -92,17 +93,26 @@ A clean, production-ready React template built with modern development practices
 src/
 ├── components/          # React components organized by type
 │   ├── features/       # Feature-specific components
-│   │   └── interactive-counter.tsx
+│   │   ├── interactive-counter.tsx
+│   │   ├── notification-display.tsx
+│   │   └── theme-selector.tsx
 │   ├── layout/         # Layout and structural components
 │   │   ├── header.tsx
 │   │   └── main-content.tsx
-│   ├── ui/             # Basic UI components
-│   │   ├── notification-display.tsx
-│   │   ├── theme-selector.tsx
-│   │   └── toast-notifications.tsx
-│   └── common/         # Reusable shared components (empty)
+│   ├── ui/             # Shadcn/UI base components
+│   │   ├── badge.tsx
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   ├── separator.tsx
+│   │   └── sonner.tsx
+│   └── common/         # Reusable shared components
+│       ├── toast-notifications.tsx
+│       └── toast-provider.tsx
 ├── assets/             # Static assets
 │   └── react.svg
+├── lib/                # Utility functions and configurations
+│   └── utils.ts
 ├── stores/             # Zustand state management
 │   └── app-store.ts
 ├── constants/          # Application constants (empty)
@@ -110,10 +120,10 @@ src/
 ├── pages/              # Page components (empty)
 ├── services/           # API services (empty)
 ├── types/              # TypeScript type definitions (empty)
-├── utils/              # Utility functions (empty)
+├── utils/              # Additional utility functions (empty)
 ├── app.tsx             # Main application component
 ├── main.tsx            # Application entry point
-├── index.css           # Global styles with Tailwind directives
+├── index.css           # Global styles with Tailwind CSS v4 and theme variables
 └── vite-env.d.ts       # Vite type definitions
 ```
 
@@ -139,20 +149,23 @@ src/
 ## 🧩 Components
 
 ### UI Components (`src/components/ui/`)
-Basic, reusable UI building blocks with Shadcn/UI integration:
+Shadcn/UI base components built on Radix UI primitives:
 
-- **Sonner Toaster**: Modern toast notification system
+- **Button**: Versatile button component with multiple variants
+- **Card**: Container component for content organization
+- **Badge**: Small status and labeling component
+- **Dropdown Menu**: Accessible dropdown menu with keyboard navigation
+- **Separator**: Visual divider component
+- **Sonner**: Toast notification system integration
   - Built with Sonner for beautiful animations
-  - Auto-removal with configurable duration
-  - Multiple types: success, error, warning, info
   - Theme-aware styling with next-themes integration
   - Accessible and performant
 
-- **Shadcn/UI Components**: Core UI building blocks
-  - Button, Card, Separator, and other Radix-based components
-  - Fully accessible with ARIA support
-  - Customizable with CSS variables
-  - TypeScript-first with excellent DX
+All components are:
+- Fully accessible with ARIA support
+- Customizable with CSS variables
+- TypeScript-first with excellent DX
+- Built on Radix UI primitives
 
 ### Layout Components (`src/components/layout/`)
 Structural components for application layout:
@@ -186,7 +199,17 @@ Feature-specific interactive components:
   - Sub-components: CounterDisplay, CounterControls, CounterStats, MobileCounterStats, CompactCounter
 
 ### Common Components (`src/components/common/`)
-Reusable shared components directory (currently empty, ready for future components)
+Reusable shared components for application-wide functionality:
+
+- **ToastNotifications**: Utility functions for showing toast notifications
+  - Wrapper functions for different notification types
+  - Integration with Sonner toast system
+  - Consistent notification styling and behavior
+
+- **ToastProvider**: Toast notification provider component
+  - Centralized toast management
+  - Theme-aware toast styling
+  - Global toast configuration
 
 ## 🔄 State Management
 
@@ -222,10 +245,11 @@ The template includes a clean, focused demo application showcasing core function
 
 ### Main Application
 - **Interactive counter** demonstrating Zustand state management
-- **Theme selector** with live theme switching across 30+ DaisyUI themes
-- **Notification system** with toast notifications
+- **Theme selector** with light/dark mode switching using next-themes
+- **Notification system** with Sonner toast notifications
 - **Responsive header** with brand display and user actions
 - **Clean layout** showcasing proper component organization
+- **Modern UI** built with Shadcn/UI components and Tailwind CSS v4
 
 ## 🚀 Usage Examples
 
@@ -248,13 +272,18 @@ function ThemeToggle() {
 
 #### Interactive Counter
 ```tsx
-import { InteractiveCounter, CompactCounter } from './components/features/interactive-counter';
+import { InteractiveCounter } from './components/features/interactive-counter';
 
-// Full-featured counter with statistics
+// Interactive counter with state management
 <InteractiveCounter />
+```
 
-// Compact version for dashboards
-<CompactCounter />
+#### Theme Selector
+```tsx
+import { ThemeSelector } from './components/features/theme-selector';
+
+// Theme selector component
+<ThemeSelector />
 ```
 
 #### Notification System
@@ -296,7 +325,7 @@ function MyComponent() {
   }
 
   return (
-    <div data-theme={theme}>
+    <div className={theme}>
       <button onClick={() => increment(1)}>Count: {count}</button>
       <button onClick={() => decrement(1)}>Decrement</button>
       {/* Your component content */}
@@ -310,12 +339,12 @@ function MyComponent() {
 ### Project Organization
 The template includes well-organized directories for scalable development:
 
-- **`src/components/ui/`**: Shadcn/UI base components (Button, Card, Badge, etc.)
+- **`src/components/ui/`**: Shadcn/UI base components (Button, Card, Badge, Dropdown Menu, Separator, Sonner)
 - **`src/components/layout/`**: Layout components (Header, MainContent)
-- **`src/components/features/`**: Feature-specific components (InteractiveCounter, ThemeSelector)
+- **`src/components/features/`**: Feature-specific components (InteractiveCounter, ThemeSelector, NotificationDisplay)
 - **`src/components/common/`**: Reusable common components (ToastNotifications, ToastProvider)
-- **`src/stores/`**: Zustand state management stores
-- **`src/lib/`**: Utility functions and configurations
+- **`src/stores/`**: Zustand state management stores (app-store.ts)
+- **`src/lib/`**: Utility functions and configurations (utils.ts with cn function)
 - **`src/utils/`**: Ready for additional utility functions (currently empty)
 - **`src/constants/`**: Ready for application constants (currently empty)
 - **`src/types/`**: Ready for TypeScript type definitions (currently empty)
@@ -327,10 +356,11 @@ These directories provide a solid foundation for expanding your application with
 
 ## 🔧 Configuration
 
-### Tailwind CSS
-Tailwind is configured with PostCSS. The configuration files are:
-- `tailwind.config.js` - Tailwind configuration
-- `postcss.config.js` - PostCSS configuration with Tailwind and Autoprefixer
+### Tailwind CSS v4
+Tailwind CSS v4 is configured with the new Vite plugin:
+- `tailwind.config.js` - Tailwind v4 configuration with CSS variables
+- `@tailwindcss/vite` - Tailwind CSS v4 Vite plugin
+- `src/index.css` - Global styles with @theme inline and CSS custom properties
 
 ### TypeScript
 Strict mode is enabled with additional linting rules:
@@ -346,41 +376,49 @@ Configured with React and TypeScript support:
 
 ## 🎨 Styling
 
-### Tailwind CSS + Shadcn/UI
-The template uses Tailwind CSS with Shadcn/UI for styling:
+### Tailwind CSS v4 + Shadcn/UI
+The template uses Tailwind CSS v4 with Shadcn/UI for styling:
 
 - **Light/Dark theme system** with next-themes integration
-- **Semantic color system** with CSS custom properties
+- **CSS custom properties** for semantic color system
 - **Accessible components** built on Radix UI primitives
 - **Responsive utilities** for mobile-first design
 - **Theme switching** with persistent user preferences via next-themes
+- **Modern CSS features** with Tailwind CSS v4 and @theme inline
 
 ### Key Features
 - **Automatic theme persistence**: User's theme choice is saved to localStorage
 - **Real-time theme switching**: Instant theme changes without page reload
 - **Mobile-optimized**: Responsive design across all screen sizes
-- **Consistent styling**: DaisyUI ensures design consistency across components
+- **Consistent styling**: Shadcn/UI ensures design consistency across components
+- **CSS Variables**: Comprehensive theme system with CSS custom properties
+- **Modern shadows**: Custom shadow system with light/dark variants
 
 ## 📦 Dependencies
 
 ### Production Dependencies
-- `react` & `react-dom` - React 19 with modern features
-- `zustand` - Lightweight state management with persistence
-- `lucide-react` - Beautiful, consistent icon library
-- `sonner` - Modern toast notification library
-- `next-themes` - Perfect dark mode implementation
-- `@radix-ui/react-*` - Accessible UI primitives for Shadcn/UI
-- `class-variance-authority` - CVA for component variants
-- `clsx` - Conditional class name utility
-- `tailwind-merge` - Tailwind class conflict resolution
+- `react` (^19.1.1) & `react-dom` (^19.1.1) - React 19 with modern features
+- `zustand` (^5.0.8) - Lightweight state management with persistence
+- `lucide-react` (^0.541.0) - Beautiful, consistent icon library
+- `sonner` (^2.0.7) - Modern toast notification library
+- `next-themes` (^0.4.6) - Perfect dark mode implementation
+- `@radix-ui/react-dropdown-menu` (^2.1.16) - Dropdown menu primitives
+- `@radix-ui/react-separator` (^1.1.7) - Separator primitives
+- `@radix-ui/react-slot` (^1.2.3) - Slot primitives for composition
+- `class-variance-authority` (^0.7.1) - CVA for component variants
+- `clsx` (^2.1.1) - Conditional class name utility
+- `tailwind-merge` (^3.3.1) - Tailwind class conflict resolution
+- `tailwindcss` (^4.1.12) - Utility-first CSS framework v4
+- `@tailwindcss/vite` (^4.1.12) - Tailwind CSS v4 Vite plugin
 
 ### Development Dependencies
-- `@vitejs/plugin-react` - Vite React plugin with fast refresh
-- `typescript` - TypeScript compiler with strict mode
-- `tailwindcss` - Utility-first CSS framework with v4
-- `@tailwindcss/vite` - Tailwind CSS v4 Vite plugin
-- `eslint` - Code linting with React and TypeScript rules
-- `typescript-eslint` - TypeScript-specific ESLint rules
+- `@vitejs/plugin-react` (^5.0.0) - Vite React plugin with fast refresh
+- `typescript` (~5.8.3) - TypeScript compiler with strict mode
+- `vite` (^7.1.2) - Lightning-fast build tool
+- `eslint` (^9.33.0) - Code linting with React and TypeScript rules
+- `typescript-eslint` (^8.39.1) - TypeScript-specific ESLint rules
+- `@types/react` (^19.1.10) & `@types/react-dom` (^19.1.7) - TypeScript definitions
+- `tw-animate-css` (^1.3.7) - Additional CSS animations for Tailwind
 
 ## 🏗️ Why Use This Template?
 
@@ -399,9 +437,10 @@ The template uses Tailwind CSS with Shadcn/UI for styling:
 
 ### Design System
 - **Shadcn/UI integration**: Beautiful, accessible components built on Radix UI
-- **Theme flexibility**: Light/dark mode switching with next-themes
-- **Consistent UI**: Cohesive design language with CSS variables
-- **Responsive design**: Mobile-first approach with proper breakpoints
+- **Theme flexibility**: Light/dark mode switching with next-themes and CSS variables
+- **Consistent UI**: Cohesive design language with semantic color system
+- **Responsive design**: Mobile-first approach with Tailwind breakpoints
+- **Modern CSS**: Tailwind CSS v4 with @theme inline and custom properties
 
 ### State Management
 - **Lightweight Zustand**: Minimal overhead with powerful features
@@ -444,15 +483,16 @@ The template includes well-documented components:
 - **File organization**: Clear separation of concerns with organized directories
 - **Naming conventions**: Consistent kebab-case for files, PascalCase for components
 - **State management**: Centralized Zustand store with persistence
-- **Styling approach**: Tailwind CSS with DaisyUI component library
+- **Styling approach**: Tailwind CSS v4 with Shadcn/UI component library
+- **Theme system**: CSS custom properties with light/dark mode support
 
 ## 🎯 Best Practices
 
 1. **Component Organization**: Keep components small and focused on a single responsibility
 2. **Type Safety**: Use TypeScript interfaces and types for all data structures
 3. **State Management**: Use Zustand for global state, local state for component-specific data
-4. **Styling**: Prefer DaisyUI components over custom Tailwind classes, use semantic color classes
-5. **Theme Management**: Use the built-in theme system, avoid hardcoded colors
+4. **Styling**: Prefer Shadcn/UI components over custom Tailwind classes, use semantic color classes
+5. **Theme Management**: Use the built-in theme system with CSS variables, avoid hardcoded colors
 6. **File Organization**: Follow the established folder structure and naming conventions
 7. **Error Handling**: Implement proper error boundaries and loading states
 8. **Performance**: Use React.memo, useMemo, and useCallback when appropriate
@@ -470,7 +510,7 @@ The template includes well-documented components:
 ### Code Quality Standards
 - **ESLint compliance**: All code must pass ESLint checks
 - **TypeScript strict**: Comprehensive type coverage
-- **Consistent styling**: Use Tailwind CSS and DaisyUI components
+- **Consistent styling**: Use Tailwind CSS v4 and Shadcn/UI components
 - **Responsive design**: Mobile-first approach for all components
 - **State management**: Use Zustand store for application state
 
