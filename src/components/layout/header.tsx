@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flower2 } from 'lucide-react'
 import { NotificationBadge } from '../features/notification-display'
 import { CompactThemeSelector } from '../features/theme-selector'

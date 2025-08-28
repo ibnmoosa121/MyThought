@@ -1,4 +1,3 @@
-import React from 'react'
 import { Bell, X } from 'lucide-react'
 import { useAppStore } from '../../stores/app-store'
 import { Button } from '../ui/button'

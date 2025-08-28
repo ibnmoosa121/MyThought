@@ -1,4 +1,3 @@
-import React from 'react'
 import { Palette, Check } from 'lucide-react'
 import { useAppStore, ALL_THEMES, type Theme } from '../../stores/app-store'
 import { Button } from '../ui/button'

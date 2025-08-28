@@ -1,9 +1,8 @@
-import React from 'react'
 import { Zap, Palette, Shield, Rocket, Heart, Sparkles } from 'lucide-react'
 import { InteractiveCounter } from '../features/interactive-counter'
 import { useAppStore } from '../../stores/app-store'
 import { Button } from '../ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import { Card, CardContent } from '../ui/card'
 
 // Technology icons with emojis
 const TechStack = () => {

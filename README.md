@@ -450,12 +450,32 @@ The template uses Tailwind CSS v4 with Shadcn/UI for styling:
 
 ## 🚀 Deployment
 
+### GitHub Pages (Automated)
+
+This template is configured for automatic deployment to GitHub Pages:
+
+1. **Repository Setup**:
+   - Push your code to a GitHub repository
+   - Go to repository Settings → Pages
+   - Set Source to "GitHub Actions"
+
+2. **Automatic Deployment**:
+   - Every push to `main` branch triggers automatic deployment
+   - GitHub Actions workflow builds and deploys to GitHub Pages
+   - Site will be available at `https://yourusername.github.io/repository-name/`
+
+3. **Configuration**:
+   - Update the `base` path in `vite.config.ts` to match your repository name
+   - The workflow file is located at `.github/workflows/deploy.yml`
+
+### Manual Build
+
 Build the project for production:
 ```bash
 npm run build
 ```
 
-The `dist` folder contains the optimized production build ready for deployment.
+The `dist` folder contains the optimized production build ready for deployment to any static hosting service.
 
 ## 📜 Scripts
 
