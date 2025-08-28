@@ -465,7 +465,7 @@ This template is configured for automatic deployment to GitHub Pages:
    - Site will be available at `https://yourusername.github.io/repository-name/`
 
 3. **Configuration**:
-   - Update the `base` path in `vite.config.ts` to match your repository name
+   - The `base` path in `vite.config.ts` is set to `/AIStarterTemplate/` for your repository
    - The workflow file is located at `.github/workflows/deploy.yml`
 
 ### Manual Build
