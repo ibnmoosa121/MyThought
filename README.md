@@ -450,23 +450,36 @@ The template uses Tailwind CSS v4 with Shadcn/UI for styling:
 
 ## 🚀 Deployment
 
-### GitHub Pages (Automated)
+### GitHub Pages (Free Account Compatible)
 
-This template is configured for automatic deployment to GitHub Pages:
+This template is configured for automatic deployment to GitHub Pages using GitHub Actions and works with **free GitHub accounts**.
 
-1. **Repository Setup**:
-   - Push your code to a GitHub repository
-   - Go to repository Settings → Pages
-   - Set Source to "GitHub Actions"
+#### Setup Instructions:
 
-2. **Automatic Deployment**:
-   - Every push to `main` branch triggers automatic deployment
-   - GitHub Actions workflow builds and deploys to GitHub Pages
-   - Site will be available at `https://yourusername.github.io/repository-name/`
+1. **Repository Settings:**
+   - Go to your repository Settings → Pages
+   - Under "Source", select "GitHub Actions"
+   - No billing setup required for GitHub Pages on free accounts
 
-3. **Configuration**:
-   - The `base` path in `vite.config.ts` is set to `/AIStarterTemplate/` for your repository
-   - The workflow file is located at `.github/workflows/deploy.yml`
+2. **Configuration:**
+   - The `base` path in `vite.config.ts` is set to `/AIStarterTemplate/` for this repository
+   - The `.nojekyll` file prevents Jekyll processing
+   - Uses `peaceiris/actions-gh-pages` action (free account compatible)
+
+3. **Automatic Deployment:**
+   - Pushes to `main`, `master`, or `shadcnui` branches trigger deployment
+   - Manual deployment available via Actions tab → "Run workflow"
+   - No spending limits or billing issues with this setup
+
+4. **Access Your Site:**
+   - Your site will be available at: `https://yourusername.github.io/repositoryname/`
+   - Check the Actions tab for deployment status
+   - First deployment may take 5-10 minutes
+
+#### Troubleshooting:
+- If you see billing errors, the updated workflow avoids those issues
+- GitHub Pages is free for public repositories
+- No payment method required for basic GitHub Pages deployment
 
 ### Manual Build
 
