@@ -71,6 +71,36 @@ const HeroSection = () => {
     }, 1000)
   }
   
+  const handleColorTest = () => {
+    // Test primary color with info notification
+    addNotification({
+      type: 'info',
+      title: 'Primary Color Test',
+      message: 'Testing DaisyUI primary and info colors - theme adaptive!',
+      duration: 3000
+    })
+    
+    // Test secondary/success color
+    setTimeout(() => {
+      addNotification({
+        type: 'success',
+        title: 'Secondary Color Test',
+        message: 'Testing DaisyUI secondary and success colors',
+        duration: 3000
+      })
+    }, 500)
+    
+    // Test accent/warning color
+    setTimeout(() => {
+      addNotification({
+        type: 'warning',
+        title: 'Accent Color Test',
+        message: 'Testing DaisyUI accent and warning colors',
+        duration: 3000
+      })
+    }, 1000)
+  }
+  
   return (
     <section className="text-center py-12 md:py-20">
       {/* Tech stack */}
@@ -102,6 +132,13 @@ const HeroSection = () => {
         >
           <Sparkles size={20} />
           Test Notifications
+        </button>
+        <button 
+          className="btn btn-outline btn-lg gap-2"
+          onClick={handleColorTest}
+        >
+          <Palette size={20} />
+          Test Primary Colors
         </button>
         <button className="btn btn-outline btn-lg gap-2">
           <Heart size={20} />
