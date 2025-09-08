@@ -7,7 +7,13 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react()],
-  base: process.env.NODE_ENV === 'production' ? '/AIStarterTemplate/' : '/',
+  base: process.env.NODE_ENV === 'production' 
+    ? process.env.DEPLOY_TARGET === 'shadcnui' 
+      ? '/AIStarterTemplate/shadcnui/'
+      : process.env.DEPLOY_TARGET === 'daisyui'
+      ? '/AIStarterTemplate/daisyui/'
+      : '/AIStarterTemplate/'
+    : '/',
   resolve: {
     alias: {
       '@': resolve(fileURLToPath(new URL('./src', import.meta.url))),
