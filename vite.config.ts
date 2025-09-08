@@ -10,8 +10,6 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production' 
     ? process.env.DEPLOY_TARGET === 'shadcnui' 
       ? '/AIStarterTemplate/shadcnui/'
-      : process.env.DEPLOY_TARGET === 'daisyui'
-      ? '/AIStarterTemplate/daisyui/'
       : '/AIStarterTemplate/'
     : '/',
   resolve: {

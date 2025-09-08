@@ -217,7 +217,7 @@ Reusable shared components for application-wide functionality:
 Centralized application state with localStorage persistence:
 
 - **Theme Management**
-  - Current theme selection from 30+ DaisyUI themes
+  - Current theme selection with shadcn/ui theme system
   - Real-time theme switching with DOM updates
   - localStorage persistence across sessions
 
@@ -529,7 +529,7 @@ The template includes well-documented components:
 6. **File Organization**: Follow the established folder structure and naming conventions
 7. **Error Handling**: Implement proper error boundaries and loading states
 8. **Performance**: Use React.memo, useMemo, and useCallback when appropriate
-9. **Responsive Design**: Use mobile-first approach with DaisyUI responsive modifiers
+9. **Responsive Design**: Use mobile-first approach with Tailwind CSS responsive modifiers
 
 ## 🤝 Contributing
 
