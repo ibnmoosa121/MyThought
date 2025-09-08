@@ -1,6 +1,5 @@
-import React from 'react'
 import { ChevronDown, Palette } from 'lucide-react'
-import { useAppStore, type DaisyTheme, ALL_THEMES } from '../../stores/app-store'
+import { useAppStore, type DaisyTheme } from '../../stores/app-store'
 
 // Theme categories for better organization
 const THEME_CATEGORIES = {
@@ -21,7 +20,7 @@ const THEME_CATEGORIES = {
 
 
 // Theme preview component
-const ThemePreview = ({ theme }: { theme: DaisyTheme }) => {
+const ThemePreview = () => {
   return (
     <div className="flex items-center gap-1 min-w-0">
       <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
@@ -74,7 +73,7 @@ export const ThemeSelector = () => {
                   onClick={() => handleThemeChange(themeOption)}
                   data-theme={themeOption}
                 >
-                  <ThemePreview theme={themeOption} />
+                  <ThemePreview />
                   <span className="capitalize ml-2">{themeOption}</span>
                 </button>
               ))}
@@ -173,7 +172,7 @@ export const CompactThemeSelector = () => {
                     onClick={() => handleThemeChange(themeOption)}
                     data-theme={themeOption}
                   >
-                    <ThemePreview theme={themeOption} />
+                    <ThemePreview />
                     <span className="capitalize ml-2">{themeOption}</span>
                   </button>
                 ))}

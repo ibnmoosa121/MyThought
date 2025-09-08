@@ -1,4 +1,3 @@
-import React from 'react'
 import { X, Info, CheckCircle, AlertTriangle, XCircle, Bell } from 'lucide-react'
 import { useAppStore, type Notification } from '../../stores/app-store'
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Plus, Minus, RotateCcw, TrendingUp, Target, Activity } from 'lucide-react'
 import { useAppStore } from '../../stores/app-store'
 
