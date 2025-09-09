@@ -1,495 +1,290 @@
-# Modern React Template with DaisyUI
+# Modern React Starter Template
 
-A clean, production-ready React template built with modern development practices using TypeScript, Vite, DaisyUI, and Zustand. This template provides a solid foundation for building scalable React applications with proper naming conventions and organized structure.
+A clean, production-ready React template with TypeScript, Vite, DaisyUI, and Zustand. Perfect for quickly starting new React projects with modern development practices.
 
 ## 🚀 Tech Stack
 
-- **[React 18+](https://react.dev/)** - Modern React with hooks and concurrent features
-- **[TypeScript](https://www.typescriptlang.org/)** - Strict type safety with comprehensive type definitions
-- **[Vite](https://vitejs.dev/)** - Lightning-fast build tool with HMR and optimized bundling
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapid styling
-- **[DaisyUI](https://daisyui.com/)** - Semantic component library with 30+ beautiful themes
-- **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight state management with localStorage persistence
-- **[Lucide React](https://lucide.dev/)** - Beautiful, consistent icon library
+- **React 19.1+** with TypeScript 5.9+
+- **Vite 7.1+** - Lightning-fast development and build
+- **Tailwind CSS 4.1+** - Utility-first styling
+- **DaisyUI 5.0+** - Beautiful, semantic component library with 30+ themes
+- **Zustand 5.0+** - Lightweight state management
+- **Lucide React** - Consistent icon library
+- **ESLint 9.33+** - Code quality and consistency
 
-## ✨ Key Features
+## ✨ Features
 
-### 🎨 **Dynamic Theme System**
-- 30+ DaisyUI themes with real-time switching
-- localStorage persistence across page refreshes
-- Responsive theme selector with grid and dropdown variants
+- 🎨 **30+ DaisyUI Themes** with persistent preferences
+- 🔔 **Toast Notifications** with auto-removal system
+- 📱 **Fully Responsive** mobile-first design
+- 🧩 **Component Library** with DaisyUI integration
+- 🔄 **State Management** with Zustand + localStorage
+- 📁 **Organized Structure** with clear naming conventions
+- ⚡ **Fast Development** with Vite HMR
+- 🎯 **TypeScript Strict** mode enabled
 
-### 🔔 **Smart Notification System**
-- Toast notifications with auto-removal
-- Multiple notification types (success, error, warning, info)
-- Zustand-powered state management with unique ID generation
-
-### 🧩 **Comprehensive Component Library**
-- **UI Components**: Button, Card, LoadingSpinner, ThemeSelector, NotificationDisplay
-- **Layout Components**: Container, Header, Footer, Sidebar, MainLayout
-- **Feature Components**: InteractiveCounter with statistics and history
-- All components fully typed with TypeScript and DaisyUI integration
-
-### 📱 **Responsive Design**
-- Mobile-first approach with Tailwind breakpoints
-- Adaptive layouts for all screen sizes
-- Touch-friendly interactive elements
-
-### 🏗️ **Modern Architecture**
-- Clean separation of concerns with organized folder structure
-- Custom hooks for reusable logic
-- Utility functions with proper TypeScript typing
-- Constants management for maintainable code
-
-### 🔄 **State Management**
-- Zustand store with devtools integration
-- localStorage persistence for theme and UI preferences
-- Centralized notification management
-- Loading states and UI state management
-
-## 🛠️ Getting Started
+## 🛠️ Quick Start
 
 ### Prerequisites
-- **Node.js** 18+ (LTS recommended)
-- **npm** 9+ or **yarn** 1.22+
-- **Git** for version control
+- Node.js 18+ (LTS recommended)
+- npm 9+ or yarn 1.22+
 
-### Quick Start
+### Setup
 
-1. **Clone or download the template**
+1. **Clone and install**
    ```bash
    git clone <repository-url>
    cd template-1-daisyui
-   ```
-
-2. **Install dependencies**
-   ```bash
    npm install
    ```
 
-3. **Start development server**
+2. **Start development**
    ```bash
    npm run dev
    ```
+   Open `http://localhost:5173`
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173` to see the application
-
-### Development Workflow
-
-1. **Create new components** in appropriate directories (`/ui`, `/layout`, `/features`, `/common`)
-2. **Add types** in `/types` for TypeScript definitions
-3. **Implement utilities** in `/utils` for shared functionality
-4. **Update store** in `/stores` for state management
-5. **Follow naming conventions** using kebab-case for files and PascalCase for components
-6. **Test thoroughly** across different themes and screen sizes
+3. **Customize for your project**
+   - Update `package.json` name and details
+   - Modify `vite.config.ts` base path for deployment
+   - Remove demo components from `/src/components/features/`
+   - Clear `/src/stores/app-store.ts` and add your state
+   - Update this README with your project details
 
 ## 📁 Project Structure
 
 ```
 src/
-├── components/          # React components organized by type
-│   ├── features/       # Feature-specific components
-│   │   └── interactive-counter.tsx
-│   ├── layout/         # Layout and structural components
-│   │   ├── header.tsx
-│   │   └── main-content.tsx
-│   ├── ui/             # Basic UI components
-│   │   ├── notification-display.tsx
-│   │   ├── theme-selector.tsx
-│   │   └── toast-notifications.tsx
-│   └── common/         # Reusable shared components (empty)
-├── assets/             # Static assets
-│   └── react.svg
+├── components/
+│   ├── ui/             # DaisyUI wrapper components
+│   ├── layout/         # Header, navigation, layout components
+│   ├── features/       # Feature-specific components (remove demos)
+│   └── common/         # Reusable shared components
 ├── stores/             # Zustand state management
-│   └── app-store.ts
-├── constants/          # Application constants (empty)
-├── hooks/              # Custom React hooks (empty)
-├── pages/              # Page components (empty)
-├── services/           # API services (empty)
-├── types/              # TypeScript type definitions (empty)
-├── utils/              # Utility functions (empty)
-├── app.tsx             # Main application component
-├── main.tsx            # Application entry point
-├── index.css           # Global styles with Tailwind directives
-└── vite-env.d.ts       # Vite type definitions
+├── assets/             # Static assets
+├── constants/          # App constants (ready to use)
+├── hooks/              # Custom React hooks (ready to use)
+├── pages/              # Page components (ready to use)
+├── services/           # API services (ready to use)
+├── types/              # TypeScript definitions (ready to use)
+├── utils/              # Additional utilities (ready to use)
+├── app.tsx             # Main app component
+├── main.tsx            # Entry point
+└── index.css           # Global styles with Tailwind directives
 ```
+
+## 🎯 Before Starting Your Project
+
+### Files to Remove/Modify
+1. **Demo Components** (in `/src/components/features/`):
+   - `interactive-counter.tsx`
+   - Any other demo feature components
+
+2. **Demo State** (in `/src/stores/app-store.ts`):
+   - Remove counter logic and demo functionality
+   - Keep theme and notification management
+
+3. **Update Configuration**:
+   - `package.json` - Change name, version, description
+   - `vite.config.ts` - Update base path for your deployment
+   - `README.md` - Replace with your project documentation
+
+### Core Files to Keep
+- All `/src/components/ui/` components (DaisyUI wrappers)
+- `/src/components/layout/` components (customize as needed)
+- `/src/components/common/` notification components
+- Theme system and CSS variables in `index.css`
+- Zustand store structure (remove demo logic only)
 
 ## 📋 Naming Conventions
 
-### Files and Folders
-- **Files**: Use kebab-case (e.g., `user-profile.tsx`, `api-client.ts`)
-- **Folders**: Use kebab-case (e.g., `user-management/`, `api-services/`)
-- **Main Components**: Use kebab-case for filenames (e.g., `app.tsx`, `main.tsx`)
+- **Files/Folders**: kebab-case (`user-profile.tsx`, `auth-forms/`)
+- **Components**: PascalCase (`UserProfile`, `AuthForm`)
+- **Variables/Functions**: camelCase (`userName`, `handleSubmit`)
+- **Constants**: SCREAMING_SNAKE_CASE (`API_BASE_URL`)
+- **Types/Interfaces**: PascalCase (`User`, `ApiResponse`)
+- **Hooks**: camelCase with 'use' (`useAuth`, `useLocalStorage`)
 
-### Code Conventions
-- **Components**: PascalCase (e.g., `UserProfile`, `NavigationMenu`, `App`)
-- **Variables & Functions**: camelCase (e.g., `userName`, `handleSubmit`)
-- **Constants**: SCREAMING_SNAKE_CASE (e.g., `API_BASE_URL`, `MAX_RETRY_ATTEMPTS`)
-- **Types & Interfaces**: PascalCase (e.g., `User`, `ApiResponse`)
-- **Hooks**: camelCase starting with 'use' (e.g., `useLocalStorage`, `useAuth`)
+## 🚀 Deployment
 
-### Recent Updates
-- Updated `App.tsx` to `app.tsx` to follow kebab-case naming convention
-- Fixed import statements to match new file naming
-- Maintained PascalCase for component names while using kebab-case for filenames
+### GitHub Pages
 
-## 🧩 Components
+This template includes two deployment options:
 
-### UI Components (`src/components/ui/`)
-Basic, reusable UI building blocks with DaisyUI integration:
+#### Option 1: Deploy to Root Path
+```bash
+npm run deploy
+```
+- **Process**: `predeploy` → `npm run build` → `gh-pages -d dist`
+- **Environment**: No `DEPLOY_TARGET` set
+- **Base Path**: `/AIStarterTemplate/`
+- **Result**: `https://yourusername.github.io/repositoryname/`
 
-- **NotificationDisplay**: Toast notification system
-  - Auto-removal with configurable duration
-  - Multiple types: success, error, warning, info
-  - Smooth enter/exit animations
-  - Integrated with Zustand store
+#### Option 2: Deploy to DaisyUI Subfolder
+```bash
+npm run deploy:daisyui
+```
+- **Process**: `predeploy:daisyui` → `npm run build:daisyui` → `gh-pages -d dist -e daisyui`
+- **Environment**: `DEPLOY_TARGET=daisyui`
+- **Base Path**: `/AIStarterTemplate/daisyui/`
+- **Result**: `https://yourusername.github.io/repositoryname/daisyui/`
 
-- **ThemeSelector**: Interactive theme switcher
-  - Grid and dropdown display variants
-  - Real-time theme preview
-  - localStorage persistence
-  - All 30+ DaisyUI themes supported
+### Configuration
 
-- **ToastNotifications**: Toast notification component
-  - Auto-dismiss with configurable timeout
-  - Multiple types: success, error, warning, info
-  - Positioning: customizable placement on screen
-  - Animation: smooth slide-in and fade-out effects
+**For your own deployment**, update `vite.config.ts`:
 
-### Layout Components (`src/components/layout/`)
-Structural components for application layout:
+```typescript
+// For root deployment
+base: process.env.NODE_ENV === 'production' ? '/your-repo-name/' : '/'
 
-- **Header**: Application header with navigation
-  - Responsive sidebar toggle
-  - Logo and application name
-  - Notification bell with unread count
-  - Integrated theme selector
-  - User menu placeholder
-  - Multiple variants: Header, HeaderWithNav, MinimalHeader
-  - Responsive components: AppBrand, MobileAppBrand, HeaderActions
-
-- **MainContent**: Main content area component
-  - Responsive structure with mobile-first design
-  - Content organization with structured layout
-  - Flexible layout adaptable to different content types
-  - Proper semantic HTML structure for accessibility
-
-### Feature Components (`src/components/features/`)
-Feature-specific interactive components:
-
-- **InteractiveCounter**: Advanced counter widget
-  - Increment, decrement, and reset functionality
-  - Configurable min/max ranges
-  - Statistics display (total operations, average)
-  - Operation history tracking
-  - Integration with app store for loading states
-  - Notification system integration
-  - Multiple display modes: standard, compact, mobile-optimized
-  - Sub-components: CounterDisplay, CounterControls, CounterStats, MobileCounterStats, CompactCounter
-
-### Common Components (`src/components/common/`)
-Reusable shared components directory (currently empty, ready for future components)
-
-## 🔄 State Management
-
-### Zustand Store (`src/stores/app-store.ts`)
-Centralized application state with localStorage persistence:
-
-- **Theme Management**
-  - Current theme selection from 30+ DaisyUI themes
-  - Real-time theme switching with DOM updates
-  - localStorage persistence across sessions
-
-- **Counter State**
-  - Interactive counter with increment/decrement operations
-  - Statistics tracking (total operations, average)
-  - Operation history and state management
-
-- **UI State**
-  - Loading states for async operations
-  - Global UI preferences and application state
-
-- **Notification System**
-  - Toast notification queue with unique IDs
-  - Auto-removal with configurable duration
-  - Multiple notification types with proper styling
-
-- **Persistence Features**
-  - Automatic localStorage sync for theme preferences
-  - Lightweight state management with minimal re-renders
-
-## 🏠 Demo Application
-
-The template includes a clean, focused demo application showcasing core functionality:
-
-### Main Application
-- **Interactive counter** demonstrating Zustand state management
-- **Theme selector** with live theme switching across 30+ DaisyUI themes
-- **Notification system** with toast notifications
-- **Responsive header** with brand display and user actions
-- **Clean layout** showcasing proper component organization
-
-## 🚀 Usage Examples
-
-### Component Usage
-
-#### Theme Selector
-```tsx
-import { ThemeSelector, CompactThemeSelector } from './components/ui/theme-selector';
-
-// Full theme selector with preview
-<ThemeSelector />
-
-// Compact version for headers/toolbars
-<CompactThemeSelector />
+// For custom subfolder
+base: process.env.NODE_ENV === 'production' 
+  ? process.env.DEPLOY_TARGET === 'daisyui' 
+    ? '/your-repo-name/daisyui/'
+    : '/your-repo-name/'
+  : '/'
 ```
 
-#### Interactive Counter
-```tsx
-import { InteractiveCounter, CompactCounter } from './components/features/interactive-counter';
-
-// Full-featured counter with statistics
-<InteractiveCounter />
-
-// Compact version for dashboards
-<CompactCounter />
+### Manual Build
+```bash
+npm run build
 ```
+Deploy the `dist/` folder to any static hosting service.
 
-#### Notification System
-```tsx
-import { NotificationDisplay } from './components/ui/notification-display';
-import { useAppStore } from './stores/app-store';
+## 📜 Available Scripts
 
-const { addNotification } = useAppStore();
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run deploy` - Deploy to GitHub Pages (root)
+- `npm run deploy:daisyui` - Deploy to GitHub Pages (subfolder)
+- `npm run build:daisyui` - Build with DaisyUI target environment
 
-// Add notifications
-addNotification({
-  type: 'success',
-  title: 'Success!',
-  message: 'Operation completed successfully',
-  duration: 5000
-});
+## 🧩 Key Components
 
-// Display notifications
-<NotificationDisplay />
-```
-
-### State Management Usage
+### Theme System
 ```tsx
 import { useAppStore } from './stores/app-store'
 
-function MyComponent() {
-  const { 
-    theme, 
-    setTheme, 
-    count,
-    increment,
-    decrement,
-    addNotification, 
-    isLoading, 
-    setLoading 
-  } = useAppStore()
-
-  const handleThemeChange = (newTheme: string) => {
-    setTheme(newTheme)
-    addNotification({
-      type: 'success',
-      title: 'Theme Changed',
-      message: `Switched to ${newTheme} theme`,
-      duration: 3000
-    })
-  }
-
+function ThemeSelector() {
+  const { theme, setTheme } = useAppStore()
   return (
-    <div data-theme={theme}>
-      <button onClick={() => increment(1)}>Count: {count}</button>
-      <button onClick={() => decrement(1)}>Decrement</button>
-      {/* Your component content */}
-    </div>
+    <select 
+      data-choose-theme 
+      value={theme} 
+      onChange={(e) => setTheme(e.target.value)}
+    >
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="cupcake">Cupcake</option>
+      {/* 30+ DaisyUI themes available */}
+    </select>
   )
 }
 ```
 
-## 🛠️ Utilities
-
-### Project Organization
-The template includes well-organized directories for scalable development:
-
-- **`src/utils/`**: Ready for utility functions and helpers (currently empty)
-- **`src/constants/`**: Ready for application constants (currently empty)
-- **`src/types/`**: Ready for TypeScript type definitions (currently empty)
-- **`src/hooks/`**: Ready for custom React hooks (currently empty)
-- **`src/services/`**: Ready for API services (currently empty)
-- **`src/pages/`**: Ready for page components (currently empty)
-
-These directories provide a solid foundation for expanding your application with proper organization and separation of concerns.
-
-## 🔧 Configuration
-
-### Tailwind CSS
-Tailwind is configured with PostCSS. The configuration files are:
-- `tailwind.config.cjs` - Tailwind configuration
-- `postcss.config.cjs` - PostCSS configuration with Tailwind and Autoprefixer
-
-### TypeScript
-Strict mode is enabled with additional linting rules:
-- `noUnusedLocals` and `noUnusedParameters` for cleaner code
-- `noFallthroughCasesInSwitch` for safer switch statements
-- `noUncheckedSideEffectImports` for better module safety
-
-### ESLint
-Configured with React and TypeScript support:
-- React Hooks rules
-- React Refresh for HMR
-- TypeScript ESLint recommended rules
-
-## 🎨 Styling
-
-### Tailwind CSS + DaisyUI
-The template uses Tailwind CSS with DaisyUI for styling:
-
-- **30+ DaisyUI themes** including light, dark, and colorful variants
-- **Semantic color system** with CSS custom properties
-- **Component classes** for rapid UI development
-- **Responsive utilities** for mobile-first design
-- **Theme switching** with persistent user preferences via Zustand store
-
-### Key Features
-- **Automatic theme persistence**: User's theme choice is saved to localStorage
-- **Real-time theme switching**: Instant theme changes without page reload
-- **Mobile-optimized**: Responsive design across all screen sizes
-- **Consistent styling**: DaisyUI ensures design consistency across components
-
-## 📦 Dependencies
-
-### Production Dependencies
-- `react` & `react-dom` - React 19 with modern features
-- `zustand` - Lightweight state management with persistence
-- `lucide-react` - Beautiful, consistent icon library
-- `clsx` - Conditional class name utility
-- `tailwind-merge` - Tailwind class conflict resolution
-
-### Development Dependencies
-- `@vitejs/plugin-react` - Vite React plugin with fast refresh
-- `typescript` - TypeScript compiler with strict mode
-- `tailwindcss` - Utility-first CSS framework
-- `daisyui` - Semantic component library with 30+ themes
-- `eslint` - Code linting with React and TypeScript rules
-- `autoprefixer` & `postcss` - CSS processing and vendor prefixes
-
-## 🏗️ Why Use This Template?
-
-### Developer Experience
-- **Modern tooling**: Latest versions of React, TypeScript, and Vite
-- **Type safety**: Comprehensive TypeScript integration with strict mode
-- **Fast development**: Hot reload and optimized development server
-- **Clean structure**: Well-organized file structure with clear naming conventions
-- **Minimal setup**: Ready to use with essential features configured
-
-### Production Ready
-- **Performance optimized**: Vite's fast build system and optimizations
-- **Mobile responsive**: Mobile-first design with responsive components
-- **Scalable architecture**: Modular design for easy expansion
-- **Best practices**: Follows React and TypeScript best practices
-
-### Design System
-- **DaisyUI integration**: 30+ beautiful themes with semantic components
-- **Theme flexibility**: Easy theme switching with persistence
-- **Consistent UI**: Cohesive design language across components
-- **Responsive design**: Mobile-first approach with proper breakpoints
-
 ### State Management
-- **Lightweight Zustand**: Minimal overhead with powerful features
-- **TypeScript integration**: Fully typed store with IntelliSense
-- **Persistence**: Automatic localStorage synchronization
-- **Simple API**: Easy to understand and extend
+```tsx
+import { useAppStore } from './stores/app-store'
 
-## 🚀 Deployment
-
-Build the project for production:
-```bash
-npm run build
+function MyComponent() {
+  const { theme, setTheme, addNotification } = useAppStore()
+  
+  const handleAction = () => {
+    addNotification({
+      type: 'success',
+      title: 'Success!',
+      message: 'Operation completed',
+      duration: 3000
+    })
+  }
+}
 ```
 
-The `dist` folder contains the optimized production build ready for deployment.
+### Toast Notifications
+```tsx
+import { useAppStore } from './stores/app-store'
 
-## 📜 Scripts
+const { addNotification } = useAppStore()
+
+// Simple notification
+addNotification({
+  type: 'success',
+  title: 'Success!',
+  message: 'Operation completed successfully'
+})
+
+// Notification with custom duration
+addNotification({
+  type: 'error',
+  title: 'Error',
+  message: 'Something went wrong',
+  duration: 5000
+})
+```
+
+## 🎨 Styling Guidelines
+
+- **Use DaisyUI components** first, then Tailwind utilities
+- **Semantic colors**: Use `primary`, `secondary`, `accent`, `neutral` instead of hardcoded colors
+- **Theme switching**: Apply `data-theme` attribute for theme-aware styling
+- **Responsive design**: Use DaisyUI responsive modifiers (`sm:`, `md:`, `lg:`)
+- **Component variants**: Prefer DaisyUI component variants over custom classes
+- **Follow mobile-first** responsive design with Tailwind breakpoints
+
+### DaisyUI Component Examples
+```tsx
+// Buttons with semantic colors
+<button className="btn btn-primary">Primary</button>
+<button className="btn btn-secondary">Secondary</button>
+
+// Cards with theme-aware styling
+<div className="card bg-base-100 shadow-xl">
+  <div className="card-body">
+    <h2 className="card-title">Card Title</h2>
+    <p>Card content</p>
+  </div>
+</div>
+
+// Form elements
+<input className="input input-bordered w-full" placeholder="Enter text" />
+<select className="select select-bordered w-full">
+  <option>Choose option</option>
+</select>
+```
+
+## 🔧 Development Tips
+
+1. **Component Limits**: Keep components under 500 lines, utilities under 250 lines
+2. **File Organization**: Use existing directories before creating new ones
+3. **Type Safety**: Enable TypeScript strict mode, type all props and state
+4. **Performance**: Use React.memo, useMemo, useCallback when needed
+5. **Testing**: Test across different DaisyUI themes and screen sizes
+6. **DaisyUI First**: Check DaisyUI component library before building custom components
+
+## 📦 Key Dependencies
+
+### Production
+- `react` & `react-dom` (^19.1.1)
+- `zustand` (^5.0.8) - State management
+- `daisyui` (^5.0.50) - Component library with themes
+- `tailwindcss` (^4.1.12) - Styling framework
+- `lucide-react` (^0.541.0) - Icon library
+- `clsx` (^2.1.1) - Conditional classes
+- `tailwind-merge` (^3.3.1) - Class conflict resolution
 
 ### Development
-- **`npm run dev`**: Start development server with hot reload at `http://localhost:5173`
-- **`npm run build`**: Build for production with optimizations
-- **`npm run preview`**: Preview production build locally
-
-### Quality Assurance
-- **`npm run lint`**: Run ESLint for code quality
-- **`npm run lint:fix`**: Auto-fix ESLint issues
-
-These scripts provide the essential development workflow for building and maintaining your React application.
-
-## 📚 Documentation
-
-### Component Documentation
-The template includes well-documented components:
-- **TypeScript definitions**: Complete prop interfaces for all components
-- **Usage examples**: Clear implementation examples in this README
-- **Responsive design**: Mobile-first approach with proper breakpoints
-- **State integration**: Zustand store integration examples
-
-### Architecture Overview
-- **File organization**: Clear separation of concerns with organized directories
-- **Naming conventions**: Consistent kebab-case for files, PascalCase for components
-- **State management**: Centralized Zustand store with persistence
-- **Styling approach**: Tailwind CSS with DaisyUI component library
-
-## 🎯 Best Practices
-
-1. **Component Organization**: Keep components small and focused on a single responsibility
-2. **Type Safety**: Use TypeScript interfaces and types for all data structures
-3. **State Management**: Use Zustand for global state, local state for component-specific data
-4. **Styling**: Prefer DaisyUI components over custom Tailwind classes, use semantic color classes
-5. **Theme Management**: Use the built-in theme system, avoid hardcoded colors
-6. **File Organization**: Follow the established folder structure and naming conventions
-7. **Error Handling**: Implement proper error boundaries and loading states
-8. **Performance**: Use React.memo, useMemo, and useCallback when appropriate
-9. **Responsive Design**: Use mobile-first approach with DaisyUI responsive modifiers
-
-## 🤝 Contributing
-
-### Development Guidelines
-1. **Follow naming conventions**: Use kebab-case for files, PascalCase for components
-2. **Maintain TypeScript strict mode**: Ensure all code is properly typed
-3. **Keep files under limits**: Components under 500 lines, utilities under 250 lines
-4. **Document new features**: Update README and component documentation
-5. **Follow project structure**: Use existing directories and patterns
-
-### Code Quality Standards
-- **ESLint compliance**: All code must pass ESLint checks
-- **TypeScript strict**: Comprehensive type coverage
-- **Consistent styling**: Use Tailwind CSS and DaisyUI components
-- **Responsive design**: Mobile-first approach for all components
-- **State management**: Use Zustand store for application state
-
-### Getting Started with Development
-1. **Clone the repository** and install dependencies
-2. **Run development server** with `npm run dev`
-3. **Follow existing patterns** in component organization
-4. **Test across themes** to ensure compatibility
-5. **Maintain file size limits** and refactor when necessary
+- `vite` (^7.1.2) - Build tool
+- `typescript` (^5.9.2) - Type checking
+- `eslint` (^9.33.0) - Code linting
+- `gh-pages` (^6.3.0) - Deployment
+- `cross-env` (^10.0.0) - Environment variables
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
-
-### MIT License Summary
-- ✅ **Commercial use**: Use in commercial projects
-- ✅ **Modification**: Modify and adapt the code
-- ✅ **Distribution**: Distribute original or modified versions
-- ✅ **Private use**: Use in private projects
+MIT License - Use freely in personal and commercial projects.
 
 ---
 
-<div align="center">
-  <p><strong>Built with ❤️ using React, TypeScript, Vite, and DaisyUI</strong></p>
-  <p>A clean, modern template for building scalable React applications</p>
-</div>
+**Ready to build something amazing? Start by removing the demo components and adding your own!** 🚀

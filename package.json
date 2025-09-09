@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:daisyui": "cross-env NODE_ENV=production DEPLOY_TARGET=daisyui npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "build:daisyui": "cross-env NODE_ENV=production DEPLOY_TARGET=daisyui npm run build",
     "predeploy:daisyui": "npm run build:daisyui",
     "deploy:daisyui": "gh-pages -d dist -e daisyui"
   },
