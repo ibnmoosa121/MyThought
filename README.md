@@ -1,6 +1,6 @@
-# Modern React Starter Template
+# Vibe Coding & AI-Powered React + Shadcn/UI Starter Template
 
-A clean, production-ready React template with TypeScript, Vite, Shadcn/UI, and Zustand. Perfect for quickly starting new React projects with modern development practices.
+Kickstart your projects with this agentic, coding-friendly React starter kit. Powered by TypeScript, Vite, Shadcn/UI, and Zustand, it’s built for AI coding workflows, vibe coding projects, and a smooth modern developer experience.
 
 ## 🚀 Tech Stack
 
