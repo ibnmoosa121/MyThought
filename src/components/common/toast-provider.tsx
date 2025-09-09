@@ -16,16 +16,17 @@ const ToastProvider = ({ ...props }: CustomToasterProps) => {
   return (
     <SonnerToaster
       theme={theme as ToasterProps["theme"]}
+      richColors={true}
       className="toaster group"
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg transition-smooth hover:shadow-xl",
-          description: "group-[.toast]:text-muted-foreground transition-smooth",
+            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
+          description: "group-[.toast]:text-muted-foreground",
           actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground transition-smooth hover:scale-105 active:scale-95",
+            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground transition-smooth hover:bg-muted/80",
+            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
         },
       }}
       {...props}
@@ -33,7 +34,6 @@ const ToastProvider = ({ ...props }: CustomToasterProps) => {
   )
 }
 
-// Re-export toast functions for easy usage
 export { toast }
 export { ToastProvider }
 export type { CustomToasterProps as ToasterProps }

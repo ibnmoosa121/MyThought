@@ -45,40 +45,70 @@ const HeroSection = () => {
   }
   
   const handleColorTest = () => {
+    // Test primary theme color
     addNotification({
-      type: 'info',
-      title: 'Color Test',
-      message: 'Testing if primary colors are working properly',
+      type: 'info', // Using info type but with primary theme context
+      title: 'Primary Theme Color',
+      message: 'Showcasing the primary color from your theme palette',
       duration: 3000
     })
+    
+    // Test secondary theme color
+    setTimeout(() => {
+      addNotification({
+        type: 'info', // Using info type but with secondary theme context
+        title: 'Secondary Theme Color', 
+        message: 'Showcasing the secondary color from your theme palette',
+        duration: 3000
+      })
+    }, 500)
+    
+    // Test accent theme color
+    setTimeout(() => {
+      addNotification({
+        type: 'info', // Using info type but with accent theme context
+        title: 'Accent Theme Color',
+        message: 'Showcasing the accent color from your theme palette', 
+        duration: 3000
+      })
+    }, 1000)
   }
-  
+
   const handleTestNotifications = () => {
-    // Add multiple notifications to test the system
+    // Test semantic notification types
     addNotification({
       type: 'info',
       title: 'Info Notification',
-      message: 'This is an informational message',
+      message: 'This is an informational message using semantic info styling',
       duration: 4000
     })
     
     setTimeout(() => {
       addNotification({
         type: 'warning',
-        title: 'Warning',
-        message: 'This is a warning message',
+        title: 'Warning Notification',
+        message: 'This is a warning message using semantic warning styling',
         duration: 4000
       })
     }, 500)
     
     setTimeout(() => {
       addNotification({
-        type: 'error',
-        title: 'Error',
-        message: 'This is an error message',
+        type: 'success',
+        title: 'Success Notification',
+        message: 'This is a success message using semantic success styling',
         duration: 4000
       })
     }, 1000)
+    
+    setTimeout(() => {
+      addNotification({
+        type: 'error',
+        title: 'Error Notification',
+        message: 'This is an error message using semantic error styling',
+        duration: 4000
+      })
+    }, 1500)
   }
   
   return (
@@ -102,7 +132,7 @@ const HeroSection = () => {
         <Button
           onClick={handleGetStarted}
           size="lg"
-          className="gap-2 btn-enhanced"
+          className="gap-2"
         >
           <Rocket size={20} />
           Get Started
@@ -110,7 +140,7 @@ const HeroSection = () => {
         <Button 
           variant="secondary"
           size="lg"
-          className="gap-2 btn-enhanced"
+          className="gap-2"
           onClick={handleTestNotifications}
         >
           <Sparkles size={20} />
@@ -119,13 +149,17 @@ const HeroSection = () => {
         <Button 
           variant="outline" 
           size="lg" 
-          className="gap-2 btn-enhanced"
+          className="gap-2"
           onClick={handleColorTest}
         >
           <Palette size={20} />
           Test Primary Colors
         </Button>
-        <Button variant="outline" size="lg" className="gap-2 btn-enhanced">
+        <Button 
+          variant="outline" 
+          size="lg" 
+          className="gap-2"
+        >
           <Heart size={20} />
           View on GitHub
         </Button>
