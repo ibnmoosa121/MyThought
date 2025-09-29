@@ -1,24 +1,45 @@
-import React, { useState, useEffect } from 'react'
-import type { ButtonHTMLAttributes } from 'react'
-import { 
-  Zap, 
+/**
+ * Main Content Component
+ * 
+ * This file contains the main landing page sections including:
+ * - Hero Section: Main banner with animated background
+ * - Services Section: Showcases company services with interactive cards
+ * - Case Studies Section: Displays project examples and success stories
+ * 
+ * The page uses Framer Motion for animations and Tailwind CSS with DaisyUI for styling.
+ */
+
+import React, { useState, useEffect, useRef } from 'react' // Core React imports
+import type { ButtonHTMLAttributes } from 'react' // Type definitions for button props
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion" // Animation library for smooth transitions
+import { TextGenerateEffect } from "../ui/text-generate-effect" // Text generation effect
+import { SectionNavigation } from "../ui/section-navigation" // Section navigation
+import { SectionContainer } from "../ui/section-container" // Section container
+import { StickyScroll } from "../ui/sticky-scroll-reveal" // Sticky scroll reveal component
+import {  
+  // Lucide icon imports for various UI elements
   Rocket, 
   BrainCircuit, 
   BarChart3, 
   Globe, 
   Shield, 
   Code, 
-  LineChart, 
   Lightbulb, 
   ArrowRight, 
   CheckCircle2, 
   ChevronRight,
   MessageSquare
 } from 'lucide-react'
-import { useAppStore } from '../../stores/app-store'
-import { cn } from '../../lib/utils'
+import { cn } from '../../lib/utils' // Utility for conditional class names
 
 // LiquidButton component based on shadcn.io's liquid button
+/**
+ * LiquidButton Component
+ * 
+ * A custom button with liquid animation effects on hover.
+ * Supports multiple variants (default, outline, secondary) and sizes.
+ * Uses Tailwind CSS for styling and custom animations.
+ */
 interface LiquidButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'outline' | 'secondary'
   size?: 'default' | 'sm' | 'lg' | 'icon'
@@ -83,31 +104,148 @@ export const LiquidButton = ({
 }
 
 // Tech solutions icons with modern styling
-const TechSolutions = () => {
-  const solutions = [
-    { name: 'AI Integration', icon: <BrainCircuit size={28} />, description: 'Smart Solutions' },
-    { name: 'Data Analytics', icon: <BarChart3 size={28} />, description: 'Actionable Insights' },
-    { name: 'Cloud Services', icon: <Globe size={28} />, description: 'Global Reach' },
-    { name: 'Cybersecurity', icon: <Shield size={28} />, description: 'Enterprise Protection' },
-    { name: 'Custom Software', icon: <Code size={28} />, description: 'Tailored Development' },
-    { name: 'Business Intelligence', icon: <LineChart size={28} />, description: 'Strategic Growth' }
-  ]
+// const TechSolutions = () => {
+//   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   
-  return (
-    <div className="flex flex-wrap justify-center gap-4 mb-8">
-      {solutions.map((solution, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center gap-2 p-4 rounded-lg bg-base-200 hover:bg-base-300 transition-all hover:scale-105 cursor-pointer min-w-[120px] shadow-sm"
-        >
-          <div className="text-primary">{solution.icon}</div>
-          <span className="text-sm font-medium">{solution.name}</span>
-          <span className="text-xs opacity-70">{solution.description}</span>
-        </div>
-      ))}
-    </div>
-  )
-}
+//   const solutions = [
+//     { 
+//       name: 'AI Integration', 
+//       icon: <BrainCircuit size={28} />, 
+//       description: 'Smart Solutions',
+//       color: 'from-blue-500/20 to-indigo-500/20',
+//       hoverColor: 'group-hover:text-blue-500',
+//       details: 'Leverage cutting-edge artificial intelligence to automate processes and gain competitive advantage'
+//     },
+//     { 
+//       name: 'Data Analytics', 
+//       icon: <BarChart3 size={28} />, 
+//       description: 'Actionable Insights',
+//       color: 'from-emerald-500/20 to-green-500/20',
+//       hoverColor: 'group-hover:text-emerald-500',
+//       details: 'Transform raw data into strategic business insights with advanced analytics and visualization'
+//     },
+//     { 
+//       name: 'Cloud Services', 
+//       icon: <Globe size={28} />, 
+//       description: 'Global Reach',
+//       color: 'from-sky-500/20 to-cyan-500/20',
+//       hoverColor: 'group-hover:text-sky-500',
+//       details: 'Scale your infrastructure seamlessly with enterprise-grade cloud solutions and global availability'
+//     },
+//     { 
+//       name: 'Cybersecurity', 
+//       icon: <Shield size={28} />, 
+//       description: 'Enterprise Protection',
+//       color: 'from-red-500/20 to-rose-500/20',
+//       hoverColor: 'group-hover:text-red-500',
+//       details: 'Protect your digital assets with multi-layered security protocols and continuous monitoring'
+//     },
+//     { 
+//       name: 'Custom Software', 
+//       icon: <Code size={28} />, 
+//       description: 'Tailored Development',
+//       color: 'from-violet-500/20 to-purple-500/20',
+//       hoverColor: 'group-hover:text-violet-500',
+//       details: 'Build bespoke software solutions designed specifically for your unique business challenges'
+//     },
+//     { 
+//       name: 'Business Intelligence', 
+//       icon: <LineChart size={28} />, 
+//       description: 'Strategic Growth',
+//       color: 'from-amber-500/20 to-yellow-500/20',
+//       hoverColor: 'group-hover:text-amber-500',
+//       details: 'Make data-driven decisions with comprehensive business intelligence tools and dashboards'
+//     }
+//   ]
+  
+//   return (
+//     <div className="relative w-full mb-12">
+//       {/* Scroll indicators */}
+//       <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:block">
+//         <div className="w-8 h-8 flex items-center justify-center rounded-full bg-base-300/80 backdrop-blur-sm cursor-pointer hover:bg-base-300 transition-colors">
+//           <ChevronRight className="w-5 h-5 rotate-180" />
+//         </div>
+//       </div>
+//       <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:block">
+//         <div className="w-8 h-8 flex items-center justify-center rounded-full bg-base-300/80 backdrop-blur-sm cursor-pointer hover:bg-base-300 transition-colors">
+//           <ChevronRight className="w-5 h-5" />
+//         </div>
+//       </div>
+      
+//       {/* Horizontal scroll container */}
+//       <motion.div 
+//         className="flex overflow-x-auto pb-6 px-4 md:px-8 snap-x snap-mandatory scrollbar-hide"
+//         style={{ scrollBehavior: 'smooth' }}
+//         initial={{ opacity: 0 }}
+//         whileInView={{ opacity: 1 }}
+//         viewport={{ once: true }}
+//       >
+//         {solutions.map((solution, index) => (
+//           <motion.div
+//             key={index}
+//             className={`group relative flex-shrink-0 snap-center flex flex-col items-center gap-3 p-6 mx-3 rounded-xl bg-gradient-to-br ${solution.color} backdrop-blur-sm border border-white/10 transition-all duration-300 hover:scale-105 cursor-pointer min-w-[260px] md:min-w-[280px] shadow-lg hover:shadow-xl perspective-1000 transform-gpu`}
+//             initial={{ opacity: 0, x: 20 }}
+//             whileInView={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.5, delay: index * 0.1 }}
+//             viewport={{ once: true }}
+//             whileHover={{ 
+//               rotateX: 5,
+//               rotateY: 10,
+//               scale: 1.05
+//             }}
+//             onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+//           >
+//             <div className={`text-primary text-opacity-80 transition-all duration-300 ${solution.hoverColor} p-3 bg-white/10 rounded-full`}>
+//               <motion.div
+//                 animate={{ 
+//                   rotate: activeIndex === index ? [0, 15, -15, 0] : 0,
+//                   scale: activeIndex === index ? [1, 1.2, 1] : 1
+//                 }}
+//                 transition={{ duration: 0.5 }}
+//               >
+//                 {solution.icon}
+//               </motion.div>
+//             </div>
+//             <span className="text-base font-semibold">{solution.name}</span>
+//             <span className="text-sm opacity-80">{solution.description}</span>
+            
+//             {/* Expanded details */}
+//             <motion.div 
+//               className="w-full overflow-hidden"
+//               initial={{ height: 0, opacity: 0 }}
+//               animate={{ 
+//                 height: activeIndex === index ? 'auto' : 0,
+//                 opacity: activeIndex === index ? 1 : 0
+//               }}
+//               transition={{ duration: 0.3 }}
+//             >
+//               <p className="text-xs mt-2 text-center">{solution.details}</p>
+//               <div className="flex justify-center mt-3">
+//                 <button className="text-xs flex items-center gap-1 px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 transition-colors">
+//                   Learn more <ChevronRight size={14} />
+//                 </button>
+//               </div>
+//             </motion.div>
+            
+//             {/* Decorative elements */}
+//             <div className="absolute -inset-0.5 bg-gradient-to-br from-white/5 to-white/10 rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity"></div>
+//             <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-white/20 rounded-full blur-md opacity-0 group-hover:opacity-70"></div>
+//           </motion.div>
+//         ))}
+//       </motion.div>
+      
+//       {/* Scroll indicators (dots) */}
+//       <div className="flex justify-center gap-2 mt-4">
+//         {solutions.map((_, index) => (
+//           <div 
+//             key={index} 
+//             className={`w-2 h-2 rounded-full transition-colors ${index === 0 ? 'bg-primary' : 'bg-base-300'}`}
+//           ></div>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
 
 // Animated counter for statistics
 const AnimatedCounter = ({ value, label, prefix = '', suffix = '' }: { value: number, label: string, prefix?: string, suffix?: string }) => {
@@ -145,101 +283,124 @@ const AnimatedCounter = ({ value, label, prefix = '', suffix = '' }: { value: nu
 }
 
 // Hero section with compelling value proposition
+/**
+ * HeroSection Component
+ * 
+ * The main landing section that appears at the top of the page.
+ * Features:
+ * - Animated gradient background with smooth motion
+ * - Animated heading with word-by-word reveal
+ * - Trust indicators showing company strengths
+ * - Google Gemini effect for visual appeal
+ */
 const HeroSection = () => {
-  const { addNotification } = useAppStore()
+  // Ref for the section
+  const ref = useRef<HTMLElement>(null);
   
-  const handleConsultation = () => {
-    addNotification({
-      type: 'success',
-      title: 'Request Received!',
-      message: 'Our team will contact you shortly for a free consultation',
-      duration: 5000
-    })
-  }
-  
-  const handleDemoRequest = () => {
-    addNotification({
-      type: 'info',
-      title: 'Demo Request',
-      message: 'Thank you for your interest! Demo access details will be sent to your email',
-      duration: 5000
-    })
-  }
+  // Setup scroll animation
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"]
+  });
   
   return (
-    <section className="py-12 md:py-20">
-      {/* Main heading with gradient */}
-      <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-        <div className="flex-1">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
-            Transform Your Business With Technology
-          </h1>
-          
-          <p className="text-lg md:text-xl opacity-80 mb-8 leading-relaxed">
-            Leverage cutting-edge AI solutions and digital transformation to drive growth, 
-            efficiency, and competitive advantage in today's rapidly evolving market.
-          </p>
-          
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <LiquidButton
-              onClick={handleConsultation}
-              variant="default"
-              size="lg"
-              className="font-medium"
+    <section 
+      id="hero"
+      ref={ref}
+      className="relative overflow-hidden pt-0 -mt-16 w-full max-w-full"
+    >
+      {/* Hero section with only content up to the button */}
+      <div className="h-screen flex items-center justify-center pt-24 pb-16 md:py-24 relative w-full">
+        <motion.div 
+          className="w-full max-w-full px-4 relative z-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight px-2 sm:px-4"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
             >
-              <MessageSquare size={20} />
-              Free Consultation
-            </LiquidButton>
-            <LiquidButton 
-              variant="outline"
-              size="lg"
-              className="font-medium"
-              onClick={handleDemoRequest}
+              {/* Split text into words for individual animation */}
+              {["Transform", "Your", "Business", "With", "Technology"].map((word, index) => (
+                <motion.span
+                  key={index}
+                  className="mr-2 sm:mr-3 md:mr-4 inline-block text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:bg-clip-text hover:text-transparent transition-all duration-300 font-sans"
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    ease: "easeOut",
+                    delay: 0.4 + (index * 0.2) // Stagger effect
+                  }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotate: [-1, 1, -1, 0],
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.h1>
+            
+            <TextGenerateEffect 
+              words="Leverage cutting-edge AI solutions and digital transformation to drive growth."
+              className="text-lg sm:text-xl md:text-2xl opacity-60 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4 sm:px-6"
+              duration={0.8}
+            />
+            
+            <motion.button
+              className="relative overflow-hidden bg-transparent text-white font-medium py-3 px-8 rounded-full group hover:bg-primary/10 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Rocket size={20} />
-              Request Demo
-            </LiquidButton>
+              {/* Electric border effect */}
+              <div className="absolute inset-0 rounded-full overflow-hidden">
+                <div className="absolute inset-0 rounded-full border-2 border-transparent" 
+                  style={{ 
+                    background: "linear-gradient(to right, transparent, transparent), linear-gradient(to right, #4F46E5, #EC4899, #06B6D4, #4F46E5)",
+                    backgroundClip: "padding-box, border-box",
+                    backgroundOrigin: "padding-box, border-box",
+                  }}
+                >
+                  <motion.div 
+                    className="absolute inset-0 w-full h-full"
+                    animate={{ 
+                      background: [
+                        "linear-gradient(90deg, #4F46E5, #EC4899, #06B6D4, #4F46E5)",
+                        "linear-gradient(180deg, #4F46E5, #EC4899, #06B6D4, #4F46E5)",
+                        "linear-gradient(270deg, #4F46E5, #EC4899, #06B6D4, #4F46E5)",
+                        "linear-gradient(360deg, #4F46E5, #EC4899, #06B6D4, #4F46E5)",
+                        "linear-gradient(90deg, #4F46E5, #EC4899, #06B6D4, #4F46E5)"
+                      ],
+                      backgroundSize: ["200% 200%", "200% 200%", "200% 200%", "200% 200%", "200% 200%"],
+                      backgroundPosition: ["0% 0%", "100% 0%", "100% 100%", "0% 100%", "0% 0%"]
+                    }}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 8,
+                      ease: "linear"
+                    }}
+                  />
+                </div>
+              </div>
+              
+              {/* Button content */}
+              <span className="relative z-10 px-1">Build Your Future With Us</span>
+            </motion.button>
           </div>
-          
-          {/* Trust indicators */}
-          <div className="flex flex-wrap gap-6 items-center">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={20} className="text-primary" />
-              <span className="text-sm font-medium">Enterprise Solutions</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={20} className="text-primary" />
-              <span className="text-sm font-medium">99.9% Uptime</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={20} className="text-primary" />
-              <span className="text-sm font-medium">24/7 Support</span>
-            </div>
-          </div>
-        </div>
-        
-        {/* Hero image/illustration */}
-        <div className="flex-1 flex justify-center">
-          <div className="relative w-full max-w-md aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-            <div className="absolute inset-4 rounded-full bg-base-100 flex items-center justify-center">
-              <div className="text-8xl">🚀</div>
-            </div>
-            <div className="absolute top-0 right-0 w-20 h-20 bg-primary/30 rounded-full blur-xl"></div>
-            <div className="absolute bottom-12 left-0 w-16 h-16 bg-secondary/30 rounded-full blur-lg"></div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Tech solutions showcase */}
-      <TechSolutions />
-      
-      {/* Stats section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-8 my-8 border-y border-base-300">
-        <AnimatedCounter value={500} label="Clients Worldwide" suffix="+" />
-        <AnimatedCounter value={98} label="Client Retention" suffix="%" />
-        <AnimatedCounter value={150} label="Tech Experts" suffix="+" />
-        <AnimatedCounter value={10} label="Years Experience" suffix="+" />
+        </motion.div>
       </div>
     </section>
   )
@@ -297,7 +458,18 @@ const ServiceCard = ({
 }
 
 // Services section
+/**
+ * ServicesSection Component
+ * 
+ * Displays the company's service offerings in an interactive grid layout.
+ * Features:
+ * - Service cards with hover effects
+ * - Icons representing each service category
+ * - Benefit lists for each service
+ * - Learn more action buttons
+ */
 const ServicesSection = () => {
+  const ref = useRef<HTMLElement>(null);
   const services = [
     {
       icon: BrainCircuit,
@@ -373,19 +545,60 @@ const ServicesSection = () => {
     }
   ]
   
+  // Transform services data for StickyScroll component
+  const stickyScrollContent = services.map(service => ({
+    title: service.title,
+    description: service.description,
+    content: (
+      <div className="flex flex-col items-center justify-center h-full w-full p-4">
+        <div className="text-4xl mb-4">
+          {React.createElement(service.icon)}
+        </div>
+        <div className="text-white text-center">
+          <h3 className="font-bold mb-2">{service.title}</h3>
+          <ul className="text-xs space-y-1">
+            {service.benefits.slice(0, 3).map((benefit: string, idx: number) => (
+              <li key={idx} className="flex items-center gap-1">
+                <CheckCircle2 size={12} className="text-primary flex-shrink-0" />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  }));
+
   return (
-    <section className="py-12 md:py-20">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Solutions</h2>
-        <p className="text-lg opacity-80 max-w-2xl mx-auto">
-          Comprehensive technology services designed to transform your business operations and drive sustainable growth
-        </p>
+    <section id="services" ref={ref} className="py-12 sm:py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Our Services</h2>
+          <p className="text-base sm:text-lg opacity-80 max-w-2xl mx-auto px-2">
+            We offer a comprehensive suite of technology solutions designed to transform your business operations and drive growth.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <ServiceCard {...service} />
+            </motion.div>
+          ))}
+        </div>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service, index) => (
-          <ServiceCard key={index} {...service} />
-        ))}
+      <div className="w-full mt-16 sm:mt-20 md:mt-24">
+        <StickyScroll 
+          content={stickyScrollContent}
+          contentClassName="h-64 sm:h-72 md:h-80 w-full"
+        />
       </div>
     </section>
   )
@@ -409,39 +622,39 @@ const CaseStudy = ({
 }) => {
   return (
     <div className="card lg:card-side bg-base-100 shadow-lg overflow-hidden">
-      <figure className="lg:w-2/5 bg-primary/5 p-6 flex items-center justify-center">
-        <div className="text-6xl">{image}</div>
+      <figure className="h-48 sm:h-56 lg:h-auto lg:w-2/5 bg-primary/5 p-4 sm:p-6 flex items-center justify-center">
+        <div className="text-5xl sm:text-6xl">{image}</div>
       </figure>
-      <div className="card-body lg:w-3/5">
+      <div className="card-body p-4 sm:p-6 lg:w-3/5">
         <div className="flex flex-col gap-1 mb-2">
-          <h3 className="card-title text-xl">{company}</h3>
+          <h3 className="card-title text-lg sm:text-xl">{company}</h3>
           <div className="badge badge-outline">{industry}</div>
         </div>
         
-        <div className="mb-3">
-          <p className="font-medium text-sm opacity-70">Challenge:</p>
-          <p className="text-sm">{challenge}</p>
+        <div className="mb-2 sm:mb-3">
+          <p className="font-medium text-xs sm:text-sm opacity-70">Challenge:</p>
+          <p className="text-xs sm:text-sm">{challenge}</p>
         </div>
         
-        <div className="mb-3">
-          <p className="font-medium text-sm opacity-70">Solution:</p>
-          <p className="text-sm">{solution}</p>
+        <div className="mb-2 sm:mb-3">
+          <p className="font-medium text-xs sm:text-sm opacity-70">Solution:</p>
+          <p className="text-xs sm:text-sm">{solution}</p>
         </div>
         
         <div>
-          <p className="font-medium text-sm opacity-70 mb-1">Results:</p>
+          <p className="font-medium text-xs sm:text-sm opacity-70 mb-1">Results:</p>
           <ul className="space-y-1">
             {results.map((result, index) => (
-              <li key={index} className="flex items-start gap-2 text-sm">
-                <CheckCircle2 size={14} className="text-primary mt-1 flex-shrink-0" />
+              <li key={index} className="flex items-start gap-1 sm:gap-2 text-xs sm:text-sm">
+                <CheckCircle2 size={12} className="text-primary mt-0.5 flex-shrink-0" />
                 <span>{result}</span>
               </li>
             ))}
           </ul>
         </div>
         
-        <div className="card-actions justify-end mt-4">
-          <button className="btn btn-sm btn-primary">View Full Case Study</button>
+        <div className="card-actions justify-end mt-3 sm:mt-4">
+          <button className="btn btn-xs sm:btn-sm btn-primary">View Full Case Study</button>
         </div>
       </div>
     </div>
@@ -449,7 +662,17 @@ const CaseStudy = ({
 }
 
 // Case studies section
+/**
+ * CaseStudiesSection Component
+ * 
+ * Showcases successful client projects and case studies.
+ * Features:
+ * - Interactive case study cards with hover effects
+ * - Results metrics for each project
+ * - Industry categorization
+ */
 const CaseStudiesSection = () => {
+  const ref = useRef<HTMLElement>(null);
   const caseStudies = [
     {
       company: "Global Retail Corp",
@@ -478,18 +701,26 @@ const CaseStudiesSection = () => {
   ]
   
   return (
-    <section className="py-12 md:py-20 bg-base-200">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
-          <p className="text-lg opacity-80 max-w-2xl mx-auto">
+    <section id="case-studies" ref={ref} className="py-12 sm:py-16 md:py-20 bg-base-200/30 w-full max-w-full">
+      <div className="w-full max-w-full px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Success Stories</h2>
+          <p className="text-base sm:text-lg opacity-80 max-w-2xl mx-auto px-2">
             See how we've helped businesses across industries achieve remarkable results through technology
           </p>
         </div>
         
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6 sm:gap-8">
           {caseStudies.map((study, index) => (
-            <CaseStudy key={index} {...study} />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <CaseStudy {...study} />
+            </motion.div>
           ))}
         </div>
       </div>
@@ -499,7 +730,7 @@ const CaseStudiesSection = () => {
 
 // Interactive demo section
 const InteractiveDemo = () => {
-  const { addNotification } = useAppStore()
+  const ref = useRef<HTMLElement>(null);
   const [activeTab, setActiveTab] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   
@@ -517,35 +748,30 @@ const InteractiveDemo = () => {
     setTimeout(() => {
       setIsAnimating(false)
       
-      // Show notification based on selected demo
-      addNotification({
-        type: 'info',
-        title: `${demoTabs[index].name} Demo`,
-        message: `Interactive ${demoTabs[index].name.toLowerCase()} demo loaded successfully`,
-        duration: 3000
-      })
+      // Notification removed
+      console.log(`${demoTabs[index].name} Demo loaded successfully`)
     }, 800)
   }
   
   return (
-    <section className="py-12 md:py-16">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Interactive Technology Demo</h2>
-        <p className="opacity-80 max-w-xl mx-auto">
+    <section id="demo" ref={ref} className="py-12 sm:py-14 md:py-16 w-full max-w-full">
+      <div className="text-center mb-6 sm:mb-8 px-3 sm:px-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">Interactive Technology Demo</h2>
+        <p className="text-sm sm:text-base opacity-80 max-w-xl mx-auto">
           Experience our solutions firsthand with these interactive demonstrations
         </p>
       </div>
       
       <div className="card bg-base-100 shadow-lg max-w-3xl mx-auto overflow-hidden">
-        <div className="tabs tabs-boxed bg-base-200 rounded-none p-1">
+        <div className="tabs tabs-boxed bg-base-200 rounded-none p-1 flex flex-wrap sm:flex-nowrap">
           {demoTabs.map((tab, index) => (
             <button
               key={index}
-              className={`tab gap-2 ${activeTab === index ? 'tab-active' : ''}`}
+              className={`tab gap-1 sm:gap-2 text-xs sm:text-sm flex-1 ${activeTab === index ? 'tab-active' : ''}`}
               onClick={() => handleTabClick(index)}
             >
               {tab.icon}
-              {tab.name}
+              <span className="hidden xs:inline">{tab.name}</span>
             </button>
           ))}
         </div>
@@ -585,23 +811,19 @@ const InteractiveDemo = () => {
 
 // Call to action section
 const CallToAction = () => {
-  const { addNotification } = useAppStore()
+  const ref = useRef<HTMLElement>(null);
   
   const handleContactRequest = () => {
-    addNotification({
-      type: 'success',
-      title: 'Message Received',
-      message: 'Thank you for reaching out! Our team will contact you shortly.',
-      duration: 4000
-    })
+    // Notification removed
+    console.log('Contact request submitted')
   }
   
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-primary/20 to-secondary/20">
-      <div className="container mx-auto px-4">
+    <section id="contact" ref={ref} className="py-12 sm:py-16 md:py-24 bg-gradient-to-br from-primary/20 to-secondary/20 w-full max-w-full">
+      <div className="w-full max-w-full px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
-          <p className="text-lg opacity-80 mb-8 max-w-xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 sm:mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] transform-gpu font-mono px-2">Ready to Transform Your Business?</h2>
+          <p className="text-base sm:text-lg opacity-80 mb-6 sm:mb-8 max-w-xl mx-auto px-4 sm:px-6">
             Join hundreds of forward-thinking companies that are leveraging our technology solutions to drive growth and innovation.
           </p>
           
@@ -610,17 +832,17 @@ const CallToAction = () => {
               onClick={handleContactRequest}
               variant="default"
               size="lg"
-              className="font-medium"
+              className="font-medium w-full sm:w-auto"
             >
-              <MessageSquare size={20} />
+              <MessageSquare size={20} className="hidden sm:inline mr-1" />
               Contact Us Today
             </LiquidButton>
             <LiquidButton 
               variant="outline"
               size="lg"
-              className="font-medium"
+              className="font-medium w-full sm:w-auto"
             >
-              <Rocket size={20} />
+              <Rocket size={20} className="hidden sm:inline mr-1" />
               Schedule Demo
             </LiquidButton>
           </div>
@@ -632,16 +854,104 @@ const CallToAction = () => {
 
 // Main content component
 export const MainContent = () => {
+  const [activeSection, setActiveSection] = useState('hero');
+  const [isAnimating, setIsAnimating] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
+  
+  const sections = [
+    { id: 'hero', label: 'Home' },
+    { id: 'services', label: 'Services' },
+    { id: 'case-studies', label: 'Case Studies' },
+    { id: 'demo', label: 'Demo' },
+    { id: 'contact', label: 'Contact' }
+  ];
+  
+  // Handle wheel events for section navigation
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      // Skip if animation is in progress
+      if (isAnimating) return;
+      
+      const currentIndex = sections.findIndex(section => section.id === activeSection);
+      let nextIndex = currentIndex;
+      
+      // Determine scroll direction
+      if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+        // Scrolling down
+        nextIndex = currentIndex + 1;
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        // Scrolling up
+        nextIndex = currentIndex - 1;
+      }
+      
+      // Only proceed if we're changing sections
+      if (nextIndex !== currentIndex) {
+        setIsAnimating(true);
+        setActiveSection(sections[nextIndex].id);
+        
+        // Reset animation flag after transition completes
+        setTimeout(() => {
+          setIsAnimating(false);
+        }, 800); // Match this with the fade transition duration
+      }
+    };
+    
+    const mainElement = mainRef.current;
+    if (mainElement) {
+      mainElement.addEventListener('wheel', handleWheel);
+    }
+    
+    return () => {
+      if (mainElement) {
+        mainElement.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, [activeSection, isAnimating, sections]);
+  
+  const handleSectionChange = (sectionId: string) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setActiveSection(sectionId);
+    
+    // Reset animation flag after transition completes
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 800); // Match this with the fade transition duration
+  };
+  
   return (
-    <main className="flex-1">
-      <div className="container mx-auto px-4">
-        <HeroSection />
-        <ServicesSection />
-        <InteractiveDemo />
-      </div>
-      <CaseStudiesSection />
-      <div className="container mx-auto px-4">
-        <CallToAction />
+    <main ref={mainRef} className="flex-1 w-full max-w-full relative h-screen overflow-hidden">
+      <SectionNavigation 
+        sections={sections}
+        activeSection={activeSection}
+        onSectionChange={handleSectionChange}
+        position="right"
+      />
+      
+      {/* Removed SectionObserver as we're no longer using scroll detection */}
+      
+      <div className="w-full h-full relative">
+        <SectionContainer id="hero" isActive={activeSection === 'hero'} className="overflow-hidden">
+          <HeroSection />
+        </SectionContainer>
+        
+        <SectionContainer id="services" isActive={activeSection === 'services'}>
+          <ServicesSection />
+        </SectionContainer>
+        
+        <SectionContainer id="case-studies" isActive={activeSection === 'case-studies'}>
+          <CaseStudiesSection />
+        </SectionContainer>
+        
+        <SectionContainer id="demo" isActive={activeSection === 'demo'}>
+          <InteractiveDemo />
+        </SectionContainer>
+        
+        <SectionContainer id="contact" isActive={activeSection === 'contact'}>
+          <div className="w-full max-w-full px-4 sm:px-6">
+            <CallToAction />
+          </div>
+        </SectionContainer>
       </div>
     </main>
   )
@@ -654,7 +964,7 @@ export const SectionedMainContent = () => {
       {/* Hero section with full width background */}
       <section className="bg-gradient-to-br from-base-200 to-base-300">
         <div className="container mx-auto px-4">
-          <HeroSection />
+{HeroSection()}
         </div>
       </section>
       

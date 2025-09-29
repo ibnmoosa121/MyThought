@@ -1,5 +1,4 @@
 import { Lightbulb, Menu, X } from 'lucide-react'
-import { CompactThemeSelector } from '../ui/theme-selector'
 import { useState } from 'react'
 import React from 'react'
 import {
@@ -48,11 +47,11 @@ const MobileAppBrand = () => {
   )
 }
 
-// Header actions (theme only)
+// Header actions (empty now that theme selector is removed)
 const HeaderActions = () => {
   return (
     <div className="flex items-center gap-2">
-      <CompactThemeSelector />
+      {/* Theme selector removed */}
     </div>
   )
 }
@@ -89,9 +88,9 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-base-300 bg-base-100/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full bg-transparent backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Desktop brand */}
           <div className="hidden sm:block">
             <AppBrand />

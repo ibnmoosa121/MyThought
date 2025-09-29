@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Header } from './components/layout/header'
 import { MainContent } from './components/layout/main-content'
-import { ToastContainer } from './components/ui/toast-notifications'
 import { useAppStore, initializeStore } from './stores/app-store'
 
 // Import page components
@@ -23,10 +22,10 @@ const App = () => {
     initializeStore()
   }, [])
   
-  // Apply theme to document
+  // Apply luxury theme to document
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
+    document.documentElement.setAttribute('data-theme', 'luxury')
+  }, [])
   
   return (
     <BrowserRouter>
@@ -48,7 +47,7 @@ const App = () => {
         </Routes>
         
         {/* Toast notifications */}
-        <ToastContainer />
+    
       </div>
     </BrowserRouter>
   )
