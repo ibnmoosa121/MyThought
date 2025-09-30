@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Header } from './components/layout/header'
 import { MainContent } from './components/layout/main-content'
-import { useAppStore, initializeStore } from './stores/app-store'
+import { initializeStore } from './stores/app-store'
 
 // Import page components
 import SoftwareTechPage from './pages/software-tech'
@@ -15,8 +15,7 @@ import VenturesPage from './pages/ventures'
 
 // Main App component
 const App = () => {
-  const { theme } = useAppStore()
-  
+  // ...
   // Initialize store and apply theme on mount
   useEffect(() => {
     initializeStore()
@@ -28,7 +27,7 @@ const App = () => {
   }, [])
   
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="min-h-screen bg-base-100 text-base-content">
         {/* Header */}
         <Header />
@@ -49,7 +48,7 @@ const App = () => {
         {/* Toast notifications */}
     
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

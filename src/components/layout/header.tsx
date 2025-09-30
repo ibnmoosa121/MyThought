@@ -1,6 +1,7 @@
-import { Lightbulb, Menu, X } from 'lucide-react'
+import { Lightbulb, Menu, X, BrainCircuit } from 'lucide-react'
 import { useState } from 'react'
 import React from 'react'
+import { motion } from 'framer-motion'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,42 +9,48 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "../ui/navigation-menu"
+} from "@/components/ui/navigation-menu"
 import { cn } from '../../lib/utils'
 
 // App logo/brand component
 const AppBrand = () => {
   return (
-    <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.location.href = '/'}>
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-content">
-        <Lightbulb size={24} className="text-primary-content" />
-      </div>
+    <motion.div 
+      className="flex items-center cursor-pointer" 
+      onClick={() => window.location.hash = '#/'}
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+    >
       <div className="flex flex-col">
-        <h1 className="text-lg font-bold leading-tight">
+        <h1 className="text-lg font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
           MyThought
         </h1>
-       
+        <p className="text-xs opacity-70 leading-tight">Development Studio</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 // Mobile app brand (simplified)
 const MobileAppBrand = () => {
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-content">
-        <Lightbulb size={18} className="text-primary-content" />
+    <motion.div 
+      className="flex items-center gap-2"
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+    >
+      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent text-primary-content">
+        <BrainCircuit size={18} className="text-primary-content" />
       </div>
       <div className="flex flex-col">
-        <h1 className="text-base font-bold leading-tight">
+        <h1 className="text-base font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
           MyThought
         </h1>
         <p className="text-xs opacity-70 leading-tight">
-          Solutions
+          Development Studio
         </p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -109,13 +116,13 @@ export const Header = () => {
                   <NavigationMenuTrigger>Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      <ListItem href="/software-tech" title="Software and Technology">
+                      <ListItem href="#/software-tech" title="Software and Technology">
                         Custom software solutions for your business needs
                       </ListItem>
-                      <ListItem href="/business-consultancy" title="Business Consultancy">
+                      <ListItem href="#/business-consultancy" title="Business Consultancy">
                         Expert advice to grow your business
                       </ListItem>
-                      <ListItem href="/design-creativity" title="Design and Creativity">
+                      <ListItem href="#/design-creativity" title="Design and Creativity">
                         Creative design solutions for your brand
                       </ListItem>
                     </ul>
@@ -125,7 +132,7 @@ export const Header = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:text-primary"
-                    href="/about-us"
+                    href="#/about-us"
                   >
                     About Us
                   </NavigationMenuLink>
@@ -134,7 +141,7 @@ export const Header = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:text-primary"
-                    href="/contact-us"
+                    href="#/contact-us"
                   >
                     Contact Us
                   </NavigationMenuLink>
@@ -143,7 +150,7 @@ export const Header = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:text-primary"
-                    href="/blog"
+                    href="#/blog"
                   >
                     Blog
                   </NavigationMenuLink>
@@ -152,7 +159,7 @@ export const Header = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:text-primary"
-                    href="/ventures"
+                    href="#/ventures"
                   >
                     Ventures
                   </NavigationMenuLink>
@@ -187,29 +194,29 @@ export const Header = () => {
                 </div>
                 <div className="collapse-content px-2 pt-0">
                   <div className="flex flex-col space-y-2 mt-2 ml-2">
-                    <a href="/software-tech" className="text-sm hover:text-primary transition-colors">
+                    <a href="#/software-tech" className="text-sm hover:text-primary transition-colors">
                       Software and Technology
                     </a>
-                    <a href="/business-consultancy" className="text-sm hover:text-primary transition-colors">
+                    <a href="#/business-consultancy" className="text-sm hover:text-primary transition-colors">
                       Business Consultancy
                     </a>
-                    <a href="/design-creativity" className="text-sm hover:text-primary transition-colors">
+                    <a href="#/design-creativity" className="text-sm hover:text-primary transition-colors">
                       Design and Creativity
                     </a>
                   </div>
                 </div>
               </div>
               
-              <a href="/about-us" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
+              <a href="#/about-us" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
                 About Us
               </a>
-              <a href="/contact-us" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
+              <a href="#/contact-us" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
                 Contact Us
               </a>
-              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
+              <a href="#/blog" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
                 Blog
               </a>
-              <a href="/ventures" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
+              <a href="#/ventures" className="text-sm font-medium hover:text-primary transition-colors px-2 py-1">
                 Ventures
               </a>
               <div className="pt-2 border-t border-base-200">

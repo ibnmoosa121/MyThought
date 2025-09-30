@@ -11,9 +11,10 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Updated base path for GitHub Pages under the 'MyThought' repository
   base: process.env.NODE_ENV === 'production'
     ? process.env.DEPLOY_TARGET === 'daisyui'
-      ? '/AIStarterTemplate/daisyui/'
-      : '/AIStarterTemplate/'
+      ? '/MyThought/daisyui/'
+      : '/MyThought/'
     : '/'
 })
