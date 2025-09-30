@@ -277,7 +277,6 @@ const AnimatedCounter = ({ value, label, prefix = '', suffix = '' }: { value: nu
       <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
         {prefix}{count.toLocaleString()}{suffix}
       </div>
-      <div className="text-sm opacity-80">{label}</div>
     </div>
   )
 }
