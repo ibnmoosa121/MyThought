@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Rocket Body -->
+  <path d="M12 2L8 6H4.5C3.67 6 3 6.67 3 7.5V10C3 15 6 16.5 9 17L12 22L15 17C18 16.5 21 15 21 10V7.5C21 6.67 20.33 6 19.5 6H16L12 2Z" fill="url(#gradient1)" stroke="none"/>
+  
+  <!-- Rocket Window -->
+  <circle cx="12" cy="10" r="2" fill="#ffffff" stroke="none"/>
+  
+  <!-- Rocket Fins -->
+  <path d="M7 14L5 18" stroke="#ffffff" stroke-width="1.5"/>
+  <path d="M17 14L19 18" stroke="#ffffff" stroke-width="1.5"/>
+  
+  <!-- Rocket Flames -->
+  <path d="M10.5 18C10.5 20 9 22 9 22" stroke="#ff9900" stroke-width="2"/>
+  <path d="M13.5 18C13.5 20 15 22 15 22" stroke="#ff9900" stroke-width="2"/>
+  <path d="M12 18C12 21 12 22 12 22" stroke="#ff5500" stroke-width="2"/>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient1" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+</svg>
