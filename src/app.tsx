@@ -15,23 +15,22 @@ import VenturesPage from './pages/ventures'
 
 // Main App component
 const App = () => {
-  // ...
   // Initialize store and apply theme on mount
   useEffect(() => {
     initializeStore()
   }, [])
-  
+
   // Apply luxury theme to document
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'luxury')
   }, [])
-  
+
   return (
     <HashRouter>
       <div className="min-h-screen bg-base-100 text-base-content">
         {/* Header */}
         <Header />
-        
+
         {/* Routes */}
         <Routes>
           <Route path="/" element={<MainContent />} />
@@ -44,9 +43,6 @@ const App = () => {
           <Route path="/ventures" element={<VenturesPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-        
-        {/* Toast notifications */}
-    
       </div>
     </HashRouter>
   )

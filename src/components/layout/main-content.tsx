@@ -1,13 +1,14 @@
 /**
  * Main Content Component
  * 
- * This file contains the hero section with parallax effect and MacbookScroll section
+ * This file contains the hero section with parallax effect
  */
 
-// React import removed as it's not used in this file
+// React import needed for JSX
 import { HeroParallax } from "../ui/hero-parallax" // Hero parallax effect
-import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
-import { Zap, Target, Rocket, Users, Award, Globe } from "lucide-react"
+import ContactForm from "../features/contact/contact-form"
+import PortfolioShowcase from "../features/services/portfolio-showcase"
+import ItCompanySection from "../features/services/it-company-section"
 
 
 // Product data for the hero parallax
@@ -89,97 +90,14 @@ const products = [
   }
 ];
 
-// Timeline data for the radial orbital timeline
-const timelineData = [
-  {
-    id: 1,
-    title: "Project Discovery",
-    date: "Week 1-2",
-    content: "Understanding your business needs, goals, and technical requirements through comprehensive analysis.",
-    category: "Planning",
-    icon: Target,
-    relatedIds: [2],
-    status: "completed" as const,
-    energy: 85
-  },
-  {
-    id: 2,
-    title: "Solution Design",
-    date: "Week 3-4",
-    content: "Creating detailed technical architecture and user experience designs tailored to your vision.",
-    category: "Design",
-    icon: Zap,
-    relatedIds: [1, 3],
-    status: "completed" as const,
-    energy: 90
-  },
-  {
-    id: 3,
-    title: "Development Sprint",
-    date: "Week 5-8",
-    content: "Agile development process with regular updates and iterative improvements.",
-    category: "Development",
-    icon: Rocket,
-    relatedIds: [2, 4],
-    status: "in-progress" as const,
-    energy: 95
-  },
-  {
-    id: 4,
-    title: "Quality Assurance",
-    date: "Week 9-10",
-    content: "Comprehensive testing, performance optimization, and security validation.",
-    category: "Testing",
-    icon: Award,
-    relatedIds: [3, 5],
-    status: "pending" as const,
-    energy: 80
-  },
-  {
-    id: 5,
-    title: "Deployment & Launch",
-    date: "Week 11-12",
-    content: "Seamless deployment to production with monitoring and support setup.",
-    category: "Launch",
-    icon: Globe,
-    relatedIds: [4, 6],
-    status: "pending" as const,
-    energy: 88
-  },
-  {
-    id: 6,
-    title: "Ongoing Support",
-    date: "Ongoing",
-    content: "Continuous maintenance, updates, and feature enhancements as your business grows.",
-    category: "Support",
-    icon: Users,
-    relatedIds: [5],
-    status: "pending" as const,
-    energy: 75
-  }
-];
-
-// Main content component with hero section and MacbookScroll
+// Main content component with hero section only
 export const MainContent = () => {
   return (
-    <main className="flex-1">
+    <main className="flex-1 text-white">
       <HeroParallax products={products} />
-      
-      {/* Timeline Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Our Development Process
-            </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              From concept to launch, we follow a proven methodology that ensures your project's success at every stage.
-            </p>
-          </div>
-          <RadialOrbitalTimeline timelineData={timelineData} />
-        </div>
-      </section>
-      
+      <PortfolioShowcase />
+      <ItCompanySection />
+      <ContactForm />
     </main>
   )
 }
