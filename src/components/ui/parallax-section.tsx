@@ -57,7 +57,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
         />
       )}
       <div className={cn('absolute inset-0 -z-10', bgOverlayClass)} />
-      <div className="container mx-auto px-4 w-full">
+      <div className="w-full px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1920px] mx-auto">
         {children}
       </div>
     </section>

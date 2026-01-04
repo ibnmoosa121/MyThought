@@ -9,6 +9,8 @@ import { HeroParallax } from "../ui/hero-parallax" // Hero parallax effect
 import ContactForm from "../features/contact/contact-form"
 import PortfolioShowcase from "../features/services/portfolio-showcase"
 import ItCompanySection from "../features/services/it-company-section"
+import ClientsSection from "../features/clients/clients-section"
+import CtaSection from "../features/cta/cta-section"
 
 
 // Product data for the hero parallax
@@ -97,6 +99,8 @@ export const MainContent = () => {
       <HeroParallax products={products} />
       <PortfolioShowcase />
       <ItCompanySection />
+      <CtaSection />
+      <ClientsSection />
       <ContactForm />
     </main>
   )

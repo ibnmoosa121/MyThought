@@ -1,128 +1,251 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { services } from '../../../data/services'
-import { Server, Brain, Smartphone, Shield } from 'lucide-react'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { Building2, ShoppingBag, HeartPulse, Home, Truck, GraduationCap, ArrowRight, MousePointer2 } from 'lucide-react'
 import { cn } from '../../../lib/utils'
 
-// Register plugin once
-gsap.registerPlugin(ScrollTrigger)
+// Register plugins
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-const features = [
-  { key: 'cloud', title: 'Cloud & DevOps', icon: Server, desc: 'CI/CD, IaC, scaling and observability' },
-  { key: 'ai', title: 'AI & Data', icon: Brain, desc: 'Pipelines, models, and analytics at scale' },
-  { key: 'apps', title: 'Web & Mobile', icon: Smartphone, desc: 'Reliable product engineering across platforms' },
-  { key: 'security', title: 'Security & Compliance', icon: Shield, desc: 'Zero-trust, audits, and governance' },
+const industries = [
+  {
+    id: 'fintech',
+    title: 'Fintech & Banking',
+    subtitle: 'The Future of Finance',
+    desc: 'Empowering financial institutions with secure, high-frequency trading platforms and blockchain-enabled infrastructure that processes millions of transactions with zero latency.',
+    stats: [
+      { label: 'Efficiency', value: '+40%' },
+      { label: 'Security', value: '100%' }
+    ],
+    icon: Building2,
+    image: 'https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=2064&auto=format&fit=crop'
+  },
+  {
+    id: 'retail',
+    title: 'E-Commerce & Retail',
+    subtitle: 'Omnichannel Excellence',
+    desc: 'Creating unified shopping experiences that merge physical and digital worlds. Our AI-driven personalization engines increase conversion rates and customer loyalty.',
+    stats: [
+      { label: 'Conversion', value: '3x' },
+      { label: 'Retention', value: '+25%' }
+    ],
+    icon: ShoppingBag,
+    image: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'healthcare',
+    title: 'Healthcare',
+    subtitle: 'Digital Care Revolution',
+    desc: 'Transforming patient care with telemedicine platforms and AI-assisted diagnostics. We ensure data interoperability while maintaining the highest standards of HIPAA compliance.',
+    stats: [
+      { label: 'Access', value: '24/7' },
+      { label: 'Accuracy', value: '99.9%' }
+    ],
+    icon: HeartPulse,
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'realestate',
+    title: 'Real Estate',
+    subtitle: 'Virtual & Smart Living',
+    desc: 'Revolutionizing property management with immersive VR tours and IoT-enabled smart building systems that optimize energy consumption and tenant experience.',
+    stats: [
+      { label: 'Sales Speed', value: '+50%' },
+      { label: 'Energy', value: '-30%' }
+    ],
+    icon: Home,
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop'
+  },
+  {
+    id: 'logistics',
+    title: 'Logistics',
+    subtitle: 'Intelligent Supply Chain',
+    desc: 'Optimizing global fleets with real-time tracking and predictive maintenance. Our algorithms reduce fuel consumption and ensure on-time delivery across complex networks.',
+    stats: [
+      { label: 'Costs', value: '-20%' },
+      { label: 'On-Time', value: '98%' }
+    ],
+    icon: Truck,
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    id: 'education',
+    title: 'Education',
+    subtitle: 'Global Learning Access',
+    desc: 'Breaking down barriers with scalable learning management systems and virtual classrooms that connect students and educators worldwide.',
+    stats: [
+      { label: 'Reach', value: 'Global' },
+      { label: 'Engagement', value: '+60%' }
+    ],
+    icon: GraduationCap,
+    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop'
+  }
 ]
 
 const ItCompanySection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
-  const cardsRef = useRef<Array<HTMLDivElement | null>>([])
-  const [active, setActive] = useState('cloud')
+  const [activeIdx, setActiveIdx] = useState(0)
+  const [progress, setProgress] = useState(0)
 
-  const data = useMemo(() => services.itCompany, [])
+  // Configuration for scroll behavior
+  const SCROLL_DURATION_PER_SLIDE = 1000 
+  const totalScrollDistance = industries.length * SCROLL_DURATION_PER_SLIDE
 
-  useEffect(() => {
-    const reduceMotion = typeof window !== 'undefined' &&
-      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  useLayoutEffect(() => {
+    const el = containerRef.current
+    if (!el) return
 
     const ctx = gsap.context(() => {
-      // Background gentle parallax
-      if (bgRef.current) {
-        gsap.to(bgRef.current, {
-          y: reduceMotion ? 0 : -40,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: reduceMotion ? false : true,
-          },
-        })
-      }
-
-      // Stagger cards reveal
-      // Stagger cards reveal
-      cardsRef.current.forEach((card) => {
-        if (!card) return
-        gsap.fromTo(card, { opacity: 0, y: 32 }, {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        })
+      const totalSlides = industries.length
+      
+      // Continuous background movement for "alive" feel
+      gsap.to('.bg-layer', {
+        scale: 1.05,
+        duration: 20,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
       })
-    }, sectionRef)
+
+      // Main ScrollTrigger
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top top',
+        end: `+=${totalScrollDistance}`, 
+        pin: true,
+        scrub: 1, 
+        onUpdate: (self) => {
+          setProgress(self.progress)
+          
+          const segmentSize = 1 / totalSlides
+          const idx = Math.min(
+            Math.floor(self.progress / segmentSize),
+            totalSlides - 1
+          )
+          setActiveIdx(idx)
+        }
+      })
+    }, containerRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [totalScrollDistance])
+
+  const scrollToSlide = (index: number) => {
+    if (!containerRef.current) return
+    const trigger = ScrollTrigger.getAll().find(st => st.trigger === containerRef.current)
+    if (trigger) {
+      const start = trigger.start
+      const end = trigger.end
+      const segmentSize = (end - start) / industries.length
+      const targetScroll = start + (segmentSize * index) + (segmentSize * 0.1) 
+      
+      gsap.to(window, {
+        scrollTo: targetScroll,
+        duration: 1.5,
+        ease: 'power3.inOut'
+      })
+    }
+  }
 
   return (
-    <section id="it-company" className="relative">
-      <div ref={sectionRef} className="relative py-16 md:py-24">
-        {/* Background */}
-        <div
-          ref={bgRef}
-          className="absolute inset-0 -z-10 bg-cover bg-center"
-          style={{ backgroundImage: `url(${data.bgImage})` }}
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-base-300/60 via-base-100/50 to-base-100/80" />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">{data.title}</h2>
-            <p className="mt-4 text-sm md:text-base lg:text-lg opacity-80 max-w-prose mx-auto">{data.subtitle}</p>
-
-            {/* Feature toggles */}
-            <div className="mt-8 md:mt-10 flex justify-center">
-              <div className="btn-group">
-                {features.map((f) => (
-                  <button
-                    key={f.key}
-                    className={cn('btn btn-sm md:btn-md', active === f.key ? 'btn-primary' : 'btn-ghost')}
-                    onClick={() => setActive(f.key)}
-                    aria-pressed={active === f.key}
-                  >
-                    <f.icon className="w-4 h-4 md:w-5 md:h-5" />
-                    <span className="ml-2 hidden sm:inline">{f.title}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
+    <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
+      {/* Dynamic Background Layer */}
+      <div ref={bgRef} className="absolute inset-0 z-0 bg-layer">
+        {industries.map((item, idx) => (
+          <div
+            key={`bg-${item.id}`}
+            className={cn(
+              "absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out",
+              idx === activeIdx ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-110 blur-sm"
+            )}
+            style={{ backgroundImage: `url(${item.image})` }}
+          >
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
           </div>
+        ))}
+      </div>
 
-          {/* Cards */}
-          <div className="mt-10 md:mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {features.map((f, idx) => (
-              <div
-                key={f.key}
-                ref={(el) => { cardsRef.current[idx] = el }}
-                className={cn('card bg-base-200/70 backdrop-blur rounded-xl p-5 md:p-6 transition-transform hover:-translate-y-1',
-                  active === f.key ? 'ring-1 ring-primary/50' : '')}
-              >
-                <div className="flex items-center gap-3">
-                  <f.icon className="text-primary w-5 h-5 md:w-6 md:h-6" />
-                  <h3 className="text-lg md:text-xl font-semibold">{f.title}</h3>
-                </div>
-                <p className="mt-3 text-xs md:text-sm opacity-80">{f.desc}</p>
-                <div className="mt-4">
-                  <button className="btn btn-sm md:btn-md btn-primary" onClick={() => setActive(f.key)}>Explore</button>
-                </div>
-              </div>
+      {/* Content Layer - Centered Storytelling */}
+      <div className="relative z-10 h-full w-full flex items-center justify-center">
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 h-full flex flex-col justify-center items-center">
+          
+          <div className="w-full max-w-5xl relative min-h-[60vh] flex items-center justify-center">
+            {industries.map((item, idx) => (
+               <div 
+                 key={`text-${item.id}`}
+                 className={cn(
+                   "transition-all duration-1000 ease-out absolute inset-0 flex flex-col items-center justify-center text-center",
+                   idx === activeIdx 
+                     ? "opacity-100 translate-y-0 scale-100 pointer-events-auto delay-200" 
+                     : "opacity-0 translate-y-12 scale-95 pointer-events-none"
+                 )}
+               >
+                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-md border border-primary/20 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                   <item.icon className="w-5 h-5 text-primary" />
+                   <span className="text-sm font-bold uppercase tracking-widest text-primary">{item.title}</span>
+                 </div>
+
+                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/50 drop-shadow-2xl">
+                   {item.subtitle}
+                 </h2>
+
+                 <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mb-12 drop-shadow-lg">
+                   {item.desc}
+                 </p>
+
+                 <div className="flex flex-wrap gap-4 md:gap-8 justify-center mb-12">
+                   {item.stats.map((stat, i) => (
+                     <div key={i} className="flex flex-col items-center p-4 min-w-[120px] rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors">
+                       <span className="text-3xl md:text-4xl font-bold text-primary mb-1">{stat.value}</span>
+                       <span className="text-sm text-white/60 uppercase tracking-wide">{stat.label}</span>
+                     </div>
+                   ))}
+                 </div>
+
+                 <div className="mt-4">
+                   <a href="#contact" className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-bold text-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-primary/50">
+                     Explore Solutions <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                   </a>
+                 </div>
+               </div>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="mt-10 md:mt-12 text-center">
-            <a href="#contact" className="btn btn-primary transition-transform hover:scale-105">{data.cta}</a>
-          </div>
         </div>
+      </div>
+
+      {/* Progress Indicators (Bottom Center) */}
+      <div className="absolute bottom-12 left-0 w-full z-50 flex flex-col items-center gap-4">
+        <div className="flex items-center gap-3">
+          {industries.map((item, idx) => (
+            <button
+              key={`dot-${item.id}`}
+              onClick={() => scrollToSlide(idx)}
+              className={cn(
+                "h-2 rounded-full transition-all duration-500",
+                idx === activeIdx ? "w-12 bg-primary" : "w-2 bg-white/30 hover:bg-white/60"
+              )}
+              aria-label={`Go to ${item.title}`}
+            />
+          ))}
+        </div>
+        
+        <div className="flex items-center gap-2 text-white/40 text-xs uppercase tracking-widest mt-2">
+           <MousePointer2 className="w-3 h-3 animate-bounce" />
+           <span>Scroll to explore</span>
+        </div>
+      </div>
+
+      {/* Mobile Progress Bar (Top) */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-white/10 lg:hidden z-50">
+        <div 
+          className="h-full bg-primary transition-all duration-300"
+          style={{ width: `${((activeIdx + 1) / industries.length) * 100}%` }}
+        />
       </div>
     </section>
   )

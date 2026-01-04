@@ -7,7 +7,7 @@ import { useScrollReveal } from '../../../hooks/use-scroll-trigger'
 const BusinessConsultancySection: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null)
   useScrollReveal({ root: ref.current })
-  const content = services.businessConsultancy
+  const content = services.softwareTech
 
   return (
     <ParallaxSection id="business-consultancy" bgImage={content.bgImage} className="text-base-content">
