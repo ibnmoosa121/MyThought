@@ -145,7 +145,7 @@ const PortfolioShowcase: React.FC = () => {
         
         {/* Backgrounds Container */}
         <div className="absolute inset-0 z-0">
-          {slides.map((slide, i) => (
+          {slides.map((slide) => (
             <div
               key={`bg-${slide.key}`}
               className="portfolio-bg absolute inset-0 bg-cover bg-center"
@@ -179,7 +179,7 @@ const PortfolioShowcase: React.FC = () => {
 
         {/* Content Container */}
         <div className="relative z-10 w-full h-full">
-          {slides.map((slide, i) => (
+          {slides.map((slide) => (
             <div 
               key={slide.key}
               className="portfolio-slide absolute inset-0 flex flex-col justify-center px-6 md:px-12 lg:px-24 xl:px-32 w-full h-full"

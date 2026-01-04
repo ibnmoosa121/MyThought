@@ -1,4 +1,4 @@
-export type ServiceKey = 'softwareTech' | 'businessConsultancy' | 'fintech' | 'designCreative' | 'ventures' | 'digitalMarketing'
+export type ServiceKey = 'softwareTech' | 'businessConsultancy' | 'fintech' | 'designCreative' | 'ventures' | 'digitalMarketing' | 'hajjUmrah'
 
 export interface ServiceContent {
   key: ServiceKey
@@ -79,6 +79,20 @@ export const services: Record<ServiceKey, ServiceContent> = {
     bgImage:
       'https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=2076&auto=format&fit=crop',
     cta: 'Grow With Us',
+  },
+  hajjUmrah: {
+    key: 'hajjUmrah',
+    title: 'Hajj & Umrah Services',
+    subtitle: 'Streamlining pilgrimage experiences with digital solutions',
+    bullets: [
+      'Pilgrim management systems',
+      'Travel & logistics coordination',
+      'Mobile guidance apps',
+      'Group communication tools',
+    ],
+    bgImage:
+      'https://images.unsplash.com/photo-1565552629238-d796920d397b?q=80&w=2054&auto=format&fit=crop',
+    cta: 'Learn More',
   },
   ventures: {
     key: 'ventures',

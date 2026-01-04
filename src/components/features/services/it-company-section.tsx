@@ -87,7 +87,7 @@ const ItCompanySection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
   const [activeIdx, setActiveIdx] = useState(0)
-  const [progress, setProgress] = useState(0)
+  // const [progress, setProgress] = useState(0)
 
   // Configuration for scroll behavior
   const SCROLL_DURATION_PER_SLIDE = 1000 
@@ -117,7 +117,7 @@ const ItCompanySection: React.FC = () => {
         pin: true,
         scrub: 1, 
         onUpdate: (self) => {
-          setProgress(self.progress)
+          // setProgress(self.progress)
           
           const segmentSize = 1 / totalSlides
           const idx = Math.min(

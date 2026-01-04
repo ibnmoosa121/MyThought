@@ -60,7 +60,7 @@ const LogoLoop: React.FC<LogoLoopProps> = ({
     const measureContent = () => {
       if (!containerRef.current) return;
       // Measure one set of logos including gap
-      const singleSetWidth = (logos.length * ((typeof logoHeight === 'number' ? 100 : 100) + gap)); 
+      // const singleSetWidth = (logos.length * ((typeof logoHeight === 'number' ? 100 : 100) + gap)); 
       // Better approach: Measure the scroll width of the inner container
       const scrollSize = isHorizontal 
         ? containerRef.current.scrollWidth / 3 

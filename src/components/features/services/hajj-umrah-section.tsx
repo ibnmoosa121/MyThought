@@ -16,7 +16,7 @@ const HajjUmrahSection: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold gsap-reveal">{content.title}</h2>
           <p className="mt-3 text-base md:text-lg opacity-80 gsap-reveal">{content.subtitle}</p>
           <ul className="mt-6 space-y-3">
-            {content.bullets.map((item, idx) => (
+            {content.bullets.map((item: string, idx: number) => (
               <li key={idx} className="flex items-start gap-3 gsap-reveal">
                 <Globe className="text-primary" />
                 <span>{item}</span>

@@ -11,7 +11,6 @@ import {
   ArrowRight
 } from 'lucide-react'
 import { useState } from 'react'
-import React from 'react'
 import { motion } from 'framer-motion'
 import {
   NavigationMenu,
