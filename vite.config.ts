@@ -16,5 +16,8 @@ export default defineConfig({
     ? process.env.DEPLOY_TARGET === 'daisyui'
       ? '/MyThought/daisyui/'
       : '/MyThought/'
-    : '/'
+    : '/',
+  build: {
+    chunkSizeWarningLimit: 1000,
+  }
 })
