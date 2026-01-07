@@ -70,24 +70,34 @@ export const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-6">Services</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/software-tech" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/software" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Software & Tech
                 </Link>
               </li>
               <li>
-                <Link to="/business-consultancy" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  Business Consultancy
+                <Link to="/consultancy" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                  Consultancy
                 </Link>
               </li>
               <li>
-                <Link to="/design-creativity" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/talent" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                  Talent & Staffing
+                </Link>
+              </li>
+              <li>
+                <Link to="/design" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Design & Creativity
                 </Link>
               </li>
               <li>
-                <span className="text-base-content/40 cursor-not-allowed">
-                  FinTech (Coming Soon)
-                </span>
+                <Link to="/ventures" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                  Ventures
+                </Link>
+              </li>
+              <li>
+                <Link to="/fintech" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                  FinTech
+                </Link>
               </li>
             </ul>
           </div>

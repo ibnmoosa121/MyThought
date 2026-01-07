@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import LogoLoop from '../../ui/logo-loop'
+import { ScrollRevealText } from '../../ui/scroll-reveal-text'
 
 // Register plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -67,16 +68,26 @@ const ClientsSection: React.FC = () => {
       
       <div className="container mx-auto px-6 md:px-12">
         {/* Header */}
-        <div ref={headerRef} className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
+        <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
           <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4 tracking-wide uppercase">
             Trusted Partners
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Fueling Growth for <span className="text-primary">Market Leaders</span>
-          </h2>
-          <p className="text-lg text-base-content/70">
-            We are proud to partner with visionary organizations across the Kingdom and beyond, delivering scalable technology solutions that drive real impact.
-          </p>
+          <div className="flex flex-col items-center justify-center mb-6">
+            <ScrollRevealText 
+              text="Fueling Growth for" 
+              className="text-4xl md:text-5xl font-bold"
+            />
+            <ScrollRevealText 
+              text="Market Leaders" 
+              className="text-4xl md:text-5xl font-bold text-primary"
+              delay={0.2}
+            />
+          </div>
+          <ScrollRevealText 
+            text="We are proud to partner with visionary organizations across the Kingdom and beyond, delivering scalable technology solutions that drive real impact."
+            className="text-lg text-base-content/70"
+            delay={0.4}
+          />
         </div>
 
         {/* Logo Loop */}

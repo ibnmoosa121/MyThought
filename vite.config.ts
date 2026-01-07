@@ -12,11 +12,14 @@ export default defineConfig({
     },
   },
   // Updated base path for GitHub Pages under the 'MyThought' repository
-  base: process.env.NODE_ENV === 'production'
-    ? process.env.DEPLOY_TARGET === 'daisyui'
-      ? '/MyThought/daisyui/'
-      : '/MyThought/'
-    : '/',
+  // For Vercel, we use root path '/'
+  base: process.env.VERCEL 
+    ? '/' 
+    : process.env.NODE_ENV === 'production'
+      ? process.env.DEPLOY_TARGET === 'daisyui'
+        ? '/MyThought/daisyui/'
+        : '/MyThought/'
+      : '/',
   build: {
     chunkSizeWarningLimit: 1000,
   }

@@ -5,10 +5,13 @@
  */
 
 // React import needed for JSX
+import { useEffect } from 'react'
 import { HeroParallax } from "../ui/hero-parallax" // Hero parallax effect
 import ContactForm from "../features/contact/contact-form"
 import ClientsSection from "../features/clients/clients-section"
 import CtaSection from "../features/cta/cta-section"
+import ServicesTabs from "../features/services/services-tabs"
+import DeliveryProcess from "../features/delivery/delivery-process"
 
 
 // Product data for the hero parallax
@@ -92,11 +95,15 @@ const products = [
 
 // Main content component with hero section only
 export const MainContent = () => {
+  useEffect(() => {
+    document.title = "MyThought"
+  }, [])
+
   return (
     <main className="flex-1 text-white">
       <HeroParallax products={products} />
-      <PortfolioShowcase />
-      <ItCompanySection />
+      <DeliveryProcess />
+      <ServicesTabs />
       <CtaSection />
       <ClientsSection />
       <ContactForm />

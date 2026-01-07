@@ -1,7 +1,11 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const ContactUsPage = () => {
+  useEffect(() => {
+    document.title = "Contact Us | MyThought"
+  }, [])
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

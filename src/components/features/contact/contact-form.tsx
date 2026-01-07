@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useCallback } from 'react'
 import { Send, CheckCircle2, AlertCircle, ChevronDown, Loader2 } from 'lucide-react'
 import { cn } from '../../../lib/utils'
 
-type ServiceOption = 'FinTech' | 'Hajj & Umrah' | 'Digital Marketing' | 'Business Consultancy' | 'Software & Technology'
+type ServiceOption = 'Software & Technology' | 'Consultancy' | 'Talent & Staffing' | 'Design & Creative' | 'Ventures' | 'FinTech'
 
 interface FormData {
   name: string
@@ -13,10 +13,6 @@ interface FormData {
   // Conditional fields
   budget?: string
   complianceNeeds?: string
-  travelDates?: string
-  groupSize?: string
-  platforms?: string
-  monthlyBudget?: string
   industry?: string
   scope?: string
 }
@@ -38,18 +34,19 @@ const ContactForm: React.FC = () => {
   const [success, setSuccess] = useState(false)
   const [activeField, setActiveField] = useState<string | null>(null)
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setForm(prev => ({ ...prev, [name]: value }))
     // Clear error when user types
-    if (errors[name]) {
-      setErrors(prev => {
+    setErrors(prev => {
+      if (prev[name]) {
         const newErrors = { ...prev }
         delete newErrors[name]
         return newErrors
-      })
-    }
-  }
+      }
+      return prev
+    })
+  }, [])
 
   const validate = (): boolean => {
     const nextErrors: Record<string, string> = {}
@@ -62,15 +59,7 @@ const ContactForm: React.FC = () => {
       case 'FinTech':
         if (!form.budget) nextErrors.budget = 'Please specify budget'
         break
-      case 'Hajj & Umrah':
-        if (!form.travelDates) nextErrors.travelDates = 'Please provide travel dates'
-        if (!form.groupSize) nextErrors.groupSize = 'Please provide group size'
-        break
-      case 'Digital Marketing':
-        if (!form.platforms) nextErrors.platforms = 'Which platforms?'
-        if (!form.monthlyBudget) nextErrors.monthlyBudget = 'Monthly budget required'
-        break
-      case 'Business Consultancy':
+      case 'Consultancy':
         if (!form.industry) nextErrors.industry = 'Please specify industry'
         break
     }
@@ -135,85 +124,7 @@ const ContactForm: React.FC = () => {
             </div>
           </div>
         )
-      case 'Hajj & Umrah':
-        return (
-          <div className="grid md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Travel Dates</label>
-              <input 
-                name="travelDates" 
-                value={form.travelDates || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('travelDates')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  errors.travelDates && "input-error",
-                  activeField === 'travelDates' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., Jun 1–10, 2026" 
-              />
-              {errors.travelDates && <span className="text-error text-xs mt-1">{errors.travelDates}</span>}
-            </div>
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Group Size</label>
-              <input 
-                name="groupSize" 
-                value={form.groupSize || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('groupSize')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  errors.groupSize && "input-error",
-                  activeField === 'groupSize' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., 25" 
-              />
-              {errors.groupSize && <span className="text-error text-xs mt-1">{errors.groupSize}</span>}
-            </div>
-          </div>
-        )
-      case 'Digital Marketing':
-        return (
-          <div className="grid md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Target Platforms</label>
-              <input 
-                name="platforms" 
-                value={form.platforms || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('platforms')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  errors.platforms && "input-error",
-                  activeField === 'platforms' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., Google, Meta, TikTok" 
-              />
-              {errors.platforms && <span className="text-error text-xs mt-1">{errors.platforms}</span>}
-            </div>
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Monthly Ad Budget</label>
-              <input 
-                name="monthlyBudget" 
-                value={form.monthlyBudget || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('monthlyBudget')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  errors.monthlyBudget && "input-error",
-                  activeField === 'monthlyBudget' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., $5k - $10k" 
-              />
-              {errors.monthlyBudget && <span className="text-error text-xs mt-1">{errors.monthlyBudget}</span>}
-            </div>
-          </div>
-        )
-      case 'Business Consultancy':
+      case 'Consultancy':
         return (
           <div className="grid md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-4 duration-500">
             <div className="form-control">
@@ -253,7 +164,7 @@ const ContactForm: React.FC = () => {
       default:
         return null
     }
-  }, [form.service, form.budget, form.complianceNeeds, form.travelDates, form.groupSize, form.platforms, form.monthlyBudget, form.industry, form.scope, errors, activeField])
+  }, [form.service, form.budget, form.complianceNeeds, form.industry, form.scope, errors, activeField, onChange])
 
   return (
     <section id="contact" className="py-24 md:py-32 relative overflow-hidden bg-base-100">
@@ -386,10 +297,11 @@ const ContactForm: React.FC = () => {
                       )}
                     >
                       <option value="Software & Technology">Software & Technology</option>
+                      <option value="Consultancy">Consultancy</option>
+                      <option value="Talent & Staffing">Talent & Staffing</option>
+                      <option value="Design & Creative">Design & Creative</option>
+                      <option value="Ventures">Ventures</option>
                       <option value="FinTech">FinTech</option>
-                      <option value="Hajj & Umrah">Hajj & Umrah</option>
-                      <option value="Digital Marketing">Digital Marketing</option>
-                      <option value="Business Consultancy">Business Consultancy</option>
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-base-content/50 pointer-events-none" />
                   </div>
@@ -398,7 +310,7 @@ const ContactForm: React.FC = () => {
                 {ConditionalFields}
 
                 <div className="form-control">
-                  <label className="label text-sm font-medium text-base-content/70 mb-1">Project Details</label>
+                  <label className="label text-sm font-medium text-base-content/70 mb-1">Message</label>
                   <textarea 
                     name="message" 
                     value={form.message} 
@@ -406,11 +318,11 @@ const ContactForm: React.FC = () => {
                     onFocus={() => setActiveField('message')}
                     onBlur={() => setActiveField(null)}
                     className={cn(
-                      "textarea textarea-bordered w-full h-32 bg-base-200/50 focus:bg-base-100 transition-all duration-300 resize-none",
+                      "textarea textarea-bordered w-full h-32 bg-base-200/50 focus:bg-base-100 transition-all duration-300",
                       errors.message && "textarea-error",
                       activeField === 'message' && "shadow-lg shadow-primary/10 border-primary"
                     )}
-                    placeholder="Tell us about your goals, timeline, and any specific requirements..." 
+                    placeholder="Tell us about your project..." 
                   />
                   {errors.message && <span className="text-error text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.message}</span>}
                 </div>
@@ -418,17 +330,17 @@ const ContactForm: React.FC = () => {
                 <button 
                   type="submit" 
                   disabled={submitting}
-                  className="btn btn-primary w-full btn-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="btn btn-primary w-full shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 group"
                 >
                   {submitting ? (
                     <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <Loader2 className="w-4 h-4 animate-spin" />
                       Sending...
                     </>
                   ) : (
                     <>
                       Send Message
-                      <Send className="w-5 h-5 ml-2" />
+                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
                 </button>

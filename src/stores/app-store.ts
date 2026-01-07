@@ -63,7 +63,7 @@ export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
       // Theme state
-      theme: 'dark',
+      theme: 'luxury',
       setTheme: (theme: DaisyTheme) => {
         set({ theme })
         // Apply theme to document

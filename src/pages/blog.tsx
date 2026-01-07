@@ -1,6 +1,11 @@
 import { Calendar, User, Tag } from 'lucide-react'
+import { useEffect } from 'react'
 
 const BlogPage = () => {
+  useEffect(() => {
+    document.title = "Blog | MyThought"
+  }, [])
+
   // Sample blog posts - would be fetched from an API in a real application
   const blogPosts = [
     {

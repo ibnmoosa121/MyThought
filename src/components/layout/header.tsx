@@ -6,9 +6,10 @@ import {
   Briefcase, 
   Palette, 
   Landmark, 
-  Globe,
   ChevronRight,
-  ArrowRight
+  ArrowRight,
+  Users,
+  Rocket
 } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -22,27 +23,42 @@ import {
 } from "@/components/ui/navigation-menu"
 import { LogoIcon } from '../ui/logo-icon'
 import { services } from '../../data/services'
+import { useLocation } from 'react-router-dom'
 
 // Service Icons Mapping
 const serviceIcons = {
+  software: Code,
+  consultancy: Briefcase,
+  talent: Users,
+  design: Palette,
+  ventures: Rocket,
   fintech: Landmark,
-  hajjUmrah: Globe,
-  digitalMarketing: Palette,
-  businessConsultancy: Briefcase,
-  itCompany: Code,
 }
 
 // Service Links Mapping
 const serviceLinks = {
-  fintech: '#/software-tech',
-  hajjUmrah: '#/business-consultancy',
-  digitalMarketing: '#/design-creativity',
-  businessConsultancy: '#/business-consultancy',
-  itCompany: '#/software-tech',
+  software: '#/software',
+  consultancy: '#/consultancy',
+  talent: '#/talent',
+  design: '#/design',
+  ventures: '#/ventures',
+  fintech: '#/fintech',
 }
 
 // App logo/brand component
 const AppBrand = () => {
+  const { pathname } = useLocation()
+  
+  const getSubtitle = () => {
+    if (pathname.includes('software')) return 'Software'
+    if (pathname.includes('consultancy')) return 'Consultancy'
+    if (pathname.includes('talent')) return 'Talent'
+    if (pathname.includes('design')) return 'Design'
+    if (pathname.includes('ventures')) return 'Ventures'
+    if (pathname.includes('fintech')) return 'FinTech'
+    return 'Development Studio'
+  }
+
   return (
     <motion.div
       className="flex items-center cursor-pointer"
@@ -54,7 +70,7 @@ const AppBrand = () => {
         <h1 className="text-lg font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
           MyThought
         </h1>
-        <p className="text-xs opacity-70 leading-tight">Development Studio</p>
+        <p className="text-xs opacity-70 leading-tight">{getSubtitle()}</p>
       </div>
     </motion.div>
   )
@@ -62,6 +78,18 @@ const AppBrand = () => {
 
 // Mobile app brand (simplified)
 const MobileAppBrand = () => {
+  const { pathname } = useLocation()
+  
+  const getSubtitle = () => {
+    if (pathname.includes('software')) return 'Software'
+    if (pathname.includes('consultancy')) return 'Consultancy'
+    if (pathname.includes('talent')) return 'Talent'
+    if (pathname.includes('design')) return 'Design'
+    if (pathname.includes('ventures')) return 'Ventures'
+    if (pathname.includes('fintech')) return 'FinTech'
+    return 'Development Studio'
+  }
+
   return (
     <motion.div
       className="flex items-center gap-2"
@@ -76,7 +104,7 @@ const MobileAppBrand = () => {
           MyThought
         </h1>
         <p className="text-xs opacity-70 leading-tight">
-          Development Studio
+          {getSubtitle()}
         </p>
       </div>
     </motion.div>
@@ -102,7 +130,7 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-base-100/80 backdrop-blur-md border-b border-base-200">
+    <header className="sticky top-0 z-40 w-full bg-transparent">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Desktop brand */}
@@ -153,14 +181,16 @@ export const Header = () => {
                             <li key={service.key}>
                               <NavigationMenuLink asChild>
                                 <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                   href={serviceLinks[service.key as keyof typeof serviceLinks] || '#'}
                                   className="group flex gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-base-200 focus:bg-base-200"
                                 >
-                                  <div className="flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0 shadow-sm">
+                                  <div className={`flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 text-primary ${service.theme.hoverBg} group-hover:text-white transition-all duration-300 shrink-0 shadow-sm`}>
                                     <Icon size={20} />
                                   </div>
                                   <div className="flex flex-col justify-center">
-                                    <div className="text-sm font-semibold text-base-content group-hover:text-primary transition-colors flex items-center gap-1">
+                                    <div className={`text-sm font-semibold text-base-content ${service.theme.hoverText} transition-colors flex items-center gap-1`}>
                                       {service.title}
                                     </div>
                                     <p className="line-clamp-1 text-xs leading-snug text-muted-foreground mt-1 group-hover:text-base-content/80">
@@ -183,15 +213,6 @@ export const Header = () => {
                     href="#/about-us"
                   >
                     About Us
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-base-200 hover:text-primary focus:bg-base-200 focus:outline-none"
-                    href="#/ventures"
-                  >
-                    Ventures
                   </NavigationMenuLink>
                 </NavigationMenuItem>
 
@@ -248,6 +269,8 @@ export const Header = () => {
                         <a 
                           key={service.key}
                           href={serviceLinks[service.key as keyof typeof serviceLinks] || '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="flex items-center gap-3 px-6 py-3 text-sm hover:bg-base-200 hover:text-primary transition-colors border-l-4 border-transparent hover:border-primary"
                         >
                           <Icon size={16} className="text-muted-foreground" />
@@ -261,9 +284,6 @@ export const Header = () => {
 
               <a href="#/about-us" className="text-sm font-medium hover:bg-base-200 hover:text-primary transition-colors px-4 py-3">
                 About Us
-              </a>
-              <a href="#/ventures" className="text-sm font-medium hover:bg-base-200 hover:text-primary transition-colors px-4 py-3">
-                Ventures
               </a>
               <a href="#/blog" className="text-sm font-medium hover:bg-base-200 hover:text-primary transition-colors px-4 py-3">
                 Blog

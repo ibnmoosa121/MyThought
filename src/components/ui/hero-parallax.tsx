@@ -48,7 +48,7 @@ export const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-200, 500]),
+    useTransform(scrollYProgress, [0, 0.2], [-100, 50]),
     springConfig
   );
 
@@ -66,7 +66,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[250vh] py-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[150vh] py-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
 
@@ -93,7 +93,7 @@ export const HeroParallax = ({
         }}
         className="relative z-10"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-10">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -116,17 +116,26 @@ export const HeroParallax = ({
   );
 };
 
+import { ScrollRevealText } from "./scroll-reveal-text";
+
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-5 md:py-5 px-4 w-full left-0 top-0 z-20">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white gsap-reveal-heading">
-        The Ultimate <br /> development studio
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200 gsap-reveal-heading">
-        We build beautiful products with the latest technologies and frameworks.
-        We are a team of passionate developers and designers that love to build
-        amazing products.
-      </p>
+      <ScrollRevealText
+        text="The Ultimate"
+        className="text-2xl md:text-7xl font-bold dark:text-white"
+        delay={0.2}
+      />
+      <ScrollRevealText
+        text="development studio"
+        className="text-2xl md:text-7xl font-bold dark:text-white"
+        delay={0.2}
+      />
+      <ScrollRevealText
+        text="We build beautiful products with the latest technologies and frameworks. We are a team of passionate developers and designers that love to build amazing products."
+        className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200"
+        delay={0.5}
+      />
     </div>
   );
 };
@@ -150,23 +159,41 @@ export const ProductCard = ({
       whileHover={{
         y: -20,
       }}
+      initial={{
+        y: 20,
+        opacity: 0
+      }}
+      animate={{
+        y: [0, -10, 0],
+        opacity: 1
+      }}
+      transition={{
+        y: {
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
+        opacity: {
+          duration: 0.5
+        }
+      }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative shrink-0"
+      className="group/product h-64 w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-lg border border-white/10"
     >
       <a
         href={product.link}
-        className="block group-hover/product:shadow-2xl"
+        className="block h-full w-full"
       >
         <img
           src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
+          height="400"
+          width="400"
+          className="object-cover object-center absolute h-full w-full inset-0 transition-transform duration-500 group-hover/product:scale-110"
           alt={product.title}
         />
       </a>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/product:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+      <h2 className="absolute bottom-6 left-6 opacity-0 group-hover/product:opacity-100 text-white font-bold text-lg transform translate-y-2 group-hover/product:translate-y-0 transition-all duration-300">
         {product.title}
       </h2>
     </motion.div>

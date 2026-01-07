@@ -37,18 +37,12 @@ const CtaSection: React.FC = () => {
         }
       })
 
-      tl.from(contentRef.current, {
-        y: 100,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power4.out'
-      })
-      .from(buttonsRef.current, {
+      tl.from(buttonsRef.current, {
         y: 50,
         opacity: 0,
         duration: 1,
         ease: 'back.out(1.7)'
-      }, '-=0.8')
+      })
 
       // Continuous particle/glow animation
       gsap.to('.cta-glow', {

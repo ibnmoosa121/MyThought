@@ -1,4 +1,4 @@
-export type ServiceKey = 'softwareTech' | 'businessConsultancy' | 'fintech' | 'designCreative' | 'ventures' | 'digitalMarketing' | 'hajjUmrah'
+export type ServiceKey = 'software' | 'consultancy' | 'talent' | 'design' | 'ventures' | 'fintech'
 
 export interface ServiceContent {
   key: ServiceKey
@@ -7,11 +7,17 @@ export interface ServiceContent {
   bullets: string[]
   bgImage: string
   cta: string
+  theme: {
+    text: string
+    bg: string
+    hoverBg: string
+    hoverText: string
+  }
 }
 
 export const services: Record<ServiceKey, ServiceContent> = {
-  softwareTech: {
-    key: 'softwareTech',
+  software: {
+    key: 'software',
     title: 'Software & Technology',
     subtitle: 'Custom development, Cloud & DevOps, and AI solutions',
     bullets: [
@@ -23,10 +29,16 @@ export const services: Record<ServiceKey, ServiceContent> = {
     bgImage:
       'https://images.unsplash.com/photo-1518770660431-4633f4f9de7b?q=80&w=2069&auto=format&fit=crop',
     cta: 'Build With Us',
+    theme: {
+      text: 'text-blue-500',
+      bg: 'bg-blue-500',
+      hoverBg: 'group-hover:bg-blue-500',
+      hoverText: 'group-hover:text-blue-500',
+    }
   },
-  businessConsultancy: {
-    key: 'businessConsultancy',
-    title: 'Business Consultancy',
+  consultancy: {
+    key: 'consultancy',
+    title: 'Consultancy',
     subtitle: 'Dubai & KSA expansion, market entry, and operations',
     bullets: [
       'Market intelligence and strategy workshops',
@@ -37,23 +49,35 @@ export const services: Record<ServiceKey, ServiceContent> = {
     bgImage:
       'https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=80&w=2069&auto=format&fit=crop',
     cta: 'Consult With Us',
+    theme: {
+      text: 'text-emerald-500',
+      bg: 'bg-emerald-500',
+      hoverBg: 'group-hover:bg-emerald-500',
+      hoverText: 'group-hover:text-emerald-500',
+    }
   },
-  fintech: {
-    key: 'fintech',
-    title: 'FinTech',
-    subtitle: 'RegTech, Payments, and AI-driven financial products',
+  talent: {
+    key: 'talent',
+    title: 'Talent & Staffing',
+    subtitle: 'Connecting you with top-tier talent to build high-performing teams',
     bullets: [
-      'Payment orchestration and compliance (PCI, AML)',
-      'Ledger and reconciliation systems',
-      'Risk scoring and fraud detection with ML',
-      'Real-time dashboards and analytics',
+      'Executive Search',
+      'Team Augmentation',
+      'Technical Recruiting',
+      'Culture fit assessment',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop',
-    cta: 'Explore FinTech',
+      'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop',
+    cta: 'Find Talent',
+    theme: {
+      text: 'text-purple-500',
+      bg: 'bg-purple-500',
+      hoverBg: 'group-hover:bg-purple-500',
+      hoverText: 'group-hover:text-purple-500',
+    }
   },
-  designCreative: {
-    key: 'designCreative',
+  design: {
+    key: 'design',
     title: 'Design & Creative',
     subtitle: 'Growth campaigns, branding, and digital experiences',
     bullets: [
@@ -65,34 +89,12 @@ export const services: Record<ServiceKey, ServiceContent> = {
     bgImage:
       'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2070&auto=format&fit=crop',
     cta: 'Create With Us',
-  },
-  digitalMarketing: {
-    key: 'digitalMarketing',
-    title: 'Digital Marketing',
-    subtitle: 'Data-driven growth strategies and multi-channel campaigns',
-    bullets: [
-      'SEO & Content Strategy',
-      'Social Media Management',
-      'PPC & Performance Marketing',
-      'Analytics & Conversion Optimization',
-    ],
-    bgImage:
-      'https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=2076&auto=format&fit=crop',
-    cta: 'Grow With Us',
-  },
-  hajjUmrah: {
-    key: 'hajjUmrah',
-    title: 'Hajj & Umrah Services',
-    subtitle: 'Streamlining pilgrimage experiences with digital solutions',
-    bullets: [
-      'Pilgrim management systems',
-      'Travel & logistics coordination',
-      'Mobile guidance apps',
-      'Group communication tools',
-    ],
-    bgImage:
-      'https://images.unsplash.com/photo-1565552629238-d796920d397b?q=80&w=2054&auto=format&fit=crop',
-    cta: 'Learn More',
+    theme: {
+      text: 'text-pink-500',
+      bg: 'bg-pink-500',
+      hoverBg: 'group-hover:bg-pink-500',
+      hoverText: 'group-hover:text-pink-500',
+    }
   },
   ventures: {
     key: 'ventures',
@@ -107,5 +109,31 @@ export const services: Record<ServiceKey, ServiceContent> = {
     bgImage:
       'https://images.unsplash.com/photo-1626013261137-ee9872e2fb00?q=80&w=2069&auto=format&fit=crop',
     cta: 'Partner With Us',
+    theme: {
+      text: 'text-amber-500',
+      bg: 'bg-amber-500',
+      hoverBg: 'group-hover:bg-amber-500',
+      hoverText: 'group-hover:text-amber-500',
+    }
+  },
+  fintech: {
+    key: 'fintech',
+    title: 'FinTech',
+    subtitle: 'RegTech, Payments, and AI-driven financial products',
+    bullets: [
+      'Payment orchestration and compliance (PCI, AML)',
+      'Ledger and reconciliation systems',
+      'Risk scoring and fraud detection with ML',
+      'Real-time dashboards and analytics',
+    ],
+    bgImage:
+      'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop',
+    cta: 'Explore FinTech',
+    theme: {
+      text: 'text-teal-500',
+      bg: 'bg-teal-500',
+      hoverBg: 'group-hover:bg-teal-500',
+      hoverText: 'group-hover:text-teal-500',
+    }
   },
 }
