@@ -7,11 +7,12 @@
 // React import needed for JSX
 import { useEffect } from 'react'
 import { HeroParallax } from "../ui/hero-parallax" // Hero parallax effect
-import ContactForm from "../features/contact/contact-form"
 import ClientsSection from "../features/clients/clients-section"
 import CtaSection from "../features/cta/cta-section"
 import ServicesTabs from "../features/services/services-tabs"
 import DeliveryProcess from "../features/delivery/delivery-process"
+import { SectionDivider } from "../ui/section-divider"
+import ContactForm from "@/components/features/contact/contact-form"
 
 
 // Product data for the hero parallax
@@ -100,13 +101,35 @@ export const MainContent = () => {
   }, [])
 
   return (
-    <main className="flex-1 text-white">
-      <HeroParallax products={products} />
-      <DeliveryProcess />
-      <ServicesTabs />
-      <CtaSection />
-      <ClientsSection />
-      <ContactForm />
+    <main className="flex-1 text-white overflow-x-hidden">
+      <div className="relative">
+        <HeroParallax products={products} />
+        <SectionDivider type="fade" direction="bottom" />
+      </div>
+
+      <div className="relative bg-black">
+        <DeliveryProcess />
+        <SectionDivider type="glow" direction="bottom" color="from-primary/20" />
+      </div>
+
+      <div className="relative bg-black">
+        <ServicesTabs />
+        <SectionDivider type="glow" direction="bottom" color="from-secondary/20" />
+      </div>
+
+      <div className="relative">
+        <CtaSection />
+        <SectionDivider type="glow" direction="top" color="from-primary/20" />
+        <SectionDivider type="fade" direction="bottom" />
+      </div>
+
+      <div className="relative bg-black">
+        <ClientsSection />
+      </div>
+
+      <div className="relative bg-black">
+        <ContactForm />
+      </div>
     </main>
   )
 }

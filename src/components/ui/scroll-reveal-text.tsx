@@ -24,29 +24,27 @@ export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = '
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
         type: "spring",
-        damping: 12,
+        damping: 15,
         stiffness: 100,
-        duration: 0.5
+        duration: 0.4
       },
     },
     hidden: {
       opacity: 0,
-      y: 20,
-      filter: "blur(10px)",
+      y: 10,
       transition: {
         type: "spring",
-        damping: 12,
+        damping: 15,
         stiffness: 100,
-        duration: 0.5
+        duration: 0.4
       },
     },
   };
 
   const words = text.split(" ");
-  
+
   // Memoize the component creation to prevent re-renders
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Component = useMemo(() => motion(Tag as any), [Tag]);
@@ -60,7 +58,7 @@ export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = '
       className={className}
     >
       {words.map((word, index) => (
-        <motion.span variants={child} key={index} className="inline-block mr-[0.2em]">
+        <motion.span variants={child} key={index} className="inline-block mr-[0.2em] will-change-transform will-change-opacity">
           {word}
         </motion.span>
       ))}

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -19,13 +19,13 @@ export const HeroParallax = ({
 }) => {
   const firstRow = products.slice(0, 7);
   const secondRow = products.slice(7, 14);
-  const ref = React.useRef(null);
+  const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = { stiffness: 100, damping: 20, bounce: 0 };
 
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 1000]),
@@ -57,7 +57,7 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 1], [0, 300]),
     springConfig
   );
-  
+
   const bgRotate = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 45]),
     springConfig
@@ -70,18 +70,20 @@ export const HeroParallax = ({
     >
       <Header />
 
-      {/* Parallax Background Layer */}
-      <motion.div 
+      {/* Standardized Parallax Background Layer */}
+      <motion.div
         style={{
-            y: bgTranslateY,
-            rotate: bgRotate,
+          y: bgTranslateY,
+          rotate: bgRotate,
         }}
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
       >
-        {/* Floating Gradient Blobs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen animate-blob" />
-        <div className="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-blue-500/20 rounded-full blur-[100px] mix-blend-screen animate-blob animation-delay-2000" />
-        <div className="absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-indigo-500/20 rounded-full blur-[100px] mix-blend-screen animate-blob animation-delay-4000" />
+        <div className="absolute inset-0 design-grid opacity-[0.05]" />
+
+        {/* Standardized Glow Orbs */}
+        <div className="theme-glow absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10" />
+        <div className="theme-glow absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 animation-delay-2000" />
+        <div className="theme-glow absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-primary/10 animation-delay-4000" />
       </motion.div>
 
       <motion.div
@@ -94,24 +96,29 @@ export const HeroParallax = ({
         className="relative z-10"
       >
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-10">
-          {firstRow.map((product) => (
+          {firstRow.map((product, idx) => (
             <ProductCard
               product={product}
               translate={translateX}
               key={product.title}
+              index={idx}
             />
           ))}
         </motion.div>
         <motion.div className="flex flex-row mb-20 space-x-20">
-          {secondRow.map((product) => (
+          {secondRow.map((product, idx) => (
             <ProductCard
               product={product}
               translate={translateXReverse}
               key={product.title}
+              index={idx + 7}
             />
           ))}
         </motion.div>
       </motion.div>
+
+      {/* Bottom Section Merger */}
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
     </div>
   );
 };
@@ -123,7 +130,7 @@ export const Header = () => {
     <div className="max-w-7xl relative mx-auto py-5 md:py-5 px-4 w-full left-0 top-0 z-20">
       <ScrollRevealText
         text="The Ultimate"
-        className="text-2xl md:text-7xl font-bold dark:text-white"
+        className="text-2xl md:text-7xl font-bold text-primary"
         delay={0.2}
       />
       <ScrollRevealText
@@ -143,6 +150,7 @@ export const Header = () => {
 export const ProductCard = ({
   product,
   translate,
+  index,
 }: {
   product: {
     title: string;
@@ -150,52 +158,72 @@ export const ProductCard = ({
     thumbnail: string;
   };
   translate: MotionValue<number>;
+  index: number;
 }) => {
   return (
     <motion.div
       style={{
         x: translate,
       }}
-      whileHover={{
-        y: -20,
-      }}
       initial={{
-        y: 20,
-        opacity: 0
+        y: 100,
+        opacity: 0,
+        scale: 0.8,
       }}
-      animate={{
-        y: [0, -10, 0],
-        opacity: 1
+      whileInView={{
+        y: 0,
+        opacity: 1,
+        scale: 1,
       }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{
-        y: {
-          duration: 3,
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+        delay: index * 0.05,
+      }}
+      whileHover={{
+        y: -30,
+        scale: 1.08,
+        zIndex: 50,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+        transition: { type: "spring", stiffness: 400, damping: 25 }
+      }}
+      whileTap={{ scale: 0.95 }}
+      key={product.title}
+      className="group/product h-64 w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
+    >
+      <motion.div
+        animate={{
+          y: [0, -40, 0],
+          scale: [1, 1.08, 1],
+          rotate: [0, (index % 2 === 0 ? 1 : -1) * 2, 0],
+        }}
+        transition={{
+          duration: 6 + (index % 4) * 1.5,
           repeat: Infinity,
           ease: "easeInOut",
-        },
-        opacity: {
-          duration: 0.5
-        }
-      }}
-      key={product.title}
-      className="group/product h-64 w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-lg border border-white/10"
-    >
-      <a
-        href={product.link}
-        className="block h-full w-full"
+          delay: (index % 5) * 0.6,
+        }}
+        className="h-full w-full will-change-transform"
       >
-        <img
-          src={product.thumbnail}
-          height="400"
-          width="400"
-          className="object-cover object-center absolute h-full w-full inset-0 transition-transform duration-500 group-hover/product:scale-110"
-          alt={product.title}
-        />
-      </a>
-      <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/product:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-      <h2 className="absolute bottom-6 left-6 opacity-0 group-hover/product:opacity-100 text-white font-bold text-lg transform translate-y-2 group-hover/product:translate-y-0 transition-all duration-300">
-        {product.title}
-      </h2>
+        <a
+          href={product.link}
+          className="block h-full w-full"
+        >
+          <img
+            src={product.thumbnail}
+            height="400"
+            width="400"
+            className="object-cover object-center absolute h-full w-full inset-0 transition-transform duration-700 group-hover/product:scale-110"
+            alt={product.title}
+          />
+        </a>
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/product:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        <h2 className="absolute bottom-6 left-6 opacity-0 group-hover/product:opacity-100 text-white font-bold text-lg transform translate-y-2 group-hover/product:translate-y-0 transition-all duration-300">
+          {product.title}
+        </h2>
+      </motion.div>
     </motion.div>
   );
 };

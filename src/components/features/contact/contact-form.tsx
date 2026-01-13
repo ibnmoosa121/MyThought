@@ -1,356 +1,337 @@
 import React, { useMemo, useState, useCallback } from 'react'
-import { Send, CheckCircle2, AlertCircle, ChevronDown, Loader2 } from 'lucide-react'
+import { Send, CheckCircle2, ChevronDown, Loader2, Terminal, Cpu, Zap, Globe } from 'lucide-react'
 import { cn } from '../../../lib/utils'
+import { motion, AnimatePresence } from 'framer-motion'
 
 type ServiceOption = 'Software & Technology' | 'Consultancy' | 'Talent & Staffing' | 'Design & Creative' | 'Ventures' | 'FinTech'
 
 interface FormData {
-  name: string
-  email: string
-  phone?: string
-  service: ServiceOption
-  message: string
-  // Conditional fields
-  budget?: string
-  complianceNeeds?: string
-  industry?: string
-  scope?: string
+    name: string
+    email: string
+    phone?: string
+    service: ServiceOption
+    message: string
+    budget?: string
+    complianceNeeds?: string
+    industry?: string
+    scope?: string
 }
 
 const initialForm: FormData = {
-  name: '',
-  email: '',
-  phone: '',
-  service: 'Software & Technology',
-  message: '',
+    name: '',
+    email: '',
+    phone: '',
+    service: 'Software & Technology',
+    message: '',
 }
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const ContactForm: React.FC = () => {
-  const [form, setForm] = useState<FormData>(initialForm)
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [submitting, setSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const [activeField, setActiveField] = useState<string | null>(null)
+    const [form, setForm] = useState<FormData>(initialForm)
+    const [errors, setErrors] = useState<Record<string, string>>({})
+    const [submitting, setSubmitting] = useState(false)
+    const [success, setSuccess] = useState(false)
+    const [activeField, setActiveField] = useState<string | null>(null)
 
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setForm(prev => ({ ...prev, [name]: value }))
-    // Clear error when user types
-    setErrors(prev => {
-      if (prev[name]) {
-        const newErrors = { ...prev }
-        delete newErrors[name]
-        return newErrors
-      }
-      return prev
-    })
-  }, [])
+    const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target
+        setForm(prev => ({ ...prev, [name]: value }))
+        setErrors(prev => {
+            if (prev[name]) {
+                const newErrors = { ...prev }
+                delete newErrors[name]
+                return newErrors
+            }
+            return prev
+        })
+    }, [])
 
-  const validate = (): boolean => {
-    const nextErrors: Record<string, string> = {}
-    if (!form.name.trim()) nextErrors.name = 'Name is required'
-    if (!emailRegex.test(form.email)) nextErrors.email = 'Invalid email address'
-    if (!form.message || form.message.trim().length < 10) nextErrors.message = 'Message must be at least 10 characters'
+    const validate = (): boolean => {
+        const nextErrors: Record<string, string> = {}
+        if (!form.name.trim()) nextErrors.name = 'REQUIRED'
+        if (!emailRegex.test(form.email)) nextErrors.email = 'INVALID FORMAT'
+        if (!form.message || form.message.trim().length < 10) nextErrors.message = 'MIN 10 CHARS'
 
-    // Service-specific checks
-    switch (form.service) {
-      case 'FinTech':
-        if (!form.budget) nextErrors.budget = 'Please specify budget'
-        break
-      case 'Consultancy':
-        if (!form.industry) nextErrors.industry = 'Please specify industry'
-        break
+        switch (form.service) {
+            case 'FinTech':
+                if (!form.budget) nextErrors.budget = 'SPECIFY BUDGET'
+                break
+            case 'Consultancy':
+                if (!form.industry) nextErrors.industry = 'SPECIFY INDUSTRY'
+                break
+        }
+        setErrors(nextErrors)
+        return Object.keys(nextErrors).length === 0
     }
-    setErrors(nextErrors)
-    return Object.keys(nextErrors).length === 0
-  }
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!validate()) return
-    setSubmitting(true)
-    
-    try {
-      // Simulate async submission
-      await new Promise(res => setTimeout(res, 1500))
-      setSuccess(true)
-      setForm(initialForm)
-      setTimeout(() => setSuccess(false), 5000)
-    } catch {
-      // Handle error
-    } finally {
-      setSubmitting(false)
+    const onSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!validate()) return
+        setSubmitting(true)
+
+        try {
+            await new Promise(res => setTimeout(res, 2000))
+            setSuccess(true)
+            setForm(initialForm)
+            setTimeout(() => setSuccess(false), 5000)
+        } catch {
+        } finally {
+            setSubmitting(false)
+        }
     }
-  }
 
-  const ConditionalFields = useMemo(() => {
-    switch (form.service) {
-      case 'FinTech':
-        return (
-          <div className="grid md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Estimated Budget</label>
-              <input 
-                name="budget" 
-                value={form.budget || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('budget')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  errors.budget && "input-error",
-                  activeField === 'budget' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., $30k - $50k" 
-              />
-              {errors.budget && <span className="text-error text-xs mt-1">{errors.budget}</span>}
-            </div>
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Compliance Needs</label>
-              <input 
-                name="complianceNeeds" 
-                value={form.complianceNeeds || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('complianceNeeds')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  activeField === 'complianceNeeds' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., PCI, AML (Optional)" 
-              />
-            </div>
-          </div>
-        )
-      case 'Consultancy':
-        return (
-          <div className="grid md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Industry Sector</label>
-              <input 
-                name="industry" 
-                value={form.industry || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('industry')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  errors.industry && "input-error",
-                  activeField === 'industry' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., Retail, Manufacturing" 
-              />
-              {errors.industry && <span className="text-error text-xs mt-1">{errors.industry}</span>}
-            </div>
-            <div className="form-control">
-              <label className="label text-sm font-medium text-base-content/70 mb-1">Project Scope</label>
-              <input 
-                name="scope" 
-                value={form.scope || ''} 
-                onChange={onChange}
-                onFocus={() => setActiveField('scope')}
-                onBlur={() => setActiveField(null)}
-                className={cn(
-                  "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                  activeField === 'scope' && "shadow-lg shadow-primary/10 border-primary"
-                )}
-                placeholder="e.g., Market Entry, Operations (Optional)" 
-              />
-            </div>
-          </div>
-        )
-      default:
-        return null
-    }
-  }, [form.service, form.budget, form.complianceNeeds, form.industry, form.scope, errors, activeField, onChange])
+    const ConditionalFields = useMemo(() => {
+        switch (form.service) {
+            case 'FinTech':
+                return (
+                    <div className="grid md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-top-4 duration-500">
+                        <div className="relative group">
+                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Budget Range</label>
+                            <input
+                                name="budget"
+                                value={form.budget || ''}
+                                onChange={onChange}
+                                onFocus={() => setActiveField('budget')}
+                                onBlur={() => setActiveField(null)}
+                                className={cn(
+                                    "w-full bg-[#0a0a0a] border-b-2 border-white/10 px-0 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
+                                    errors.budget ? "border-error" : "focus:border-primary"
+                                )}
+                                placeholder="0.00 USD"
+                            />
+                            <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'budget' ? "w-full" : "w-0")} />
+                        </div>
+                    </div>
+                )
+            case 'Consultancy':
+                return (
+                    <div className="grid md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-top-4 duration-500">
+                        <div className="relative group">
+                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Industry</label>
+                            <input
+                                name="industry"
+                                value={form.industry || ''}
+                                onChange={onChange}
+                                onFocus={() => setActiveField('industry')}
+                                onBlur={() => setActiveField(null)}
+                                className={cn(
+                                    "w-full bg-[#0a0a0a] border-b-2 border-white/10 px-0 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
+                                    errors.industry ? "border-error" : "focus:border-primary"
+                                )}
+                                placeholder="SYSTEM_SECTOR"
+                            />
+                            <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'industry' ? "w-full" : "w-0")} />
+                        </div>
+                    </div>
+                )
+            default:
+                return null
+        }
+    }, [form.service, form.budget, form.industry, errors, activeField, onChange])
 
-  return (
-    <section id="contact" className="py-24 md:py-32 relative overflow-hidden bg-base-100">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          
-          {/* Left Column: Context & Info */}
-          <div className="space-y-8">
-            <div>
-              <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4 tracking-wide uppercase">
-                Contact Us
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Ready to Start Your <br />
-                <span className="text-primary">Next Project?</span>
-              </h2>
-              <p className="text-lg text-base-content/70 leading-relaxed">
-                Whether you have a specific idea or just need some guidance, our team is here to help you navigate the future of technology and business.
-              </p>
+    return (
+        <section id="contact" className="py-32 md:py-52 relative overflow-hidden bg-[#050505] text-white">
+            {/* HUD Grid Background */}
+            <div className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.03]">
+                <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(var(--primary) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:100px_100px]" />
             </div>
 
-            <div className="space-y-6 pt-8">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-base-200 flex items-center justify-center text-primary shrink-0">
-                  <CheckCircle2 className="w-6 h-6" />
+            <div className="container mx-auto px-6 md:px-12 relative z-10">
+                <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
+
+                    {/* Left Side: System Information */}
+                    <div className="lg:col-span-5 flex flex-col justify-center space-y-12">
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-3">
+                                <div className="h-[2px] w-12 bg-primary shadow-[0_0_10px_rgba(var(--primary-rgb),0.8)]" />
+                                <span className="text-xs font-black tracking-[0.4em] text-primary uppercase">Initialize Connection</span>
+                            </div>
+                            <h2 className="text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter text-white uppercase italic">
+                                Secure your <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Position</span>
+                            </h2>
+                            <p className="text-lg text-white/40 leading-relaxed font-mono">
+                                Establishing a secure uplink to our core consultation unit. System ready for input.
+                            </p>
+                        </div>
+
+                        {/* Tech Specs / Status Nodes */}
+                        <div className="grid grid-cols-1 gap-6 pt-4 font-mono">
+                            {[
+                                { icon: Terminal, label: "UPLINK_STATUS", val: "ACTIVE", color: "text-success" },
+                                { icon: Cpu, label: "CORE_STRENGTH", val: "N-TIER 2.0", color: "text-primary" },
+                                { icon: Zap, label: "LATENCY", val: "0.2ms", color: "text-secondary" },
+                                { icon: Globe, label: "NODE_LOCATION", val: "GMT+0", color: "text-accent" }
+                            ].map((spec, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="flex items-center justify-between p-4 bg-white/5 border-l-2 border-primary group hover:bg-white/10 transition-all cursor-default"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <spec.icon className="w-5 h-5 text-primary opacity-50" />
+                                        <span className="text-[10px] font-bold tracking-widest text-white/60">{spec.label}</span>
+                                    </div>
+                                    <span className={cn("text-xs font-black", spec.color)}>{spec.val}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Right Side: The Hub Form */}
+                    <div className="lg:col-span-7 relative">
+                        {/* Precision HUD Brackets */}
+                        <div className="absolute -top-4 -left-4 w-12 h-12 border-t-4 border-l-4 border-primary z-20" />
+                        <div className="absolute -top-4 -right-4 w-12 h-12 border-t-4 border-r-4 border-primary z-20" />
+                        <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-4 border-l-4 border-primary z-20" />
+                        <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-4 border-r-4 border-primary z-20" />
+
+                        <div className="bg-[#0a0a0a] border border-white/10 p-8 md:p-16 relative overflow-hidden h-full shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+                            {/* Scanning Line Animation */}
+                            <motion.div
+                                animate={{ top: ['0%', '100%', '0%'] }}
+                                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                                className="absolute left-0 w-full h-[1px] bg-primary/20 z-0 pointer-events-none"
+                            />
+
+                            <AnimatePresence mode="wait">
+                                {success ? (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="h-full flex flex-col items-center justify-center text-center space-y-8"
+                                    >
+                                        <div className="w-24 h-24 border-2 border-success rounded-full flex items-center justify-center animate-pulse">
+                                            <CheckCircle2 className="w-12 h-12 text-success" />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <h3 className="text-3xl font-black italic uppercase tracking-tighter">Transmission Successful</h3>
+                                            <p className="font-mono text-sm text-white/40 uppercase">Awaiting administrative validation...</p>
+                                        </div>
+                                        <button
+                                            onClick={() => setSuccess(false)}
+                                            className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-primary hover:text-white transition-colors"
+                                        >
+                                            [ Reset_Terminal ]
+                                        </button>
+                                    </motion.div>
+                                ) : (
+                                    <form onSubmit={onSubmit} className="space-y-10 relative z-10">
+                                        <div className="grid md:grid-cols-2 gap-10">
+                                            <div className="relative group">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Operator Name</label>
+                                                <input
+                                                    name="name"
+                                                    value={form.name}
+                                                    onChange={onChange}
+                                                    onFocus={() => setActiveField('name')}
+                                                    onBlur={() => setActiveField(null)}
+                                                    className={cn(
+                                                        "w-full bg-transparent border-b-2 border-white/10 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
+                                                        errors.name ? "border-error" : "focus:border-primary"
+                                                    )}
+                                                    placeholder="IDENTITY_KEY"
+                                                />
+                                                <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'name' ? "w-full" : "w-0")} />
+                                                {errors.name && <span className="absolute -bottom-5 left-0 text-[9px] font-black text-error font-mono">{errors.name}</span>}
+                                            </div>
+                                            <div className="relative group">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Communication Channel</label>
+                                                <input
+                                                    name="email"
+                                                    type="email"
+                                                    value={form.email}
+                                                    onChange={onChange}
+                                                    onFocus={() => setActiveField('email')}
+                                                    onBlur={() => setActiveField(null)}
+                                                    className={cn(
+                                                        "w-full bg-transparent border-b-2 border-white/10 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
+                                                        errors.email ? "border-error" : "focus:border-primary"
+                                                    )}
+                                                    placeholder="NAME@PROTOCOL.COM"
+                                                />
+                                                <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'email' ? "w-full" : "w-0")} />
+                                                {errors.email && <span className="absolute -bottom-5 left-0 text-[9px] font-black text-error font-mono">{errors.email}</span>}
+                                            </div>
+                                        </div>
+
+                                        <div className="relative group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Service Protocol</label>
+                                            <div className="relative">
+                                                <select
+                                                    name="service"
+                                                    value={form.service}
+                                                    onChange={onChange}
+                                                    onFocus={() => setActiveField('service')}
+                                                    onBlur={() => setActiveField(null)}
+                                                    className="w-full bg-[#0a0a0a] border-b-2 border-white/10 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm appearance-none cursor-pointer focus:border-primary"
+                                                >
+                                                    <option value="Software & Technology">TECH_DEV [S-01]</option>
+                                                    <option value="Consultancy">CONSULT_MOD [S-02]</option>
+                                                    <option value="Talent & Staffing">STAFF_SYNC [S-03]</option>
+                                                    <option value="Design & Creative">VIS_DESIGN [S-04]</option>
+                                                    <option value="Ventures">V_VENTURES [S-05]</option>
+                                                    <option value="FinTech">FIN_ENGINE [S-06]</option>
+                                                </select>
+                                                <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-primary pointer-events-none" />
+                                            </div>
+                                        </div>
+
+                                        {ConditionalFields}
+
+                                        <div className="relative group">
+                                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Transmission Details</label>
+                                            <textarea
+                                                name="message"
+                                                value={form.message}
+                                                onChange={onChange}
+                                                onFocus={() => setActiveField('message')}
+                                                onBlur={() => setActiveField(null)}
+                                                className={cn(
+                                                    "w-full bg-[#111] border border-white/10 p-4 h-32 text-white focus:outline-none transition-all duration-500 font-mono text-sm resize-none",
+                                                    errors.message ? "border-error" : "focus:border-primary/50"
+                                                )}
+                                                placeholder="ENTER_DATA_HERE..."
+                                            />
+                                            {errors.message && <span className="absolute -bottom-5 left-0 text-[9px] font-black text-error font-mono">{errors.message}</span>}
+                                        </div>
+
+                                        <button
+                                            type="submit"
+                                            disabled={submitting}
+                                            className="relative w-full h-16 bg-primary text-black font-black uppercase italic tracking-widest text-lg overflow-hidden group/btn disabled:opacity-50 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                        >
+                                            <div className="absolute inset-0 bg-white opacity-0 group-hover/btn:opacity-20 transition-opacity" />
+                                            <span className="relative z-10 flex items-center justify-center gap-4">
+                                                {submitting ? (
+                                                    <>
+                                                        <Loader2 className="w-6 h-6 animate-spin" />
+                                                        Processing_
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        Initiate_Transmission
+                                                        <Send className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
+                                                    </>
+                                                )}
+                                            </span>
+                                            {/* Corner Accents on Button */}
+                                            <div className="absolute top-0 left-0 w-2 h-2 bg-white" />
+                                            <div className="absolute bottom-0 right-0 w-2 h-2 bg-white" />
+                                        </button>
+                                    </form>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Expert Consultation</h3>
-                  <p className="text-base-content/60">Get insights from industry veterans tailored to your specific needs.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-base-200 flex items-center justify-center text-primary shrink-0">
-                  <CheckCircle2 className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Tailored Solutions</h3>
-                  <p className="text-base-content/60">We don't do one-size-fits-all. Every strategy is custom built for you.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-base-200 flex items-center justify-center text-primary shrink-0">
-                  <CheckCircle2 className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Long-term Partnership</h3>
-                  <p className="text-base-content/60">We are committed to your sustained growth and success.</p>
-                </div>
-              </div>
             </div>
-          </div>
-
-          {/* Right Column: Interactive Form */}
-          <div className="bg-base-100 rounded-3xl shadow-2xl shadow-base-content/5 border border-base-200 p-8 md:p-10 relative overflow-hidden group">
-            {/* Form Glow Effect */}
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors duration-500" />
-            
-            {success ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-20 animate-in fade-in zoom-in duration-500">
-                <div className="w-20 h-20 bg-success/10 text-success rounded-full flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-10 h-10" />
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                <p className="text-base-content/70 max-w-xs">
-                  Thank you for reaching out. We'll be in touch with you shortly to discuss your project.
-                </p>
-                <button 
-                  onClick={() => setSuccess(false)}
-                  className="mt-8 btn btn-ghost btn-sm"
-                >
-                  Send another message
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={onSubmit} className="space-y-6 relative z-10">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="form-control">
-                    <label className="label text-sm font-medium text-base-content/70 mb-1">Full Name</label>
-                    <input 
-                      name="name" 
-                      value={form.name} 
-                      onChange={onChange}
-                      onFocus={() => setActiveField('name')}
-                      onBlur={() => setActiveField(null)}
-                      className={cn(
-                        "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                        errors.name && "input-error",
-                        activeField === 'name' && "shadow-lg shadow-primary/10 border-primary"
-                      )}
-                      placeholder="John Doe" 
-                    />
-                    {errors.name && <span className="text-error text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.name}</span>}
-                  </div>
-                  <div className="form-control">
-                    <label className="label text-sm font-medium text-base-content/70 mb-1">Email Address</label>
-                    <input 
-                      name="email" 
-                      type="email"
-                      value={form.email} 
-                      onChange={onChange}
-                      onFocus={() => setActiveField('email')}
-                      onBlur={() => setActiveField(null)}
-                      className={cn(
-                        "input input-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                        errors.email && "input-error",
-                        activeField === 'email' && "shadow-lg shadow-primary/10 border-primary"
-                      )}
-                      placeholder="john@company.com" 
-                    />
-                    {errors.email && <span className="text-error text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.email}</span>}
-                  </div>
-                </div>
-
-                <div className="form-control">
-                  <label className="label text-sm font-medium text-base-content/70 mb-1">Service Interest</label>
-                  <div className="relative">
-                    <select 
-                      name="service" 
-                      value={form.service} 
-                      onChange={onChange}
-                      onFocus={() => setActiveField('service')}
-                      onBlur={() => setActiveField(null)}
-                      className={cn(
-                        "select select-bordered w-full bg-base-200/50 focus:bg-base-100 transition-all duration-300 appearance-none",
-                        activeField === 'service' && "shadow-lg shadow-primary/10 border-primary"
-                      )}
-                    >
-                      <option value="Software & Technology">Software & Technology</option>
-                      <option value="Consultancy">Consultancy</option>
-                      <option value="Talent & Staffing">Talent & Staffing</option>
-                      <option value="Design & Creative">Design & Creative</option>
-                      <option value="Ventures">Ventures</option>
-                      <option value="FinTech">FinTech</option>
-                    </select>
-                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-base-content/50 pointer-events-none" />
-                  </div>
-                </div>
-
-                {ConditionalFields}
-
-                <div className="form-control">
-                  <label className="label text-sm font-medium text-base-content/70 mb-1">Message</label>
-                  <textarea 
-                    name="message" 
-                    value={form.message} 
-                    onChange={onChange}
-                    onFocus={() => setActiveField('message')}
-                    onBlur={() => setActiveField(null)}
-                    className={cn(
-                      "textarea textarea-bordered w-full h-32 bg-base-200/50 focus:bg-base-100 transition-all duration-300",
-                      errors.message && "textarea-error",
-                      activeField === 'message' && "shadow-lg shadow-primary/10 border-primary"
-                    )}
-                    placeholder="Tell us about your project..." 
-                  />
-                  {errors.message && <span className="text-error text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.message}</span>}
-                </div>
-
-                <button 
-                  type="submit" 
-                  disabled={submitting}
-                  className="btn btn-primary w-full shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 group"
-                >
-                  {submitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default ContactForm

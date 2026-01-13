@@ -6,6 +6,7 @@ import { Footer } from './components/layout/footer'
 import { MainContent } from './components/layout/main-content'
 import { SmoothScroll } from './components/layout/smooth-scroll'
 import { initializeStore } from './stores/app-store'
+import { Preloader } from './components/ui/preloader'
 
 // Import page components
 import SoftwarePage from './pages/software'
@@ -15,7 +16,6 @@ import DesignPage from './pages/design'
 import VenturesPage from './pages/ventures'
 import FintechPage from './pages/fintech'
 import AboutUsPage from './pages/about-us'
-import ContactUsPage from './pages/contact-us'
 import BlogPage from './pages/blog'
 
 // ScrollToTop component to handle navigation
@@ -45,7 +45,8 @@ const App = () => {
     <HashRouter>
       <SmoothScroll>
         <ScrollToTop />
-        <div className="min-h-screen bg-base-100 text-base-content">
+        <div className="min-h-screen bg-base-100 text-base-content dark">
+          <Preloader />
           {/* Header */}
           <Header />
 
@@ -59,7 +60,6 @@ const App = () => {
             <Route path="/ventures" element={<VenturesPage />} />
             <Route path="/fintech" element={<FintechPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/contact-us" element={<ContactUsPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

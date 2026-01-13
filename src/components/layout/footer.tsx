@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LogoIcon } from '../ui/logo-icon'
+import { LogoIcon } from '@/components/ui/logo-icon'
 import { Twitter, Linkedin, Github, Mail, MapPin, Phone } from 'lucide-react'
 
 export const Footer: React.FC = () => {
@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-base-200 text-base-content border-t border-base-300">
       <div className="container mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16">
-          
+
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group">

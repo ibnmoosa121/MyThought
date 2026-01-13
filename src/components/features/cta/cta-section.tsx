@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, Sparkles, Layers } from 'lucide-react'
+import { ScrollVelocity } from '../../ui/scroll-velocity'
 
 // Register plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -10,24 +11,15 @@ const CtaSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
-  const bgRef = useRef<HTMLDivElement>(null)
+
+  // Create an array for neural dots animation
+  const dots = Array.from({ length: 20 })
 
   useLayoutEffect(() => {
     const el = containerRef.current
     if (!el) return
 
     const ctx = gsap.context(() => {
-      // Parallax background effect
-      gsap.to(bgRef.current, {
-        y: '30%',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
-        }
-      })
 
       // Content reveal animation
       const tl = gsap.timeline({
@@ -60,52 +52,93 @@ const CtaSection: React.FC = () => {
   }, [])
 
   return (
-    <section ref={containerRef} className="relative py-32 md:py-48 overflow-hidden bg-black text-white flex items-center justify-center">
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div ref={bgRef} className="absolute inset-0 -top-[30%] h-[160%] w-full bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-30 blur-sm mix-blend-screen" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-        
-        {/* Animated Glow Orbs */}
-        <div className="cta-glow absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
-        <div className="cta-glow absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] delay-1000" />
+    <section ref={containerRef} className="relative py-40 md:py-60 overflow-hidden bg-black text-white flex items-center justify-center">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        {/* Futuristic AI-Themed Grid Overlay */}
+        <div className="absolute inset-0 design-grid opacity-[0.08] z-10" />
+
+        {/* Global Gradient Mesh Depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.15),transparent_70%)]" />
+
+        {/* Standardized Immersive Branding Glows */}
+        <div className="theme-glow absolute top-[-10%] left-[-10%] w-[80vw] h-[80vw] bg-primary/10" />
+        <div className="theme-glow absolute bottom-[-10%] right-[-10%] w-[70vw] h-[70vw] bg-secondary/15 delay-700" />
+
+        {/* Neural Network / Data Nodes Animation */}
+        <div className="absolute inset-0 z-10">
+          {dots.map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${4 + Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Vertical Scanning Laser Line */}
+        <div
+          className="absolute inset-0 z-20 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, transparent, rgba(var(--primary-rgb),0.08), transparent)',
+            height: '100px',
+            width: '100%',
+            top: '-10%',
+            animation: 'scan 10s linear infinite'
+          }}
+        />
+
+        {/* Dark Vignettes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-30" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        <div ref={contentRef} className="max-w-4xl mx-auto space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 animate-pulse">
+        <div ref={contentRef} className="max-w-6xl mx-auto space-y-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4 animate-pulse">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium tracking-wider uppercase text-primary">Innovate With Us</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight">
-            Let's Shape the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50">
-              Future Together
-            </span>
-          </h2>
+          <div className="space-y-0 py-16 -mx-[10vw] w-[120vw]">
+            <ScrollVelocity
+              text="Let's Shape the Future Together •"
+              velocity={-0.4}
+              className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+            />
+            <ScrollVelocity
+              text="Innovation • AI Systems • Scalability •"
+              velocity={0.4}
+              className="text-primary/50"
+            />
+          </div>
 
           <p className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed">
             Transform your vision into reality with our cutting-edge technology and strategic expertise. The future isn't just coming—it's being built right now.
           </p>
 
-          <div ref={buttonsRef} className="pt-8 flex flex-col md:flex-row gap-6 justify-center items-center">
+          <div ref={buttonsRef} className="pt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
             <a
-              href="#contact"
-              className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-bold text-lg hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-primary/50"
+              href="#/contact-us"
+              className="group relative inline-flex items-center gap-4 px-12 py-6 rounded-full bg-white text-black font-black text-xl hover:bg-white hover:scale-110 transition-all duration-500 shadow-[0_0_50px_rgba(255,255,255,0.2)] hover:shadow-[0_0_80px_rgba(255,255,255,0.4)]"
             >
-              <span className="relative z-10">Get a Quote</span>
-              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg -z-0" />
+              <span className="relative z-10">Start Your Journey</span>
+              <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-2 transition-transform duration-500" />
+
+              {/* Outer Glow Effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-white to-secondary opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-2xl -z-10 scale-125" />
             </a>
-            
+
             <a
-              href="#portfolio"
-              className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-white font-bold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              href="#/portfolio"
+              className="group relative inline-flex items-center gap-4 px-12 py-6 rounded-full border border-white/30 bg-white/5 backdrop-blur-md text-white font-bold text-xl hover:bg-white hover:text-black transition-all duration-500 hover:scale-105"
             >
-              <Layers className="w-5 h-5" />
-              <span>View Our Work</span>
+              <Layers className="w-6 h-6 group-hover:rotate-12 transition-transform duration-500" />
+              <span>Explore Portfolio</span>
             </a>
           </div>
         </div>
