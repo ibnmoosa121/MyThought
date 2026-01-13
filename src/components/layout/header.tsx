@@ -172,6 +172,7 @@ export const Header = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
+
               <NavigationMenuItem>
                 <NavigationMenuLink
                   className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors"
@@ -189,20 +190,20 @@ export const Header = () => {
                   Blog
                 </NavigationMenuLink>
               </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
+            </NavigationMenuList >
+          </NavigationMenu >
+        </div >
 
         {/* Right: Actions */}
-        <div className="flex-1 flex items-center justify-end">
+        < div className="flex-1 flex items-center justify-end" >
           <NavbarButton href="#/contact-us" variant="primary" className="rounded-full bg-primary text-primary-content hover:bg-primary/90">
             Get Started
           </NavbarButton>
-        </div>
-      </NavBody>
+        </div >
+      </NavBody >
 
       {/* Mobile View */}
-      <MobileNav className="bg-base-100/95 backdrop-blur-md border border-base-content/10">
+      < MobileNav className="bg-base-100/95 backdrop-blur-md border border-base-content/10" >
         <MobileNavHeader className="px-4 py-2">
           <AppBrand />
           <MobileNavToggle isOpen={mobileMenuOpen} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} />
