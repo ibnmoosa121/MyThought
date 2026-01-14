@@ -153,7 +153,7 @@ export const Header = () => {
   return (
     <Navbar className="top-4">
       {/* Desktop View */}
-      <NavBody className="bg-base-100/80 backdrop-blur-md border border-base-content/10 flex items-center">
+      <NavBody className="bg-base-100/80 backdrop-blur-md border border-base-content/10 items-center">
         {/* Left: Brand */}
         <div className="flex-1 flex items-center justify-start">
           <AppBrand />
