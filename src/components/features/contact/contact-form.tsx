@@ -1,5 +1,5 @@
-import React, { useMemo, useState, useCallback } from 'react'
-import { Send, CheckCircle2, ChevronDown, Loader2, Terminal, Cpu, Zap, Globe } from 'lucide-react'
+import React, { useState, useCallback } from 'react'
+import { Send, CheckCircle2, ChevronDown, Loader2, Mail, Phone, MapPin, Instagram, Twitter, Linkedin } from 'lucide-react'
 import { cn } from '../../../lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -11,10 +11,6 @@ interface FormData {
     phone?: string
     service: ServiceOption
     message: string
-    budget?: string
-    complianceNeeds?: string
-    industry?: string
-    scope?: string
 }
 
 const initialForm: FormData = {
@@ -49,18 +45,10 @@ const ContactForm: React.FC = () => {
 
     const validate = (): boolean => {
         const nextErrors: Record<string, string> = {}
-        if (!form.name.trim()) nextErrors.name = 'REQUIRED'
-        if (!emailRegex.test(form.email)) nextErrors.email = 'INVALID FORMAT'
-        if (!form.message || form.message.trim().length < 10) nextErrors.message = 'MIN 10 CHARS'
+        if (!form.name.trim()) nextErrors.name = 'Please provide your name'
+        if (!emailRegex.test(form.email)) nextErrors.email = 'Please provide a valid email'
+        if (!form.message || form.message.trim().length < 10) nextErrors.message = 'Tell us a bit more (min 10 chars)'
 
-        switch (form.service) {
-            case 'FinTech':
-                if (!form.budget) nextErrors.budget = 'SPECIFY BUDGET'
-                break
-            case 'Consultancy':
-                if (!form.industry) nextErrors.industry = 'SPECIFY INDUSTRY'
-                break
-        }
         setErrors(nextErrors)
         return Object.keys(nextErrors).length === 0
     }
@@ -81,149 +69,111 @@ const ContactForm: React.FC = () => {
         }
     }
 
-    const ConditionalFields = useMemo(() => {
-        switch (form.service) {
-            case 'FinTech':
-                return (
-                    <div className="grid md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-top-4 duration-500">
-                        <div className="relative group">
-                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Budget Range</label>
-                            <input
-                                name="budget"
-                                value={form.budget || ''}
-                                onChange={onChange}
-                                onFocus={() => setActiveField('budget')}
-                                onBlur={() => setActiveField(null)}
-                                className={cn(
-                                    "w-full bg-[#0a0a0a] border-b-2 border-white/10 px-0 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
-                                    errors.budget ? "border-error" : "focus:border-primary"
-                                )}
-                                placeholder="0.00 USD"
-                            />
-                            <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'budget' ? "w-full" : "w-0")} />
-                        </div>
-                    </div>
-                )
-            case 'Consultancy':
-                return (
-                    <div className="grid md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-top-4 duration-500">
-                        <div className="relative group">
-                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Industry</label>
-                            <input
-                                name="industry"
-                                value={form.industry || ''}
-                                onChange={onChange}
-                                onFocus={() => setActiveField('industry')}
-                                onBlur={() => setActiveField(null)}
-                                className={cn(
-                                    "w-full bg-[#0a0a0a] border-b-2 border-white/10 px-0 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
-                                    errors.industry ? "border-error" : "focus:border-primary"
-                                )}
-                                placeholder="SYSTEM_SECTOR"
-                            />
-                            <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'industry' ? "w-full" : "w-0")} />
-                        </div>
-                    </div>
-                )
-            default:
-                return null
-        }
-    }, [form.service, form.budget, form.industry, errors, activeField, onChange])
-
     return (
-        <section id="contact" className="py-32 md:py-52 relative overflow-hidden bg-[#050505] text-white">
-            {/* HUD Grid Background */}
-            <div className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.03]">
-                <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(var(--primary) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:100px_100px]" />
+        <section id="contact" className="py-24 md:py-44 relative bg-black overflow-hidden font-sans">
+            {/* Fluid Background Elements */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-secondary/5 rounded-full blur-[100px]" />
+                {/* Floating particles/shapes */}
+                <motion.div
+                    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 10, repeat: Infinity }}
+                    className="absolute top-1/4 left-1/4 w-32 h-32 border border-primary/20 rounded-full opacity-20"
+                />
             </div>
 
-            <div className="container mx-auto px-6 md:px-12 relative z-10">
-                <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-20 items-center">
 
-                    {/* Left Side: System Information */}
-                    <div className="lg:col-span-5 flex flex-col justify-center space-y-12">
+                    {/* Left: Content & Connection */}
+                    <div className="space-y-12">
                         <div className="space-y-6">
-                            <div className="flex items-center gap-3">
-                                <div className="h-[2px] w-12 bg-primary shadow-[0_0_10px_rgba(var(--primary-rgb),0.8)]" />
-                                <span className="text-xs font-black tracking-[0.4em] text-primary uppercase">Initialize Connection</span>
-                            </div>
-                            <h2 className="text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter text-white uppercase italic">
-                                Secure your <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Position</span>
+                            <motion.span
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                className="text-primary font-bold tracking-[.3em] uppercase text-sm"
+                            >
+                                Let's Build Together
+                            </motion.span>
+                            <h2 className="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter">
+                                Bring your <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">Vision</span> to Life.
                             </h2>
-                            <p className="text-lg text-white/40 leading-relaxed font-mono">
-                                Establishing a secure uplink to our core consultation unit. System ready for input.
+                            <p className="text-xl text-white/50 max-w-lg leading-relaxed">
+                                We're not just a studio; we're your creative partners. Share your idea, and let's craft something exceptional.
                             </p>
                         </div>
 
-                        {/* Tech Specs / Status Nodes */}
-                        <div className="grid grid-cols-1 gap-6 pt-4 font-mono">
+                        {/* Contact Cards - Unique interaction */}
+                        <div className="grid gap-4">
                             {[
-                                { icon: Terminal, label: "UPLINK_STATUS", val: "ACTIVE", color: "text-success" },
-                                { icon: Cpu, label: "CORE_STRENGTH", val: "N-TIER 2.0", color: "text-primary" },
-                                { icon: Zap, label: "LATENCY", val: "0.2ms", color: "text-secondary" },
-                                { icon: Globe, label: "NODE_LOCATION", val: "GMT+0", color: "text-accent" }
-                            ].map((spec, i) => (
-                                <motion.div
+                                { icon: Mail, label: "Email Us", val: "hello@mythought.com", href: "mailto:hello@mythought.com" },
+                                { icon: Phone, label: "Call Us", val: "+1 (555) 000-1234", href: "tel:+15550001234" },
+                                { icon: MapPin, label: "Visit Us", val: "Jeddah, Saudi Arabia", href: "#" }
+                            ].map((item, i) => (
+                                <motion.a
                                     key={i}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="flex items-center justify-between p-4 bg-white/5 border-l-2 border-primary group hover:bg-white/10 transition-all cursor-default"
+                                    href={item.href}
+                                    whileHover={{ x: 10 }}
+                                    className="flex items-center gap-6 p-6 bg-white/[0.03] border border-white/10 rounded-3xl hover:bg-white/[0.06] hover:border-primary/50 transition-all duration-300 group"
                                 >
-                                    <div className="flex items-center gap-4">
-                                        <spec.icon className="w-5 h-5 text-primary opacity-50" />
-                                        <span className="text-[10px] font-bold tracking-widest text-white/60">{spec.label}</span>
+                                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                                        <item.icon size={24} />
                                     </div>
-                                    <span className={cn("text-xs font-black", spec.color)}>{spec.val}</span>
-                                </motion.div>
+                                    <div>
+                                        <p className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">{item.label}</p>
+                                        <p className="text-lg font-semibold text-white">{item.val}</p>
+                                    </div>
+                                </motion.a>
+                            ))}
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="flex gap-6 items-center pt-4">
+                            {[Linkedin, Twitter, Instagram].map((Icon, i) => (
+                                <a key={i} href="#" className="text-white/30 hover:text-primary transition-colors">
+                                    <Icon size={24} />
+                                </a>
                             ))}
                         </div>
                     </div>
 
-                    {/* Right Side: The Hub Form */}
-                    <div className="lg:col-span-7 relative">
-                        {/* Precision HUD Brackets */}
-                        <div className="absolute -top-4 -left-4 w-12 h-12 border-t-4 border-l-4 border-primary z-20" />
-                        <div className="absolute -top-4 -right-4 w-12 h-12 border-t-4 border-r-4 border-primary z-20" />
-                        <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-4 border-l-4 border-primary z-20" />
-                        <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-4 border-r-4 border-primary z-20" />
-
-                        <div className="bg-[#0a0a0a] border border-white/10 p-8 md:p-16 relative overflow-hidden h-full shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-                            {/* Scanning Line Animation */}
-                            <motion.div
-                                animate={{ top: ['0%', '100%', '0%'] }}
-                                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                                className="absolute left-0 w-full h-[1px] bg-primary/20 z-0 pointer-events-none"
-                            />
+                    {/* Right: The Interactive Form */}
+                    <div className="relative">
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="bg-zinc-900/50 border border-white/10 p-8 md:p-14 rounded-[3rem] shadow-2xl backdrop-blur-3xl relative overflow-hidden"
+                        >
+                            {/* Accent Glow */}
+                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-[60px]" />
 
                             <AnimatePresence mode="wait">
                                 {success ? (
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="h-full flex flex-col items-center justify-center text-center space-y-8"
+                                        className="py-16 text-center space-y-6"
                                     >
-                                        <div className="w-24 h-24 border-2 border-success rounded-full flex items-center justify-center animate-pulse">
+                                        <div className="w-24 h-24 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-6">
                                             <CheckCircle2 className="w-12 h-12 text-success" />
                                         </div>
-                                        <div className="space-y-2">
-                                            <h3 className="text-3xl font-black italic uppercase tracking-tighter">Transmission Successful</h3>
-                                            <p className="font-mono text-sm text-white/40 uppercase">Awaiting administrative validation...</p>
-                                        </div>
+                                        <h3 className="text-3xl font-bold text-white tracking-tight">Message Received!</h3>
+                                        <p className="text-white/50 max-w-sm mx-auto">
+                                            Our team will get back to you within 24 hours. Get ready for some magic.
+                                        </p>
                                         <button
                                             onClick={() => setSuccess(false)}
-                                            className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-primary hover:text-white transition-colors"
+                                            className="text-primary font-bold hover:underline"
                                         >
-                                            [ Reset_Terminal ]
+                                            Send another one
                                         </button>
                                     </motion.div>
                                 ) : (
-                                    <form onSubmit={onSubmit} className="space-y-10 relative z-10">
-                                        <div className="grid md:grid-cols-2 gap-10">
-                                            <div className="relative group">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Operator Name</label>
+                                    <form onSubmit={onSubmit} className="space-y-8 relative z-10">
+                                        <div className="space-y-6">
+                                            <div className="relative">
                                                 <input
                                                     name="name"
                                                     value={form.name}
@@ -231,16 +181,16 @@ const ContactForm: React.FC = () => {
                                                     onFocus={() => setActiveField('name')}
                                                     onBlur={() => setActiveField(null)}
                                                     className={cn(
-                                                        "w-full bg-transparent border-b-2 border-white/10 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
-                                                        errors.name ? "border-error" : "focus:border-primary"
+                                                        "w-full bg-transparent border-b border-white/20 py-4 text-xl text-white focus:outline-none transition-all duration-300 placeholder:text-white/10",
+                                                        errors.name && "border-error/50",
+                                                        activeField === 'name' && "border-primary"
                                                     )}
-                                                    placeholder="IDENTITY_KEY"
+                                                    placeholder="Your Name"
                                                 />
-                                                <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'name' ? "w-full" : "w-0")} />
-                                                {errors.name && <span className="absolute -bottom-5 left-0 text-[9px] font-black text-error font-mono">{errors.name}</span>}
+                                                {errors.name && <span className="absolute -bottom-6 left-0 text-xs font-semibold text-error/80 uppercase tracking-tighter">{errors.name}</span>}
                                             </div>
-                                            <div className="relative group">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Communication Channel</label>
+
+                                            <div className="relative">
                                                 <input
                                                     name="email"
                                                     type="email"
@@ -249,84 +199,74 @@ const ContactForm: React.FC = () => {
                                                     onFocus={() => setActiveField('email')}
                                                     onBlur={() => setActiveField(null)}
                                                     className={cn(
-                                                        "w-full bg-transparent border-b-2 border-white/10 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm",
-                                                        errors.email ? "border-error" : "focus:border-primary"
+                                                        "w-full bg-transparent border-b border-white/20 py-4 text-xl text-white focus:outline-none transition-all duration-300 placeholder:text-white/10",
+                                                        errors.email && "border-error/50",
+                                                        activeField === 'email' && "border-primary"
                                                     )}
-                                                    placeholder="NAME@PROTOCOL.COM"
+                                                    placeholder="Your Email"
                                                 />
-                                                <div className={cn("absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700", activeField === 'email' ? "w-full" : "w-0")} />
-                                                {errors.email && <span className="absolute -bottom-5 left-0 text-[9px] font-black text-error font-mono">{errors.email}</span>}
+                                                {errors.email && <span className="absolute -bottom-6 left-0 text-xs font-semibold text-error/80 uppercase tracking-tighter">{errors.email}</span>}
                                             </div>
-                                        </div>
 
-                                        <div className="relative group">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Service Protocol</label>
                                             <div className="relative">
-                                                <select
-                                                    name="service"
-                                                    value={form.service}
-                                                    onChange={onChange}
-                                                    onFocus={() => setActiveField('service')}
-                                                    onBlur={() => setActiveField(null)}
-                                                    className="w-full bg-[#0a0a0a] border-b-2 border-white/10 py-3 text-white focus:outline-none transition-all duration-500 font-mono text-sm appearance-none cursor-pointer focus:border-primary"
-                                                >
-                                                    <option value="Software & Technology">TECH_DEV [S-01]</option>
-                                                    <option value="Consultancy">CONSULT_MOD [S-02]</option>
-                                                    <option value="Talent & Staffing">STAFF_SYNC [S-03]</option>
-                                                    <option value="Design & Creative">VIS_DESIGN [S-04]</option>
-                                                    <option value="Ventures">V_VENTURES [S-05]</option>
-                                                    <option value="FinTech">FIN_ENGINE [S-06]</option>
-                                                </select>
-                                                <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-primary pointer-events-none" />
+                                                <div className="flex items-center gap-4 border-b border-white/20">
+                                                    <select
+                                                        name="service"
+                                                        value={form.service}
+                                                        onChange={onChange}
+                                                        className="w-full bg-transparent py-4 text-xl text-white/50 focus:outline-none transition-all appearance-none cursor-pointer hover:text-white"
+                                                    >
+                                                        <option value="Software & Technology">Software & Tech</option>
+                                                        <option value="Consultancy">Consultancy</option>
+                                                        <option value="Talent & Staffing">Talent & Staffing</option>
+                                                        <option value="Design & Creative">Design & Creative</option>
+                                                        <option value="Ventures">Ventures</option>
+                                                        <option value="FinTech">FinTech</option>
+                                                    </select>
+                                                    <ChevronDown className="text-white/30" size={20} />
+                                                </div>
+                                                <p className="text-[10px] font-bold text-primary uppercase tracking-[.2em] mt-2">I'm interested in</p>
                                             </div>
-                                        </div>
 
-                                        {ConditionalFields}
-
-                                        <div className="relative group">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Transmission Details</label>
-                                            <textarea
-                                                name="message"
-                                                value={form.message}
-                                                onChange={onChange}
-                                                onFocus={() => setActiveField('message')}
-                                                onBlur={() => setActiveField(null)}
-                                                className={cn(
-                                                    "w-full bg-[#111] border border-white/10 p-4 h-32 text-white focus:outline-none transition-all duration-500 font-mono text-sm resize-none",
-                                                    errors.message ? "border-error" : "focus:border-primary/50"
-                                                )}
-                                                placeholder="ENTER_DATA_HERE..."
-                                            />
-                                            {errors.message && <span className="absolute -bottom-5 left-0 text-[9px] font-black text-error font-mono">{errors.message}</span>}
+                                            <div className="relative">
+                                                <textarea
+                                                    name="message"
+                                                    value={form.message}
+                                                    onChange={onChange}
+                                                    onFocus={() => setActiveField('message')}
+                                                    onBlur={() => setActiveField(null)}
+                                                    className={cn(
+                                                        "w-full bg-white/[0.03] border border-white/10 p-6 rounded-3xl h-40 text-lg text-white focus:outline-none transition-all duration-300 placeholder:text-white/10 resize-none",
+                                                        errors.message && "border-error/50",
+                                                        activeField === 'message' && "border-primary/50 ring-4 ring-primary/5"
+                                                    )}
+                                                    placeholder="Tell us about your project or just say hi..."
+                                                />
+                                                {errors.message && <span className="absolute -bottom-6 left-0 text-xs font-semibold text-error/80 uppercase tracking-tighter">{errors.message}</span>}
+                                            </div>
                                         </div>
 
                                         <button
                                             type="submit"
                                             disabled={submitting}
-                                            className="relative w-full h-16 bg-primary text-black font-black uppercase italic tracking-widest text-lg overflow-hidden group/btn disabled:opacity-50 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                            className="group relative w-full h-20 bg-primary rounded-full overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
                                         >
-                                            <div className="absolute inset-0 bg-white opacity-0 group-hover/btn:opacity-20 transition-opacity" />
-                                            <span className="relative z-10 flex items-center justify-center gap-4">
+                                            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
+                                            <span className="relative z-10 font-black text-black text-xl uppercase italic tracking-widest flex items-center justify-center gap-4">
                                                 {submitting ? (
-                                                    <>
-                                                        <Loader2 className="w-6 h-6 animate-spin" />
-                                                        Processing_
-                                                    </>
+                                                    <Loader2 className="animate-spin" />
                                                 ) : (
                                                     <>
-                                                        Initiate_Transmission
-                                                        <Send className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
+                                                        Send Message
+                                                        <Send size={20} className="group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform" />
                                                     </>
                                                 )}
                                             </span>
-                                            {/* Corner Accents on Button */}
-                                            <div className="absolute top-0 left-0 w-2 h-2 bg-white" />
-                                            <div className="absolute bottom-0 right-0 w-2 h-2 bg-white" />
                                         </button>
                                     </form>
                                 )}
                             </AnimatePresence>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
