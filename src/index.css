@@ -11,9 +11,6 @@
     nord, sunset;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
   --primary: #4f46e5;
@@ -125,6 +122,10 @@ body {
 
   .animation-delay-4000 {
     animation-delay: 4s;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
   }
 
   .scrollbar-hide::-webkit-scrollbar {

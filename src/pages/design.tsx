@@ -1,7 +1,16 @@
-import { ServicePageTemplate } from '../components/features/services/service-page-template'
+import { DesignHero } from '../components/features/design/design-hero'
+import { useEffect } from 'react'
 
 const DesignPage = () => {
-  return <ServicePageTemplate serviceKey="design" />
+  useEffect(() => {
+    document.title = "Design & Creative | MyThought"
+  }, [])
+
+  return (
+    <main className="min-h-screen bg-black">
+      <DesignHero />
+    </main>
+  )
 }
 
 export default DesignPage

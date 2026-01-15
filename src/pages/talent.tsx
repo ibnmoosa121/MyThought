@@ -1,7 +1,16 @@
-import { ServicePageTemplate } from '../components/features/services/service-page-template'
+import { TalentHero } from '../components/features/talent/talent-hero'
+import { useEffect } from 'react'
 
 const TalentPage = () => {
-  return <ServicePageTemplate serviceKey="talent" />
+  useEffect(() => {
+    document.title = "Talent & Staffing | MyThought"
+  }, [])
+
+  return (
+    <main className="min-h-screen bg-black">
+      <TalentHero />
+    </main>
+  )
 }
 
 export default TalentPage

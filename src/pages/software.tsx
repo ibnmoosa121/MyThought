@@ -1,7 +1,17 @@
-import { ServicePageTemplate } from '../components/features/services/service-page-template'
+import { SoftwareHero } from '../components/features/software/software-hero'
+import { useEffect } from 'react'
 
 const SoftwarePage = () => {
-  return <ServicePageTemplate serviceKey="software" />
+  useEffect(() => {
+    document.title = "Software Development | MyThought"
+  }, [])
+
+  return (
+    <main className="min-h-screen bg-black">
+      <SoftwareHero />
+      {/* Additional sections can be added here later */}
+    </main>
+  )
 }
 
 export default SoftwarePage

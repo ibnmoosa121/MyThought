@@ -1,7 +1,16 @@
-import { ServicePageTemplate } from '../components/features/services/service-page-template'
+import { VenturesHero } from '../components/features/ventures/ventures-hero'
+import { useEffect } from 'react'
 
 const VenturesPage = () => {
-  return <ServicePageTemplate serviceKey="ventures" />
+  useEffect(() => {
+    document.title = "Ventures | MyThought"
+  }, [])
+
+  return (
+    <main className="min-h-screen bg-black">
+      <VenturesHero />
+    </main>
+  )
 }
 
 export default VenturesPage

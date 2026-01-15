@@ -1,7 +1,16 @@
-import { ServicePageTemplate } from '../components/features/services/service-page-template'
+import { ConsultancyHero } from '../components/features/consultancy/consultancy-hero'
+import { useEffect } from 'react'
 
 const ConsultancyPage = () => {
-  return <ServicePageTemplate serviceKey="consultancy" />
+  useEffect(() => {
+    document.title = "Consultancy | MyThought"
+  }, [])
+
+  return (
+    <main className="min-h-screen bg-black">
+      <ConsultancyHero />
+    </main>
+  )
 }
 
 export default ConsultancyPage
