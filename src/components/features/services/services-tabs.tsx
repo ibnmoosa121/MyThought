@@ -3,6 +3,7 @@ import { PinContainer } from "../../ui/3d-pin";
 import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet } from 'lucide-react'
 import { ScrollRevealText } from "../../ui/scroll-reveal-text";
+import { WavyBackground } from "../../ui/wavy-background";
 
 const services = [
   {
@@ -10,7 +11,13 @@ const services = [
     label: 'Software & Technology',
     description: 'We drive digital transformation with innovative software solutions, empowering organizations with cutting-edge technology and seamless integration. From concept to implementation, we develop efficient software that unlocks new opportunities and unleashes your business\'s full potential.',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
-    theme: { text: 'text-blue-500', bg: 'bg-blue-500' },
+    theme: {
+      text: 'text-blue-500',
+      bg: 'bg-blue-500',
+      gradient: 'from-[#4F46E5] via-[#0EA5E9] to-[#22D3EE]',
+      waveColor: 'rgba(59, 130, 246, 0.3)',
+      plasmaColor: '#3B82F6'
+    },
     href: '#/software',
     cards: [
       {
@@ -32,10 +39,16 @@ const services = [
   },
   {
     id: 'consultancy',
-    label: 'Consultancy',
+    label: 'Consultancy & Strategy',
     description: 'Our expert consultants provide strategic guidance to navigate complex business challenges. We analyze your current operations and provide actionable insights to optimize performance and drive sustainable growth.',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop',
-    theme: { text: 'text-emerald-500', bg: 'bg-emerald-500' },
+    theme: {
+      text: 'text-emerald-500',
+      bg: 'bg-emerald-500',
+      gradient: 'from-[#059669] via-[#10B981] to-[#34D399]',
+      waveColor: 'rgba(16, 185, 129, 0.3)',
+      plasmaColor: '#10B981'
+    },
     href: '#/consultancy',
     cards: [
       {
@@ -60,7 +73,13 @@ const services = [
     label: 'Talent & Staffing',
     description: 'We connect you with top-tier talent to build high-performing teams. Whether you need temporary staffing or permanent placements, we find the right people with the right skills to fit your culture.',
     image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop',
-    theme: { text: 'text-purple-500', bg: 'bg-purple-500' },
+    theme: {
+      text: 'text-purple-500',
+      bg: 'bg-purple-500',
+      gradient: 'from-[#7C3AED] via-[#A855F7] to-[#C084FC]',
+      waveColor: 'rgba(168, 85, 247, 0.3)',
+      plasmaColor: '#A855F7'
+    },
     href: '#/talent',
     cards: [
       {
@@ -85,7 +104,13 @@ const services = [
     label: 'Design & Creative',
     description: 'We craft compelling visual experiences that resonate with your audience. Our design team combines creativity with user-centric principles to build brands that stand out and products that people love.',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop',
-    theme: { text: 'text-pink-500', bg: 'bg-pink-500' },
+    theme: {
+      text: 'text-pink-500',
+      bg: 'bg-pink-500',
+      gradient: 'from-[#6366F1] via-[#D946EF] via-[#F43F5E] to-[#F59E0B]',
+      waveColor: 'rgba(217, 70, 239, 0.3)',
+      plasmaColor: '#EC4899'
+    },
     href: '#/design',
     cards: [
       {
@@ -107,10 +132,16 @@ const services = [
   },
   {
     id: 'ventures',
-    label: 'Ventures',
+    label: 'Ventures & Innovation',
     description: 'We partner with visionary founders to build the next generation of industry-leading companies. Our venture arm provides capital, mentorship, and operational support to turn bold ideas into reality.',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop',
-    theme: { text: 'text-amber-500', bg: 'bg-amber-500' },
+    theme: {
+      text: 'text-amber-500',
+      bg: 'bg-amber-500',
+      gradient: 'from-[#F59E0B] via-[#F97316] to-[#FACC15]',
+      waveColor: 'rgba(245, 158, 11, 0.3)',
+      plasmaColor: '#F59E0B'
+    },
     href: '#/ventures',
     cards: [
       {
@@ -132,10 +163,16 @@ const services = [
   },
   {
     id: 'fintech',
-    label: 'FinTech',
+    label: 'FinTech & Banking',
     description: 'We build secure and scalable financial technology solutions. From payment gateways to blockchain applications, we help you navigate the future of finance.',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop',
-    theme: { text: 'text-teal-500', bg: 'bg-teal-500' },
+    theme: {
+      text: 'text-teal-500',
+      bg: 'bg-teal-500',
+      gradient: 'from-[#0D9488] via-[#06B6D4] to-[#10B981]',
+      waveColor: 'rgba(13, 148, 136, 0.3)',
+      plasmaColor: '#14B8A6'
+    },
     href: '#/fintech',
     cards: [
       {
@@ -159,36 +196,38 @@ const services = [
 
 export default function ServicesTabs() {
   const [activeTab, setActiveTab] = useState(services[0].id)
+  const activeService = services.find(s => s.id === activeTab) || services[0];
 
   return (
-    <section className="py-24 bg-black text-white relative overflow-hidden">
+    <section className="py-24 bg-black text-white relative overflow-hidden min-h-[800px]">
+      {/* Wavy Background based on active service */}
+      <WavyBackground color={activeService.theme.plasmaColor} className="opacity-40" />
+
       {/* Background Gradients (Standardized) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 design-grid opacity-[0.05]" />
-
-        <div className="theme-glow absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10" />
-        <div className="theme-glow absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 animation-delay-2000" />
-        <div className="theme-glow absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-primary/10 animation-delay-4000" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="mb-12">
-          <h2 className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-3">Expertise</h2>
-          <ScrollRevealText
-            text="Explore our range of services"
-            className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2"
-          />
+          <h2 className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-3 text-center lg:text-left">Expertise</h2>
+          <div className="flex justify-center lg:justify-start">
+            <ScrollRevealText
+              text="Explore our range of services"
+              className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2"
+            />
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left Column: Tabs */}
-          <div className="lg:w-1/4 flex flex-col gap-4">
+          <div className="lg:w-1/4 flex flex-wrap lg:flex-col gap-4 justify-center lg:justify-start">
             {services.map((service) => (
               <button
                 key={service.id}
                 onClick={() => setActiveTab(service.id)}
                 className={`text-left text-lg md:text-xl font-bold transition-all duration-300 relative pl-6 py-2 group ${activeTab === service.id
-                  ? `${service.theme.text}`
+                  ? 'text-white'
                   : 'text-white/30 hover:text-white/60'
                   }`}
               >
@@ -198,7 +237,9 @@ export default function ServicesTabs() {
                     className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-full ${service.theme.bg} rounded-full shadow-[0_0_15px_rgba(var(--p),0.5)]`}
                   />
                 )}
-                <span className="relative z-10">{service.label}</span>
+                <span className={`relative z-10 inline-block ${activeTab === service.id ? `bg-gradient-to-r ${service.theme.gradient} bg-clip-text text-transparent` : ''}`}>
+                  {service.label}
+                </span>
               </button>
             ))}
           </div>
@@ -230,11 +271,11 @@ export default function ServicesTabs() {
                             alt={service.label}
                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-40 group-hover:opacity-70"
                           />
-                          <div className="absolute bottom-0 left-0 p-8 md:p-14 z-20 w-full transform group-hover:-translate-y-2 transition-transform duration-700">
-                            <h3 className="text-3xl md:text-6xl font-black text-white mb-6 tracking-tighter drop-shadow-2xl uppercase">
+                          <div className="absolute bottom-0 left-0 p-8 md:p-14 z-20 w-full transform group-hover:-translate-y-2 transition-transform duration-700 text-center lg:text-left">
+                            <h3 className={`text-3xl md:text-7xl font-black mb-6 tracking-tighter drop-shadow-2xl uppercase bg-gradient-to-r ${service.theme.gradient} bg-clip-text text-transparent`}>
                               {service.label}
                             </h3>
-                            <div className={`h-2 w-32 ${service.theme.bg} rounded-full shadow-[0_0_25px_rgba(var(--p),0.6)]`} />
+                            <div className={`h-2 w-32 ${service.theme.bg} rounded-full shadow-[0_0_25px_rgba(255,255,255,0.2)] mx-auto lg:mx-0`} />
                           </div>
                         </div>
                       </PinContainer>
@@ -280,3 +321,4 @@ export default function ServicesTabs() {
     </section>
   )
 }
+

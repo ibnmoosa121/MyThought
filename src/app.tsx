@@ -17,6 +17,7 @@ import VenturesPage from './pages/ventures'
 import FintechPage from './pages/fintech'
 import AboutUsPage from './pages/about-us'
 import BlogPage from './pages/blog'
+import ContactPage from './pages/contact'
 
 // ScrollToTop component to handle navigation
 const ScrollToTop = () => {
@@ -61,6 +62,7 @@ const App = () => {
             <Route path="/fintech" element={<FintechPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
 

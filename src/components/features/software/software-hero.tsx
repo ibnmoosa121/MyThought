@@ -1,5 +1,8 @@
 import { ThreeDMarquee } from "./3d-marquee";
 import { motion } from "framer-motion";
+import { WavyBackground } from "../../ui/wavy-background";
+import { services } from "../../../data/services";
+import { useNavigate } from "react-router-dom";
 
 const images = [
     "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=80&w=1976&auto=format&fit=crop",
@@ -17,15 +20,21 @@ const images = [
 ];
 
 export const SoftwareHero = () => {
+    const service = services.software;
+    const navigate = useNavigate();
+
     return (
         <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+            {/* Wavy Background */}
+            <WavyBackground color={service.theme.plasmaColor} className="opacity-50" />
+
             {/* Background 3D Marquee */}
-            <div className="absolute inset-0 z-0 opacity-60">
+            <div className="absolute inset-0 z-0 opacity-40">
                 <ThreeDMarquee images={images} className="h-full w-full" />
             </div>
 
             {/* Radial Gradient Overlay for depth */}
-            <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,black_80%)]" />
+            <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,black_90%)]" />
 
             {/* Content */}
             <div className="relative z-20 container mx-auto px-4 text-center max-w-5xl">
@@ -35,18 +44,11 @@ export const SoftwareHero = () => {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="flex flex-col items-center"
                 >
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight">
-                        This is your life <br />
-                        and it's ending one <br />
-                        <motion.span
-                            className="relative inline-block px-6 py-2 mx-2"
-                            whileHover={{ scale: 1.05 }}
-                        >
-                            {/* Blue Box Highlight */}
-                            <div className="absolute inset-0 bg-blue-600 rounded-lg -rotate-1 shadow-[0_0_30px_rgba(37,99,235,0.6)]" />
-                            <span className="relative z-10">moment</span>
-                        </motion.span>
-                        at a time.
+                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white leading-tight tracking-tight uppercase">
+                        Software & <br />
+                        <span className={`bg-gradient-to-r ${service.theme.gradient} bg-clip-text text-transparent`}>
+                            Technology
+                        </span>
                     </h1>
 
                     <motion.p
@@ -55,8 +57,7 @@ export const SoftwareHero = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5, duration: 1 }}
                     >
-                        You are not your job, you're not how much money you have in the bank.
-                        You are not the car you drive. You're not the contents of your wallet.
+                        From idea to implementation, we develop cutting-edge software solutions that unlock new opportunities and maximize your business's full potential.
                     </motion.p>
 
                     <motion.div
@@ -65,11 +66,17 @@ export const SoftwareHero = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.8, duration: 0.5 }}
                     >
-                        <button className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-1">
-                            Join the club
+                        <button
+                            onClick={() => navigate('/contact')}
+                            className={`px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-1`}
+                        >
+                            {service.cta}
                         </button>
-                        <button className="px-10 py-4 bg-neutral-900/80 hover:bg-neutral-800 text-white font-bold rounded-xl border border-neutral-800 transition-all hover:-translate-y-1">
-                            Read more
+                        <button
+                            onClick={() => navigate('/contact')}
+                            className="px-10 py-4 bg-neutral-900/80 hover:bg-neutral-800 text-white font-bold rounded-xl border border-neutral-800 transition-all hover:-translate-y-1"
+                        >
+                            Get Started
                         </button>
                     </motion.div>
                 </motion.div>
@@ -80,3 +87,5 @@ export const SoftwareHero = () => {
         </div>
     );
 };
+
+

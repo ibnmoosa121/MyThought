@@ -96,7 +96,7 @@ const ServicesContent = () => {
           <h3 className="text-lg font-bold text-primary mb-2 flex items-center gap-2">
             Our Expertise <ArrowRight size={16} />
           </h3>
-          <p className="text-sm text-base-content/70 mb-4">
+          <p className="text-sm text-white/70 mb-4">
             Comprehensive solutions tailored to drive your business forward in the digital age.
           </p>
         </div>
@@ -129,10 +129,10 @@ const ServicesContent = () => {
                     <Icon size={20} />
                   </div>
                   <div className="flex flex-col justify-center">
-                    <div className={`text-sm font-semibold text-base-content ${service.theme.hoverText} transition-colors flex items-center gap-1`}>
+                    <div className={`text-sm font-semibold text-white ${service.theme.hoverText} transition-colors flex items-center gap-1`}>
                       {service.title}
                     </div>
-                    <p className="line-clamp-1 text-xs leading-snug text-muted-foreground mt-1 group-hover:text-base-content/80">
+                    <p className="line-clamp-1 text-xs leading-snug text-white/60 mt-1 group-hover:text-white/80">
                       {service.subtitle}
                     </p>
                   </div>
@@ -164,7 +164,7 @@ export const Header = () => {
           <NavigationMenu>
             <NavigationMenuList className="flex gap-2">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-base-content/10 font-bold">
+                <NavigationMenuTrigger className="bg-transparent hover:bg-base-content/10 font-bold text-white">
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -175,7 +175,7 @@ export const Header = () => {
 
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors"
+                  className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
                   href="#/about-us"
                 >
                   About Us
@@ -184,7 +184,7 @@ export const Header = () => {
 
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors"
+                  className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
                   href="#/blog"
                 >
                   Blog
@@ -214,7 +214,7 @@ export const Header = () => {
             {/* Mobile Services Dropdown */}
             <div className="collapse collapse-arrow bg-base-200/50 rounded-xl">
               <input type="checkbox" />
-              <div className="collapse-title text-sm font-bold flex items-center">
+              <div className="collapse-title text-sm font-bold flex items-center text-white">
                 Services
               </div>
               <div className="collapse-content px-0">
@@ -225,10 +225,12 @@ export const Header = () => {
                       <a
                         key={service.key}
                         href={serviceLinks[service.key as keyof typeof serviceLinks] || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center gap-3 px-6 py-3 text-sm hover:bg-base-200 hover:text-primary transition-colors border-l-4 border-transparent hover:border-primary"
                       >
-                        <Icon size={16} className="text-muted-foreground" />
-                        <span>{service.title}</span>
+                        <Icon size={16} className="text-white/60" />
+                        <span className="text-white">{service.title}</span>
                       </a>
                     )
                   })}
@@ -236,13 +238,13 @@ export const Header = () => {
               </div>
             </div>
 
-            <a href="#/about-us" className="px-4 py-3 text-sm font-bold hover:bg-base-200 rounded-xl transition-colors">
+            <a href="#/about-us" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
               About Us
             </a>
-            <a href="#/blog" className="px-4 py-3 text-sm font-bold hover:bg-base-200 rounded-xl transition-colors">
+            <a href="#/blog" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
               Blog
             </a>
-            <a href="#/contact-us" className="px-4 py-3 text-sm font-bold hover:bg-base-200 rounded-xl transition-colors">
+            <a href="#/contact-us" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
               Contact
             </a>
 

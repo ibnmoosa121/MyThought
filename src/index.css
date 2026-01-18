@@ -136,4 +136,112 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  @keyframes liquid-1 {
+    0% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+      transform: translate(10%, 15%) rotate(10deg) scale(1.1);
+    }
+
+    100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes liquid-2 {
+    0% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+      transform: translate(-15%, -10%) rotate(-15deg) scale(1.2);
+    }
+
+    100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes liquid-3 {
+    0% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+      transform: translate(12%, -12%) rotate(20deg) scale(0.9);
+    }
+
+    100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes liquid-4 {
+    0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    50% {
+      transform: translate(-10%, 12%) scale(1.1) rotate(-8deg);
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+  }
+
+  .animate-liquid-1 {
+    animation: liquid-1 20s infinite ease-in-out;
+  }
+
+  .animate-liquid-2 {
+    animation: liquid-2 25s infinite ease-in-out;
+  }
+
+  .animate-liquid-3 {
+    animation: liquid-3 18s infinite ease-in-out;
+  }
+
+  .animate-liquid-4 {
+    animation: liquid-4 22s infinite ease-in-out;
+  }
+
+  @keyframes aurora-glow {
+    0% {
+      transform: translateX(20%) translateY(0) scale(1.0);
+    }
+
+    50% {
+      transform: translateX(-10%) translateY(5%) scale(1.1);
+    }
+
+    100% {
+      transform: translateX(20%) translateY(0) scale(1.0);
+    }
+  }
+
+  @keyframes aurora-drift {
+    0% {
+      transform: translateX(-20%) scale(1.0);
+    }
+
+    50% {
+      transform: translateX(10%) scale(1.2);
+    }
+
+    100% {
+      transform: translateX(-20%) scale(1.0);
+    }
+  }
+
+  .animate-aurora-glow {
+    animation: aurora-glow 25s infinite ease-in-out;
+  }
+
+  .animate-aurora-drift {
+    animation: aurora-drift 30s infinite ease-in-out;
+  }
 }

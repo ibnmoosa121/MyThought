@@ -12,6 +12,9 @@ export interface ServiceContent {
     bg: string
     hoverBg: string
     hoverText: string
+    gradient: string
+    waveColor: string
+    plasmaColor: string
   }
 }
 
@@ -34,6 +37,9 @@ export const services: Record<ServiceKey, ServiceContent> = {
       bg: 'bg-blue-500',
       hoverBg: 'group-hover:bg-blue-500',
       hoverText: 'group-hover:text-blue-500',
+      gradient: 'from-[#4F46E5] via-[#0EA5E9] to-[#22D3EE]',
+      waveColor: 'rgba(59, 130, 246, 0.3)',
+      plasmaColor: '#3B82F6',
     }
   },
   consultancy: {
@@ -54,6 +60,9 @@ export const services: Record<ServiceKey, ServiceContent> = {
       bg: 'bg-emerald-500',
       hoverBg: 'group-hover:bg-emerald-500',
       hoverText: 'group-hover:text-emerald-500',
+      gradient: 'from-[#059669] via-[#10B981] to-[#34D399]',
+      waveColor: 'rgba(16, 185, 129, 0.3)',
+      plasmaColor: '#10B981',
     }
   },
   talent: {
@@ -74,6 +83,9 @@ export const services: Record<ServiceKey, ServiceContent> = {
       bg: 'bg-purple-500',
       hoverBg: 'group-hover:bg-purple-500',
       hoverText: 'group-hover:text-purple-500',
+      gradient: 'from-[#7C3AED] via-[#A855F7] to-[#C084FC]',
+      waveColor: 'rgba(168, 85, 247, 0.3)',
+      plasmaColor: '#A855F7',
     }
   },
   design: {
@@ -94,6 +106,9 @@ export const services: Record<ServiceKey, ServiceContent> = {
       bg: 'bg-pink-500',
       hoverBg: 'group-hover:bg-pink-500',
       hoverText: 'group-hover:text-pink-500',
+      gradient: 'from-[#6366F1] via-[#D946EF] via-[#F43F5E] to-[#F59E0B]',
+      waveColor: 'rgba(217, 70, 239, 0.3)',
+      plasmaColor: '#EC4899',
     }
   },
   ventures: {
@@ -114,6 +129,9 @@ export const services: Record<ServiceKey, ServiceContent> = {
       bg: 'bg-amber-500',
       hoverBg: 'group-hover:bg-amber-500',
       hoverText: 'group-hover:text-amber-500',
+      gradient: 'from-[#F59E0B] via-[#F97316] to-[#FACC15]',
+      waveColor: 'rgba(245, 158, 11, 0.3)',
+      plasmaColor: '#F59E0B',
     }
   },
   fintech: {
@@ -134,6 +152,9 @@ export const services: Record<ServiceKey, ServiceContent> = {
       bg: 'bg-teal-500',
       hoverBg: 'group-hover:bg-teal-500',
       hoverText: 'group-hover:text-teal-500',
+      gradient: 'from-[#0D9488] via-[#06B6D4] to-[#10B981]',
+      waveColor: 'rgba(13, 148, 136, 0.3)',
+      plasmaColor: '#14B8A6',
     }
   },
 }

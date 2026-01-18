@@ -1,73 +1,83 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 export const Preloader = () => {
-    const [loading, setLoading] = useState(true);
-    const [progress, setProgress] = useState(0);
+    const location = useLocation();
+    const [loading, setLoading] = useState(false);
+    const [pageName, setPageName] = useState("");
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setProgress((oldProgress) => {
-                if (oldProgress === 100) {
-                    clearInterval(timer);
-                    setTimeout(() => setLoading(false), 500);
-                    return 100;
-                }
-                const diff = Math.random() * 15;
-                return Math.min(oldProgress + diff, 100);
-            });
-        }, 150);
+        // Skip loader on home page
+        if (location.pathname === "/" || location.pathname === "") {
+            setLoading(false);
+            return;
+        }
 
-        return () => clearInterval(timer);
-    }, []);
+        // Determine page name for other services
+        const path = location.pathname.split("/").filter(Boolean)[0] || "";
+        const formattedName = path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, " ");
+
+        setPageName(formattedName);
+        setLoading(true);
+
+        // Auto-hide loader after a set duration
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1800);
+
+        return () => clearTimeout(timer);
+    }, [location.pathname]);
 
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             {loading && (
                 <motion.div
-                    initial={{ opacity: 1 }}
+                    key="preloader"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     exit={{
                         opacity: 0,
-                        y: -100,
-                        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+                        transition: { duration: 0.5, ease: "easeInOut" }
                     }}
                     className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black"
                 >
-                    <div className="relative flex flex-col items-center">
-                        {/* Logo placeholder */}
-                        <motion.div
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                            className="mb-8"
+                    <div className="flex flex-col items-center space-y-6">
+                        {/* Page Name with Fade In */}
+                        <motion.h2
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-white text-2xl font-bold tracking-[0.3em] uppercase"
                         >
-                            <h1 className="text-4xl font-bold tracking-[0.2em] text-white">
-                                MYTHOUGHT
-                            </h1>
-                        </motion.div>
+                            {pageName}
+                        </motion.h2>
 
-                        {/* Progress bar container */}
-                        <div className="w-64 h-[2px] bg-white/10 overflow-hidden relative rounded-full">
-                            <motion.div
-                                className="absolute top-0 left-0 h-full bg-primary"
-                                initial={{ width: 0 }}
-                                animate={{ width: `${progress}%` }}
-                                transition={{ duration: 0.2, ease: "easeOut" }}
-                            />
+                        {/* Animated Loading Dots */}
+                        <div className="flex space-x-2">
+                            {[0, 1, 2].map((index) => (
+                                <motion.div
+                                    key={index}
+                                    className="w-3 h-3 bg-primary rounded-full"
+                                    animate={{
+                                        scale: [1, 1.5, 1],
+                                        opacity: [0.3, 1, 0.3],
+                                    }}
+                                    transition={{
+                                        duration: 1,
+                                        repeat: Infinity,
+                                        delay: index * 0.2,
+                                        ease: "easeInOut",
+                                    }}
+                                />
+                            ))}
                         </div>
-
-                        <motion.span
-                            className="mt-4 text-xs font-mono text-white/40 tracking-widest uppercase"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                        >
-                            Initializing Experience {Math.round(progress)}%
-                        </motion.span>
                     </div>
 
-                    {/* Background decoration */}
+                    {/* Background Soft Glow */}
                     <div className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[100px]" />
                     </div>
                 </motion.div>
             )}

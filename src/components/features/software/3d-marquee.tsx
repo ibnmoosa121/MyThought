@@ -39,7 +39,7 @@ export const ThreeDMarquee = ({
                   initial={{ y: "-50%" }}
                   animate={{ y: "0%" }}
                   transition={{
-                    duration: colIndex % 2 === 0 ? 20 : 30,
+                    duration: colIndex % 2 === 0 ? 12 : 18,
                     repeat: Infinity,
                     ease: "linear",
                   }}

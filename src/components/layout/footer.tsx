@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-base-200 text-base-content border-t border-base-300">
+    <footer className="bg-black text-white border-t border-white/10">
       <div className="container mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16">
 
@@ -15,9 +15,9 @@ export const Footer: React.FC = () => {
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group">
               <LogoIcon size={32} className="text-primary group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-xl font-bold tracking-tight">MyThought</span>
+              <span className="text-xl font-bold tracking-tight text-white">MyThought</span>
             </Link>
-            <p className="text-base-content/70 leading-relaxed max-w-xs">
+            <p className="text-white/70 leading-relaxed max-w-xs">
               Pioneering the future of technology, business, and design. We turn visionary ideas into reality.
             </p>
             <div className="flex items-center gap-4">
@@ -35,30 +35,30 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-6">Quick Links</h3>
+            <h3 className="font-bold text-lg mb-6 text-white">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about-us" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/about-us" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/ventures" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/ventures" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Ventures
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/blog" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/contact-us" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/contact-us" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Contact
                 </Link>
               </li>
@@ -67,35 +67,35 @@ export const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h3 className="font-bold text-lg mb-6">Services</h3>
+            <h3 className="font-bold text-lg mb-6 text-white">Services</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/software" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/software" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Software & Tech
                 </Link>
               </li>
               <li>
-                <Link to="/consultancy" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/consultancy" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Consultancy
                 </Link>
               </li>
               <li>
-                <Link to="/talent" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/talent" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Talent & Staffing
                 </Link>
               </li>
               <li>
-                <Link to="/design" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/design" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Design & Creativity
                 </Link>
               </li>
               <li>
-                <Link to="/ventures" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/ventures" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   Ventures
                 </Link>
               </li>
               <li>
-                <Link to="/fintech" className="text-base-content/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                <Link to="/fintech" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   FinTech
                 </Link>
               </li>
@@ -104,24 +104,24 @@ export const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-bold text-lg mb-6">Contact Us</h3>
+            <h3 className="font-bold text-lg mb-6 text-white">Contact Us</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-base-content/70">
+              <li className="flex items-start gap-3 text-white/70">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <span>
                   123 Innovation Blvd,<br />
                   Tech City, TC 90210
                 </span>
               </li>
-              <li className="flex items-center gap-3 text-base-content/70">
+              <li className="flex items-center gap-3 text-white/70">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <a href="mailto:hello@mythought.com" className="hover:text-primary transition-colors">
+                <a href="mailto:hello@mythought.com" className="hover:text-primary transition-colors text-white/80">
                   hello@mythought.com
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-base-content/70">
+              <li className="flex items-center gap-3 text-white/70">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <a href="tel:+1234567890" className="hover:text-primary transition-colors">
+                <a href="tel:+1234567890" className="hover:text-primary transition-colors text-white/80">
                   +1 (234) 567-890
                 </a>
               </li>
@@ -131,12 +131,12 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-base-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-base-content/60">
+        <div className="border-t border-base-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
           <p>© {currentYear} MyThought. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-primary transition-colors">Cookie Policy</a>
+            <a href="#" className="hover:text-primary transition-colors text-white/70">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors text-white/70">Terms of Service</a>
+            <a href="#" className="hover:text-primary transition-colors text-white/70">Cookie Policy</a>
           </div>
         </div>
       </div>
