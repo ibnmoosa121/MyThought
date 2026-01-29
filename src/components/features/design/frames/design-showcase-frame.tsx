@@ -72,19 +72,6 @@ const SvgShape = ({ type, color }: { type: 'circle' | 'square' | 'triangle', col
     );
 };
 
-const FeatureSticker = ({ text, color, rotate, x, y }: { text: string, color: string, rotate: number, x: string, y: string }) => (
-    <div
-        className="absolute px-6 py-2 rounded-xl font-bold text-black shadow-lg whitespace-nowrap z-20 pointer-events-none"
-        style={{
-            backgroundColor: color,
-            transform: `rotate(${rotate}deg)`,
-            left: x,
-            top: y
-        }}
-    >
-        {text}
-    </div>
-);
 
 export const DesignShowcaseFrame = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
