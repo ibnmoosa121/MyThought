@@ -327,22 +327,80 @@ export default function ServicesTabs() {
                           initial={{ opacity: 0, y: 30 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: idx * 0.1 + 0.3 }}
-                          className="bg-white/[0.02] border border-white/5 p-10 rounded-[2.5rem] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-500 group relative overflow-hidden"
+                          className="bg-white/[0.04] border p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] transition-all duration-700 group relative overflow-hidden"
+                          style={{
+                            boxShadow: `0 10px 30px -15px ${service.theme.plasmaColor}4d`,
+                            borderColor: `${service.theme.plasmaColor}22`,
+                          }}
+                          whileHover={{
+                            y: -5,
+                            boxShadow: `0 20px 50px -15px ${service.theme.plasmaColor}66`,
+                            borderColor: `${service.theme.plasmaColor}66`,
+                            backgroundColor: "rgba(255, 255, 255, 0.06)",
+                          }}
                         >
-                          <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
-                            <card.icon className="w-24 h-24" />
+                          {/* Constant Background Glow with Pulse Effect */}
+                          <motion.div
+                            className="absolute -right-16 -top-16 w-48 h-48 rounded-full blur-[80px] pointer-events-none z-0"
+                            style={{ backgroundColor: service.theme.plasmaColor }}
+                            animate={{
+                              opacity: [0.15, 0.3, 0.15],
+                              scale: [1, 1.2, 1],
+                            }}
+                            transition={{
+                              duration: 4,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
+                          />
+
+                          {/* Secondary Glow for Depth */}
+                          <div
+                            className="absolute -left-10 -bottom-10 w-32 h-32 rounded-full blur-[60px] opacity-10 pointer-events-none z-0"
+                            style={{ backgroundColor: service.theme.plasmaColor }}
+                          />
+
+                          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
+                            <card.icon className="w-20 h-20 md:w-24 md:h-24" />
                           </div>
-                          <div className="mb-8 relative z-10">
-                            <div className={`w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center border border-white/5`}>
-                              <card.icon className={`w-7 h-7 text-white`} />
+
+                          <div className="mb-6 md:mb-8 relative z-10">
+                            <div
+                              className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center border transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg"
+                              style={{
+                                backgroundColor: `${service.theme.plasmaColor}22`,
+                                borderColor: `${service.theme.plasmaColor}44`,
+                                boxShadow: `0 0 20px ${service.theme.plasmaColor}33`,
+                              }}
+                            >
+                              <card.icon
+                                className="w-6 h-6 md:w-7 md:h-7 transition-colors duration-500"
+                                style={{ color: service.theme.plasmaColor }}
+                              />
                             </div>
                           </div>
-                          <h4 className={`text-2xl font-bold mb-5 tracking-tight relative z-10 transition-colors duration-300`} style={{ color: service.id === activeTab ? 'white' : 'white' }}>{card.title}</h4>
-                          <p className="text-white/40 leading-relaxed text-lg relative z-10">
+
+                          <h4 className="text-xl md:text-2xl font-bold mb-4 md:mb-5 tracking-tight relative z-10 text-white transition-colors duration-300">
+                            {card.title}
+                          </h4>
+                          <p className="text-white/50 leading-relaxed text-sm md:text-lg relative z-10 group-hover:text-white/80 transition-colors duration-500">
                             {card.text}
                           </p>
-                          {/* Hover Accent Line */}
-                          <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r transition-all duration-500 w-0 group-hover:w-full" style={{ backgroundImage: `linear-gradient(to right, ${service.theme.plasmaColor}, transparent)` }} />
+
+                          {/* Persistent Accent Line */}
+                          <div
+                            className="absolute bottom-0 left-0 h-[2px] w-full"
+                            style={{
+                              background: `linear-gradient(to right, ${service.theme.plasmaColor}, transparent)`,
+                              opacity: 0.5,
+                            }}
+                          />
+
+                          {/* Animated Hover Line Overlay */}
+                          <div
+                            className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r transition-all duration-700 w-0 group-hover:w-full z-20"
+                            style={{ backgroundImage: `linear-gradient(to right, ${service.theme.plasmaColor}, #fff, transparent)` }}
+                          />
                         </motion.div>
                       ))}
                     </div>

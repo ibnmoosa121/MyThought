@@ -52,7 +52,7 @@ export const DesignContactFrame = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative w-full min-h-screen py-32 flex items-center justify-center bg-transparent overflow-hidden px-6 lg:px-20">
+        <section ref={sectionRef} className="relative w-full min-h-screen py-16 md:py-32 flex items-center justify-center bg-transparent overflow-hidden px-6 lg:px-20">
 
             <div className="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div ref={contentRef}>
@@ -63,7 +63,7 @@ export const DesignContactFrame = () => {
                         </span> <br />
                         Together
                     </h2>
-                    <p className="text-zinc-300 text-[clamp(1.125rem,2vw,1.75rem)] font-medium max-w-xl leading-relaxed tracking-tight">
+                    <p className="text-zinc-300 text-[clamp(1rem,2vw,1.75rem)] font-medium max-w-xl leading-relaxed tracking-tight">
                         Have a vision? We have the expertise to bring it to life with precision and creative flair.
                     </p>
                 </div>
@@ -71,7 +71,7 @@ export const DesignContactFrame = () => {
                 <div ref={formRef} className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-[#6366F1] via-[#D946EF] to-[#F59E0B] rounded-[3.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                     <div className="relative p-1 rounded-[3.5rem] bg-zinc-900/50 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-[1.01]">
-                        <div className="bg-black/40 p-10 md:p-12 rounded-[3.4rem]">
+                        <div className="bg-black/40 p-6 md:p-12 rounded-[3.4rem]">
                             <DesignContact />
                         </div>
                     </div>

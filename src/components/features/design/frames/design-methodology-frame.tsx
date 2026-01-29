@@ -57,7 +57,7 @@ const MethodologyStep = ({ step }: { step: typeof steps[0] }) => {
                 <h3 ref={titleRef} className="text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter mb-2">
                     {step.title}
                 </h3>
-                <p ref={descRef} className="text-zinc-500 max-w-[220px] leading-relaxed text-sm md:text-base transition-colors">
+                <p ref={descRef} className="text-zinc-500 max-w-[220px] leading-relaxed text-base md:text-sm lg:text-base transition-colors">
                     {step.desc}
                 </p>
             </div>
@@ -127,7 +127,7 @@ export const DesignMethodologyFrame = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-screen py-32 flex items-center justify-center bg-transparent overflow-hidden px-6 lg:px-20">
+        <section ref={containerRef} className="relative w-full min-h-screen py-16 md:py-32 flex items-center justify-center bg-transparent overflow-hidden px-6 lg:px-20">
 
             <div className="container mx-auto">
                 <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-32">
@@ -136,7 +136,7 @@ export const DesignMethodologyFrame = () => {
                             Our <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F59E0B] via-[#F43F5E] to-[#D946EF]">Process</span>
                         </h2>
-                        <p className="text-zinc-400 text-[clamp(1.125rem,2vw,1.5rem)] leading-relaxed mb-12 font-medium max-w-xl mx-auto lg:mx-0 tracking-tight">
+                        <p className="text-zinc-400 text-[clamp(1rem,2vw,1.5rem)] leading-relaxed mb-8 md:mb-12 font-medium max-w-xl mx-auto lg:mx-0 tracking-tight">
                             A systematic approach from vision to reality, ensuring quality and consistency at every stage of the creative journey.
                         </p>
                         <div className="w-24 h-2 bg-gradient-to-r from-[#F59E0B] to-[#F43F5E] rounded-full mx-auto lg:mx-0" />

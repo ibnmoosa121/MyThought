@@ -191,27 +191,27 @@ export const DesignShowcaseFrame = () => {
     const s2Line1 = "User Centric".split("");
     const s2Line2 = "Experiences".split("");
 
-    const s3Line1 = "Liquid Interfaces".split("");
-    const s3Line2 = "Motion Mastery".split("");
+    const s3Line1 = "Interfaces".split("");
+    const s3Line2 = "Mastery".split("");
 
     return (
         <section ref={containerRef} className="overflow-hidden bg-black relative">
             <div ref={sectionRef} className="h-screen w-[300vw] flex flex-row relative will-change-transform gpu-accelerated">
 
                 {/* Slide 1: Brand Identity */}
-                <div className="h-screen w-screen flex-shrink-0 flex items-center justify-center relative px-20">
+                <div className="h-screen w-screen flex-shrink-0 flex items-center justify-center relative px-6 md:px-20">
                     <div className="max-w-6xl relative z-10 text-left w-full">
                         <div className="flex flex-col mb-8 w-full">
-                            <div className="showcase-content-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#D946EF] text-xs font-bold tracking-[0.2em] uppercase mb-12 w-fit">
+                            <div className="showcase-content-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#D946EF] text-sm md:text-xs font-bold tracking-[0.2em] uppercase mb-8 md:mb-12 w-fit">
                                 <Target size={14} />
                                 <span>Core Offerings</span>
                             </div>
 
-                            <div className="showcase-content-0 flex w-full gap-4 mb-4">
-                                <div className="flex-1 px-8 py-4 rounded-2xl font-black text-black bg-[#D946EF] text-2xl uppercase italic tracking-tighter shadow-2xl shadow-[#D946EF]/20 flex items-center justify-center -rotate-1">
+                            <div className="showcase-content-0 flex flex-col md:flex-row w-full gap-4 mb-4">
+                                <div className="flex-1 px-8 py-4 rounded-2xl font-black text-black bg-[#D946EF] text-xl md:text-2xl uppercase italic tracking-tighter shadow-2xl shadow-[#D946EF]/20 flex items-center justify-center -rotate-1">
                                     Brand Strategy
                                 </div>
-                                <div className="flex-1 px-8 py-4 rounded-2xl font-black text-black bg-[#F59E0B] text-2xl uppercase italic tracking-tighter shadow-2xl shadow-[#F59E0B]/20 flex items-center justify-center rotate-1">
+                                <div className="flex-1 px-8 py-4 rounded-2xl font-black text-black bg-[#F59E0B] text-xl md:text-2xl uppercase italic tracking-tighter shadow-2xl shadow-[#F59E0B]/20 flex items-center justify-center rotate-1">
                                     Visual Storytelling
                                 </div>
                             </div>
@@ -227,7 +227,7 @@ export const DesignShowcaseFrame = () => {
                                 {s1Line2.map((char, i) => <AnimatedChar key={i} char={char} index={i + 20} slideIndex={0} />)}
                             </div>
                         </h2>
-                        <p className="showcase-content-0 text-zinc-500 text-2xl font-medium max-w-2xl mt-12 leading-relaxed">
+                        <p className="showcase-content-0 text-zinc-500 text-lg md:text-2xl font-medium max-w-2xl mt-8 md:mt-12 leading-relaxed">
                             Crafting identities that resonate and endure in a crowded digital landscape.
                         </p>
                     </div>
@@ -241,7 +241,7 @@ export const DesignShowcaseFrame = () => {
                             gsap.to(e.currentTarget, { rotateY: x * 30, rotateX: -y * 30, duration: 0.5 });
                         }}
                         onMouseLeave={(e) => gsap.to(e.currentTarget, { rotateY: 0, rotateX: 0, duration: 0.8 })}
-                        className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[500px] h-[500px] perspective-1000 transform-preserve-3d pointer-events-none opacity-40 xl:opacity-100"
+                        className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[500px] h-[500px] perspective-1000 transform-preserve-3d pointer-events-none opacity-40 xl:opacity-100 hidden lg:block"
                     >
                         <div className="relative w-full h-full transform-preserve-3d">
                             <div className="absolute top-0 right-0 w-48 h-48 rounded-full border-[20px] border-cyan-400 opacity-50 blur-[2px] animate-pulse translate-z-10" />
@@ -256,9 +256,9 @@ export const DesignShowcaseFrame = () => {
                 <div className="h-screen w-screen flex-shrink-0 flex items-center justify-center relative bg-transparent">
                     <div className="max-w-7xl px-10 relative z-10 w-full flex flex-col items-center">
                         <div className="flex flex-col items-center gap-0">
-                            <h2 className="text-[clamp(4rem,12vw,11rem)] font-black text-white italic uppercase tracking-tighter leading-none whitespace-nowrap flex items-center justify-center">
-                                {s2Line1.map((char, i) => <AnimatedChar key={i} char={char} index={i} slideIndex={1} />)}
-                                <div className="mx-8">
+                            <h2 className="text-[clamp(3rem,12vw,11rem)] font-black text-white italic uppercase tracking-tighter leading-none flex flex-wrap items-center justify-center gap-4">
+                                <span>{s2Line1.map((char, i) => <AnimatedChar key={i} char={char} index={i} slideIndex={1} />)}</span>
+                                <div className="hidden md:block">
                                     <SvgShape type="triangle" color="#F59E0B" />
                                 </div>
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
@@ -267,14 +267,14 @@ export const DesignShowcaseFrame = () => {
                             </h2>
                         </div>
 
-                        <div className="mt-20 flex gap-12 items-center">
-                            <div className="showcase-content-1 px-10 py-5 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-4 group hover:border-[#818CF8]/50 transition-colors">
+                        <div className="mt-12 md:mt-20 flex flex-col md:flex-row gap-6 md:gap-12 items-center">
+                            <div className="showcase-content-1 px-8 md:px-10 py-4 md:py-5 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-4 group hover:border-[#818CF8]/50 transition-colors">
                                 <div className="w-3 h-3 rounded-full bg-[#818CF8] animate-pulse" />
-                                <span className="text-white font-bold text-xl uppercase italic tracking-wider">UX Research</span>
+                                <span className="text-white font-bold text-lg md:text-xl uppercase italic tracking-wider">UX Research</span>
                             </div>
-                            <div className="showcase-content-1 px-10 py-5 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-4 group hover:border-[#FB923C]/50 transition-colors">
+                            <div className="showcase-content-1 px-8 md:px-10 py-4 md:py-5 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-4 group hover:border-[#FB923C]/50 transition-colors">
                                 <div className="w-3 h-3 rounded-full bg-[#FB923C] animate-pulse" />
-                                <span className="text-white font-bold text-xl uppercase italic tracking-wider">UI Design</span>
+                                <span className="text-white font-bold text-lg md:text-xl uppercase italic tracking-wider">UI Design</span>
                             </div>
                         </div>
 
@@ -295,17 +295,20 @@ export const DesignShowcaseFrame = () => {
                 </div>
 
                 {/* Slide 3: Web & Motion */}
-                <div className="h-screen w-screen flex-shrink-0 flex items-center justify-center relative px-20">
+                <div className="h-screen w-screen flex-shrink-0 flex items-center justify-center relative px-6 md:px-20">
                     <div className="text-left relative z-10">
-                        <h3 className="text-[clamp(3rem,8vw,7rem)] font-black text-white leading-[0.9] tracking-tighter italic uppercase flex flex-col">
-                            <div className="flex items-center gap-4">
+                        <h3 className="text-[clamp(3.5rem,8vw,7rem)] font-black text-white leading-[0.9] tracking-tighter italic uppercase flex flex-col items-start md:items-center">
+                            <div className="flex flex-wrap items-center gap-4">
+                                <span className="showcase-content-2 px-6 md:px-10 py-2 md:py-4 bg-emerald-500 text-black rounded-lg -rotate-3 text-2xl md:text-7xl inline-block">Liquid</span>
                                 <span>{s3Line1.map((char, i) => <AnimatedChar key={i} char={char} index={i} slideIndex={2} />)}</span>
-                                <span className="showcase-content-2 px-10 py-4 bg-emerald-500 text-black rounded-lg -rotate-3 text-7xl inline-block">Liquid</span>
                             </div>
-                            <div className="flex items-center gap-4 mt-8">
-                                <span className="showcase-content-2 px-8 py-3 bg-pink-300 text-black rounded-lg rotate-2 text-5xl inline-block">Design</span>
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-500 text-6xl">
+                            <div className="flex flex-wrap items-center gap-4 mt-8">
+                                <span className="showcase-content-2 px-4 md:px-8 py-2 md:py-3 bg-pink-300 text-black rounded-lg rotate-2 text-xl md:text-5xl inline-block">Motion</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-500 text-2xl md:text-6xl flex items-center">
                                     {s3Line2.map((char, i) => <AnimatedChar key={i} char={char} index={i + 20} slideIndex={2} />)}
+                                    <span className="ml-4 md:ml-8 hidden md:inline-block">
+                                        <SvgShape type="triangle" color="#F59E0B" />
+                                    </span>
                                 </span>
                             </div>
                         </h3>
@@ -325,7 +328,7 @@ export const DesignShowcaseFrame = () => {
                             gsap.to(e.currentTarget, { rotateY: x * 30, rotateX: -y * 30, duration: 0.5 });
                         }}
                         onMouseLeave={(e) => gsap.to(e.currentTarget, { rotateY: 0, rotateX: 0, duration: 0.8 })}
-                        className="absolute right-[10%] top-1/2 -translate-y-1/2 w-[400px] h-[300px] flex items-center justify-center perspective-1000 transform-preserve-3d"
+                        className="absolute right-[10%] top-1/2 -translate-y-1/2 w-[400px] h-[300px] flex items-center justify-center perspective-1000 transform-preserve-3d hidden lg:flex"
                     >
                         <div className="relative w-full h-full border border-white/10 rounded-2xl overflow-hidden bg-white/5 backdrop-blur-sm p-4 transform-preserve-3d shadow-2xl">
                             <div className="w-full h-8 bg-white/10 rounded-full mb-4 translate-z-10" />

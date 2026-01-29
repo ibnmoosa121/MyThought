@@ -141,7 +141,7 @@ const ServiceCard = ({ service }: { service: typeof services[0] }) => {
                             {service.title}
                         </h3>
 
-                        <p ref={descRef} className="text-zinc-400 text-xs leading-relaxed max-w-[180px] opacity-0 h-0 overflow-hidden">
+                        <p ref={descRef} className="text-zinc-400 text-sm md:text-xs leading-relaxed max-w-[180px] opacity-0 h-0 overflow-hidden">
                             {service.desc}
                         </p>
                     </div>
@@ -210,7 +210,7 @@ export const DesignServicesFrame = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full py-24 flex flex-col items-center justify-center bg-transparent overflow-hidden px-6 lg:px-20">
+        <section ref={containerRef} className="relative w-full py-16 md:py-24 flex flex-col items-center justify-center bg-transparent overflow-hidden px-6 lg:px-20">
             {/* Background Text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.02] select-none overflow-hidden">
                 <h2 className="bg-text-offerings text-[30vw] font-black italic uppercase tracking-tighter text-white whitespace-nowrap">
@@ -219,7 +219,7 @@ export const DesignServicesFrame = () => {
             </div>
 
             <div className="container mx-auto relative z-10 w-full max-w-6xl">
-                <div ref={headerRef} className="flex flex-col items-start mb-16 max-w-xl">
+                <div ref={headerRef} className="flex flex-col items-start mb-12 md:mb-16 max-w-xl">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase mb-4">
                         <Target size={12} className="text-[#D946EF]" />
                         <span>Our Offerings</span>
@@ -227,7 +227,7 @@ export const DesignServicesFrame = () => {
                     <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black text-white italic uppercase leading-[0.8] tracking-tighter mb-4">
                         The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366F1] to-[#F43F5E]">Core</span>
                     </h2>
-                    <p className="text-zinc-500 text-sm font-medium tracking-tight border-l border-white/10 pl-4">
+                    <p className="text-zinc-500 text-base md:text-sm font-medium tracking-tight border-l border-white/10 pl-4">
                         Precise design execution meeting strategic business objectives.
                     </p>
                 </div>

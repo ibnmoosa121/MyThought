@@ -103,7 +103,7 @@ export const DesignHeroFrame = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black pt-32 pb-20">
+        <section ref={containerRef} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black pt-24 pb-16 md:pt-32 md:pb-20">
             {/* Background Image with Parallax */}
             <motion.div
                 className="absolute inset-0 z-0 opacity-30"
@@ -121,13 +121,13 @@ export const DesignHeroFrame = () => {
 
             {/* Glowing Blobs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/4 -left-20 w-[45vw] h-[45vw] bg-[#6366F1]/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-1/4 -right-20 w-[45vw] h-[45vw] bg-[#F43F5E]/10 rounded-full blur-[120px]" />
+                <div className="absolute top-1/4 -left-20 w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] bg-[#6366F1]/10 rounded-full blur-[80px] md:blur-[120px]" />
+                <div className="absolute bottom-1/4 -right-20 w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] bg-[#F43F5E]/10 rounded-full blur-[80px] md:blur-[120px]" />
             </div>
 
-            <div className="relative z-10 text-center px-4 w-full">
+            <div className="relative z-10 text-center px-6 w-full">
                 <div className="overflow-visible inline-block">
-                    <h1 className="text-[clamp(4rem,15vw,12rem)] font-black text-white italic leading-[0.8] tracking-tighter uppercase mb-6 flex flex-col items-center">
+                    <h1 className="text-[clamp(3.5rem,15vw,12rem)] font-black text-white italic leading-[0.8] tracking-tighter uppercase mb-6 flex flex-col items-center">
                         <div className="flex items-center">
                             {titleLine1.map((char, i) => (
                                 <span key={i} className="char-entrance inline-block">
@@ -150,7 +150,7 @@ export const DesignHeroFrame = () => {
 
                 <p
                     ref={textRef}
-                    className="mt-12 text-[clamp(1.125rem,2.5vw,1.75rem)] text-zinc-400 max-w-3xl mx-auto font-medium tracking-tight leading-relaxed px-6"
+                    className="mt-8 md:mt-12 text-[clamp(1rem,2.5vw,1.75rem)] text-zinc-400 max-w-3xl mx-auto font-medium tracking-tight leading-relaxed px-2 md:px-6"
                 >
                     Crafting distinctive brand identities and user-centric digital experiences that redefine industry standards and elevate business potential.
                 </p>
