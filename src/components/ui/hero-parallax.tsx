@@ -66,7 +66,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[100vh] md:h-[130vh] lg:h-[150vh] py-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-auto md:h-[130vh] lg:h-[150vh] py-10 md:py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
 
@@ -127,7 +127,7 @@ import { ScrollRevealText } from "./scroll-reveal-text";
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto pt-24 pb-12 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20">
+    <div className="max-w-7xl relative mx-auto pt-16 pb-8 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20">
       <ScrollRevealText
         text="The Ultimate"
         className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter"

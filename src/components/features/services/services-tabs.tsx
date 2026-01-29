@@ -230,7 +230,7 @@ export default function ServicesTabs() {
   const activeService = services.find(s => s.id === activeTab) || services[0]
 
   return (
-    <section className="py-12 md:py-24 bg-black text-white relative overflow-hidden min-h-screen md:min-h-[800px]">
+    <section className="py-12 md:py-24 bg-black text-white relative overflow-hidden min-h-0 md:min-h-[800px]">
       {/* Wavy Background - Dynamic color based on active service */}
       <WavyBackground color={activeService.theme.plasmaColor} className="opacity-20" />
 
