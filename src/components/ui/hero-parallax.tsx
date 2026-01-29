@@ -95,7 +95,7 @@ export const HeroParallax = ({
         }}
         className="relative z-10"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 md:space-x-20 mb-6 md:mb-10">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 md:space-x-20 mb-12 md:mb-10">
           {firstRow.map((product, idx) => (
             <ProductCard
               product={product}
@@ -105,7 +105,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-12 md:mb-20 space-x-10 md:space-x-20">
+        <motion.div className="flex flex-row mb-16 md:mb-20 space-x-10 md:space-x-20">
           {secondRow.map((product, idx) => (
             <ProductCard
               product={product}
@@ -191,7 +191,7 @@ export const ProductCard = ({
       }}
       whileTap={{ scale: 0.95 }}
       key={product.title}
-      className="group/product h-48 w-[15rem] md:h-64 md:w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
+      className="group/product h-56 w-[18rem] md:h-64 md:w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
     >
       <motion.div
         className="h-full w-full will-change-transform"
