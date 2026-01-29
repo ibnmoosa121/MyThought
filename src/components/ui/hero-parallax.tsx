@@ -66,7 +66,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[120vh] md:h-[150vh] py-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[100vh] md:h-[130vh] lg:h-[150vh] py-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
 
@@ -95,7 +95,7 @@ export const HeroParallax = ({
         }}
         className="relative z-10"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-10">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 md:space-x-20 mb-6 md:mb-10">
           {firstRow.map((product, idx) => (
             <ProductCard
               product={product}
@@ -105,7 +105,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-20 space-x-20">
+        <motion.div className="flex flex-row mb-12 md:mb-20 space-x-10 md:space-x-20">
           {secondRow.map((product, idx) => (
             <ProductCard
               product={product}
@@ -127,20 +127,20 @@ import { ScrollRevealText } from "./scroll-reveal-text";
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto pt-32 pb-20 md:pt-40 md:pb-24 px-4 w-full left-0 top-0 z-20">
+    <div className="max-w-7xl relative mx-auto pt-24 pb-12 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20">
       <ScrollRevealText
         text="The Ultimate"
-        className="text-2xl md:text-7xl font-bold text-white"
+        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter"
         delay={0.2}
       />
       <ScrollRevealText
         text="development studio"
-        className="text-2xl md:text-7xl font-bold dark:text-white"
-        delay={0.2}
+        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter"
+        delay={0.3}
       />
       <ScrollRevealText
         text="We build beautiful products with the latest technologies and frameworks. We are a team of passionate developers and designers that love to build amazing products."
-        className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200"
+        className="max-w-2xl text-base md:text-xl mt-6 text-zinc-400 font-medium tracking-tight"
         delay={0.5}
       />
     </div>
@@ -166,16 +166,16 @@ export const ProductCard = ({
         x: translate,
       }}
       initial={{
-        y: 100,
+        y: 50,
         opacity: 0,
-        scale: 0.8,
+        scale: 0.9,
       }}
       whileInView={{
         y: 0,
         opacity: 1,
         scale: 1,
       }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-20px" }}
       transition={{
         type: "spring",
         stiffness: 260,
@@ -183,15 +183,15 @@ export const ProductCard = ({
         delay: index * 0.05,
       }}
       whileHover={{
-        y: -30,
-        scale: 1.08,
+        y: -15,
+        scale: 1.05,
         zIndex: 50,
         boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
         transition: { type: "spring", stiffness: 400, damping: 25 }
       }}
       whileTap={{ scale: 0.95 }}
       key={product.title}
-      className="group/product h-64 w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
+      className="group/product h-48 w-[15rem] md:h-64 md:w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
     >
       <motion.div
         className="h-full w-full will-change-transform"
