@@ -1,4 +1,4 @@
-export type ServiceKey = 'software' | 'consultancy' | 'talent' | 'design' | 'ventures' | 'fintech'
+export type ServiceKey = 'software' | 'consultancy' | 'talent' | 'design' | 'ventures' | 'fintech' | 'ai-analytics'
 
 export interface ServiceContent {
   key: ServiceKey
@@ -155,6 +155,29 @@ export const services: Record<ServiceKey, ServiceContent> = {
       gradient: 'from-[#0D9488] via-[#06B6D4] to-[#10B981]',
       waveColor: 'rgba(13, 148, 136, 0.3)',
       plasmaColor: '#14B8A6',
+    }
+  },
+  'ai-analytics': {
+    key: 'ai-analytics',
+    title: 'AI & Data Analytics',
+    subtitle: 'Harnessing data and AI to drive intelligent decision-making',
+    bullets: [
+      'Machine Learning & Predictive Modeling',
+      'Natural Language Processing (NLP)',
+      'Data Visualization & Business Intelligence',
+      'AI Strategy & Implementation',
+    ],
+    bgImage:
+      'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
+    cta: 'Explore AI Solutions',
+    theme: {
+      text: 'text-indigo-400',
+      bg: 'bg-indigo-500',
+      hoverBg: 'group-hover:bg-indigo-500',
+      hoverText: 'group-hover:text-indigo-500',
+      gradient: 'from-[#4F46E5] via-[#6366F1] to-[#818CF8]',
+      waveColor: 'rgba(79, 70, 229, 0.3)',
+      plasmaColor: '#6366F1',
     }
   },
 }

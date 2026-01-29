@@ -81,9 +81,9 @@ export const HeroParallax = ({
         <div className="absolute inset-0 design-grid opacity-[0.05]" />
 
         {/* Standardized Glow Orbs */}
-        <div className="theme-glow absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10" />
-        <div className="theme-glow absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-secondary/10 animation-delay-2000" />
-        <div className="theme-glow absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-primary/10 animation-delay-4000" />
+        <div className="theme-glow absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-white/5" />
+        <div className="theme-glow absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-white/5 animation-delay-2000" />
+        <div className="theme-glow absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-white/5 animation-delay-4000" />
       </motion.div>
 
       <motion.div
@@ -127,10 +127,10 @@ import { ScrollRevealText } from "./scroll-reveal-text";
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-5 md:py-5 px-4 w-full left-0 top-0 z-20">
+    <div className="max-w-7xl relative mx-auto pt-32 pb-20 md:pt-40 md:pb-24 px-4 w-full left-0 top-0 z-20">
       <ScrollRevealText
         text="The Ultimate"
-        className="text-2xl md:text-7xl font-bold text-primary"
+        className="text-2xl md:text-7xl font-bold text-white"
         delay={0.2}
       />
       <ScrollRevealText
@@ -194,17 +194,6 @@ export const ProductCard = ({
       className="group/product h-64 w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
     >
       <motion.div
-        animate={{
-          y: [0, -40, 0],
-          scale: [1, 1.08, 1],
-          rotate: [0, (index % 2 === 0 ? 1 : -1) * 2, 0],
-        }}
-        transition={{
-          duration: 6 + (index % 4) * 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: (index % 5) * 0.6,
-        }}
         className="h-full w-full will-change-transform"
       >
         <a

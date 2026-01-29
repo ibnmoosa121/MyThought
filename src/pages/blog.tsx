@@ -38,7 +38,7 @@ const BlogPage = () => {
   ]
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-32 pb-12">
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl font-bold mb-4">Our Blog</h1>
@@ -50,9 +50,9 @@ const BlogPage = () => {
       {/* Featured Post */}
       <div className="card lg:card-side bg-base-100 shadow-xl mb-16">
         <figure className="lg:w-1/2">
-          <img 
-            src="https://placehold.co/800x600/e2e8f0/1e293b?text=Featured+Post" 
-            alt="Featured blog post" 
+          <img
+            src="https://placehold.co/800x600/e2e8f0/1e293b?text=Featured+Post"
+            alt="Featured blog post"
             className="h-full w-full object-cover"
           />
         </figure>
@@ -63,7 +63,7 @@ const BlogPage = () => {
           </div>
           <h2 className="card-title text-3xl">Digital Transformation in 2023: What You Need to Know</h2>
           <p className="mb-4">
-            A comprehensive guide to navigating the digital landscape and implementing 
+            A comprehensive guide to navigating the digital landscape and implementing
             effective transformation strategies for your organization.
           </p>
           <div className="flex items-center gap-4 text-sm text-base-content/70 mb-6">
@@ -87,9 +87,9 @@ const BlogPage = () => {
         {blogPosts.map(post => (
           <div key={post.id} className="card bg-base-100 shadow-md">
             <figure>
-              <img 
-                src={post.image} 
-                alt={post.title} 
+              <img
+                src={post.image}
+                alt={post.title}
                 className="w-full h-48 object-cover"
               />
             </figure>
@@ -125,10 +125,10 @@ const BlogPage = () => {
           Stay updated with our latest insights and news. We promise not to spam your inbox!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-          <input 
-            type="email" 
-            placeholder="Your email address" 
-            className="input input-bordered flex-grow" 
+          <input
+            type="email"
+            placeholder="Your email address"
+            className="input input-bordered flex-grow"
           />
           <button className="btn btn-primary">Subscribe</button>
         </div>

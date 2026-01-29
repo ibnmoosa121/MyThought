@@ -7,7 +7,8 @@ import {
   ChevronRight,
   ArrowRight,
   Users,
-  Rocket
+  Rocket,
+  Brain
 } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -40,6 +41,7 @@ const serviceIcons = {
   design: Palette,
   ventures: Rocket,
   fintech: Landmark,
+  'ai-analytics': Brain,
 }
 
 // Service Links Mapping
@@ -50,6 +52,7 @@ const serviceLinks = {
   design: '#/design',
   ventures: '#/ventures',
   fintech: '#/fintech',
+  'ai-analytics': '#/ai-analytics',
 }
 
 // App logo/brand component
@@ -63,6 +66,7 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
     if (pathname.includes('design')) return 'Design'
     if (pathname.includes('ventures')) return 'Ventures'
     if (pathname.includes('fintech')) return 'FinTech'
+    if (pathname.includes('ai-analytics')) return 'AI & Analytics'
     return 'Development Studio'
   }
 
@@ -73,7 +77,7 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
     >
-      <LogoIcon size={32} className="text-primary drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]" />
+      <LogoIcon size={32} className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
       <div className="flex flex-col">
         <h1 className="text-xl font-bold leading-tight text-white drop-shadow-md">
           MyThought
@@ -106,7 +110,7 @@ const ServicesContent = () => {
 
         <a
           href="#/contact-us"
-          className="relative z-10 text-xs font-semibold uppercase tracking-wider text-primary hover:underline mt-auto flex items-center gap-1"
+          className="relative z-10 text-xs font-semibold uppercase tracking-wider text-white hover:underline mt-auto flex items-center gap-1"
         >
           Schedule a Consultation <ChevronRight size={14} />
         </a>
@@ -129,7 +133,7 @@ const ServicesContent = () => {
                     <Icon size={20} />
                   </div>
                   <div className="flex flex-col justify-center">
-                    <div className={`text-sm font-semibold text-white ${service.theme.hoverText} transition-colors flex items-center gap-1`}>
+                    <div className={`text-sm font-semibold text-white transition-colors flex items-center gap-1`}>
                       {service.title}
                     </div>
                     <p className="line-clamp-1 text-xs leading-snug text-white/60 mt-1 group-hover:text-white/80">
@@ -196,7 +200,7 @@ export const Header = () => {
 
         {/* Right: Actions */}
         < div className="flex-1 flex items-center justify-end" >
-          <NavbarButton href="#/contact-us" variant="primary" className="rounded-full bg-primary text-primary-content hover:bg-primary/90">
+          <NavbarButton href="#/contact-us" variant="primary" className="rounded-full bg-white text-black hover:bg-white/90">
             Get Started
           </NavbarButton>
         </div >

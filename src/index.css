@@ -13,12 +13,12 @@
 
 
 :root {
-  --primary: #4f46e5;
-  --primary-rgb: 79, 70, 229;
-  --secondary: #d946ef;
-  --secondary-rgb: 217, 70, 239;
-  --accent: #06b6d4;
-  --bg-grid: rgba(79, 70, 229, 0.05);
+  --primary: #ffffff;
+  --primary-rgb: 255, 255, 255;
+  --secondary: #a3a3a3;
+  --secondary-rgb: 163, 163, 163;
+  --accent: #ffffff;
+  --bg-grid: rgba(255, 255, 255, 0.05);
 }
 
 /* Enable smooth scrolling */
@@ -27,6 +27,10 @@ html {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
 }
 
 html::-webkit-scrollbar {
@@ -40,6 +44,10 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
 }
 
 @keyframes fadeIn {
@@ -76,11 +84,11 @@ body {
     inset: 0;
     z-index: -1;
     /* High-end Neural AI Background */
-    background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop');
+    background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=70&w=1200&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    opacity: 0.05;
-    filter: saturate(0.5) contrast(1.1);
+    opacity: 0.03;
+    filter: grayscale(1) brightness(0.5) contrast(1.2);
     pointer-events: none;
   }
 
@@ -103,6 +111,10 @@ body {
 @layer utilities {
   .theme-glow {
     @apply rounded-full blur-[120px] animate-pulse will-change-transform;
+    transform: translateZ(0);
+    /* Force GPU layer */
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
   .design-grid {
@@ -126,6 +138,14 @@ body {
 
   .transform-3d {
     transform-style: preserve-3d;
+  }
+
+  .transform-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
   }
 
   .scrollbar-hide::-webkit-scrollbar {
@@ -243,5 +263,17 @@ body {
 
   .animate-aurora-drift {
     animation: aurora-drift 30s infinite ease-in-out;
+  }
+
+  /* Performance Utilities */
+  .section-performance {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
   }
 }

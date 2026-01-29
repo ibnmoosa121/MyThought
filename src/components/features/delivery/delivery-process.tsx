@@ -9,31 +9,36 @@ const steps = [
     title: "Discovery",
     desc: "Requirements & Strategy",
     color: "bg-blue-500",
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop"
+    tech: ["AI Consultation", "System Architecture", "OpenAI", "LangChain", "LLMs"],
+    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=75&w=1200&auto=format&fit=crop"
   },
   {
     title: "Design",
     desc: "UI/UX & Prototyping",
     color: "bg-purple-500",
-    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop"
+    tech: ["Framer Motion", "GSAP", "Tailwind v4", "Interactive Prototypes"],
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=75&w=1200&auto=format&fit=crop"
   },
   {
     title: "Development",
     desc: "Coding & Integration",
     color: "bg-indigo-500",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
+    tech: ["React 19", "Next.js", "Typescript", "Node.js", "Prisma", "GraphQL"],
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=75&w=1200&auto=format&fit=crop"
   },
   {
     title: "Testing",
     desc: "QA & Security Checks",
+    tech: ["Automated QA", "PostgreSQL", "Redis", "VectorDB", "Load Testing"],
     color: "bg-pink-500",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=75&w=1200&auto=format&fit=crop"
   },
   {
     title: "Launch",
     desc: "Deployment & Scale",
     color: "bg-emerald-500",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+    tech: ["AWS", "Docker", "Kubernetes", "Vercel", "Terraform", "CI/CD"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=1200&auto=format&fit=crop"
   },
 ];
 
@@ -174,9 +179,19 @@ export default function DeliveryProcess() {
                       <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
                         {steps[activeStep].title}
                       </h2>
-                      <p className="text-white/80 text-lg max-w-lg">
+                      <p className="text-white/80 text-lg max-w-lg mb-6">
                         {steps[activeStep].desc}
                       </p>
+                      <div className="flex flex-wrap gap-2">
+                        {steps[activeStep].tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-md text-xs font-medium"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
                     </motion.div>
                   </div>
                 </motion.div>

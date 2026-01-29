@@ -5,18 +5,18 @@ import { services } from "../../../data/services";
 import { useNavigate } from "react-router-dom";
 
 const images = [
-    "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=80&w=1976&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1972&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2032&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=70&w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=70&w=800&auto=format&fit=crop",
 ];
 
 export const SoftwareHero = () => {
@@ -24,7 +24,7 @@ export const SoftwareHero = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+        <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-32 pb-20">
             {/* Wavy Background */}
             <WavyBackground color={service.theme.plasmaColor} className="opacity-50" />
 

@@ -1,23 +1,24 @@
-import { useEffect } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useLenis } from 'lenis/react'
 import { Header } from './components/layout/header'
 import { Footer } from './components/layout/footer'
-import { MainContent } from './components/layout/main-content'
 import { SmoothScroll } from './components/layout/smooth-scroll'
 import { initializeStore } from './stores/app-store'
 import { Preloader } from './components/ui/preloader'
 
-// Import page components
-import SoftwarePage from './pages/software'
-import ConsultancyPage from './pages/consultancy'
-import TalentPage from './pages/talent'
-import DesignPage from './pages/design'
-import VenturesPage from './pages/ventures'
-import FintechPage from './pages/fintech'
-import AboutUsPage from './pages/about-us'
-import BlogPage from './pages/blog'
-import ContactPage from './pages/contact'
+// Lazy load page components
+const MainContent = lazy(() => import('./components/layout/main-content'))
+const SoftwarePage = lazy(() => import('./pages/software'))
+const ConsultancyPage = lazy(() => import('./pages/consultancy'))
+const TalentPage = lazy(() => import('./pages/talent'))
+const DesignPage = lazy(() => import('./pages/design'))
+const VenturesPage = lazy(() => import('./pages/ventures'))
+const FintechPage = lazy(() => import('./pages/fintech'))
+const AboutUsPage = lazy(() => import('./pages/about-us'))
+const BlogPage = lazy(() => import('./pages/blog'))
+const ContactPage = lazy(() => import('./pages/contact'))
+const AIAnalyticsPage = lazy(() => import('./pages/ai-analytics'))
 
 // ScrollToTop component to handle navigation
 const ScrollToTop = () => {
@@ -46,25 +47,28 @@ const App = () => {
     <HashRouter>
       <SmoothScroll>
         <ScrollToTop />
-        <div className="min-h-screen bg-base-100 text-base-content dark">
+        <div className="min-h-screen bg-base-100 text-base-content dark flex flex-col">
           <Preloader />
           {/* Header */}
           <Header />
 
-          {/* Routes */}
-          <Routes>
-            <Route path="/" element={<MainContent />} />
-            <Route path="/software" element={<SoftwarePage />} />
-            <Route path="/consultancy" element={<ConsultancyPage />} />
-            <Route path="/talent" element={<TalentPage />} />
-            <Route path="/design" element={<DesignPage />} />
-            <Route path="/ventures" element={<VenturesPage />} />
-            <Route path="/fintech" element={<FintechPage />} />
-            <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          {/* Routes wrapped in Suspense for lazy loading */}
+          <Suspense fallback={<Preloader />}>
+            <Routes>
+              <Route path="/" element={<MainContent />} />
+              <Route path="/software" element={<SoftwarePage />} />
+              <Route path="/consultancy" element={<ConsultancyPage />} />
+              <Route path="/talent" element={<TalentPage />} />
+              <Route path="/design" element={<DesignPage />} />
+              <Route path="/ventures" element={<VenturesPage />} />
+              <Route path="/fintech" element={<FintechPage />} />
+              <Route path="/about-us" element={<AboutUsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/ai-analytics" element={<AIAnalyticsPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
 
           {/* Footer */}
           <Footer />

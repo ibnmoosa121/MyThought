@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group">
-              <LogoIcon size={32} className="text-primary group-hover:scale-110 transition-transform duration-300" />
+              <LogoIcon size={32} className="text-white group-hover:scale-110 transition-transform duration-300" />
               <span className="text-xl font-bold tracking-tight text-white">MyThought</span>
             </Link>
             <p className="text-white/70 leading-relaxed max-w-xs">
@@ -24,10 +24,10 @@ export const Footer: React.FC = () => {
               <a href="#" className="p-2 rounded-full bg-base-300 hover:bg-primary hover:text-white transition-all duration-300" aria-label="Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="p-2 rounded-full bg-base-300 hover:bg-primary hover:text-white transition-all duration-300" aria-label="LinkedIn">
+              <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all duration-300" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="p-2 rounded-full bg-base-300 hover:bg-primary hover:text-white transition-all duration-300" aria-label="GitHub">
+              <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-white hover:text-black transition-all duration-300" aria-label="GitHub">
                 <Github className="w-5 h-5" />
               </a>
             </div>
@@ -97,6 +97,11 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/fintech" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
                   FinTech
+                </Link>
+              </li>
+              <li>
+                <Link to="/ai-analytics" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                  AI & Data Analytics
                 </Link>
               </li>
             </ul>

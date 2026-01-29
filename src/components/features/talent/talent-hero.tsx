@@ -7,7 +7,7 @@ export const TalentHero = () => {
     const service = services.talent;
 
     return (
-        <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+        <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-32 pb-20">
             {/* Wavy Background */}
             <WavyBackground color={service.theme.plasmaColor} className="opacity-40" />
 

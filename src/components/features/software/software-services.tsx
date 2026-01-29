@@ -131,9 +131,8 @@ export const SoftwareServices = () => {
 
         if (scrollDistance <= 0) return;
 
-        gsap.to(container, {
-            x: -scrollDistance,
-            ease: "none",
+        // Create the horizontal scroll animation
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: sectionRef.current,
                 pin: true,
@@ -141,13 +140,34 @@ export const SoftwareServices = () => {
                 end: () => `+=${totalWidth}`,
                 scrub: 1,
                 invalidateOnRefresh: true,
-                anticipatePin: 1
+                anticipatePin: 1,
+                onRefresh: () => {
+                    // Force refresh internal values if needed
+                }
             }
         });
 
-        setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 1000);
+        tl.to(container, {
+            x: -scrollDistance,
+            ease: "none",
+        });
+
+        // Robust refresh strategy
+        const refresh = () => ScrollTrigger.refresh();
+
+        window.addEventListener('load', refresh);
+        window.addEventListener('resize', refresh);
+
+        const timer = setTimeout(refresh, 500);
+        const timer2 = setTimeout(refresh, 2000);
+
+        return () => {
+            window.removeEventListener('load', refresh);
+            window.removeEventListener('resize', refresh);
+            clearTimeout(timer);
+            clearTimeout(timer2);
+            tl.kill();
+        };
 
     }, { scope: sectionRef });
 
@@ -155,7 +175,7 @@ export const SoftwareServices = () => {
         <section
             ref={sectionRef}
             onMouseMove={handleMouseMove}
-            className="bg-black relative overflow-visible"
+            className="bg-black relative overflow-hidden"
         >
             <div className="h-screen w-full flex flex-col justify-center overflow-hidden relative">
 

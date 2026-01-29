@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PinContainer } from "../../ui/3d-pin";
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet } from 'lucide-react'
+import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet, Brain, Database, Cpu } from 'lucide-react'
 import { ScrollRevealText } from "../../ui/scroll-reveal-text";
 import { WavyBackground } from "../../ui/wavy-background";
 
@@ -191,17 +191,48 @@ const services = [
         text: 'Real-time data visualization and risk assessment.'
       }
     ]
+  },
+  {
+    id: 'ai-analytics',
+    label: 'AI & Data Analytics',
+    description: 'We harness the power of artificial intelligence and advanced analytics to transform raw data into intelligent outcomes. Our solutions enable predictive insights, process automation, and data-driven strategies that keep your business ahead of the curve.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
+    theme: {
+      text: 'text-indigo-500',
+      bg: 'bg-indigo-500',
+      gradient: 'from-[#4F46E5] via-[#6366F1] to-[#818CF8]',
+      waveColor: 'rgba(79, 70, 229, 0.3)',
+      plasmaColor: '#6366F1'
+    },
+    href: '#/ai-analytics',
+    cards: [
+      {
+        icon: Brain,
+        title: 'Machine Learning',
+        text: 'Deploy custom ML models for prediction, classification, and automation tailored to your unique business needs.'
+      },
+      {
+        icon: Database,
+        title: 'Data Engineering',
+        text: 'Build robust data pipelines and lakehouses that scale, ensuring your data is clean, accessible, and ready for analysis.'
+      },
+      {
+        icon: Cpu,
+        title: 'Applied AI',
+        text: 'Integrate Large Language Models and computer vision into your existing workflows to enhance productivity and user experience.'
+      }
+    ]
   }
 ]
 
 export default function ServicesTabs() {
   const [activeTab, setActiveTab] = useState(services[0].id)
-  const activeService = services.find(s => s.id === activeTab) || services[0];
+  const activeService = services.find(s => s.id === activeTab) || services[0]
 
   return (
     <section className="py-24 bg-black text-white relative overflow-hidden min-h-[800px]">
-      {/* Wavy Background based on active service */}
-      <WavyBackground color={activeService.theme.plasmaColor} className="opacity-40" />
+      {/* Wavy Background - Dynamic color based on active service */}
+      <WavyBackground color={activeService.theme.plasmaColor} className="opacity-20" />
 
       {/* Background Gradients (Standardized) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
@@ -210,7 +241,7 @@ export default function ServicesTabs() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="mb-12">
-          <h2 className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-3 text-center lg:text-left">Expertise</h2>
+          <h2 className="text-sm font-bold tracking-[0.3em] text-white/50 uppercase mb-3 text-center lg:text-left">Expertise</h2>
           <div className="flex justify-center lg:justify-start">
             <ScrollRevealText
               text="Explore our range of services"
@@ -226,18 +257,20 @@ export default function ServicesTabs() {
               <button
                 key={service.id}
                 onClick={() => setActiveTab(service.id)}
-                className={`text-left text-lg md:text-xl font-bold transition-all duration-300 relative pl-6 py-2 group ${activeTab === service.id
-                  ? 'text-white'
-                  : 'text-white/30 hover:text-white/60'
-                  }`}
+                className={`text-left text-lg md:text-xl font-bold transition-all duration-300 relative pl-6 py-2 group`}
               >
                 {activeTab === service.id && (
                   <motion.div
                     layoutId="activeTabIndicator"
-                    className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-full ${service.theme.bg} rounded-full shadow-[0_0_15px_rgba(var(--p),0.5)]`}
+                    className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-full ${service.theme.bg} rounded-full shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+                    style={{ backgroundColor: service.theme.plasmaColor }}
                   />
                 )}
-                <span className={`relative z-10 inline-block ${activeTab === service.id ? `bg-gradient-to-r ${service.theme.gradient} bg-clip-text text-transparent` : ''}`}>
+                <span
+                  className={`relative z-10 inline-block transition-colors duration-300 ${activeTab === service.id ? '' : 'text-white/30 group-hover:text-white/60'
+                    }`}
+                  style={{ color: activeTab === service.id ? service.theme.plasmaColor : undefined }}
+                >
                   {service.label}
                 </span>
               </button>
@@ -272,10 +305,10 @@ export default function ServicesTabs() {
                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-40 group-hover:opacity-70"
                           />
                           <div className="absolute bottom-0 left-0 p-8 md:p-14 z-20 w-full transform group-hover:-translate-y-2 transition-transform duration-700 text-center lg:text-left">
-                            <h3 className={`text-3xl md:text-7xl font-black mb-6 tracking-tighter drop-shadow-2xl uppercase bg-gradient-to-r ${service.theme.gradient} bg-clip-text text-transparent`}>
+                            <h3 className={`text-3xl md:text-7xl font-black mb-6 tracking-tighter drop-shadow-2xl uppercase text-white`}>
                               {service.label}
                             </h3>
-                            <div className={`h-2 w-32 ${service.theme.bg} rounded-full shadow-[0_0_25px_rgba(255,255,255,0.2)] mx-auto lg:mx-0`} />
+                            <div className={`h-2 w-32 bg-white rounded-full shadow-[0_0_25px_rgba(255,255,255,0.2)] mx-auto lg:mx-0`} />
                           </div>
                         </div>
                       </PinContainer>
@@ -300,14 +333,16 @@ export default function ServicesTabs() {
                             <card.icon className="w-24 h-24" />
                           </div>
                           <div className="mb-8 relative z-10">
-                            <div className={`w-14 h-14 rounded-2xl ${service.theme.bg}/20 flex items-center justify-center border border-white/5`}>
-                              <card.icon className={`w-7 h-7 ${service.theme.text}`} />
+                            <div className={`w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center border border-white/5`}>
+                              <card.icon className={`w-7 h-7 text-white`} />
                             </div>
                           </div>
-                          <h4 className="text-2xl font-bold mb-5 text-white tracking-tight relative z-10">{card.title}</h4>
+                          <h4 className={`text-2xl font-bold mb-5 tracking-tight relative z-10 transition-colors duration-300`} style={{ color: service.id === activeTab ? 'white' : 'white' }}>{card.title}</h4>
                           <p className="text-white/40 leading-relaxed text-lg relative z-10">
                             {card.text}
                           </p>
+                          {/* Hover Accent Line */}
+                          <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r transition-all duration-500 w-0 group-hover:w-full" style={{ backgroundImage: `linear-gradient(to right, ${service.theme.plasmaColor}, transparent)` }} />
                         </motion.div>
                       ))}
                     </div>

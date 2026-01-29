@@ -69,14 +69,14 @@ const ClientsSection: React.FC = () => {
         <div className="absolute inset-0 design-grid opacity-[0.08]" />
 
         {/* Standardized Glow Orbs */}
-        <div className="theme-glow absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-primary/10" />
-        <div className="theme-glow absolute bottom-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-secondary/10 delay-1000" />
+        <div className="theme-glow absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-white/5" />
+        <div className="theme-glow absolute bottom-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-white/5 delay-1000" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
-          <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-6 tracking-widest uppercase">
+          <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold mb-6 tracking-widest uppercase">
             Trusted Partners
           </span>
           <div className="flex flex-col items-center justify-center mb-8">
@@ -86,7 +86,7 @@ const ClientsSection: React.FC = () => {
             />
             <ScrollRevealText
               text="Market Leaders"
-              className="text-4xl md:text-6xl font-bold text-primary tracking-tight shadow-primary/20"
+              className="text-4xl md:text-6xl font-bold text-white tracking-tight"
               delay={0.2}
             />
           </div>
@@ -109,8 +109,8 @@ const ClientsSection: React.FC = () => {
             fadeOutColor="#000000" // Match black background
             renderItem={(item) => (
               <div className="flex items-center justify-center px-4">
-                <div className="flex items-center gap-4 px-8 py-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm transition-all duration-300 group hover:bg-white/[0.07] hover:border-primary/30 hover:scale-105 active:scale-95 shadow-2xl">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-white font-black text-xl border border-white/5 shadow-inner group-hover:from-primary/30 group-hover:to-secondary/30 transition-all">
+                <div className="flex items-center gap-4 px-8 py-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm transition-all duration-300 group hover:bg-white/[0.07] hover:border-white/30 hover:scale-105 active:scale-95 shadow-2xl">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white font-black text-xl border border-white/5 shadow-inner group-hover:bg-white/20 transition-all">
                     {item.name.charAt(0)}
                   </div>
                   <span className="text-xl font-bold whitespace-nowrap text-white/80 group-hover:text-white transition-colors tracking-tight">

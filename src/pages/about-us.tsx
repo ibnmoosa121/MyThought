@@ -7,7 +7,7 @@ const AboutUsPage = () => {
   }, [])
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-32 pb-12">
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl font-bold mb-4">About Us</h1>
@@ -21,12 +21,12 @@ const AboutUsPage = () => {
         <div>
           <h2 className="text-3xl font-bold mb-4">Our Story</h2>
           <p className="mb-4">
-            Founded in 2020, MyThought began with a simple mission: to help businesses leverage technology 
-            to achieve their goals. What started as a small consulting firm has grown into a 
+            Founded in 2020, MyThought began with a simple mission: to help businesses leverage technology
+            to achieve their goals. What started as a small consulting firm has grown into a
             comprehensive solutions provider.
           </p>
           <p>
-            Today, we work with clients across industries to deliver innovative software, 
+            Today, we work with clients across industries to deliver innovative software,
             strategic business consulting, and creative design solutions that drive growth and success.
           </p>
         </div>
