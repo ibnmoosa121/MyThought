@@ -16,6 +16,7 @@ const AIAnalyticsPage = () => {
             <div className="relative z-10">
                 <SectionDivider type="glow" direction="top" color="from-indigo-500/20" />
                 <AIAnalyticsTechStack />
+
                 <SectionDivider type="fade" direction="bottom" />
             </div>
         </main>

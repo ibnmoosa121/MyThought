@@ -67,13 +67,13 @@ export const services: Record<ServiceKey, ServiceContent> = {
   },
   talent: {
     key: 'talent',
-    title: 'Talent & Staffing',
-    subtitle: 'Connecting you with top-tier talent to build high-performing teams',
+    title: 'Workforce & Talent',
+    subtitle: 'Connecting you with elite professionals across tech, logistics, and retail',
     bullets: [
-      'Executive Search',
-      'Team Augmentation',
-      'Technical Recruiting',
-      'Culture fit assessment',
+      'Omni-Sector Staffing',
+      'Last-Mile & Fleet Recruitment',
+      'IT & PMO Augmentation',
+      'Full-Scale Compliance (KSA/UAE)',
     ],
     bgImage:
       'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop',

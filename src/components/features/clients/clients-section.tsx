@@ -109,13 +109,32 @@ const ClientsSection: React.FC = () => {
             fadeOutColor="#000000" // Match black background
             renderItem={(item) => (
               <div className="flex items-center justify-center px-4">
-                <div className="flex items-center gap-4 px-8 py-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm transition-all duration-300 group hover:bg-white/[0.07] hover:border-white/30 hover:scale-105 active:scale-95 shadow-2xl">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white font-black text-xl border border-white/5 shadow-inner group-hover:bg-white/20 transition-all">
-                    {item.name.charAt(0)}
+                <div className="group relative">
+                  {/* Outer Orbit / Glow */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-white/0 via-white/5 to-white/0 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-1000"></div>
+
+                  {/* The Capsule Container */}
+                  <div className="relative flex items-center gap-6 px-12 py-5 rounded-full bg-zinc-950/40 border border-white/5 backdrop-blur-2xl transition-all duration-700 group-hover:bg-zinc-900/60 group-hover:border-white/20 group-hover:scale-105 group-hover:-translate-y-1 shadow-2xl">
+
+                    {/* Icon Circle */}
+                    <div className="relative w-12 h-12 flex-shrink-0">
+                      <div className="absolute inset-0 bg-white/5 rounded-full animate-pulse transition-all group-hover:scale-110"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full border border-white/10 flex items-center justify-center text-white font-black text-xl shadow-lg transform transition-transform group-hover:rotate-12">
+                        {item.name.charAt(0)}
+                      </div>
+                    </div>
+
+                    {/* Brand Name */}
+                    <div className="flex flex-col">
+                      <span className="text-sm font-black uppercase tracking-[0.3em] text-white/20 group-hover:text-white/40 transition-colors duration-500">Partner</span>
+                      <span className="text-xl font-black italic uppercase tracking-tighter text-white/50 group-hover:text-white transition-all duration-500 whitespace-nowrap">
+                        {item.name}
+                      </span>
+                    </div>
+
+                    {/* Interactive Scan Line Effect */}
+                    <div className="absolute bottom-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   </div>
-                  <span className="text-xl font-bold whitespace-nowrap text-white/80 group-hover:text-white transition-colors tracking-tight">
-                    {item.name}
-                  </span>
                 </div>
               </div>
             )}

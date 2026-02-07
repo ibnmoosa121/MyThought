@@ -2,18 +2,16 @@ import { Users, Layout, Target, Box } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { DesignPalette } from "../../../../data/design-palettes";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const services = [
+const servicesData = [
     {
         id: "uiux",
         title: "UX/UI Design",
         desc: "High-fidelity prototypes and precision interfaces.",
         icon: Users,
-        color: "from-[#6366F1]",
-        shadow: "shadow-[#6366F1]/20",
-        border: "group-hover:border-[#6366F1]/50",
         image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop"
     },
     {
@@ -21,9 +19,6 @@ const services = [
         title: "Web Design",
         desc: "Performance-first digital architecture.",
         icon: Layout,
-        color: "from-[#22D3EE]",
-        shadow: "shadow-[#22D3EE]/20",
-        border: "group-hover:border-[#22D3EE]/50",
         image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop"
     },
     {
@@ -31,9 +26,6 @@ const services = [
         title: "Brand Identity",
         desc: "Iconic visual systems and storytelling.",
         icon: Target,
-        color: "from-[#D946EF]",
-        shadow: "shadow-[#D946EF]/20",
-        border: "group-hover:border-[#D946EF]/50",
         image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&auto=format&fit=crop"
     },
     {
@@ -41,14 +33,11 @@ const services = [
         title: "Motion Graphics",
         desc: "Fluid aesthetics and interactive flows.",
         icon: Box,
-        color: "from-[#F43F5E]",
-        shadow: "shadow-[#F43F5E]/20",
-        border: "group-hover:border-[#F43F5E]/50",
         image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop"
     }
 ];
 
-const ServiceCard = ({ service }: { service: typeof services[0] }) => {
+const ServiceCard = ({ service, color }: { service: typeof servicesData[0], color: string }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const innerRef = useRef<HTMLDivElement>(null);
     const imgRef = useRef<HTMLImageElement>(null);
@@ -113,7 +102,8 @@ const ServiceCard = ({ service }: { service: typeof services[0] }) => {
         >
             <div
                 ref={innerRef}
-                className={`relative w-full h-full rounded-[1.5rem] overflow-hidden border border-white/5 transition-all duration-500 bg-zinc-950/80 backdrop-blur-md transform-preserve-3d shadow-xl ${service.shadow} ${service.border}`}
+                className={`relative w-full h-full rounded-[1.5rem] overflow-hidden border border-white/5 transition-all duration-500 bg-zinc-950/80 backdrop-blur-md transform-preserve-3d shadow-xl group-hover:border-white/20`}
+                style={{ '--tw-shadow-color': `${color}33` } as React.CSSProperties}
             >
                 {/* Spotlight */}
                 <div
@@ -129,11 +119,11 @@ const ServiceCard = ({ service }: { service: typeof services[0] }) => {
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-95" />
-                <div ref={overlayRef} className={`absolute inset-0 bg-gradient-to-br ${service.color} to-transparent opacity-0 mix-blend-overlay`} />
+                <div ref={overlayRef} className={`absolute inset-0 opacity-0 mix-blend-overlay`} style={{ background: `radial-gradient(circle at center, ${color}, transparent)` }} />
 
                 <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
                     <div ref={contentRef} className="transform translate-y-3">
-                        <div className={`w-12 h-12 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6`}>
+                        <div className={`w-12 h-12 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6`} style={{ borderColor: `${color}33` }}>
                             <service.icon className="w-6 h-6 text-white" />
                         </div>
 
@@ -148,13 +138,13 @@ const ServiceCard = ({ service }: { service: typeof services[0] }) => {
                 </div>
 
                 {/* Animated colored glow at the bottom */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className={`absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} style={{ background: `linear-gradient(to right, ${color}, transparent)` }} />
             </div>
         </div>
     );
 };
 
-export const DesignServicesFrame = () => {
+export const DesignServicesFrame = ({ palette }: { palette: DesignPalette }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
@@ -221,11 +211,11 @@ export const DesignServicesFrame = () => {
             <div className="container mx-auto relative z-10 w-full max-w-6xl">
                 <div ref={headerRef} className="flex flex-col items-start mb-12 md:mb-16 max-w-xl">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase mb-4">
-                        <Target size={12} className="text-[#D946EF]" />
+                        <Target size={12} style={{ color: palette.colors[1] }} />
                         <span>Our Offerings</span>
                     </div>
                     <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black text-white italic uppercase leading-[0.8] tracking-tighter mb-4">
-                        The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366F1] to-[#F43F5E]">Core</span>
+                        The <span style={{ backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', backgroundImage: `linear-gradient(to right, ${palette.colors[0]}, ${palette.colors[2]})` }}>Core</span>
                     </h2>
                     <p className="text-zinc-500 text-base md:text-sm font-medium tracking-tight border-l border-white/10 pl-4">
                         Precise design execution meeting strategic business objectives.
@@ -233,9 +223,9 @@ export const DesignServicesFrame = () => {
                 </div>
 
                 <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 w-full">
-                    {services.map((service, i) => (
+                    {servicesData.map((service, i) => (
                         <div key={i} className="service-card-wrapper h-full">
-                            <ServiceCard service={service} />
+                            <ServiceCard service={service} color={palette.colors[i % palette.colors.length]} />
                         </div>
                     ))}
                 </div>

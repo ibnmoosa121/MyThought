@@ -1,0 +1,106 @@
+{
+    "company": {
+        "name": "MyThought",
+        "mission": "Bridging vision and execution through elite technology and strategic consultancy.",
+        "experience": "25+ years of global expertise in technical and project management.",
+        "presence": [
+            "Dubai",
+            "KSA",
+            "India",
+            "Indonesia"
+        ],
+        "founder_focus": [
+            "Web Development",
+            "AI",
+            "High-Tech Solutions"
+        ]
+    },
+    "services": [
+        {
+            "name": "Software & Technology",
+            "description": "Custom development, Cloud & DevOps, and AI solutions.",
+            "capabilities": [
+                "Web & Mobile product engineering",
+                "Cloud & DevOps automation (CI/CD, IaC)",
+                "AI/ML pipelines and data platforms",
+                "Security, compliance, and observability"
+            ],
+            "focus": "Building high-performance, scalable tech stacks for modern enterprises."
+        },
+        {
+            "name": "Consultancy",
+            "description": "Dubai & KSA expansion, market entry, and operations.",
+            "capabilities": [
+                "Market intelligence and strategy workshops",
+                "Entity setup and compliance guidance",
+                "Operations optimization and automation",
+                "Partnership and ecosystem mapping"
+            ],
+            "focus": "Helping global firms navigate and scale in the Gulf region."
+        },
+        {
+            "name": "Talent & Staffing",
+            "description": "Connecting you with top-tier talent to build high-performing teams.",
+            "capabilities": [
+                "Executive Search",
+                "Team Augmentation",
+                "Technical Recruiting",
+                "Rigorous Screening & Assessment"
+            ],
+            "focus": "Source, vetted, and integrated technical experts for your roadmap."
+        },
+        {
+            "name": "Design & Creative",
+            "description": "Growth campaigns, branding, and digital experiences.",
+            "capabilities": [
+                "UI/UX design and prototyping",
+                "Brand identity and visual systems",
+                "Creative content production pipelines",
+                "Performance marketing and analytics"
+            ],
+            "focus": "Combining aesthetic excellence with conversion-driven data."
+        },
+        {
+            "name": "Ventures",
+            "description": "Investing in and building the next generation of startups.",
+            "capabilities": [
+                "Early-stage capital and strategic support",
+                "Technical co-founder and product incubation",
+                "Access to global network of partners",
+                "Go-to-market acceleration"
+            ],
+            "focus": "Scaling innovative ideas from concept to operational assets."
+        },
+        {
+            "name": "FinTech",
+            "description": "RegTech, Payments, and AI-driven financial products.",
+            "capabilities": [
+                "Payment orchestration and compliance (PCI, AML)",
+                "Ledger and reconciliation systems",
+                "Risk scoring and fraud detection with ML",
+                "Real-time dashboards and analytics"
+            ],
+            "focus": "Developing secure, compliant, and data-rich financial technologies."
+        },
+        {
+            "name": "AI & Data Analytics",
+            "description": "Harnessing data and AI to drive intelligent decision-making.",
+            "capabilities": [
+                "Machine Learning & Predictive Modeling",
+                "Natural Language Processing (NLP)",
+                "Data Visualization & Business Intelligence",
+                "AI Strategy & Implementation"
+            ],
+            "focus": "Transforming raw data into actionable intelligence via custom neural networks."
+        }
+    ],
+    "contacts": {
+        "hq": "Jeddah, Saudi Arabia",
+        "regional_hubs": [
+            "Dubai",
+            "Jakarta",
+            "Trivandrum"
+        ],
+        "cta": "Start a project with us to experience elite technical engineering."
+    }
+}

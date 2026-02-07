@@ -9,7 +9,11 @@ import { WavyBackground } from '../components/ui/wavy-background'
 import { SectionDivider } from '../components/ui/section-divider'
 import DeliveryProcess from '../components/features/delivery/delivery-process'
 
+import { services } from '../data/services'
+
 const SoftwarePage = () => {
+  const service = services.software;
+
   useEffect(() => {
     document.title = "Software & Technology | MyThought"
     window.scrollTo(0, 0)
@@ -30,7 +34,7 @@ const SoftwarePage = () => {
       <div className="relative z-10 space-y-0">
         <div className="relative bg-black">
           <DeliveryProcess />
-          <SectionDivider type="glow" direction="bottom" color="from-primary/20" />
+          <SectionDivider type="glow" direction="bottom" color={service.theme.plasmaColor} />
         </div>
 
         <SectionDivider />
@@ -42,14 +46,14 @@ const SoftwarePage = () => {
         <SectionDivider />
 
         <div className="relative">
-          <WavyBackground color="#4F46E5" className="opacity-20" />
+          <WavyBackground color={service.theme.plasmaColor} className="opacity-20" />
           <SoftwareMethodology />
         </div>
 
         <SectionDivider />
 
         <div className="relative">
-          <WavyBackground color="#3B82F6" className="opacity-25" />
+          <WavyBackground color={service.theme.plasmaColor} className="opacity-25" />
           <SoftwareCaseStudies />
         </div>
       </div>

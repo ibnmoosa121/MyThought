@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useLenis } from 'lenis/react'
 import { Header } from './components/layout/header'
@@ -6,6 +6,7 @@ import { Footer } from './components/layout/footer'
 import { SmoothScroll } from './components/layout/smooth-scroll'
 import { initializeStore } from './stores/app-store'
 import { Preloader } from './components/ui/preloader'
+import { cn } from './lib/utils'
 
 // Lazy load page components
 const MainContent = lazy(() => import('./components/layout/main-content'))
@@ -36,42 +37,53 @@ const ScrollToTop = () => {
   return null
 }
 
-// Main App component
 const App = () => {
+  const [isReady, setIsReady] = useState(false)
+
   // Initialize store and apply theme on mount
   useEffect(() => {
     initializeStore()
+    // Small delay to ensure everything is mounted before revealing
+    const timer = setTimeout(() => setIsReady(true), 100)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
     <HashRouter>
       <SmoothScroll>
         <ScrollToTop />
-        <div className="min-h-screen bg-base-100 text-base-content dark flex flex-col">
+        <div className={cn(
+          "min-h-screen bg-base-100 text-base-content dark flex flex-col transition-opacity duration-500",
+          isReady ? "opacity-100" : "opacity-0"
+        )}>
           <Preloader />
           {/* Header */}
           <Header />
 
           {/* Routes wrapped in Suspense for lazy loading */}
-          <Suspense fallback={<Preloader />}>
-            <Routes>
-              <Route path="/" element={<MainContent />} />
-              <Route path="/software" element={<SoftwarePage />} />
-              <Route path="/consultancy" element={<ConsultancyPage />} />
-              <Route path="/talent" element={<TalentPage />} />
-              <Route path="/design" element={<DesignPage />} />
-              <Route path="/ventures" element={<VenturesPage />} />
-              <Route path="/fintech" element={<FintechPage />} />
-              <Route path="/about-us" element={<AboutUsPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/ai-analytics" element={<AIAnalyticsPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Suspense>
+          <Suspense fallback={<div className="flex-1 bg-black" />}>
+            <div className="flex-1 flex flex-col relative">
+              <Routes>
+                <Route path="/" element={<MainContent />} />
+                <Route path="/software" element={<SoftwarePage />} />
+                <Route path="/consultancy" element={<ConsultancyPage />} />
+                <Route path="/talent" element={<TalentPage />} />
+                <Route path="/design" element={<DesignPage />} />
+                <Route path="/ventures" element={<VenturesPage />} />
+                <Route path="/fintech" element={<FintechPage />} />
+                <Route path="/about-us" element={<AboutUsPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/ai-analytics" element={<AIAnalyticsPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
 
-          {/* Footer */}
-          <Footer />
+              {/* Footer moved inside Suspense with an additional presence check */}
+              <div className="relative z-10">
+                <Footer />
+              </div>
+            </div>
+          </Suspense>
         </div>
       </SmoothScroll>
     </HashRouter>

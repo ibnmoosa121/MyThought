@@ -5,43 +5,43 @@ import { useRef, useState } from "react";
 
 const consultants = [
     {
-        id: "hr",
+        id: "cap",
         name: "Human Capital",
-        specialty: "HR STRATEGY",
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop",
-        color: "#3b82f6",
-        keyword: "RECRUIT"
+        specialty: "TALENT ORCHESTRATION",
+        image: "/assets/images/gulf-human-capital.png",
+        color: "#10B981", // Islamic Emerald
+        keyword: "STRATEGY"
     },
     {
-        id: "finance",
-        name: "Financial Ops",
-        specialty: "GLOBAL FINANCE",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1200&auto=format&fit=crop",
-        color: "#10b981",
-        keyword: "PROFIT"
+        id: "ops",
+        name: "Sovereign Ops",
+        specialty: "STRATEGIC ADVISORY",
+        image: "/assets/images/gulf-sovereign-ops.png",
+        color: "#004D40", // Islamic Emerald
+        keyword: "INSIGHT"
     },
     {
-        id: "legal",
-        name: "Legal Arch",
-        specialty: "COMPLIANCE",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
-        color: "#f59e0b",
+        id: "reg",
+        name: "Institutional Reg",
+        specialty: "GOVERNANCE & RISK",
+        image: "/assets/images/gulf-institutional-reg.png",
+        color: "#34D399", // Light Emerald
         keyword: "COMPLY"
     },
     {
-        id: "tech",
-        name: "Digital Strategy",
+        id: "dig",
+        name: "Digital Frontier",
         specialty: "TRANSFORMATION",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1200&auto=format&fit=crop",
-        color: "#6366f1",
+        image: "/assets/images/gulf-digital-frontier.png",
+        color: "#14B8A6", // Teal
         keyword: "EVOLVE"
     },
     {
-        id: "market",
-        name: "Global Growth",
-        specialty: "EXPANSION",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
-        color: "#f43f5e",
+        id: "exp",
+        name: "Regional Growth",
+        specialty: "MARKET ASCENSION",
+        image: "/assets/images/gulf-regional-growth.png",
+        color: "#059669",
         keyword: "EXPAND"
     }
 ];
@@ -59,10 +59,27 @@ export const ConsultancyHero = () => {
 
     return (
         <section ref={containerRef} className="relative w-full h-screen bg-black overflow-hidden flex flex-col pt-24">
-            {/* Background Texture */}
-            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,34,34,1)_0%,rgba(0,0,0,1)_100%)]" />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay opacity-30" />
+            {/* Background Texture & Pattern */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                <div className="absolute inset-0 bg-black" />
+                <div className="absolute inset-0 opacity-40 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+                {/* Subtle Arabesque Pattern Mask */}
+                <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] scale-50" />
+
+                {/* Main Hero Image with Gradient Mask */}
+                <motion.div
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 0.4 }}
+                    transition={{ duration: 2, ease: "easeOut" }}
+                    className="absolute inset-0"
+                >
+                    <img
+                        src="/assets/images/gulf-hero-new.png"
+                        alt="Gulf Professionalism"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black pointer-events-none" />
             </div>
 
             {/* Floating Title (Large low-opacity background text) */}
@@ -70,44 +87,44 @@ export const ConsultancyHero = () => {
                 <motion.h2
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{
-                        opacity: hoveredId ? 0.05 : 0.02,
-                        scale: hoveredId ? 1.1 : 1,
+                        opacity: hoveredId ? 0.08 : 0.04,
+                        scale: hoveredId ? 1.05 : 1,
                         y: hoveredId ? -20 : 0
                     }}
-                    className="text-[30vw] font-black italic uppercase leading-none tracking-tighter text-white whitespace-nowrap"
+                    className="text-[25vw] font-black italic uppercase leading-none tracking-tighter text-[#10B981] whitespace-nowrap blur-[2px] opacity-20"
                 >
-                    {hoveredId ? consultants.find(c => c.id === hoveredId)?.keyword : "shadows"}
+                    {hoveredId ? consultants.find(c => c.id === hoveredId)?.keyword : "CONSULT"}
                 </motion.h2>
             </div>
 
             <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-between py-12">
-                <div className="max-w-4xl">
+                <div className="max-w-4xl mt-12 md:mt-0">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/50 text-xs font-bold uppercase tracking-[0.2em] mb-4`}
+                        className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-[#10B981]/30 text-[#10B981] text-[10px] font-bold uppercase tracking-[0.3em] mb-6 backdrop-blur-sm`}
                     >
-                        Wall of Shadows
+                        Regional Advisory
                     </motion.div>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-6xl md:text-8xl font-black text-white italic uppercase leading-[0.85] tracking-tighter mb-4"
+                        className="text-5xl sm:text-7xl md:text-[9rem] font-black text-white italic uppercase leading-[0.8] md:leading-[0.75] tracking-tighter mb-4"
                     >
-                        Expertise <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/40 to-white/10">In Contrast</span>
+                        Gulf <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] via-[#10B981] to-[#34D399] animate-gradient-x bg-[length:200%_auto]">Advisory</span>
                     </motion.h1>
                 </div>
 
                 {/* The Grid of Shadows */}
-                <div className="flex-1 w-full grid grid-cols-2 md:grid-cols-5 gap-4 mt-8">
-                    {consultants.map((consultant) => (
+                <div className="flex-1 w-full grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mt-8 mb-12 md:mb-0">
+                    {consultants.map((consultant, idx) => (
                         <motion.div
                             key={consultant.id}
                             onMouseEnter={() => setHoveredId(consultant.id)}
                             onMouseLeave={() => setHoveredId(null)}
                             onClick={() => scrollToSection(consultant.id)}
-                            className="relative group cursor-pointer overflow-hidden rounded-2xl border border-white/5 hover:border-white/20 transition-colors bg-zinc-950/50"
+                            className={`relative group cursor-pointer overflow-hidden rounded-2xl border border-white/5 hover:border-white/20 transition-colors bg-zinc-950/50 ${idx === 4 ? 'col-span-2 md:col-span-1' : ''}`}
                             whileHover={{ scale: 1.02 }}
                         >
                             {/* Inner Glow when hovered */}

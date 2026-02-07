@@ -10,8 +10,8 @@ import {
   Rocket,
   Brain
 } from 'lucide-react'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -109,7 +109,7 @@ const ServicesContent = () => {
         <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition-colors duration-500" />
 
         <a
-          href="#/contact-us"
+          href="#/contact"
           className="relative z-10 text-xs font-semibold uppercase tracking-wider text-white hover:underline mt-auto flex items-center gap-1"
         >
           Schedule a Consultation <ChevronRight size={14} />
@@ -153,114 +153,131 @@ const ServicesContent = () => {
 // Main header component
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsHeaderVisible(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <Navbar className="top-4">
-      {/* Desktop View */}
-      <NavBody className="bg-base-100/80 backdrop-blur-md border border-base-content/10 items-center">
-        {/* Left: Brand */}
-        <div className="flex-1 flex items-center justify-start">
-          <AppBrand />
-        </div>
-
-        {/* Center: Navigation Menu */}
-        <div className="flex-none flex justify-center">
-          <NavigationMenu>
-            <NavigationMenuList className="flex gap-2">
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-base-content/10 font-bold text-white">
-                  Services
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ServicesContent />
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
-                  href="#/about-us"
-                >
-                  About Us
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
-                  href="#/blog"
-                >
-                  Blog
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList >
-          </NavigationMenu >
-        </div >
-
-        {/* Right: Actions */}
-        < div className="flex-1 flex items-center justify-end" >
-          <NavbarButton href="#/contact-us" variant="primary" className="rounded-full bg-white text-black hover:bg-white/90">
-            Get Started
-          </NavbarButton>
-        </div >
-      </NavBody >
-
-      {/* Mobile View */}
-      < MobileNav className="bg-base-100/95 backdrop-blur-md border border-base-content/10" >
-        <MobileNavHeader className="px-4 py-2">
-          <AppBrand />
-          <MobileNavToggle isOpen={mobileMenuOpen} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} />
-        </MobileNavHeader>
-
-        <MobileNavMenu isOpen={mobileMenuOpen}>
-          <div className="flex flex-col w-full gap-2 p-4">
-            {/* Mobile Services Dropdown */}
-            <div className="collapse collapse-arrow bg-base-200/50 rounded-xl">
-              <input type="checkbox" />
-              <div className="collapse-title text-sm font-bold flex items-center text-white">
-                Services
+    <AnimatePresence>
+      {isHeaderVisible && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="fixed inset-x-0 top-0 z-40 w-full pointer-events-none"
+        >
+          <Navbar className="top-4 pointer-events-auto">
+            {/* Desktop View */}
+            <NavBody className="bg-base-100/80 backdrop-blur-md border border-base-content/10 items-center">
+              {/* Left: Brand */}
+              <div className="flex-1 flex items-center justify-start">
+                <AppBrand />
               </div>
-              <div className="collapse-content px-0">
-                <div className="flex flex-col">
-                  {Object.values(services).map((service) => {
-                    const Icon = serviceIcons[service.key as keyof typeof serviceIcons] || Lightbulb
-                    return (
-                      <a
-                        key={service.key}
-                        href={serviceLinks[service.key as keyof typeof serviceLinks] || '#'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 px-6 py-3 text-sm hover:bg-base-200 hover:text-primary transition-colors border-l-4 border-transparent hover:border-primary"
+
+              {/* Center: Navigation Menu */}
+              <div className="flex-none flex justify-center">
+                <NavigationMenu>
+                  <NavigationMenuList className="flex gap-2">
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-base-content/10 font-bold text-white">
+                        Services
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ServicesContent />
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+
+                    <NavigationMenuItem>
+                      <NavigationMenuLink
+                        className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
+                        href="#/about-us"
                       >
-                        <Icon size={16} className="text-white/60" />
-                        <span className="text-white">{service.title}</span>
-                      </a>
-                    )
-                  })}
+                        About Us
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                      <NavigationMenuLink
+                        className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
+                        href="#/blog"
+                      >
+                        Blog
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  </NavigationMenuList >
+                </NavigationMenu >
+              </div >
+
+              {/* Right: Actions */}
+              < div className="flex-1 flex items-center justify-end" >
+                <NavbarButton href="#/contact" variant="primary" className="rounded-full bg-white text-black hover:bg-white/90">
+                  Get Started
+                </NavbarButton>
+              </div >
+            </NavBody >
+
+            {/* Mobile View */}
+            < MobileNav className="bg-base-100/95 backdrop-blur-md border border-base-content/10" >
+              <MobileNavHeader className="px-4 py-2">
+                <AppBrand />
+                <MobileNavToggle isOpen={mobileMenuOpen} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} />
+              </MobileNavHeader>
+
+              <MobileNavMenu isOpen={mobileMenuOpen}>
+                <div className="flex flex-col w-full gap-2 p-4">
+                  {/* Mobile Services Dropdown */}
+                  <div className="collapse collapse-arrow bg-base-200/50 rounded-xl">
+                    <input type="checkbox" />
+                    <div className="collapse-title text-sm font-bold flex items-center text-white">
+                      Services
+                    </div>
+                    <div className="collapse-content px-0">
+                      <div className="flex flex-col">
+                        {Object.values(services).map((service) => {
+                          const Icon = serviceIcons[service.key as keyof typeof serviceIcons] || Lightbulb
+                          return (
+                            <a
+                              key={service.key}
+                              href={serviceLinks[service.key as keyof typeof serviceLinks] || '#'}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-3 px-6 py-3 text-sm hover:bg-base-200 hover:text-primary transition-colors border-l-4 border-transparent hover:border-primary"
+                            >
+                              <Icon size={16} className="text-white/60" />
+                              <span className="text-white">{service.title}</span>
+                            </a>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <a href="#/about-us" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
+                    About Us
+                  </a>
+                  <a href="#/blog" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
+                    Blog
+                  </a>
+                  <a href="#/contact" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
+                    Contact
+                  </a>
+
+                  <div className="mt-4">
+                    <NavbarButton href="#/contact" className="w-full rounded-xl bg-primary text-primary-content">
+                      Get Started
+                    </NavbarButton>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <a href="#/about-us" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
-              About Us
-            </a>
-            <a href="#/blog" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
-              Blog
-            </a>
-            <a href="#/contact-us" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
-              Contact
-            </a>
-
-            <div className="mt-4">
-              <NavbarButton href="#/contact-us" className="w-full rounded-xl bg-primary text-primary-content">
-                Get Started
-              </NavbarButton>
-            </div>
-          </div>
-        </MobileNavMenu>
-      </MobileNav>
-    </Navbar>
+              </MobileNavMenu>
+            </MobileNav>
+          </Navbar>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 

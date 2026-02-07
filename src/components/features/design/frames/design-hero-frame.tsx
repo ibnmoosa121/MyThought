@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
+import type { DesignPalette } from "../../../../data/design-palettes";
 
-const AnimatedChar = ({ char, index }: { char: string, index: number }) => {
+const AnimatedChar = ({ char, index, palette }: { char: string, index: number, palette: DesignPalette }) => {
     const charRef = useRef<HTMLSpanElement>(null);
-    const colors = ["#6366F1", "#D946EF", "#F43F5E", "#F59E0B", "#22D3EE"];
+    const colors = palette.colors;
     const defaultColor = colors[index % colors.length];
 
-    const onMouseEnter = () => {
-        // Random effect based on index to keep it "crazy"
+    const triggerEffect = () => {
         const effects = [
             { rotationY: 360, duration: 0.8 },
             { rotationX: 360, duration: 0.8 },
@@ -20,7 +20,7 @@ const AnimatedChar = ({ char, index }: { char: string, index: number }) => {
         gsap.to(charRef.current, { ...effect, color: "#ffffff", ease: "back.out(1.7)", overwrite: "auto" });
     };
 
-    const onMouseLeave = () => {
+    const resetEffect = () => {
         gsap.to(charRef.current, {
             rotationY: 0,
             rotationX: 0,
@@ -34,11 +34,21 @@ const AnimatedChar = ({ char, index }: { char: string, index: number }) => {
         });
     };
 
+    // Animate once on load
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            triggerEffect();
+            setTimeout(resetEffect, 800);
+        }, 1500 + index * 50); // Start after entrance animation
+
+        return () => clearTimeout(timer);
+    }, [palette]); // Re-run when palette changes for a cool swap effect
+
     return (
         <span
             ref={charRef}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
+            onMouseEnter={triggerEffect}
+            onMouseLeave={resetEffect}
             className="inline-block cursor-default"
             style={{ perspective: "1000px", color: defaultColor }}
         >
@@ -70,7 +80,7 @@ const SvgShape = ({ type, color }: { type: 'circle' | 'square' | 'triangle', col
     );
 };
 
-export const DesignHeroFrame = () => {
+export const DesignHeroFrame = ({ palette }: { palette: DesignPalette }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
     const titleLine1 = "Design".split("");
@@ -121,8 +131,14 @@ export const DesignHeroFrame = () => {
 
             {/* Glowing Blobs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/4 -left-20 w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] bg-[#6366F1]/10 rounded-full blur-[80px] md:blur-[120px]" />
-                <div className="absolute bottom-1/4 -right-20 w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] bg-[#F43F5E]/10 rounded-full blur-[80px] md:blur-[120px]" />
+                <motion.div
+                    animate={{ backgroundColor: palette.bgGlow[0] + "1a" }}
+                    className="absolute top-1/4 -left-20 w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] rounded-full blur-[80px] md:blur-[120px] transition-colors duration-1000"
+                />
+                <motion.div
+                    animate={{ backgroundColor: (palette.bgGlow[1] || palette.bgGlow[0]) + "1a" }}
+                    className="absolute bottom-1/4 -right-20 w-[60vw] md:w-[45vw] h-[60vw] md:h-[45vw] rounded-full blur-[80px] md:blur-[120px] transition-colors duration-1000"
+                />
             </div>
 
             <div className="relative z-10 text-center px-6 w-full">
@@ -131,19 +147,19 @@ export const DesignHeroFrame = () => {
                         <div className="flex items-center">
                             {titleLine1.map((char, i) => (
                                 <span key={i} className="char-entrance inline-block">
-                                    <AnimatedChar char={char} index={i} />
+                                    <AnimatedChar char={char} index={i} palette={palette} />
                                 </span>
                             ))}
-                            <SvgShape type="square" color="#6366F1" />
+                            <SvgShape type="square" color={palette.colors[0]} />
                         </div>
                         <div className="flex items-center mt-4">
-                            <SvgShape type="circle" color="#F43F5E" />
+                            <SvgShape type="circle" color={palette.colors[2 % palette.colors.length]} />
                             {titleLine2.map((char, i) => (
                                 <span key={i} className="char-entrance inline-block">
-                                    <AnimatedChar char={char} index={i + titleLine1.length} />
+                                    <AnimatedChar char={char} index={i + titleLine1.length} palette={palette} />
                                 </span>
                             ))}
-                            <SvgShape type="triangle" color="#F59E0B" />
+                            <SvgShape type="triangle" color={palette.colors[3 % palette.colors.length]} />
                         </div>
                     </h1>
                 </div>
