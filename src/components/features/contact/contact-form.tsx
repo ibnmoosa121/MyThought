@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useSpring } from 'framer-motion';
+import React, { useState, useCallback, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, ChevronDown, Loader2, Mail, Phone, MapPin, Sparkles, AlertCircle } from 'lucide-react';
 import { cn } from '../../../lib/utils';
 
