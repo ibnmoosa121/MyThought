@@ -8,6 +8,8 @@ import { initializeStore } from './stores/app-store'
 import { Preloader } from './components/ui/preloader'
 import { cn } from './lib/utils'
 
+// Deployment Trigger: 2026-02-08-01
+
 // Lazy load page components
 const MainContent = lazy(() => import('./components/layout/main-content'))
 const SoftwarePage = lazy(() => import('./pages/software'))
