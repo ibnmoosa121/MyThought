@@ -47,6 +47,26 @@ const App = () => {
     initializeStore()
     // Small delay to ensure everything is mounted before revealing
     const timer = setTimeout(() => setIsReady(true), 100)
+
+    // Background prefetching of other routes for "instant" feel
+    const prefetchRoutes = () => {
+      // Small delay to not interfere with initial critical rendering
+      setTimeout(() => {
+        import('./pages/software')
+        import('./pages/consultancy')
+        import('./pages/talent')
+        import('./pages/design')
+        import('./pages/ventures')
+        import('./pages/fintech')
+        import('./pages/about-us')
+        import('./pages/blog')
+        import('./pages/contact')
+        import('./pages/ai-analytics')
+      }, 3000)
+    }
+
+    prefetchRoutes()
+
     return () => clearTimeout(timer)
   }, [])
 
