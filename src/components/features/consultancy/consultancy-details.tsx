@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -179,100 +180,118 @@ const details = [
 ];
 
 export const ConsultancyDetails = () => {
-    return (
-        <div className="bg-black py-24">
-            <div className="container mx-auto px-6">
-                <div className="space-y-32">
-                    {details.map((detail, idx) => (
-                        <section
-                            key={detail.id}
-                            id={`${detail.id}-details`}
-                            className="relative scroll-mt-32 p-6 md:p-16 rounded-[2.5rem] md:rounded-[4rem] group"
-                        >
-                            {/* Section Specific Arabesque Background */}
-                            <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] rounded-[2.5rem] md:rounded-[4rem] pointer-events-none group-hover:opacity-[0.05] transition-opacity duration-700" />
-                            <div className={`absolute inset-0 ${detail.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-[2.5rem] md:rounded-[4rem] blur-2xl z-0`} />
+    const [activePulse, setActivePulse] = useState<number | null>(null);
 
-                            <div className="relative z-10 flex flex-col lg:flex-row gap-16 items-center">
-                                {/* Visual Side */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    className="flex-1 w-full"
-                                >
-                                    <div className="relative aspect-square md:aspect-video rounded-[2rem] md:rounded-3xl overflow-hidden border border-white/10 group bg-zinc-900">
-                                        {detail.video && (
-                                            <video
-                                                autoPlay
-                                                loop
-                                                muted
-                                                playsInline
-                                                className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-1000"
-                                            >
-                                                <source src={detail.video} type="video/mp4" />
-                                            </video>
-                                        )}
-                                        <div className={`absolute inset-0 ${detail.bg} opacity-20 group-hover:opacity-40 transition-opacity duration-700`} />
-                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                            <div className="w-32 h-32 md:w-48 md:h-48">
-                                                <detail.icon color={detail.color} />
+    // Auto-pulse hover effect for mobile
+    useEffect(() => {
+        if (window.innerWidth >= 768) return;
+
+        let currentIndex = -1;
+        const interval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % details.length;
+            setActivePulse(currentIndex);
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="bg-black py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="space-y-16 md:space-y-32">
+                    {details.map((detail, idx) => {
+                        const isPulsing = activePulse === idx;
+                        return (
+                            <section
+                                key={detail.id}
+                                id={`${detail.id}-details`}
+                                className="relative scroll-mt-32 p-4 sm:p-8 md:p-16 rounded-[2.5rem] md:rounded-[4rem] group"
+                            >
+                                {/* Section Specific Arabesque Background */}
+                                <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] rounded-[2.5rem] md:rounded-[4rem] pointer-events-none group-hover:opacity-[0.05] transition-opacity duration-700" />
+                                <div className={`absolute inset-0 ${detail.bg} transition-opacity duration-1000 rounded-[2.5rem] md:rounded-[4rem] blur-2xl z-0 ${isPulsing ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+
+                                <div className="relative z-10 flex flex-col lg:flex-row gap-12 md:gap-16 items-center">
+                                    {/* Visual Side */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        className="flex-1 w-full"
+                                    >
+                                        <div className="relative aspect-square md:aspect-video rounded-[2rem] md:rounded-3xl overflow-hidden border border-white/10 group bg-zinc-900">
+                                            {detail.video && (
+                                                <video
+                                                    autoPlay
+                                                    loop
+                                                    muted
+                                                    playsInline
+                                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isPulsing ? 'opacity-60' : 'opacity-40 group-hover:opacity-60'}`}
+                                                >
+                                                    <source src={detail.video} type="video/mp4" />
+                                                </video>
+                                            )}
+                                            <div className={`absolute inset-0 ${detail.bg} transition-opacity duration-700 ${isPulsing ? 'opacity-40' : 'opacity-20 group-hover:opacity-40'}`} />
+                                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                                <div className="w-32 h-32 md:w-48 md:h-48">
+                                                    <detail.icon color={detail.color} />
+                                                </div>
+                                            </div>
+
+                                            {/* Floating Elements - Hidden on mobile for cleaner look */}
+                                            <div className="absolute top-10 right-10 hidden md:flex gap-2">
+                                                {[1, 2, 3].map((i) => (
+                                                    <div key={i} className={`w-2 h-2 rounded-full ${detail.bg} animate-pulse`} style={{ animationDelay: `${i * 0.5}s` }} />
+                                                ))}
                                             </div>
                                         </div>
+                                    </motion.div>
 
-                                        {/* Floating Elements - Hidden on mobile for cleaner look */}
-                                        <div className="absolute top-10 right-10 hidden md:flex gap-2">
-                                            {[1, 2, 3].map((i) => (
-                                                <div key={i} className={`w-2 h-2 rounded-full ${detail.bg} animate-pulse`} style={{ animationDelay: `${i * 0.5}s` }} />
+                                    {/* Content Side */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: idx % 2 === 0 ? 50 : -50 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        className={`flex-1 space-y-6 md:space-y-8 ${idx % 2 === 0 ? 'lg:order-first' : ''}`}
+                                    >
+                                        <div>
+                                            <span className={`text-[10px] md:text-sm font-black uppercase tracking-[0.3em] ${detail.color} mb-4 block`}>
+                                                {detail.name}
+                                            </span>
+                                            <h2 className="text-2xl sm:text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-[0.95] md:leading-none mb-6">
+                                                {detail.title}
+                                            </h2>
+                                            <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl">
+                                                {detail.desc}
+                                            </p>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                                            {detail.features.map((feature, fIdx) => (
+                                                <div key={fIdx} className="flex items-center gap-3 text-white/70 group">
+                                                    <div className={`w-1.5 h-1.5 rounded-full ${detail.bg} group-hover:scale-150 transition-transform`} />
+                                                    <span className="text-xs md:text-sm font-medium tracking-tight uppercase group-hover:text-white transition-colors">{feature}</span>
+                                                </div>
                                             ))}
                                         </div>
-                                    </div>
-                                </motion.div>
 
-                                {/* Content Side */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: idx % 2 === 0 ? 50 : -50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    className={`flex-1 space-y-8 ${idx % 2 === 0 ? 'lg:order-first' : ''}`}
-                                >
-                                    <div>
-                                        <span className={`text-sm font-black uppercase tracking-[0.3em] ${detail.color} mb-4 block`}>
-                                            {detail.name}
-                                        </span>
-                                        <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-[0.9] md:leading-none mb-6">
-                                            {detail.title}
-                                        </h2>
-                                        <p className="text-zinc-400 text-lg leading-relaxed max-w-xl">
-                                            {detail.desc}
-                                        </p>
-                                    </div>
+                                        <button
+                                            className={`flex items-center gap-4 px-8 md:px-10 py-4 md:py-5 rounded-full border border-white/10 text-white font-black uppercase italic text-[10px] md:text-xs tracking-[0.2em] transition-all group overflow-hidden relative`}
+                                        >
+                                            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                                            <span className="relative z-10 group-hover:text-black transition-colors">Inquire Section</span>
+                                            <ArrowRight size={18} className="relative z-10 group-hover:text-black group-hover:translate-x-2 transition-all" />
+                                        </button>
+                                    </motion.div>
+                                </div>
 
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        {detail.features.map((feature, fIdx) => (
-                                            <div key={fIdx} className="flex items-center gap-3 text-white/70 group">
-                                                <div className={`w-1.5 h-1.5 rounded-full ${detail.bg} group-hover:scale-150 transition-transform`} />
-                                                <span className="text-sm font-medium tracking-tight uppercase group-hover:text-white transition-colors">{feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <button
-                                        className={`flex items-center gap-4 px-10 py-5 rounded-full border border-white/10 text-white font-black uppercase italic text-xs tracking-[0.2em] transition-all group overflow-hidden relative`}
-                                    >
-                                        <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                                        <span className="relative z-10 group-hover:text-black transition-colors">Inquire Section</span>
-                                        <ArrowRight size={18} className="relative z-10 group-hover:text-black group-hover:translate-x-2 transition-all" />
-                                    </button>
-                                </motion.div>
-                            </div>
-
-                            {/* Decorative line */}
-                            {idx < details.length - 1 && (
-                                <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-40 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                            )}
-                        </section>
-                    ))}
+                                {/* Decorative line */}
+                                {idx < details.length - 1 && (
+                                    <div className="absolute -bottom-8 md:-bottom-16 left-1/2 -translate-x-1/2 w-40 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                                )}
+                            </section>
+                        );
+                    })}
                 </div>
             </div>
         </div>

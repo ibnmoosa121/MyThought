@@ -20,11 +20,14 @@ export const PinContainer = ({
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );
+  const [isHovered, setIsHovered] = useState(false);
 
   const onMouseEnter = () => {
+    setIsHovered(true);
     setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)");
   };
   const onMouseLeave = () => {
+    setIsHovered(false);
     setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
   };
 
@@ -36,6 +39,13 @@ export const PinContainer = ({
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={(e) => {
+        // On mobile/tablet, first click triggers hover animation, second click follows link
+        if (window.innerWidth < 1024 && !isHovered) {
+          e.preventDefault();
+          onMouseEnter();
+        }
+      }}
       href={href || "/"}
       target="_blank"
       rel="noopener noreferrer"
@@ -51,23 +61,31 @@ export const PinContainer = ({
           style={{
             transform: transform,
           }}
-          className="absolute left-1/2 p-4 top-1/2  flex justify-start items-start  rounded-2xl  shadow-[0_8px_16px_rgb(0_0_0/0.4)] bg-black border border-white/[0.1] group-hover/pin:border-white/[0.2] transition duration-700 overflow-hidden"
+          className={cn(
+            "absolute left-1/2 p-4 top-1/2 flex justify-start items-start rounded-2xl shadow-[0_8px_16px_rgb(0_0_0/0.4)] bg-black border border-white/[0.1] transition duration-700 overflow-hidden",
+            isHovered ? "border-white/[0.2]" : "group-hover/pin:border-white/[0.2]"
+          )}
         >
           <div className={cn(" relative z-50 ", className)}>{children}</div>
         </div>
       </div>
-      <PinPerspective title={title} />
+      <PinPerspective title={title} isHovered={isHovered} />
     </a>
   );
 };
 
 export const PinPerspective = ({
   title,
+  isHovered,
 }: {
   title?: string;
+  isHovered?: boolean;
 }) => {
   return (
-    <motion.div className="pointer-events-none  w-96 h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
+    <motion.div className={cn(
+      "pointer-events-none w-96 h-80 flex items-center justify-center opacity-0 transition duration-500 z-[60]",
+      isHovered ? "opacity-100" : "group-hover/pin:opacity-100"
+    )}>
       <div className=" w-full h-full -mt-7 flex-none  inset-0">
         <div className="absolute top-0 inset-x-0  flex justify-center">
           <div
@@ -153,8 +171,14 @@ export const PinPerspective = ({
         </div>
 
         <>
-          <motion.div className="absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-20 group-hover/pin:h-40 blur-[2px]" />
-          <motion.div className="absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-20 group-hover/pin:h-40  " />
+          <motion.div className={cn(
+            "absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-20 blur-[2px] transition-all duration-500",
+            isHovered ? "h-40" : "group-hover/pin:h-40"
+          )} />
+          <motion.div className={cn(
+            "absolute right-1/2 bottom-1/2 bg-gradient-to-b from-transparent to-cyan-500 translate-y-[14px] w-px h-20 transition-all duration-500",
+            isHovered ? "h-40" : "group-hover/pin:h-40"
+          )} />
           <motion.div className="absolute right-1/2 translate-x-[1.5px] bottom-1/2 bg-cyan-600 translate-y-[14px] w-[4px] h-[4px] rounded-full z-40 blur-[3px]" />
           <motion.div className="absolute right-1/2 translate-x-[0.5px] bottom-1/2 bg-cyan-300 translate-y-[14px] w-[2px] h-[2px] rounded-full z-40 " />
         </>

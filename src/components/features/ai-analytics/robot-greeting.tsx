@@ -122,54 +122,72 @@ export const RobotGreeting = () => {
                     animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
                     exit={{ opacity: 0, x: -10, scale: 0.9, filter: "blur(10px)" }}
                     transition={{ duration: 0.8, ease: "anticipate" }}
-                    className="absolute top-[30%] right-[15%] z-50 pointer-events-none"
+                    className="absolute top-[32%] right-[5%] md:top-[35%] md:right-[20%] z-50 pointer-events-none"
                 >
                     <div className="relative group">
+                        {/* Surprise: Proximity Alert Glow */}
+                        <div className="absolute -inset-4 bg-red-500/5 blur-[30px] rounded-full animate-pulse pointer-events-none" />
+
                         {/* High-Fidelity HUD Container */}
-                        <div className="relative px-5 py-4 rounded-2xl bg-black/80 backdrop-blur-2xl border border-red-500/40 shadow-[0_0_40px_rgba(239,68,68,0.2)] flex flex-col gap-1 overflow-hidden min-w-[240px]">
-                            {/* Animated Background Pulse */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent z-0" />
+                        <div className="relative px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl bg-black/80 backdrop-blur-3xl border border-red-500/30 shadow-[0_0_40px_rgba(239,68,68,0.15)] flex flex-col gap-0.5 overflow-hidden min-w-[150px] md:min-w-[180px]">
+                            {/* Animated Glitch Background */}
+                            <motion.div
+                                animate={{
+                                    opacity: [0.03, 0.08, 0.03],
+                                    backgroundPosition: ["0% 0%", "100% 100%"]
+                                }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                                className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] z-0 opacity-5"
+                            />
 
                             {/* Decorative Corner Brackets */}
-                            <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-red-500/50" />
-                            <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-red-500/50" />
+                            <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-red-500/40" />
+                            <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-red-500/40" />
 
-                            <div className="relative z-10 flex items-center justify-between mb-1">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping" />
-                                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-red-500">{activeMsg.tag}</span>
+                            <div className="relative z-10 flex items-center justify-between mb-0.5">
+                                <div className="flex items-center gap-1.5">
+                                    <div className="w-1 h-1 rounded-full bg-red-600 animate-ping" />
+                                    <span className="text-[7px] md:text-[9px] font-black uppercase tracking-[0.3em] text-red-500">{activeMsg.tag}</span>
                                 </div>
-                                <span className="text-[7px] font-mono text-zinc-500 italic">TRACE_ID: 0x{phase + 1}F</span>
+                                <div className="flex flex-col items-end scale-75 origin-right">
+                                    <span className="text-[6px] font-mono text-zinc-500 italic leading-none">THREAT_LVL: LOW</span>
+                                </div>
                             </div>
 
-                            <h4 className="relative z-10 text-base md:text-lg font-black text-white italic uppercase tracking-tight">
+                            <h4 className="relative z-10 text-[10px] md:text-sm font-black text-white italic uppercase tracking-tight leading-tight">
                                 {activeMsg.title}
                             </h4>
 
-                            <p className="relative z-10 text-[11px] text-red-400 font-bold uppercase tracking-tighter">
-                                {activeMsg.sub}
-                            </p>
+                            <div className="relative z-10 flex items-baseline gap-1.5">
+                                <p className="text-[9px] md:text-[11px] text-red-500 font-bold uppercase tracking-tighter">
+                                    {activeMsg.sub}
+                                </p>
+                                <motion.div
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ duration: 0.5, repeat: Infinity }}
+                                    className="w-0.5 h-2.5 bg-red-500/50"
+                                />
+                            </div>
 
-                            <div className="mt-2 pt-2 border-t border-white/5 relative z-10">
-                                <p className="text-[9px] text-zinc-500 font-mono italic">
+                            <div className="mt-1 pt-1 border-t border-white/5 relative z-10 flex justify-between items-end">
+                                <p className="text-[7px] md:text-[8px] text-zinc-500 font-mono italic max-w-[120px]">
                                     {activeMsg.details}
                                 </p>
                             </div>
 
                             {/* Scanning Progress Bar */}
-                            <div className="absolute bottom-0 left-0 h-[2px] bg-red-500/30 w-full overflow-hidden">
+                            <div className="absolute bottom-0 left-0 h-[1px] bg-red-500/10 w-full overflow-hidden">
                                 <motion.div
                                     initial={{ x: "-100%" }}
                                     animate={{ x: "100%" }}
-                                    transition={{ duration: 6, ease: "linear" }}
+                                    transition={{ duration: 6, ease: "linear", repeat: Infinity }}
                                     className="h-full w-full bg-red-500 shadow-[0_0_10px_#ef4444]"
                                 />
                             </div>
                         </div>
 
-                        {/* Connection Line to Robot */}
-                        <div className="absolute -left-8 top-1/2 -translate-y-1/2 w-8 h-[1px] bg-gradient-to-r from-transparent via-red-500/40 to-red-500/60" />
-                        <div className="absolute -left-[36px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full border border-red-500/30 bg-red-500/10 blur-[2px]" />
+                        {/* Connection Line to Robot - Hidden on mobile to save space */}
+                        <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-gradient-to-r from-transparent to-red-500/40 hidden md:block" />
                     </div>
                 </motion.div>
             )}

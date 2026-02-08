@@ -75,7 +75,6 @@ export const AIAnalyticsHero = () => {
     const services = [
         // Top Row
         { label: 'Video Gen', position: 'top-[15%] left-[5%] md:left-[15%]' },
-        { label: 'Neural Mesh', position: 'top-[15%] right-[5%] md:right-[15%]' },
         // Middle Row
         { label: 'Vision AI', position: 'top-[45%] left-[2%] md:left-[8%]' },
         { label: 'Real-time BI', position: 'top-[45%] right-[2%] md:right-[8%]' },
@@ -114,15 +113,15 @@ export const AIAnalyticsHero = () => {
             </div>
 
             {/* Main Content Container */}
-            <div className="w-full max-w-5xl px-6 relative z-10 h-full flex flex-col items-center justify-center">
+            <div className="w-full max-w-5xl px-0 md:px-6 relative z-10 h-full flex flex-col items-center justify-center">
 
                 {/* Optimized Robot Hub Section to fit 100vh */}
-                <div className="relative w-full aspect-square md:aspect-video lg:aspect-square max-h-[80vh] flex items-center justify-center">
+                <div className="relative w-full aspect-[4/5] md:aspect-video lg:aspect-square max-h-[85vh] flex items-center justify-center overflow-visible">
 
                     {/* Simplified Background Rings */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div className="absolute w-[90%] h-[90%] md:w-[70%] md:h-[70%] rounded-full border border-indigo-500/5" />
-                        <div className="absolute w-[70%] h-[70%] md:w-[50%] md:h-[50%] rounded-full border border-indigo-500/10 border-dashed animate-[spin_60s_linear_infinite]" />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+                        <div className="absolute w-[120%] h-[120%] md:w-[70%] md:h-[70%] rounded-full border border-indigo-500/5" />
+                        <div className="absolute w-[100%] h-[100%] md:w-[50%] md:h-[50%] rounded-full border border-indigo-500/10 border-dashed animate-[spin_60s_linear_infinite]" />
                     </div>
 
                     {/* Service Nodes (Compact for 100vh) */}
@@ -135,18 +134,16 @@ export const AIAnalyticsHero = () => {
                     ))}
 
                     {/* Scaled Robot Scene */}
-                    <div className="relative w-[140%] h-[140%] md:w-[100%] md:h-[100%] flex items-center justify-center z-10">
+                    <div className="relative w-full h-full flex items-center justify-center z-10">
                         {/* Eye Source Glow */}
                         <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-20 h-10 bg-indigo-600/10 blur-[25px] rounded-full pointer-events-none z-20 mix-blend-screen animate-pulse" />
 
                         <SplineScene
                             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                            className="w-full h-full transform scale-75 md:scale-90 lg:scale-100"
+                            className="w-full h-full transform scale-100 md:scale-90 lg:scale-100"
                         />
-                        {/* Robot HUD - Hidden on small mobile to improve performance/space */}
-                        <div className="hidden sm:block">
-                            <RobotGreeting />
-                        </div>
+                        {/* Robot HUD - Now placed at 'Neural Mesh' location and enabled for mobile */}
+                        <RobotGreeting />
                     </div>
                 </div>
 

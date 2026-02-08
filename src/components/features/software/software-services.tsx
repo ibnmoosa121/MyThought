@@ -125,30 +125,26 @@ export const SoftwareServices = () => {
         if (!horizontalRef.current || !sectionRef.current) return;
 
         const container = horizontalRef.current;
-        const totalWidth = container.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        const scrollDistance = totalWidth - viewportWidth;
 
-        if (scrollDistance <= 0) return;
+        const getScrollAmount = () => {
+            return container.scrollWidth - window.innerWidth;
+        };
 
-        // Create the horizontal scroll animation
+        // Create the horizontal scroll animation with dynamic values
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: sectionRef.current,
                 pin: true,
                 start: "top top",
-                end: () => `+=${totalWidth}`,
+                end: () => `+=${container.scrollWidth}`,
                 scrub: 1,
                 invalidateOnRefresh: true,
                 anticipatePin: 1,
-                onRefresh: () => {
-                    // Force refresh internal values if needed
-                }
             }
         });
 
         tl.to(container, {
-            x: -scrollDistance,
+            x: () => -getScrollAmount(),
             ease: "none",
         });
 
@@ -159,13 +155,11 @@ export const SoftwareServices = () => {
         window.addEventListener('resize', refresh);
 
         const timer = setTimeout(refresh, 500);
-        const timer2 = setTimeout(refresh, 2000);
 
         return () => {
             window.removeEventListener('load', refresh);
             window.removeEventListener('resize', refresh);
             clearTimeout(timer);
-            clearTimeout(timer2);
             tl.kill();
         };
 
@@ -222,6 +216,16 @@ export const SoftwareServices = () => {
                             The Neural <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary/50">Infrastructure</span>
                         </motion.h2>
+
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 1 }}
+                            className="text-[10px] md:text-xs text-white/30 mt-6 uppercase tracking-[0.3em] font-black flex items-center justify-center gap-3"
+                        >
+                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                            Click nodes to reveal technical specifications
+                        </motion.p>
                     </div>
                 </div>
 
@@ -229,7 +233,7 @@ export const SoftwareServices = () => {
                 <div className="relative w-full z-10">
                     <div
                         ref={horizontalRef}
-                        className="flex px-[15vw] gap-40 min-w-max relative items-center h-[500px]"
+                        className="flex px-[15vw] gap-16 lg:gap-40 min-w-max relative items-center h-[500px]"
                     >
                         {/* Horizontal Bus Bar */}
                         <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent z-0" />
@@ -241,6 +245,7 @@ export const SoftwareServices = () => {
                                     }`}
                                 onMouseEnter={() => setHoveredIdx(index)}
                                 onMouseLeave={() => setHoveredIdx(null)}
+                                onClick={() => setHoveredIdx(hoveredIdx === index ? null : index)}
                             >
                                 {/* Icon Node */}
                                 <div className={`relative w-24 h-24 flex items-center justify-center z-20`}>

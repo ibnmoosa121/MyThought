@@ -140,6 +140,19 @@ export const GatewayNavigator = () => {
         }
     }, [activeRegion]);
 
+    // Auto-rotation for mobile
+    useEffect(() => {
+        if (window.innerWidth >= 768) return;
+
+        let currentIndex = regions.findIndex(r => r.id === activeRegion.id);
+        const interval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % regions.length;
+            setActiveRegion(regions[currentIndex]);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [activeRegion.id]);
+
     const [dimensions, setDimensions] = useState({ radius: 280, view: 400 });
 
     useEffect(() => {
@@ -161,16 +174,16 @@ export const GatewayNavigator = () => {
             <div className={`absolute inset-0 transition-all duration-1000 opacity-20 bg-gradient-to-b ${activeRegion.color} pointer-events-none`} />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center mb-16 md:mb-24 space-y-4">
+                <div className="text-center mb-12 md:mb-24 space-y-4">
                     <motion.span
                         key={activeRegion.id + "-label"}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-xs font-black uppercase tracking-[0.4em] text-white/40"
+                        className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-white/40"
                     >
                         Market Intelligence Dashboard
                     </motion.span>
-                    <h2 className="text-4xl md:text-8xl font-black text-white italic uppercase tracking-tighter leading-[0.9] md:leading-none">
+                    <h2 className="text-4xl md:text-8xl font-black text-white italic uppercase tracking-tighter leading-[0.85] md:leading-none">
                         Gateway <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Navigator</span>
                     </h2>
