@@ -7,7 +7,7 @@ import { SoftwareMethodology } from '../components/features/software/software-me
 import { SoftwareCaseStudies } from '../components/features/software/software-case-studies'
 import { WavyBackground } from '../components/ui/wavy-background'
 import { SectionDivider } from '../components/ui/section-divider'
-import DeliveryProcess from '../components/features/delivery/delivery-process'
+import DeliveryProcess from '../components/features/software/delivery-process'
 
 import { services } from '../data/services'
 

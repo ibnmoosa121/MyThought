@@ -6,12 +6,12 @@
 
 // React import needed for JSX
 import { useEffect } from 'react'
-import { HeroParallax } from "../ui/hero-parallax" // Hero parallax effect
-import ClientsSection from "../features/clients/clients-section"
-import CtaSection from "../features/cta/cta-section"
-import ServicesTabs from "../features/services/services-tabs"
-import { SectionDivider } from "../ui/section-divider"
-import ContactForm from "@/components/features/contact/contact-form"
+import { HeroParallax } from "../components/ui/hero-parallax"
+import ClientsSection from "../components/features/home/clients-section"
+import CtaSection from "../components/features/shared/cta-section"
+import ServicesTabs from "../components/features/home/services-tabs"
+import { SectionDivider } from "../components/ui/section-divider"
+import ContactForm from "../components/features/contact/contact-form"
 
 
 // Product data for the hero parallax

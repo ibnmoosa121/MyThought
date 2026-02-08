@@ -11,7 +11,7 @@ import { cn } from './lib/utils'
 // Deployment Trigger: 2026-02-08-01
 
 // Lazy load page components
-const MainContent = lazy(() => import('./components/layout/main-content'))
+const MainContent = lazy(() => import('./pages/home'))
 const SoftwarePage = lazy(() => import('./pages/software'))
 const ConsultancyPage = lazy(() => import('./pages/consultancy'))
 const TalentPage = lazy(() => import('./pages/talent'))

@@ -4,7 +4,7 @@ import { GatewayNavigator } from '../components/features/consultancy/gateway-nav
 import { ConsultancyDetails } from '../components/features/consultancy/consultancy-details'
 import { SectionDivider } from '../components/ui/section-divider'
 import { useEffect } from 'react'
-import CtaSection from '../components/features/cta/cta-section'
+import CtaSection from '../components/features/shared/cta-section'
 
 const ConsultancyPage = () => {
   const service = services.consultancy;
