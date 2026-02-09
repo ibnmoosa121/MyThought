@@ -19,6 +19,7 @@ const services = [
       plasmaColor: '#3B82F6'
     },
     href: '#/software',
+    video: '/videos/software.mp4',
     cards: [
       {
         icon: Code2,
@@ -50,6 +51,7 @@ const services = [
       plasmaColor: '#10B981'
     },
     href: '#/consultancy',
+    video: '/videos/consultancy.mp4',
     cards: [
       {
         icon: Lightbulb,
@@ -81,6 +83,7 @@ const services = [
       plasmaColor: '#A855F7'
     },
     href: '#/talent',
+    video: '/videos/talent.mp4',
     cards: [
       {
         icon: Users,
@@ -112,6 +115,7 @@ const services = [
       plasmaColor: '#EC4899'
     },
     href: '#/design',
+    video: '/videos/design.mp4',
     cards: [
       {
         icon: Monitor,
@@ -143,6 +147,7 @@ const services = [
       plasmaColor: '#F59E0B'
     },
     href: '#/ventures',
+    video: '/videos/ventures.mp4',
     cards: [
       {
         icon: Rocket,
@@ -174,6 +179,7 @@ const services = [
       plasmaColor: '#14B8A6'
     },
     href: '#/fintech',
+    video: '/videos/fintech.mp4',
     cards: [
       {
         icon: Landmark,
@@ -205,6 +211,7 @@ const services = [
       plasmaColor: '#6366F1'
     },
     href: '#/ai-analytics',
+    video: '/videos/ai.mp4',
     cards: [
       {
         icon: Brain,
@@ -299,11 +306,22 @@ export default function ServicesTabs() {
                       >
                         <div className="relative h-60 md:h-[26rem] w-[20rem] md:w-[54rem] rounded-3xl overflow-hidden group border border-white/5 bg-zinc-900/20 backdrop-blur-md">
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
-                          <img
-                            src={service.image}
-                            alt={service.label}
-                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-40 group-hover:opacity-70"
-                          />
+                          {service.video ? (
+                            <video
+                              src={service.video}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-40 group-hover:opacity-70"
+                            />
+                          ) : (
+                            <img
+                              src={service.image}
+                              alt={service.label}
+                              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-40 group-hover:opacity-70"
+                            />
+                          )}
                           <div className="absolute bottom-0 left-0 p-8 md:p-14 z-20 w-full transform group-hover:-translate-y-2 transition-transform duration-700 text-center lg:text-left">
                             <h3 className={`text-3xl md:text-7xl font-black mb-6 tracking-tighter drop-shadow-2xl uppercase text-white`}>
                               {service.label}
