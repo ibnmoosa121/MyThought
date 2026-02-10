@@ -12,7 +12,7 @@ const TALENT_SERVICES = [
         longDesc: "From food delivery riders to warehouse management, we provide rapid-scale staffing for the Gulf's leading quick-commerce and logistics giants.",
         icon: Truck,
         stats: "10k+ Riders Deployed",
-        color: "bg-red-500"
+        color: "bg-purple-600"
     },
     {
         id: "tech-squads",
@@ -39,7 +39,7 @@ const TALENT_SERVICES = [
         longDesc: "Handling visas, payroll, and 100% legal compliance for high-volume blue-collar teams to specialized C-suite executives.",
         icon: ShieldCheck,
         stats: "100% Secured",
-        color: "bg-emerald-500"
+        color: "bg-fuchsia-600"
     }
 ];
 
