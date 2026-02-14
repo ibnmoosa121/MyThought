@@ -8,6 +8,7 @@ import { WavyBackground } from "../../ui/wavy-background";
 const services = [
   {
     id: 'software',
+    tagline: 'Engineering Scalable Solutions',
     label: 'Software & Technology',
     description: 'We drive digital transformation with innovative software solutions, empowering organizations with cutting-edge technology and seamless integration. From concept to implementation, we develop efficient software that unlocks new opportunities and unleashes your business\'s full potential.',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
@@ -40,6 +41,7 @@ const services = [
   },
   {
     id: 'consultancy',
+    tagline: 'Driving Strategic Growth',
     label: 'Consultancy & Strategy',
     description: 'Our expert consultants provide strategic guidance to navigate complex business challenges. We analyze your current operations and provide actionable insights to optimize performance and drive sustainable growth.',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop',
@@ -72,6 +74,7 @@ const services = [
   },
   {
     id: 'talent',
+    tagline: 'Connecting Top Talent',
     label: 'Talent & Staffing',
     description: 'We connect you with top-tier talent to build high-performing teams. Whether you need temporary staffing or permanent placements, we find the right people with the right skills to fit your culture.',
     image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop',
@@ -104,6 +107,7 @@ const services = [
   },
   {
     id: 'design',
+    tagline: 'Crafting Visual Impact',
     label: 'Design & Creative',
     description: 'We craft compelling visual experiences that resonate with your audience. Our design team combines creativity with user-centric principles to build brands that stand out and products that people love.',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop',
@@ -136,6 +140,7 @@ const services = [
   },
   {
     id: 'ventures',
+    tagline: 'Building Future Leaders',
     label: 'Ventures & Innovation',
     description: 'We partner with visionary founders to build the next generation of industry-leading companies. Our venture arm provides capital, mentorship, and operational support to turn bold ideas into reality.',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop',
@@ -168,6 +173,7 @@ const services = [
   },
   {
     id: 'fintech',
+    tagline: 'Innovating Financial Systems',
     label: 'FinTech & Banking',
     description: 'We build secure and scalable financial technology solutions. From payment gateways to blockchain applications, we help you navigate the future of finance.',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop',
@@ -200,6 +206,7 @@ const services = [
   },
   {
     id: 'ai-analytics',
+    tagline: 'Powering Intelligent Decisions',
     label: 'AI & Data Analytics',
     description: 'We harness the power of artificial intelligence and advanced analytics to transform raw data into intelligent outcomes. Our solutions enable predictive insights, process automation, and data-driven strategies that keep your business ahead of the curve.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
@@ -299,7 +306,7 @@ export default function ServicesTabs() {
                   >
                     <div className="flex items-center justify-center w-full mb-4">
                       <PinContainer
-                        title={service.label}
+                        title={service.tagline}
                         href={service.href}
                         containerClassName="h-[22rem] md:h-[32rem] w-full"
                         className="w-full"

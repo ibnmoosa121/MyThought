@@ -6,53 +6,33 @@ import { useRef } from "react";
 const steps = [
     {
         number: "01",
-        title: "Initial Consultation",
-        description: "We dive deep into your requirements and business goals to define the project's core objectives."
+        title: "Discovery & Strategy",
+        description: "We begin with deep market analysis and technical feasibility studies to align your vision with scalable architecture."
     },
     {
         number: "02",
-        title: "Project Definition & Planning",
-        description: "Laying the technical foundation and roadmap for a successful software delivery."
+        title: "User-Centric Design",
+        description: "Creating intuitive UI/UX prototypes that map the user journey and ensure seamless interaction."
     },
     {
         number: "03",
-        title: "Planning & Design",
-        description: "Crafting modern UI/UX designs and high-level software architecture."
+        title: "Agile Engineering",
+        description: "Iterative development sprints with bi-weekly deliverables, ensuring transparency and adaptability."
     },
     {
         number: "04",
-        title: "Development Phase",
-        description: "Agile engineering with continuous integration and real-time transparency."
+        title: "Rigorous QA Testing",
+        description: "Comprehensive automated and manual testing cycles to guarantee performance, security, and bug-free code."
     },
     {
         number: "05",
-        title: "Testing & Quality Assurance",
-        description: "Rigorous automated and manual testing to ensure flawless performance."
+        title: "DevOps Deployment",
+        description: "Automated CI/CD pipelines for zero-downtime releases and robust cloud infrastructure setup."
     },
     {
         number: "06",
-        title: "Deployment",
-        description: "Strategic release and infrastructure setup for a smooth launch."
-    },
-    {
-        number: "07",
-        title: "Training & Support",
-        description: "Empowering your team with the knowledge to manage the new system."
-    },
-    {
-        number: "08",
-        title: "Ongoing Support",
-        description: "Proactive maintenance and troubleshooting to keep systems running."
-    },
-    {
-        number: "09",
-        title: "Continuous Improvements",
-        description: "Iterating based on user feedback and evolving business needs."
-    },
-    {
-        number: "10",
-        title: "Future Enhancement",
-        description: "Future-proofing your technology for upcoming innovations and scale."
+        title: "Evolution & Support",
+        description: "Continuous monitoring, feature enhancements, and proactive maintenance to scale with your growth."
     }
 ];
 

@@ -1,18 +1,35 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SplineScene } from '@/components/ui/splite'
 import { RobotGreeting } from './robot-greeting'
 
 // AIServiceNode optimized for mobile and performance
-const AIServiceNode = ({ label, position, index }: { label: string, position: string, index: number }) => {
+const AIServiceNode = ({
+    label,
+    position,
+    index,
+    onHover,
+    onLeave
+}: {
+    label: string,
+    position: string,
+    index: number,
+    onHover: () => void,
+    onLeave: () => void
+}) => {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
             className={`absolute ${position} z-20 group`}
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
+            onClick={(e) => { e.stopPropagation(); onHover(); }} // For mobile tap interaction
         >
             <motion.div
                 whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 className="relative cursor-crosshair transform-gpu"
             >
                 {/* The "Eye Offering Light" Spotlight Effect */}
@@ -71,16 +88,73 @@ const AmbientInsight = ({ text, delay }: { text: string, delay: number }) => (
 )
 
 export const AIAnalyticsHero = () => {
+    const [activeService, setActiveService] = useState<any>(null);
+
     // Services positions optimized for a tight viewport (Single Viewport)
     const services = [
         // Top Row
-        { label: 'Video Gen', position: 'top-[15%] left-[5%] md:left-[15%]' },
+        {
+            label: 'Video Gen',
+            position: 'top-[15%] left-[5%] md:left-[15%]',
+            data: {
+                tag: 'Visual Synth',
+                title: 'Video Generation',
+                sub: 'Generative Stream',
+                details: 'Rendering 8k fluid dynamics.'
+            }
+        },
+        {
+            label: 'Neural Ops',
+            position: 'top-[15%] right-[5%] md:right-[15%]',
+            data: {
+                tag: 'Auto-Scaling',
+                title: 'Neural Operations',
+                sub: 'Self-Healing',
+                details: 'Autonomous system maintenance.'
+            }
+        },
         // Middle Row
-        { label: 'Vision AI', position: 'top-[45%] left-[2%] md:left-[8%]' },
-        { label: 'Real-time BI', position: 'top-[45%] right-[2%] md:right-[8%]' },
+        {
+            label: 'Vision AI',
+            position: 'top-[45%] left-[2%] md:left-[8%]',
+            data: {
+                tag: 'Optical Grid',
+                title: 'Computer Vision',
+                sub: 'Object Detection',
+                details: '99.9% accuracy in real-time.'
+            }
+        },
+        {
+            label: 'Real-time BI',
+            position: 'top-[45%] right-[2%] md:right-[8%]',
+            data: {
+                tag: 'Data Stream',
+                title: 'Business Intel',
+                sub: 'Live Analytics',
+                details: 'Processing 1M+ rows/sec.'
+            }
+        },
         // Bottom Row
-        { label: 'NLP Core', position: 'bottom-[15%] left-[5%] md:left-[18%]' },
-        { label: 'Edge Core', position: 'bottom-[15%] right-[5%] md:right-[18%]' },
+        {
+            label: 'NLP Core',
+            position: 'bottom-[15%] left-[5%] md:left-[18%]',
+            data: {
+                tag: 'Lang Model',
+                title: 'Natural Language',
+                sub: 'Semantic Core',
+                details: 'Contextual understanding active.'
+            }
+        },
+        {
+            label: 'Edge Core',
+            position: 'bottom-[15%] right-[5%] md:right-[18%]',
+            data: {
+                tag: 'Edge Compute',
+                title: 'Edge Processing',
+                sub: 'Local Inference',
+                details: 'Zero-latency execution.'
+            }
+        },
     ]
 
     const insights = [
@@ -93,7 +167,10 @@ export const AIAnalyticsHero = () => {
     ]
 
     return (
-        <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
+        <section
+            className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black"
+            onClick={() => setActiveService(null)}
+        >
             {/* Optimized Background Layer */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/5 rounded-full blur-[120px]" />
@@ -128,8 +205,11 @@ export const AIAnalyticsHero = () => {
                     {services.map((service, idx) => (
                         <AIServiceNode
                             key={idx}
-                            {...service}
+                            label={service.label}
+                            position={service.position}
                             index={idx}
+                            onHover={() => setActiveService(service)}
+                            onLeave={() => setActiveService(null)}
                         />
                     ))}
 
@@ -143,7 +223,7 @@ export const AIAnalyticsHero = () => {
                             className="w-full h-full transform scale-100 md:scale-90 lg:scale-100"
                         />
                         {/* Robot HUD - Now placed at 'Neural Mesh' location and enabled for mobile */}
-                        <RobotGreeting />
+                        <RobotGreeting overrideMessage={activeService?.data} />
                     </div>
                 </div>
 

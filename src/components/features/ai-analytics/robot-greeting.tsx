@@ -3,9 +3,18 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const RobotGreeting = () => {
+interface RobotGreetingProps {
+    overrideMessage?: {
+        title: string;
+        sub: string;
+        details: string;
+        tag: string;
+    } | null;
+}
+
+export const RobotGreeting = ({ overrideMessage }: RobotGreetingProps) => {
     const [phase, setPhase] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
+    const [internalVisible, setInternalVisible] = useState(false);
     const [visitorData, setVisitorData] = useState({
         name: "entity",
         os: "Unknown System",
@@ -59,16 +68,21 @@ export const RobotGreeting = () => {
         const cycleLength = 6000; // Increased cycle for reading
         const timers: NodeJS.Timeout[] = [];
 
-        const initialTimer = setTimeout(() => setIsVisible(true), 2000);
+        const initialTimer = setTimeout(() => setInternalVisible(true), 2000);
         timers.push(initialTimer);
 
         const phaseInterval = setInterval(() => {
-            setIsVisible(false);
-
-            setTimeout(() => {
-                setPhase(p => (p + 1) % 5); // Increased to 5 phases
-                setIsVisible(true);
-            }, 800);
+            // Only cycle internal visibility if not overridden
+            if (!overrideMessage) {
+                setInternalVisible(false);
+                setTimeout(() => {
+                    setPhase(p => (p + 1) % 5); // Increased to 5 phases
+                    setInternalVisible(true);
+                }, 800);
+            } else {
+                // Keep phase updating in background so it's fresh when hover ends
+                setPhase(p => (p + 1) % 5);
+            }
 
         }, cycleLength);
 
@@ -76,7 +90,7 @@ export const RobotGreeting = () => {
             timers.forEach(clearTimeout);
             clearInterval(phaseInterval);
         };
-    }, []);
+    }, []); // Removed overrideMessage dependency to prevent interval reset
 
     const messages = [
         {
@@ -111,18 +125,20 @@ export const RobotGreeting = () => {
         }
     ];
 
-    const activeMsg = messages[phase];
+    const activeMsg = overrideMessage || messages[phase];
+    // If overridden, always visible. Else use internal timer.
+    const isVisible = !!overrideMessage || internalVisible;
 
     return (
         <AnimatePresence mode="wait">
             {isVisible && (
                 <motion.div
                     key={phase}
-                    initial={{ opacity: 0, x: 20, scale: 0.9, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, x: -10, scale: 0.9, filter: "blur(10px)" }}
+                    initial={{ opacity: 0, y: 10, scale: 0.9, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -10, scale: 0.9, filter: "blur(10px)" }}
                     transition={{ duration: 0.8, ease: "anticipate" }}
-                    className="absolute top-[32%] right-[5%] md:top-[35%] md:right-[20%] z-50 pointer-events-none"
+                    className="absolute top-[58%] left-1/2 -translate-x-1/2 z-50 pointer-events-none"
                 >
                     <div className="relative group">
                         {/* Surprise: Proximity Alert Glow */}
@@ -185,9 +201,6 @@ export const RobotGreeting = () => {
                                 />
                             </div>
                         </div>
-
-                        {/* Connection Line to Robot - Hidden on mobile to save space */}
-                        <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-gradient-to-r from-transparent to-red-500/40 hidden md:block" />
                     </div>
                 </motion.div>
             )}

@@ -3,72 +3,113 @@
 import { Marquee } from "../../ui/marquee";
 import { Card, CardContent } from "../../ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+import { CheckCircle2, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-const TESTIMONIALS = [
+const PAYMENT_SLIPS = [
     {
-        name: "Farhan Shaikh",
-        username: "@farhan_riyadh",
-        body: "Building our decentralized remittance app on their blockchain infra was a massive success. Best SAR to INR throughput we've seen!",
-        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Farhan",
-        location: "🇸🇦 Riyadh, KSA",
+        amount: "$12,450.00",
+        recipient: "Sarah Jenkins",
+        id: "TXN-8942-XJ",
+        status: "Success",
+        time: "10:42 AM",
+        method: "USDT Transfer",
+        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+        location: "New York, USA"
     },
     {
-        name: "Siti Aminah",
-        username: "@siti_jakarta",
-        body: "Their smart contract solutions for IDR-SAR conversion are revolutionary. Our Makkah business transfers are now immutable and instant.",
-        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Siti",
-        location: "🇮🇩 Jakarta, IDN",
+        amount: "AED 45,200.00",
+        recipient: "Al-Rajhi Corp",
+        id: "TXN-7721-BC",
+        status: "Success",
+        time: "10:44 AM",
+        method: "Direct Deposit",
+        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajhi",
+        location: "Riyadh, KSA"
     },
     {
-        name: "Rahul Nair",
-        username: "@rahul_dxb",
-        body: "Dubai's first blockchain-led Indian corridor. They engineered a private ledger for our NRI investment fund that parents can trust.",
-        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul",
-        location: "🇦🇪 Dubai, UAE",
+        amount: "€ 8,900.50",
+        recipient: "TechFlow Ltd",
+        id: "TXN-3390-EU",
+        status: "Success",
+        time: "10:45 AM",
+        method: "SEPA Instant",
+        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=TechFlow",
+        location: "Berlin, DE"
     },
     {
-        name: "Budi Santoso",
-        username: "@budi_surabaya",
-        body: "Zero-knowledge proofs for pilgrimage privacy. They built an automated blockchain solution that changed the game for Indonesian Hajj groups.",
-        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Budi",
-        location: "🇮🇩 Surabaya, IDN",
+        amount: "$150,000.00",
+        recipient: "Venture Partners",
+        id: "TXN-9912-VP",
+        status: "Success",
+        time: "10:48 AM",
+        method: "Wire Transfer",
+        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Venture",
+        location: "Singapore, SG"
     },
     {
-        name: "Aman Preet",
-        username: "@aman_ad",
-        body: "We needed a blockchain-based ledger for cross-border auditing. Their engineering team delivered a high-availability dApp in weeks.",
-        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Aman",
-        location: "🇦🇪 Abu Dhabi, UAE",
+        amount: "SAR 22,150.00",
+        recipient: "Omar Al-Fayed",
+        id: "TXN-5561-SA",
+        status: "Success",
+        time: "10:51 AM",
+        method: "Local Transfer",
+        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Omar",
+        location: "Jeddah, KSA"
     },
     {
-        name: "Yousuf Al-Farsi",
-        username: "@yousuf_chain",
-        body: "Expertise in creating secure blockchain applications for Gulf finance. They bridged our traditional systems with the future of Web3.",
-        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Yousuf",
-        location: "🇸🇦 Jeddah, KSA",
+        amount: "IDR 15.5M",
+        recipient: "GoJek Merchant",
+        id: "TXN-1120-ID",
+        status: "Success",
+        time: "10:55 AM",
+        method: "QR Payment",
+        img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Gojek",
+        location: "Jakarta, IDN"
     }
 ];
 
-function TestimonialCard({ img, name, username, body, location }: (typeof TESTIMONIALS)[number]) {
+function PaymentSlip({ amount, recipient, id, time, method, img, location }: (typeof PAYMENT_SLIPS)[number]) {
     return (
-        <Card className="w-[300px] md:w-[350px] bg-zinc-900/60 border-white/5 backdrop-blur-3xl hover:border-teal-500/30 transition-all hover:scale-[1.02]">
-            <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                    <Avatar className="h-10 w-10 border border-teal-500/20 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
-                        <AvatarImage src={img} alt={name} />
-                        <AvatarFallback className="bg-teal-500/10 text-teal-500">{name[0]}</AvatarFallback>
-                    </Avatar>
+        <Card className="w-[320px] bg-zinc-950 border border-teal-500/20 shadow-[0_0_30px_rgba(20,184,166,0.1)] backdrop-blur-xl group hover:border-teal-500/50 transition-all duration-300">
+            <CardContent className="p-5">
+                {/* Header: Success Status */}
+                <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
+                    <div className="flex items-center gap-2 text-teal-500">
+                        <CheckCircle2 size={16} className="fill-teal-500/20" />
+                        <span className="text-xs font-bold uppercase tracking-wider">Payment success</span>
+                    </div>
+                    <span className="text-[10px] font-mono text-zinc-500">{time}</span>
+                </div>
+
+                {/* Body: Amount & Recipient */}
+                <div className="flex items-start justify-between mb-4">
                     <div className="flex flex-col">
-                        <span className="text-sm font-black text-white italic uppercase tracking-tighter flex items-center gap-2">
-                            {name} <span className="text-[10px] opacity-60 not-italic font-normal">{location}</span>
-                        </span>
-                        <span className="text-[10px] font-medium text-zinc-500">{username}</span>
+                        <span className="text-xs text-zinc-400 mb-1">Total Amount</span>
+                        <span className="text-2xl font-black text-white tracking-tight">{amount}</span>
+                    </div>
+                    <div className="p-2 bg-teal-500/10 rounded-lg group-hover:bg-teal-500/20 transition-colors">
+                        <ArrowUpRight size={20} className="text-teal-500" />
                     </div>
                 </div>
-                <blockquote className="text-sm leading-relaxed text-zinc-300 italic font-medium">
-                    "{body}"
-                </blockquote>
+
+                {/* Footer: Details */}
+                <div className="bg-white/5 rounded-lg p-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <Avatar className="h-8 w-8 border border-white/10">
+                            <AvatarImage src={img} alt={recipient} />
+                            <AvatarFallback>{recipient[0]}</AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-col">
+                            <span className="text-xs font-bold text-zinc-200">{recipient}</span>
+                            <span className="text-[10px] text-zinc-500">{location}</span>
+                        </div>
+                    </div>
+                    <div className="flex flex-col items-end">
+                        <span className="text-[10px] mobile-font font-mono text-teal-400">{method}</span>
+                        <span className="text-[9px] font-mono text-zinc-600">{id}</span>
+                    </div>
+                </div>
             </CardContent>
         </Card>
     );
@@ -76,63 +117,67 @@ function TestimonialCard({ img, name, username, body, location }: (typeof TESTIM
 
 export const FintechTestimonials = () => {
     return (
-        <section className="relative py-40 bg-black overflow-hidden border-t border-white/5">
-            <div className="container mx-auto px-6 mb-24 relative z-20">
+        <section id="fintech-testimonials" className="relative py-32 bg-black overflow-hidden border-t border-white/5">
+            <div className="container mx-auto px-6 mb-20 relative z-20">
                 <div className="max-w-4xl">
                     <motion.span
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        className="text-teal-500 font-black uppercase tracking-[0.4em] text-xs mb-4 block"
+                        className="flex items-center gap-2 text-teal-500 font-black uppercase tracking-[0.4em] text-xs mb-4"
                     >
-                        Web3 & Ledger Trust
+                        <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+                        Live Ledger Feed
                     </motion.span>
-                    <h2 className="text-4xl md:text-8xl font-black text-white italic uppercase tracking-tighter leading-tight">
-                        Securing <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-500 to-emerald-600">Blockchain </span>
-                        Ledgers
+                    <h2 id="fintech-velocity-title" className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-tight">
+                        Global <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-500 to-emerald-600">
+                            Transaction Velocity
+                        </span>
                     </h2>
                 </div>
             </div>
 
-            {/* 3D Perspective Wrapper */}
-            <div className="relative h-[600px] w-full flex items-center justify-center [perspective:1200px] perspective-1200">
+            {/* 3D Perspective Wrapper - Angled Upwards like a rising stream */}
+            <div className="relative h-[600px] w-full flex items-center justify-center [perspective:1000px]">
                 <div
-                    className="flex flex-row items-center justify-center gap-8 w-max"
+                    className="flex flex-row items-center justify-center gap-6 w-max"
                     style={{
-                        transform: "rotateX(20deg) rotateY(-5deg) rotateZ(5deg) scale(1.1)",
+                        transform: "rotateX(10deg) rotateY(0deg) rotateZ(-5deg) scale(1)",
                         transformStyle: "preserve-3d"
                     }}
                 >
-                    <div className="flex flex-col gap-8">
-                        {/* First Row - Left to Right */}
-                        <Marquee pauseOnHover className="[--duration:50s] [--gap:2rem]" repeat={3}>
-                            {TESTIMONIALS.slice(0, 3).map((t) => (
-                                <TestimonialCard key={t.username} {...t} />
+                    <div className="flex flex-col gap-6">
+                        {/* Stream 1 */}
+                        <Marquee pauseOnHover className="[--duration:40s] [--gap:1.5rem]" repeat={4}>
+                            {PAYMENT_SLIPS.map((t, i) => (
+                                <PaymentSlip key={i} {...t} />
                             ))}
                         </Marquee>
 
-                        {/* Second Row - Right to Left */}
-                        <Marquee pauseOnHover reverse className="[--duration:60s] [--gap:2rem]" repeat={3}>
-                            {TESTIMONIALS.slice(3, 6).map((t) => (
-                                <TestimonialCard key={t.username} {...t} />
+                        {/* Stream 2 - Reverse */}
+                        <Marquee pauseOnHover reverse className="[--duration:50s] [--gap:1.5rem]" repeat={4}>
+                            {[...PAYMENT_SLIPS].reverse().map((t, i) => (
+                                <PaymentSlip key={i} {...t} />
                             ))}
                         </Marquee>
 
-                        {/* Third Row - Left to Right */}
-                        <Marquee pauseOnHover className="[--duration:70s] [--gap:2rem]" repeat={3}>
-                            {[...TESTIMONIALS].reverse().slice(0, 3).map((t, i) => (
-                                <TestimonialCard key={`${t.username}-3d-${i}`} {...t} />
+                        {/* Stream 3 */}
+                        <Marquee pauseOnHover className="[--duration:45s] [--gap:1.5rem]" repeat={4}>
+                            {[...PAYMENT_SLIPS.slice(2), ...PAYMENT_SLIPS.slice(0, 2)].map((t, i) => (
+                                <PaymentSlip key={i} {...t} />
                             ))}
                         </Marquee>
                     </div>
                 </div>
 
-                {/* All blocking overlays removed to ensure clear view of cards */}
+                {/* Gradient Fades for depth */}
+                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
             </div>
 
-            <div className="mt-24 text-center relative z-20">
-                <p className="text-zinc-500 text-sm font-black uppercase tracking-[0.5em] italic">
-                    Engineering Custom Blockchain Solutions for the Gulf & Asia
+            <div className="mt-16 text-center relative z-20">
+                <p className="text-zinc-600 text-xs font-black uppercase tracking-[0.5em]">
+                    Real-time Settlement via Antigravity Nodes
                 </p>
             </div>
         </section>

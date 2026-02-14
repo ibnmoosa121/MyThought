@@ -62,7 +62,7 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
   const getSubtitle = () => {
     if (pathname.includes('software')) return 'Software'
     if (pathname.includes('consultancy')) return 'Consultancy'
-    if (pathname.includes('talent')) return 'Talent'
+    if (pathname.includes('talent')) return 'Talent & Staffing'
     if (pathname.includes('design')) return 'Design'
     if (pathname.includes('ventures')) return 'Ventures'
     if (pathname.includes('fintech')) return 'FinTech'

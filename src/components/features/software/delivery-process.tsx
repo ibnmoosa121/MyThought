@@ -6,39 +6,39 @@ import { ScrollRevealText } from "../../ui/scroll-reveal-text";
 
 const steps = [
   {
-    title: "Discovery",
-    desc: "Requirements & Strategy",
+    title: "Cloud-Native Architecture",
+    desc: "Scalable Microservices & Serverless",
     color: "bg-blue-500",
-    tech: ["AI Consultation", "System Architecture", "OpenAI", "LangChain", "LLMs"],
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=75&w=1200&auto=format&fit=crop"
+    tech: ["AWS Lambda", "Kubernetes", "Docker", "Terraform", "Microservices"],
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=75&w=1200&auto=format&fit=crop"
   },
   {
-    title: "Design",
-    desc: "UI/UX & Prototyping",
+    title: "Security & Compliance",
+    desc: "DevSecOps & Data Protection",
     color: "bg-purple-500",
-    tech: ["Framer Motion", "GSAP", "Tailwind v4", "Interactive Prototypes"],
-    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=75&w=1200&auto=format&fit=crop"
+    tech: ["OAuth 2.0", "SOC2 Compliance", "Penetration Testing", "WAF", "Encryption"],
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=75&w=1200&auto=format&fit=crop"
   },
   {
-    title: "Development",
-    desc: "Coding & Integration",
+    title: "High-Performance Data",
+    desc: "Real-time Processing & Analytics",
     color: "bg-indigo-500",
-    tech: ["React 19", "Next.js", "Typescript", "Node.js", "Prisma", "GraphQL"],
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=75&w=1200&auto=format&fit=crop"
+    tech: ["Redis", "Kafka", "PostgreSQL", "GraphQL", "Edge Caching"],
+    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=75&w=1200&auto=format&fit=crop"
   },
   {
-    title: "Testing",
-    desc: "QA & Security Checks",
-    tech: ["Automated QA", "PostgreSQL", "Redis", "VectorDB", "Load Testing"],
+    title: "AI-Driven Engineering",
+    desc: "Smart Automation & Prediction",
+    tech: ["OpenAI API", "TensorFlow", "Vector Search", "RAG Pipelines", "AutoML"],
     color: "bg-pink-500",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=75&w=1200&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=75&w=1200&auto=format&fit=crop"
   },
   {
-    title: "Launch",
-    desc: "Deployment & Scale",
+    title: "Global Scalability",
+    desc: "Multi-Region Availability",
     color: "bg-emerald-500",
-    tech: ["AWS", "Docker", "Kubernetes", "Vercel", "Terraform", "CI/CD"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=1200&auto=format&fit=crop"
+    tech: ["CDN", "Load Balancing", "Auto-Scaling", "Geo-Replication", "99.99% Uptime"],
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=75&w=1200&auto=format&fit=crop"
   },
 ];
 
@@ -66,14 +66,14 @@ export default function DeliveryProcess() {
 
       <div className="container mx-auto px-4 pt-20 md:pt-32 text-center max-w-4xl relative z-10">
         <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20">
-          <span className="text-sm font-bold tracking-widest text-primary uppercase">Our Process</span>
+          <span className="text-sm font-bold tracking-widest text-primary uppercase">Technical Excellence</span>
         </div>
         <ScrollRevealText
-          text="Transforming Concepts into Reality"
+          text="Engineering the Future"
           className="text-4xl md:text-7xl font-bold mb-8 text-white tracking-tight"
         />
         <ScrollRevealText
-          text="We engineer success through a proven five-step methodology, bridging the gap between complex challenges and elegant, scalable solutions."
+          text="We build robust, scalable, and secure software ecosystems designed to drive digital transformation and sustainable growth."
           className="text-lg md:text-2xl text-white/70 leading-relaxed mx-auto max-w-3xl"
           delay={0.2}
         />

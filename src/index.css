@@ -319,4 +319,17 @@ body {
   .animate-gradient-x {
     animation: gradient-x 6s ease infinite;
   }
+
+  /* ── Day/Night cycle: star twinkle ── */
+  @keyframes twinkle {
+
+    0%,
+    100% {
+      opacity: inherit;
+    }
+
+    50% {
+      opacity: 0.1;
+    }
+  }
 }

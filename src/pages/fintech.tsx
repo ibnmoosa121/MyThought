@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 
 import { FintechTestimonials } from '../components/features/fintech/fintech-testimonials'
 import { FintechDetails } from '../components/features/fintech/fintech-details'
+import { FintechFloatingOrders } from '../components/features/fintech/fintech-floating-orders'
 
 const FintechPage = () => {
   const service = services.fintech;
@@ -16,6 +17,7 @@ const FintechPage = () => {
 
   return (
     <main className="min-h-screen bg-black">
+      <FintechFloatingOrders />
       <FintechHero />
       <SectionDivider type="glow" direction="bottom" color={service.theme.plasmaColor} />
 

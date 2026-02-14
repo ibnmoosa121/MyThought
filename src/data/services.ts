@@ -67,7 +67,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
   },
   talent: {
     key: 'talent',
-    title: 'Workforce & Talent',
+    title: 'Talent & Staffing',
     subtitle: 'Connecting you with elite professionals across tech, logistics, and retail',
     bullets: [
       'Omni-Sector Staffing',

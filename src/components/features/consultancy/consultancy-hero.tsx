@@ -46,8 +46,36 @@ const consultants = [
     }
 ];
 
+const INITIAL_CITIES = [
+    { id: 'riyadh', label: 'Riyadh', img: "https://images.unsplash.com/photo-1506795213373-430e921fe2ed?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 'delhi', label: 'Delhi', img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1000&auto=format&fit=crop" },
+    { id: 'jakarta', label: 'Jakarta', img: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1000&auto=format&fit=crop" },
+    { id: 'dubai', label: 'Dubai', img: "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000&auto=format&fit=crop" },
+    { id: 'muscat', label: 'Muscat', img: "https://plus.unsplash.com/premium_photo-1674156433236-2338418ec4d9?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 'doha', label: 'Doha', img: "https://plus.unsplash.com/premium_photo-1697730101992-44eb50ae2d64?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+];
+
+const ShuffleColumn = ({ img, label }: { img: string, label: string }) => {
+    return (
+        <div className="absolute inset-0 w-full h-full">
+            <div className="absolute inset-0 bg-black/20 z-10" />
+            <img
+                src={img}
+                alt={label}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute bottom-8 left-0 right-0 z-20 text-center opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                <span className="text-white/80 text-[10px] font-mono uppercase tracking-[0.4em] rotate-180 writing-mode-vertical">
+                    {label}
+                </span>
+            </div>
+        </div>
+    );
+};
+
 export const ConsultancyHero = () => {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
+    const [cities, setCities] = useState(INITIAL_CITIES);
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Auto-hover sequence for mobile
@@ -63,6 +91,26 @@ export const ConsultancyHero = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // Shuffle cities effect
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCities(prev => {
+                const newOrder = [...prev];
+                // Swap only 2 random columns for subtle movement
+                const index1 = Math.floor(Math.random() * newOrder.length);
+                let index2 = Math.floor(Math.random() * newOrder.length);
+                // Ensure we don't swap with self (though harmless, looks static)
+                while (index1 === index2) {
+                    index2 = Math.floor(Math.random() * newOrder.length);
+                }
+
+                [newOrder[index1], newOrder[index2]] = [newOrder[index2], newOrder[index1]];
+                return newOrder;
+            });
+        }, 5000); // Wait 5s between swaps
+        return () => clearInterval(interval);
+    }, []);
+
     const scrollToSection = (id: string) => {
         const element = document.getElementById(`${id}-details`);
         if (element) {
@@ -72,27 +120,22 @@ export const ConsultancyHero = () => {
 
     return (
         <section ref={containerRef} className="relative w-full h-screen bg-black overflow-hidden flex flex-col pt-16 md:pt-24">
-            {/* Background Texture & Pattern */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                <div className="absolute inset-0 bg-black" />
-                <div className="absolute inset-0 opacity-40 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
-                {/* Subtle Arabesque Pattern Mask */}
-                <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] scale-50" />
+            {/* 6-Column City Background */}
+            <div className="absolute inset-0 z-0 flex pointer-events-none">
+                {cities.map((city) => (
+                    <motion.div
+                        layout
+                        key={city.id}
+                        transition={{ duration: 2.5, ease: "easeInOut" }} // Slower, smoother transition
+                        className="relative h-full flex-1 overflow-hidden group border-r border-white/5 last:border-r-0"
+                    >
+                        <ShuffleColumn img={city.img} label={city.label} />
+                    </motion.div>
+                ))}
 
-                {/* Main Hero Image with Gradient Mask */}
-                <motion.div
-                    initial={{ scale: 1.1, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.4 }}
-                    transition={{ duration: 2, ease: "easeOut" }}
-                    className="absolute inset-0"
-                >
-                    <img
-                        src="/assets/images/gulf-hero-new.png"
-                        alt="Gulf Professionalism"
-                        className="w-full h-full object-cover"
-                    />
-                </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black pointer-events-none" />
+                {/* Global Overlays */}
+                <div className="absolute inset-0 bg-black/60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80" />
             </div>
 
             {/* Floating Title (Large low-opacity background text) */}
