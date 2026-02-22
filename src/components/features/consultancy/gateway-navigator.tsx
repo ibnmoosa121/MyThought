@@ -108,7 +108,7 @@ const regions: RegionData[] = [
     },
     {
         id: "indonesia",
-        name: "Indonesia",
+        name: "Jakarta",
         fullName: "SEA Digital Powerhouse",
         color: "from-emerald-700/20 to-emerald-950/40",
         accent: "#059669",
@@ -144,15 +144,15 @@ export const GatewayNavigator = () => {
 
     const globeConfig = {
         pointSize: 4,
-        globeColor: "#062056",
+        globeColor: "#1d4ed8", // Brighter blue
         showAtmosphere: true,
         atmosphereColor: "#FFFFFF",
         atmosphereAltitude: 0.1,
-        emissive: "#062056",
-        emissiveIntensity: 0.1,
-        shininess: 0.9,
-        polygonColor: "rgba(255,255,255,0.7)",
-        ambientLight: "#38bdf8",
+        emissive: "#1d4ed8",
+        emissiveIntensity: 0.5,
+        shininess: 2,
+        polygonColor: "rgba(255,255,255,1)",
+        ambientLight: "#60a5fa",
         directionalLeftLight: "#ffffff",
         directionalTopLight: "#ffffff",
         pointLight: "#ffffff",
@@ -164,6 +164,20 @@ export const GatewayNavigator = () => {
         autoRotate: true,
         autoRotateSpeed: 0.5,
     };
+
+    const MarkerPointer = () => (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
+            <div className="relative">
+                <div className="absolute -inset-4 rounded-full border border-white/50 animate-ping opacity-50" />
+                <div className="absolute -inset-8 rounded-full border border-white/20 animate-pulse" />
+                <div className="w-2 h-2 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1)]" />
+
+                {/* Crosshair effect */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[120px] w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+            </div>
+        </div>
+    );
 
     const arcs = regions.flatMap(region =>
         region.connections.map(connId => {
@@ -279,7 +293,13 @@ export const GatewayNavigator = () => {
                             <World
                                 globeConfig={globeConfig}
                                 data={arcs}
+                                markers={regions.map(r => ({
+                                    location: [r.location.lat, r.location.lng],
+                                    size: r.id === activeRegion.id ? 0.1 : 0.05
+                                }))}
+                                center={[activeRegion.location.lat, activeRegion.location.lng]}
                             />
+                            <MarkerPointer />
                             {/* Decorative rings */}
                             <div className="absolute -inset-5 border border-white/5 rounded-full pointer-events-none animate-[spin_30s_linear_infinite]" />
                             <div className="absolute -inset-10 border border-white/[0.03] rounded-full pointer-events-none animate-[spin_45s_linear_infinite_reverse]" />
@@ -389,7 +409,13 @@ export const GatewayNavigator = () => {
                         <World
                             globeConfig={globeConfig}
                             data={arcs}
+                            markers={regions.map(r => ({
+                                location: [r.location.lat, r.location.lng],
+                                size: r.id === activeRegion.id ? 0.1 : 0.05
+                            }))}
+                            center={[activeRegion.location.lat, activeRegion.location.lng]}
                         />
+                        <MarkerPointer />
                     </div>
 
                     {/* Region Selector */}

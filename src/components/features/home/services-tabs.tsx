@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PinContainer } from "../../ui/3d-pin";
+import TiltedCard from "../../ui/tilted-card";
 import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet, Brain, Database, Cpu } from 'lucide-react'
 import { ScrollRevealText } from "../../ui/scroll-reveal-text";
@@ -304,40 +304,72 @@ export default function ServicesTabs() {
                     transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                     className="space-y-12"
                   >
-                    <div className="flex items-center justify-center w-full mb-4">
-                      <PinContainer
-                        title={service.tagline}
+                    <div className="flex items-center justify-center w-full mb-16 px-4 md:px-0 relative group/card-area">
+                      {/* Ambient Thematic Glow */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 0.4, scale: 1 }}
+                        key={`glow-${service.id}`}
+                        className="absolute w-[80%] h-[80%] blur-[120px] rounded-full pointer-events-none opacity-20 transition-colors duration-1000"
+                        style={{ backgroundColor: service.theme.plasmaColor }}
+                      />
+
+                      <a
                         href={service.href}
-                        containerClassName="h-[22rem] md:h-[32rem] w-full"
-                        className="w-full"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative w-full max-w-4xl transition-transform duration-500 hover:scale-[1.02] block cursor-pointer group/card-link"
                       >
-                        <div className="relative h-60 md:h-[26rem] w-[20rem] md:w-[54rem] rounded-3xl overflow-hidden group border border-white/5 bg-zinc-900/20 backdrop-blur-md">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
-                          {service.video ? (
-                            <video
-                              src={service.video}
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-40 group-hover:opacity-70"
-                            />
-                          ) : (
-                            <img
-                              src={service.image}
-                              alt={service.label}
-                              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 opacity-40 group-hover:opacity-70"
-                            />
-                          )}
-                          <div className="absolute bottom-0 left-0 p-8 md:p-14 z-20 w-full transform group-hover:-translate-y-2 transition-transform duration-700 text-center lg:text-left">
-                            <h3 className={`text-3xl md:text-7xl font-black mb-6 tracking-tighter drop-shadow-2xl uppercase text-white`}>
-                              {service.label}
-                            </h3>
-                            <div className={`h-2 w-32 bg-white rounded-full shadow-[0_0_25px_rgba(255,255,255,0.2)] mx-auto lg:mx-0`} />
-                          </div>
-                        </div>
-                      </PinContainer>
+                        <TiltedCard
+                          imageSrc={service.video ? undefined : service.image}
+                          videoSrc={service.video}
+                          altText={service.label}
+                          captionText={service.tagline}
+                          containerHeight="auto"
+                          containerWidth="100%"
+                          imageHeight="auto"
+                          imageWidth="100%"
+                          rotateAmplitude={10}
+                          scaleOnHover={1.05}
+                          showTooltip={true}
+                          displayOverlayContent={true}
+                          mediaClassName={service.id === 'talent' ? 'scale-[1.5]' : ''}
+                          overlayContent={
+                            <div className="relative w-full aspect-video rounded-[24px] md:rounded-[40px] overflow-hidden group pointer-events-none">
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+                              <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20 w-full flex flex-col items-center lg:items-start">
+                                <motion.span
+                                  initial={{ y: 10, opacity: 0 }}
+                                  animate={{ y: 0, opacity: 1 }}
+                                  className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-2"
+                                >
+                                  Service Excellence
+                                </motion.span>
+                                <motion.h3
+                                  initial={{ y: 20, opacity: 0 }}
+                                  animate={{ y: 0, opacity: 1 }}
+                                  className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tighter drop-shadow-2xl uppercase text-white italic"
+                                >
+                                  {service.label}
+                                </motion.h3>
+                                <motion.div
+                                  initial={{ width: 0 }}
+                                  animate={{ width: "80px" }}
+                                  className="h-1.5 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                                  style={{ backgroundColor: service.theme.plasmaColor }}
+                                />
+                              </div>
+                            </div>
+                          }
+                        />
+
+                        {/* Creative Corner Accents */}
+                        <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-white/20 rounded-tl-2xl pointer-events-none transition-colors group-hover/card-link:border-white/40" />
+                        <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-white/20 rounded-br-2xl pointer-events-none transition-colors group-hover/card-link:border-white/40" />
+                      </a>
                     </div>
+
+
 
                     <div className="max-w-4xl mx-auto text-center lg:text-left space-y-6">
                       <p className="text-xl md:text-2xl text-white/50 leading-relaxed font-medium">

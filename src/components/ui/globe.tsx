@@ -41,6 +41,8 @@ export interface Position {
 interface WorldProps {
     globeConfig: GlobeConfig;
     data: Position[];
+    markers?: { location: [number, number]; size: number }[];
+    center?: [number, number]; // [lat, lng]
 }
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -56,11 +58,31 @@ function hexToRgb(hex: string): [number, number, number] {
     ];
 }
 
-export function World({ globeConfig, data }: WorldProps) {
+export function World({ globeConfig, data, markers: propsMarkers, center }: WorldProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const pointerInteracting = useRef<number | null>(null);
     const pointerInteractionMovement = useRef(0);
     const phiRef = useRef(0);
+    const targetPhi = useRef(0);
+    const targetTheta = useRef(0);
+
+    // Update target phi/theta when center changes
+    useEffect(() => {
+        if (center) {
+            // center is [lat, lng]
+            const lat = center[0];
+            const lng = center[1];
+
+            // Phi is Longitude (radians)
+            targetPhi.current = (lng * Math.PI) / 180;
+
+            // Theta is Latitude (radians from North Pole, 0 to PI)
+            // If lat is 90 (North), theta is 0. If lat is -90 (South), theta is PI.
+            // If lat is 0 (Equator), theta is PI/2.
+            // Formula: theta = (90 - lat) * (Math.PI / 180)
+            targetTheta.current = (80 - lat) * (Math.PI / 180); // Using 80 instead of 90 for slightly better viewing angle
+        }
+    }, [center ? center[0] : null, center ? center[1] : null]);
 
     const focusRef = useRef(
         globeConfig.initialPosition
@@ -72,13 +94,16 @@ export function World({ globeConfig, data }: WorldProps) {
     );
 
     // Convert arc data into marker pairs for visualization
-    const markers = data.flatMap((arc) => [
+    const arcMarkers = data.flatMap((arc) => [
         { location: [arc.startLat, arc.startLng] as [number, number], size: 0.06 },
         { location: [arc.endLat, arc.endLng] as [number, number], size: 0.06 },
     ]);
 
+    // Combine props markers (priority) and arc markers
+    const allMarkers = [...(propsMarkers || []), ...arcMarkers];
+
     // Deduplicate markers by location
-    const uniqueMarkers = markers.filter(
+    const uniqueMarkers = allMarkers.filter(
         (marker, index, self) =>
             index ===
             self.findIndex(
@@ -108,11 +133,32 @@ export function World({ globeConfig, data }: WorldProps) {
             width: canvasRef.current?.offsetWidth ? canvasRef.current.offsetWidth * 2 : 800,
             height: canvasRef.current?.offsetHeight ? canvasRef.current.offsetHeight * 2 : 800,
             onRender: (state) => {
-                // Automatic rotation
+                // Automatic rotation or Target rotation
                 if (!pointerInteracting.current) {
-                    phiRef.current += (globeConfig.autoRotateSpeed || 0.5) * 0.005;
+                    if (center) {
+                        // Smoothly interpolate towards targetPhi (Longitude)
+                        let currentPhi = phiRef.current;
+                        let targetPhiVal = targetPhi.current;
+
+                        const PI2 = Math.PI * 2;
+                        while (targetPhiVal - currentPhi > Math.PI) targetPhiVal -= PI2;
+                        while (targetPhiVal - currentPhi < -Math.PI) targetPhiVal += PI2;
+
+                        const distPhi = targetPhiVal - currentPhi;
+                        phiRef.current += distPhi * 0.05;
+
+                        // Smoothly interpolate towards targetTheta (Latitude)
+                        let currentTheta = focusRef.current[0];
+                        let targetThetaVal = targetTheta.current;
+                        const distTheta = targetThetaVal - currentTheta;
+                        focusRef.current[0] += distTheta * 0.05;
+                    } else {
+                        phiRef.current += (globeConfig.autoRotateSpeed || 0.5) * 0.005;
+                    }
                 }
+
                 state.phi = phiRef.current + pointerInteractionMovement.current;
+                state.theta = focusRef.current[0];
                 state.width = canvasRef.current?.offsetWidth ? canvasRef.current.offsetWidth * 2 : 800;
                 state.height = canvasRef.current?.offsetHeight ? canvasRef.current.offsetHeight * 2 : 800;
             },
@@ -120,9 +166,9 @@ export function World({ globeConfig, data }: WorldProps) {
             phi: focusRef.current[1],
             theta: focusRef.current[0],
             dark: 1,
-            diffuse: 1.2,
+            diffuse: 3,
             mapSamples: 16000,
-            mapBrightness: 1.5,
+            mapBrightness: 6,
             baseColor: globeColorRgb,
             markerColor: [0.1, 0.8, 0.4] as [number, number, number],
             glowColor: atmosphereColorRgb,
@@ -142,7 +188,7 @@ export function World({ globeConfig, data }: WorldProps) {
             globe?.destroy();
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [JSON.stringify(uniqueMarkers), center ? center[1] : null]);
 
     return (
         <div className="relative w-full h-full flex items-center justify-center">

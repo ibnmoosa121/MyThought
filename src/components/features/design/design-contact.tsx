@@ -1,52 +1,87 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Mail, MessageSquare } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Send, CheckCircle2, Loader2 } from 'lucide-react';
 
 export const DesignContact = () => {
-    const navigate = useNavigate();
+    const [submitting, setSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        // Simulate submission
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setSubmitting(false);
+        setSuccess(true);
+    };
+
+    if (success) {
+        return (
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center py-12 text-center space-y-4"
+            >
+                <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500">
+                    <CheckCircle2 size={40} />
+                </div>
+                <h3 className="text-2xl font-bold text-white uppercase italic">Message Sent</h3>
+                <p className="text-zinc-400">We'll get back to you shortly.</p>
+                <button
+                    onClick={() => setSuccess(false)}
+                    className="text-emerald-500 font-bold uppercase tracking-widest text-sm hover:underline"
+                >
+                    Send Another
+                </button>
+            </motion.div>
+        );
+    }
 
     return (
-        <div className="flex flex-col items-center justify-center text-center py-6">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="max-w-2xl"
+        <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Name</label>
+                <input
+                    required
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-zinc-500 transition-colors uppercase italic font-bold"
+                />
+            </div>
+            <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Email</label>
+                <input
+                    required
+                    type="email"
+                    placeholder="Email Address"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-zinc-500 transition-colors uppercase italic font-bold"
+                />
+            </div>
+            <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Concept</label>
+                <textarea
+                    required
+                    placeholder="What are we creating?"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-zinc-500 transition-colors uppercase italic font-bold min-h-[120px] resize-none"
+                />
+            </div>
+            <button
+                disabled={submitting}
+                className="w-full bg-white text-black font-black uppercase italic tracking-widest py-4 rounded-full flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform disabled:opacity-50"
             >
-                <div className="flex flex-col gap-8">
-                    <div className="flex flex-col gap-4">
-                        <div className="flex items-center gap-3 justify-center text-cyan-400">
-                            <MessageSquare size={24} />
-                            <span className="uppercase tracking-[0.3em] font-bold text-sm">Get in touch</span>
-                        </div>
-                        <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter leading-none">
-                            Ready to <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-                                Start?
-                            </span>
-                        </h3>
-                    </div>
-
-                    <p className="text-lg text-zinc-400">
-                        Your vision is just one conversation away from becoming a reality. Let's build something extraordinary.
-                    </p>
-
-                    <div className="flex flex-col gap-4">
-                        <button
-                            onClick={() => navigate('/contact')}
-                            className="group flex items-center justify-center gap-3 px-8 py-4 bg-white text-black font-black uppercase italic rounded-full hover:bg-cyan-400 transition-all border-none"
-                        >
-                            Start Project <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-                        </button>
-
-                        <button className="flex items-center justify-center gap-3 px-8 py-4 bg-zinc-900 text-white font-black uppercase italic rounded-full hover:bg-zinc-800 transition-all border border-white/10">
-                            Email Us <Mail size={20} />
-                        </button>
-                    </div>
-                </div>
-            </motion.div>
-        </div>
+                {submitting ? (
+                    <Loader2 className="animate-spin" size={20} />
+                ) : (
+                    <>
+                        Send Message
+                        <Send size={18} />
+                    </>
+                )}
+            </button>
+        </form>
     );
 };
+
+export default DesignContact;

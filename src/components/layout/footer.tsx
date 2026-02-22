@@ -2,9 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { LogoIcon } from '@/components/ui/logo-icon'
 import { Twitter, Linkedin, Github, Mail, MapPin, Phone } from 'lucide-react'
+import { services } from '../../data/services'
+import { useLocation } from 'react-router-dom'
 
 export const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear()
+  const { pathname } = useLocation()
+  const currentService = Object.values(services).find(s => pathname.includes(s.key))
+  const themeColor = currentService ? currentService.theme.plasmaColor : '#FFFFFF'
 
   return (
     <footer className="bg-black text-white border-t border-white/10">
@@ -14,8 +18,19 @@ export const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group">
-              <LogoIcon size={32} className="text-white group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-xl font-bold tracking-tight text-white">MyThought</span>
+              <LogoIcon
+                size={36}
+                color={themeColor}
+                className="group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]"
+              />
+              <span
+                className="text-xl font-bold tracking-tight text-white transition-all duration-500"
+                style={{
+                  textShadow: currentService ? `0 0 10px ${currentService.theme.plasmaColor}44` : 'none'
+                }}
+              >
+                MyThought
+              </span>
             </Link>
             <p className="text-white/70 leading-relaxed max-w-xs">
               Pioneering the future of technology, business, and design. We turn visionary ideas into reality.
@@ -137,7 +152,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-base-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>© {currentYear} MyThought. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} MyThought. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary transition-colors text-white/70">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors text-white/70">Terms of Service</a>

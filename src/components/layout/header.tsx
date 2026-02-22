@@ -59,15 +59,19 @@ const serviceLinks = {
 const AppBrand = ({ className = "" }: { className?: string }) => {
   const { pathname } = useLocation()
 
+  const currentService = Object.values(services).find(s => pathname.includes(s.key))
+
   const getSubtitle = () => {
-    if (pathname.includes('software')) return 'Software'
-    if (pathname.includes('consultancy')) return 'Consultancy'
-    if (pathname.includes('talent')) return 'Talent & Staffing'
-    if (pathname.includes('design')) return 'Design'
-    if (pathname.includes('ventures')) return 'Ventures'
-    if (pathname.includes('fintech')) return 'FinTech'
-    if (pathname.includes('ai-analytics')) return 'AI & Analytics'
+    if (currentService) return currentService.title.split(' ')[0]
     return 'Development Studio'
+  }
+
+  const getSubtitleColor = () => {
+    return currentService ? currentService.theme.text : 'text-white/70'
+  }
+
+  const getThemeColor = () => {
+    return currentService ? currentService.theme.plasmaColor : '#FFFFFF'
   }
 
   return (
@@ -77,18 +81,28 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
     >
-      <LogoIcon size={32} className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
+      <LogoIcon
+        size={36}
+        color={getThemeColor()}
+        className="drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+      />
       <div className="flex flex-col">
-        <h1 className="text-xl font-bold leading-tight text-white drop-shadow-md">
+        <h1
+          className="text-xl font-bold leading-tight text-white drop-shadow-md transition-all duration-500"
+          style={{
+            textShadow: currentService ? `0 0 10px ${currentService.theme.plasmaColor}44` : 'none'
+          }}
+        >
           MyThought
         </h1>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-white/70 font-bold leading-tight">
+        <p className={`text-[10px] uppercase tracking-[0.2em] font-bold leading-tight transition-colors duration-500 ${getSubtitleColor()}`}>
           {getSubtitle()}
         </p>
       </div>
     </motion.div>
   )
 }
+
 
 // Services Megamenu Content
 const ServicesContent = () => {
