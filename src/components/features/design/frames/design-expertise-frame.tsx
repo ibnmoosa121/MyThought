@@ -56,6 +56,21 @@ export const DesignExpertiseFrame = () => {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
+            // Momentum entrance: Smoothly pull the section up to overlap the previous horizontal scroll
+            gsap.fromTo(containerRef.current,
+                { y: "20vh" },
+                {
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top bottom",
+                        end: "top top",
+                        scrub: 1, // 1-second momentum lag matching the showcase
+                    },
+                    y: 0,
+                    ease: "none"
+                }
+            );
+
             // Title reveal: Move in/out
             gsap.fromTo(titleRef.current,
                 { x: -50, opacity: 0, skewX: 10 },

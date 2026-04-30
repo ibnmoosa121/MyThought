@@ -66,6 +66,12 @@ export const MidSkyline = () => {
         { x: 1260, y: 110, w: 65, h: 340, wins: 12, wx: 1268, wy: 128, cols: 4, sp: 14, vsp: 50 },
         { x: 1520, y: 130, w: 60, h: 320, wins: 10, wx: 1528, wy: 148, cols: 4, sp: 13, vsp: 48 },
         { x: 1780, y: 160, w: 55, h: 290, wins: 8, wx: 1788, wy: 178, cols: 3, sp: 14, vsp: 50 },
+        { x: 200, y: 120, w: 55, h: 330, wins: 10, wx: 208, wy: 135, cols: 3, sp: 15, vsp: 55 },
+        { x: 500, y: 90, w: 65, h: 360, wins: 15, wx: 508, wy: 105, cols: 4, sp: 13, vsp: 48 },
+        { x: 800, y: 150, w: 50, h: 300, wins: 8, wx: 808, wy: 165, cols: 3, sp: 14, vsp: 50 },
+        { x: 1100, y: 70, w: 80, h: 380, wins: 18, wx: 1108, wy: 88, cols: 5, sp: 14, vsp: 45, antenna: [1140, 40, 1142, 38] },
+        { x: 1400, y: 100, w: 70, h: 350, wins: 14, wx: 1408, wy: 115, cols: 4, sp: 15, vsp: 52 },
+        { x: 1650, y: 140, w: 60, h: 310, wins: 10, wx: 1658, wy: 155, cols: 4, sp: 12, vsp: 45 },
     ], []);
 
     return (
@@ -94,7 +100,8 @@ export const MidSkyline = () => {
                         })}
                     </g>
                 ))}
-                {[[170, 200, 40, 250], [715, 130, 55, 320], [780, 180, 40, 270], [1020, 140, 55, 310], [1085, 190, 40, 260], [1335, 165, 50, 285], [1590, 175, 45, 275], [1645, 210, 38, 240], [1845, 195, 40, 255], [1895, 220, 30, 230]].map(([x, y, w, h], i) =>
+                {[[170, 200, 40, 250], [715, 130, 55, 320], [780, 180, 40, 270], [1020, 140, 55, 310], [1085, 190, 40, 260], [1335, 165, 50, 285], [1590, 175, 45, 275], [1645, 210, 38, 240], [1845, 195, 40, 255], [1895, 220, 30, 230],
+                  [50, 220, 35, 230], [280, 190, 50, 260], [450, 150, 45, 300], [880, 210, 35, 240], [1200, 180, 40, 270], [1450, 200, 45, 250]].map(([x, y, w, h], i) =>
                     <rect key={`f${i}`} x={x} y={y} width={w} height={h} rx={2} fill={i % 2 === 0 ? "#1e293b" : "#111827"} opacity={0.5} />
                 )}
             </svg>
@@ -124,3 +131,79 @@ export const StreetLamps = () => (
         ))}
     </div>
 );
+
+// ─── Moving Traffic ────────────────────────────────────────────────
+export const MovingTraffic = () => {
+    // Generate a fleet of cars moving on the street layer
+    const cars = useMemo(() => Array.from({ length: 15 }, (_, i) => ({
+        id: i,
+        direction: i % 2 === 0 ? 1 : -1, // 1 = right, -1 = left
+        y: 10 + (i % 5) * 8, // vertical position offset on the street
+        speed: 12 + Math.random() * 20,
+        delay: Math.random() * 15,
+        scale: 0.5 + Math.random() * 0.5,
+    })), []);
+
+    return (
+        <div className="absolute top-[65%] left-0 right-0 bottom-0 z-[10] pointer-events-none overflow-hidden">
+            {cars.map((c) => (
+                <motion.div
+                    key={c.id}
+                    className="absolute"
+                    style={{ 
+                        top: `${c.y}%`, 
+                        scale: c.scale,
+                    }}
+                    initial={{ x: c.direction === 1 ? '-10vw' : '110vw' }}
+                    animate={{ x: c.direction === 1 ? '110vw' : '-10vw' }}
+                    transition={{ 
+                        duration: c.speed, 
+                        repeat: Infinity, 
+                        ease: "linear",
+                        delay: c.delay
+                    }}
+                >
+                    {c.direction === 1 ? (
+                        // Going right (Side profile)
+                        <div className="relative flex items-end h-5">
+                            {/* Headlight beam */}
+                            <div className="absolute right-[-24px] bottom-[2px] w-10 h-2 bg-gradient-to-r from-yellow-100/40 to-transparent blur-sm" />
+                            {/* Car body (Cabin + Chassis) */}
+                            <div className="flex flex-col items-center">
+                                <div className="w-6 h-2.5 bg-zinc-900 rounded-t-md opacity-90" />
+                                <div className="relative w-14 h-3 bg-zinc-800 rounded-sm opacity-95">
+                                    {/* Taillight (left edge) */}
+                                    <div className="absolute left-0 bottom-1 w-1 h-1.5 bg-red-500 shadow-[0_0_6px_rgba(239,68,68,0.8)] rounded-l-sm" />
+                                    {/* Headlight source (right edge) */}
+                                    <div className="absolute right-0 bottom-0.5 w-1 h-2 bg-yellow-100 shadow-[0_0_8px_rgba(254,240,138,0.9)] rounded-r-sm" />
+                                    {/* Wheels */}
+                                    <div className="absolute left-2 -bottom-1 w-2.5 h-2.5 bg-black rounded-full" />
+                                    <div className="absolute right-2 -bottom-1 w-2.5 h-2.5 bg-black rounded-full" />
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        // Going left (Side profile)
+                        <div className="relative flex items-end h-5">
+                            {/* Headlight beam */}
+                            <div className="absolute left-[-24px] bottom-[2px] w-10 h-2 bg-gradient-to-l from-yellow-100/40 to-transparent blur-sm" />
+                            {/* Car body (Cabin + Chassis) */}
+                            <div className="flex flex-col items-center">
+                                <div className="w-6 h-2.5 bg-zinc-900 rounded-t-md opacity-90" />
+                                <div className="relative w-14 h-3 bg-zinc-800 rounded-sm opacity-95">
+                                    {/* Headlight source (left edge) */}
+                                    <div className="absolute left-0 bottom-0.5 w-1 h-2 bg-yellow-100 shadow-[0_0_8px_rgba(254,240,138,0.9)] rounded-l-sm" />
+                                    {/* Taillight (right edge) */}
+                                    <div className="absolute right-0 bottom-1 w-1 h-1.5 bg-red-500 shadow-[0_0_6px_rgba(239,68,68,0.8)] rounded-r-sm" />
+                                    {/* Wheels */}
+                                    <div className="absolute left-2 -bottom-1 w-2.5 h-2.5 bg-black rounded-full" />
+                                    <div className="absolute right-2 -bottom-1 w-2.5 h-2.5 bg-black rounded-full" />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </motion.div>
+            ))}
+        </div>
+    );
+};

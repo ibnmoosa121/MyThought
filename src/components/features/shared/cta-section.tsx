@@ -2,12 +2,17 @@ import React, { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, Sparkles, Layers } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { ScrollVelocity } from '../../ui/scroll-velocity'
+
+interface CtaSectionProps {
+  from?: string;
+}
 
 // Register plugin
 gsap.registerPlugin(ScrollTrigger)
 
-const CtaSection: React.FC = () => {
+const CtaSection: React.FC<CtaSectionProps> = ({ from = 'default' }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
@@ -122,8 +127,9 @@ const CtaSection: React.FC = () => {
           </p>
 
           <div ref={buttonsRef} className="pt-12 flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <a
-              href="#/contact-us"
+            <Link
+              to="/contact"
+              state={{ from }}
               className="group relative inline-flex items-center gap-4 px-12 py-6 rounded-full bg-white text-black font-black text-xl hover:bg-white hover:scale-110 transition-all duration-500 shadow-[0_0_50px_rgba(255,255,255,0.2)] hover:shadow-[0_0_80px_rgba(255,255,255,0.4)]"
             >
               <span className="relative z-10">Start Your Journey</span>
@@ -131,7 +137,7 @@ const CtaSection: React.FC = () => {
 
               {/* Outer Glow Effect */}
               <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl -z-10 scale-125" />
-            </a>
+            </Link>
 
             <a
               href="#/portfolio"

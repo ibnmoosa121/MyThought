@@ -119,6 +119,11 @@ export const Footer: React.FC = () => {
                   AI & Data Analytics
                 </Link>
               </li>
+              <li>
+                <Link to="/logistics" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
+                  Logistics & Customs
+                </Link>
+              </li>
             </ul>
           </div>
 

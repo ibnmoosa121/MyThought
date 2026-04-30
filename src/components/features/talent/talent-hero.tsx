@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { SkyBackground, FarSkyline, MidSkyline, StreetLayer, StreetLamps } from "./city-skyline-layers";
+import { SkyBackground, FarSkyline, MidSkyline, StreetLayer, StreetLamps, MovingTraffic } from "./city-skyline-layers";
 import { TalentCharacter, TalkingPair, StandingCharacter, generateCharacters, TALKING_PAIRS, STANDING_CHARS } from "./TalentCharacter";
 import type { ComponentProps } from "react";
 
@@ -80,6 +80,9 @@ export const TalentHero = () => {
 
                 {/* ── Ambient Particles ── */}
                 <AmbientParticles />
+
+                {/* ── Moving Traffic ── */}
+                <MovingTraffic />
 
                 {/* ── Hero Text ── */}
                 <div className="absolute top-0 left-0 right-0 bottom-[30%] flex items-center justify-center pointer-events-none z-[20]">

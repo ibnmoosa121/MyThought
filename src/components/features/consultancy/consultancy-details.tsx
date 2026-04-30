@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 // --- Custom Animated Icons ---
@@ -180,6 +180,7 @@ const details = [
 ];
 
 export const ConsultancyDetails = () => {
+    const [detailsState, setDetailsState] = useState(details.map(d => ({ ...d, status: null as null | 'email' | 'success' })));
     const [activePulse, setActivePulse] = useState<number | null>(null);
 
     // Auto-pulse hover effect for mobile
@@ -199,7 +200,7 @@ export const ConsultancyDetails = () => {
         <div className="bg-black py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="space-y-16 md:space-y-32">
-                    {details.map((detail, idx) => {
+                    {detailsState.map((detail, idx) => {
                         const isPulsing = activePulse === idx;
                         return (
                             <section
@@ -275,13 +276,73 @@ export const ConsultancyDetails = () => {
                                             ))}
                                         </div>
 
-                                        <button
-                                            className={`flex items-center gap-4 px-8 md:px-10 py-4 md:py-5 rounded-full border border-white/10 text-white font-black uppercase italic text-[10px] md:text-xs tracking-[0.2em] transition-all group overflow-hidden relative`}
-                                        >
-                                            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                                            <span className="relative z-10 group-hover:text-black transition-colors">Inquire Section</span>
-                                            <ArrowRight size={18} className="relative z-10 group-hover:text-black group-hover:translate-x-2 transition-all" />
-                                        </button>
+                                        {/* Dynamic Inquiry Flow */}
+                                        <div className="relative h-16">
+                                            <AnimatePresence mode="wait">
+                                                {!detail.status ? (
+                                                    <motion.button
+                                                        key="btn"
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0, y: -20 }}
+                                                        onClick={() => {
+                                                            setDetailsState(prev => prev.map((item, i) => 
+                                                                i === idx ? { ...item, status: 'email' } : item
+                                                            ));
+                                                        }}
+                                                        className={`flex items-center gap-4 px-8 md:px-10 py-4 md:py-5 rounded-full border border-white/10 text-white font-black uppercase italic text-[10px] md:text-xs tracking-[0.2em] transition-all group overflow-hidden relative`}
+                                                    >
+                                                        <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                                                        <span className="relative z-10 group-hover:text-black transition-colors">Inquire Section</span>
+                                                        <ArrowRight size={18} className="relative z-10 group-hover:text-black group-hover:translate-x-2 transition-all" />
+                                                    </motion.button>
+                                                ) : detail.status === 'email' ? (
+                                                    <motion.div
+                                                        key="input"
+                                                        initial={{ opacity: 0, y: 20 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        exit={{ opacity: 0, scale: 0.95 }}
+                                                        className="flex items-center gap-2 w-full max-w-md bg-white/5 border border-white/10 rounded-full p-1 pl-6"
+                                                    >
+                                                        <input 
+                                                            autoFocus
+                                                            type="email"
+                                                            placeholder="ENTER YOUR EMAIL"
+                                                            className="bg-transparent border-none outline-none text-white text-[10px] uppercase font-bold w-full placeholder:text-white/20"
+                                                            onKeyDown={(e) => {
+                                                                if (e.key === 'Enter') {
+                                                                    setDetailsState(prev => prev.map((item, i) => 
+                                                                        i === idx ? { ...item, status: 'success' } : item
+                                                                    ));
+                                                                }
+                                                            }}
+                                                        />
+                                                        <button 
+                                                            onClick={() => {
+                                                                setDetailsState(prev => prev.map((item, i) => 
+                                                                    i === idx ? { ...item, status: 'success' } : item
+                                                                ));
+                                                            }}
+                                                            className="bg-white text-black px-6 py-3 rounded-full text-[10px] font-black uppercase italic hover:scale-105 transition-transform"
+                                                        >
+                                                            Submit
+                                                        </button>
+                                                    </motion.div>
+                                                ) : (
+                                                    <motion.div
+                                                        key="success"
+                                                        initial={{ opacity: 0, x: 20 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        className="flex items-center gap-3 text-white"
+                                                    >
+                                                        <div className={`w-2 h-2 rounded-full ${detail.bg} animate-ping`} />
+                                                        <span className="text-[10px] md:text-xs font-black uppercase italic tracking-widest leading-relaxed">
+                                                            We will get in touch with you personally on this.
+                                                        </span>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
                                     </motion.div>
                                 </div>
 

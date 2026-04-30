@@ -35,16 +35,26 @@ function getStandPose(phase: number): PoseData {
 interface SilhouetteProps { pose: PoseData; color: string; variant: number; }
 
 const BODY = [
-    { hR: 7.5, sW: 20, tH: 28, hW: 16, lL: 36, aL: 30 },
-    { hR: 7, sW: 22, tH: 30, hW: 18, lL: 34, aL: 32 },
-    { hR: 7.2, sW: 19, tH: 26, hW: 15, lL: 38, aL: 28 },
-    { hR: 7.8, sW: 21, tH: 29, hW: 17, lL: 35, aL: 31 },
-    { hR: 7.3, sW: 20, tH: 27, hW: 16, lL: 37, aL: 29 },
+    { gender: 'M', hR: 7.5, sW: 22, tH: 30, hW: 16, lL: 36, aL: 31, hair: 'short', clothes: 'pants' },
+    { gender: 'F', hR: 7, sW: 18, tH: 28, hW: 19, lL: 34, aL: 29, hair: 'long', clothes: 'skirt' },
+    { gender: 'M', hR: 7.2, sW: 24, tH: 32, hW: 18, lL: 36, aL: 33, hair: 'bald', clothes: 'coat' },
+    { gender: 'F', hR: 6.8, sW: 17, tH: 27, hW: 18, lL: 36, aL: 28, hair: 'bun', clothes: 'pants' },
+    { gender: 'M', hR: 7.8, sW: 21, tH: 29, hW: 17, lL: 34, aL: 30, hair: 'short', clothes: 'pants' },
+    { gender: 'F', hR: 7.3, sW: 18, tH: 26, hW: 20, lL: 35, aL: 29, hair: 'ponytail', clothes: 'skirt' },
+    { gender: 'M', hR: 7, sW: 20, tH: 28, hW: 16, lL: 33, aL: 30, hair: 'short', clothes: 'coat' },
+    { gender: 'F', hR: 7.2, sW: 19, tH: 29, hW: 19, lL: 37, aL: 30, hair: 'short', clothes: 'pants' },
 ];
 
 const SilhouetteFigure = memo(({ pose, color, variant }: SilhouetteProps) => {
-    const v = BODY[variant % 5];
+    const v = BODY[variant % BODY.length];
     const cx = 30, headY = 12, neckY = headY + v.hR + 2, shY = neckY + 4, hipY = shY + v.tH;
+
+    const torsoPath = v.gender === 'F'
+        ? `M${cx - v.sW / 2} ${shY} Q${cx} ${shY + v.tH * 0.5} ${cx - v.hW / 2} ${hipY} L${cx + v.hW / 2} ${hipY} Q${cx} ${shY + v.tH * 0.5} ${cx + v.sW / 2} ${shY} Z`
+        : `M${cx - v.sW / 2} ${shY} Q${cx - v.sW / 2 - 1} ${shY + v.tH * 0.4} ${cx - v.hW / 2} ${hipY} L${cx + v.hW / 2} ${hipY} Q${cx + v.sW / 2 + 1} ${shY + v.tH * 0.4} ${cx + v.sW / 2} ${shY} Z`;
+
+    const skirtLength = v.lL * 0.45;
+    const coatLength = v.lL * 0.6;
 
     return (
         <svg viewBox="0 0 60 120" width="60" height="120" style={{ overflow: "visible", display: "block" }}>
@@ -56,11 +66,28 @@ const SilhouetteFigure = memo(({ pose, color, variant }: SilhouetteProps) => {
                         <ellipse cx={1} cy={v.lL + 1} rx={4.5} ry={3} fill={color} opacity={0.9} />
                     </g></g>
                 ))}
+
+                {/* Clothing Extrusions (Behind Torso, Above Legs) */}
+                {v.clothes === 'skirt' && (
+                    <path d={`M${cx - v.hW / 2} ${hipY} L${cx - v.hW / 2 - 3} ${hipY + skirtLength} L${cx + v.hW / 2 + 3} ${hipY + skirtLength} L${cx + v.hW / 2} ${hipY} Z`} fill={color} opacity={0.95} />
+                )}
+                {v.clothes === 'coat' && (
+                    <path d={`M${cx - v.hW / 2 - 1} ${hipY} L${cx - v.hW / 2 - 2} ${hipY + coatLength} L${cx + v.hW / 2 + 2} ${hipY + coatLength} L${cx + v.hW / 2 + 1} ${hipY} Z`} fill={color} opacity={0.9} />
+                )}
+
                 {/* Torso */}
-                <path d={`M${cx - v.sW / 2} ${shY} Q${cx - v.sW / 2 - 1} ${shY + v.tH * 0.4} ${cx - v.hW / 2} ${hipY} L${cx + v.hW / 2} ${hipY} Q${cx + v.sW / 2 + 1} ${shY + v.tH * 0.4} ${cx + v.sW / 2} ${shY} Z`} fill={color} />
+                <path d={torsoPath} fill={color} />
+
                 {/* Neck + Head */}
                 <rect x={cx - 3} y={neckY} width={6} height={shY - neckY + 2} rx={3} fill={color} />
                 <circle cx={cx} cy={headY} r={v.hR} fill={color} />
+
+                {/* Hair */}
+                {v.hair === 'long' && <path d={`M${cx - v.hR + 1} ${headY - 2} Q${cx - v.hR - 3} ${headY + v.hR + 5} ${cx - v.hR - 2} ${headY + v.hR + 14} Q${cx} ${headY + v.hR + 5} ${cx + v.hR + 2} ${headY + v.hR + 14} Q${cx + v.hR + 3} ${headY + v.hR + 5} ${cx + v.hR - 1} ${headY - 2} Z`} fill={color} opacity={0.95} />}
+                {v.hair === 'bun' && <circle cx={cx} cy={headY - v.hR - 2} r={3.5} fill={color} />}
+                {v.hair === 'ponytail' && <path d={`M${cx + v.hR - 2} ${headY - 2} Q${cx + v.hR + 8} ${headY - 4} ${cx + v.hR + 6} ${headY + 8} Q${cx + v.hR + 2} ${headY + 2} ${cx + v.hR - 2} ${headY} Z`} fill={color} />}
+                {v.hair === 'short' && <path d={`M${cx - v.hR} ${headY} Q${cx} ${headY - v.hR - 3} ${cx + v.hR} ${headY} Z`} fill={color} />}
+
                 {/* Arms */}
                 {[[cx - v.sW / 2 + 1, pose.leftArmAngle], [cx + v.sW / 2 - 1, pose.rightArmAngle]].map(([ax, angle], i) => (
                     <g key={`a${i}`} transform={`translate(${ax},${shY + 2})`}><g transform={`rotate(${angle})`}>
@@ -68,6 +95,8 @@ const SilhouetteFigure = memo(({ pose, color, variant }: SilhouetteProps) => {
                         <circle cx={0} cy={v.aL + 2} r={3} fill={color} opacity={0.9} />
                     </g></g>
                 ))}
+
+                {/* Accessories (Briefcase) */}
                 {variant % 3 === 0 && Math.abs(pose.rightArmAngle) < 40 && (
                     <g transform={`translate(${cx + v.sW / 2 - 1},${shY + 2}) rotate(${pose.rightArmAngle})`}>
                         <rect x={-6} y={v.aL + 3} width={12} height={9} rx={1.5} fill={color} opacity={0.85} />

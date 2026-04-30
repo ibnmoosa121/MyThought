@@ -25,7 +25,6 @@ export const prefetchRoute = (importFn: () => Promise<any>) => {
 
 export const criticalImages = [
     "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=70&w=1200&auto=format&fit=crop", // Background
-    "https://grainy-gradients.vercel.app/noise.svg", // Noise
 ];
 
 export const homePageImages = [

@@ -32,13 +32,14 @@ const Counter = ({ value }: { value: number }) => {
     return <span ref={nodeRef} className="text-6xl font-black text-white italic leading-none">{displayValue}</span>;
 };
 
-interface RegionData {
+export interface RegionData {
     id: string;
     name: string;
     fullName: string;
     color: string;
     accent: string;
     location: { lat: number; lng: number };
+    cameraTarget: { phi: number; theta: number }; // Exact visual calibration
     sectors: string[];
     opportunitySlot: {
         title: string;
@@ -58,7 +59,8 @@ const regions: RegionData[] = [
         fullName: "Kingdom of Saudi Arabia",
         color: "from-emerald-500/20 to-emerald-900/40",
         accent: "#10B981",
-        location: { lat: 23.8859, lng: 45.0792 },
+        location: { lat: 24.7136, lng: 46.6753 }, // Riyadh
+        cameraTarget: { phi: 224.98, theta: 18.69 },
         sectors: ["Vision 2030", "Giga Projects", "FinTech", "Energy"],
         opportunitySlot: {
             title: "Smart Infrastructure",
@@ -76,7 +78,8 @@ const regions: RegionData[] = [
         fullName: "United Arab Emirates",
         color: "from-emerald-400/20 to-emerald-800/40",
         accent: "#34D399",
-        location: { lat: 25.2048, lng: 55.2708 },
+        location: { lat: 25.2048, lng: 55.2708 }, // Dubai
+        cameraTarget: { phi: 216.67, theta: 26.06 },
         sectors: ["Real Estate", "Web3", "Logistics", "Hospitality"],
         opportunitySlot: {
             title: "Secondary Markets",
@@ -94,7 +97,8 @@ const regions: RegionData[] = [
         fullName: "Global Workforce Hub",
         color: "from-teal-600/20 to-teal-950/40",
         accent: "#0D9488",
-        location: { lat: 20.5937, lng: 78.9629 },
+        location: { lat: 28.6139, lng: 77.2090 }, // Delhi
+        cameraTarget: { phi: 192.32, theta: 20.98 },
         sectors: ["SaaS", "DeepTech", "Manufacturing", "EV"],
         opportunitySlot: {
             title: "Global Capability Centers",
@@ -112,7 +116,8 @@ const regions: RegionData[] = [
         fullName: "SEA Digital Powerhouse",
         color: "from-emerald-700/20 to-emerald-950/40",
         accent: "#059669",
-        location: { lat: -0.7893, lng: 113.9213 },
+        location: { lat: -6.2088, lng: 106.8456 }, // Jakarta
+        cameraTarget: { phi: 155.08, theta: -1.72 },
         sectors: ["E-commerce", "Agri-Tech", "Maritime", "Natural Resources"],
         opportunitySlot: {
             title: "Digital Economy",
@@ -293,11 +298,8 @@ export const GatewayNavigator = () => {
                             <World
                                 globeConfig={globeConfig}
                                 data={arcs}
-                                markers={regions.map(r => ({
-                                    location: [r.location.lat, r.location.lng],
-                                    size: r.id === activeRegion.id ? 0.1 : 0.05
-                                }))}
                                 center={[activeRegion.location.lat, activeRegion.location.lng]}
+                                targetAngles={activeRegion.cameraTarget}
                             />
                             <MarkerPointer />
                             {/* Decorative rings */}
@@ -409,11 +411,8 @@ export const GatewayNavigator = () => {
                         <World
                             globeConfig={globeConfig}
                             data={arcs}
-                            markers={regions.map(r => ({
-                                location: [r.location.lat, r.location.lng],
-                                size: r.id === activeRegion.id ? 0.1 : 0.05
-                            }))}
                             center={[activeRegion.location.lat, activeRegion.location.lng]}
+                            targetAngles={activeRegion.cameraTarget}
                         />
                         <MarkerPointer />
                     </div>

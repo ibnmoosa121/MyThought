@@ -44,6 +44,7 @@ const TALENT_SERVICES = [
 ];
 
 export const TalentPortfolio = () => {
+    const [talentState, setTalentState] = useState(TALENT_SERVICES.map(s => ({ ...s, status: null as null | 'email' | 'success' })));
     const [openId, setOpenId] = useState<string | null>(null);
 
     return (
@@ -64,7 +65,7 @@ export const TalentPortfolio = () => {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                    {TALENT_SERVICES.map((service, i) => (
+                    {talentState.map((service, i) => (
                         <motion.div
                             key={service.id}
                             initial={{ opacity: 0, x: -50 }}
@@ -121,9 +122,73 @@ export const TalentPortfolio = () => {
                                                     <p className="text-lg md:text-2xl text-zinc-300 leading-relaxed font-light mb-8">
                                                         {service.longDesc}
                                                     </p>
-                                                    <button className="flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-black uppercase italic tracking-widest text-sm hover:scale-105 transition-transform active:scale-95">
-                                                        Request Experts <ArrowRight size={18} />
-                                                    </button>
+                                                    {/* Dynamic Inquiry Flow */}
+                                                    <div className="relative h-14 mt-4">
+                                                        <AnimatePresence mode="wait">
+                                                            {!service.status ? (
+                                                                <motion.button 
+                                                                    key="btn"
+                                                                    initial={{ opacity: 0 }}
+                                                                    animate={{ opacity: 1 }}
+                                                                    exit={{ opacity: 0, y: -10 }}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();
+                                                                        setTalentState(prev => prev.map((item, idx) => 
+                                                                            idx === i ? { ...item, status: 'email' } : item
+                                                                        ));
+                                                                    }}
+                                                                    className="flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-black uppercase italic tracking-widest text-sm hover:scale-105 transition-transform active:scale-95"
+                                                                >
+                                                                    Enquire Experts <ArrowRight size={18} />
+                                                                </motion.button>
+                                                            ) : service.status === 'email' ? (
+                                                                <motion.div
+                                                                    key="input"
+                                                                    initial={{ opacity: 0, y: 10 }}
+                                                                    animate={{ opacity: 1, y: 0 }}
+                                                                    exit={{ opacity: 0, scale: 0.95 }}
+                                                                    className="flex items-center gap-2 w-full max-w-md bg-white/5 border border-white/10 rounded-full p-1 pl-6"
+                                                                    onClick={(e) => e.stopPropagation()}
+                                                                >
+                                                                    <input 
+                                                                        autoFocus
+                                                                        type="email"
+                                                                        placeholder="ENTER YOUR EMAIL"
+                                                                        className="bg-transparent border-none outline-none text-white text-[10px] uppercase font-bold w-full placeholder:text-white/20"
+                                                                        onKeyDown={(e) => {
+                                                                            if (e.key === 'Enter') {
+                                                                                setTalentState(prev => prev.map((item, idx) => 
+                                                                                    idx === i ? { ...item, status: 'success' } : item
+                                                                                ));
+                                                                            }
+                                                                        }}
+                                                                    />
+                                                                    <button 
+                                                                        onClick={() => {
+                                                                            setTalentState(prev => prev.map((item, idx) => 
+                                                                                idx === i ? { ...item, status: 'success' } : item
+                                                                            ));
+                                                                        }}
+                                                                        className="bg-white text-black px-6 py-3 rounded-full text-[10px] font-black uppercase italic hover:scale-105 transition-transform"
+                                                                    >
+                                                                        Submit
+                                                                    </button>
+                                                                </motion.div>
+                                                            ) : (
+                                                                <motion.div
+                                                                    key="success"
+                                                                    initial={{ opacity: 0, x: 20 }}
+                                                                    animate={{ opacity: 1, x: 0 }}
+                                                                    className="flex items-center gap-3 text-white"
+                                                                >
+                                                                    <div className="w-2 h-2 rounded-full bg-purple-500 animate-ping" />
+                                                                    <span className="text-[10px] md:text-xs font-black uppercase italic tracking-widest leading-relaxed">
+                                                                        We will get in touch with you personally on this.
+                                                                    </span>
+                                                                </motion.div>
+                                                            )}
+                                                        </AnimatePresence>
+                                                    </div>
                                                 </div>
                                                 <div className="hidden lg:block">
                                                     <div className="text-[10rem] font-black text-white/5 italic leading-none select-none">

@@ -173,7 +173,7 @@ export const ConsultancyHero = () => {
                 </div>
 
                 {/* The Grid of Shadows */}
-                <div className="flex-1 w-full grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 mt-8 mb-12 md:mb-0">
+                <div className="flex-1 w-full grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-12 mt-8 mb-12 md:mb-0">
                     {consultants.map((consultant, idx) => {
                         const isActive = hoveredId === consultant.id;
                         return (
@@ -182,7 +182,7 @@ export const ConsultancyHero = () => {
                                 onMouseEnter={() => setHoveredId(consultant.id)}
                                 onMouseLeave={() => setHoveredId(null)}
                                 onClick={() => scrollToSection(consultant.id)}
-                                className={`relative group cursor-pointer overflow-hidden rounded-2xl border transition-colors bg-zinc-950/50 ${idx === 4 ? 'col-span-2 md:col-span-1' : ''} ${isActive ? 'border-white/20' : 'border-white/5'}`}
+                                className={`relative group cursor-pointer overflow-hidden rounded-3xl border transition-all duration-500 bg-white/5 backdrop-blur-sm ${idx === 4 ? 'col-span-2 md:col-span-1' : ''} ${isActive ? 'border-white/30 bg-white/10' : 'border-white/10 hover:border-white/20'}`}
                                 whileHover={{ scale: 1.02 }}
                             >
                                 {/* Inner Glow when hovered */}
@@ -199,13 +199,13 @@ export const ConsultancyHero = () => {
                                     <motion.img
                                         src={consultant.image}
                                         alt={consultant.name}
-                                        className={`w-full h-full object-cover transition-all duration-700 ease-out ${isActive ? 'brightness-100 grayscale-0' : 'brightness-0 grayscale'}`}
+                                        className={`w-full h-full object-cover transition-all duration-700 ease-out ${isActive ? 'brightness-100 grayscale-0 opacity-100' : 'brightness-50 grayscale opacity-20'}`}
                                     />
-                                    <div className={`absolute inset-0 bg-gradient-to-t transition-all duration-500 ${isActive ? 'from-black/80 via-black/40' : 'from-black via-black/20 to-transparent'}`} />
+                                    <div className={`absolute inset-0 bg-gradient-to-t transition-all duration-500 ${isActive ? 'from-black/80 via-black/40' : 'from-black/60 via-transparent to-transparent'}`} />
                                 </div>
 
                                 {/* The Essence Text */}
-                                <div className={`absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6 z-30 transition-transform duration-500 ${isActive ? 'translate-y-0' : 'translate-y-4'}`}>
+                                <div className={`absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 z-30 transition-all duration-500 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-60'}`}>
                                     <motion.span
                                         className="block text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mb-1"
                                         style={{ color: consultant.color }}

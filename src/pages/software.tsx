@@ -4,11 +4,9 @@ import { useEffect } from 'react'
 import { SoftwareHero } from '../components/features/software/software-hero'
 import { SoftwareServices } from '../components/features/software/software-services'
 import { SoftwareMethodology } from '../components/features/software/software-methodology'
-import { SoftwareCaseStudies } from '../components/features/software/software-case-studies'
 import { WavyBackground } from '../components/ui/wavy-background'
 import { SectionDivider } from '../components/ui/section-divider'
 import DeliveryProcess from '../components/features/software/delivery-process'
-
 import { services } from '../data/services'
 
 const SoftwarePage = () => {
@@ -50,12 +48,14 @@ const SoftwarePage = () => {
           <SoftwareMethodology />
         </div>
 
+        {/* Temporarily hidden Success Story section
         <SectionDivider />
 
         <div className="relative">
           <WavyBackground color={service.theme.plasmaColor} className="opacity-25" />
           <SoftwareCaseStudies />
         </div>
+        */}
       </div>
     </main>
   )

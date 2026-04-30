@@ -67,13 +67,13 @@ export const SoftwareHero = () => {
                         transition={{ delay: 0.8, duration: 0.5 }}
                     >
                         <button
-                            onClick={() => navigate('/contact')}
+                            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
                             className={`px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-1`}
                         >
                             {service.cta}
                         </button>
                         <button
-                            onClick={() => navigate('/contact')}
+                            onClick={() => navigate('/contact', { state: { from: 'software' } })}
                             className="px-10 py-4 bg-neutral-900/80 hover:bg-neutral-800 text-white font-bold rounded-xl border border-neutral-800 transition-all hover:-translate-y-1"
                         >
                             Get Started

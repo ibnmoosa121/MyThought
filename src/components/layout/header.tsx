@@ -8,7 +8,8 @@ import {
   ArrowRight,
   Users,
   Rocket,
-  Brain
+  Brain,
+  Ship
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -42,6 +43,7 @@ const serviceIcons = {
   ventures: Rocket,
   fintech: Landmark,
   'ai-analytics': Brain,
+  logistics: Ship,
 }
 
 // Service Links Mapping
@@ -53,6 +55,7 @@ const serviceLinks = {
   ventures: '#/ventures',
   fintech: '#/fintech',
   'ai-analytics': '#/ai-analytics',
+  logistics: '#/logistics',
 }
 
 // App logo/brand component
@@ -63,7 +66,7 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
 
   const getSubtitle = () => {
     if (currentService) return currentService.title.split(' ')[0]
-    return 'Development Studio'
+    return 'Digital Hub'
   }
 
   const getSubtitleColor = () => {
@@ -193,10 +196,10 @@ export const Header = () => {
 
               {/* Center: Navigation Menu */}
               <div className="flex-none flex justify-center">
-                <NavigationMenu>
+                <NavigationMenu delayDuration={0}>
                   <NavigationMenuList className="flex gap-2">
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className="bg-transparent hover:bg-base-content/10 font-bold text-white">
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-base-content/10 font-bold text-white cursor-pointer">
                         Services
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>

@@ -23,7 +23,7 @@ const ConsultancyPage = () => {
         <ConsultancyDetails />
       </div>
       <SectionDivider type="glow" direction="top" color={service.theme.plasmaColor} />
-      <CtaSection />
+      <CtaSection from="consultancy" />
     </main>
   )
 }

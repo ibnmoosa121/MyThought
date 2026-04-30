@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       animation: {
         blob: "blob 7s infinite",
+        gradient: "gradient 3s ease infinite",
       },
       keyframes: {
         blob: {
@@ -22,6 +23,14 @@ module.exports = {
           },
           "100%": {
             transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+        gradient: {
+          "0%, 100%": {
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-position": "100% 50%",
           },
         },
       },

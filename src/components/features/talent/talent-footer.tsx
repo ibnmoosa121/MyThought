@@ -2,10 +2,12 @@
 
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { MapPin, ArrowRight, Instagram, Linkedin, Twitter } from "lucide-react";
 
 export const TalentFooter = () => {
+    const navigate = useNavigate();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
@@ -62,6 +64,7 @@ export const TalentFooter = () => {
                         <div className="flex items-center gap-8">
                             <button
                                 ref={buttonRef}
+                                onClick={() => navigate('/contact', { state: { from: 'talent' } })}
                                 className="relative h-40 w-40 md:h-56 md:w-56 rounded-full bg-purple-500 text-black flex flex-col items-center justify-center group transition-transform duration-500 hover:scale-105 active:scale-95"
                             >
                                 <span className="text-[10px] font-black uppercase tracking-widest mb-1 opacity-60">Start Here</span>

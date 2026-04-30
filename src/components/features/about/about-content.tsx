@@ -1,41 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Award, Briefcase, Zap, Globe, Target } from 'lucide-react';
+import { Briefcase, Zap, Globe, Target, MapPin, Layers, Building2 } from "lucide-react";
+import { ScrollRevealText } from "../../ui/scroll-reveal-text";
+import TiltedCard from "../../ui/tilted-card";
 
 const stats = [
-    { label: "Elite Members", value: "50+", icon: Users, sub: "Global Experts" },
-    { label: "Success Stories", value: "200+", icon: Briefcase, sub: "Worldwide Projects" },
-    { label: "Global Accolades", value: "15+", icon: Award, sub: "Innovation Awards" },
+    { label: "Regional HQ", value: "Jeddah", icon: MapPin, sub: "Heart of the Gulf" },
+    { label: "Expert Divisions", value: "7+", icon: Layers, sub: "Comprehensive Solutions" },
+    { label: "Vision Alignment", value: "2030", icon: Target, sub: "Thriving Innovations" },
 ];
 
 const values = [
     {
-        title: "Innovation",
-        desc: "We live at the edge of what's possible, constantly redefining technical boundaries.",
+        title: "Digital Transformation",
+        desc: "Empowering businesses across the Gulf with cutting-edge software, AI, and fintech solutions.",
         icon: Zap,
         color: "from-blue-500/20 to-blue-900/40"
     },
     {
-        title: "Collaboration",
-        desc: "Deep integration with our clients turns partnerships into shared breakthroughs.",
-        icon: Globe,
+        title: "Strategic Consultancy",
+        desc: "Guiding organizations through complex challenges to align with the Kingdom's ambitious growth.",
+        icon: Briefcase,
         color: "from-emerald-500/20 to-emerald-900/40"
     },
     {
-        title: "Excellence",
-        desc: "Precision isn't just a goal; it's our baseline for every line of code and every pixel.",
-        icon: Target,
-        color: "from-zinc-500/20 to-zinc-900/40"
+        title: "Ventures & Innovation",
+        desc: "Pioneering the future by investing in AI, analytics, and transformative design experiences.",
+        icon: Globe,
+        color: "from-purple-500/20 to-purple-900/40"
+    }
+];
+
+const sections = [
+    { 
+        name: "Software & AI", 
+        role: "Digital Engineering", 
+        image: "https://images.unsplash.com/photo-1582200232537-88ab913bfd3c?auto=format&fit=crop&q=80&w=800", // Gulf Architecture
+        caption: "Building Robust Systems"
+    },
+    { 
+        name: "Fintech & Ventures", 
+        role: "Financial Innovation", 
+        image: "https://images.unsplash.com/photo-1548810237-7f9e8a8aeb4b?auto=format&fit=crop&q=80&w=800", // Dubai/Gulf Tech
+        caption: "Empowering Economies"
+    },
+    { 
+        name: "Consultancy & Design", 
+        role: "Strategic Execution", 
+        image: "https://images.unsplash.com/photo-1628185852504-20a7b45a4a58?auto=format&fit=crop&q=80&w=800", // Riyadh Skyline
+        caption: "Crafting Experiences"
     }
 ];
 
 export const AboutContent = () => {
     return (
-        <div className="bg-black relative py-24 md:py-44">
-            <div className="container mx-auto px-6">
+        <div className="bg-black relative py-24 md:py-44 overflow-hidden">
+            <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-blue-900/20 blur-[150px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-purple-900/20 blur-[150px] rounded-full pointer-events-none" />
 
-                {/* Our Story - High End Typography */}
+            <div className="container mx-auto px-6 relative z-10">
+
+                {/* Our Story */}
                 <div className="grid lg:grid-cols-2 gap-20 items-center mb-44">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -43,37 +69,38 @@ export const AboutContent = () => {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-none">
-                            Our <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-500">Trajectory</span>
-                        </h2>
+                        <ScrollRevealText 
+                            text="Our Trajectory" 
+                            className="text-5xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-none"
+                        />
                         <div className="space-y-6 text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl">
                             <p>
-                                Founded in 2020, MyThought emerged from a singular vision: <span className="text-white">to dismantle the status quo</span> of digital delivery. We noticed a void where high-level strategy and technical mastery should intersect.
+                                Based in the thriving hub of <span className="text-white">Jeddah, Saudi Arabia</span>, MyThought emerged from a singular vision: to dismantle the status quo of digital delivery across the Gulf region.
                             </p>
                             <p>
-                                Today, we operate as a multi-disciplinary hub of innovation, bridging the gap between <span className="text-white">ambitious ideas</span> and <span className="text-white">market-dominating reality</span>.
+                                Today, we operate as a multi-disciplinary powerhouse covering <span className="text-white">software development, AI analytics, fintech, design,</span> and <span className="text-white">strategic consultancy</span>. We thrive on bridging the gap between ambitious regional goals—like <span className="text-white">Vision 2030</span>—and market-dominating reality.
                             </p>
                         </div>
                     </motion.div>
 
-                    {/* Stats Grid - Minimalist but Premium */}
+                    {/* Stats Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className={`p-10 rounded-[2.5rem] bg-zinc-900/50 border border-white/10 relative overflow-hidden group ${i === 0 ? "md:col-span-2" : ""}`}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1, duration: 0.6 }}
+                                className={`p-10 rounded-[2.5rem] bg-zinc-900/50 border border-white/5 backdrop-blur-sm relative overflow-hidden group ${i === 0 ? "md:col-span-2" : ""}`}
                             >
-                                <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:scale-110 transition-transform duration-500">
-                                    <stat.icon size={120} />
+                                <div className="absolute -top-10 -right-10 p-10 opacity-5 group-hover:opacity-10 group-hover:rotate-12 group-hover:scale-125 transition-all duration-700">
+                                    <stat.icon size={180} />
                                 </div>
                                 <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
-                                    <span className="text-6xl md:text-8xl font-black text-white italic mb-2">{stat.value}</span>
-                                    <p className="text-xs font-black uppercase tracking-[0.3em] text-white/50">{stat.label}</p>
-                                    <p className="text-[10px] uppercase text-zinc-500 tracking-widest mt-1">{stat.sub}</p>
+                                    <span className="text-5xl md:text-7xl font-black text-white italic mb-2 tracking-tighter">{stat.value}</span>
+                                    <p className="text-xs font-black uppercase tracking-[0.3em] text-white/70">{stat.label}</p>
+                                    <p className="text-[10px] uppercase text-zinc-500 tracking-widest mt-2">{stat.sub}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -81,39 +108,40 @@ export const AboutContent = () => {
                 </div>
 
                 {/* Values Section */}
-                <div className="space-y-24">
+                <div className="space-y-24 mb-44">
                     <div className="text-center space-y-4">
-                        <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40">The Core Principles</span>
-                        <h2 className="text-4xl md:text-8xl font-black text-white italic uppercase tracking-tighter leading-[0.9]">
-                            Foundational <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Philosophy</span>
-                        </h2>
+                        <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40">Our Thrust</span>
+                        <ScrollRevealText
+                            text="What We Thrive To Do"
+                            className="text-4xl md:text-6xl lg:text-8xl font-black text-white italic uppercase tracking-tighter leading-[0.9]"
+                        />
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {values.map((value, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.15, duration: 0.7 }}
                                 className="group relative"
                             >
-                                <div className={`absolute inset-0 bg-gradient-to-br ${value.color} blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-                                <div className="relative p-12 rounded-[3.5rem] bg-zinc-900/50 border border-white/10 backdrop-blur-xl h-full flex flex-col gap-6">
-                                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-white border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
-                                        <value.icon size={32} />
+                                <div className={`absolute inset-0 bg-gradient-to-br ${value.color} blur-[50px] opacity-0 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none`} />
+                                <div className="relative px-8 py-12 md:p-12 rounded-[3.5rem] bg-zinc-900/40 border border-white/10 backdrop-blur-xl h-full flex flex-col gap-8 hover:border-white/20 transition-colors duration-500">
+                                    <div className="w-20 h-20 rounded-3xl bg-white/5 flex items-center justify-center text-white border border-white/10 group-hover:-translate-y-2 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-500">
+                                        <value.icon size={36} />
                                     </div>
                                     <div className="space-y-4">
-                                        <h3 className="text-3xl font-black text-white italic uppercase">{value.title}</h3>
-                                        <p className="text-zinc-500 leading-relaxed text-sm">
+                                        <h3 className="text-2xl lg:text-3xl font-black text-white italic uppercase tracking-tight">{value.title}</h3>
+                                        <p className="text-zinc-400 leading-relaxed text-base font-medium">
                                             {value.desc}
                                         </p>
                                     </div>
-                                    <div className="mt-auto pt-6 flex items-center gap-2 text-white/20 text-[10px] font-black uppercase tracking-widest">
-                                        <span>Standard Unit</span>
-                                        <div className="h-px flex-1 bg-white/10" />
-                                        <span>Verified</span>
+                                    <div className="mt-auto pt-8 flex items-center gap-4 text-white/30 text-[10px] font-black uppercase tracking-widest">
+                                        <span>Gulf Wide</span>
+                                        <div className="h-px flex-1 bg-white/10 group-hover:bg-white/30 transition-colors" />
+                                        <span className="group-hover:text-white transition-colors duration-300">Verified</span>
                                     </div>
                                 </div>
                             </motion.div>
@@ -121,24 +149,68 @@ export const AboutContent = () => {
                     </div>
                 </div>
 
-                {/* Team Placeholder Replaces */}
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    className="mt-44 p-20 rounded-[4rem] bg-gradient-to-b from-white/5 to-transparent border border-white/10 text-center space-y-8"
-                >
-                    <div className="space-y-4">
-                        <h2 className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter">The Human Engine</h2>
-                        <p className="text-zinc-500 max-w-xl mx-auto text-lg leading-relaxed">
-                            A curated collective of architects, engineers, and visionaries. Our team defines the DNA of MyThought.
+                {/* Sections Overview with Tilted Cards */}
+                <div className="space-y-24 mb-44">
+                    <div className="text-center space-y-4">
+                        <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40">Our Ecosystem</span>
+                        <h2 className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-none">
+                            Comprehensive <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-600">Solutions</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-12 lg:gap-8 px-4 md:px-0">
+                        {sections.map((section, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.2, duration: 0.8 }}
+                                className="flex flex-col items-center gap-6"
+                            >
+                                <div className="w-full aspect-[3/4] max-w-[350px]">
+                                    <TiltedCard
+                                        imageSrc={section.image}
+                                        altText={section.name}
+                                        captionText={section.caption}
+                                        containerHeight="100%"
+                                        containerWidth="100%"
+                                        imageHeight="100%"
+                                        imageWidth="100%"
+                                        rotateAmplitude={12}
+                                        scaleOnHover={1.05}
+                                        showTooltip={true}
+                                        displayOverlayContent={true}
+                                    />
+                                </div>
+                                <div className="text-center">
+                                    <h3 className="text-xl font-black text-white italic uppercase tracking-tight">{section.name}</h3>
+                                    <p className="text-sm font-bold text-zinc-500 uppercase tracking-widest mt-1">{section.role}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* HQ Address Details */}
+                <div className="relative rounded-[3.5rem] bg-zinc-900/40 border border-white/10 backdrop-blur-xl p-12 md:p-24 overflow-hidden mb-24 text-center">
+                    <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+                        <Building2 size={300} />
+                    </div>
+                    <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+                        <div className="w-20 h-20 mx-auto rounded-3xl bg-white/5 flex items-center justify-center text-white border border-white/10 mb-8">
+                            <MapPin size={36} />
+                        </div>
+                        <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                            Jeddah Headquarters
+                        </h2>
+                        <p className="text-zinc-400 text-lg md:text-xl leading-relaxed">
+                            Positioned in the commercial capital of Saudi Arabia, our headquarters connects global talent with local insights. We operate at the vibrant intersection of culture and technology to deliver transformative digital solutions across the Gulf.
                         </p>
                     </div>
-                    <div className="flex justify-center">
-                        <button className="px-12 py-5 rounded-full bg-white text-black font-black uppercase italic tracking-widest hover:scale-105 transition-transform">
-                            Coming Soon
-                        </button>
-                    </div>
-                </motion.div>
+                </div>
+
             </div>
         </div>
     );

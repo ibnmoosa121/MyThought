@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TiltedCard from "../../ui/tilted-card";
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet, Brain, Database, Cpu } from 'lucide-react'
+import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet, Brain, Database, Cpu, Truck } from 'lucide-react'
 import { ScrollRevealText } from "../../ui/scroll-reveal-text";
 import { WavyBackground } from "../../ui/wavy-background";
 
@@ -234,6 +234,39 @@ const services = [
         icon: Cpu,
         title: 'Applied AI',
         text: 'Integrate Large Language Models and computer vision into your existing workflows to enhance productivity and user experience.'
+      }
+    ]
+  },
+  {
+    id: 'logistics',
+    tagline: 'Precision Supply Chain',
+    label: 'Global Logistics',
+    description: 'We orchestrate complex supply chains with absolute precision. From international freight forwarding to last-mile delivery, our logistics solutions are engineered for speed, reliability, and full transparency.',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop',
+    theme: {
+      text: 'text-cyan-500',
+      bg: 'bg-cyan-500',
+      gradient: 'from-[#06B6D4] via-[#22D3EE] to-[#0891B2]',
+      waveColor: 'rgba(6, 182, 212, 0.3)',
+      plasmaColor: '#06B6D4'
+    },
+    href: '#/logistics',
+    video: 'https://player.vimeo.com/external/434045526.sd.mp4?s=c1638290f6534571f1118a8008a09904990d18d4&profile_id=139&oauth2_token_id=57447761',
+    cards: [
+      {
+        icon: Truck,
+        title: 'Freight Forwarding',
+        text: 'Seamless international shipping via air, sea, and land with integrated customs clearance and real-time tracking.'
+      },
+      {
+        icon: Box,
+        title: 'Last-Mile Delivery',
+        text: 'High-speed local fulfillment and courier services optimized for the Middle East market.'
+      },
+      {
+        icon: Settings,
+        title: 'Supply Chain Optimization',
+        text: 'Advanced analytics and process engineering to reduce lead times and operational overhead.'
       }
     ]
   }

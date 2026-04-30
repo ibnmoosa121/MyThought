@@ -1,4 +1,4 @@
-export type ServiceKey = 'software' | 'consultancy' | 'talent' | 'design' | 'ventures' | 'fintech' | 'ai-analytics'
+export type ServiceKey = 'software' | 'consultancy' | 'talent' | 'design' | 'ventures' | 'fintech' | 'ai-analytics' | 'logistics'
 
 export interface ServiceContent {
   key: ServiceKey
@@ -178,6 +178,29 @@ export const services: Record<ServiceKey, ServiceContent> = {
       gradient: 'from-[#4F46E5] via-[#6366F1] to-[#818CF8]',
       waveColor: 'rgba(79, 70, 229, 0.3)',
       plasmaColor: '#6366F1',
+    }
+  },
+  logistics: {
+    key: 'logistics',
+    title: 'Logistics & Customs',
+    subtitle: 'Global logistics and customs expertise through immersive tracking',
+    bullets: [
+      'Real-time Vessel Tracking & Status',
+      'Automated Customs Clearance & Compliance',
+      'Blockchain-secured Supply Chain',
+      'Global Route Optimization',
+    ],
+    bgImage:
+      'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070&auto=format&fit=crop',
+    cta: 'Explore Logistics',
+    theme: {
+      text: 'text-cyan-500',
+      bg: 'bg-cyan-500',
+      hoverBg: 'group-hover:bg-cyan-500',
+      hoverText: 'group-hover:text-cyan-500',
+      gradient: 'from-[#0891B2] via-[#06B6D4] to-[#22D3EE]',
+      waveColor: 'rgba(6, 182, 212, 0.3)',
+      plasmaColor: '#06B6D4',
     }
   },
 }

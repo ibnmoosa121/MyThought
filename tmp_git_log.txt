@@ -1,0 +1,65 @@
+commit 412158a5e2d6969998f27f8caed302d70df3bb0a
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 22 23:50:10 2026 +0300
+
+    Refactor: Cleanup unused files, enhance TiltedCard aesthetics, and add navigation
+
+commit 0e416f3af1c77772098da4055f9237110ec0eda0
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sat Feb 14 15:11:59 2026 +0300
+
+    Enhance AI Analytics and Fintech pages with new layouts and interactions
+
+commit d7ee30f3c944b5504c0368f7803517b48f4c020b
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Wed Feb 11 00:02:40 2026 +0300
+
+    Enhance Talent Hero with architectural silhouettes and new behaviors
+
+commit 0d555d82b606e891ce67f8a41fbc840fda5efb21
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Mon Feb 9 23:44:47 2026 +0300
+
+    added mp4 video support for 3d pin in services section
+
+commit 3dc73a3b038d9637e2cbd310f35f0e434a943310
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 8 18:28:35 2026 +0300
+
+    organized file structure
+
+commit 0e0490cb75325a033b099a8a6efddca24edbc5db
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 8 16:30:37 2026 +0300
+
+    last push before review
+
+commit 5a6e1fcd22833a59ea1a6cca1bdc279d54a96625
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 8 10:14:00 2026 +0300
+
+    Optimize: Enhanced preloader with asset tracking and background route prefetching for instant navigation
+
+commit 22ae534ce760750766fa1f0dc2f1b9db17505715
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 8 00:45:19 2026 +0300
+
+    build: force production deployment via app update
+
+commit 267033d3623fa1827c46755d45723ec977cc4445
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 8 00:43:16 2026 +0300
+
+    trigger: force new production deployment for vercel
+
+commit 1ec795f47c2d8d03d1704185b43ae9a9abfc768a
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 8 00:40:56 2026 +0300
+
+    fix: remove unused imports in contact-form.tsx to resolve build errors
+
+commit b078168e2f30cfc586e22ab5ae8a35b67d5aefa6
+Author: ibn moosa <66861394+ibnmoosa121@users.noreply.github.com>
+Date:   Sun Feb 8 00:36:31 2026 +0300
+
+    feat: enhance AI page with neural eye light, redesign contact form with runaway button, and add dynamic palette switcher to design page

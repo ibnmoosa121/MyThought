@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useCallback, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCircle2, ChevronDown, Loader2, Mail, Phone, MapPin, Sparkles, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle2, ChevronDown, Loader2, Mail, Phone, MapPin, Sparkles, AlertCircle, User } from 'lucide-react';
 import { cn } from '../../../lib/utils';
 
 type ServiceOption = 'Engineering' | 'Intelligence' | 'Capital' | 'Expansions' | 'Design' | 'Talent';
@@ -14,6 +15,57 @@ interface FormData {
     message: string;
 }
 
+const THEMES = {
+    logistics: {
+        primary: 'text-cyan-400',
+        accent: 'from-cyan-400 via-cyan-100 to-cyan-400',
+        buttonGradient: 'from-cyan-800 via-white to-cyan-800',
+        glow: 'rgba(34,211,238,0.4)',
+        bgGlow: 'bg-cyan-500/5',
+        label: 'text-cyan-500/50'
+    },
+    software: {
+        primary: 'text-indigo-400',
+        accent: 'from-indigo-400 via-indigo-100 to-indigo-400',
+        buttonGradient: 'from-indigo-800 via-white to-indigo-800',
+        glow: 'rgba(99,102,241,0.4)',
+        bgGlow: 'bg-indigo-500/5',
+        label: 'text-indigo-500/50'
+    },
+    design: {
+        primary: 'text-pink-400',
+        accent: 'from-pink-400 via-pink-100 to-pink-400',
+        buttonGradient: 'from-pink-800 via-white to-pink-800',
+        glow: 'rgba(236,72,153,0.4)',
+        bgGlow: 'bg-pink-500/5',
+        label: 'text-pink-500/50'
+    },
+    consultancy: {
+        primary: 'text-amber-400',
+        accent: 'from-amber-400 via-amber-100 to-amber-400',
+        buttonGradient: 'from-amber-800 via-white to-amber-800',
+        glow: 'rgba(251,191,36,0.4)',
+        bgGlow: 'bg-amber-500/5',
+        label: 'text-amber-500/50'
+    },
+    talent: {
+        primary: 'text-purple-400',
+        accent: 'from-purple-400 via-purple-100 to-purple-400',
+        buttonGradient: 'from-purple-800 via-white to-purple-800',
+        glow: 'rgba(168,85,247,0.4)',
+        bgGlow: 'bg-purple-500/5',
+        label: 'text-purple-500/50'
+    },
+    default: {
+        primary: 'text-zinc-400',
+        accent: 'from-zinc-200 via-zinc-500 to-zinc-200',
+        buttonGradient: 'from-zinc-800 via-white to-zinc-800',
+        glow: 'rgba(255,255,255,0.3)',
+        bgGlow: 'bg-white/5',
+        label: 'text-zinc-500'
+    }
+};
+
 const initialForm: FormData = {
     name: '',
     email: '',
@@ -24,14 +76,16 @@ const initialForm: FormData = {
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const ContactForm = () => {
+    const location = useLocation();
+    const referrer = (location.state as { from?: keyof typeof THEMES })?.from || 'default';
+    const theme = THEMES[referrer] || THEMES.default;
+
     const [form, setForm] = useState<FormData>(initialForm);
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
     const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-    // Button Runaway State
-    const [btnOffset, setBtnOffset] = useState({ x: 0, y: 0 });
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     const validate = useCallback(() => {
@@ -44,23 +98,9 @@ export const ContactForm = () => {
         return Object.keys(nextErrors).length === 0;
     }, [form]);
 
-    const handleHoverButton = () => {
-        const isValid = validate();
-        if (!isValid) {
-            // Run away!
-            const x = (Math.random() - 0.5) * 200;
-            const y = (Math.random() - 0.5) * 100;
-            setBtnOffset({ x, y });
-        } else {
-            setBtnOffset({ x: 0, y: 0 });
-        }
-    };
-
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setForm(prev => ({ ...prev, [name]: value }));
-        // Reset offset when typing
-        setBtnOffset({ x: 0, y: 0 });
     };
 
     const handleBlur = (field: string) => {
@@ -71,7 +111,6 @@ export const ContactForm = () => {
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!validate()) {
-            handleHoverButton();
             return;
         }
         setSubmitting(true);
@@ -90,8 +129,8 @@ export const ContactForm = () => {
             {/* Background Architecture */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(20,20,20,1)_0%,rgba(0,0,0,1)_100%)]" />
-                <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-white/[0.02] blur-[150px] rounded-full pointer-events-none" />
-                <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-500/[0.03] blur-[120px] rounded-full pointer-events-none" />
+                <div className={cn("absolute top-1/4 left-1/4 w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none transition-colors duration-1000", theme.bgGlow)} />
+                <div className={cn("absolute bottom-1/4 right-1/4 w-[500px] h-[500px] blur-[120px] rounded-full pointer-events-none transition-colors duration-1000", theme.bgGlow)} />
             </div>
 
             <div className="container mx-auto max-w-6xl relative z-10">
@@ -110,7 +149,7 @@ export const ContactForm = () => {
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-white italic leading-[0.8] tracking-tighter uppercase">
                                 Initiate <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-200">Sync</span>
+                                <span className={cn("text-transparent bg-clip-text bg-gradient-to-r", theme.accent)}>Sync</span>
                             </h1>
                             <p className="text-zinc-500 text-lg md:text-xl font-medium leading-relaxed max-w-md">
                                 Secure your slot in our development cycle. We translate complex vision into <span className="text-white italic font-black uppercase">Functional Reality</span>.
@@ -175,28 +214,35 @@ export const ContactForm = () => {
                                         </button>
                                     </motion.div>
                                 ) : (
-                                    <form onSubmit={onSubmit} className="space-y-10 relative z-10">
-                                        <div className="grid md:grid-cols-2 gap-x-10 gap-y-10">
+                                    <form onSubmit={onSubmit} className="space-y-6 relative z-10">
+                                        <div className="grid md:grid-cols-2 gap-6">
                                             {/* Name Input */}
                                             <div className="space-y-2 group relative">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-white transition-colors">Identity Path</label>
-                                                <input
-                                                    name="name"
-                                                    value={form.name}
-                                                    onChange={onChange}
-                                                    onBlur={() => handleBlur('name')}
-                                                    placeholder="FULL NAME"
-                                                    className={cn(
-                                                        "w-full bg-transparent border-b-2 border-white/5 py-4 text-xl font-black text-white focus:outline-none focus:border-white transition-all placeholder:text-zinc-800 uppercase italic",
-                                                        touched.name && errors.name && "border-red-500/50 text-red-500 placeholder:text-red-900/30"
-                                                    )}
-                                                />
+                                                <label className={cn("text-[10px] font-black uppercase tracking-[0.2em] transition-colors ml-1", theme.label, "group-focus-within:text-white")}>
+                                                    Full Name
+                                                </label>
+                                                <div className="relative">
+                                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-500 group-focus-within:text-white transition-colors">
+                                                        <User size={18} />
+                                                    </div>
+                                                    <input
+                                                        name="name"
+                                                        value={form.name}
+                                                        onChange={onChange}
+                                                        onBlur={() => handleBlur('name')}
+                                                        placeholder="John Doe"
+                                                        className={cn(
+                                                            "w-full bg-white/[0.03] hover:bg-white/[0.05] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent transition-all placeholder:text-zinc-600 shadow-inner",
+                                                            touched.name && errors.name && "border-red-500/50 focus:ring-red-500/20"
+                                                        )}
+                                                    />
+                                                </div>
                                                 <AnimatePresence>
                                                     {touched.name && errors.name && (
                                                         <motion.div
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            className="absolute -bottom-6 left-0 text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-1"
+                                                            initial={{ opacity: 0, y: -5 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            className="absolute -bottom-5 left-1 text-[10px] font-bold text-red-400 flex items-center gap-1"
                                                         >
                                                             <AlertCircle size={10} /> {errors.name}
                                                         </motion.div>
@@ -206,25 +252,32 @@ export const ContactForm = () => {
 
                                             {/* Email Input */}
                                             <div className="space-y-2 group relative">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-white transition-colors">Communication Link</label>
-                                                <input
-                                                    name="email"
-                                                    type="email"
-                                                    value={form.email}
-                                                    onChange={onChange}
-                                                    onBlur={() => handleBlur('email')}
-                                                    placeholder="ENCRYPTED@MAIL.COM"
-                                                    className={cn(
-                                                        "w-full bg-transparent border-b-2 border-white/5 py-4 text-xl font-black text-white focus:outline-none focus:border-white transition-all placeholder:text-zinc-800 uppercase italic",
-                                                        touched.email && errors.email && "border-red-500/50 text-red-500 placeholder:text-red-900/30"
-                                                    )}
-                                                />
+                                                <label className={cn("text-[10px] font-black uppercase tracking-[0.2em] transition-colors ml-1", theme.label, "group-focus-within:text-white")}>
+                                                    Email Address
+                                                </label>
+                                                <div className="relative">
+                                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-500 group-focus-within:text-white transition-colors">
+                                                        <Mail size={18} />
+                                                    </div>
+                                                    <input
+                                                        name="email"
+                                                        type="email"
+                                                        value={form.email}
+                                                        onChange={onChange}
+                                                        onBlur={() => handleBlur('email')}
+                                                        placeholder="john@company.com"
+                                                        className={cn(
+                                                            "w-full bg-white/[0.03] hover:bg-white/[0.05] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent transition-all placeholder:text-zinc-600 shadow-inner",
+                                                            touched.email && errors.email && "border-red-500/50 focus:ring-red-500/20"
+                                                        )}
+                                                    />
+                                                </div>
                                                 <AnimatePresence>
                                                     {touched.email && errors.email && (
                                                         <motion.div
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            className="absolute -bottom-6 left-0 text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-1"
+                                                            initial={{ opacity: 0, y: -5 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            className="absolute -bottom-5 left-1 text-[10px] font-bold text-red-400 flex items-center gap-1"
                                                         >
                                                             <AlertCircle size={10} /> {errors.email}
                                                         </motion.div>
@@ -232,47 +285,55 @@ export const ContactForm = () => {
                                                 </AnimatePresence>
                                             </div>
 
-                                            {/* Service Select - Custom Styling */}
+                                            {/* Service Select */}
                                             <div className="md:col-span-2 space-y-2 group">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Specialization Sector</label>
-                                                <div className="relative border-b-2 border-white/5 group-focus-within:border-white transition-colors">
+                                                <label className={cn("text-[10px] font-black uppercase tracking-[0.2em] transition-colors ml-1", theme.label, "group-focus-within:text-white")}>
+                                                    Required Service
+                                                </label>
+                                                <div className="relative">
+                                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-500 group-focus-within:text-white transition-colors">
+                                                        <Sparkles size={18} />
+                                                    </div>
                                                     <select
                                                         name="service"
                                                         value={form.service}
                                                         onChange={onChange}
-                                                        className="w-full bg-transparent py-4 text-xl font-black text-white/50 focus:outline-none appearance-none cursor-pointer uppercase italic"
+                                                        className="w-full bg-white/[0.03] hover:bg-white/[0.05] border border-white/10 rounded-2xl py-4 pl-12 pr-10 text-white focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent transition-all appearance-none cursor-pointer shadow-inner"
                                                     >
-                                                        <option value="Engineering" className="bg-black">Tech Engineering</option>
-                                                        <option value="Intelligence" className="bg-black">AI & Intelligence</option>
-                                                        <option value="Capital" className="bg-black">Venture Capital</option>
-                                                        <option value="Expansions" className="bg-black">Market Expansion</option>
-                                                        <option value="Design" className="bg-black">Visual Systems</option>
-                                                        <option value="Talent" className="bg-black">Elite Talent</option>
+                                                        <option value="Engineering" className="bg-zinc-900 text-white">Engineering</option>
+                                                        <option value="Intelligence" className="bg-zinc-900 text-white">Intelligence</option>
+                                                        <option value="Capital" className="bg-zinc-900 text-white">Capital</option>
+                                                        <option value="Expansions" className="bg-zinc-900 text-white">Expansions</option>
+                                                        <option value="Design" className="bg-zinc-900 text-white">Design</option>
+                                                        <option value="Talent" className="bg-zinc-900 text-white">Talent</option>
+                                                        <option value="Logistics" className="bg-zinc-900 text-white">Logistics</option>
                                                     </select>
-                                                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 text-zinc-600 pointer-events-none" size={20} />
+                                                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" size={20} />
                                                 </div>
                                             </div>
 
                                             {/* Message Area */}
                                             <div className="md:col-span-2 space-y-2 group relative">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-white transition-colors">Vision Blueprint</label>
+                                                <label className={cn("text-[10px] font-black uppercase tracking-[0.2em] transition-colors ml-1", theme.label, "group-focus-within:text-white")}>
+                                                    Project Details
+                                                </label>
                                                 <textarea
                                                     name="message"
                                                     value={form.message}
                                                     onChange={onChange}
                                                     onBlur={() => handleBlur('message')}
-                                                    placeholder="DESCRIBE THE OBJECTIVE..."
+                                                    placeholder="Tell us about your project or objective..."
                                                     className={cn(
-                                                        "w-full bg-white/[0.02] border border-white/5 p-8 rounded-[2.5rem] h-48 text-lg font-bold text-white focus:outline-none focus:border-white/20 transition-all placeholder:text-zinc-800 uppercase italic resize-none",
-                                                        touched.message && errors.message && "border-red-500/50 bg-red-500/5 text-red-500 placeholder:text-red-900/30"
+                                                        "w-full bg-white/[0.03] hover:bg-white/[0.05] border border-white/10 rounded-3xl p-6 h-40 text-white focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent transition-all placeholder:text-zinc-600 resize-none shadow-inner",
+                                                        touched.message && errors.message && "border-red-500/50 focus:ring-red-500/20"
                                                     )}
                                                 />
                                                 <AnimatePresence>
                                                     {touched.message && errors.message && (
                                                         <motion.div
-                                                            initial={{ opacity: 0, x: -10 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            className="absolute -bottom-6 left-8 text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-1"
+                                                            initial={{ opacity: 0, y: -5 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            className="absolute -bottom-5 left-2 text-[10px] font-bold text-red-400 flex items-center gap-1"
                                                         >
                                                             <AlertCircle size={10} /> {errors.message}
                                                         </motion.div>
@@ -281,28 +342,28 @@ export const ContactForm = () => {
                                             </div>
                                         </div>
 
-                                        <div className="relative h-20">
+                                        <div className="relative h-16 mt-6">
                                             <motion.button
                                                 ref={buttonRef}
                                                 type="submit"
                                                 disabled={submitting}
-                                                onMouseEnter={handleHoverButton}
-                                                animate={{ x: btnOffset.x, y: btnOffset.y }}
-                                                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                                                className="absolute inset-0 group bg-white rounded-full overflow-hidden flex items-center justify-center gap-4 active:scale-95 disabled:opacity-50"
+                                                whileHover={{ scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                className="absolute inset-0 group rounded-full overflow-hidden flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50 transition-all border border-white/20"
+                                                style={{ 
+                                                    boxShadow: `0 0 40px -10px ${theme.glow}`
+                                                }}
                                             >
-                                                <motion.div
-                                                    className="absolute inset-0 bg-zinc-200"
-                                                    initial={false}
-                                                    whileHover={{ x: ["0%", "100%"], transition: { duration: 0.5 } }}
-                                                />
-                                                <span className="relative z-10 font-black text-black text-lg uppercase italic tracking-widest flex items-center gap-3">
+                                                {/* Animated Gradient Background */}
+                                                <div className={cn("absolute inset-0 bg-gradient-to-r bg-[length:200%_auto] animate-gradient group-hover:bg-[position:right_center] transition-all duration-500", theme.buttonGradient)} />
+                                                
+                                                <span className="relative z-10 font-black text-black text-sm uppercase tracking-[0.2em] flex items-center gap-3">
                                                     {submitting ? (
-                                                        <Loader2 className="animate-spin" />
+                                                        <Loader2 className="animate-spin text-black" />
                                                     ) : (
                                                         <>
-                                                            Execute Protocol
-                                                            <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                                            Send Message
+                                                            <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                                         </>
                                                     )}
                                                 </span>

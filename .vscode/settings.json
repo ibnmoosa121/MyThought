@@ -1,5 +1,6 @@
 {
     "css.lint.unknownAtRules": "ignore",
     "workbench.colorTheme": "Visual Studio Dark",
-    "workbench.preferredDarkColorTheme": "Kimbie Dark"
+    "workbench.preferredDarkColorTheme": "Kimbie Dark",
+    "task.notifyWindowOnTaskCompletion": 0
 }

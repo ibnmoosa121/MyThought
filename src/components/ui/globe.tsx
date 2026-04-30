@@ -41,8 +41,8 @@ export interface Position {
 interface WorldProps {
     globeConfig: GlobeConfig;
     data: Position[];
-    markers?: { location: [number, number]; size: number }[];
-    center?: [number, number]; // [lat, lng]
+    center?: [number, number]; // [lat, lng] (fallback)
+    targetAngles?: { phi: number; theta: number }; // Precise override
 }
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -58,59 +58,44 @@ function hexToRgb(hex: string): [number, number, number] {
     ];
 }
 
-export function World({ globeConfig, data, markers: propsMarkers, center }: WorldProps) {
+export function World({ globeConfig, center, targetAngles }: WorldProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const pointerInteracting = useRef<number | null>(null);
-    const pointerInteractionMovement = useRef(0);
-    const phiRef = useRef(0);
-    const targetPhi = useRef(0);
-    const targetTheta = useRef(0);
-
-    // Update target phi/theta when center changes
-    useEffect(() => {
-        if (center) {
-            // center is [lat, lng]
-            const lat = center[0];
-            const lng = center[1];
-
-            // Phi is Longitude (radians)
-            targetPhi.current = (lng * Math.PI) / 180;
-
-            // Theta is Latitude (radians from North Pole, 0 to PI)
-            // If lat is 90 (North), theta is 0. If lat is -90 (South), theta is PI.
-            // If lat is 0 (Equator), theta is PI/2.
-            // Formula: theta = (90 - lat) * (Math.PI / 180)
-            targetTheta.current = (80 - lat) * (Math.PI / 180); // Using 80 instead of 90 for slightly better viewing angle
-        }
-    }, [center ? center[0] : null, center ? center[1] : null]);
+    const pointerInteracting = useRef<{ x: number; y: number } | null>(null);
+    const pointerInteractionMovement = useRef({ x: 0, y: 0 });
+    
+    // Refs for live debug text updates
+    const phiTextRef = useRef<HTMLSpanElement>(null);
+    const thetaTextRef = useRef<HTMLSpanElement>(null);
 
     const focusRef = useRef(
         globeConfig.initialPosition
             ? [
                 (globeConfig.initialPosition.lat * Math.PI) / 180,
-                (globeConfig.initialPosition.lng * Math.PI) / 180,
+                ((globeConfig.initialPosition.lng - 90) * Math.PI) / 180,
             ]
             : [0, 0]
     );
 
-    // Convert arc data into marker pairs for visualization
-    const arcMarkers = data.flatMap((arc) => [
-        { location: [arc.startLat, arc.startLng] as [number, number], size: 0.06 },
-        { location: [arc.endLat, arc.endLng] as [number, number], size: 0.06 },
-    ]);
+    const targetPhi = useRef(globeConfig.initialPosition ? ((globeConfig.initialPosition.lng - 90) * Math.PI) / 180 : 0);
+    const targetTheta = useRef(globeConfig.initialPosition ? (globeConfig.initialPosition.lat * Math.PI) / 180 : 0);
 
-    // Combine props markers (priority) and arc markers
-    const allMarkers = [...(propsMarkers || []), ...arcMarkers];
+    // Update target phi/theta when center or targetAngles changes
+    useEffect(() => {
+        if (targetAngles) {
+            targetPhi.current = (targetAngles.phi * Math.PI) / 180;
+            targetTheta.current = (targetAngles.theta * Math.PI) / 180;
+        } else if (center) {
+            const lat = center[0];
+            const lng = center[1];
+            targetPhi.current = ((lng - 90) * Math.PI) / 180;
+            targetTheta.current = (lat * Math.PI) / 180;
+        }
+    }, [targetAngles, center ? center[0] : null, center ? center[1] : null]);
 
-    // Deduplicate markers by location
-    const uniqueMarkers = allMarkers.filter(
-        (marker, index, self) =>
-            index ===
-            self.findIndex(
-                (m) =>
-                    m.location[0] === marker.location[0] &&
-                    m.location[1] === marker.location[1]
-            )
+    const phiRef = useRef(
+        globeConfig.initialPosition
+            ? ((globeConfig.initialPosition.lng - 90) * Math.PI) / 180
+            : 0
     );
 
     const onResize = useCallback(() => {
@@ -135,8 +120,7 @@ export function World({ globeConfig, data, markers: propsMarkers, center }: Worl
             onRender: (state) => {
                 // Automatic rotation or Target rotation
                 if (!pointerInteracting.current) {
-                    if (center) {
-                        // Smoothly interpolate towards targetPhi (Longitude)
+                    if (targetAngles || center) {
                         let currentPhi = phiRef.current;
                         let targetPhiVal = targetPhi.current;
 
@@ -145,22 +129,25 @@ export function World({ globeConfig, data, markers: propsMarkers, center }: Worl
                         while (targetPhiVal - currentPhi < -Math.PI) targetPhiVal += PI2;
 
                         const distPhi = targetPhiVal - currentPhi;
-                        phiRef.current += distPhi * 0.05;
+                        phiRef.current += distPhi * 0.08; 
 
-                        // Smoothly interpolate towards targetTheta (Latitude)
                         let currentTheta = focusRef.current[0];
                         let targetThetaVal = targetTheta.current;
                         const distTheta = targetThetaVal - currentTheta;
-                        focusRef.current[0] += distTheta * 0.05;
+                        focusRef.current[0] += distTheta * 0.08; 
                     } else {
                         phiRef.current += (globeConfig.autoRotateSpeed || 0.5) * 0.005;
                     }
                 }
 
-                state.phi = phiRef.current + pointerInteractionMovement.current;
-                state.theta = focusRef.current[0];
+                state.phi = phiRef.current + pointerInteractionMovement.current.x;
+                state.theta = focusRef.current[0] + pointerInteractionMovement.current.y;
                 state.width = canvasRef.current?.offsetWidth ? canvasRef.current.offsetWidth * 2 : 800;
                 state.height = canvasRef.current?.offsetHeight ? canvasRef.current.offsetHeight * 2 : 800;
+
+                // Update debug overlay directly for performance
+                if (phiTextRef.current) phiTextRef.current.innerText = (state.phi * 180 / Math.PI).toFixed(2);
+                if (thetaTextRef.current) thetaTextRef.current.innerText = (state.theta * 180 / Math.PI).toFixed(2);
             },
             devicePixelRatio: 2,
             phi: focusRef.current[1],
@@ -172,7 +159,7 @@ export function World({ globeConfig, data, markers: propsMarkers, center }: Worl
             baseColor: globeColorRgb,
             markerColor: [0.1, 0.8, 0.4] as [number, number, number],
             glowColor: atmosphereColorRgb,
-            markers: uniqueMarkers,
+            markers: [],
             opacity: 0.85,
             scale: 1,
         };
@@ -181,6 +168,9 @@ export function World({ globeConfig, data, markers: propsMarkers, center }: Worl
 
         if (canvasRef.current) {
             globe = createGlobe(canvasRef.current, cobeConfig);
+            setTimeout(() => {
+                if (canvasRef.current) canvasRef.current.style.opacity = "1";
+            });
         }
 
         return () => {
@@ -188,45 +178,49 @@ export function World({ globeConfig, data, markers: propsMarkers, center }: Worl
             globe?.destroy();
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [JSON.stringify(uniqueMarkers), center ? center[1] : null]);
+    }, [center ? center[1] : null, targetAngles]);
 
     return (
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div
+            className="w-full h-full relative"
+            style={{ width: "100%", height: "100%", cursor: "grab" }}
+            onPointerDown={(e) => {
+                pointerInteracting.current = {
+                    x: e.clientX - pointerInteractionMovement.current.x * 200,
+                    y: e.clientY - pointerInteractionMovement.current.y * 200
+                };
+                if (canvasRef.current) canvasRef.current.style.cursor = "grabbing";
+            }}
+            onPointerUp={() => {
+                pointerInteracting.current = null;
+                if (canvasRef.current) canvasRef.current.style.cursor = "grab";
+            }}
+            onPointerOut={() => {
+                pointerInteracting.current = null;
+                if (canvasRef.current) canvasRef.current.style.cursor = "grab";
+            }}
+            onMouseMove={(e) => {
+                if (pointerInteracting.current !== null) {
+                    const deltaX = e.clientX - pointerInteracting.current.x;
+                    const deltaY = e.clientY - pointerInteracting.current.y;
+                    pointerInteractionMovement.current = { x: deltaX / 200, y: deltaY / 200 };
+                }
+            }}
+            onTouchMove={(e) => {
+                if (pointerInteracting.current !== null && e.touches[0]) {
+                    const deltaX = e.touches[0].clientX - pointerInteracting.current.x;
+                    const deltaY = e.touches[0].clientY - pointerInteracting.current.y;
+                    pointerInteractionMovement.current = { x: deltaX / 200, y: deltaY / 200 };
+                }
+            }}
+        >
             <canvas
                 ref={canvasRef}
-                onPointerDown={(e) => {
-                    pointerInteracting.current =
-                        e.clientX - pointerInteractionMovement.current;
-                    canvasRef.current &&
-                        (canvasRef.current.style.cursor = "grabbing");
-                }}
-                onPointerUp={() => {
-                    pointerInteracting.current = null;
-                    canvasRef.current &&
-                        (canvasRef.current.style.cursor = "grab");
-                }}
-                onPointerOut={() => {
-                    pointerInteracting.current = null;
-                    canvasRef.current &&
-                        (canvasRef.current.style.cursor = "grab");
-                }}
-                onMouseMove={(e) => {
-                    if (pointerInteracting.current !== null) {
-                        const delta = e.clientX - pointerInteracting.current;
-                        pointerInteractionMovement.current = delta / 200;
-                    }
-                }}
-                onTouchMove={(e) => {
-                    if (pointerInteracting.current !== null && e.touches[0]) {
-                        const delta = e.touches[0].clientX - pointerInteracting.current;
-                        pointerInteractionMovement.current = delta / 100;
-                    }
-                }}
-                className="w-full h-full cursor-grab"
+                className="w-full h-full select-none"
                 style={{
                     contain: "layout paint size",
-                    maxWidth: "100%",
-                    aspectRatio: "1",
+                    opacity: 0,
+                    transition: "opacity 1s ease",
                 }}
             />
             {/* Atmosphere glow effect */}

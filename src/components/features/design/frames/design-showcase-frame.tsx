@@ -94,8 +94,38 @@ export const DesignShowcaseFrame = () => {
                 }
             );
 
+            // Text reveal animations for Slide 1 (Independent of horizontal scrub, triggers on view)
+            gsap.from(".showcase-char-0", {
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 60%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                rotateX: -90,
+                stagger: 0.02,
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            });
+
+            gsap.from(".showcase-content-0", {
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 60%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 30,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 0.8,
+                delay: 0.2,
+                ease: "power3.out"
+            });
+
             const tl = gsap.timeline({
                 scrollTrigger: {
+                    id: "showcase-st",
                     trigger: containerRef.current,
                     start: "top top",
                     end: "+=3000",
@@ -113,39 +143,17 @@ export const DesignShowcaseFrame = () => {
                 },
             });
 
-            // The Scroll: Move horizontally in two steps to sync with reveals
-            tl.to(sectionRef.current, {
-                x: "-100vw",
-                duration: 1,
-                ease: "none",
-            });
-
+            // The Scroll: Move horizontally in one smooth motion
+            // Duration is 3.0. 
+            // Slide 1 -> Slide 2 (0 to 1.5)
+            // Slide 2 -> Slide 3 (1.5 to 3.0)
             tl.to(sectionRef.current, {
                 x: "-200vw",
-                duration: 1,
+                duration: 3,
                 ease: "none",
-            });
-
-            // Text reveal animations synced to slide positions
-            // Slide 1 text reveal: Starts immediately
-            tl.from(".showcase-char-0", {
-                y: 50,
-                opacity: 0,
-                rotateX: -90,
-                stagger: 0.02,
-                duration: 0.4,
-                ease: "back.out(1.7)"
             }, 0);
 
-            tl.from(".showcase-content-0", {
-                y: 30,
-                opacity: 0,
-                stagger: 0.1,
-                duration: 0.6,
-                ease: "power3.out"
-            }, 0.2);
-
-            // Slide 2 text reveal: Starts at 0.7s (Slide 2 coming in)
+            // Slide 2 text reveal: Triggered as Slide 2 comes into view (around 1.0)
             tl.from(".showcase-char-1", {
                 y: 50,
                 opacity: 0,
@@ -153,17 +161,17 @@ export const DesignShowcaseFrame = () => {
                 stagger: 0.02,
                 duration: 0.4,
                 ease: "back.out(1.7)"
-            }, 0.7);
+            }, 1.0);
 
             tl.from(".showcase-content-1", {
                 scale: 0.8,
                 opacity: 0,
                 stagger: 0.1,
-                duration: 0.6,
+                duration: 0.4,
                 ease: "back.out(1.7)"
             }, 1.2);
 
-            // Slide 3 text reveal: Starts at 1.7s (Slide 3 coming in)
+            // Slide 3 text reveal: Triggered as Slide 3 comes into view (around 2.4)
             tl.from(".showcase-char-2", {
                 y: 50,
                 opacity: 0,
@@ -171,15 +179,15 @@ export const DesignShowcaseFrame = () => {
                 stagger: 0.02,
                 duration: 0.4,
                 ease: "back.out(1.7)"
-            }, 1.7);
+            }, 2.4);
 
             tl.from(".showcase-content-2", {
                 x: -50,
                 opacity: 0,
                 stagger: 0.1,
-                duration: 0.6,
+                duration: 0.4,
                 ease: "expo.out"
-            }, 2.2);
+            }, 2.6);
         }, containerRef);
 
         return () => ctx.revert();
@@ -339,10 +347,28 @@ export const DesignShowcaseFrame = () => {
                                     <div className="h-1/2 bg-emerald-500/10 rounded-xl border border-emerald-500/20 translate-z-30 shadow-[0_0_20px_rgba(16,185,129,0.3)]" />
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
+            {/* Skip Button - Remains fixed while container is pinned */}
+            <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-50">
+                <button
+                    onClick={() => {
+                        const st = ScrollTrigger.getById("showcase-st");
+                        if (st) {
+                            window.scrollTo({
+                                top: st.end,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }}
+                    className="group px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 backdrop-blur-md text-white/70 hover:text-white font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2"
+                >
+                    Fast Forward
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                </button>
             </div>
         </section>
     );
