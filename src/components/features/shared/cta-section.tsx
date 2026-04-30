@@ -42,7 +42,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ from = 'default' }) => {
       })
 
       // Continuous particle/glow animation
-      gsap.to('.cta-glow', {
+      gsap.to('.theme-glow', {
         scale: 1.2,
         opacity: 0.6,
         duration: 3,

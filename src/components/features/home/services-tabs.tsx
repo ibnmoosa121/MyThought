@@ -251,7 +251,7 @@ const services = [
       plasmaColor: '#06B6D4'
     },
     href: '#/logistics',
-    video: 'https://player.vimeo.com/external/434045526.sd.mp4?s=c1638290f6534571f1118a8008a09904990d18d4&profile_id=139&oauth2_token_id=57447761',
+    video: '/videos/logistics.mp4',
     cards: [
       {
         icon: Truck,

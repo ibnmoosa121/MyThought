@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, type SpringOptions } from 'framer-motion';
 
 interface TiltedCardProps {
@@ -55,6 +55,20 @@ export default function TiltedCard({
     });
 
     const [lastY, setLastY] = useState(0);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current && videoSrc) {
+            videoRef.current.load();
+            const playPromise = videoRef.current.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Autoplay was prevented
+                    console.log("Autoplay prevented, waiting for interaction");
+                });
+            }
+        }
+    }, [videoSrc]);
 
     function handleMouse(e: React.MouseEvent<HTMLElement>) {
         if (!ref.current) return;
@@ -118,6 +132,7 @@ export default function TiltedCard({
 
                     {videoSrc ? (
                         <video
+                            ref={videoRef}
                             src={videoSrc}
                             autoPlay
                             loop

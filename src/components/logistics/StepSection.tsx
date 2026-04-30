@@ -64,22 +64,22 @@ export const StepSection: React.FC<StepSectionProps> = ({ title, description, ic
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center">
         {align === 'left' ? (
           <>
-            <div ref={contentRef} className="order-2 md:order-1 text-left flex flex-col justify-center items-start pl-8 lg:pl-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">{title}</h2>
-              <p className="text-xl text-white/70 leading-relaxed max-w-lg">{description}</p>
+            <div ref={contentRef} className="order-2 md:order-1 text-left flex flex-col justify-center items-start pl-16 md:pl-8 lg:pl-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">{title}</h2>
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-lg">{description}</p>
             </div>
-            <div ref={iconRef} className="order-1 md:order-2 flex justify-center md:justify-end pr-8 lg:pr-16">
+            <div ref={iconRef} className="order-1 md:order-2 flex justify-center md:justify-end pl-16 md:pl-0 pr-8 lg:pr-16">
               {icon}
             </div>
           </>
         ) : (
           <>
-            <div ref={iconRef} className="order-1 flex justify-center md:justify-start pl-8 lg:pl-16">
+            <div ref={iconRef} className="order-1 flex justify-center md:justify-start pl-16 md:pl-8 lg:pl-16">
               {icon}
             </div>
-            <div ref={contentRef} className="order-2 text-left flex flex-col justify-center items-start md:pl-12 lg:pr-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">{title}</h2>
-              <p className="text-xl text-white/70 leading-relaxed max-w-lg">{description}</p>
+            <div ref={contentRef} className="order-2 text-left flex flex-col justify-center items-start pl-16 md:pl-12 lg:pr-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">{title}</h2>
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-lg">{description}</p>
             </div>
           </>
         )}

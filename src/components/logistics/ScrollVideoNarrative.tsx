@@ -76,13 +76,13 @@ const wavePoints = Array.from({ length: WAVE_POINTS }).map((_, i) => {
   return `${x},${y}`;
 }).join(' ');
 
-export const ScrollVideoNarrative = () => {
+export const ScrollNarrative = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const stepsContainerRef = useRef<HTMLDivElement>(null);
   const parcelRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Initial setup for the parcel so xPercent is handled properly by GSAP
+    // Initial setup for the parcel
     gsap.set(parcelRef.current, { xPercent: -50, x: 0 });
 
     // Animate progress mask height
@@ -110,21 +110,21 @@ export const ScrollVideoNarrative = () => {
         scrub: 1,
         onUpdate: (self) => {
           const progress = self.progress;
-          // Container is w-48 which is 192px. 40% amplitude is 76.8px.
-          const CONTAINER_WIDTH = 192;
-          const AMPLITUDE_PX = CONTAINER_WIDTH * 0.4;
+          const desktop = isDesktop.matches;
+          
+          // Responsive constants
+          const CONTAINER_WIDTH = desktop ? 192 : 48; // w-48 vs w-12
+          const AMPLITUDE_PX = CONTAINER_WIDTH * (desktop ? 0.4 : 0.3);
           
           // Calculate X position matching the sine wave
           let waveX = Math.sin(progress * Math.PI * steps.length) * AMPLITUDE_PX;
           
-          // Smoothly steer towards the left at the end to dock into the next section's starting point
+          // Smoothly steer towards the left at the end
           if (progress > 0.92) {
             const dockProgress = (progress - 0.92) / 0.08;
-            // We aim for roughly the left side of the container
-            const targetX = -450; 
+            const targetX = desktop ? -450 : -20; 
             waveX = gsap.utils.interpolate(waveX, targetX, dockProgress);
             
-            // Fade out as it "leaves" this section for the next one - delayed until the very end
             const opacityProgress = Math.max(0, (progress - 0.96) / 0.04);
             gsap.set(parcelRef.current, { opacity: 1 - opacityProgress });
           } else {
@@ -139,10 +139,8 @@ export const ScrollVideoNarrative = () => {
             rotate: leanAngle
           });
 
-          // Pan the entire container horizontally so the camera "follows" the parcel!
-          if (isDesktop.matches) {
-            // We smoothly return the container to center before the last stage fully begins (approx 0.83)
-            // This ensures the "Door to door" content stays perfectly centered.
+          // Pan the entire container horizontally (Desktop Only)
+          if (desktop) {
             let panX = -waveX;
             if (progress > 0.8) {
               const panFadeProgress = Math.min(1, (progress - 0.8) / 0.12);
@@ -157,7 +155,7 @@ export const ScrollVideoNarrative = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="relative w-full bg-base-100 py-32">
+    <div ref={containerRef} className="relative w-full bg-base-100 py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">The Logistics Journey</h2>
@@ -165,8 +163,8 @@ export const ScrollVideoNarrative = () => {
         </div>
 
         <div ref={stepsContainerRef} className="relative flex flex-col gap-20 md:gap-32 pt-10" style={{ willChange: 'transform' }}>
-          {/* Wavy Split Line (Desktop only) */}
-          <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-48 z-30 hidden md:block pointer-events-none">
+          {/* Wavy Split Line - Responsive Position */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 -translate-x-1/2 w-12 md:w-48 z-30 pointer-events-none">
             <svg className="absolute left-0 top-0 h-full w-full overflow-visible" viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`} preserveAspectRatio="none">
               <polyline 
                 points={wavePoints} 
@@ -191,14 +189,14 @@ export const ScrollVideoNarrative = () => {
             </svg>
           </div>
 
-          {/* Animated Parcel Icon */}
+          {/* Animated Parcel Icon - Responsive Size */}
           <div 
             ref={parcelRef} 
-            className="absolute left-1/2 top-0 -mt-10 z-40 hidden md:flex items-center justify-center w-20 h-20 pointer-events-none"
+            className="absolute left-6 md:left-1/2 top-0 -mt-6 md:-mt-10 z-40 flex items-center justify-center w-12 h-12 md:w-20 md:h-20 pointer-events-none"
             style={{ willChange: 'transform' }}
           >
-            <div className="w-16 h-16 bg-cyan-500/10 rounded-2xl border-2 border-cyan-400/50 flex items-center justify-center shadow-[0_0_30px_rgba(34,211,238,0.2)] backdrop-blur-sm">
-                <Package size={32} className="text-cyan-400" />
+            <div className="w-10 h-10 md:w-16 md:h-16 bg-cyan-500/10 rounded-xl md:rounded-2xl border-2 border-cyan-400/50 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.2)] backdrop-blur-sm">
+                <Package className="w-5 h-5 md:w-8 md:h-8 text-cyan-400" />
             </div>
           </div>
 

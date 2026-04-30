@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ScrollVideoNarrative } from '../components/logistics/ScrollVideoNarrative';
+import { ScrollNarrative } from '../components/logistics/ScrollVideoNarrative';
 import { InteractiveDeliveryPath } from '../components/logistics/InteractiveDeliveryPath';
 import RotatingEarth from '../components/ui/wireframe-dotted-globe';
 
@@ -82,8 +82,8 @@ const LogisticsPage = () => {
                 </motion.div>
             </div>
 
-            {/* Scroll Video Narrative Component */}
-            <ScrollVideoNarrative />
+            {/* Scroll Narrative Component */}
+            <ScrollNarrative />
 
             {/* Interactive Delivery Path */}
             <InteractiveDeliveryPath />

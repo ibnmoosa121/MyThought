@@ -144,6 +144,8 @@ export const LogoIcon: React.FC<LogoIconProps> = ({ size = 32, className = "", c
                 {[0, 120, 240].map((angle, i) => (
                     <motion.circle
                         key={i}
+                        cx={50 + 30 * Math.cos(angle * Math.PI / 180)}
+                        cy={50 + 30 * Math.sin(angle * Math.PI / 180)}
                         r="2"
                         fill={iconColor}
                         animate={{
