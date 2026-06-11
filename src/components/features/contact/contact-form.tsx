@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, ChevronDown, Loader2, Mail, Phone, MapPin, Sparkles, AlertCircle, User } from 'lucide-react';
 import { cn } from '../../../lib/utils';
 
-type ServiceOption = 'Engineering' | 'Intelligence' | 'Capital' | 'Expansions' | 'Design' | 'Talent';
+type ServiceOption = 'Software & Technology' | 'Consultancy & Strategy' | 'Talent & Staffing' | 'Design & Creative' | 'Ventures & Innovation' | 'FinTech & Banking' | 'AI & Data Analytics' | 'Global Logistics';
 
 interface FormData {
     name: string;
@@ -69,7 +69,7 @@ const THEMES = {
 const initialForm: FormData = {
     name: '',
     email: '',
-    service: 'Engineering',
+    service: 'Software & Technology',
     message: '',
 };
 
@@ -300,13 +300,14 @@ export const ContactForm = () => {
                                                         onChange={onChange}
                                                         className="w-full bg-white/[0.03] hover:bg-white/[0.05] border border-white/10 rounded-2xl py-4 pl-12 pr-10 text-white focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent transition-all appearance-none cursor-pointer shadow-inner"
                                                     >
-                                                        <option value="Engineering" className="bg-zinc-900 text-white">Engineering</option>
-                                                        <option value="Intelligence" className="bg-zinc-900 text-white">Intelligence</option>
-                                                        <option value="Capital" className="bg-zinc-900 text-white">Capital</option>
-                                                        <option value="Expansions" className="bg-zinc-900 text-white">Expansions</option>
-                                                        <option value="Design" className="bg-zinc-900 text-white">Design</option>
-                                                        <option value="Talent" className="bg-zinc-900 text-white">Talent</option>
-                                                        <option value="Logistics" className="bg-zinc-900 text-white">Logistics</option>
+                                                        <option value="Software & Technology" className="bg-zinc-900 text-white">Software & Technology</option>
+                                                        <option value="Consultancy & Strategy" className="bg-zinc-900 text-white">Consultancy & Strategy</option>
+                                                        <option value="Talent & Staffing" className="bg-zinc-900 text-white">Talent & Staffing</option>
+                                                        <option value="Design & Creative" className="bg-zinc-900 text-white">Design & Creative</option>
+                                                        <option value="Ventures & Innovation" className="bg-zinc-900 text-white">Ventures & Innovation</option>
+                                                        <option value="FinTech & Banking" className="bg-zinc-900 text-white">FinTech & Banking</option>
+                                                        <option value="AI & Data Analytics" className="bg-zinc-900 text-white">AI & Data Analytics</option>
+                                                        <option value="Global Logistics" className="bg-zinc-900 text-white">Global Logistics</option>
                                                     </select>
                                                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" size={20} />
                                                 </div>

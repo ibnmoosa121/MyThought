@@ -105,7 +105,7 @@ export const SoftwareMethodology = () => {
 
                                 <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${index % 2 === 0 ? "md:text-left md:mr-[55%]" : "md:text-right md:ml-[55%]"}`}>
                                     <div className={`inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs mb-3 uppercase tracking-widest`}>
-                                        {step.title}
+                                        Phase {step.number}
                                     </div>
                                     <h3 className="text-xl md:text-2xl font-bold text-white mb-2 uppercase tracking-tight">
                                         {step.title}

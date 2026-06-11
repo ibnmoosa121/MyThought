@@ -18,77 +18,77 @@ import ContactForm from "../components/features/contact/contact-form"
 const products = [
   {
     title: "AI-Powered Solutions",
-    link: "#",
+    link: "#/ai-analytics",
     thumbnail: "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Digital Transformation",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Data Analytics",
-    link: "#",
+    link: "#/ai-analytics",
     thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Custom Software",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Cybersecurity",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Cloud Services",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Mobile Development",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "UI/UX Design",
-    link: "#",
+    link: "#/design",
     thumbnail: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Blockchain Solutions",
-    link: "#",
+    link: "#/fintech",
     thumbnail: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "IoT Integration",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "DevOps Services",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "AR/VR Experiences",
-    link: "#",
+    link: "#/design",
     thumbnail: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Enterprise Solutions",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "API Development",
-    link: "#",
+    link: "#/software",
     thumbnail: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=75&w=600&auto=format&fit=crop"
   },
   {
     title: "Machine Learning",
-    link: "#",
+    link: "#/ai-analytics",
     thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=75&w=600&auto=format&fit=crop"
   },
   {
@@ -101,7 +101,7 @@ const products = [
 // Main content component with hero section only
 export const MainContent = () => {
   useEffect(() => {
-    document.title = "MyThought"
+    document.title = "MyThought | Elite Digital Studio & Consultancy"
   }, [])
 
   return (

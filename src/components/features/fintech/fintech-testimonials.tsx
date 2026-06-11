@@ -177,7 +177,7 @@ export const FintechTestimonials = () => {
 
             <div className="mt-16 text-center relative z-20">
                 <p className="text-zinc-600 text-xs font-black uppercase tracking-[0.5em]">
-                    Real-time Settlement via Antigravity Nodes
+                    Real-time Settlement via MyThought Nodes
                 </p>
             </div>
         </section>

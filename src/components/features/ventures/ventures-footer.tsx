@@ -64,7 +64,7 @@ export const VenturesFooter = () => {
                                 </div>
                                 <span className="text-zinc-500 group-hover:text-white transition-colors font-bold uppercase italic text-sm">info@mythought.com</span>
                             </a>
-                            <a href="tel:+96612345678" className="flex items-center gap-3 group">
+                            <a href="tel:+966501234567" className="flex items-center gap-3 group">
                                 <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-zinc-500 group-hover:text-orange-500 transition-colors">
                                     <Phone size={16} />
                                 </div>

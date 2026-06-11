@@ -134,12 +134,12 @@ export const Header = () => {
         delay={0.2}
       />
       <ScrollRevealText
-        text="development studio"
+        text="Digital Studio"
         className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter"
         delay={0.3}
       />
       <ScrollRevealText
-        text="We build beautiful products with the latest technologies and frameworks. We are a team of passionate developers and designers that love to build amazing products."
+        text="We bridge ambitious vision and high-performance execution. An elite digital powerhouse powering custom software, AI analytics, fintech, and strategic growth across the Gulf region."
         className="max-w-2xl text-base md:text-xl mt-6 text-zinc-400 font-medium tracking-tight"
         delay={0.5}
       />

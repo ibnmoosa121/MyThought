@@ -150,7 +150,7 @@ export const FintechDetails = () => {
                                 "Solving the world's hardest financial problems requires a new kind of architecture."
                             </p>
                             <a
-                                href="#contact"
+                                href="#/contact"
                                 className="group flex items-center gap-4 text-white text-xl font-black uppercase italic tracking-tighter border-b-2 border-teal-500 pb-2 hover:text-teal-500 transition-colors"
                             >
                                 Contact Our Project Architects

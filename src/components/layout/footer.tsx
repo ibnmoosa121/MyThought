@@ -134,8 +134,8 @@ export const Footer: React.FC = () => {
               <li className="flex items-start gap-3 text-white/70">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <span>
-                  123 Innovation Blvd,<br />
-                  Tech City, TC 90210
+                  Jeddah Headquarters,<br />
+                  Jeddah, Saudi Arabia
                 </span>
               </li>
               <li className="flex items-center gap-3 text-white/70">
@@ -146,8 +146,8 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-3 text-white/70">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <a href="tel:+1234567890" className="hover:text-primary transition-colors text-white/80">
-                  +1 (234) 567-890
+                <a href="tel:+966501234567" className="hover:text-primary transition-colors text-white/80">
+                  +966 50 123 4567
                 </a>
               </li>
             </ul>

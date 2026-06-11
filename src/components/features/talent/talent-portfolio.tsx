@@ -29,7 +29,7 @@ const TALENT_SERVICES = [
         desc: "Premium workforce for global brands and luxury hospitality.",
         longDesc: "We staff world-class retail outlets and hotels with trained professionals, ensuring consistent brand standards across all customer touchpoints.",
         icon: ShoppingBag,
-        stats: "Global Brand focus",
+        stats: "Global Brand Focus",
         color: "bg-fuchsia-500"
     },
     {

@@ -25,7 +25,7 @@ const services = [
       {
         icon: Code2,
         title: 'New Project Development',
-        text: 'Develop a new software product or service. Anything from mobile app to a complex cloud-based service.'
+        text: 'Develop a new software product or service, ranging from mobile apps to complex cloud-based systems.'
       },
       {
         icon: RefreshCw,
@@ -157,7 +157,7 @@ const services = [
       {
         icon: Rocket,
         title: 'Startup Incubation',
-        text: 'Nurture early-stage startups. We provide the resources and guidance needed to validate ideas and build a MVP.'
+        text: 'Nurture early-stage startups. We provide the resources and guidance needed to validate ideas and build an MVP.'
       },
       {
         icon: Users,
@@ -190,17 +190,17 @@ const services = [
       {
         icon: Landmark,
         title: 'Digital Payments',
-        text: 'Seamless payment integration and processing solutions.'
+        text: 'Integrate seamless payment orchestrations and secure transaction gateways.'
       },
       {
         icon: Wallet,
         title: 'Blockchain Solutions',
-        text: 'Decentralized applications and smart contracts.'
+        text: 'Architect decentralized applications and automated smart contracts.'
       },
       {
         icon: BarChart3,
         title: 'Financial Analytics',
-        text: 'Real-time data visualization and risk assessment.'
+        text: 'Build real-time visualization dashboards and ML-powered risk assessments.'
       }
     ]
   },
@@ -256,17 +256,17 @@ const services = [
       {
         icon: Truck,
         title: 'Freight Forwarding',
-        text: 'Seamless international shipping via air, sea, and land with integrated customs clearance and real-time tracking.'
+        text: 'Streamline international shipping via air, sea, and land with integrated customs clearance and real-time tracking.'
       },
       {
         icon: Box,
         title: 'Last-Mile Delivery',
-        text: 'High-speed local fulfillment and courier services optimized for the Middle East market.'
+        text: 'Deploy high-speed local fulfillment and fleet management systems optimized for the Middle East market.'
       },
       {
         icon: Settings,
         title: 'Supply Chain Optimization',
-        text: 'Advanced analytics and process engineering to reduce lead times and operational overhead.'
+        text: 'Engineer advanced analytics and automated workflows to reduce lead times and operational overhead.'
       }
     ]
   }

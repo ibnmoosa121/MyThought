@@ -158,7 +158,7 @@ const details = [
     {
         id: "dig",
         name: "Digital Frontier",
-        title: "Frontier tech & AI Strategy",
+        title: "Frontier Tech & AI Strategy",
         desc: "Integrating artificial intelligence into the heart of regional enterprise. We build the digital infrastructure that powers the Gulf's futuristic vision of connected cities.",
         icon: AnimatedFrontier,
         color: "text-[#14B8A6]",
