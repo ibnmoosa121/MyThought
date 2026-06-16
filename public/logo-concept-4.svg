@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <!-- Concept 4: The Origami Takeoff (Agility & Strategic Launch) -->
+  <!-- Left wing/fold -->
+  <polygon points="60,20 20,60 60,80" fill="#FFFFFF" fill-opacity="0.9"/>
+  <!-- Right wing/fold -->
+  <polygon points="60,20 100,60 60,80" fill="#FFFFFF" fill-opacity="0.5"/>
+  <!-- Bottom keel/spine -->
+  <polygon points="60,80 40,95 60,110" fill="#FFFFFF" fill-opacity="0.7"/>
+  <polygon points="60,80 80,95 60,110" fill="#FFFFFF" fill-opacity="0.4"/>
+  <!-- Center fold line -->
+  <line x1="60" y1="20" x2="60" y2="110" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.3"/>
+  <!-- Forward thrust node -->
+  <circle cx="60" cy="12" r="3" fill="#FFFFFF"/>
+</svg>

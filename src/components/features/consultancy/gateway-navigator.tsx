@@ -4,32 +4,41 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import {
-    Users,
     TrendingUp,
     ShieldCheck,
-    History,
     ArrowUpRight,
     Zap,
     Building2,
-    BarChart3
+    BarChart3,
+    Activity,
+    Globe2,
+    Network
 } from "lucide-react";
-import { World } from "@/components/ui/globe";
 
 const Counter = ({ value }: { value: number }) => {
     const [displayValue, setDisplayValue] = useState(0);
-    const nodeRef = useRef<HTMLSpanElement>(null);
+    const prevValueRef = useRef(0);
 
     useEffect(() => {
-        const obj = { val: displayValue };
-        gsap.to(obj, {
+        const obj = { val: prevValueRef.current };
+        const tween = gsap.to(obj, {
             val: value,
             duration: 1,
             ease: "power2.out",
-            onUpdate: () => setDisplayValue(Math.floor(obj.val))
+            onUpdate: () => {
+                setDisplayValue(Math.floor(obj.val));
+            },
+            onComplete: () => {
+                prevValueRef.current = value;
+            }
         });
-    }, [value, displayValue]);
 
-    return <span ref={nodeRef} className="text-6xl font-black text-white italic leading-none">{displayValue}</span>;
+        return () => {
+            tween.kill();
+        };
+    }, [value]);
+
+    return <span className="text-6xl font-black text-white italic leading-none">{displayValue}</span>;
 };
 
 export interface RegionData {
@@ -147,63 +156,12 @@ export const GatewayNavigator = () => {
         return () => clearInterval(interval);
     }, [activeRegion.id]);
 
-    const globeConfig = {
-        pointSize: 4,
-        globeColor: "#1d4ed8", // Brighter blue
-        showAtmosphere: true,
-        atmosphereColor: "#FFFFFF",
-        atmosphereAltitude: 0.1,
-        emissive: "#1d4ed8",
-        emissiveIntensity: 0.5,
-        shininess: 2,
-        polygonColor: "rgba(255,255,255,1)",
-        ambientLight: "#60a5fa",
-        directionalLeftLight: "#ffffff",
-        directionalTopLight: "#ffffff",
-        pointLight: "#ffffff",
-        arcTime: 1000,
-        arcLength: 0.9,
-        rings: 1,
-        maxRings: 3,
-        initialPosition: { lat: 25.2048, lng: 55.2708 },
-        autoRotate: true,
-        autoRotateSpeed: 0.5,
-    };
-
-    const MarkerPointer = () => (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-            <div className="relative">
-                <div className="absolute -inset-4 rounded-full border border-white/50 animate-ping opacity-50" />
-                <div className="absolute -inset-8 rounded-full border border-white/20 animate-pulse" />
-                <div className="w-2 h-2 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1)]" />
-
-                {/* Crosshair effect */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[120px] w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-            </div>
-        </div>
-    );
-
-    const arcs = regions.flatMap(region =>
-        region.connections.map(connId => {
-            const target = regions.find(r => r.id === connId);
-            if (!target) return null;
-            return {
-                order: 1,
-                startLat: region.location.lat,
-                startLng: region.location.lng,
-                endLat: target.location.lat,
-                endLng: target.location.lng,
-                arcAlt: 0.2,
-                color: region.accent,
-            };
-        }).filter(Boolean)
-    ) as any[];
-
     return (
         <section className="relative bg-black py-16 md:py-24 overflow-hidden">
             {/* Background Transitions */}
             <div className={`absolute inset-0 transition-all duration-1000 opacity-20 bg-gradient-to-b ${activeRegion.color} pointer-events-none`} />
+            
+            <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
             <div className="container mx-auto px-6 relative z-10">
                 {/* Header */}
@@ -222,293 +180,164 @@ export const GatewayNavigator = () => {
                     </h2>
                 </div>
 
-                {/* === DESKTOP: 3-Column Layout with Globe in Center === */}
-                <div className="hidden lg:grid lg:grid-cols-[1fr_auto_1fr] gap-6 xl:gap-10 items-center">
-
-                    {/* LEFT COLUMN — Cards */}
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeRegion.id + "-left"}
-                            initial={{ opacity: 0, x: -40 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -40 }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="flex flex-col gap-5"
-                        >
-                            {/* Main Stats Card */}
-                            <div className="p-8 rounded-[2rem] bg-white text-black space-y-6 overflow-hidden relative">
-                                <div className="absolute top-0 right-0 p-8 opacity-5">
-                                    <activeRegion.opportunitySlot.icon size={160} />
-                                </div>
-                                <div className="flex justify-between items-start relative z-10">
-                                    <div className="space-y-1">
-                                        <h3 className="text-5xl font-black italic uppercase tracking-tighter leading-none">
-                                            {activeRegion.name}
-                                        </h3>
-                                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">
-                                            {activeRegion.fullName}
-                                        </p>
-                                    </div>
-                                    <div className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center">
-                                        <ArrowUpRight size={20} />
-                                    </div>
-                                </div>
-                                <div className="flex flex-wrap gap-2 relative z-10">
-                                    {activeRegion.sectors.map((sector) => (
-                                        <span key={sector} className="px-3 py-1.5 rounded-full border border-black/10 text-[9px] font-black uppercase tracking-widest">
-                                            {sector}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Lucrative Opportunity */}
-                            <div className="p-7 rounded-[2rem] bg-zinc-900 border border-white/10 space-y-5">
-                                <div className="flex items-center gap-3 text-emerald-500">
-                                    <TrendingUp size={18} />
-                                    <span className="text-[9px] font-black uppercase tracking-widest">Prime Sector</span>
-                                </div>
-                                <div className="space-y-1">
-                                    <h4 className="text-xl font-black text-white italic uppercase">{activeRegion.opportunitySlot.title}</h4>
-                                    <p className="text-zinc-500 text-xs leading-relaxed">{activeRegion.opportunitySlot.desc}</p>
-                                </div>
-                            </div>
-
-                            {/* Service Synergy */}
-                            <div className={`p-7 rounded-[2rem] bg-gradient-to-br border border-white/10 space-y-4 flex flex-col justify-between ${activeRegion.color.replace('opacity-20', 'opacity-40')}`}>
-                                <div className="flex items-center gap-3 text-white">
-                                    <Users size={18} />
-                                    <span className="text-[9px] font-black uppercase tracking-widest">Cross-Border Synergy</span>
-                                </div>
-                                <p className="text-white text-base font-bold italic leading-tight">
-                                    &ldquo;{activeRegion.synergy}&rdquo;
-                                </p>
-                                <div className="pt-1 flex items-center gap-2 text-white/40 text-[8px] font-black uppercase tracking-widest">
-                                    <span>Scale Strategy</span>
-                                    <div className="h-px flex-1 bg-white/20" />
-                                    <span>Expand Now</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-
-                    {/* CENTER — Globe + Region Selector */}
-                    <div className="flex flex-col items-center gap-6">
-                        <div className="relative w-[420px] xl:w-[480px] aspect-square">
-                            <World
-                                globeConfig={globeConfig}
-                                data={arcs}
-                                center={[activeRegion.location.lat, activeRegion.location.lng]}
-                                targetAngles={activeRegion.cameraTarget}
-                            />
-                            <MarkerPointer />
-                            {/* Decorative rings */}
-                            <div className="absolute -inset-5 border border-white/5 rounded-full pointer-events-none animate-[spin_30s_linear_infinite]" />
-                            <div className="absolute -inset-10 border border-white/[0.03] rounded-full pointer-events-none animate-[spin_45s_linear_infinite_reverse]" />
-                        </div>
-
-                        {/* Region Selector */}
-                        <div className="flex flex-wrap justify-center gap-3">
-                            {regions.map((region) => (
-                                <motion.button
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-7xl mx-auto">
+                    {/* Left Column: Region Selector (col-span-3) */}
+                    <div className="lg:col-span-3 flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-hide">
+                        {regions.map((region) => {
+                            const isActive = activeRegion.id === region.id;
+                            return (
+                                <button
                                     key={region.id}
                                     onClick={() => setActiveRegion(region)}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className={`px-5 py-2.5 rounded-full border text-[10px] font-black uppercase tracking-widest transition-all duration-500 backdrop-blur-xl
-                                        ${activeRegion.id === region.id
-                                            ? "bg-white border-white text-black shadow-[0_0_30px_rgba(255,255,255,0.15)]"
-                                            : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white"
-                                        }`}
+                                    className={`relative flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-5 rounded-2xl text-left transition-all duration-500 whitespace-nowrap min-w-[140px] lg:min-w-0 ${
+                                        isActive 
+                                            ? "bg-white/10 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)] scale-[1.02]" 
+                                            : "bg-white/5 border-white/5 hover:bg-white/10 opacity-60 hover:opacity-100"
+                                    } border backdrop-blur-md`}
                                 >
-                                    {region.name}
-                                </motion.button>
-                            ))}
-                        </div>
+                                    <div className="flex flex-col">
+                                        <span className={`text-[10px] font-black uppercase tracking-widest mb-1 transition-colors ${isActive ? 'text-white' : 'text-zinc-500'}`}>
+                                            {region.fullName.split(' ')[0]}
+                                        </span>
+                                        <span className={`text-xl font-black italic uppercase tracking-tight transition-colors ${isActive ? 'text-white' : 'text-zinc-400'}`}>
+                                            {region.name}
+                                        </span>
+                                    </div>
+                                    {isActive && (
+                                        <motion.div layoutId="activeRegionIndicator" className="hidden md:block w-1.5 h-1.5 rounded-full mt-2 md:mt-0" style={{ backgroundColor: region.accent }} />
+                                    )}
+                                </button>
+                            );
+                        })}
                     </div>
 
-                    {/* RIGHT COLUMN — Cards */}
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeRegion.id + "-right"}
-                            initial={{ opacity: 0, x: 40 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 40 }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="flex flex-col gap-5"
-                        >
-                            {/* Compliance Meter */}
-                            <div className="p-7 rounded-[2rem] bg-zinc-900 border border-white/10 space-y-5">
-                                <div className="flex items-center gap-3 text-blue-500">
-                                    <ShieldCheck size={18} />
-                                    <span className="text-[9px] font-black uppercase tracking-widest">Regulatory Health</span>
-                                </div>
-                                <div className="space-y-3">
-                                    <div className="flex justify-between items-end">
-                                        <span className="text-4xl font-black text-white italic leading-none">{activeRegion.compliance}%</span>
-                                        <span className="text-[9px] font-bold uppercase text-zinc-500">Compliance</span>
-                                    </div>
-                                    <div className="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            animate={{ width: `${activeRegion.compliance}%` }}
-                                            transition={{ duration: 0.8, ease: "easeOut" }}
-                                            className="h-full bg-blue-500 rounded-full"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Legacy Stat */}
-                            <div className="p-7 rounded-[2rem] bg-zinc-900 border border-white/10 space-y-5">
-                                <div className="flex items-center gap-3 text-amber-500">
-                                    <History size={18} />
-                                    <span className="text-[9px] font-black uppercase tracking-widest">Global Legacy</span>
-                                </div>
-                                <div className="space-y-1">
-                                    <div className="flex items-baseline gap-2">
-                                        <Counter value={activeRegion.legacy} />
-                                        <span className="text-lg font-bold text-white uppercase italic">Years</span>
-                                    </div>
-                                    <p className="text-zinc-500 text-xs leading-relaxed">Dedicated boots on the ground in ecosystem.</p>
-                                </div>
-                            </div>
-
-                            {/* Connected Regions */}
-                            <div className="p-7 rounded-[2rem] bg-zinc-900/60 border border-white/10 space-y-4">
-                                <div className="flex items-center gap-3 text-white/60">
-                                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                    <span className="text-[9px] font-black uppercase tracking-widest">Active Connections</span>
-                                </div>
-                                <div className="space-y-2">
-                                    {activeRegion.connections.map(connId => {
-                                        const connected = regions.find(r => r.id === connId);
-                                        if (!connected) return null;
-                                        return (
-                                            <motion.button
-                                                key={connId}
-                                                onClick={() => setActiveRegion(connected)}
-                                                className="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all group"
-                                            >
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: connected.accent }} />
-                                                    <span className="text-xs font-black text-white/70 uppercase tracking-wider group-hover:text-white transition-colors">{connected.name}</span>
-                                                </div>
-                                                <ArrowUpRight size={14} className="text-white/30 group-hover:text-white transition-colors" />
-                                            </motion.button>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-
-                {/* === MOBILE: Stacked Layout === */}
-                <div className="lg:hidden space-y-8">
-                    {/* Globe */}
-                    <div className="relative w-full max-w-[320px] mx-auto aspect-square">
-                        <World
-                            globeConfig={globeConfig}
-                            data={arcs}
-                            center={[activeRegion.location.lat, activeRegion.location.lng]}
-                            targetAngles={activeRegion.cameraTarget}
-                        />
-                        <MarkerPointer />
-                    </div>
-
-                    {/* Region Selector */}
-                    <div className="flex flex-wrap justify-center gap-2">
-                        {regions.map((region) => (
-                            <motion.button
-                                key={region.id}
-                                onClick={() => setActiveRegion(region)}
-                                whileTap={{ scale: 0.95 }}
-                                className={`px-4 py-2.5 rounded-full border text-[9px] font-black uppercase tracking-widest transition-all duration-500
-                                    ${activeRegion.id === region.id
-                                        ? "bg-white border-white text-black"
-                                        : "bg-white/5 border-white/10 text-white/50"
-                                    }`}
+                    {/* Bento Box Grid (col-span-9) */}
+                    <div className="lg:col-span-9">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeRegion.id}
+                                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: -20, scale: 0.98 }}
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                             >
-                                {region.name}
-                            </motion.button>
-                        ))}
+                                {/* Main Identity Card (Row 1, Col 1-2) */}
+                                <div className="md:col-span-2 p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl relative overflow-hidden group">
+                                    <div className="absolute inset-0 opacity-20 bg-gradient-to-br transition-all duration-1000 group-hover:opacity-40" style={{ backgroundImage: `linear-gradient(to bottom right, transparent, ${activeRegion.accent})` }} />
+                                    <div className="relative z-10 flex flex-col h-full justify-between gap-8">
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <div className="flex items-center gap-3 mb-4">
+                                                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: activeRegion.accent }} />
+                                                    <span className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.3em]">Active Node</span>
+                                                </div>
+                                                <h3 className="text-4xl md:text-6xl font-black italic text-white uppercase tracking-tighter leading-none mb-2">
+                                                    {activeRegion.name}
+                                                </h3>
+                                                <p className="text-zinc-400 text-sm font-bold uppercase tracking-widest">
+                                                    {activeRegion.fullName}
+                                                </p>
+                                            </div>
+                                            <div className="hidden md:flex w-12 h-12 rounded-2xl bg-white/5 border border-white/10 items-center justify-center text-white/50 group-hover:text-white transition-colors">
+                                                <ArrowUpRight size={24} />
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 md:gap-3">
+                                            {activeRegion.sectors.map((sector) => (
+                                                <span key={sector} className="px-3 py-1.5 md:px-4 md:py-2 rounded-xl bg-black/50 border border-white/10 text-[9px] md:text-[10px] text-white/80 font-black uppercase tracking-widest backdrop-blur-md">
+                                                    {sector}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Prime Opportunity Card (Row 1-2, Col 3) */}
+                                <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 p-8 rounded-[2rem] bg-zinc-900 border border-white/10 relative overflow-hidden flex flex-col justify-between group">
+                                    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
+                                        <activeRegion.opportunitySlot.icon size={180} />
+                                    </div>
+                                    <div className="relative z-10 mb-8 md:mb-12">
+                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl mb-6 md:mb-8 flex items-center justify-center" style={{ backgroundColor: `${activeRegion.accent}20`, color: activeRegion.accent }}>
+                                            <TrendingUp size={20} />
+                                        </div>
+                                        <h4 className="text-[9px] md:text-[10px] text-zinc-500 font-black uppercase tracking-[0.3em] mb-3 md:mb-4">Prime Sector</h4>
+                                        <h3 className="text-2xl md:text-3xl font-black italic text-white uppercase leading-none tracking-tighter mb-3 md:mb-4">
+                                            {activeRegion.opportunitySlot.title}
+                                        </h3>
+                                        <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">
+                                            {activeRegion.opportunitySlot.desc}
+                                        </p>
+                                    </div>
+                                    <div className="relative z-10 mt-auto">
+                                        <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                            <motion.div 
+                                                initial={{ width: 0 }}
+                                                animate={{ width: "100%" }}
+                                                transition={{ duration: 1.5, ease: "easeOut" }}
+                                                className="h-full" 
+                                                style={{ backgroundColor: activeRegion.accent }} 
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Metrics Card 1: Compliance */}
+                                <div className="p-6 md:p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl flex flex-col justify-between gap-6">
+                                    <div className="flex items-center gap-3 text-zinc-400">
+                                        <ShieldCheck size={18} />
+                                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Compliance</span>
+                                    </div>
+                                    <div className="flex items-end gap-2">
+                                        <Counter value={activeRegion.compliance} />
+                                        <span className="text-xl md:text-2xl font-black text-white/50 italic mb-1">%</span>
+                                    </div>
+                                </div>
+
+                                {/* Metrics Card 2: Growth / Legacy */}
+                                <div className="p-6 md:p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl flex flex-col justify-between gap-6">
+                                    <div className="flex items-center gap-3 text-zinc-400">
+                                        <Activity size={18} />
+                                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Growth Index</span>
+                                    </div>
+                                    <div className="flex items-end gap-2">
+                                        <span className="text-xl md:text-2xl font-black text-white/50 italic mb-1">+</span>
+                                        <Counter value={activeRegion.legacy} />
+                                        <span className="text-lg md:text-xl font-black text-white/50 italic mb-1">pts</span>
+                                    </div>
+                                </div>
+
+                                {/* Synergy & Connections Card (Row 3, Col 1-3) */}
+                                <div className="md:col-span-2 lg:col-span-3 p-6 md:p-8 rounded-[2rem] border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 relative overflow-hidden" style={{ backgroundColor: `${activeRegion.accent}15` }}>
+                                    <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
+                                        <Network size={200} />
+                                    </div>
+                                    <div className="relative z-10 flex-1">
+                                        <div className="flex items-center gap-3 text-white/60 mb-3 md:mb-4">
+                                            <Globe2 size={18} />
+                                            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Cross-Border Synergy</span>
+                                        </div>
+                                        <p className="text-lg md:text-2xl text-white font-bold italic leading-tight max-w-3xl">
+                                            &ldquo;{activeRegion.synergy}&rdquo;
+                                        </p>
+                                    </div>
+                                    <div className="relative z-10 flex flex-wrap gap-3 w-full md:w-auto">
+                                        {activeRegion.connections.map(connId => {
+                                            const conn = regions.find(r => r.id === connId);
+                                            return conn ? (
+                                                <div key={conn.id} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-3 md:px-6 md:py-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md">
+                                                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full animate-pulse" style={{ backgroundColor: conn.accent }} />
+                                                    <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">{conn.name}</span>
+                                                </div>
+                                            ) : null;
+                                        })}
+                                    </div>
+                                </div>
+
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
-
-                    {/* Data Cards */}
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeRegion.id + "-mobile"}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.4 }}
-                            className="space-y-4"
-                        >
-                            {/* Main Stats */}
-                            <div className="p-6 rounded-[1.5rem] bg-white text-black space-y-5 overflow-hidden relative">
-                                <div className="flex justify-between items-start">
-                                    <div className="space-y-1">
-                                        <h3 className="text-3xl font-black italic uppercase tracking-tighter leading-none">{activeRegion.name}</h3>
-                                        <p className="text-[9px] font-bold uppercase tracking-[0.2em] opacity-40">{activeRegion.fullName}</p>
-                                    </div>
-                                    <div className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center">
-                                        <ArrowUpRight size={16} />
-                                    </div>
-                                </div>
-                                <div className="flex flex-wrap gap-2">
-                                    {activeRegion.sectors.map((sector) => (
-                                        <span key={sector} className="px-3 py-1 rounded-full border border-black/10 text-[8px] font-black uppercase tracking-widest">{sector}</span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-3">
-                                {/* Compliance */}
-                                <div className="p-5 rounded-[1.5rem] bg-zinc-900 border border-white/10 space-y-3">
-                                    <div className="flex items-center gap-2 text-blue-500">
-                                        <ShieldCheck size={16} />
-                                        <span className="text-[8px] font-black uppercase tracking-widest">Health</span>
-                                    </div>
-                                    <span className="text-2xl font-black text-white italic block">{activeRegion.compliance}%</span>
-                                    <div className="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
-                                        <motion.div initial={{ width: 0 }} animate={{ width: `${activeRegion.compliance}%` }} className="h-full bg-blue-500 rounded-full" />
-                                    </div>
-                                </div>
-
-                                {/* Legacy */}
-                                <div className="p-5 rounded-[1.5rem] bg-zinc-900 border border-white/10 space-y-3">
-                                    <div className="flex items-center gap-2 text-amber-500">
-                                        <History size={16} />
-                                        <span className="text-[8px] font-black uppercase tracking-widest">Legacy</span>
-                                    </div>
-                                    <div className="flex items-baseline gap-1">
-                                        <span className="text-2xl font-black text-white italic">{activeRegion.legacy}</span>
-                                        <span className="text-xs font-bold text-white/50 uppercase italic">Yrs</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Opportunity */}
-                            <div className="p-5 rounded-[1.5rem] bg-zinc-900 border border-white/10 space-y-3">
-                                <div className="flex items-center gap-2 text-emerald-500">
-                                    <TrendingUp size={16} />
-                                    <span className="text-[8px] font-black uppercase tracking-widest">Prime Sector</span>
-                                </div>
-                                <h4 className="text-lg font-black text-white italic uppercase">{activeRegion.opportunitySlot.title}</h4>
-                                <p className="text-zinc-500 text-xs leading-relaxed">{activeRegion.opportunitySlot.desc}</p>
-                            </div>
-
-                            {/* Synergy */}
-                            <div className={`p-5 rounded-[1.5rem] bg-gradient-to-br border border-white/10 space-y-3 ${activeRegion.color.replace('opacity-20', 'opacity-40')}`}>
-                                <div className="flex items-center gap-2 text-white">
-                                    <Users size={16} />
-                                    <span className="text-[8px] font-black uppercase tracking-widest">Synergy</span>
-                                </div>
-                                <p className="text-white text-sm font-bold italic leading-tight">&ldquo;{activeRegion.synergy}&rdquo;</p>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
                 </div>
             </div>
         </section>
