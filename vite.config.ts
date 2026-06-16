@@ -21,6 +21,6 @@ export default defineConfig({
         : '/MyThought/'
       : '/',
   build: {
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 2500,
   }
 })
