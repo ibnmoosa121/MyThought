@@ -95,11 +95,6 @@ const products = [
     title: "AI & Data Analytics",
     link: "#/ai-analytics",
     thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=75&w=600&auto=format&fit=crop"
-  },
-  {
-    title: "Smart CDM Integration Project",
-    link: "http://localhost:5174",
-    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=600&auto=format&fit=crop"
   }
 ];
 

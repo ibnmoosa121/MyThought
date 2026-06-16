@@ -226,15 +226,7 @@ export const Header = () => {
                       </NavigationMenuLink>
                     </NavigationMenuItem>
 
-                    <NavigationMenuItem>
-                      <NavigationMenuLink
-                        className="px-4 py-2 font-bold text-primary hover:bg-base-content/10 rounded-md transition-colors"
-                        href="http://localhost:5174"
-                        target="_blank"
-                      >
-                        Smart CDM Integration Project
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
+
                   </NavigationMenuList >
                 </NavigationMenu >
               </div >
@@ -289,9 +281,7 @@ export const Header = () => {
                   <a href="#/blog" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
                     Blog
                   </a>
-                  <a href="http://localhost:5174" target="_blank" className="px-4 py-3 text-sm font-bold text-primary hover:bg-base-200 rounded-xl transition-colors">
-                    Smart CDM Integration Project
-                  </a>
+
                   <a href="#/contact" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
                     Contact
                   </a>
