@@ -10,7 +10,7 @@ const ConsultancyPage = () => {
   const service = services.consultancy;
 
   useEffect(() => {
-    document.title = "Consultancy | MyThought"
+    document.title = "Consultancy & Strategy | MyThought"
     window.scrollTo(0, 0);
   }, [])
 

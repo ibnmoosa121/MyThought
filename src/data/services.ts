@@ -44,7 +44,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
   },
   consultancy: {
     key: 'consultancy',
-    title: 'Consultancy',
+    title: 'Consultancy & Strategy',
     subtitle: 'Dubai & KSA expansion, market entry, and operations',
     bullets: [
       'Market intelligence and strategy workshops',
@@ -113,7 +113,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
   },
   ventures: {
     key: 'ventures',
-    title: 'Ventures',
+    title: 'Ventures & Innovation',
     subtitle: 'Investing in and building the next generation of startups',
     bullets: [
       'Early-stage capital and strategic support',
@@ -136,7 +136,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
   },
   fintech: {
     key: 'fintech',
-    title: 'FinTech',
+    title: 'FinTech & Banking',
     subtitle: 'RegTech, Payments, and AI-driven financial products',
     bullets: [
       'Payment orchestration and compliance (PCI, AML)',
@@ -182,8 +182,8 @@ export const services: Record<ServiceKey, ServiceContent> = {
   },
   logistics: {
     key: 'logistics',
-    title: 'Logistics & Customs',
-    subtitle: 'Global logistics and customs expertise through immersive tracking',
+    title: 'Global Logistics & Supply Chain',
+    subtitle: 'Global logistics and supply chain management through immersive tracking',
     bullets: [
       'Real-time Vessel Tracking & Status',
       'Automated Customs Clearance & Compliance',

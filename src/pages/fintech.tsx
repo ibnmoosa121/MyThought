@@ -11,7 +11,7 @@ const FintechPage = () => {
   const service = services.fintech;
 
   useEffect(() => {
-    document.title = "FinTech Solutions | MyThought"
+    document.title = "FinTech & Banking | MyThought"
     window.scrollTo(0, 0);
   }, [])
 

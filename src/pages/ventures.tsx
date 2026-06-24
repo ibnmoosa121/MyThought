@@ -10,7 +10,7 @@ const VenturesPage = () => {
   const service = services.ventures;
 
   useEffect(() => {
-    document.title = "Ventures | MyThought"
+    document.title = "Ventures & Innovation | MyThought"
     window.scrollTo(0, 0);
   }, [])
 

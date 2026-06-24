@@ -24,6 +24,7 @@ const ContactPage = lazy(() => import('./pages/contact'))
 const AIAnalyticsPage = lazy(() => import('./pages/ai-analytics'))
 const LogisticsPage = lazy(() => import('./pages/logistics'))
 const PortfolioPage = lazy(() => import('./pages/portfolio'))
+const LogoSandboxPage = lazy(() => import('./pages/logo-sandbox'))
 
 // ScrollToTop component to handle navigation
 const ScrollToTop = () => {
@@ -102,6 +103,7 @@ const App = () => {
                 <Route path="/ai-analytics" element={<AIAnalyticsPage />} />
                 <Route path="/logistics" element={<LogisticsPage />} />
                 <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route path="/logo-sandbox" element={<LogoSandboxPage />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
 

@@ -86,12 +86,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li>
                 <Link to="/software" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  Software & Tech
+                  Software & Technology
                 </Link>
               </li>
               <li>
                 <Link to="/consultancy" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  Consultancy
+                  Consultancy & Strategy
                 </Link>
               </li>
               <li>
@@ -101,17 +101,17 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/design" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  Design & Creativity
+                  Design & Creative
                 </Link>
               </li>
               <li>
                 <Link to="/ventures" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  Ventures
+                  Ventures & Innovation
                 </Link>
               </li>
               <li>
                 <Link to="/fintech" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  FinTech
+                  FinTech & Banking
                 </Link>
               </li>
               <li>
@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/logistics" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  Logistics & Customs
+                  Global Logistics & Supply Chain
                 </Link>
               </li>
             </ul>

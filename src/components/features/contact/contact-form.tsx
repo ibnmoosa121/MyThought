@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, ChevronDown, Loader2, Mail, Phone, MapPin, Sparkles, AlertCircle, User } from 'lucide-react';
 import { cn } from '../../../lib/utils';
 
-type ServiceOption = 'Software & Technology' | 'Consultancy & Strategy' | 'Talent & Staffing' | 'Design & Creative' | 'Ventures & Innovation' | 'FinTech & Banking' | 'AI & Data Analytics' | 'Global Logistics';
+type ServiceOption = 'Software & Technology' | 'Consultancy & Strategy' | 'Talent & Staffing' | 'Design & Creative' | 'Ventures & Innovation' | 'FinTech & Banking' | 'AI & Data Analytics' | 'Global Logistics & Supply Chain';
 
 interface FormData {
     name: string;
@@ -307,7 +307,7 @@ export const ContactForm = () => {
                                                         <option value="Ventures & Innovation" className="bg-zinc-900 text-white">Ventures & Innovation</option>
                                                         <option value="FinTech & Banking" className="bg-zinc-900 text-white">FinTech & Banking</option>
                                                         <option value="AI & Data Analytics" className="bg-zinc-900 text-white">AI & Data Analytics</option>
-                                                        <option value="Global Logistics" className="bg-zinc-900 text-white">Global Logistics</option>
+                                                        <option value="Global Logistics & Supply Chain" className="bg-zinc-900 text-white">Global Logistics & Supply Chain</option>
                                                     </select>
                                                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" size={20} />
                                                 </div>

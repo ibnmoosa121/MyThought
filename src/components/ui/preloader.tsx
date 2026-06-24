@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { criticalImages, homePageImages, serviceImages } from "../../lib/asset-loader";
+import { services } from "../../data/services";
+import type { ServiceKey } from "../../data/services";
 
 export const Preloader = () => {
     const location = useLocation();
@@ -19,22 +21,20 @@ export const Preloader = () => {
     useEffect(() => {
         if (!mounted) return;
 
-        // Determine page name and theme color
+        // Determine page name and theme color dynamically from central services data
         const path = location.pathname.split("/").filter(Boolean)[0] || "Home";
-        const formattedName = path === "Home" ? "MyThought" : path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, " ");
+        const service = services[path as ServiceKey];
 
-        const colorMap: Record<string, string> = {
-            'Home': '#ffffff',
-            'software': '#3B82F6',
-            'consultancy': '#10B981',
-            'talent': '#A855F7',
-            'design': '#EC4899',
-            'ventures': '#F59E0B',
-            'fintech': '#14B8A6',
-            'ai-analytics': '#6366F1'
-        };
+        const formattedName = service 
+            ? service.title 
+            : path === "Home" 
+                ? "MyThought" 
+                : path.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 
-        const color = colorMap[path] || '#ffffff';
+        const color = service 
+            ? service.theme.plasmaColor 
+            : "#ffffff";
+
         setPageName(formattedName);
         setThemeColor(color);
         setLoading(true);
