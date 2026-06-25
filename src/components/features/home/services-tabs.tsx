@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet, Brain, Database, Cpu, Truck } from 'lucide-react'
 import { ScrollRevealText } from "../../ui/scroll-reveal-text";
 import { WavyBackground } from "../../ui/wavy-background";
+import { prefetchPage } from "../../../lib/prefetch";
 
 const services = [
   {
@@ -304,6 +305,7 @@ export default function ServicesTabs() {
               <button
                 key={service.id}
                 onClick={() => setActiveTab(service.id)}
+                onMouseEnter={() => prefetchPage(service.id)}
                 className={`text-left text-lg md:text-xl font-bold transition-all duration-300 relative pl-6 py-2 group`}
               >
                 {activeTab === service.id && (
@@ -351,6 +353,7 @@ export default function ServicesTabs() {
                         href={service.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onMouseEnter={() => prefetchPage(service.id)}
                         className="relative w-full max-w-4xl transition-transform duration-500 hover:scale-[1.02] block cursor-pointer group/card-link"
                       >
                         <TiltedCard

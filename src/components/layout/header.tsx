@@ -24,6 +24,7 @@ import {
 import { LogoIcon } from '@/components/ui/logo-icon'
 import { services } from '../../data/services'
 import { useLocation } from 'react-router-dom'
+import { prefetchPage } from '../../lib/prefetch'
 import {
   Navbar,
   NavBody,
@@ -144,6 +145,7 @@ const ServicesContent = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={serviceLinks[service.key as keyof typeof serviceLinks] || '#'}
+                  onMouseEnter={() => prefetchPage(service.key)}
                   className="group flex gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-base-200 focus:bg-base-200"
                 >
                   <div className={`flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 text-primary ${service.theme.hoverBg} group-hover:text-white transition-all duration-300 shrink-0 shadow-sm`}>
@@ -212,6 +214,7 @@ export const Header = () => {
                       <NavigationMenuLink
                         className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
                         href="#/about-us"
+                        onMouseEnter={() => prefetchPage('about-us')}
                       >
                         About Us
                       </NavigationMenuLink>
@@ -221,6 +224,7 @@ export const Header = () => {
                       <NavigationMenuLink
                         className="px-4 py-2 font-bold hover:bg-base-content/10 rounded-md transition-colors text-white"
                         href="#/blog"
+                        onMouseEnter={() => prefetchPage('blog')}
                       >
                         Blog
                       </NavigationMenuLink>
@@ -233,7 +237,7 @@ export const Header = () => {
 
               {/* Right: Actions */}
               < div className="flex-1 flex items-center justify-end" >
-                <NavbarButton href="#/contact" variant="primary" className="rounded-full bg-white text-black hover:bg-white/90">
+                <NavbarButton href="#/contact" variant="primary" className="rounded-full bg-white text-black hover:bg-white/90" onMouseEnter={() => prefetchPage('contact')}>
                   Get Started
                 </NavbarButton>
               </div >
@@ -264,6 +268,7 @@ export const Header = () => {
                               href={serviceLinks[service.key as keyof typeof serviceLinks] || '#'}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onMouseEnter={() => prefetchPage(service.key)}
                               className="flex items-center gap-3 px-6 py-3 text-sm hover:bg-base-200 hover:text-primary transition-colors border-l-4 border-transparent hover:border-primary"
                             >
                               <Icon size={16} className="text-white/60" />
@@ -275,19 +280,19 @@ export const Header = () => {
                     </div>
                   </div>
 
-                  <a href="#/about-us" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
+                  <a href="#/about-us" onMouseEnter={() => prefetchPage('about-us')} className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
                     About Us
                   </a>
-                  <a href="#/blog" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
+                  <a href="#/blog" onMouseEnter={() => prefetchPage('blog')} className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
                     Blog
                   </a>
 
-                  <a href="#/contact" className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
+                  <a href="#/contact" onMouseEnter={() => prefetchPage('contact')} className="px-4 py-3 text-sm font-bold text-white hover:bg-base-200 rounded-xl transition-colors">
                     Contact
                   </a>
 
                   <div className="mt-4">
-                    <NavbarButton href="#/contact" className="w-full rounded-xl bg-primary text-primary-content">
+                    <NavbarButton href="#/contact" onMouseEnter={() => prefetchPage('contact')} className="w-full rounded-xl bg-primary text-primary-content">
                       Get Started
                     </NavbarButton>
                   </div>

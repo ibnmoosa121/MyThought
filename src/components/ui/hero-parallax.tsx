@@ -63,63 +63,114 @@ export const HeroParallax = ({
     springConfig
   );
 
+  // Top 4 products for mobile display
+  const mobileProducts = products.slice(0, 4);
+
   return (
-    <div
-      ref={ref}
-      className="h-auto md:h-[130vh] lg:h-[150vh] py-10 md:py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
-    >
-      <Header />
-
-      {/* Standardized Parallax Background Layer */}
-      <motion.div
-        style={{
-          y: bgTranslateY,
-          rotate: bgRotate,
-        }}
-        className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+    <>
+      {/* Desktop Version */}
+      <div
+        ref={ref}
+        className="hidden md:flex h-[130vh] lg:h-[150vh] py-20 overflow-hidden antialiased relative flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       >
-        <div className="absolute inset-0 design-grid opacity-[0.05]" />
+        <Header />
 
-        {/* Standardized Glow Orbs */}
-        <div className="theme-glow absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-white/5" />
-        <div className="theme-glow absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-white/5 animation-delay-2000" />
-        <div className="theme-glow absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-white/5 animation-delay-4000" />
-      </motion.div>
-
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-        className="relative z-10"
-      >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 md:space-x-20 mb-12 md:mb-10">
-          {firstRow.map((product, idx) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-              index={idx}
-            />
-          ))}
+        <motion.div
+          style={{
+            y: bgTranslateY,
+            rotate: bgRotate,
+          }}
+          className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+        >
+          <div className="absolute inset-0 design-grid opacity-[0.05]" />
+          <div className="theme-glow absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-white/5" />
+          <div className="theme-glow absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-white/5 animation-delay-2000" />
+          <div className="theme-glow absolute bottom-[-10%] left-[20%] w-[45vw] h-[45vw] bg-white/5 animation-delay-4000" />
         </motion.div>
-        <motion.div className="flex flex-row mb-16 md:mb-20 space-x-10 md:space-x-20">
-          {secondRow.map((product, idx) => (
-            <ProductCard
-              product={product}
-              translate={translateXReverse}
-              key={product.title}
-              index={idx + 7}
-            />
-          ))}
-        </motion.div>
-      </motion.div>
 
-      {/* Bottom Section Merger */}
-      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
-    </div>
+        <motion.div
+          style={{
+            rotateX,
+            rotateZ,
+            translateY,
+            opacity,
+          }}
+          className="relative z-10"
+        >
+          <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-10">
+            {firstRow.map((product, idx) => (
+              <ProductCard
+                product={product}
+                translate={translateX}
+                key={product.title}
+                index={idx}
+              />
+            ))}
+          </motion.div>
+          <motion.div className="flex flex-row mb-20 space-x-20">
+            {secondRow.map((product, idx) => (
+              <ProductCard
+                product={product}
+                translate={translateXReverse}
+                key={product.title}
+                index={idx + 7}
+              />
+            ))}
+          </motion.div>
+        </motion.div>
+
+        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
+      </div>
+
+      {/* Mobile Version */}
+      <div className="block md:hidden bg-black py-16 px-6 relative overflow-hidden">
+        {/* Glow Effects for Mobile */}
+        <div className="absolute top-[10%] left-[-20%] w-[80vw] h-[80vw] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
+        <div className="absolute bottom-[20%] right-[-20%] w-[80vw] h-[80vw] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
+
+        <div className="relative z-10 max-w-xl mx-auto space-y-12">
+          {/* Mobile Header */}
+          <div className="space-y-4">
+            <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40 block">Studio & Advisory</span>
+            <h1 className="text-5xl font-black text-white italic uppercase tracking-tighter leading-none">
+              The Ultimate <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-[#10B981] to-purple-500">Digital Studio</span>
+            </h1>
+            <p className="text-zinc-500 text-sm leading-relaxed font-medium">
+              We bridge ambitious vision and high-performance execution. An elite digital powerhouse powering custom software, AI analytics, fintech, and strategic growth across the Gulf region.
+            </p>
+          </div>
+
+          {/* Clean Grid of Feature Products */}
+          <div className="grid grid-cols-1 gap-6 pt-4">
+            {mobileProducts.map((product, idx) => (
+              <motion.div
+                key={product.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group shadow-lg"
+              >
+                <a href={product.link} className="block w-full h-full">
+                  <img
+                    src={product.thumbnail}
+                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                    alt={product.title}
+                  />
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10" />
+                  <div className="absolute bottom-6 left-6 z-20">
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1 block">Featured Project</span>
+                    <h3 className="text-lg font-bold text-white tracking-tight">{product.title}</h3>
+                  </div>
+                </a>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

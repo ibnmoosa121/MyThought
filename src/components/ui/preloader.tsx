@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { criticalImages, homePageImages, serviceImages } from "../../lib/asset-loader";
+import { criticalImages } from "../../lib/asset-loader";
 import { services } from "../../data/services";
 import type { ServiceKey } from "../../data/services";
 
@@ -40,15 +40,15 @@ export const Preloader = () => {
         setLoading(true);
 
         // Actual loading logic
+        const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
         const startTime = Date.now();
-        const minLoadingTime = 1500; // Minimum duration for aesthetics
+        const minLoadingTime = isMobile ? 800 : 1200; // Snappy on mobile, aesthetic on desktop
 
         const handleLoad = async () => {
             try {
-                // Preload critical assets for the current page
-                const assetsToLoad = path === "Home"
-                    ? [...criticalImages, ...homePageImages, ...serviceImages]
-                    : criticalImages;
+                // Skip preloading images on mobile to optimize performance scans
+                // On desktop, only preload the single critical background image
+                const assetsToLoad = isMobile ? [] : criticalImages;
 
                 // Track progress roughly
                 await Promise.all(assetsToLoad.map(async (src) => {
@@ -60,6 +60,7 @@ export const Preloader = () => {
                             img.onerror = resolve; // Continue even if one fails
                         });
                     } catch (e) {
+                        // ignore error
                     }
                 }));
 
