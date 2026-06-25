@@ -332,4 +332,19 @@ body {
       opacity: 0.1;
     }
   }
+
+  /* Hides scrollbars across all modern browsers */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fade out edges of horizontally scrolling elements */
+  .mask-horizontal-scroll {
+    mask-image: linear-gradient(to right, transparent, white 24px, white calc(100% - 24px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, white 24px, white calc(100% - 24px), transparent);
+  }
 }

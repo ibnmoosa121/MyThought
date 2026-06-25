@@ -17,17 +17,11 @@ export const HeroParallax = ({
     thumbnail: string;
   }[];
 }) => {
-  const firstRow = products.slice(0, 7);
-  const secondRow = products.slice(7, 14);
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
+  const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -35,6 +29,14 @@ export const HeroParallax = ({
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const firstRow = mounted && isMobile ? products.slice(0, 4) : products.slice(0, 7);
+  const secondRow = mounted && isMobile ? products.slice(4, 8) : products.slice(7, 14);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
 
   const springConfig = { stiffness: 100, damping: 20, bounce: 0 };
 
@@ -82,7 +84,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="flex min-h-[110vh] md:h-[130vh] lg:h-[150vh] py-12 md:py-20 overflow-hidden antialiased relative flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-black"
+      className="flex h-[90vh] md:h-[130vh] lg:h-[150vh] pt-12 pb-2 md:py-20 overflow-hidden antialiased relative flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-black"
     >
       <Header />
 
@@ -124,7 +126,7 @@ export const HeroParallax = ({
               product={product}
               translate={translateXReverse}
               key={product.title}
-              index={idx + 7}
+              index={idx + (mounted && isMobile ? 4 : 7)}
             />
           ))}
         </motion.div>
@@ -139,20 +141,20 @@ import { ScrollRevealText } from "./scroll-reveal-text";
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto pt-16 pb-8 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20">
+    <div className="max-w-xl md:max-w-7xl relative mx-auto pt-16 pb-8 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20 flex flex-col items-start text-left">
       <ScrollRevealText
         text="The Ultimate"
-        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter"
+        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter w-full text-left"
         delay={0.2}
       />
       <ScrollRevealText
         text="Digital Studio"
-        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter"
+        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter w-full text-left"
         delay={0.3}
       />
       <ScrollRevealText
         text="We bridge ambitious vision and high-performance execution. An elite digital powerhouse powering custom software, AI analytics, fintech, and strategic growth across the Gulf region."
-        className="max-w-2xl text-base md:text-xl mt-6 text-zinc-400 font-medium tracking-tight"
+        className="max-w-2xl text-sm md:text-xl mt-6 text-zinc-400 font-medium tracking-tight leading-relaxed text-left"
         delay={0.5}
       />
     </div>

@@ -300,18 +300,18 @@ export default function ServicesTabs() {
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left Column: Tabs */}
-          <div className="lg:w-1/4 flex flex-wrap lg:flex-col gap-4 justify-center lg:justify-start">
+          <div className="lg:w-1/4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-2 lg:gap-6 justify-start scrollbar-none snap-x snap-mandatory mask-horizontal-scroll lg:[mask-image:none] lg:[-webkit-mask-image:none] relative z-20">
             {services.map((service) => (
               <button
                 key={service.id}
                 onClick={() => setActiveTab(service.id)}
                 onMouseEnter={() => prefetchPage(service.id)}
-                className={`text-left text-lg md:text-xl font-bold transition-all duration-300 relative pl-6 py-2 group`}
+                className={`text-left text-base lg:text-xl font-bold transition-all duration-300 relative pl-0 lg:pl-6 py-3 px-4 lg:px-0 lg:py-2 group shrink-0 snap-align-start`}
               >
                 {activeTab === service.id && (
                   <motion.div
                     layoutId="activeTabIndicator"
-                    className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-full ${service.theme.bg} rounded-full shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+                    className={`absolute left-0 bottom-0 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 h-0.5 w-full lg:h-full lg:w-1.5 ${service.theme.bg} rounded-full shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
                     style={{ backgroundColor: service.theme.plasmaColor }}
                   />
                 )}

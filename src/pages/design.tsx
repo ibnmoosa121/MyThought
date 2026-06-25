@@ -47,7 +47,7 @@ const DesignPage = () => {
                 <DesignServicesFrame palette={activePalette} />
                 <DesignShowcaseFrame />
                 <DesignExpertiseFrame />
-                <DesignMethodologyFrame />
+                <DesignMethodologyFrame palette={activePalette} />
                 <DesignContactFrame />
             </div>
         </main>

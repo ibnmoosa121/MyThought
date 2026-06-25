@@ -110,11 +110,14 @@ export const SoftwareServices = () => {
     const horizontalRef = useRef<HTMLDivElement>(null);
 
     const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+    const [activeScrollIdx, setActiveScrollIdx] = useState<number | null>(0);
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
     const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
     const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+    const displayIdx = hoveredIdx !== null ? hoveredIdx : activeScrollIdx;
 
     const handleMouseMove = (e: React.MouseEvent) => {
         mouseX.set(e.clientX);
@@ -146,6 +149,11 @@ export const SoftwareServices = () => {
         tl.to(container, {
             x: () => -getScrollAmount(),
             ease: "none",
+            onUpdate: function () {
+                const progress = this.progress();
+                const index = Math.round(progress * (services.length - 1));
+                setActiveScrollIdx(index);
+            }
         });
 
         // Robust refresh strategy
@@ -176,9 +184,9 @@ export const SoftwareServices = () => {
                 {/* Dynamic Background Image Overlay */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <AnimatePresence mode="wait">
-                        {hoveredIdx !== null ? (
+                        {displayIdx !== null ? (
                             <motion.div
-                                key={`bg-${hoveredIdx}`}
+                                key={`bg-${displayIdx}`}
                                 initial={{ opacity: 0, scale: 1.05 }}
                                 animate={{ opacity: 0.35, scale: 1 }}
                                 exit={{ opacity: 0 }}
@@ -186,7 +194,7 @@ export const SoftwareServices = () => {
                                 className="absolute inset-0"
                             >
                                 <img
-                                    src={services[hoveredIdx].image}
+                                    src={services[displayIdx].image}
                                     alt=""
                                     className="h-full w-full object-cover grayscale brightness-75"
                                 />
@@ -249,26 +257,26 @@ export const SoftwareServices = () => {
                             >
                                 {/* Icon Node */}
                                 <div className={`relative w-24 h-24 flex items-center justify-center z-20`}>
-                                    <ElectricPath index={index} isHovered={hoveredIdx === index} color={service.color} />
+                                    <ElectricPath index={index} isHovered={displayIdx === index} color={service.color} />
 
                                     <motion.div
-                                        className={`relative z-20 w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 cursor-pointer ${hoveredIdx === index
+                                        className={`relative z-20 w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 cursor-pointer ${displayIdx === index
                                             ? "bg-white shadow-[0_0_50px_rgba(255,255,255,0.5)] scale-125"
                                             : "bg-zinc-900 border border-white/10 hover:border-white/30"
                                             }`}
                                         style={{
-                                            backgroundColor: hoveredIdx === index ? service.color : undefined,
-                                            boxShadow: hoveredIdx === index ? `0 0 40px ${service.color}` : undefined
+                                            backgroundColor: displayIdx === index ? service.color : undefined,
+                                            boxShadow: displayIdx === index ? `0 0 40px ${service.color}` : undefined
                                         }}
                                     >
                                         <service.icon
-                                            className={`w-8 h-8 transition-all duration-500 ${hoveredIdx === index ? "text-white rotate-12" : "text-zinc-600"
+                                            className={`w-8 h-8 transition-all duration-500 ${displayIdx === index ? "text-white rotate-12" : "text-zinc-600"
                                                 }`}
                                         />
                                     </motion.div>
 
                                     {/* Pulse Rings */}
-                                    {hoveredIdx === index && (
+                                    {displayIdx === index && (
                                         <>
                                             <motion.div
                                                 className="absolute inset-0 rounded-full border border-white/50"
@@ -291,17 +299,17 @@ export const SoftwareServices = () => {
                                     className={`mt-10 text-center w-full ${index % 2 === 0 ? "mb-auto" : "mt-auto"
                                         }`}
                                     animate={{
-                                        opacity: hoveredIdx === index ? 1 : 0.3,
-                                        y: hoveredIdx === index ? 0 : (index % 2 === 0 ? 10 : -10)
+                                        opacity: displayIdx === index ? 1 : 0.3,
+                                        y: displayIdx === index ? 0 : (index % 2 === 0 ? 10 : -10)
                                     }}
                                 >
                                     <h3
                                         className="text-3xl font-black uppercase italic tracking-tighter"
-                                        style={{ color: hoveredIdx === index ? service.color : "#ffffff" }}
+                                        style={{ color: displayIdx === index ? service.color : "#ffffff" }}
                                     >
                                         {service.title}
                                     </h3>
-                                    <p className={`mt-4 text-zinc-300 text-sm max-w-[250px] mx-auto leading-relaxed transition-all duration-500 ${hoveredIdx === index ? "opacity-100 block translate-y-0" : "opacity-0 invisible translate-y-4"
+                                    <p className={`mt-4 text-zinc-300 text-sm max-w-[250px] mx-auto leading-relaxed transition-all duration-500 ${displayIdx === index ? "opacity-100 block translate-y-0" : "opacity-0 invisible translate-y-4"
                                         }`}>
                                         {service.description}
                                     </p>

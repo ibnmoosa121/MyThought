@@ -1,6 +1,7 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { DesignPalette } from "../../../../data/design-palettes";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,45 +28,92 @@ const steps = [
     }
 ];
 
-const MethodologyStep = ({ step }: { step: typeof steps[0] }) => {
-    const numRef = useRef<HTMLSpanElement>(null);
-    const titleRef = useRef<HTMLHeadingElement>(null);
-    const descRef = useRef<HTMLParagraphElement>(null);
-
-    const onMouseEnter = () => {
-        gsap.to(numRef.current, { color: "rgba(34, 211, 238, 0.1)", duration: 0.5 });
-        gsap.to(titleRef.current, { x: 8, duration: 0.5, ease: "power2.out" });
-        gsap.to(descRef.current, { color: "#d4d4d8", duration: 0.5 });
-    };
-
-    const onMouseLeave = () => {
-        gsap.to(numRef.current, { color: "rgba(255, 255, 255, 0.05)", duration: 0.5 });
-        gsap.to(titleRef.current, { x: 0, duration: 0.5, ease: "power2.inOut" });
-        gsap.to(descRef.current, { color: "#71717a", duration: 0.5 });
-    };
+const MethodologyStep = ({ 
+    step, 
+    idx, 
+    palette 
+}: { 
+    step: typeof steps[0]; 
+    idx: number; 
+    palette: DesignPalette; 
+}) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const stepColor = palette.colors[idx % palette.colors.length];
 
     return (
         <div
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            className="methodology-step relative flex flex-col gap-4 group cursor-pointer"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="methodology-step relative flex flex-col justify-between min-h-[200px] p-6 md:p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-white/10 backdrop-blur-xl transition-all duration-500 group cursor-pointer overflow-hidden w-full max-w-md mx-auto sm:max-w-none"
+            style={{
+                borderColor: isHovered ? `${stepColor}33` : "rgba(255, 255, 255, 0.05)",
+                backgroundColor: isHovered ? "rgba(255, 255, 255, 0.04)" : "rgba(255, 255, 255, 0.02)",
+                boxShadow: isHovered ? `0 15px 30px -15px ${stepColor}33` : "none"
+            }}
         >
-            <span ref={numRef} className="step-num-bg text-8xl md:text-[10rem] font-black text-white/5 leading-none transition-colors">
+            {/* Radial glow background on hover */}
+            <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem] pointer-events-none"
+                style={{
+                    background: `radial-gradient(circle at 80% 80%, ${stepColor}15, transparent 65%)`
+                }}
+            />
+
+            {/* Top decorative accent line */}
+            <div 
+                className="absolute top-0 left-0 w-full h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left pointer-events-none"
+                style={{
+                    background: `linear-gradient(to right, ${stepColor}, transparent)`
+                }}
+            />
+
+            <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                    {/* Phase number pill */}
+                    <span 
+                        className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase border transition-all duration-500"
+                        style={{
+                            borderColor: isHovered ? `${stepColor}40` : "rgba(255, 255, 255, 0.1)",
+                            color: isHovered ? stepColor : "#a1a1aa",
+                            backgroundColor: isHovered ? `${stepColor}0d` : "transparent"
+                        }}
+                    >
+                        Phase {step.num}
+                    </span>
+                </div>
+
+                <div className="mt-8">
+                    <h3 
+                        className="text-2xl md:text-3xl font-black text-white italic uppercase tracking-tighter transition-all duration-500 group-hover:translate-x-2"
+                        style={{
+                            textShadow: isHovered ? `0 0 15px ${stepColor}40` : "none"
+                        }}
+                    >
+                        {step.title}
+                    </h3>
+                    <p 
+                        className="text-zinc-500 mt-2 text-sm leading-relaxed max-w-[280px] group-hover:text-zinc-300 transition-colors duration-500"
+                    >
+                        {step.desc}
+                    </p>
+                </div>
+            </div>
+
+            {/* Giant watermark step number with GSAP parallax class */}
+            <span 
+                style={{
+                    color: isHovered ? `${stepColor}15` : "rgba(255, 255, 255, 0.02)",
+                    textShadow: isHovered ? `0 0 20px ${stepColor}10` : "none"
+                }}
+                className="step-num-bg absolute right-4 bottom-2 text-8xl md:text-9xl font-black leading-none transition-all duration-700 select-none pointer-events-none italic"
+            >
                 {step.num}
             </span>
-            <div className="absolute top-1/2 -translate-y-1/4 left-8 md:left-12">
-                <h3 ref={titleRef} className="text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter mb-2">
-                    {step.title}
-                </h3>
-                <p ref={descRef} className="text-zinc-500 max-w-[220px] leading-relaxed text-base md:text-sm lg:text-base transition-colors">
-                    {step.desc}
-                </p>
-            </div>
         </div>
     );
 };
 
-export const DesignMethodologyFrame = () => {
+export const DesignMethodologyFrame = ({ palette }: { palette: DesignPalette }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const textSideRef = useRef<HTMLDivElement>(null);
     const stepsGridRef = useRef<HTMLDivElement>(null);
@@ -142,9 +190,9 @@ export const DesignMethodologyFrame = () => {
                         <div className="w-24 h-2 bg-gradient-to-r from-[#F59E0B] to-[#F43F5E] rounded-full mx-auto lg:mx-0" />
                     </div>
 
-                    <div ref={stepsGridRef} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 lg:gap-x-20 w-full lg:flex-1">
+                    <div ref={stepsGridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-10 w-full lg:flex-1">
                         {steps.map((step, idx) => (
-                            <MethodologyStep key={idx} step={step} />
+                            <MethodologyStep key={idx} step={step} idx={idx} palette={palette} />
                         ))}
                     </div>
                 </div>
