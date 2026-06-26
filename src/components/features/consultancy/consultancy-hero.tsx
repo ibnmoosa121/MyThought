@@ -8,7 +8,7 @@ const consultants = [
         id: "cap",
         name: "Human Capital",
         specialty: "TALENT ORCHESTRATION",
-        image: "/assets/images/gulf-human-capital.png",
+        image: "/assets/images/gulf-human-capital.webp",
         color: "#10B981", // Islamic Emerald
         keyword: "STRATEGY"
     },
@@ -16,7 +16,7 @@ const consultants = [
         id: "ops",
         name: "Sovereign Ops",
         specialty: "STRATEGIC ADVISORY",
-        image: "/assets/images/gulf-sovereign-ops.png",
+        image: "/assets/images/gulf-sovereign-ops.webp",
         color: "#004D40", // Islamic Emerald
         keyword: "INSIGHT"
     },
@@ -24,7 +24,7 @@ const consultants = [
         id: "reg",
         name: "Institutional Reg",
         specialty: "GOVERNANCE & RISK",
-        image: "/assets/images/gulf-institutional-reg.png",
+        image: "/assets/images/gulf-institutional-reg.webp",
         color: "#34D399", // Light Emerald
         keyword: "COMPLY"
     },
@@ -32,7 +32,7 @@ const consultants = [
         id: "dig",
         name: "Digital Frontier",
         specialty: "TRANSFORMATION",
-        image: "/assets/images/gulf-digital-frontier.png",
+        image: "/assets/images/gulf-digital-frontier.webp",
         color: "#14B8A6", // Teal
         keyword: "EVOLVE"
     },
@@ -40,7 +40,7 @@ const consultants = [
         id: "exp",
         name: "Regional Growth",
         specialty: "MARKET ASCENSION",
-        image: "/assets/images/gulf-regional-growth.png",
+        image: "/assets/images/gulf-regional-growth.webp",
         color: "#059669",
         keyword: "EXPAND"
     }
