@@ -3,12 +3,15 @@
 import { motion } from "framer-motion";
 import { WavyBackground } from "../../ui/wavy-background";
 import { Sparkles } from "lucide-react";
+import DecryptedText from "../../ui/decrypted-text";
+import { Spotlight } from "../../ui/spotlight";
 
 export const AboutHero = () => {
     return (
         <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-20">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
+                <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
                 <WavyBackground color="#ffffff" className="opacity-10" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 blur-[120px] rounded-full" />
             </div>
@@ -22,14 +25,31 @@ export const AboutHero = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-[0.3em] mb-12"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-[0.3em] mb-12 cursor-default select-none"
                     >
-                        <Sparkles size={14} />
-                        Our Identity
+                        <Sparkles size={14} className="text-zinc-400 animate-pulse" />
+                        <DecryptedText 
+                            text="Our Identity" 
+                            animateOn="hover" 
+                            speed={50} 
+                            maxIterations={10} 
+                            className="font-black"
+                            encryptedClassName="text-zinc-500 font-mono"
+                        />
                     </motion.div>
 
                     <h1 className="text-6xl md:text-9xl lg:text-[12rem] font-black text-white leading-[0.8] tracking-[-0.05em] uppercase italic mb-8">
-                        The <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-white">Genesis</span>
+                        The{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-white inline-block">
+                            <DecryptedText
+                                text="Genesis"
+                                animateOn="view"
+                                speed={40}
+                                maxIterations={12}
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-white"
+                                encryptedClassName="text-zinc-600 font-mono"
+                            />
+                        </span>
                     </h1>
 
                     <p className="text-zinc-400 text-lg md:text-2xl font-medium max-w-3xl mx-auto leading-relaxed mb-12">
@@ -43,10 +63,19 @@ export const AboutHero = () => {
             <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
             >
                 <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-white/20">The Story Begins</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-white/60 transition-colors">
+                    <DecryptedText
+                        text="The Story Begins"
+                        animateOn="hover"
+                        speed={50}
+                        maxIterations={8}
+                        className="text-[10px]"
+                        encryptedClassName="text-zinc-700"
+                    />
+                </span>
             </motion.div>
         </section>
     );

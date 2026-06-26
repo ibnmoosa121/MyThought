@@ -70,8 +70,8 @@ const SvgShape = ({ type, color }: { type: 'circle' | 'square' | 'triangle', col
     }, []);
 
     return (
-        <div ref={shapeRef} className="inline-block mx-4 align-middle">
-            <svg width="40" height="40" viewBox="0 0 40 40" className="opacity-80">
+        <div ref={shapeRef} className="inline-block mx-1.5 md:mx-4 align-middle">
+            <svg viewBox="0 0 40 40" className="w-6 h-6 md:w-10 md:h-10 opacity-80">
                 {type === 'circle' && <circle cx="20" cy="20" r="15" fill={color} />}
                 {type === 'square' && <rect x="5" y="5" width="30" height="30" fill={color} rx="4" />}
                 {type === 'triangle' && <path d="M20 5 L35 35 L5 35 Z" fill={color} />}
@@ -113,7 +113,7 @@ export const DesignHeroFrame = ({ palette }: { palette: DesignPalette }) => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black pt-24 pb-16 md:pt-32 md:pb-20">
+        <section ref={containerRef} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black pt-36 pb-20 md:pt-40 md:pb-24">
             {/* Background Image with Parallax */}
             <motion.div
                 className="absolute inset-0 z-0 opacity-30"
@@ -143,7 +143,7 @@ export const DesignHeroFrame = ({ palette }: { palette: DesignPalette }) => {
 
             <div className="relative z-10 text-center px-6 w-full">
                 <div className="overflow-visible inline-block">
-                    <h1 className="text-[clamp(3.5rem,15vw,12rem)] font-black text-white italic leading-[0.8] tracking-tighter uppercase mb-6 flex flex-col items-center">
+                    <h1 className="text-[clamp(2.5rem,12vw,12rem)] font-black text-white italic leading-[0.8] tracking-tighter uppercase mb-6 flex flex-col items-center">
                         <div className="flex items-center">
                             {titleLine1.map((char, i) => (
                                 <span key={i} className="char-entrance inline-block">

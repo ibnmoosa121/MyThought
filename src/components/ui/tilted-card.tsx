@@ -17,6 +17,7 @@ interface TiltedCardProps {
     overlayContent?: React.ReactNode;
     displayOverlayContent?: boolean;
     mediaClassName?: string;
+    aspectRatioClassName?: string;
 }
 
 const springValues: SpringOptions = {
@@ -39,7 +40,8 @@ export default function TiltedCard({
     showTooltip = true,
     overlayContent = null,
     displayOverlayContent = false,
-    mediaClassName = ''
+    mediaClassName = '',
+    aspectRatioClassName = 'aspect-video'
 }: TiltedCardProps) {
     const ref = useRef<HTMLElement>(null);
     const x = useMotionValue(0);
@@ -126,7 +128,7 @@ export default function TiltedCard({
                     scale
                 }}
             >
-                <div className="relative w-full aspect-video rounded-[24px] md:rounded-[40px] overflow-hidden will-change-transform [transform:translateZ(0)] border border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-white/40 transition-colors duration-500 bg-zinc-950">
+                <div className={`relative w-full ${aspectRatioClassName} rounded-[24px] md:rounded-[40px] overflow-hidden will-change-transform [transform:translateZ(0)] border border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-white/40 transition-colors duration-500 bg-zinc-950`}>
                     {/* Glass Reflection Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none z-10" />
 

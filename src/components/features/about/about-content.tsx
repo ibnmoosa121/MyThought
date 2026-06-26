@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Briefcase, Zap, Globe, Target, MapPin, Layers, Building2 } from "lucide-react";
 import { ScrollRevealText } from "../../ui/scroll-reveal-text";
 import TiltedCard from "../../ui/tilted-card";
+import DecryptedText from "../../ui/decrypted-text";
+import InteractiveOrbitalHub from "../../ui/interactive-orbital-hub";
 
 const stats = [
     { label: "Regional HQ", value: "Jeddah", icon: MapPin, sub: "Heart of the Gulf" },
@@ -36,19 +38,19 @@ const sections = [
     { 
         name: "Software & AI", 
         role: "Digital Engineering", 
-        image: "https://images.unsplash.com/photo-1582200232537-88ab913bfd3c?auto=format&fit=crop&q=80&w=800", // Gulf Architecture
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2069&auto=format&fit=crop", // Code Editor
         caption: "Building Robust Systems"
     },
     { 
         name: "Fintech & Ventures", 
         role: "Financial Innovation", 
-        image: "https://images.unsplash.com/photo-1548810237-7f9e8a8aeb4b?auto=format&fit=crop&q=80&w=800", // Dubai/Gulf Tech
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop", // Fintech Chart
         caption: "Empowering Economies"
     },
     { 
         name: "Consultancy & Design", 
         role: "Strategic Execution", 
-        image: "https://images.unsplash.com/photo-1628185852504-20a7b45a4a58?auto=format&fit=crop&q=80&w=800", // Riyadh Skyline
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2069&auto=format&fit=crop", // Strategy workspace
         caption: "Crafting Experiences"
     }
 ];
@@ -92,11 +94,12 @@ export const AboutContent = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1, duration: 0.6 }}
-                                className={`p-10 rounded-[2.5rem] bg-zinc-900/50 border border-white/5 backdrop-blur-sm relative overflow-hidden group ${i === 0 ? "md:col-span-2" : ""}`}
+                                className={`p-10 rounded-[2.5rem] bg-zinc-900/50 border border-white/5 backdrop-blur-sm relative overflow-hidden group ${i === 0 ? "md:col-span-2" : ""} hover:border-white/20 hover:bg-zinc-900/70 transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,255,255,0.03)]`}
                             >
                                 <div className="absolute -top-10 -right-10 p-10 opacity-5 group-hover:opacity-10 group-hover:rotate-12 group-hover:scale-125 transition-all duration-700">
                                     <stat.icon size={180} />
                                 </div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                                 <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
                                     <span className="text-5xl md:text-7xl font-black text-white italic mb-2 tracking-tighter">{stat.value}</span>
                                     <p className="text-xs font-black uppercase tracking-[0.3em] text-white/70">{stat.label}</p>
@@ -133,7 +136,16 @@ export const AboutContent = () => {
                                         <value.icon size={36} />
                                     </div>
                                     <div className="space-y-4">
-                                        <h3 className="text-2xl lg:text-3xl font-black text-white italic uppercase tracking-tight">{value.title}</h3>
+                                        <h3 className="text-2xl lg:text-3xl font-black text-white italic uppercase tracking-tight">
+                                            <DecryptedText
+                                                text={value.title}
+                                                animateOn="hover"
+                                                speed={40}
+                                                maxIterations={8}
+                                                className="text-2xl lg:text-3xl font-black text-white italic uppercase tracking-tight"
+                                                encryptedClassName="text-zinc-500 font-mono"
+                                            />
+                                        </h3>
                                         <p className="text-zinc-400 leading-relaxed text-base font-medium">
                                             {value.desc}
                                         </p>
@@ -182,10 +194,20 @@ export const AboutContent = () => {
                                         scaleOnHover={1.05}
                                         showTooltip={true}
                                         displayOverlayContent={true}
+                                        aspectRatioClassName="aspect-[3/4]"
                                     />
                                 </div>
                                 <div className="text-center">
-                                    <h3 className="text-xl font-black text-white italic uppercase tracking-tight">{section.name}</h3>
+                                    <h3 className="text-xl font-black text-white italic uppercase tracking-tight">
+                                        <DecryptedText
+                                            text={section.name}
+                                            animateOn="hover"
+                                            speed={40}
+                                            maxIterations={8}
+                                            className="text-xl font-black text-white italic uppercase tracking-tight"
+                                            encryptedClassName="text-zinc-500 font-mono"
+                                        />
+                                    </h3>
                                     <p className="text-sm font-bold text-zinc-500 uppercase tracking-widest mt-1">{section.role}</p>
                                 </div>
                             </motion.div>
@@ -194,20 +216,42 @@ export const AboutContent = () => {
                 </div>
 
                 {/* HQ Address Details */}
-                <div className="relative rounded-[3.5rem] bg-zinc-900/40 border border-white/10 backdrop-blur-xl p-12 md:p-24 overflow-hidden mb-24 text-center">
-                    <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+                <div className="relative rounded-[3.5rem] bg-zinc-900/40 border border-white/10 backdrop-blur-xl p-10 md:p-20 overflow-hidden mb-24">
+                    <div className="absolute -bottom-20 -right-20 p-10 opacity-5 pointer-events-none">
                         <Building2 size={300} />
                     </div>
-                    <div className="relative z-10 max-w-3xl mx-auto space-y-8">
-                        <div className="w-20 h-20 mx-auto rounded-3xl bg-white/5 flex items-center justify-center text-white border border-white/10 mb-8">
-                            <MapPin size={36} />
+                    <div className="relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+                        <div className="lg:col-span-7 space-y-8 text-left">
+                            <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-white border border-white/10 mb-4 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
+                                <MapPin size={28} />
+                            </div>
+                            <div className="space-y-4">
+                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40">Our Hub</span>
+                                <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                                    Jeddah <br />
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-500">Headquarters</span>
+                                </h2>
+                            </div>
+                            <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl">
+                                Positioned in the commercial capital of Saudi Arabia, our headquarters connects global talent with local insights. We operate at the vibrant intersection of culture and technology to deliver transformative digital solutions across the Gulf.
+                            </p>
+                            <div className="pt-4 flex flex-wrap gap-3">
+                                <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-white font-black uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default">
+                                    Saudi Arabia
+                                </span>
+                                <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-white font-black uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default">
+                                    Jeddah Hub
+                                </span>
+                                <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-white font-black uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default">
+                                    Gulf Coverage
+                                </span>
+                            </div>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
-                            Jeddah Headquarters
-                        </h2>
-                        <p className="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                            Positioned in the commercial capital of Saudi Arabia, our headquarters connects global talent with local insights. We operate at the vibrant intersection of culture and technology to deliver transformative digital solutions across the Gulf.
-                        </p>
+                        <div className="lg:col-span-5 flex justify-center items-center">
+                            <div className="w-full max-w-[340px] aspect-square relative flex items-center justify-center p-6 group transition-all duration-500">
+                                <InteractiveOrbitalHub width={340} height={340} className="w-full h-full scale-[1.3] opacity-80 hover:opacity-100 transition-opacity duration-500 cursor-grab active:cursor-grabbing" />
+                            </div>
+                        </div>
                     </div>
                 </div>
 

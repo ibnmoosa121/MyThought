@@ -30,8 +30,8 @@ export const HeroParallax = ({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const firstRow = mounted && isMobile ? products.slice(0, 4) : products.slice(0, 7);
-  const secondRow = mounted && isMobile ? products.slice(4, 8) : products.slice(7, 14);
+  const firstRow = mounted && isMobile ? products.slice(0, 3) : products.slice(0, 7);
+  const secondRow = mounted && isMobile ? products.slice(3, 6) : products.slice(7, 14);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -84,7 +84,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="flex h-[90vh] md:h-[130vh] lg:h-[150vh] pt-12 pb-2 md:py-20 overflow-hidden antialiased relative flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-black"
+      className="flex min-h-[700px] h-[95vh] md:h-[130vh] lg:h-[150vh] pt-12 pb-2 md:py-20 overflow-hidden antialiased relative flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-black"
     >
       <Header />
 
@@ -126,7 +126,7 @@ export const HeroParallax = ({
               product={product}
               translate={translateXReverse}
               key={product.title}
-              index={idx + (mounted && isMobile ? 4 : 7)}
+              index={idx + (mounted && isMobile ? 3 : 7)}
             />
           ))}
         </motion.div>
@@ -141,7 +141,7 @@ import { ScrollRevealText } from "./scroll-reveal-text";
 
 export const Header = () => {
   return (
-    <div className="max-w-xl md:max-w-7xl relative mx-auto pt-16 pb-8 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20 flex flex-col items-start text-left">
+    <div className="max-w-xl md:max-w-7xl relative mx-auto pt-32 pb-6 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20 flex flex-col items-start text-left">
       <ScrollRevealText
         text="The Ultimate"
         className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter w-full text-left"
@@ -205,7 +205,7 @@ export const ProductCard = ({
       }}
       whileTap={{ scale: 0.95 }}
       key={product.title}
-      className="group/product h-40 w-[14rem] sm:h-56 sm:w-[18rem] md:h-64 md:w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
+      className="group/product h-48 w-[16rem] sm:h-56 sm:w-[18rem] md:h-64 md:w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
     >
       <motion.div
         className="h-full w-full will-change-transform"
