@@ -6,11 +6,14 @@ interface ScrollRevealTextProps {
   className?: string;
   delay?: number;
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
+  animateOnMount?: boolean;
 }
 
-export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = 'h2' }: ScrollRevealTextProps) => {
+export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = 'h2', animateOnMount = false }: ScrollRevealTextProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
+
+  const shouldAnimate = animateOnMount || isInView;
 
   const container: Variants = {
     hidden: { opacity: 0 },
@@ -54,7 +57,7 @@ export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = '
       ref={ref}
       variants={container}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={shouldAnimate ? "visible" : "hidden"}
       className={className}
     >
       {words.map((word, index) => (

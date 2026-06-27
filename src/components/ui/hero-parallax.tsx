@@ -148,16 +148,19 @@ export const Header = () => {
         text="The Ultimate"
         className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter w-full text-left"
         delay={0.2}
+        animateOnMount={true}
       />
       <ScrollRevealText
         text="Digital Studio"
         className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter w-full text-left"
         delay={0.3}
+        animateOnMount={true}
       />
       <ScrollRevealText
         text="We bridge ambitious vision and high-performance execution. An elite digital powerhouse powering custom software, AI analytics, fintech, and strategic growth across the Gulf region."
         className="max-w-2xl text-sm md:text-xl mt-6 text-zinc-400 font-medium tracking-tight leading-relaxed text-left"
         delay={0.5}
+        animateOnMount={true}
       />
     </div>
   );
@@ -188,12 +191,17 @@ export const ProductCard = ({
         opacity: 0,
         scale: 0.9,
       }}
-      whileInView={{
+      animate={isCritical ? {
         y: 0,
         opacity: 1,
         scale: 1,
-      }}
-      viewport={{ once: true, margin: "-20px" }}
+      } : undefined}
+      whileInView={!isCritical ? {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      } : undefined}
+      viewport={!isCritical ? { once: true, margin: "-20px" } : undefined}
       transition={{
         type: "spring",
         stiffness: 260,
