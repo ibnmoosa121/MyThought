@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/logistics" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-primary transition-colors inline-block hover:translate-x-1 duration-200">
-                  Global Logistics & Supply Chain
+                  Logistics & Fleet
                 </Link>
               </li>
             </ul>

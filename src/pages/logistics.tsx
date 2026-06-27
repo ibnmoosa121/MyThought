@@ -7,7 +7,7 @@ import RotatingEarth from '../components/ui/wireframe-dotted-globe';
 
 const LogisticsPage = () => {
     useEffect(() => {
-        document.title = "Global Logistics & Supply Chain | MyThought";
+        document.title = "Logistics & Fleet | MyThought";
     }, []);
 
     return (
@@ -26,7 +26,7 @@ const LogisticsPage = () => {
                     className="max-w-6xl mx-auto z-10 text-center mb-8 lg:mb-12"
                 >
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-cyan-400">
-                        Global Logistics & Supply Chain
+                        Logistics & Fleet
                     </h1>
                     <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed max-w-4xl mx-auto">
                         Empowering global trade with intelligent supply chain optimization, secure worldwide freight forwarding, and seamless international customs brokerage. We deliver end-to-end logistics solutions designed for modern enterprises.

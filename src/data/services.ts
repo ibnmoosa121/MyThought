@@ -182,8 +182,8 @@ export const services: Record<ServiceKey, ServiceContent> = {
   },
   logistics: {
     key: 'logistics',
-    title: 'Global Logistics & Supply Chain',
-    subtitle: 'Global logistics and supply chain management through immersive tracking',
+    title: 'Logistics & Fleet',
+    subtitle: 'Logistics and fleet management through immersive tracking',
     bullets: [
       'Real-time Vessel Tracking & Status',
       'Automated Customs Clearance & Compliance',

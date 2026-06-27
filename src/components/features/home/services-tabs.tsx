@@ -240,8 +240,8 @@ const services = [
   },
   {
     id: 'logistics',
-    tagline: 'Precision Supply Chain',
-    label: 'Global Logistics & Supply Chain',
+    tagline: 'Precision Logistics & Fleet',
+    label: 'Logistics & Fleet',
     description: 'We orchestrate complex supply chains with absolute precision. From international freight forwarding to last-mile delivery, our logistics solutions are engineered for speed, reliability, and full transparency.',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=75&w=800&auto=format&fit=crop',
     theme: {

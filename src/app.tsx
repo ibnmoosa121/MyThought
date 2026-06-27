@@ -10,7 +10,7 @@ import { Preloader } from './components/ui/preloader'
 // Deployment Trigger: 2026-04-30-19-25
 
 // Lazy load page components
-const MainContent = lazy(() => import('./pages/home'))
+import MainContent from './pages/home'
 const SoftwarePage = lazy(() => import('./pages/software'))
 const ConsultancyPage = lazy(() => import('./pages/consultancy'))
 const TalentPage = lazy(() => import('./pages/talent'))
