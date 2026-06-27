@@ -38,19 +38,19 @@ const sections = [
     { 
         name: "Software & AI", 
         role: "Digital Engineering", 
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2069&auto=format&fit=crop", // Code Editor
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=75&w=800&auto=format&fit=crop", // Code Editor
         caption: "Building Robust Systems"
     },
     { 
         name: "Fintech & Ventures", 
         role: "Financial Innovation", 
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop", // Fintech Chart
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=75&w=800&auto=format&fit=crop", // Fintech Chart
         caption: "Empowering Economies"
     },
     { 
         name: "Consultancy & Design", 
         role: "Strategic Execution", 
-        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2069&auto=format&fit=crop", // Strategy workspace
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=75&w=800&auto=format&fit=crop", // Strategy workspace
         caption: "Crafting Experiences"
     }
 ];

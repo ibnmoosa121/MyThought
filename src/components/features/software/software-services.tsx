@@ -24,49 +24,49 @@ const services = [
         description: "Seamlessly connecting your software ecosystems for maximum efficiency and data flow.",
         icon: Cpu,
         color: "#3B82F6",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Custom Software",
         description: "Tailored solutions built from the ground up to address your unique business challenges.",
         icon: Code2,
         color: "#10B981",
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Mobile Apps",
         description: "Scalable and intuitive mobile experiences developed for both iOS and Android platforms.",
         icon: Smartphone,
         color: "#F59E0B",
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Web Platforms",
         description: "Modern, responsive, and high-performance web applications built with the latest technologies.",
         icon: Globe,
         color: "#EF4444",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Managed Support",
         description: "Comprehensive end-to-end technical management to ensure your systems perform at their peak.",
         icon: Settings,
         color: "#8B5CF6",
-        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Cloud Logic",
         description: "Enhancing your cloud infrastructure for better performance, security, and cost-efficiency.",
         icon: Cloud,
         color: "#06B6D4",
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "DevOps Core",
         description: "Automating your software delivery pipeline for faster, more reliable releases.",
         icon: Terminal,
         color: "#EC4899",
-        image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=75&w=1200&auto=format&fit=crop"
     }
 ];
 
@@ -197,6 +197,8 @@ export const SoftwareServices = () => {
                                     src={services[displayIdx].image}
                                     alt=""
                                     className="h-full w-full object-cover grayscale brightness-75"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-black/30" />
                             </motion.div>

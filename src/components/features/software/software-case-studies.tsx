@@ -10,7 +10,7 @@ const caseStudies = [
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/2560px-Stripe_Logo%2C_revised_2016.svg.png",
         title: "Next-Gen Payment Infrastructure",
         description: "Scaling financial operations with modular architecture and high-availability systems to support millions of transactions per second.",
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=75&w=1200&auto=format&fit=crop",
         themeColor: "#635bff"
     }
 ];
@@ -56,6 +56,8 @@ export const SoftwareCaseStudies = () => {
                                     src={study.image}
                                     alt={study.brand}
                                     className="w-full h-full object-cover opacity-50 transition-transform duration-1000 group-hover:scale-110"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
                             </div>

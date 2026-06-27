@@ -107,7 +107,7 @@ export const TalentRegionSwitcher = () => {
                     <div className="flex-1 relative rounded-[3rem] bg-zinc-950 border border-white/5 p-8 md:p-16 overflow-hidden flex flex-col justify-end">
                         {/* Background Map Faded */}
                         <div className="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center -translate-y-10">
-                            <div className="w-[150%] aspect-video bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2067&auto=format&fit=crop')] bg-cover bg-center grayscale scale-110" />
+                            <div className="w-[150%] aspect-video bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=75&w=1200&auto=format&fit=crop')] bg-cover bg-center grayscale scale-110" />
                         </div>
 
                         <AnimatePresence mode="wait">

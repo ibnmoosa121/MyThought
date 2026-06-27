@@ -10,35 +10,35 @@ const steps = [
     desc: "Scalable Microservices & Serverless",
     color: "bg-blue-500",
     tech: ["AWS Lambda", "Kubernetes", "Docker", "Terraform", "Microservices"],
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=75&w=1200&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=75&w=800&auto=format&fit=crop"
   },
   {
     title: "Security & Compliance",
     desc: "DevSecOps & Data Protection",
     color: "bg-purple-500",
     tech: ["OAuth 2.0", "SOC2 Compliance", "Penetration Testing", "WAF", "Encryption"],
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=75&w=1200&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=75&w=800&auto=format&fit=crop"
   },
   {
     title: "High-Performance Data",
     desc: "Real-time Processing & Analytics",
     color: "bg-indigo-500",
     tech: ["Redis", "Kafka", "PostgreSQL", "GraphQL", "Edge Caching"],
-    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=75&w=1200&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=75&w=800&auto=format&fit=crop"
   },
   {
     title: "AI-Driven Engineering",
     desc: "Smart Automation & Prediction",
     tech: ["OpenAI API", "TensorFlow", "Vector Search", "RAG Pipelines", "AutoML"],
     color: "bg-pink-500",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=75&w=1200&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=75&w=800&auto=format&fit=crop"
   },
   {
     title: "Global Scalability",
     desc: "Multi-Region Availability",
     color: "bg-emerald-500",
     tech: ["CDN", "Load Balancing", "Auto-Scaling", "Geo-Replication", "99.99% Uptime"],
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=75&w=1200&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=75&w=800&auto=format&fit=crop"
   },
 ];
 
@@ -163,6 +163,8 @@ export default function DeliveryProcess() {
                     src={steps[activeStep].image}
                     alt={steps[activeStep].title}
                     className="w-full h-full object-cover opacity-80"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 

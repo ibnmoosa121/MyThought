@@ -147,6 +147,8 @@ export default function TiltedCard({
                             src={imageSrc}
                             alt={altText}
                             className={`w-full h-full object-cover ${mediaClassName}`}
+                            loading="lazy"
+                            decoding="async"
                         />
                     ) : (
                         <div className="w-full h-full bg-zinc-900" />

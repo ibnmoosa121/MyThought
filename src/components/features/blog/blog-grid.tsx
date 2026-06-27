@@ -11,7 +11,7 @@ const blogPosts = [
         date: 'June 15, 2023',
         author: 'Jane Smith',
         category: 'Technology',
-        image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=75&w=800&auto=format&fit=crop'
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const blogPosts = [
         date: 'May 22, 2023',
         author: 'Mark Johnson',
         category: 'Design',
-        image: 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=2000&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=75&w=800&auto=format&fit=crop'
     },
     {
         id: 3,
@@ -29,7 +29,7 @@ const blogPosts = [
         date: 'April 10, 2023',
         author: 'Sarah Williams',
         category: 'Business',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=800&auto=format&fit=crop'
     }
 ];
 
@@ -47,9 +47,11 @@ export const BlogGrid = () => {
                     <div className="grid lg:grid-cols-2">
                         <div className="h-[400px] lg:h-[600px] relative overflow-hidden">
                             <img
-                                src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop"
+                                src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=75&w=1200&auto=format&fit=crop"
                                 alt="Featured"
                                 className="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700"
+                                loading="lazy"
+                                decoding="async"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent hidden lg:block" />
                         </div>
@@ -100,6 +102,8 @@ export const BlogGrid = () => {
                                     src={post.image}
                                     alt={post.title}
                                     className="w-full h-full object-cover grayscale brightness-75 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                             <div className="px-4 space-y-4">

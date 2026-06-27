@@ -12,28 +12,28 @@ const servicesData = [
         title: "UX/UI Design",
         desc: "High-fidelity prototypes and precision interfaces.",
         icon: Users,
-        image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=75&w=800&auto=format&fit=crop"
     },
     {
         id: "web",
         title: "Web Design",
         desc: "Performance-first digital architecture.",
         icon: Layout,
-        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=75&w=800&auto=format&fit=crop"
     },
     {
         id: "brand",
         title: "Brand Identity",
         desc: "Iconic visual systems and storytelling.",
         icon: Target,
-        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=75&w=800&auto=format&fit=crop"
     },
     {
         id: "motion",
         title: "Motion Graphics",
         desc: "Fluid aesthetics and interactive flows.",
         icon: Box,
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=75&w=800&auto=format&fit=crop"
     }
 ];
 
@@ -116,6 +116,8 @@ const ServiceCard = ({ service, color }: { service: typeof servicesData[0], colo
                     src={service.image}
                     alt={service.title}
                     className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.4] transition-all duration-700"
+                    loading="lazy"
+                    decoding="async"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-95" />

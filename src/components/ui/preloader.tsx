@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { criticalImages } from "../../lib/asset-loader";
@@ -9,10 +9,11 @@ import type { ServiceKey } from "../../data/services";
 
 export const Preloader = () => {
     const location = useLocation();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [pageName, setPageName] = useState("");
     const [themeColor, setThemeColor] = useState("#ffffff");
     const [mounted, setMounted] = useState(false);
+    const isFirstLoad = useRef(true);
 
     useEffect(() => {
         setMounted(true);
@@ -20,6 +21,12 @@ export const Preloader = () => {
 
     useEffect(() => {
         if (!mounted) return;
+
+        // Skip preloading on the initial page load to avoid blocking visual paint (LCP optimization)
+        if (isFirstLoad.current) {
+            isFirstLoad.current = false;
+            return;
+        }
 
         // Determine page name and theme color dynamically from central services data
         const path = location.pathname.split("/").filter(Boolean)[0] || "Home";

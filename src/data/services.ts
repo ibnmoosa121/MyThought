@@ -30,7 +30,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'Security, compliance, and observability',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1518770660431-4633f4f9de7b?q=80&w=2069&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1518770660431-4633f4f9de7b?q=75&w=1200&auto=format&fit=crop',
     cta: 'Build With Us',
     theme: {
       text: 'text-blue-500',
@@ -53,7 +53,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'Partnership and ecosystem mapping',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=80&w=2069&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=75&w=1200&auto=format&fit=crop',
     cta: 'Consult With Us',
     theme: {
       text: 'text-emerald-500',
@@ -76,7 +76,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'Full-Scale Compliance (KSA/UAE)',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=75&w=1200&auto=format&fit=crop',
     cta: 'Find Talent',
     theme: {
       text: 'text-purple-500',
@@ -99,7 +99,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'Performance marketing and analytics',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=75&w=1200&auto=format&fit=crop',
     cta: 'Create With Us',
     theme: {
       text: 'text-pink-500',
@@ -122,7 +122,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'Go-to-market acceleration',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1626013261137-ee9872e2fb00?q=80&w=2069&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1626013261137-ee9872e2fb00?q=75&w=1200&auto=format&fit=crop',
     cta: 'Partner With Us',
     theme: {
       text: 'text-amber-500',
@@ -145,7 +145,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'Real-time dashboards and analytics',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=75&w=1200&auto=format&fit=crop',
     cta: 'Explore FinTech',
     theme: {
       text: 'text-teal-500',
@@ -168,7 +168,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'AI Strategy & Implementation',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=75&w=1200&auto=format&fit=crop',
     cta: 'Explore AI Solutions',
     theme: {
       text: 'text-indigo-400',
@@ -191,7 +191,7 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'Global Route Optimization',
     ],
     bgImage:
-      'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=75&w=1200&auto=format&fit=crop',
     cta: 'Explore Logistics',
     theme: {
       text: 'text-cyan-500',

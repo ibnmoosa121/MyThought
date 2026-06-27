@@ -12,7 +12,7 @@ const services = [
     tagline: 'Engineering Scalable Solutions',
     label: 'Software & Technology',
     description: 'We drive digital transformation with innovative software solutions, empowering organizations with cutting-edge technology and seamless integration. From concept to implementation, we develop efficient software that unlocks new opportunities and unleashes your business\'s full potential.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-blue-500',
       bg: 'bg-blue-500',
@@ -45,7 +45,7 @@ const services = [
     tagline: 'Driving Strategic Growth',
     label: 'Consultancy & Strategy',
     description: 'Our expert consultants provide strategic guidance to navigate complex business challenges. We analyze your current operations and provide actionable insights to optimize performance and drive sustainable growth.',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-emerald-500',
       bg: 'bg-emerald-500',
@@ -78,7 +78,7 @@ const services = [
     tagline: 'Connecting Top Talent',
     label: 'Talent & Staffing',
     description: 'We connect you with top-tier talent to build high-performing teams. Whether you need temporary staffing or permanent placements, we find the right people with the right skills to fit your culture.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-purple-500',
       bg: 'bg-purple-500',
@@ -111,7 +111,7 @@ const services = [
     tagline: 'Crafting Visual Impact',
     label: 'Design & Creative',
     description: 'We craft compelling visual experiences that resonate with your audience. Our design team combines creativity with user-centric principles to build brands that stand out and products that people love.',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-pink-500',
       bg: 'bg-pink-500',
@@ -144,7 +144,7 @@ const services = [
     tagline: 'Building Future Leaders',
     label: 'Ventures & Innovation',
     description: 'We partner with visionary founders to build the next generation of industry-leading companies. Our venture arm provides capital, mentorship, and operational support to turn bold ideas into reality.',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-amber-500',
       bg: 'bg-amber-500',
@@ -177,7 +177,7 @@ const services = [
     tagline: 'Innovating Financial Systems',
     label: 'FinTech & Banking',
     description: 'We build secure and scalable financial technology solutions. From payment gateways to blockchain applications, we help you navigate the future of finance.',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-teal-500',
       bg: 'bg-teal-500',
@@ -210,7 +210,7 @@ const services = [
     tagline: 'Powering Intelligent Decisions',
     label: 'AI & Data Analytics',
     description: 'We harness the power of artificial intelligence and advanced analytics to transform raw data into intelligent outcomes. Our solutions enable predictive insights, process automation, and data-driven strategies that keep your business ahead of the curve.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-indigo-500',
       bg: 'bg-indigo-500',
@@ -243,7 +243,7 @@ const services = [
     tagline: 'Precision Supply Chain',
     label: 'Global Logistics & Supply Chain',
     description: 'We orchestrate complex supply chains with absolute precision. From international freight forwarding to last-mile delivery, our logistics solutions are engineered for speed, reliability, and full transparency.',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=75&w=800&auto=format&fit=crop',
     theme: {
       text: 'text-cyan-500',
       bg: 'bg-cyan-500',

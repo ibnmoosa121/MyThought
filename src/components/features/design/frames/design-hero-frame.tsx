@@ -122,9 +122,10 @@ export const DesignHeroFrame = ({ palette }: { palette: DesignPalette }) => {
                 transition={{ duration: 2, ease: "easeOut" }}
             >
                 <img
-                    src="https://images.unsplash.com/photo-1634942537034-2231730040e6?q=80&w=2000&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1634942537034-2231730040e6?q=75&w=1200&auto=format&fit=crop"
                     alt="Creative Design"
                     className="w-full h-full object-cover grayscale opacity-50"
+                    decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
             </motion.div>
