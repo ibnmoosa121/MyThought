@@ -42,7 +42,7 @@ export const Preloader = () => {
         // Actual loading logic
         const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
         const startTime = Date.now();
-        const minLoadingTime = isMobile ? 800 : 1200; // Snappy on mobile, aesthetic on desktop
+        const minLoadingTime = isMobile ? 400 : 700; // Extra snappy to optimize Lighthouse scores
 
         const handleLoad = async () => {
             try {

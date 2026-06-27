@@ -117,6 +117,7 @@ export const HeroParallax = ({
               translate={translateX}
               key={product.title}
               index={idx}
+              isCritical={idx < 3}
             />
           ))}
         </motion.div>
@@ -127,6 +128,7 @@ export const HeroParallax = ({
               translate={translateXReverse}
               key={product.title}
               index={idx + (mounted && isMobile ? 3 : 7)}
+              isCritical={false}
             />
           ))}
         </motion.div>
@@ -165,6 +167,7 @@ export const ProductCard = ({
   product,
   translate,
   index,
+  isCritical = false,
 }: {
   product: {
     title: string;
@@ -173,6 +176,7 @@ export const ProductCard = ({
   };
   translate: MotionValue<number>;
   index: number;
+  isCritical?: boolean;
 }) => {
   return (
     <motion.div
@@ -220,7 +224,8 @@ export const ProductCard = ({
             width="400"
             className="object-cover object-center absolute h-full w-full inset-0 transition-transform duration-700 group-hover/product:scale-110"
             alt={product.title}
-            loading="lazy"
+            loading={isCritical ? "eager" : "lazy"}
+            fetchPriority={isCritical ? "high" : "auto"}
             decoding="async"
           />
         </a>

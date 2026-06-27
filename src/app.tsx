@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useLenis } from 'lenis/react'
 import { Header } from './components/layout/header'
@@ -6,7 +6,6 @@ import { Footer } from './components/layout/footer'
 import { SmoothScroll } from './components/layout/smooth-scroll'
 import { initializeStore } from './stores/app-store'
 import { Preloader } from './components/ui/preloader'
-import { cn } from './lib/utils'
 
 // Deployment Trigger: 2026-04-30-19-25
 
@@ -43,25 +42,16 @@ const ScrollToTop = () => {
 }
 
 const App = () => {
-  const [isReady, setIsReady] = useState(false)
-
-  // Initialize store and apply theme on mount
+  // Initialize store on mount
   useEffect(() => {
     initializeStore()
-    // Small delay to ensure everything is mounted before revealing
-    const timer = setTimeout(() => setIsReady(true), 100)
-
-    return () => clearTimeout(timer)
   }, [])
 
   return (
     <HashRouter>
       <SmoothScroll>
         <ScrollToTop />
-        <div className={cn(
-          "min-h-screen bg-base-100 text-base-content dark flex flex-col transition-opacity duration-500",
-          isReady ? "opacity-100" : "opacity-0"
-        )}>
+        <div className="min-h-screen bg-base-100 text-base-content dark flex flex-col">
           <Preloader />
           {/* Header */}
           <Header />
