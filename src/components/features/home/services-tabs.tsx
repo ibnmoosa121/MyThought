@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TiltedCard from "../../ui/tilted-card";
 import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet, Brain, Database, Cpu, Truck } from 'lucide-react'
@@ -276,6 +276,20 @@ const services = [
 export default function ServicesTabs() {
   const [activeTab, setActiveTab] = useState(services[0].id)
   const activeService = services.find(s => s.id === activeTab) || services[0]
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <section className="py-12 md:py-24 bg-black text-white relative overflow-hidden min-h-0 md:min-h-[800px]">
@@ -357,8 +371,8 @@ export default function ServicesTabs() {
                         className="relative w-full max-w-4xl transition-transform duration-500 hover:scale-[1.02] block cursor-pointer group/card-link"
                       >
                         <TiltedCard
-                          imageSrc={service.video ? undefined : service.image}
-                          videoSrc={service.video}
+                          imageSrc={isMobile || !service.video ? service.image : undefined}
+                          videoSrc={isMobile ? undefined : service.video}
                           altText={service.label}
                           captionText={service.tagline}
                           containerHeight="auto"

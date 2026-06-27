@@ -1,5 +1,5 @@
 import { motion, useInView, type Variants } from 'framer-motion';
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 
 interface ScrollRevealTextProps {
   text: string;
@@ -12,6 +12,21 @@ interface ScrollRevealTextProps {
 export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = 'h2', animateOnMount = false }: ScrollRevealTextProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
+
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const shouldAnimate = animateOnMount || isInView;
 
@@ -52,6 +67,15 @@ export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = '
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Component = useMemo(() => motion(Tag as any), [Tag]);
 
+  if (isMobile) {
+    const RawComponent = Tag as any;
+    return (
+      <RawComponent className={className}>
+        {text}
+      </RawComponent>
+    );
+  }
+
   return (
     <Component
       ref={ref}
@@ -68,3 +92,4 @@ export const ScrollRevealText = ({ text, className = "", delay = 0, tag: Tag = '
     </Component>
   );
 };
+

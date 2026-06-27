@@ -18,20 +18,24 @@ export const HeroParallax = ({
   }[];
 }) => {
   const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
 
   useEffect(() => {
     setMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const firstRow = mounted && isMobile ? products.slice(0, 3) : products.slice(0, 7);
-  const secondRow = mounted && isMobile ? products.slice(3, 6) : products.slice(7, 14);
+  const firstRow = isMobile ? products.slice(0, 3) : products.slice(0, 7);
+  const secondRow = isMobile ? products.slice(3, 6) : products.slice(7, 14);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
