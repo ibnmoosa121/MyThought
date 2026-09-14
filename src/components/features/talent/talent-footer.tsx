@@ -95,10 +95,10 @@ export const TalentFooter = () => {
                                             hello@mythought.com
                                         </p>
                                     </a>
-                                    <a href="tel:+966501234567" className="group block">
+                                    <a href="tel:+966564008986" className="group block">
                                         <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-1 group-hover:text-purple-400 transition-colors">Call Experts</p>
                                         <p className="text-2xl text-white font-black italic uppercase tracking-tighter group-hover:text-purple-200 transition-colors group-hover:translate-x-2 duration-300">
-                                            +966 50 123 4567
+                                            +966 564008986
                                         </p>
                                     </a>
                                 </div>
