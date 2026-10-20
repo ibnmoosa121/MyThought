@@ -10,7 +10,7 @@ const ConsultancyPage = () => {
   const service = services.consultancy;
 
   useEffect(() => {
-    document.title = "Consultancy & Strategy | stebup"
+    document.title = "Consultancy & Strategy | Stebup"
     window.scrollTo(0, 0);
   }, [])
 

@@ -13,7 +13,7 @@ const SoftwarePage = () => {
   const service = services.software;
 
   useEffect(() => {
-    document.title = "Software & Technology | stebup"
+    document.title = "Software & Technology | Stebup"
     window.scrollTo(0, 0)
 
     // Hide scrollbar on this page

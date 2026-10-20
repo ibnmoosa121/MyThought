@@ -17,20 +17,45 @@ export const Footer: React.FC = () => {
 
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2 group">
+            <Link to="/" className="flex items-center gap-2.5 group">
               <LogoIcon
-                size={36}
+                size={38}
                 color={themeColor}
-                className="group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]"
+                className="group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(217,70,239,0.25)]"
               />
-              <span
-                className="text-xl font-bold tracking-tight text-white transition-all duration-500"
-                style={{
-                  textShadow: currentService ? `0 0 10px ${currentService.theme.plasmaColor}44` : 'none'
-                }}
-              >
-                stebup
-              </span>
+              <div className="flex items-baseline">
+                <span
+                  className="text-[22px] font-black tracking-tight leading-none transition-all duration-500 flex items-baseline"
+                  style={{
+                    textShadow: currentService
+                      ? `0 0 18px ${currentService.theme.plasmaColor}55`
+                      : '0 0 18px rgba(168, 85, 247, 0.25)'
+                  }}
+                >
+                  <span className="bg-gradient-to-b from-white via-white to-zinc-300 bg-clip-text text-transparent">
+                    Steb
+                  </span>
+                  <span
+                    className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent transition-all duration-500"
+                    style={
+                      currentService
+                        ? {
+                            backgroundImage: `linear-gradient(135deg, #ffffff 0%, ${currentService.theme.plasmaColor} 100%)`
+                          }
+                        : undefined
+                    }
+                  >
+                    up
+                  </span>
+                </span>
+                <span
+                  className="w-1.5 h-1.5 rounded-full ml-0.5 mb-0.5 transition-all duration-500 group-hover:scale-125"
+                  style={{
+                    backgroundColor: currentService ? currentService.theme.plasmaColor : '#06b6d4',
+                    boxShadow: `0 0 8px ${currentService ? currentService.theme.plasmaColor : '#06b6d4'}`
+                  }}
+                />
+              </div>
             </Link>
             <p className="text-white/70 leading-relaxed max-w-xs">
               Pioneering the future of technology, business, and design. We turn visionary ideas into reality.
@@ -157,7 +182,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-base-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>© {new Date().getFullYear()} stebup. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Stebup. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary transition-colors text-white/70">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors text-white/70">Terms of Service</a>

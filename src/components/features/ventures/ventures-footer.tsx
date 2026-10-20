@@ -78,7 +78,7 @@ export const VenturesFooter = () => {
                             BUILD
                         </div>
                         <p className="text-zinc-800 text-[10px] font-black uppercase tracking-[1em] text-center lg:text-right">
-                            © 2026 stebup ventures. <br />
+                            © 2026 <span className="normal-case tracking-tight text-zinc-600">Stebup</span> Ventures. <br />
                             Nurturing Innovation.
                         </p>
                     </div>

@@ -1,6 +1,6 @@
-# stebup Project Structure
+# Stebup Project Structure
 
-This document provides an overview of the project structure and the purpose of each file and directory in the stebup application.
+This document provides an overview of the project structure and the purpose of each file and directory in the Stebup application.
 
 ## 📁 Root Directory
 

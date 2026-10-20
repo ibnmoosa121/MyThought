@@ -80,26 +80,51 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
 
   return (
     <motion.div
-      className={`flex items-center cursor-pointer gap-2 ${className}`}
+      className={`group flex items-center cursor-pointer gap-2.5 ${className}`}
       onClick={() => window.location.hash = '#/'}
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
     >
       <LogoIcon
-        size={36}
+        size={38}
         color={getThemeColor()}
-        className="drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+        className="drop-shadow-[0_0_12px_rgba(217,70,239,0.25)] transition-transform duration-500 group-hover:scale-105"
       />
       <div className="flex flex-col">
-        <h1
-          className="text-xl font-bold leading-tight text-white drop-shadow-md transition-all duration-500 lowercase"
-          style={{
-            textShadow: currentService ? `0 0 10px ${currentService.theme.plasmaColor}44` : 'none'
-          }}
-        >
-          stebup
-        </h1>
-        <p className={`text-[10px] uppercase tracking-[0.2em] font-bold leading-tight transition-colors duration-500 ${getSubtitleColor()}`}>
+        <div className="flex items-baseline">
+          <h1
+            className="text-[22px] font-black tracking-tight leading-none transition-all duration-500 flex items-baseline"
+            style={{
+              textShadow: currentService
+                ? `0 0 18px ${currentService.theme.plasmaColor}55`
+                : '0 0 18px rgba(168, 85, 247, 0.25)'
+            }}
+          >
+            <span className="bg-gradient-to-b from-white via-white to-zinc-300 bg-clip-text text-transparent">
+              Steb
+            </span>
+            <span
+              className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent transition-all duration-500"
+              style={
+                currentService
+                  ? {
+                      backgroundImage: `linear-gradient(135deg, #ffffff 0%, ${currentService.theme.plasmaColor} 100%)`
+                    }
+                  : undefined
+              }
+            >
+              up
+            </span>
+          </h1>
+          <span
+            className="w-1.5 h-1.5 rounded-full ml-0.5 mb-0.5 transition-all duration-500 group-hover:scale-125"
+            style={{
+              backgroundColor: currentService ? currentService.theme.plasmaColor : '#06b6d4',
+              boxShadow: `0 0 8px ${currentService ? currentService.theme.plasmaColor : '#06b6d4'}`
+            }}
+          />
+        </div>
+        <p className={`text-[9px] uppercase tracking-[0.26em] font-extrabold leading-tight mt-0.5 transition-colors duration-500 ${getSubtitleColor()}`}>
           {getSubtitle()}
         </p>
       </div>
@@ -314,7 +339,7 @@ export const MinimalHeader = () => {
         <div className="flex items-center justify-between h-14">
           <div className="flex items-center gap-2">
             <Lightbulb size={20} className="text-primary" />
-            <span className="font-semibold text-lg lowercase">stebup</span>
+            <span className="font-black text-lg tracking-tight flex items-baseline"><span className="text-white">Steb</span><span className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">up</span></span>
           </div>
         </div>
       </div>

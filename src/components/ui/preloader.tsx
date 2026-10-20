@@ -35,7 +35,7 @@ export const Preloader = () => {
         const formattedName = service 
             ? service.title 
             : path === "Home" 
-                ? "stebup" 
+                ? "Stebup" 
                 : path.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 
         const color = service 
@@ -110,9 +110,31 @@ export const Preloader = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-white text-xl md:text-2xl font-black tracking-[0.4em] uppercase"
+                            className={
+                                pageName === "Stebup"
+                                    ? "text-2xl md:text-3xl font-black tracking-tight flex items-baseline"
+                                    : "text-white text-xl md:text-2xl font-black tracking-[0.4em] uppercase"
+                            }
                         >
-                            {pageName}
+                            {pageName === "Stebup" ? (
+                                <>
+                                    <span className="bg-gradient-to-b from-white via-white to-zinc-300 bg-clip-text text-transparent">
+                                        Steb
+                                    </span>
+                                    <span className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                                        up
+                                    </span>
+                                    <span
+                                        className="w-2 h-2 rounded-full ml-1 mb-0.5"
+                                        style={{
+                                            backgroundColor: "#06b6d4",
+                                            boxShadow: "0 0 10px #06b6d4"
+                                        }}
+                                    />
+                                </>
+                            ) : (
+                                pageName
+                            )}
                         </motion.div>
 
                         {/* Centered Themed Pulse Dots */}

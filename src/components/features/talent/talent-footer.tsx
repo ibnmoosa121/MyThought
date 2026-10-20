@@ -134,7 +134,7 @@ export const TalentFooter = () => {
 
                             <div className="mt-20 md:mt-0">
                                 <p className="text-zinc-700 text-[10px] font-black uppercase tracking-[0.5em] leading-relaxed">
-                                    © 2026 stebup. <br />
+                                    © 2026 <span className="normal-case tracking-tight text-zinc-500">Stebup</span>. <br />
                                     All Rights Reserved. <br />
                                     Engineering Success.
                                 </p>

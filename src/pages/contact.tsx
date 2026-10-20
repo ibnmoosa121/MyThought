@@ -5,7 +5,7 @@ import ContactForm from '../components/features/contact/contact-form';
 
 const ContactPage = () => {
     useEffect(() => {
-        document.title = "Contact | stebup";
+        document.title = "Contact | Stebup";
         window.scrollTo(0, 0);
     }, []);
 

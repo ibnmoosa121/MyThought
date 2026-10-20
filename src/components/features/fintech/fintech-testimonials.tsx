@@ -177,7 +177,7 @@ export const FintechTestimonials = () => {
 
             <div className="mt-16 text-center relative z-20">
                 <p className="text-zinc-600 text-xs font-black uppercase tracking-[0.5em]">
-                    Real-time Settlement via stebup Nodes
+                    Real-time Settlement via <span className="normal-case tracking-tight text-zinc-400">Stebup</span> Nodes
                 </p>
             </div>
         </section>

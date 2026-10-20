@@ -10,7 +10,7 @@ const VenturesPage = () => {
   const service = services.ventures;
 
   useEffect(() => {
-    document.title = "Ventures & Innovation | stebup"
+    document.title = "Ventures & Innovation | Stebup"
     window.scrollTo(0, 0);
   }, [])
 

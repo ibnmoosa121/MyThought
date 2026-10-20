@@ -7,7 +7,7 @@ import RotatingEarth from '../components/ui/wireframe-dotted-globe';
 
 const LogisticsPage = () => {
     useEffect(() => {
-        document.title = "Logistics & Fleet | stebup";
+        document.title = "Logistics & Fleet | Stebup";
     }, []);
 
     return (

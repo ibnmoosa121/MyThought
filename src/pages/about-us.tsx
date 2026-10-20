@@ -5,7 +5,7 @@ import { SectionDivider } from '../components/ui/section-divider'
 
 const AboutUsPage = () => {
   useEffect(() => {
-    document.title = "About Us | stebup"
+    document.title = "About Us | Stebup"
     window.scrollTo(0, 0)
   }, [])
 
