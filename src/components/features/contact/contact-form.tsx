@@ -158,7 +158,7 @@ export const ContactForm = () => {
 
                         <div className="space-y-4">
                             {[
-                                { icon: Mail, label: "Neural Link", val: "hello@mythought.com" },
+                                { icon: Mail, label: "Neural Link", val: "hello@stebup.com" },
                                 { icon: Phone, label: "Direct Line", val: "+1 (555) 000-1234" },
                                 { icon: MapPin, label: "Station HQ", val: "Jeddah, Saudi Arabia" }
                             ].map((item, i) => (

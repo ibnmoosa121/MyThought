@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const PortfolioPage = () => {
     useEffect(() => {
-        document.title = "Portfolio | MyThought";
+        document.title = "Portfolio | stebup";
         window.scrollTo(0, 0);
     }, []);
 

@@ -101,7 +101,7 @@ const products = [
 // Main content component with hero section only
 export const MainContent = () => {
   useEffect(() => {
-    document.title = "MyThought | Elite Digital Studio & Consultancy"
+    document.title = "stebup | Elite Digital Studio & Consultancy"
   }, [])
 
   return (

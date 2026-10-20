@@ -92,12 +92,12 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
       />
       <div className="flex flex-col">
         <h1
-          className="text-xl font-bold leading-tight text-white drop-shadow-md transition-all duration-500"
+          className="text-xl font-bold leading-tight text-white drop-shadow-md transition-all duration-500 lowercase"
           style={{
             textShadow: currentService ? `0 0 10px ${currentService.theme.plasmaColor}44` : 'none'
           }}
         >
-          MyThought
+          stebup
         </h1>
         <p className={`text-[10px] uppercase tracking-[0.2em] font-bold leading-tight transition-colors duration-500 ${getSubtitleColor()}`}>
           {getSubtitle()}
@@ -314,7 +314,7 @@ export const MinimalHeader = () => {
         <div className="flex items-center justify-between h-14">
           <div className="flex items-center gap-2">
             <Lightbulb size={20} className="text-primary" />
-            <span className="font-semibold text-lg">MyThought</span>
+            <span className="font-semibold text-lg lowercase">stebup</span>
           </div>
         </div>
       </div>

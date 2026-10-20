@@ -58,11 +58,11 @@ export const VenturesFooter = () => {
                     <div className="space-y-4">
                         <h4 className="text-white font-black italic uppercase tracking-tighter text-xl mt-12 mb-6">Direct Channels</h4>
                         <div className="space-y-4">
-                            <a href="mailto:info@mythought.com" className="flex items-center gap-3 group">
+                            <a href="mailto:info@stebup.com" className="flex items-center gap-3 group">
                                 <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-zinc-500 group-hover:text-amber-500 transition-colors">
-                                    <Mail size={16} />
+                                     <Mail size={16} />
                                 </div>
-                                <span className="text-zinc-500 group-hover:text-white transition-colors font-bold uppercase italic text-sm">info@mythought.com</span>
+                                <span className="text-zinc-500 group-hover:text-white transition-colors font-bold uppercase italic text-sm">info@stebup.com</span>
                             </a>
                             <a href="tel:+966564008986" className="flex items-center gap-3 group">
                                 <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-zinc-500 group-hover:text-orange-500 transition-colors">
@@ -78,7 +78,7 @@ export const VenturesFooter = () => {
                             BUILD
                         </div>
                         <p className="text-zinc-800 text-[10px] font-black uppercase tracking-[1em] text-center lg:text-right">
-                            © 2026 MyThought Ventures. <br />
+                            © 2026 stebup ventures. <br />
                             Nurturing Innovation.
                         </p>
                     </div>

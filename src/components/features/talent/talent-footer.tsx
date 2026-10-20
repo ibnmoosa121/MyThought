@@ -89,10 +89,10 @@ export const TalentFooter = () => {
                             <div>
                                 <span className="text-purple-500 font-black uppercase tracking-[0.3em] text-[10px] block mb-6">Contact Us</span>
                                 <div className="space-y-6">
-                                    <a href="mailto:hello@mythought.com" className="group block">
+                                    <a href="mailto:hello@stebup.com" className="group block">
                                         <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-1 group-hover:text-purple-400 transition-colors">Email Address</p>
                                         <p className="text-2xl text-white font-black italic uppercase tracking-tighter group-hover:text-purple-200 transition-colors group-hover:translate-x-2 duration-300">
-                                            hello@mythought.com
+                                            hello@stebup.com
                                         </p>
                                     </a>
                                     <a href="tel:+966564008986" className="group block">
@@ -134,7 +134,7 @@ export const TalentFooter = () => {
 
                             <div className="mt-20 md:mt-0">
                                 <p className="text-zinc-700 text-[10px] font-black uppercase tracking-[0.5em] leading-relaxed">
-                                    © 2026 MyThought. <br />
+                                    © 2026 stebup. <br />
                                     All Rights Reserved. <br />
                                     Engineering Success.
                                 </p>

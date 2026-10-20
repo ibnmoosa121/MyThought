@@ -11,7 +11,7 @@ const TalentPage = () => {
   const service = services.talent;
 
   useEffect(() => {
-    document.title = "Talent & Staffing | MyThought"
+    document.title = "Talent & Staffing | stebup"
     window.scrollTo(0, 0);
   }, [])
 

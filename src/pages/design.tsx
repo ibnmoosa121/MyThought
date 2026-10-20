@@ -15,7 +15,7 @@ const DesignPage = () => {
     const { scrollYProgress } = useScroll();
 
     useEffect(() => {
-        document.title = "Design & Creative | MyThought";
+        document.title = "Design & Creative | stebup";
         window.scrollTo(0, 0);
     }, []);
 

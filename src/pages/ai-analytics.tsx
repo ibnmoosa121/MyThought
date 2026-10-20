@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 const AIAnalyticsPage = () => {
     useEffect(() => {
-        document.title = "AI & Data Analytics | MyThought"
+        document.title = "AI & Data Analytics | stebup"
         window.scrollTo(0, 0)
     }, [])
 

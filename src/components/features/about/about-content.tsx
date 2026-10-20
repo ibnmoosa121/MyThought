@@ -77,7 +77,7 @@ export const AboutContent = () => {
                         />
                         <div className="space-y-6 text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl">
                             <p>
-                                Based in the thriving hub of <span className="text-white">Jeddah, Saudi Arabia</span>, MyThought emerged from a singular vision: to dismantle the status quo of digital delivery across the Gulf region.
+                                Based in the thriving hub of <span className="text-white">Jeddah, Saudi Arabia</span>, stebup emerged from a singular vision: to dismantle the status quo of digital delivery across the Gulf region.
                             </p>
                             <p>
                                 Today, we operate as a multi-disciplinary powerhouse covering <span className="text-white">software development, AI analytics, fintech, design,</span> and <span className="text-white">strategic consultancy</span>. We thrive on bridging the gap between ambitious regional goals—like <span className="text-white">Vision 2030</span>—and market-dominating reality.

@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
                   textShadow: currentService ? `0 0 10px ${currentService.theme.plasmaColor}44` : 'none'
                 }}
               >
-                MyThought
+                stebup
               </span>
             </Link>
             <p className="text-white/70 leading-relaxed max-w-xs">
@@ -140,8 +140,8 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-3 text-white/70">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <a href="mailto:hello@mythought.com" className="hover:text-primary transition-colors text-white/80">
-                  hello@mythought.com
+                <a href="mailto:hello@stebup.com" className="hover:text-primary transition-colors text-white/80">
+                  hello@stebup.com
                 </a>
               </li>
               <li className="flex items-center gap-3 text-white/70">
@@ -157,7 +157,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-base-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>© {new Date().getFullYear()} MyThought. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} stebup. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary transition-colors text-white/70">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors text-white/70">Terms of Service</a>

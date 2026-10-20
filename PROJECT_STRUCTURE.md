@@ -1,6 +1,6 @@
-# MyThought Project Structure
+# stebup Project Structure
 
-This document provides an overview of the project structure and the purpose of each file and directory in the MyThought application.
+This document provides an overview of the project structure and the purpose of each file and directory in the stebup application.
 
 ## 📁 Root Directory
 
