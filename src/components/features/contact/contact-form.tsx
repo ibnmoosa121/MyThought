@@ -49,12 +49,12 @@ const THEMES = {
         label: 'text-amber-500/50'
     },
     talent: {
-        primary: 'text-purple-400',
-        accent: 'from-purple-400 via-purple-100 to-purple-400',
-        buttonGradient: 'from-purple-800 via-white to-purple-800',
-        glow: 'rgba(168,85,247,0.4)',
-        bgGlow: 'bg-purple-500/5',
-        label: 'text-purple-500/50'
+        primary: 'text-zinc-300',
+        accent: 'from-zinc-300 via-white to-zinc-400',
+        buttonGradient: 'from-zinc-700 via-white to-zinc-700',
+        glow: 'rgba(212,212,216,0.35)',
+        bgGlow: 'bg-zinc-400/5',
+        label: 'text-zinc-400/60'
     },
     default: {
         primary: 'text-zinc-400',

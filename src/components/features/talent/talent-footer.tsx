@@ -44,102 +44,141 @@ export const TalentFooter = () => {
     }, []);
 
     return (
-        <section className="relative py-32 bg-zinc-950 overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
-
+        <section className="relative py-32 bg-transparent overflow-hidden">
             <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div className="p-10 md:p-20 rounded-[3rem] bg-white/80 backdrop-blur-md border border-zinc-900/10 shadow-[0_30px_80px_rgba(0,0,0,0.08)]">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-                    {/* Left: Branding & CTA */}
-                    <div>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            className="text-6xl md:text-8xl font-black text-white italic uppercase tracking-[ - 0.05em] leading-[0.85] mb-12"
-                        >
-                            Unlock Your <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-600">Potential</span>
-                        </motion.h2>
-
-                        <div className="flex items-center gap-8">
-                            <button
-                                ref={buttonRef}
-                                onClick={() => navigate('/contact', { state: { from: 'talent' } })}
-                                className="relative h-40 w-40 md:h-56 md:w-56 rounded-full bg-purple-500 text-black flex flex-col items-center justify-center group transition-transform duration-500 hover:scale-105 active:scale-95"
+                        {/* Left: Branding & CTA */}
+                        <div>
+                            <motion.h2
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: false, amount: 0.2 }}
+                                className="text-5xl md:text-8xl font-black text-zinc-950 italic uppercase tracking-[-0.05em] leading-[0.85] mb-12"
                             >
-                                <span className="text-[10px] font-black uppercase tracking-widest mb-1 opacity-60">Start Here</span>
-                                <span className="text-2xl font-black italic uppercase tracking-tighter">Get Quote</span>
-                                <ArrowRight className="mt-4 group-hover:translate-x-2 transition-transform" size={32} />
+                                Unlock Your <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-400">
+                                    Potential
+                                </span>
+                            </motion.h2>
 
-                                {/* Orbiting ring */}
-                                <div className="absolute inset-0 border border-purple-500 rounded-full scale-125 opacity-20 group-hover:scale-110 transition-transform duration-700" />
-                            </button>
+                            <div className="flex items-center gap-8">
+                                <button
+                                    ref={buttonRef}
+                                    onClick={() => navigate('/contact', { state: { from: 'talent' } })}
+                                    className="relative h-40 w-40 md:h-52 md:w-52 rounded-full bg-zinc-950 text-white flex flex-col items-center justify-center group transition-transform duration-500 hover:scale-105 active:scale-95 shadow-[0_25px_60px_rgba(0,0,0,0.28)]"
+                                >
+                                    <span className="text-[10px] font-mono uppercase tracking-widest mb-1 text-zinc-400">
+                                        Start Here
+                                    </span>
+                                    <span className="text-2xl font-black italic uppercase tracking-tighter">
+                                        Get Quote
+                                    </span>
+                                    <ArrowRight className="mt-4 group-hover:translate-x-2 transition-transform" size={32} />
 
-                            <div className="hidden md:block">
-                                <p className="text-zinc-500 text-lg max-w-xs leading-tight font-medium">
-                                    Ready to bridge the gap with elite talent? Let's engineer your success.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                                    {/* Orbiting ring */}
+                                    <div className="absolute inset-0 border border-zinc-950/30 rounded-full scale-115 group-hover:scale-105 transition-transform duration-700" />
+                                </button>
 
-                    {/* Right: Contact Details with Glitch Effect */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div className="space-y-12">
-                            <div>
-                                <span className="text-purple-500 font-black uppercase tracking-[0.3em] text-[10px] block mb-6">Contact Us</span>
-                                <div className="space-y-6">
-                                    <a href="mailto:hello@stebup.com" className="group block">
-                                        <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-1 group-hover:text-purple-400 transition-colors">Email Address</p>
-                                        <p className="text-2xl text-white font-black italic uppercase tracking-tighter group-hover:text-purple-200 transition-colors group-hover:translate-x-2 duration-300">
-                                            hello@stebup.com
-                                        </p>
-                                    </a>
-                                    <a href="tel:+966564008986" className="group block">
-                                        <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-1 group-hover:text-purple-400 transition-colors">Call Experts</p>
-                                        <p className="text-2xl text-white font-black italic uppercase tracking-tighter group-hover:text-purple-200 transition-colors group-hover:translate-x-2 duration-300">
-                                            +966 564008986
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span className="text-purple-500 font-black uppercase tracking-[0.3em] text-[10px] block mb-6">Global Offices</span>
-                                <div className="space-y-6 text-zinc-400">
-                                    <div className="flex gap-3">
-                                        <MapPin size={18} className="text-purple-500 shrink-0" />
-                                        <p className="text-sm font-medium">Jeddah Hub, KSA <br /> <span className="text-zinc-600 text-[10px] font-black uppercase">Headquarters</span></p>
-                                    </div>
-                                    <div className="flex gap-3">
-                                        <MapPin size={18} className="text-zinc-500 shrink-0" />
-                                        <p className="text-sm font-medium">DIFC, Dubai, UAE <br /> <span className="text-zinc-600 text-[10px] font-black uppercase">Regional Hub</span></p>
-                                    </div>
+                                <div className="hidden md:block">
+                                    <p className="text-zinc-600 text-lg max-w-xs leading-snug font-medium">
+                                        Ready to bridge the gap with elite talent? Let's engineer your success.
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="flex flex-col justify-between">
-                            <div className="flex gap-4">
-                                <a href="#" className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-purple-500 hover:text-black transition-all duration-300">
-                                    <Linkedin size={24} />
-                                </a>
-                                <a href="#" className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-purple-500 hover:text-black transition-all duration-300">
-                                    <Twitter size={24} />
-                                </a>
-                                <a href="#" className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-purple-500 hover:text-black transition-all duration-300">
-                                    <Instagram size={24} />
-                                </a>
+                        {/* Right: Contact Details */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false, amount: 0.2 }}
+                            className="grid grid-cols-1 md:grid-cols-2 gap-12"
+                        >
+                            <div className="space-y-12">
+                                <div>
+                                    <span className="text-zinc-500 font-mono font-bold uppercase tracking-[0.3em] text-[10px] block mb-6">
+                                        Contact Us
+                                    </span>
+                                    <div className="space-y-6">
+                                        <a href="mailto:hello@stebup.com" className="group block">
+                                            <p className="text-zinc-500 text-[10px] font-mono uppercase tracking-widest mb-1 group-hover:text-zinc-950 transition-colors">
+                                                Email Address
+                                            </p>
+                                            <p className="text-2xl text-zinc-950 font-black italic uppercase tracking-tighter group-hover:text-zinc-600 transition-colors group-hover:translate-x-2 duration-300">
+                                                hello@stebup.com
+                                            </p>
+                                        </a>
+                                        <a href="tel:+966564008986" className="group block">
+                                            <p className="text-zinc-500 text-[10px] font-mono uppercase tracking-widest mb-1 group-hover:text-zinc-950 transition-colors">
+                                                Call Experts
+                                            </p>
+                                            <p className="text-2xl text-zinc-950 font-black italic uppercase tracking-tighter group-hover:text-zinc-600 transition-colors group-hover:translate-x-2 duration-300">
+                                                +966 564008986
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <span className="text-zinc-500 font-mono font-bold uppercase tracking-[0.3em] text-[10px] block mb-6">
+                                        Global Offices
+                                    </span>
+                                    <div className="space-y-6 text-zinc-700">
+                                        <div className="flex gap-3">
+                                            <MapPin size={18} className="text-zinc-950 shrink-0" />
+                                            <p className="text-sm font-semibold">
+                                                Jeddah Hub, KSA <br />{" "}
+                                                <span className="text-zinc-500 text-[10px] font-mono uppercase">
+                                                    Headquarters
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div className="flex gap-3">
+                                            <MapPin size={18} className="text-zinc-500 shrink-0" />
+                                            <p className="text-sm font-semibold">
+                                                DIFC, Dubai, UAE <br />{" "}
+                                                <span className="text-zinc-500 text-[10px] font-mono uppercase">
+                                                    Regional Hub
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="mt-20 md:mt-0">
-                                <p className="text-zinc-700 text-[10px] font-black uppercase tracking-[0.5em] leading-relaxed">
-                                    © 2026 <span className="normal-case tracking-tight text-zinc-500">Stebup</span>. <br />
-                                    All Rights Reserved. <br />
-                                    Engineering Success.
-                                </p>
+                            <div className="flex flex-col justify-between">
+                                <div className="flex gap-4">
+                                    <a
+                                        href="#"
+                                        className="p-4 rounded-2xl bg-zinc-950/5 border border-zinc-900/10 text-zinc-950 hover:bg-zinc-950 hover:text-white transition-all duration-300"
+                                    >
+                                        <Linkedin size={24} />
+                                    </a>
+                                    <a
+                                        href="#"
+                                        className="p-4 rounded-2xl bg-zinc-950/5 border border-zinc-900/10 text-zinc-950 hover:bg-zinc-950 hover:text-white transition-all duration-300"
+                                    >
+                                        <Twitter size={24} />
+                                    </a>
+                                    <a
+                                        href="#"
+                                        className="p-4 rounded-2xl bg-zinc-950/5 border border-zinc-900/10 text-zinc-950 hover:bg-zinc-950 hover:text-white transition-all duration-300"
+                                    >
+                                        <Instagram size={24} />
+                                    </a>
+                                </div>
+
+                                <div className="mt-20 md:mt-0">
+                                    <p className="text-zinc-500 text-[10px] font-mono font-bold uppercase tracking-[0.4em] leading-relaxed">
+                                        © 2026 <span className="normal-case tracking-tight text-zinc-950 font-black">Stebup</span>. <br />
+                                        All Rights Reserved. <br />
+                                        Engineering Success.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

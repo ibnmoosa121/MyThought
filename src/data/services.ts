@@ -79,13 +79,13 @@ export const services: Record<ServiceKey, ServiceContent> = {
       'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=75&w=1200&auto=format&fit=crop',
     cta: 'Find Talent',
     theme: {
-      text: 'text-purple-500',
-      bg: 'bg-purple-500',
-      hoverBg: 'group-hover:bg-purple-500',
-      hoverText: 'group-hover:text-purple-500',
-      gradient: 'from-[#7C3AED] via-[#A855F7] to-[#C084FC]',
-      waveColor: 'rgba(168, 85, 247, 0.3)',
-      plasmaColor: '#A855F7',
+      text: 'text-zinc-300',
+      bg: 'bg-zinc-400',
+      hoverBg: 'group-hover:bg-zinc-600',
+      hoverText: 'group-hover:text-zinc-300',
+      gradient: 'from-[#F4F4F5] via-[#A1A1AA] to-[#52525B]',
+      waveColor: 'rgba(212, 212, 216, 0.3)',
+      plasmaColor: '#D4D4D8',
     }
   },
   design: {

@@ -80,11 +80,11 @@ const services = [
     description: 'We connect you with top-tier talent to build high-performing teams. Whether you need temporary staffing or permanent placements, we find the right people with the right skills to fit your culture.',
     image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=75&w=800&auto=format&fit=crop',
     theme: {
-      text: 'text-purple-500',
-      bg: 'bg-purple-500',
-      gradient: 'from-[#7C3AED] via-[#A855F7] to-[#C084FC]',
-      waveColor: 'rgba(168, 85, 247, 0.3)',
-      plasmaColor: '#A855F7'
+      text: 'text-zinc-300',
+      bg: 'bg-zinc-400',
+      gradient: 'from-[#F4F4F5] via-[#A1A1AA] to-[#52525B]',
+      waveColor: 'rgba(212, 212, 216, 0.3)',
+      plasmaColor: '#D4D4D8'
     },
     href: '#/talent',
     video: '/videos/talent.mp4',

@@ -53,11 +53,9 @@ export const TalentProcess = () => {
         const path = pathRef.current;
         const length = path.getTotalLength();
 
-        // Initialize path
         gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
 
-        // Animate path on scroll
-        gsap.to(path, {
+        const pathTween = gsap.to(path, {
             strokeDashoffset: 0,
             ease: "none",
             scrollTrigger: {
@@ -68,54 +66,66 @@ export const TalentProcess = () => {
             }
         });
 
-        // Animate steps
-        stepsRef.current.forEach((step) => {
-            if (!step) return;
+        const stepTweens = stepsRef.current.map((step) => {
+            if (!step) return null;
 
-            gsap.fromTo(step,
-                { opacity: 0, x: 50, rotateY: 45 },
+            return gsap.fromTo(step,
+                { opacity: 0, y: 50 },
                 {
                     opacity: 1,
-                    x: 0,
-                    rotateY: 0,
+                    y: 0,
                     duration: 0.8,
+                    ease: "power2.out",
                     scrollTrigger: {
                         trigger: step,
-                        start: "top 80%",
+                        start: "top 85%",
                         toggleActions: "play none none reverse",
                     }
                 }
             );
         });
 
+        return () => {
+            pathTween.scrollTrigger?.kill();
+            pathTween.kill();
+            stepTweens.forEach(t => {
+                t?.scrollTrigger?.kill();
+                t?.kill();
+            });
+        };
     }, []);
 
     return (
-        <section ref={containerRef} className="relative py-32 bg-zinc-950 overflow-hidden min-h-screen">
+        <section ref={containerRef} className="relative py-32 bg-transparent overflow-hidden min-h-screen">
             <div className="container mx-auto px-6 h-full flex flex-col md:flex-row gap-12">
 
                 {/* Sticky Left Content */}
                 <div className="md:w-1/3 md:sticky md:top-32 h-fit mb-20 md:mb-0">
-                    <motion.span
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="text-purple-500 font-black uppercase tracking-[0.4em] text-xs mb-4 block"
-                    >
-                        Success Blueprint
-                    </motion.span>
-                    <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-[0.8]">
-                        Seamless <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-600">Workforce</span> <br />
-                        Integration
-                    </h2>
-                    <p className="mt-8 text-zinc-500 max-w-sm text-lg font-medium">
-                        Our six-step methodology ensures zero friction between hiring and execution. Engineered for the Gulf market.
-                    </p>
+                    <div className="p-8 rounded-[2rem] bg-white/75 backdrop-blur-md border border-zinc-900/10 shadow-[0_18px_45px_rgba(0,0,0,0.06)]">
+                        <motion.span
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-zinc-500 font-mono font-bold uppercase tracking-[0.4em] text-xs mb-4 block"
+                        >
+                            02 // Success Blueprint
+                        </motion.span>
+                        <h2 className="text-4xl md:text-6xl font-black text-zinc-950 italic uppercase tracking-tighter leading-[0.85]">
+                            Seamless <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-400">
+                                Workforce
+                            </span>{" "}
+                            <br />
+                            Integration
+                        </h2>
+                        <p className="mt-6 text-zinc-600 text-base md:text-lg font-medium leading-relaxed">
+                            Our six-step methodology ensures zero friction between hiring and execution. Engineered for the Gulf market.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Vertical Scroll Steps */}
                 <div className="md:w-2/3 relative pl-8 md:pl-20 py-10">
-                    {/* Glowing SVG Connector Path */}
+                    {/* Architectural Ink Connector Path */}
                     <div className="absolute left-0 top-0 bottom-0 w-2 h-full flex justify-center py-20">
                         <svg
                             ref={svgRef}
@@ -128,48 +138,50 @@ export const TalentProcess = () => {
                         >
                             <path
                                 d="M1 0V1000"
-                                stroke="#1F2937"
+                                stroke="rgba(9,9,11,0.14)"
                                 strokeWidth="2"
                                 strokeLinecap="round"
                             />
                             <path
                                 ref={pathRef}
                                 d="M1 0V1000"
-                                stroke="#A855F7"
+                                stroke="#09090B"
                                 strokeWidth="4"
                                 strokeLinecap="round"
-                                className="drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]"
+                                className="drop-shadow-[0_0_8px_rgba(9,9,11,0.25)]"
                             />
                         </svg>
                     </div>
 
-                    <div className="space-y-32">
+                    <div className="space-y-24">
                         {PROCESS_STEPS.map((step, i) => (
                             <div
                                 key={step.title}
                                 ref={el => { stepsRef.current[i] = el; }}
-                                className="relative perspective-1000"
+                                className="relative"
                             >
                                 {/* Connector Dot */}
-                                <div className="absolute -left-8 md:-left-20 top-4 w-4 h-4 rounded-full bg-zinc-950 border-2 border-zinc-800 z-10 flex items-center justify-center">
+                                <div className="absolute -left-8 md:-left-20 top-8 w-4 h-4 rounded-full bg-[#ECECE8] border-2 border-zinc-900 z-10 flex items-center justify-center">
                                     <motion.div
                                         initial={{ scale: 0 }}
                                         whileInView={{ scale: 1 }}
-                                        className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,1)]"
+                                        className="w-1.5 h-1.5 rounded-full bg-zinc-950"
                                     />
                                 </div>
 
-                                <div className="p-8 md:p-12 rounded-[2.5rem] bg-zinc-900/40 border border-white/5 hover:border-purple-500/20 transition-colors group backdrop-blur-3xl">
-                                    <div className="flex items-center gap-6 mb-6">
-                                        <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white group-hover:bg-purple-500 group-hover:text-black transition-all duration-500">
-                                            <step.icon size={32} />
+                                <div className="p-8 md:p-12 rounded-[2.5rem] bg-white/80 hover:bg-zinc-950 border border-zinc-900/10 hover:border-zinc-900 transition-all duration-500 group backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:shadow-[0_25px_65px_rgba(0,0,0,0.22)]">
+                                    <div className="flex items-center justify-between gap-6 mb-6">
+                                        <div className="p-4 rounded-2xl bg-zinc-950 text-white group-hover:bg-white group-hover:text-zinc-950 transition-all duration-500 shadow-[0_8px_20px_rgba(0,0,0,0.15)]">
+                                            <step.icon size={30} />
                                         </div>
-                                        <div className="text-zinc-500 font-black text-4xl italic opacity-20">0{i + 1}</div>
+                                        <div className="text-zinc-900/15 group-hover:text-white/15 font-black text-5xl italic transition-colors">
+                                            0{i + 1}
+                                        </div>
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-black text-white italic uppercase tracking-tighter mb-4 group-hover:text-purple-400 transition-colors">
+                                    <h3 className="text-2xl md:text-3xl font-black text-zinc-950 group-hover:text-white italic uppercase tracking-tighter mb-3 transition-colors">
                                         {step.title}
                                     </h3>
-                                    <p className="text-zinc-400 text-lg leading-relaxed group-hover:text-zinc-300 transition-colors">
+                                    <p className="text-zinc-600 group-hover:text-zinc-300 text-lg leading-relaxed transition-colors">
                                         {step.desc}
                                     </p>
                                 </div>
