@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stebup Brand Brief &amp; Logo Exploration Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+</head>
+<body class="bg-[#050508] text-zinc-100 antialiased p-4 sm:p-8 selection:bg-cyan-500 selection:text-black">
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 px-5 py-3.5 rounded-2xl bg-emerald-400 text-zinc-950 font-bold text-xs sm:text-sm shadow-[0_20px_50px_rgba(16,185,129,0.45)]">
+    <span>✓</span>
+    <span id="toast-text">Copied to clipboard!</span>
+  </div>
+
+  <div class="max-w-7xl mx-auto space-y-8">
+    <!-- 1. PROJECT BRIEF & CORE MOTIVE BANNER -->
+    <div class="rounded-3xl bg-zinc-900/70 border border-white/10 p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+      <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-fuchsia-500/10 blur-[120px] pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row lg:items-start justify-between gap-8 pb-8 border-b border-white/10">
+        <div class="space-y-3 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-xs font-mono uppercase tracking-widest">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            Stebup Brand Identity Brief &amp; Logo Studio
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white">
+            Steb<span class="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">up</span><span class="text-cyan-400">.</span> Identity Lab
+          </h1>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <strong>Core Motive:</strong> <em>"Bridging ambitious vision and high-performance execution."</em><br />
+            Headquartered in <strong>Jeddah, KSA</strong> with hubs in <strong>Dubai (DIFC), India, and Indonesia</strong> and <strong>25+ years of expertise</strong>, Stebup operates as a multi-disciplinary digital powerhouse across <strong>8 core divisions</strong> aligned with Saudi Vision 2030.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 shrink-0">
+          <button onclick="filterCategory('ALL')" class="px-4 py-2.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider cursor-pointer hover:bg-cyan-300 transition-colors">
+            All 16 Concepts
+          </button>
+          <button onclick="filterCategory('FAV')" class="px-4 py-2.5 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-400/30 font-bold text-xs uppercase tracking-wider cursor-pointer hover:bg-amber-500/25 transition-colors">
+            ★ Team Shortlist (<span id="fav-count">4</span>)
+          </button>
+        </div>
+      </div>
+
+      <!-- Website's Actual 8-Division Color System -->
+      <div class="relative z-10 pt-6">
+        <div class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-3">
+          Website Native Color System (Click any division palette below to preview all 16 logos in that theme):
+        </div>
+        <div id="palette-list" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5"></div>
+      </div>
+    </div>
+
+    <!-- 2. INTERACTIVE CONTROLS & PILLAR FILTERS -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 bg-zinc-900/50 border border-white/10 rounded-3xl p-5">
+      <!-- Filter by Brand Motive Pillar -->
+      <div class="lg:col-span-5 space-y-2">
+        <label class="text-xs font-bold uppercase tracking-wider text-zinc-400 block">1. Filter by Core Brand Motive</label>
+        <div id="category-pills" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <!-- Wordmark Style Override -->
+      <div class="lg:col-span-3 space-y-2">
+        <label class="text-xs font-bold uppercase tracking-wider text-zinc-400 block">2. Subtitle / Tagline</label>
+        <input
+          id="tagline-input"
+          type="text"
+          value="DIGITAL HUB • KSA & UAE"
+          class="w-full px-3 py-2 rounded-xl bg-black border border-white/15 text-xs font-mono text-white focus:outline-none focus:border-cyan-400"
+        />
+        <div id="tagline-presets" class="flex flex-wrap gap-1"></div>
+      </div>
+
+      <!-- Lockup Layout -->
+      <div class="lg:col-span-2 space-y-2">
+        <label class="text-xs font-bold uppercase tracking-wider text-zinc-400 block">3. Lockup Mode</label>
+        <div id="layout-list" class="space-y-1"></div>
+      </div>
+
+      <!-- Stage Backdrop -->
+      <div class="lg:col-span-2 space-y-2">
+        <label class="text-xs font-bold uppercase tracking-wider text-zinc-400 block">4. Canvas Surface</label>
+        <div id="bg-list" class="space-y-1"></div>
+      </div>
+    </div>
+
+    <!-- 3. 16 LOGO CONCEPTS GRID -->
+    <div id="concepts-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+  </div>
+
+  <script>
+    // Exact Color Palettes extracted from Stebup's codebase (header.tsx, logo-icon.tsx, services.ts)
+    const PALETTES = [
+      {
+        id: 'brand-signature',
+        name: '1. Stebup Master Brand',
+        sub: 'Fuchsia → Purple → Cyan (#06B6D4)',
+        c1: '#D946EF',
+        c2: '#A855F7',
+        c3: '#06B6D4',
+        dot: '#06B6D4',
+        glow: 'rgba(168,85,247,0.30)'
+      },
+      {
+        id: 'orbital-gulf',
+        name: '2. Jeddah Orbital Hub',
+        sub: 'Emerald → Blue → Gold → Teal',
+        c1: '#10B981',
+        c2: '#3B82F6',
+        c3: '#F59E0B',
+        dot: '#10B981',
+        glow: 'rgba(16,185,129,0.28)'
+      },
+      {
+        id: 'software-ai',
+        name: '3. Software & AI Division',
+        sub: 'Indigo → Electric Blue → Cyan',
+        c1: '#4F46E5',
+        c2: '#0EA5E9',
+        c3: '#22D3EE',
+        dot: '#3B82F6',
+        glow: 'rgba(59,130,246,0.30)'
+      },
+      {
+        id: 'consultancy-ksa',
+        name: '4. Consultancy & Vision 2030',
+        sub: 'Deep Emerald → Mint → Teal',
+        c1: '#059669',
+        c2: '#10B981',
+        c3: '#2DD4BF',
+        dot: '#10B981',
+        glow: 'rgba(16,185,129,0.30)'
+      },
+      {
+        id: 'ventures-design',
+        name: '5. Ventures & Creative',
+        sub: 'Pink → Rose → Venture Amber',
+        c1: '#EC4899',
+        c2: '#F43F5E',
+        c3: '#F59E0B',
+        dot: '#F59E0B',
+        glow: 'rgba(245,158,11,0.28)'
+      },
+      {
+        id: 'talent-monochrome',
+        name: '6. Talent Architectural',
+        sub: 'Pure White → Platinum → Slate',
+        c1: '#FFFFFF',
+        c2: '#D4D4D8',
+        c3: '#71717A',
+        dot: '#FFFFFF',
+        glow: 'rgba(212,212,216,0.22)'
+      }
+    ];
+
+    const TAGLINE_PRESETS = [
+      'DIGITAL HUB • KSA & UAE',
+      'BRIDGING VISION & EXECUTION',
+      'ELITE DIGITAL STUDIO',
+      ''
+    ];
+
+    const LAYOUTS = [
+      { id: 'horizontal', label: 'Horizontal Header' },
+      { id: 'stacked', label: 'Stacked Center' },
+      { id: 'icon', label: 'Symbol / App Icon' }
+    ];
+
+    const BACKDROPS = [
+      { id: 'obsidian', label: 'Website Black (#050507)', hex: '#050507' },
+      { id: 'zinc', label: 'Carbon Glass (#0F1117)', hex: '#0F1117' },
+      { id: 'alabaster', label: 'Talent Alabaster (#ECECE8)', hex: '#ECECE8' }
+    ];
+
+    // Wordmark Renderers reflecting Stebup's actual brand identity + diverse typographic explorations
+    function buildWordmarkSvg(style, gradId, p, textColor, subTextColor, tagline, isLight) {
+      const stebBaseColor = isLight ? '#09090B' : `url(#${gradId}-white)`;
+      let main = '';
+
+      if (style === 'website-native') {
+        // Exact wordmark from header.tsx: "Steb" (white/silver) + "up" (gradient) + glowing dot
+        main = `
+          <text x="8" y="72" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="64" font-weight="900" letter-spacing="-2">
+            <tspan fill="${stebBaseColor}">Steb</tspan><tspan fill="url(#${gradId}-a)">up</tspan>
+          </text>
+          <circle cx="234" cy="62" r="6.5" fill="${p.dot}" />
+          <circle cx="234" cy="62" r="12" fill="${p.dot}" opacity="0.22" />
+        `;
+      } else if (style === 'bridge-ligature') {
+        // "STEBUP" where T and E are linked by an upper architectural bridge bar
+        main = `
+          <text x="8" y="72" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="900" letter-spacing="5">
+            STEB<tspan fill="url(#${gradId}-a)">UP</tspan>
+          </text>
+          <rect x="52" y="18" width="128" height="4.5" rx="2.25" fill="url(#${gradId}-a)" />
+          <circle cx="322" cy="62" r="6" fill="${p.dot}" />
+        `;
+      } else if (style === 'editorial-italic') {
+        // Matches hero-parallax.tsx & about-content.tsx: font-black italic uppercase tracking-tighter
+        main = `
+          <g transform="skewX(-10)">
+            <text x="18" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="62" font-weight="900" letter-spacing="-1">
+              <tspan fill="${textColor}">STEB</tspan><tspan fill="url(#${gradId}-a)">UP</tspan>
+            </text>
+          </g>
+          <circle cx="272" cy="62" r="6.5" fill="${p.dot}" />
+        `;
+      } else if (style === 'hidden-arrow-up') {
+        // Clever negative-space upward arrow integrated into the 'U' of Stebup
+        main = `
+          <text x="8" y="72" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="900" letter-spacing="3">STEB</text>
+          <path d="M 218 32 V 58 C 218 68 226 74 238 74 C 250 74 258 68 258 58 V 24" stroke="url(#${gradId}-a)" stroke-width="10" stroke-linecap="round" fill="none" />
+          <polygon points="258,10 245,27 271,27" fill="${p.dot}" />
+          <text x="276" y="72" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="900" letter-spacing="3">P</text>
+        `;
+      } else if (style === 'minimal-architect') {
+        // Ultra-refined light/bold contrast: STEB (light) + UP (black gradient)
+        main = `
+          <text x="8" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="52" letter-spacing="10">
+            <tspan fill="${textColor}" font-weight="300">STEB</tspan><tspan fill="url(#${gradId}-a)" font-weight="900">UP</tspan>
+          </text>
+        `;
+      } else {
+        // Tech Slash STEB//UP
+        main = `
+          <text x="8" y="72" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="54" font-weight="900" letter-spacing="2">STEB</text>
+          <line x1="182" y1="74" x2="198" y2="28" stroke="${p.c1}" stroke-width="5.5" stroke-linecap="round" />
+          <line x1="195" y1="74" x2="211" y2="28" stroke="${p.c3}" stroke-width="5.5" stroke-linecap="round" />
+          <text x="220" y="72" fill="url(#${gradId}-a)" font-family="system-ui, -apple-system, sans-serif" font-size="54" font-weight="900" letter-spacing="2">UP</text>
+        `;
+      }
+
+      const tagNode = tagline
+        ? `<text x="10" y="102" fill="${subTextColor}" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="800" letter-spacing="5.5">${tagline.toUpperCase()}</text>`
+        : '';
+
+      return `<g>${main}${tagNode}</g>`;
+    }
+
+    // 16 Original Logo Concepts Rooted in Stebup's Core Motives
+    const CONCEPTS = [
+      {
+        id: 'vision-execution-bridge',
+        number: '01',
+        name: 'The Vision–Execution Bridge',
+        category: '1. Bridge: Vision & Execution',
+        badge: 'Core Mission Emblem',
+        description: 'Directly visualizes Stebup’s mission ("Bridging vision and execution"): two cantilevered spans reaching across space and locking into a glowing central keystone.',
+        wordmarkStyle: 'website-native',
+        markSvg: (g, p) => `
+          <!-- Left Span (Vision) -->
+          <path d="M 8 84 L 42 36 H 56 L 28 84 Z" fill="url(#${g}-a)" />
+          <!-- Right Span (Execution) -->
+          <path d="M 100 84 L 66 36 H 52 L 80 84 Z" fill="url(#${g}-b)" />
+          <!-- Horizontal Bridge Deck -->
+          <rect x="6" y="62" width="96" height="8" rx="4" fill="url(#${g}-a)" />
+          <!-- Central Glowing Keystone -->
+          <polygon points="54,14 68,28 54,42 40,28" fill="${p.dot}" />
+          <circle cx="54" cy="28" r="14" fill="${p.dot}" opacity="0.2" />
+        `
+      },
+      {
+        id: 'orbital-hub-sphere',
+        number: '02',
+        name: 'Jeddah Orbital Hub (3D Gyroscope)',
+        category: '2. 8-Division Ecosystem',
+        badge: 'From About Us Page',
+        description: 'Inspired by your website’s InteractiveOrbitalHub: intersecting 3D orbital rings with glowing landmark nodes circling a central digital core.',
+        wordmarkStyle: 'website-native',
+        markSvg: (g, p) => `
+          <ellipse cx="54" cy="58" rx="46" ry="18" transform="rotate(-28 54 58)" stroke="url(#${g}-a)" stroke-width="5" fill="none" />
+          <ellipse cx="54" cy="58" rx="46" ry="18" transform="rotate(32 54 58)" stroke="url(#${g}-b)" stroke-width="5" fill="none" opacity="0.85" />
+          <ellipse cx="54" cy="58" rx="42" ry="42" stroke="${p.c2}" stroke-width="2" stroke-dasharray="8 8" fill="none" opacity="0.45" />
+          <circle cx="54" cy="58" r="13" fill="url(#${g}-a)" />
+          <circle cx="92" cy="36" r="5.5" fill="${p.c1}" />
+          <circle cx="16" cy="38" r="5" fill="${p.c3}" />
+          <circle cx="88" cy="80" r="4.5" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'octa-core-prism',
+        number: '03',
+        name: 'The 8-Division Octa-Star',
+        category: '2. 8-Division Ecosystem',
+        badge: 'All 8 Services',
+        description: 'Eight precision geometric blades converging into a luminous hub—each blade representing one of Stebup’s 8 divisions (Software, AI, FinTech, Consultancy, Talent, Design, Ventures, Logistics).',
+        wordmarkStyle: 'minimal-architect',
+        markSvg: (g, p) => `
+          <g transform="translate(54, 58)">
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c1}" />
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c2}" transform="rotate(45)" />
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c3}" transform="rotate(90)" />
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c1}" transform="rotate(135)" />
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c2}" transform="rotate(180)" />
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c3}" transform="rotate(225)" />
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c1}" transform="rotate(270)" />
+            <polygon points="0,-48 10,-14 -10,-14" fill="${p.c2}" transform="rotate(315)" />
+            <circle cx="0" cy="0" r="10" fill="url(#${g}-a)" />
+          </g>
+        `
+      },
+      {
+        id: 'evolved-circuit-cortex',
+        number: '04',
+        name: 'Evolved Neural Circuit 2.0',
+        category: '2. 8-Division Ecosystem',
+        badge: 'Evolved Current Logo',
+        description: 'A sharper, bolder, executive evolution of Stebup’s current PCB circuit-brain logo—streamlined into 6 geometric traces so it stays razor-sharp even at 16px favicon size.',
+        wordmarkStyle: 'website-native',
+        markSvg: (g, p) => `
+          <g stroke="url(#${g}-a)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M 24 34 H 42 L 50 24 H 72" />
+            <path d="M 14 52 H 34 L 44 42 H 68 L 78 52 H 94" />
+            <path d="M 18 70 H 38 L 48 60 H 74 L 86 70" />
+            <path d="M 32 86 H 52 L 62 76 H 78" />
+            <path d="M 62 76 V 102" />
+          </g>
+          <circle cx="24" cy="34" r="5" fill="${p.c1}" />
+          <circle cx="72" cy="24" r="5" fill="${p.c3}" />
+          <circle cx="14" cy="52" r="5" fill="${p.c1}" />
+          <circle cx="94" cy="52" r="5" fill="${p.dot}" />
+          <circle cx="18" cy="70" r="5" fill="${p.c2}" />
+          <circle cx="86" cy="70" r="5" fill="${p.c3}" />
+          <circle cx="32" cy="86" r="5" fill="${p.c1}" />
+          <circle cx="62" cy="102" r="6" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'four-corridor-compass',
+        number: '05',
+        name: '4-Hub Global Corridor (KSA•UAE•IND•IDN)',
+        category: '1. Bridge: Vision & Execution',
+        badge: 'Regional Powerhouse',
+        description: 'Four interlocking chevrons representing your 4 strategic hubs (Jeddah, Dubai, Trivandrum, Jakarta) locked around a central North-East expansion vector.',
+        wordmarkStyle: 'bridge-ligature',
+        markSvg: (g, p) => `
+          <!-- Top-Right Launch Vector -->
+          <path d="M 54 14 L 92 14 L 92 52 L 76 52 L 76 30 L 36 70 L 24 58 L 64 18 L 54 18 Z" fill="url(#${g}-a)" />
+          <!-- 4 Hub Brackets -->
+          <path d="M 16 40 V 20 H 36" stroke="${p.c1}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M 16 76 V 96 H 36" stroke="${p.c2}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M 92 76 V 96 H 72" stroke="${p.c3}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <circle cx="24" cy="90" r="4" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'vision-2030-star',
+        number: '06',
+        name: 'Vision 2030 Rub el Hizb Quantum Star',
+        category: '4. Gulf & Vision 2030 Authority',
+        badge: 'Saudi HQ Signature',
+        description: 'Fuses the classic 8-pointed Arabian architectural geometry (two overlapping squares at 45°) with a glowing futuristic AI core.',
+        wordmarkStyle: 'minimal-architect',
+        markSvg: (g, p) => `
+          <rect x="22" y="26" width="64" height="64" rx="10" stroke="url(#${g}-a)" stroke-width="6.5" fill="none" />
+          <rect x="22" y="26" width="64" height="64" rx="10" transform="rotate(45 54 58)" stroke="url(#${g}-b)" stroke-width="6.5" fill="none" />
+          <polygon points="54,36 66,58 54,80 42,58" fill="url(#${g}-a)" />
+          <circle cx="54" cy="58" r="6" fill="#FFFFFF" />
+        `
+      },
+      {
+        id: 'exponential-ascent-arc',
+        number: '07',
+        name: 'Our Trajectory (Exponential Vector)',
+        category: '3. Stepping Up & Ascent',
+        badge: 'Clean & Iconic',
+        description: 'Inspired by your About page headline "Our Trajectory": a sleek parabolic flight path sweeping upward across three ascending architectural pillars.',
+        wordmarkStyle: 'editorial-italic',
+        markSvg: (g, p) => `
+          <rect x="20" y="70" width="14" height="32" rx="4" fill="${p.c1}" opacity="0.45" />
+          <rect x="44" y="50" width="14" height="52" rx="4" fill="${p.c2}" opacity="0.7" />
+          <rect x="68" y="26" width="14" height="76" rx="4" fill="${p.c3}" opacity="0.95" />
+          <path d="M 10 92 Q 48 84 92 14" stroke="url(#${g}-a)" stroke-width="9" stroke-linecap="round" fill="none" />
+          <polygon points="96,8 74,18 92,32" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'stebup-pulse-radar',
+        number: '08',
+        name: 'The Stebup. Pulse Beacon (Pure Wordmark)',
+        category: '3. Stepping Up & Ascent',
+        badge: 'Modern SaaS Standard',
+        description: 'Elevates the glowing dot at the end of "Stebup." into a concentric sonic pulse emblem—minimalist, unmistakable, and built for modern digital products.',
+        wordmarkStyle: 'website-native',
+        markSvg: (g, p) => `
+          <circle cx="54" cy="58" r="44" stroke="url(#${g}-a)" stroke-width="2.5" opacity="0.25" fill="none" />
+          <circle cx="54" cy="58" r="30" stroke="url(#${g}-a)" stroke-width="5" stroke-dasharray="110 40" fill="none" />
+          <circle cx="54" cy="58" r="16" fill="url(#${g}-a)" />
+          <circle cx="54" cy="58" r="6" fill="#FFFFFF" />
+          <circle cx="84" cy="28" r="6" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'red-sea-corniche-arch',
+        number: '09',
+        name: 'Jeddah Fountain & Red Sea Arch',
+        category: '4. Gulf & Vision 2030 Authority',
+        description: 'An architectural parabolic jet soaring upward from three horizontal wave reflections—a tribute to Stebup’s Jeddah headquarters on the Red Sea.',
+        wordmarkStyle: 'website-native',
+        markSvg: (g, p) => `
+          <path d="M 16 82 Q 54 -12 92 82" stroke="url(#${g}-a)" stroke-width="10" stroke-linecap="round" fill="none" />
+          <path d="M 30 82 Q 54 22 78 82" stroke="url(#${g}-b)" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.8" />
+          <line x1="12" y1="94" x2="96" y2="94" stroke="${p.c3}" stroke-width="5" stroke-linecap="round" />
+          <line x1="26" y1="106" x2="82" y2="106" stroke="${p.c2}" stroke-width="4" stroke-linecap="round" opacity="0.6" />
+          <circle cx="54" cy="14" r="5.5" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'code-fintech-pillar',
+        number: '10',
+        name: 'Code & Capital (< ↑ >)',
+        category: '2. 8-Division Ecosystem',
+        description: 'Unites software engineering brackets (< >) with an ascending central spire—capturing Software, AI, and FinTech in one sharp mark.',
+        wordmarkStyle: 'tech-slash',
+        markSvg: (g, p) => `
+          <path d="M 34 30 L 10 58 L 34 86" stroke="${p.c1}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M 74 30 L 98 58 L 74 86" stroke="${p.c3}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M 54 96 V 20" stroke="url(#${g}-a)" stroke-width="10" stroke-linecap="round" />
+          <polygon points="54,8 38,28 70,28" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'su-negative-arrow',
+        number: '11',
+        name: 'Interlocked S+U Negative-Space Arrow',
+        category: '3. Stepping Up & Ascent',
+        description: 'A Swiss geometric monogram where an outer "S" and inner "U" lock together to form an upward arrow in the center.',
+        wordmarkStyle: 'hidden-arrow-up',
+        markSvg: (g, p) => `
+          <rect x="12" y="16" width="84" height="84" rx="22" stroke="url(#${g}-a)" stroke-width="6" fill="none" />
+          <path d="M 34 42 L 54 24 L 74 42 M 54 24 V 72 C 54 80 60 84 68 84" stroke="url(#${g}-a)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M 38 62 V 72 C 38 80 44 84 54 84" stroke="${p.c1}" stroke-width="9" stroke-linecap="round" fill="none" />
+        `
+      },
+      {
+        id: 'bento-studio-mosaic',
+        number: '12',
+        name: 'Digital Studio Bento Mosaic',
+        category: '2. 8-Division Ecosystem',
+        description: 'Four modular geometric primitives (circle, pill, square, triangle) arranged in an ascending grid—representing Design, Software, Strategy & Ventures.',
+        wordmarkStyle: 'website-native',
+        markSvg: (g, p) => `
+          <rect x="14" y="62" width="34" height="34" rx="10" fill="${p.c1}" />
+          <circle cx="72" cy="79" r="17" fill="${p.c2}" />
+          <rect x="14" y="20" width="34" height="34" rx="17" fill="url(#${g}-a)" />
+          <polygon points="55,54 72,20 89,54" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'aerodynamic-falcon-delta',
+        number: '13',
+        name: 'Supersonic Gulf Delta Wing',
+        category: '4. Gulf & Vision 2030 Authority',
+        description: 'A sleek supersonic delta wing banking upward—symbolizing speed, logistics fleet mastery, and sovereign ambition.',
+        wordmarkStyle: 'editorial-italic',
+        markSvg: (g, p) => `
+          <polygon points="94,14 10,56 46,66 94,14" fill="url(#${g}-a)" />
+          <polygon points="94,14 46,66 60,102 94,14" fill="url(#${g}-b)" opacity="0.88" />
+          <polygon points="46,66 34,88 60,102" fill="${p.c1}" opacity="0.5" />
+        `
+      },
+      {
+        id: 'stepping-monolith-slabs',
+        number: '14',
+        name: '3-Tier Stepping Stones',
+        category: '3. Stepping Up & Ascent',
+        description: 'Three offset architectural slabs ascending diagonally with a luminous vertical laser piercing the center—literal "Step Up" architecture.',
+        wordmarkStyle: 'bridge-ligature',
+        markSvg: (g, p) => `
+          <rect x="10" y="76" width="56" height="14" rx="7" fill="${p.c1}" opacity="0.7" />
+          <rect x="26" y="52" width="56" height="14" rx="7" fill="url(#${g}-a)" />
+          <rect x="42" y="28" width="56" height="14" rx="7" fill="url(#${g}-b)" />
+          <line x1="54" y1="12" x2="54" y2="104" stroke="${p.dot}" stroke-width="4" stroke-linecap="round" />
+          <circle cx="54" cy="12" r="5" fill="${p.dot}" />
+        `
+      },
+      {
+        id: 'vision-lens-execution-grid',
+        number: '15',
+        name: 'Vision Lens × Execution Matrix',
+        category: '1. Bridge: Vision & Execution',
+        description: 'Left hemisphere is a smooth continuous arc (Vision); right hemisphere is a precision node matrix (Execution).',
+        wordmarkStyle: 'minimal-architect',
+        markSvg: (g, p) => `
+          <path d="M 52 16 A 42 42 0 0 0 52 100 Z" fill="url(#${g}-a)" />
+          <rect x="60" y="20" width="14" height="14" rx="3" fill="${p.c1}" />
+          <rect x="80" y="20" width="14" height="14" rx="3" fill="${p.dot}" />
+          <rect x="60" y="40" width="14" height="14" rx="3" fill="${p.c2}" />
+          <rect x="80" y="40" width="14" height="14" rx="3" fill="${p.c3}" />
+          <rect x="60" y="60" width="14" height="14" rx="3" fill="${p.c3}" />
+          <rect x="80" y="60" width="14" height="14" rx="3" fill="${p.c2}" />
+          <rect x="60" y="80" width="14" height="14" rx="3" fill="${p.c1}" />
+        `
+      },
+      {
+        id: 'data-to-reality-wave',
+        number: '16',
+        name: 'Raw Data to Reality Wave',
+        category: '1. Bridge: Vision & Execution',
+        description: 'Starts as discrete raw data particles on the left and fuses into a soaring luminous ribbon wave on the right ("Turning visionary ideas into reality").',
+        wordmarkStyle: 'website-native',
+        markSvg: (g, p) => `
+          <circle cx="14" cy="76" r="4" fill="${p.c1}" opacity="0.5" />
+          <circle cx="14" cy="54" r="4.5" fill="${p.c1}" opacity="0.8" />
+          <circle cx="28" cy="66" r="5" fill="${p.c2}" />
+          <circle cx="28" cy="42" r="5.5" fill="${p.c2}" />
+          <path d="M 40 72 C 56 72 64 24 94 20 L 94 42 C 68 46 60 92 40 92 Z" fill="url(#${g}-a)" />
+          <circle cx="94" cy="20" r="6" fill="${p.dot}" />
+        `
+      }
+    ];
+
+    const CATEGORIES = [
+      'ALL',
+      '1. Bridge: Vision & Execution',
+      '2. 8-Division Ecosystem',
+      '3. Stepping Up & Ascent',
+      '4. Gulf & Vision 2030 Authority'
+    ];
+
+    let state = {
+      palette: PALETTES[0],
+      tagline: 'DIGITAL HUB • KSA & UAE',
+      layout: 'horizontal',
+      backdrop: BACKDROPS[0],
+      category: 'ALL',
+      favorites: ['vision-execution-bridge', 'orbital-hub-sphere', 'octa-core-prism', 'evolved-circuit-cortex']
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      const txt = document.getElementById('toast-text');
+      txt.textContent = msg;
+      t.classList.remove('hidden');
+      t.classList.add('flex');
+      setTimeout(() => {
+        t.classList.add('hidden');
+        t.classList.remove('flex');
+      }, 3600);
+    }
+
+    function buildConceptSvg(concept) {
+      const gradId = `g-${concept.id}`;
+      const p = state.palette;
+      const isLight = state.backdrop.id === 'alabaster';
+      const textColor = isLight ? '#09090B' : '#FFFFFF';
+      const subTextColor = isLight ? '#52525B' : '#94A3B8';
+
+      let body = '';
+      if (state.layout === 'horizontal') {
+        body = `
+          <g transform="translate(32, 54)">
+            <g filter="url(#${gradId}-glow)" transform="scale(1.05)">
+              ${concept.markSvg(gradId, p)}
+            </g>
+            <g transform="translate(136, 8)">
+              ${buildWordmarkSvg(concept.wordmarkStyle, gradId, p, textColor, subTextColor, state.tagline, isLight)}
+            </g>
+          </g>
+        `;
+      } else if (state.layout === 'stacked') {
+        body = `
+          <g>
+            <g filter="url(#${gradId}-glow)" transform="translate(258, 10) scale(0.95)">
+              ${concept.markSvg(gradId, p)}
+            </g>
+            <g transform="translate(145, 120) scale(0.98)">
+              ${buildWordmarkSvg(concept.wordmarkStyle, gradId, p, textColor, subTextColor, state.tagline, isLight)}
+            </g>
+          </g>
+        `;
+      } else {
+        body = `
+          <g filter="url(#${gradId}-glow)" transform="translate(226, 22) scale(1.6)">
+            ${concept.markSvg(gradId, p)}
+          </g>
+        `;
+      }
+
+      return `
+        <svg id="svg-${concept.id}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 240" class="w-full h-full max-h-[225px] relative z-10 select-none">
+          <defs>
+            <linearGradient id="${gradId}-white" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFFFFF" />
+              <stop offset="100%" stop-color="#D4D4D8" />
+            </linearGradient>
+            <linearGradient id="${gradId}-a" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${p.c1}" />
+              <stop offset="50%" stop-color="${p.c2}" />
+              <stop offset="100%" stop-color="${p.c3}" />
+            </linearGradient>
+            <linearGradient id="${gradId}-b" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="${p.c3}" />
+              <stop offset="100%" stop-color="${p.c2}" />
+            </linearGradient>
+            <filter id="${gradId}-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="${p.c2}" flood-opacity="0.28" />
+            </filter>
+          </defs>
+          ${body}
+        </svg>
+      `;
+    }
+
+    async function renderLogoToPngBlob(concept) {
+      const svgEl = document.getElementById(`svg-${concept.id}`);
+      if (!svgEl) return null;
+      const clone = svgEl.cloneNode(true);
+      clone.setAttribute('width', '1200');
+      clone.setAttribute('height', '540');
+      const svgData = new XMLSerializer().serializeToString(clone);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 1200;
+          canvas.height = 630;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = state.backdrop.hex;
+          ctx.fillRect(0, 0, 1200, 630);
+
+          const radGrad = ctx.createRadialGradient(220, 260, 20, 220, 260, 460);
+          radGrad.addColorStop(0, state.palette.glow);
+          radGrad.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = radGrad;
+          ctx.fillRect(0, 0, 1200, 630);
+
+          ctx.drawImage(img, 0, 25, 1200, 540);
+
+          ctx.fillStyle = state.backdrop.id === 'alabaster' ? 'rgba(9,9,11,0.08)' : 'rgba(255,255,255,0.08)';
+          ctx.fillRect(60, 565, 1080, 1);
+
+          ctx.fillStyle = state.backdrop.id === 'alabaster' ? '#52525B' : '#94A3B8';
+          ctx.font = '600 18px system-ui, -apple-system, sans-serif';
+          ctx.fillText(`STEBUP #${concept.number}: ${concept.name.toUpperCase()} — ${concept.category.toUpperCase()}`, 60, 602);
+          ctx.textAlign = 'right';
+          ctx.fillText(`${state.palette.name.toUpperCase()}`, 1140, 602);
+
+          URL.revokeObjectURL(url);
+          canvas.toBlob((b) => resolve(b), 'image/png', 1.0);
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          resolve(null);
+        };
+        img.src = url;
+      });
+    }
+
+    async function copyForWhatsApp(id) {
+      const concept = CONCEPTS.find((c) => c.id === id);
+      if (!concept) return;
+      const blob = await renderLogoToPngBlob(concept);
+      if (!blob) return;
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        showToast(`Copied "${concept.name}" as PNG! Press Ctrl+V in your WhatsApp group chat.`);
+      } catch (err) {
+        downloadPng(id);
+      }
+    }
+
+    async function shareToWhatsApp(id) {
+      const concept = CONCEPTS.find((c) => c.id === id);
+      if (!concept) return;
+      const blob = await renderLogoToPngBlob(concept);
+      const shareText = `*Stebup Logo Concept #${concept.number}: ${concept.name}*\nMotive Pillar: ${concept.category}\n_${concept.description}_\n\nWhat does the team think of this direction?`;
+
+      if (blob) {
+        const file = new File([blob], `Stebup-Logo-${concept.number}.png`, { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({ title: concept.name, text: shareText, files: [file] });
+            return;
+          } catch (e) {}
+        }
+        try {
+          await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        } catch (e) {}
+      }
+      showToast(`Logo PNG copied to clipboard! Opening WhatsApp — press Ctrl+V in chat.`);
+      const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n\n(Logo image copied to clipboard — press Ctrl+V to paste!)')}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    async function downloadPng(id) {
+      const concept = CONCEPTS.find((c) => c.id === id);
+      if (!concept) return;
+      const blob = await renderLogoToPngBlob(concept);
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Stebup-Logo-${concept.number}-${concept.id}.png`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast(`Downloaded Stebup-Logo-${concept.number}.png`);
+    }
+
+    function toggleFav(id) {
+      if (state.favorites.includes(id)) {
+        state.favorites = state.favorites.filter((x) => x !== id);
+      } else {
+        state.favorites.push(id);
+      }
+      renderAll();
+    }
+
+    function filterCategory(cat) {
+      state.category = cat;
+      renderAll();
+    }
+
+    function renderControls() {
+      document.getElementById('fav-count').textContent = state.favorites.length;
+
+      const palEl = document.getElementById('palette-list');
+      palEl.innerHTML = PALETTES.map((p) => `
+        <button onclick="setPalette('${p.id}')" class="text-left p-3 rounded-2xl border transition-all cursor-pointer ${
+          state.palette.id === p.id
+            ? 'bg-white/15 border-cyan-400 text-white shadow-md'
+            : 'bg-black/40 border-white/10 text-zinc-400 hover:bg-white/5 hover:text-white'
+        }">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold truncate pr-1">${p.name}</span>
+            <span class="flex items-center gap-1 shrink-0">
+              <span class="w-2.5 h-2.5 rounded-full" style="background:${p.c1}"></span>
+              <span class="w-2.5 h-2.5 rounded-full" style="background:${p.c2}"></span>
+              <span class="w-2.5 h-2.5 rounded-full" style="background:${p.c3}"></span>
+            </span>
+          </div>
+          <div class="text-[11px] text-zinc-400 truncate">${p.sub}</div>
+        </button>
+      `).join('');
+
+      const pillsEl = document.getElementById('category-pills');
+      pillsEl.innerHTML = CATEGORIES.map((cat) => `
+        <button onclick="filterCategory('${cat}')" class="px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+          state.category === cat
+            ? 'bg-cyan-400 text-black border-transparent shadow-sm'
+            : 'bg-black/40 text-zinc-400 border-white/10 hover:text-white'
+        }">${cat === 'ALL' ? 'All Pillars (16)' : cat}</button>
+      `).join('');
+
+      const presetEl = document.getElementById('tagline-presets');
+      presetEl.innerHTML = TAGLINE_PRESETS.map((t, i) => `
+        <button onclick="setTaglinePreset(${i})" class="px-2 py-1 rounded-lg text-[11px] border cursor-pointer ${
+          state.tagline === t
+            ? 'bg-white/15 border-cyan-400 text-white font-semibold'
+            : 'bg-black/40 border-white/10 text-zinc-400'
+        }">${t || 'None'}</button>
+      `).join('');
+
+      const layEl = document.getElementById('layout-list');
+      layEl.innerHTML = LAYOUTS.map((l) => `
+        <button onclick="setLayout('${l.id}')" class="w-full text-left px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+          state.layout === l.id
+            ? 'bg-white/15 border-cyan-400 text-white'
+            : 'bg-black/40 border-white/10 text-zinc-400'
+        }">${l.label}</button>
+      `).join('');
+
+      const bgEl = document.getElementById('bg-list');
+      bgEl.innerHTML = BACKDROPS.map((b) => `
+        <button onclick="setBackdrop('${b.id}')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+          state.backdrop.id === b.id
+            ? 'bg-white/15 border-cyan-400 text-white'
+            : 'bg-black/40 border-white/10 text-zinc-400'
+        }">
+          <span class="truncate pr-1">${b.label}</span>
+          <span class="w-3.5 h-3.5 rounded-full border border-white/30 shrink-0" style="background:${b.hex}"></span>
+        </button>
+      `).join('');
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('concepts-grid');
+      const filtered = CONCEPTS.filter((c) => {
+        if (state.category === 'ALL') return true;
+        if (state.category === 'FAV') return state.favorites.includes(c.id);
+        return c.category === state.category;
+      });
+
+      grid.innerHTML = filtered.map((c) => {
+        const isFav = state.favorites.includes(c.id);
+        return `
+          <div class="bg-zinc-900/60 border ${isFav ? 'border-cyan-400/60' : 'border-white/10'} rounded-3xl overflow-hidden flex flex-col shadow-xl">
+            <div class="px-5 py-3.5 flex items-center justify-between border-b border-white/10 bg-white/[0.02]">
+              <div class="flex items-center gap-2.5">
+                <span class="px-2.5 py-1 rounded-lg bg-white/10 font-mono text-xs font-bold text-cyan-300">#${c.number}</span>
+                <div>
+                  <div class="font-bold text-sm text-white flex items-center gap-2 flex-wrap">
+                    <span>${c.name}</span>
+                    ${c.badge ? `<span class="px-2 py-0.5 rounded-full text-[11px] bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">${c.badge}</span>` : ''}
+                  </div>
+                  <div class="text-xs text-zinc-400">${c.category}</div>
+                </div>
+              </div>
+              <button onclick="toggleFav('${c.id}')" class="px-2.5 py-1 rounded-lg border border-white/10 text-xs font-semibold cursor-pointer ${isFav ? 'bg-amber-500/20 text-amber-300 border-amber-400/40' : 'text-zinc-400 hover:text-white'}">
+                ${isFav ? '★ Starred' : '☆ Star'}
+              </button>
+            </div>
+
+            <div class="relative w-full aspect-[16/8] flex items-center justify-center p-5 overflow-hidden" style="background:${state.backdrop.hex}">
+              <div class="absolute -left-10 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-[80px] pointer-events-none opacity-45" style="background:${state.palette.glow}"></div>
+              ${buildConceptSvg(c)}
+            </div>
+
+            <div class="p-5 flex flex-col gap-3 flex-1 justify-between">
+              <p class="text-xs text-zinc-300 leading-relaxed">${c.description}</p>
+              <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
+                <button onclick="copyForWhatsApp('${c.id}')" class="flex-1 min-w-[160px] px-3.5 py-2.5 rounded-xl bg-white text-black hover:bg-cyan-300 font-bold text-xs uppercase tracking-wider cursor-pointer transition-colors">
+                  Copy Image for WhatsApp
+                </button>
+                <button onclick="shareToWhatsApp('${c.id}')" class="px-3.5 py-2.5 rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 font-bold text-xs uppercase tracking-wider cursor-pointer transition-colors">
+                  WhatsApp Share
+                </button>
+                <button onclick="downloadPng('${c.id}')" class="px-3 py-2.5 rounded-xl bg-white/10 text-white hover:bg-white/20 font-bold text-xs cursor-pointer transition-colors" title="Download PNG">
+                  PNG ↓
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.setPalette = (id) => {
+      state.palette = PALETTES.find((p) => p.id === id) || PALETTES[0];
+      renderAll();
+    };
+    window.setTaglinePreset = (idx) => {
+      state.tagline = TAGLINE_PRESETS[idx];
+      document.getElementById('tagline-input').value = state.tagline;
+      renderAll();
+    };
+    window.setLayout = (id) => {
+      state.layout = id;
+      renderAll();
+    };
+    window.setBackdrop = (id) => {
+      state.backdrop = BACKDROPS.find((b) => b.id === id) || BACKDROPS[0];
+      renderAll();
+    };
+    window.toggleFav = toggleFav;
+    window.filterCategory = filterCategory;
+    window.copyForWhatsApp = copyForWhatsApp;
+    window.shareToWhatsApp = shareToWhatsApp;
+    window.downloadPng = downloadPng;
+
+    document.getElementById('tagline-input').addEventListener('input', (e) => {
+      state.tagline = e.target.value;
+      renderGrid();
+    });
+
+    function renderAll() {
+      renderControls();
+      renderGrid();
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>
