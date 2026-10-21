@@ -3,7 +3,8 @@ import { TalentPortfolio } from '../components/features/talent/talent-portfolio'
 import { TalentProcess } from '../components/features/talent/talent-process'
 import { TalentRegionSwitcher } from '../components/features/talent/talent-region-switcher'
 import { TalentFooter } from '../components/features/talent/talent-footer'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -23,12 +24,77 @@ const TalentPage = () => {
   const mainRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  // 3-Stage Choreography:
+  // 1. Video loads first (isVideoLoaded)
+  // 2. Hero text smoothly fades in (showHeroText)
+  // 3. Scrolling sections & scroll-driven video playback activate (showScrollContent)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const [showHeroText, setShowHeroText] = useState(false)
+  const [showScrollContent, setShowScrollContent] = useState(false)
+
   useEffect(() => {
     document.title = 'Talent & Staffing | Stebup'
     window.scrollTo(0, 0)
   }, [])
 
+  // Stage 1 -> Stage 2 -> Stage 3 Sequencer
   useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    let heroTimer: ReturnType<typeof setTimeout> | null = null
+    let scrollTimer: ReturnType<typeof setTimeout> | null = null
+    let fallbackTimer: ReturnType<typeof setTimeout> | null = null
+    let triggered = false
+
+    const triggerSequence = () => {
+      if (triggered) return
+      triggered = true
+
+      video.pause()
+      video.defaultPlaybackRate = SCROLL_PLAYBACK_RATE
+      video.playbackRate = SCROLL_PLAYBACK_RATE
+
+      // Step 1: Reveal video background first
+      setIsVideoLoaded(true)
+
+      // Step 2: Fade in hero text smoothly after video has settled on screen
+      heroTimer = setTimeout(() => {
+        setShowHeroText(true)
+      }, 550)
+
+      // Step 3: Unlock & reveal scrolling sections after hero text entrance completes
+      scrollTimer = setTimeout(() => {
+        setShowScrollContent(true)
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh()
+        })
+      }, 1750)
+    }
+
+    // If video is already buffered in cache, start sequence immediately
+    if (video.readyState >= 2) {
+      triggerSequence()
+    } else {
+      video.addEventListener('loadeddata', triggerSequence, { once: true })
+      video.addEventListener('canplay', triggerSequence, { once: true })
+      // Safety fallback in case network stalls
+      fallbackTimer = setTimeout(triggerSequence, 2500)
+    }
+
+    return () => {
+      video.removeEventListener('loadeddata', triggerSequence)
+      video.removeEventListener('canplay', triggerSequence)
+      if (heroTimer) clearTimeout(heroTimer)
+      if (scrollTimer) clearTimeout(scrollTimer)
+      if (fallbackTimer) clearTimeout(fallbackTimer)
+    }
+  }, [])
+
+  // Scroll-controlled video playback (active once Stage 3 is ready)
+  useEffect(() => {
+    if (!showScrollContent) return
+
     const video = videoRef.current
     const mainEl = mainRef.current
     if (!video || !mainEl) return
@@ -74,24 +140,15 @@ const TalentPage = () => {
       isPlaying = false
     }
 
-    const handleLoadedMetadata = () => {
-      video.defaultPlaybackRate = SCROLL_PLAYBACK_RATE
-      video.playbackRate = SCROLL_PLAYBACK_RATE
-    }
-
     // Listen directly to physical wheel/touch input for instant start/stop sync
     const handleWheel = () => startVideo()
     const handleTouchMove = () => startVideo()
     const handleTouchEnd = () => stopVideoImmediately()
 
-    video.addEventListener('loadedmetadata', handleLoadedMetadata)
     window.addEventListener('wheel', handleWheel, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: true })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
 
-    // Also hook GSAP ScrollTrigger for scrollbar dragging / keyboard scrolling,
-    // but ignore Lenis's low-velocity tail (< 85px/s) so the video doesn't keep playing
-    // for 1.2 seconds after the user stops scrolling.
     const trigger = ScrollTrigger.create({
       trigger: mainEl,
       start: 'top top',
@@ -107,7 +164,6 @@ const TalentPage = () => {
     })
 
     return () => {
-      video.removeEventListener('loadedmetadata', handleLoadedMetadata)
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
@@ -115,14 +171,14 @@ const TalentPage = () => {
       trigger.kill()
       video.pause()
     }
-  }, [])
+  }, [showScrollContent])
 
   return (
     <main
       ref={mainRef}
       className="relative min-h-screen bg-[#ECECE8] text-zinc-950 selection:bg-zinc-950 selection:text-white"
     >
-      {/* Full-Page Fixed Scroll-Controlled Background Video */}
+      {/* Stage 1: Full-Page Fixed Scroll-Controlled Background Video (Loads & Fades in First) */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <video
           ref={videoRef}
@@ -131,7 +187,9 @@ const TalentPage = () => {
           playsInline
           loop
           preload="auto"
-          className="w-full h-full object-cover scale-[1.02] will-change-transform transform-gpu"
+          className={`w-full h-full object-cover scale-[1.02] will-change-transform transform-gpu transition-opacity duration-1000 ease-out ${
+            isVideoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
         />
         {/* Soft architectural alabaster veil so silhouettes & cast shadows shine through while keeping typography razor-sharp */}
         <div className="absolute inset-0 bg-[#F4F4F0]/35" />
@@ -147,20 +205,29 @@ const TalentPage = () => {
         />
       </div>
 
-      {/* Scrolling Foreground Content */}
+      {/* Foreground Content */}
       <div className="relative z-10">
-        <TalentHero />
+        {/* Stage 2: Hero Text Fades in Smoothly After Video Loads */}
+        <TalentHero isVisible={showHeroText} />
 
-        <ArchitecturalDivider />
-        <TalentPortfolio />
+        {/* Stage 3: Scrolling Content & Sections Fade in After Hero Entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={showScrollContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className={showScrollContent ? 'pointer-events-auto' : 'pointer-events-none'}
+        >
+          <ArchitecturalDivider />
+          <TalentPortfolio />
 
-        <ArchitecturalDivider />
-        <TalentProcess />
+          <ArchitecturalDivider />
+          <TalentProcess />
 
-        <ArchitecturalDivider />
-        <TalentRegionSwitcher />
+          <ArchitecturalDivider />
+          <TalentRegionSwitcher />
 
-        <TalentFooter />
+          <TalentFooter />
+        </motion.div>
       </div>
     </main>
   )
