@@ -3,1177 +3,1795 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup • Brand Logo & Vector Search Studio</title>
-  <meta name="description" content="Massive searchable vector logo and brand identity exploration studio with dynamic color engine and 1-click WhatsApp card export." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            mono: ['Space Grotesk', 'monospace'],
-          },
-          colors: {
-            obsidian: {
-              950: '#070A11',
-              900: '#0B0F19',
-              850: '#101625',
-              800: '#161F33',
-              700: '#222E49',
-              600: '#334155',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <title>Stebup — English Tech & "B-Twist" Logo Brainstorming Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:wght@600;800&family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,600;0,800;1,700&family=Orbitron:wght@700;900&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;1,800&family=Rajdhani:wght@600;700&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800&family=Unbounded:wght@600;800;900&display=swap" rel="stylesheet">
   <style>
-    /* Custom scrollbars */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #0B0F19; }
-    ::-webkit-scrollbar-thumb { background: #222E49; border-radius: 9999px; }
-    ::-webkit-scrollbar-thumb:hover { background: #334155; }
-    
-    .logo-canvas svg {
-      width: 100%;
-      height: 100%;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    :root {
+      --bg: #050507;
+      --surface: #0c0d12;
+      --surface-2: #13151f;
+      --surface-3: #1c1f2e;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(99, 102, 241, 0.45);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-1: #6366f1;
+      --accent-2: #14b8a6;
+      --accent-3: #f59e0b;
+      --card-canvas: #08090d;
     }
-    .logo-card:hover .logo-canvas svg {
-      transform: scale(1.1);
+    body.light-canvas {
+      --card-canvas: #f1f5f9;
     }
-    .glass-panel {
-      background: rgba(16, 22, 37, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 110px;
     }
-    .glow-card {
+
+    /* Sticky Live Website Context Simulator */
+    .live-context-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 5, 7, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+    }
+    .context-inner {
+      max-width: 1560px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .sim-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-2);
+    }
+    .sim-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Simulated Stebup Website Navbar */
+    .mock-navbar {
+      flex: 1;
+      max-width: 780px;
+      background: rgba(17, 19, 28, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+    .mock-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 32px;
+      cursor: pointer;
+    }
+    .mock-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #94a3b8;
+    }
+    .mock-nav-links span:first-child { color: #fff; font-weight: 600; }
+    .mock-nav-cta {
+      background: linear-gradient(135deg, var(--accent-1), #4f46e5);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    /* App Icon & Favicon Mini Previews */
+    .mini-mocks {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mini-mock-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .app-squircle {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: #090a0f;
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .browser-tab-mock {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #1e2230;
+      padding: 4px 10px;
+      border-radius: 6px 6px 0 0;
+      font-size: 11px;
+      color: #e2e8f0;
+      border-bottom: 2px solid var(--accent-1);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Hero + Concept Pitch */
+    .studio-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .studio-title-group h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .studio-title-group h1 .b-highlight {
+      color: var(--accent-2);
+      text-decoration: underline;
+      text-decoration-color: var(--accent-1);
+      text-underline-offset: 4px;
+    }
+    .studio-subtitle {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      margin-top: 6px;
+      max-width: 760px;
+      line-height: 1.5;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pill-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+    }
+
+    /* Interactive Co-Creation Customizer Lab */
+    .co-creation-lab {
+      background: linear-gradient(180deg, rgba(19, 21, 31, 0.9), rgba(12, 13, 18, 0.95));
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 20px 50px -20px rgba(99, 102, 241, 0.2);
+    }
+    .lab-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .lab-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .lab-badge {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1.85fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    @media (max-width: 1024px) {
+      .lab-grid { grid-template-columns: 1fr; }
+      .mock-nav-links { display: none; }
+    }
+    .lab-stage {
+      background: var(--card-canvas);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      min-height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+    .lab-stage-center {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 8px;
+    }
+    .lab-stage-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 12px;
+    }
+    .lab-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .control-box {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .control-box label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip-btn {
+      background: var(--surface-2);
+      color: #cbd5e1;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 5px 9px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .chip-btn:hover {
+      border-color: var(--accent-1);
+      color: #fff;
+    }
+    .chip-btn.active {
+      background: rgba(99, 102, 241, 0.22);
+      border-color: var(--accent-1);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.25);
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .slider-row span {
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 62px;
+    }
+    .slider-row input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent-1);
+      cursor: pointer;
+    }
+
+    /* Filter & Palette Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+    }
+    .cat-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cat-tab {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cat-tab:hover { color: #fff; background: var(--surface-2); }
+    .cat-tab.active {
+      background: var(--accent-1);
+      color: #fff;
+    }
+    .right-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .palette-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-2);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .pal-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.15s;
+    }
+    .pal-dot:hover { transform: scale(1.15); }
+    .pal-dot.active { border-color: #fff; transform: scale(1.15); }
+
+    .search-input {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      width: 190px;
+    }
+
+    /* Compact High-Density Grid */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .logo-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .logo-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 1280px) { .logo-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .logo-grid { grid-template-columns: 1fr; } }
+
+    .logo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.18s ease;
       position: relative;
     }
-    .glow-card::after {
-      content: '';
+    .logo-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+    }
+    .logo-card.in-poll {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 1px var(--accent-2);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      font-size: 11px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.01);
+    }
+    .card-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent-1);
+    }
+    .card-cat-tag {
+      font-size: 10px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .card-canvas {
+      background: var(--card-canvas);
+      height: 142px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .card-canvas svg {
+      width: 100%;
+      height: 100%;
+      max-width: 280px;
+      max-height: 115px;
+    }
+    .try-header-hint {
       position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(20, 184, 166, 0.15), transparent 70%);
+      bottom: 6px;
+      right: 8px;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--accent-2);
+      background: rgba(12, 13, 18, 0.85);
+      padding: 2px 6px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.15s;
+      pointer-events: none;
+    }
+    .card-canvas:hover .try-header-hint { opacity: 1; }
+
+    .card-info {
+      padding: 10px 12px 8px;
+      flex: 1;
+    }
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+    .card-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.38;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1.2fr 1.2fr 0.8fr 0.6fr;
+      gap: 5px;
+      padding: 8px 10px 10px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .btn-act {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: #e2e8f0;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 6px;
+      border-radius: 7px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .btn-act:hover {
+      background: var(--surface-3);
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+    .btn-copy {
+      background: rgba(99, 102, 241, 0.16);
+      border-color: rgba(99, 102, 241, 0.35);
+      color: #c7d2fe;
+    }
+    .btn-copy:hover {
+      background: var(--accent-1);
+      color: #fff;
+    }
+    .btn-wa {
+      background: rgba(16, 185, 129, 0.14);
+      border-color: rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+    }
+    .btn-wa:hover {
+      background: #10b981;
+      color: #052e16;
+    }
+    .btn-poll.active {
+      background: var(--accent-2);
+      color: #042f2e;
+      border-color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    /* Floating WhatsApp Team Poll Dock */
+    .poll-dock {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 120;
+      background: rgba(15, 17, 26, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(20, 184, 166, 0.45);
+      border-radius: 999px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    }
+    .poll-slots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .poll-slot {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      border: 1px dashed rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      position: relative;
+      overflow: hidden;
+    }
+    .poll-slot.filled {
+      border-style: solid;
+      border-color: var(--accent-2);
+      background: #08090d;
+    }
+    .btn-poll-generate {
+      background: linear-gradient(135deg, #14b8a6, #0d9488);
+      color: #042f2e;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .btn-poll-generate:hover { transform: scale(1.03); }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      right: 24px;
+      z-index: 200;
+      background: #10b981;
+      color: #052e16;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      transform: translateY(30px);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 0;
+      transition: all 0.25s;
     }
-    .glow-card:hover::after {
+    .toast.show {
+      transform: translateY(0);
       opacity: 1;
     }
   </style>
 </head>
-<body class="bg-obsidian-950 text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white flex flex-col">
+<body>
 
-  <!-- Top Sticky Navigation & Search Header -->
-  <header class="sticky top-0 z-40 glass-panel border-b border-obsidian-700/60 shadow-2xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        
-        <!-- Brand Title & Tagline -->
-        <div class="flex items-center space-x-3.5">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-teal-500 to-amber-400 p-[1.5px] flex items-center justify-center shadow-lg shadow-indigo-500/20">
-            <div class="w-full h-full bg-obsidian-900 rounded-[10px] flex items-center justify-center">
-              <svg class="w-5 h-5 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <h1 class="text-lg font-bold tracking-tight text-white font-mono">STEBUP <span class="text-indigo-400 font-sans font-medium text-sm px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20">Vector Studio</span></h1>
-              <span class="text-xs text-emerald-400 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">200k+ Icons Live</span>
-            </div>
-            <p class="text-xs text-slate-400">Massive searchable vector symbol library with dynamic color engine & WhatsApp cards</p>
-          </div>
-        </div>
-
-        <!-- Global Search Bar with Live API trigger -->
-        <div class="flex-1 max-w-xl">
-          <div class="relative">
-            <input 
-              id="searchInput" 
-              type="text" 
-              placeholder="Search 200,000+ vector marks (e.g. bridge, ascent, nexus, neural, crest, crown, prism)..."
-              class="w-full pl-11 pr-24 py-2.5 rounded-xl bg-obsidian-900/90 border border-obsidian-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 text-sm text-white placeholder-slate-500 transition-all outline-none shadow-inner"
-            />
-            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-              </svg>
-            </div>
-            <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
-              <button id="searchBtn" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow transition-all flex items-center space-x-1">
-                <span>Search</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Quick Actions & Stats -->
-        <div class="flex items-center space-x-2.5 text-xs">
-          <button id="randomBtn" title="Pick random creative inspiration" class="px-3 py-2 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white transition flex items-center space-x-1.5">
-            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            <span>Surprise Me</span>
-          </button>
-          <button id="viewSavedBtn" class="px-3 py-2 rounded-lg bg-indigo-600/15 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600/25 transition flex items-center space-x-1.5">
-            <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            <span>Favorites (<span id="favCount">0</span>)</span>
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Live Color Control & Customizer Strip -->
-    <div class="bg-obsidian-900/95 border-t border-obsidian-800 px-4 sm:px-6 lg:px-8 py-2.5">
-      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
-        
-        <!-- Dynamic Color Engine -->
-        <div class="flex items-center flex-wrap gap-2.5">
-          <span class="font-mono font-bold text-slate-400 uppercase tracking-wider text-[11px] flex items-center space-x-1">
-            <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
-            <span>Live Color Studio:</span>
-          </span>
-
-          <!-- Color Mode Toggle -->
-          <div class="flex bg-obsidian-800 rounded-lg p-0.5 border border-obsidian-700">
-            <button id="modeGradient" class="px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition">Gradient</button>
-            <button id="modeSolid" class="px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition">Solid</button>
-            <button id="modeMonochrome" class="px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition">Monochrome</button>
-          </div>
-
-          <!-- Color Pickers -->
-          <div class="flex items-center space-x-2 bg-obsidian-800 px-2.5 py-1 rounded-lg border border-obsidian-700">
-            <label class="flex items-center space-x-1.5 cursor-pointer">
-              <input type="color" id="colorPicker1" value="#6366F1" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent" />
-              <span id="colorVal1" class="font-mono text-slate-300">#6366F1</span>
-            </label>
-            <span id="colorDivider" class="text-slate-600 font-bold">→</span>
-            <label id="color2Wrapper" class="flex items-center space-x-1.5 cursor-pointer">
-              <input type="color" id="colorPicker2" value="#14B8A6" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent" />
-              <span id="colorVal2" class="font-mono text-slate-300">#14B8A6</span>
-            </label>
-          </div>
-
-          <!-- Quick Palette Presets -->
-          <div class="flex items-center space-x-1.5 overflow-x-auto py-0.5">
-            <span class="text-slate-500 text-[11px] font-mono mr-1">Presets:</span>
-            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#6366F1" data-c2="#14B8A6" data-name="Stebup Tech (Indigo/Teal)">
-              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#6366F1] to-[#14B8A6]"></span>
-              <span class="text-[11px] text-slate-300">Tech Bridge</span>
-            </button>
-            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#F59E0B" data-c2="#EF4444" data-name="Saudi Vision 2030 (Gold/Crimson)">
-              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#EF4444]"></span>
-              <span class="text-[11px] text-slate-300">Vision 2030</span>
-            </button>
-            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#06B6D4" data-c2="#3B82F6" data-name="Cyber Nexus (Cyan/Blue)">
-              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#3B82F6]"></span>
-              <span class="text-[11px] text-slate-300">Cyber Nexus</span>
-            </button>
-            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#8B5CF6" data-c2="#EC4899" data-name="Royal FinTech (Violet/Rose)">
-              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#EC4899]"></span>
-              <span class="text-[11px] text-slate-300">Royal FinTech</span>
-            </button>
-            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#10B981" data-c2="#06B6D4" data-name="Sustainable Growth (Emerald/Cyan)">
-              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#10B981] to-[#06B6D4]"></span>
-              <span class="text-[11px] text-slate-300">Emerald Growth</span>
-            </button>
-            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#ECECE8" data-c2="#94A3B8" data-name="Alabaster Architectural (White/Slate)">
-              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#ECECE8] to-[#94A3B8]"></span>
-              <span class="text-[11px] text-slate-300">Alabaster Arch</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Density & Background Controls -->
-        <div class="flex items-center space-x-3">
-          <!-- Card Canvas Background Switcher -->
-          <div class="flex items-center space-x-1 bg-obsidian-800 px-1.5 py-0.5 rounded-lg border border-obsidian-700">
-            <span class="text-slate-400 text-[10px] uppercase font-mono px-1">Canvas:</span>
-            <button id="bgDark" class="w-5 h-5 rounded bg-[#070A11] border border-indigo-500/50 shadow" title="Obsidian Dark"></button>
-            <button id="bgNavy" class="w-5 h-5 rounded bg-[#0F172A] border border-slate-700" title="Midnight Navy"></button>
-            <button id="bgLight" class="w-5 h-5 rounded bg-[#F8FAFC] border border-slate-300" title="Alabaster Light"></button>
-          </div>
-
-          <!-- Grid Column Switcher -->
-          <div class="hidden sm:flex bg-obsidian-800 rounded-lg p-0.5 border border-obsidian-700">
-            <button id="gridCols5" class="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white">5 Col</button>
-            <button id="gridCols4" class="px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold">4 Col</button>
-            <button id="gridCols3" class="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white">3 Col</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  <!-- Curated Stebup Category Filter Pills -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-3 w-full">
-    <div class="flex items-center justify-between gap-3 overflow-x-auto pb-1 text-xs border-b border-obsidian-800/80">
-      <div class="flex items-center space-x-2 shrink-0">
-        <span class="text-slate-400 font-mono text-[11px] uppercase mr-1">Pillars:</span>
-        <button class="category-tab active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium shadow-md shadow-indigo-600/20 transition" data-query="curated-all">
-          ✨ Curated Showcase (48)
-        </button>
-        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="bridge">
-          🌉 Bridges & Horizons
-        </button>
-        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="steps ascent growth">
-          📈 Steps & Upward Velocity
-        </button>
-        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="circuit neural network brain">
-          🧠 AI & Neural Circuits
-        </button>
-        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="nexus orbit galaxy hub">
-          🌐 Orbital 8-Hub Ecosystem
-        </button>
-        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="prism hexagon crystal cube">
-          💎 Geometric Prisms & 3D
-        </button>
-        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="crest shield crown emblem">
-          🛡️ Enterprise Crests & Emblems
-        </button>
-        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="arrow velocity speed wings">
-          ⚡ Kinetic Vectors & Wings
-        </button>
+  <!-- LIVE WEBSITE NAVBAR & FAVICON CONTEXT SIMULATOR -->
+  <div class="live-context-bar">
+    <div class="context-inner">
+      <div class="sim-label">
+        <span class="sim-dot"></span>
+        <span>Live Website Header Tester</span>
       </div>
 
-      <div class="shrink-0 text-slate-400 font-mono text-[11px]">
-        Showing <span id="resultCount" class="text-indigo-400 font-bold">48</span> options
+      <div class="mock-navbar" title="Click any logo card below to test it live inside your Stebup website navbar">
+        <div class="mock-nav-brand" id="liveNavbarLogo"></div>
+        <div class="mock-nav-links">
+          <span>Home</span>
+          <span>Services ▾</span>
+          <span>Divisions</span>
+          <span>About Us</span>
+        </div>
+        <div class="mock-nav-cta">Get in Touch ↗</div>
+      </div>
+
+      <div class="mini-mocks">
+        <div class="mini-mock-item">
+          <div class="app-squircle" id="liveAppIcon"></div>
+          <span>App Icon</span>
+        </div>
+        <div class="browser-tab-mock">
+          <div style="width:16px;height:16px;display:flex;align-items:center;justify-content:center;" id="liveFavicon"></div>
+          <span>Stebup — Vision & Execution</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Main Grid Section -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex-1 w-full">
-    
-    <!-- Loading Spinner & State -->
-    <div id="loadingState" class="hidden py-24 text-center">
-      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-indigo-500 border-t-transparent"></div>
-      <p class="mt-4 text-slate-300 text-sm font-medium">Searching 200,000+ vector marks from Iconify Global API...</p>
-      <p class="text-xs text-slate-500 mt-1 font-mono">Fetching Lucide, Phosphor, Carbon, Tabler, Material & Simple Icons</p>
-    </div>
-
-    <!-- Empty Search State -->
-    <div id="emptyState" class="hidden py-24 text-center max-w-md mx-auto">
-      <div class="w-16 h-16 rounded-2xl bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto text-slate-500">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="studio-header">
+      <div class="studio-title-group">
+        <h1>Ste<span class="b-highlight">b</span>up — English Slang-Tech Logo Lab</h1>
+        <p class="studio-subtitle">
+          Engineered around the soul of the name: <strong>"Step Up" → "Stebup"</strong> (the iconic local <strong>P → B</strong> phonetic twist paired with a sharp Silicon Valley & GCC tech profile). Test any concept live in the navbar above, remix your own wordmark below, or build an <strong>A vs B vs C Poll Card</strong> for WhatsApp.
+        </p>
+        <div class="badge-row">
+          <span class="pill-tag">100% English Typography & Marks</span>
+          <span class="pill-tag">The "P → B" Slang Hook</span>
+          <span class="pill-tag">60 Bold Tech Concepts</span>
+          <span class="pill-tag">Interactive Wordmark Remix Lab</span>
+        </div>
       </div>
-      <h3 class="mt-4 text-base font-semibold text-white">No vector marks found</h3>
-      <p class="mt-1 text-xs text-slate-400">Try broader keywords like <span class="text-indigo-400 font-mono">tech</span>, <span class="text-indigo-400 font-mono">cube</span>, <span class="text-indigo-400 font-mono">star</span>, <span class="text-indigo-400 font-mono">wave</span>, or <span class="text-indigo-400 font-mono">matrix</span>.</p>
     </div>
 
-    <!-- The Dynamic Logo Grid -->
-    <div id="logoGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <!-- Cards injected dynamically via JS -->
-    </div>
-
-  </main>
-
-  <!-- Interactive Brand Lockup & Inspection Modal -->
-  <div id="previewModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-    <div class="bg-obsidian-900 border border-obsidian-700 rounded-2xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl relative my-8">
-      
-      <!-- Close Button -->
-      <button id="closeModalBtn" class="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-        <!-- Left Column: Visual Mockup Showcase -->
-        <div class="md:col-span-7 flex flex-col space-y-4">
-          
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-bold flex items-center space-x-1.5">
-              <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
-              <span id="modalIconName">lucide:bridge</span>
-            </span>
-            <div class="flex space-x-2 text-xs">
-              <button id="modalBgDark" class="px-2.5 py-1 rounded bg-obsidian-950 text-white font-mono border border-slate-700">Dark</button>
-              <button id="modalBgLight" class="px-2.5 py-1 rounded bg-white text-slate-900 font-mono border border-slate-300">Light</button>
-            </div>
-          </div>
-
-          <!-- Primary Horizontal Lockup Canvas -->
-          <div id="modalPreviewBox" class="rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] bg-obsidian-950 border border-obsidian-800 shadow-inner transition-colors">
-            <div class="flex items-center space-x-4">
-              <div id="modalIconContainer" class="w-16 h-16 flex items-center justify-center">
-                <!-- Injected SVG -->
-              </div>
-              <div class="flex flex-col">
-                <span class="text-3xl font-extrabold tracking-tight font-mono text-white tracking-wide">STEBUP</span>
-                <span class="text-[11px] uppercase tracking-widest text-slate-400 font-medium">Bridging Vision & Execution</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Secondary Variations: Stacked & App Icon Squircle -->
-          <div class="grid grid-cols-2 gap-4">
-            <!-- Stacked Lockup -->
-            <div id="modalStackedBox" class="rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center text-center space-y-2">
-              <div id="modalStackedIcon" class="w-10 h-10 flex items-center justify-center"></div>
-              <span class="text-sm font-bold font-mono tracking-wider text-white">STEBUP</span>
-              <span class="text-[9px] uppercase tracking-wider text-slate-400">Global Ecosystem</span>
-            </div>
-
-            <!-- App Icon / Favicon Tile -->
-            <div id="modalTileBox" class="rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center space-y-2">
-              <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-obsidian-900 to-obsidian-800 border border-slate-700/80 p-3 shadow-xl flex items-center justify-center relative group">
-                <div id="modalTileIcon" class="w-full h-full flex items-center justify-center"></div>
-              </div>
-              <span class="text-[10px] font-mono text-slate-400">Mobile App Icon (iOS/Web)</span>
-            </div>
-          </div>
-
+    <!-- INTERACTIVE WORDMARK & "B-TWIST" CO-CREATION LAB -->
+    <div class="co-creation-lab">
+      <div class="lab-top-bar">
+        <div class="lab-title">
+          <span class="lab-badge">Interactive Builder</span>
+          <span>Custom "Stebup" Wordmark &amp; B-Twist Mixer</span>
         </div>
-
-        <!-- Right Column: Metadata, Palette details & WhatsApp Export -->
-        <div class="md:col-span-5 flex flex-col justify-between space-y-6">
-          
-          <div>
-            <h3 class="text-xl font-bold text-white">Stebup Brand Concept</h3>
-            <p class="text-xs text-slate-400 mt-1" id="modalIconDesc">High-concept vector mark representing technological bridging, scale, and enterprise execution.</p>
-            
-            <div class="mt-4 space-y-3 bg-obsidian-950/70 p-4 rounded-xl border border-obsidian-800 text-xs">
-              <div class="flex justify-between">
-                <span class="text-slate-400 font-mono">Source Collection:</span>
-                <span id="modalCollection" class="text-indigo-400 font-mono font-medium">Lucide Vector</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-slate-400 font-mono">Color Formulation:</span>
-                <span id="modalColorMode" class="text-emerald-400 font-mono">Linear Gradient (135°)</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-slate-400 font-mono">Active Swatches:</span>
-                <div class="flex items-center space-x-1.5">
-                  <span id="modalHex1" class="font-mono text-slate-300">#6366F1</span>
-                  <span class="w-3 h-3 rounded-full border border-slate-700" id="modalSwatch1"></span>
-                  <span class="text-slate-600">•</span>
-                  <span id="modalHex2" class="font-mono text-slate-300">#14B8A6</span>
-                  <span class="w-3 h-3 rounded-full border border-slate-700" id="modalSwatch2"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sharing & Export Action Center -->
-          <div class="space-y-2.5">
-            <div class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">Export & WhatsApp Actions</div>
-            
-            <!-- 1-Click WhatsApp Presentation Card -->
-            <button id="modalCopyCardBtn" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-500 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-emerald-500/10 flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5">
-              <svg class="w-4 h-4 text-emerald-200" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-              </svg>
-              <span>Copy 1200×630 WhatsApp Slide</span>
-            </button>
-
-            <!-- Vector Download Buttons -->
-            <div class="grid grid-cols-2 gap-2">
-              <button id="modalDownloadSvgBtn" class="py-2.5 px-3 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                <span>Download SVG</span>
-              </button>
-              <button id="modalDownloadPngBtn" class="py-2.5 px-3 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                <span>Download PNG</span>
-              </button>
-            </div>
-
-            <!-- Toast / Status message -->
-            <div id="modalToast" class="hidden text-center py-2 px-3 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-medium animate-bounce">
-              ✓ Copied high-res card to clipboard! Paste (Ctrl+V) into WhatsApp now.
-            </div>
-
-          </div>
-
-        </div>
-
+        <span style="font-size:12px;color:var(--text-muted);">Mix fonts, customize how the letter <strong>"b"</strong> behaves, pair with any icon, and copy directly to WhatsApp</span>
       </div>
 
+      <div class="lab-grid">
+        <!-- Live Stage -->
+        <div class="lab-stage">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);">
+            <span id="customRecipeLabel">Space Grotesk • B-Glow Accent • Paired Icon #01</span>
+            <span style="color:var(--accent-2);cursor:pointer;" onclick="applyCustomToNavbar()">↻ Preview in Navbar</span>
+          </div>
+          <div class="lab-stage-center" id="customBuilderStage"></div>
+          <div class="lab-stage-actions">
+            <button class="btn-act btn-copy" style="padding:7px 14px;" onclick="copyCustomLogoPNG()">📋 Copy Custom PNG for WhatsApp</button>
+            <button class="btn-act btn-wa" style="padding:7px 14px;" onclick="shareCustomWhatsApp()">💬 Share on WhatsApp</button>
+            <button class="btn-act" style="padding:7px 12px;" onclick="addCustomToPoll()">+ Add Remix to Poll</button>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="lab-controls">
+          <div class="control-box">
+            <label>1. Tech Font Family (12 Fonts)</label>
+            <div class="chip-group" id="fontChips"></div>
+          </div>
+
+          <div class="control-box">
+            <label>2. The "B-Twist" Mechanism (Why Stebup has a B)</label>
+            <div class="chip-group" id="bTwistChips"></div>
+          </div>
+
+          <div class="control-box">
+            <label>3. Case &amp; Layout Lockup</label>
+            <div class="chip-group" id="caseChips"></div>
+            <div style="margin-top:10px;">
+              <label>Icon Pairing</label>
+              <div class="chip-group" id="layoutChips"></div>
+            </div>
+          </div>
+
+          <div class="control-box">
+            <label>4. Fine-Tune Tech Profile</label>
+            <div class="slider-row">
+              <span>Tracking</span>
+              <input type="range" id="trackSlider" min="-8" max="16" value="-3" oninput="renderCustomBuilder()" />
+            </div>
+            <div class="slider-row">
+              <span>Slant / Italic</span>
+              <input type="range" id="slantSlider" min="-14" max="0" value="0" oninput="renderCustomBuilder()" />
+            </div>
+            <div class="slider-row">
+              <span>Icon #</span>
+              <input type="range" id="iconIdxSlider" min="1" max="60" value="1" oninput="renderCustomBuilder()" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- GALLERY TOOLBAR -->
+    <div class="toolbar">
+      <div class="cat-tabs" id="categoryTabs">
+        <button class="cat-tab active" data-cat="all">All 60 Concepts</button>
+        <button class="cat-tab" data-cat="p2b">01. The "P → B" Slang Flip (10)</button>
+        <button class="cat-tab" data-cat="wordmark">02. Pure Custom Wordmarks (10)</button>
+        <button class="cat-tab" data-cat="silicon">03. Silicon Valley S &amp; SB Marks (10)</button>
+        <button class="cat-tab" data-cat="ascent">04. Step-Up &amp; Ascent Geometry (10)</button>
+        <button class="cat-tab" data-cat="dev">05. Dev, Terminal &amp; AI Badges (10)</button>
+        <button class="cat-tab" data-cat="monogram">06. Enterprise SU / SB Monograms (10)</button>
+      </div>
+
+      <div class="right-tools">
+        <div class="palette-dots" id="paletteSwitcher" title="Switch Brand Color Palette"></div>
+        <button class="chip-btn" onclick="toggleCanvasTheme()" id="themeBtn">☀/🌙 Canvas</button>
+        <div class="chip-group">
+          <button class="chip-btn active" onclick="setCols(4, this)">4 Col</button>
+          <button class="chip-btn" onclick="setCols(3, this)">3 Col</button>
+          <button class="chip-btn" onclick="setCols(2, this)">2 Col</button>
+        </div>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search e.g. flip, arrow, wordmark..." oninput="renderGallery()" />
+      </div>
+    </div>
+
+    <!-- 60 LOGO GRID -->
+    <div class="logo-grid" id="logoGrid"></div>
   </div>
 
-  <!-- Hidden Offscreen Canvas for Rendering WhatsApp Slide -->
-  <canvas id="exportCanvas" width="1200" height="630" class="hidden"></canvas>
-
-  <!-- Notification Toast Container -->
-  <div id="globalToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-obsidian-900 border border-indigo-500/40 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3">
-    <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">✓</div>
-    <div>
-      <div id="toastTitle" class="text-xs font-bold text-white">Copied to Clipboard</div>
-      <div id="toastDesc" class="text-[11px] text-slate-400">Ready to paste into WhatsApp</div>
+  <!-- FLOATING WHATSAPP POLL BUILDER DOCK -->
+  <div class="poll-dock">
+    <div style="font-size:12px;font-weight:700;color:#e2e8f0;">
+      🗳️ WhatsApp Poll Card <span style="color:var(--accent-2);" id="pollCountLabel">(0/4)</span>
     </div>
+    <div class="poll-slots" id="pollSlots">
+      <div class="poll-slot">A</div>
+      <div class="poll-slot">B</div>
+      <div class="poll-slot">C</div>
+      <div class="poll-slot">D</div>
+    </div>
+    <button class="btn-poll-generate" onclick="copyPollComparisonPNG()">📋 Copy "A vs B vs C" Poll PNG</button>
+    <button class="chip-btn" onclick="clearPoll()" style="padding:5px 8px;">Clear</button>
   </div>
 
-  <!-- Studio Script -->
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
   <script>
-    // --- Initial 48 Premier Curated Icons for Stebup ---
-    const CURATED_ICONS = [
-      // 1. Bridges & Spans (Manifesto: The bridge between vision & execution)
-      { name: 'lucide:bridge', label: 'Suspension Span', category: 'bridge', desc: 'Symmetrical structural bridge connecting vision to execution.' },
-      { name: 'ph:bridge-bold', label: 'Monolithic Viaduct', category: 'bridge', desc: 'Heavy architectural span with high-load pillars.' },
-      { name: 'tabler:route', label: 'Connected Corridor', category: 'bridge', desc: 'Strategic point-to-point regional bridge corridor.' },
-      { name: 'carbon:pedestrian-child', label: 'Human Span', category: 'bridge', desc: 'Human-centered talent and execution pathway.' },
-      { name: 'mingcute:bridge-fill', label: 'Arch Keystone', category: 'bridge', desc: 'Geometric arch bridge with solid keystone.' },
-      { name: 'hugeicons:bridge', label: 'Modern Flyover', category: 'bridge', desc: 'Curved high-speed viaduct for enterprise velocity.' },
-      { name: 'lucide:split', label: 'Convergence Fork', category: 'bridge', desc: 'Multiple streams uniting into a single execution channel.' },
-      { name: 'tabler:arrow-ramp-right-2', label: 'Ascent Ramp', category: 'bridge', desc: 'Elevated highway ramp scaling up into the horizon.' },
+    // ============================================================================
+    // PALETTES (Derived from Stebup Website Theme + High-Contrast Tech)
+    // ============================================================================
+    const PALETTES = [
+      { id: 'indigo-teal', name: 'Stebup Indigo + Teal', c1: '#6366F1', c2: '#14B8A6', c3: '#F59E0B', text: '#FFFFFF' },
+      { id: 'cyber-lime', name: 'Tech Emerald + Cyan', c1: '#10B981', c2: '#06B6D4', c3: '#6366F1', text: '#FFFFFF' },
+      { id: 'electric-violet', name: 'Linear Violet + Rose', c1: '#8B5CF6', c2: '#EC4899', c3: '#38BDF8', text: '#FFFFFF' },
+      { id: 'saudi-gold', name: 'Vision Gold + Teal', c1: '#F59E0B', c2: '#14B8A6', c3: '#6366F1', text: '#FFFFFF' },
+      { id: 'alabaster', name: 'Architectural Monochrome', c1: '#ECECE8', c2: '#94A3B8', c3: '#6366F1', text: '#ECECE8' },
+      { id: 'flame-orange', name: 'Vercel/Y-Combinator Orange', c1: '#F97316', c2: '#6366F1', c3: '#14B8A6', text: '#FFFFFF' }
+    ];
+    let activePalette = PALETTES[0];
+    let lightCanvas = false;
 
-      // 2. Steps & Upward Velocity (Stebup meaning: Stepping up)
-      { name: 'lucide:trending-up', label: 'Stebup Velocity', category: 'steps ascent growth', desc: 'High-growth trajectory line breaking through the ceiling.' },
-      { name: 'tabler:stairs-up', label: 'Enterprise Steps', category: 'steps ascent growth', desc: 'Four-tier structural staircase representing scaling stages.' },
-      { name: 'ph:stairs-bold', label: 'Brutalist Steps', category: 'steps ascent growth', desc: 'Bold minimalist steps ascending towards the right.' },
-      { name: 'carbon:growth', label: 'Exponential Curve', category: 'steps ascent growth', desc: 'Compound scale curve for venture investments.' },
-      { name: 'lucide:bar-chart-3', label: 'Ascending Pillars', category: 'steps ascent growth', desc: 'Ascending geometric monoliths signifying quantitative execution.' },
-      { name: 'mingcute:rise-fill', label: 'Momentum Vector', category: 'steps ascent growth', desc: 'Sharp upward chevron with aerodynamic lift.' },
-      { name: 'tabler:chart-arrows', label: 'Dual Vector Leap', category: 'steps ascent growth', desc: 'Simultaneous vertical and lateral scaling.' },
-      { name: 'lucide:chevrons-up', label: 'Double Chevron', category: 'steps ascent growth', desc: 'Supersonic upward push for division leaders.' },
+    // ============================================================================
+    // 60 ENGLISH-ONLY SLANG-TECH & WORDMARK CONCEPTS
+    // ============================================================================
+    const LOGOS = [
+      // 01. THE "P -> B" SLANG FLIP (10)
+      { id: 1, cat: 'p2b', title: 'The P→B Hinge Flip', desc: 'Upper P loop flips downward with a motion trail to lock into a bold B.', wordStyle: 'b-accent' },
+      { id: 2, cat: 'p2b', title: 'B-Step Monolith', desc: 'Heavy lowercase "b" with a 3-step ascending staircase carved inside its stem.', wordStyle: 'b-chip' },
+      { id: 3, cat: 'p2b', title: 'Arrow-Ascender b', desc: 'Lowercase "b" whose vertical stem launches upward as a 45° tech vector arrow.', wordStyle: 'b-arrow' },
+      { id: 4, cat: 'p2b', title: 'Mechanical Keycap [b]', desc: 'Developer tactile keycap badge housing a bold geometric "b" stepping up.', wordStyle: 'b-bracket' },
+      { id: 5, cat: 'p2b', title: 'P/B Laser Ambigram', desc: 'Reads as a "b" with a ghosted "p" upper loop sliced by a glowing laser step.', wordStyle: 'b-override' },
+      { id: 6, cat: 'p2b', title: 'Pixel-Burst b', desc: 'Solid architectural stem with the "b" bowl assembling from ascending data pixels.', wordStyle: 'b-accent' },
+      { id: 7, cat: 'p2b', title: 'Terminal b_ Cursor', desc: 'Ultra-bold geometric "b" paired with an elevated blinking terminal step cursor.', wordStyle: 'dev-under' },
+      { id: 8, cat: 'p2b', title: 'S+b Shared Spine', desc: 'Interlocking "S" and lowercase "b" where the shared center spine shoots upward.', wordStyle: 'b-accent' },
+      { id: 9, cat: 'p2b', title: 'Override Slash p→b', desc: 'Diagonal compiler slash transforming upper "p" geometry into a solid lower "b".', wordStyle: 'slash' },
+      { id: 10, cat: 'p2b', title: 'Isometric B-Portal', desc: '3D block letter "B" with a glowing upward staircase in negative space.', wordStyle: 'upper' },
 
-      // 3. AI, Neural & Intelligence (Software, Data Analytics, Deep Tech)
-      { name: 'lucide:brain-circuit', label: 'Neural Circuit Core', category: 'circuit neural network brain', desc: 'Synthetic brain hemisphere with integrated PCB traces.' },
-      { name: 'ph:cpu-bold', label: 'Quantum Silicon', category: 'circuit neural network brain', desc: 'Central processing matrix with 8 bus lines.' },
-      { name: 'carbon:network-4', label: 'Synaptic Mesh', category: 'circuit neural network brain', desc: 'Interconnected neural nodes in continuous learning state.' },
-      { name: 'lucide:sparkles', label: 'Generative Core', category: 'circuit neural network brain', desc: 'Precision intelligence beacon radiating algorithmic insights.' },
-      { name: 'tabler:circuit-switch-closed', label: 'Switch Grid', category: 'circuit neural network brain', desc: 'High-throughput electronic circuit pathway.' },
-      { name: 'mingcute:ai-fill', label: 'Autonomous Nexus', category: 'circuit neural network brain', desc: 'Autonomous intelligent agents executing in parallel.' },
-      { name: 'carbon:chip', label: 'Bionic Core', category: 'circuit neural network brain', desc: 'Enterprise compute chip embedded with brand geometry.' },
-      { name: 'lucide:git-merge', label: 'Code Convergence', category: 'circuit neural network brain', desc: 'Software engineering branch merging into core master.' },
+      // 02. PURE CUSTOM ENGLISH WORDMARKS (10) - No separate icon needed
+      { id: 11, cat: 'wordmark', title: 'stebup Negative-Space Step', desc: 'Pure wordmark where the gap between "b" and "u" forms an upward step.', pureWordmark: true, wmVariant: 1 },
+      { id: 12, cat: 'wordmark', title: 'ste[b]up Silicon Chip', desc: 'Clean grotesque wordmark with the "b" inverted inside a glowing tech pill.', pureWordmark: true, wmVariant: 2 },
+      { id: 13, cat: 'wordmark', title: 'steb^up Elevated Suffix', desc: 'The "up" is physically stepped up onto a glowing rail above "steb".', pureWordmark: true, wmVariant: 3 },
+      { id: 14, cat: 'wordmark', title: 'STEBUP 45° Laser Stencil', desc: 'Heavy brutalist display capitals with precision 45° step cuts across S, B, P.', pureWordmark: true, wmVariant: 4 },
+      { id: 15, cat: 'wordmark', title: 'stebup Arrow-Stem Logotype', desc: 'Custom wordmark where the vertical stem of "b" rises into an upward arrow.', pureWordmark: true, wmVariant: 5 },
+      { id: 16, cat: 'wordmark', title: 'steb_up Developer Stack', desc: 'Code-native wordmark with a glowing step bridge connecting "b" and "u".', pureWordmark: true, wmVariant: 6 },
+      { id: 17, cat: 'wordmark', title: 'ste(p→b)up Slang Override', desc: 'Playful tech wordmark showing "p" struck & overridden by a glowing "b".', pureWordmark: true, wmVariant: 7 },
+      { id: 18, cat: 'wordmark', title: 'STEBUP Supersonic Italic', desc: 'Forward-leaning 12° high-velocity wordmark with speed-sliced "B" and "S".', pureWordmark: true, wmVariant: 8 },
+      { id: 19, cat: 'wordmark', title: 'stebUP Dual-Weight Contrast', desc: 'Clean medium "steb" with a glowing "b" locked against ultra-black heavy "UP".', pureWordmark: true, wmVariant: 9 },
+      { id: 20, cat: 'wordmark', title: '<stebup/> Syntax Logotype', desc: 'Modern full-stack engineering wordmark framed by crisp angled code brackets.', pureWordmark: true, wmVariant: 10 },
 
-      // 4. Orbital Nexus & 8 Hubs (Ecosystem of 8 Divisions & Corridors)
-      { name: 'lucide:orbit', label: 'Orbital Cosmos', category: 'nexus orbit galaxy hub', desc: 'Planetary orbital rings around the central Stebup core.' },
-      { name: 'ph:circles-four-bold', label: '4-Corridor Nexus', category: 'nexus orbit galaxy hub', desc: 'Jeddah, Dubai, India, and Indonesia regional hubs.' },
-      { name: 'tabler:atom-2', label: 'Octa-Atom Matrix', category: 'nexus orbit galaxy hub', desc: 'Atomic energy valence shells housing the 8 business divisions.' },
-      { name: 'carbon:radar', label: 'Panoramic Radar', category: 'nexus orbit galaxy hub', desc: '360° global market scanning for venture opportunities.' },
-      { name: 'mingcute:planet-fill', label: 'Gravitational Ring', category: 'nexus orbit galaxy hub', desc: 'Enterprise gravitational pull attracting elite global talent.' },
-      { name: 'lucide:compass', label: 'North Star Compass', category: 'nexus orbit galaxy hub', desc: 'Navigation instrument aligning visionary founders with execution.' },
-      { name: 'tabler:circle-dot', label: 'Focal Keystone', category: 'nexus orbit galaxy hub', desc: 'Laser-focused central point with outward concentric waves.' },
-      { name: 'ph:asterisk-simple-bold', label: '8-Axis Starburst', category: 'nexus orbit galaxy hub', desc: '8-pointed radial star representing the 8 Stebup divisions.' },
+      // 03. SILICON VALLEY S & SB MARKS (10)
+      { id: 21, cat: 'silicon', title: 'Linear-Cut Geometric S', desc: 'High-contrast diagonal ribbons forming a razor-sharp S with a stepped core.', wordStyle: 'b-accent' },
+      { id: 22, cat: 'silicon', title: '3-Bar Stepped S', desc: 'Three bold horizontal stadium bars offset upward to form both an S and stairs.', wordStyle: 'b-accent' },
+      { id: 23, cat: 'silicon', title: 'Mobius Continuous S-B', desc: 'Impossible continuous loop that reads as both an "S" and a "B".', wordStyle: 'b-chip' },
+      { id: 24, cat: 'silicon', title: 'Isometric Cube S', desc: 'Hexagonal 3D block carved into a stepped S silhouette.', wordStyle: 'upper' },
+      { id: 25, cat: 'silicon', title: 'Origami Prism S', desc: 'Four folded geometric facets rising from bottom-left to top-right.', wordStyle: 'b-accent' },
+      { id: 26, cat: 'silicon', title: 'Dual-Chevron S-Lock', desc: 'Upward and forward chevrons interlocking with a glowing center step.', wordStyle: 'b-arrow' },
+      { id: 27, cat: 'silicon', title: 'Capsule Stack S', desc: 'Three rounded tech capsules stacked in an ascending S-curve.', wordStyle: 'b-accent' },
+      { id: 28, cat: 'silicon', title: 'Bolt Negative-Space S', desc: 'Solid squircle badge where an upward lightning step cuts the letter S.', wordStyle: 'b-chip' },
+      { id: 29, cat: 'silicon', title: 'Octa-Core S', desc: 'Architectural octagonal frame with a heavy central S-bridge.', wordStyle: 'upper' },
+      { id: 30, cat: 'silicon', title: 'Phase-Shift SB', desc: 'Overlapping translucent geometric S and B creating a vibrant third color.', wordStyle: 'b-accent' },
 
-      // 5. Geometric Prisms & 3D Form (Architectural, Modernist)
-      { name: 'lucide:box', label: 'Isometric Prism', category: 'prism hexagon crystal cube', desc: 'Architectural cube revealing spatial multidimensional execution.' },
-      { name: 'tabler:cube', label: 'Brutalist Block', category: 'prism hexagon crystal cube', desc: 'Solid monolithic block crafted from cast concrete and glass.' },
-      { name: 'ph:diamond-bold', label: 'Refracted Prism', category: 'prism hexagon crystal cube', desc: 'Precision cut diamond splitting strategy into executed actions.' },
-      { name: 'carbon:carbon-ui-builder', label: 'Modular Lattice', category: 'prism hexagon crystal cube', desc: 'Building-block architecture assembled for enterprise agility.' },
-      { name: 'lucide:layers', label: 'Stratified Decks', category: 'prism hexagon crystal cube', desc: 'Multi-layered corporate stack from infra to front-end.' },
-      { name: 'mingcute:cube-3d-fill', label: 'Hypercube 4D', category: 'prism hexagon crystal cube', desc: 'Advanced geometry representing futuristic digital products.' },
-      { name: 'tabler:pyramid', label: 'Solid Pyramid', category: 'prism hexagon crystal cube', desc: 'Stepped apex pyramid representing institutional stability.' },
-      { name: 'ph:polygon-bold', label: 'Hex Core Matrix', category: 'prism hexagon crystal cube', desc: 'Nature’s most resilient geometry applied to venture building.' },
+      // 04. STEP-UP & ASCENT GEOMETRY (10)
+      { id: 31, cat: 'ascent', title: '3-Tier Isometric Escalator', desc: 'Three solid 3D architectural blocks stepping boldly up to the right.', wordStyle: 'b-accent' },
+      { id: 32, cat: 'ascent', title: 'Velocity Step Bars', desc: 'Four vertical precision pillars rising in exponential height with a glowing B-cap.', wordStyle: 'step-up' },
+      { id: 33, cat: 'ascent', title: '45° Mach Delta Step', desc: 'Aerospace delta wing notched with three crisp ascending steps.', wordStyle: 'upper' },
+      { id: 34, cat: 'ascent', title: 'Floating Layer Planes', desc: 'Three isometric glassmorphic platform decks elevating upward.', wordStyle: 'b-accent' },
+      { id: 35, cat: 'ascent', title: 'Portal Arch Stairway', desc: 'Bold architectural monolith doorway framing a rising 4-step path.', wordStyle: 'b-chip' },
+      { id: 36, cat: 'ascent', title: 'Triple-Chevron Boost', desc: 'Three stacked upward chevrons morphing from base foundation to apex.', wordStyle: 'b-arrow' },
+      { id: 37, cat: 'ascent', title: 'Ziggurat Tech Core', desc: 'Symmetrical stepped pyramid split by a vertical fiber-optic beam.', wordStyle: 'upper' },
+      { id: 38, cat: 'ascent', title: 'Folding Ribbon Stairs', desc: 'Continuous 3D carpenter-style ribbon folding upward at 90° angles.', wordStyle: 'b-accent' },
+      { id: 39, cat: 'ascent', title: 'U-Thruster Ascent', desc: 'Heavy letter U shaped like a launch booster lifting a glowing core.', wordStyle: 'step-up' },
+      { id: 40, cat: 'ascent', title: 'North-East Vector Block', desc: 'Ultra-minimalist square badge split by a stepped 45° northeast arrow.', wordStyle: 'b-accent' },
 
-      // 6. Enterprise Crests, Emblems & Shields (Corporate Trust, FinTech)
-      { name: 'lucide:shield-check', label: 'Verified Sovereign', category: 'crest shield crown emblem', desc: 'Institutional grade trust and compliance shield.' },
-      { name: 'ph:crown-simple-bold', label: 'Apex Crown', category: 'crest shield crown emblem', desc: 'Kingdom leadership and GCC regional authority.' },
-      { name: 'tabler:badge', label: 'Quality Seal', category: 'crest shield crown emblem', desc: 'Certified standard of world-class design and engineering.' },
-      { name: 'carbon:security', label: 'FinTech Vault', category: 'crest shield crown emblem', desc: 'Cryptographic security shielding venture capital assets.' },
-      { name: 'mingcute:medal-fill', label: 'Prestige Medal', category: 'crest shield crown emblem', desc: 'Distinguished mark of high-performance delivery.' },
-      { name: 'lucide:gem', label: 'Treasury Jewel', category: 'crest shield crown emblem', desc: 'High-value venture assets cultivated with precision.' },
-      { name: 'ph:seal-check-bold', label: 'Vision 2030 Seal', category: 'crest shield crown emblem', desc: 'Formal alignment with Saudi Arabian economic transformation.' },
-      { name: 'tabler:shield-star', label: 'Guardian Keystone', category: 'crest shield crown emblem', desc: 'Fortified shield carrying the central beacon of Stebup.' },
+      // 05. DEV, TERMINAL & AI BADGES (10)
+      { id: 41, cat: 'dev', title: 'Prompt >_ Step Badge', desc: 'Developer terminal prompt where the underscore steps up into an arrow.', wordStyle: 'dev-under' },
+      { id: 42, cat: 'dev', title: 'Silicon B-Die Chip', desc: 'Microprocessor core with 8 division pins and a bold "b" etched in the die.', wordStyle: 'b-chip' },
+      { id: 43, cat: 'dev', title: 'Pixel Staircase Matrix', desc: 'Crisp 4x4 pixel grid assembling diagonally into a digital staircase.', wordStyle: 'b-accent' },
+      { id: 44, cat: 'dev', title: 'AI Spark + Step', desc: 'Four-point generative AI star fused with an ascending step base.', wordStyle: 'b-accent' },
+      { id: 45, cat: 'dev', title: 'Git Branch Scale-Up', desc: 'Mainline trunk branching upward into a high-performance parallel node.', wordStyle: 'slash' },
+      { id: 46, cat: 'dev', title: 'Command Loop ⌘ Step', desc: 'Modernized command key symbol with its top-right loop stepping upward.', wordStyle: 'b-bracket' },
+      { id: 47, cat: 'dev', title: 'Tensor Isometric Node', desc: 'AI tensor cube with a highlighted 3-step neural pathway on its face.', wordStyle: 'b-accent' },
+      { id: 48, cat: 'dev', title: 'Compiler Double-Slash //', desc: 'Two heavy 60° code slashes stepped vertically with a glowing b-dot.', wordStyle: 'slash' },
+      { id: 49, cat: 'dev', title: 'Curly Brace {b} Core', desc: 'Code braces "{ }" framing a bold geometric lowercase "b".', wordStyle: 'b-bracket' },
+      { id: 50, cat: 'dev', title: 'Quantum Pulse Step', desc: 'Digital square-wave signal stepping from low state to high execution state.', wordStyle: 'dev-under' },
 
-      // 7. Kinetic Vectors & Wings (Velocity, High-Performance Execution)
-      { name: 'lucide:zap', label: 'Kinetic Strike', category: 'arrow velocity speed wings', desc: 'Pure execution velocity transforming sluggish roadmaps.' },
-      { name: 'ph:lightning-bold', label: 'High Voltage', category: 'arrow velocity speed wings', desc: 'Energy transfer fueling breakthrough client transformations.' },
-      { name: 'tabler:flare', label: 'Cosmic Flare', category: 'arrow velocity speed wings', desc: 'Brilliant illumination over previously obscure challenges.' },
-      { name: 'lucide:send', label: 'Aero Vector', category: 'arrow velocity speed wings', desc: 'Aerodynamic dart dispatched directly into target objectives.' },
-      { name: 'carbon:launch', label: 'Venture Rocket', category: 'arrow velocity speed wings', desc: 'Escape-velocity launch for early-stage portfolio ventures.' },
-      { name: 'mingcute:flash-fill', label: 'Instant Execution', category: 'arrow velocity speed wings', desc: 'Rapid sprint cycles delivering production grade software.' },
-      { name: 'tabler:wind', label: 'Trade Meridian', category: 'arrow velocity speed wings', desc: 'Smooth logistical flow across international trade borders.' },
-      { name: 'ph:crosshair-bold', label: 'Target Precision', category: 'arrow velocity speed wings', desc: 'Zero tolerance for operational waste or inaccurate milestones.' }
+      // 06. ENTERPRISE SU / SB MONOGRAMS (10)
+      { id: 51, cat: 'monogram', title: 'S^ Caret Exponent', desc: 'Executive monogram pairing a bold S with an exponential upward caret "^".', wordStyle: 'step-up' },
+      { id: 52, cat: 'monogram', title: 'SU Interlocking Vault', desc: 'Heavy architectural S and U locked together like steel girders.', wordStyle: 'upper' },
+      { id: 53, cat: 'monogram', title: 'SB Continuous Monolith', desc: 'Single-stroke ultra-thick ribbon forming S on the left and B on the right.', wordStyle: 'b-accent' },
+      { id: 54, cat: 'monogram', title: '8-Division Octagon Crest', desc: 'Eight precision segments (for Stebup’s 8 divisions) framing an SB core.', wordStyle: 'upper' },
+      { id: 55, cat: 'monogram', title: 'Split-Prism U-Arrow', desc: 'Letter U whose right pillar extends upward into an execution arrow.', wordStyle: 'b-arrow' },
+      { id: 56, cat: 'monogram', title: 'Orbital Nexus S', desc: 'Bold S monogram encircled by a tilted high-velocity planetary ring.', wordStyle: 'b-accent' },
+      { id: 57, cat: 'monogram', title: 'Apex Crown Step', desc: 'Three ascending triangular peaks forming an executive crown and W/S.', wordStyle: 'upper' },
+      { id: 58, cat: 'monogram', title: 'Brutalist Pillar SU', desc: 'Three heavy vertical columns with stepped negative-space cutouts.', wordStyle: 'upper' },
+      { id: 59, cat: 'monogram', title: 'Infinity Ascent Loop', desc: 'Infinity symbol tilted 30° upward to represent limitless scaling.', wordStyle: 'b-accent' },
+      { id: 60, cat: 'monogram', title: 'Compass Vector SB', desc: 'Quad-hub star pointing North-East toward high-performance execution.', wordStyle: 'b-chip' }
     ];
 
-    // --- State Management ---
-    let currentIcons = [...CURATED_ICONS];
-    let activeColor1 = '#6366F1';
-    let activeColor2 = '#14B8A6';
-    let colorMode = 'gradient'; // 'gradient', 'solid', 'monochrome'
-    let cardCanvasBg = '#070A11';
-    let activeModalIcon = null;
-    let favorites = new Set();
-    const svgCache = new Map();
+    // ============================================================================
+    // SVG ICON GENERATOR (60 Bold High-Contrast Vector Marks)
+    // ============================================================================
+    function getIconInnerSVG(id, c1, c2, c3, gradId) {
+      switch (id) {
+        // 01. P -> B SLANG FLIP
+        case 1: // P->B Hinge Flip
+          return `
+            <rect x="18" y="12" width="16" height="76" rx="6" fill="${c1}"/>
+            <path d="M34 16 H58 A17 17 0 0 1 58 50 H34" fill="none" stroke="${c1}" stroke-width="10" stroke-dasharray="6 6" opacity="0.38"/>
+            <path d="M34 44 H62 A21 21 0 0 1 62 86 H24" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round"/>
+            <path d="M68 24 Q84 36 78 52" fill="none" stroke="${c2}" stroke-width="5" stroke-linecap="round"/>
+            <polygon points="72,50 85,55 81,42" fill="${c2}"/>
+          `;
+        case 2: // B-Step Monolith
+          return `
+            <path d="M20 10 H38 V42 H62 A22 22 0 0 1 84 64 A22 22 0 0 1 62 86 H20 Z" fill="url(#${gradId})"/>
+            <path d="M38 56 H58 A8 8 0 0 1 58 72 H38 Z" fill="#08090d"/>
+            <polygon points="24,38 34,38 34,28 44,28 44,18 54,18 54,10 24,10" fill="${c2}"/>
+          `;
+        case 3: // Arrow-Ascender b
+          return `
+            <path d="M28 24 V84 H60 A20 20 0 0 0 60 44 H28" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="28,6 10,30 46,30" fill="${c2}"/>
+            <circle cx="58" cy="64" r="7" fill="${c3}"/>
+          `;
+        case 4: // Mechanical Keycap [b]
+          return `
+            <rect x="10" y="14" width="80" height="76" rx="18" fill="${c1}" opacity="0.25"/>
+            <rect x="16" y="10" width="68" height="68" rx="14" fill="#0d1017" stroke="url(#${gradId})" stroke-width="6"/>
+            <path d="M38 22 V62 H55 A11 11 0 0 0 55 40 H38" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="68" cy="24" r="5" fill="${c2}"/>
+          `;
+        case 5: // P/B Laser Ambigram
+          return `
+            <path d="M26 14 V86" stroke="${c1}" stroke-width="14" stroke-linecap="round"/>
+            <path d="M26 18 H56 A15 15 0 0 1 56 48 H26" fill="none" stroke="${c1}" stroke-width="10" opacity="0.3"/>
+            <path d="M26 50 H60 A18 18 0 0 1 60 86 H26" fill="none" stroke="${c2}" stroke-width="14"/>
+            <line x1="10" y1="62" x2="90" y2="34" stroke="${c3}" stroke-width="6" stroke-linecap="round"/>
+          `;
+        case 6: // Pixel-Burst b
+          return `
+            <rect x="20" y="12" width="16" height="76" rx="4" fill="${c1}"/>
+            <rect x="36" y="44" width="16" height="14" rx="3" fill="${c1}"/>
+            <rect x="36" y="74" width="20" height="14" rx="3" fill="${c1}"/>
+            <rect x="56" y="40" width="16" height="16" rx="3" fill="${c2}"/>
+            <rect x="64" y="60" width="16" height="16" rx="3" fill="${c2}"/>
+            <rect x="72" y="22" width="14" height="14" rx="3" fill="${c3}"/>
+          `;
+        case 7: // Terminal b_ Cursor
+          return `
+            <path d="M20 16 V82 H48 A17 17 0 0 0 48 48 H20" fill="none" stroke="${c1}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="66" y="34" width="24" height="12" rx="3" fill="${c2}"/>
+            <rect x="66" y="54" width="24" height="12" rx="3" fill="${c1}" opacity="0.35"/>
+          `;
+        case 8: // S+b Shared Spine
+          return `
+            <path d="M48 16 H26 A14 14 0 0 0 26 44 H48" fill="none" stroke="${c1}" stroke-width="13" stroke-linecap="round"/>
+            <path d="M48 12 V86" stroke="url(#${gradId})" stroke-width="14" stroke-linecap="round"/>
+            <path d="M48 48 H70 A17 17 0 0 1 70 82 H48" fill="none" stroke="${c2}" stroke-width="13" stroke-linecap="round"/>
+            <polygon points="48,4 36,20 60,20" fill="${c2}"/>
+          `;
+        case 9: // Override Slash p->b
+          return `
+            <path d="M24 20 V84 H58 A18 18 0 0 0 58 48 H24" fill="none" stroke="url(#${gradId})" stroke-width="14" stroke-linejoin="round"/>
+            <line x1="16" y1="86" x2="84" y2="14" stroke="${c3}" stroke-width="9" stroke-linecap="round"/>
+          `;
+        case 10: // Isometric B-Portal
+          return `
+            <polygon points="20,12 56,12 78,28 78,88 20,88" fill="url(#${gradId})"/>
+            <polygon points="34,76 34,58 48,58 48,42 62,42 62,26 68,26 68,76" fill="#08090d"/>
+          `;
 
-    // --- DOM Elements ---
-    const logoGrid = document.getElementById('logoGrid');
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    const loadingState = document.getElementById('loadingState');
-    const emptyState = document.getElementById('emptyState');
-    const resultCount = document.getElementById('resultCount');
-    const colorPicker1 = document.getElementById('colorPicker1');
-    const colorPicker2 = document.getElementById('colorPicker2');
-    const colorVal1 = document.getElementById('colorVal1');
-    const colorVal2 = document.getElementById('colorVal2');
-    const modeGradient = document.getElementById('modeGradient');
-    const modeSolid = document.getElementById('modeSolid');
-    const modeMonochrome = document.getElementById('modeMonochrome');
-    const colorDivider = document.getElementById('colorDivider');
-    const color2Wrapper = document.getElementById('color2Wrapper');
-    const bgDark = document.getElementById('bgDark');
-    const bgNavy = document.getElementById('bgNavy');
-    const bgLight = document.getElementById('bgLight');
-    const previewModal = document.getElementById('previewModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const exportCanvas = document.getElementById('exportCanvas');
-    const favCount = document.getElementById('favCount');
+        // 03. SILICON VALLEY S & SB MARKS (21-30)
+        case 21:
+          return `
+            <polygon points="26,14 82,14 66,36 14,36" fill="${c1}"/>
+            <polygon points="22,40 78,40 62,60 10,60" fill="url(#${gradId})"/>
+            <polygon points="18,64 74,64 58,86 6,86" fill="${c2}"/>
+          `;
+        case 22:
+          return `
+            <rect x="34" y="14" width="52" height="18" rx="9" fill="${c2}"/>
+            <rect x="22" y="41" width="52" height="18" rx="9" fill="url(#${gradId})"/>
+            <rect x="10" y="68" width="52" height="18" rx="9" fill="${c1}"/>
+          `;
+        case 23:
+          return `
+            <path d="M68 20 H34 A16 16 0 0 0 34 52 H62 A16 16 0 0 1 62 84 H20" fill="none" stroke="url(#${gradId})" stroke-width="16" stroke-linecap="round"/>
+            <line x1="30" y1="20" x2="30" y2="84" stroke="${c2}" stroke-width="12" stroke-linecap="round"/>
+          `;
+        case 24:
+          return `
+            <polygon points="50,8 88,28 88,72 50,92 12,72 12,28" fill="#111420" stroke="${c1}" stroke-width="5"/>
+            <path d="M66 30 H38 L38 48 H62 L62 70 H32" fill="none" stroke="url(#${gradId})" stroke-width="12" stroke-linecap="square"/>
+          `;
+        case 25:
+          return `
+            <polygon points="16,74 44,52 44,86" fill="${c1}"/>
+            <polygon points="44,52 72,30 72,64 44,86" fill="url(#${gradId})"/>
+            <polygon points="44,24 86,12 72,48" fill="${c2}"/>
+          `;
+        case 26:
+          return `
+            <path d="M18 46 L50 14 L82 46" fill="none" stroke="${c2}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 78 L50 46 L82 78" fill="none" stroke="${c1}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+        case 27:
+          return `
+            <rect x="38" y="12" width="46" height="22" rx="11" fill="${c2}"/>
+            <rect x="26" y="39" width="48" height="22" rx="11" fill="url(#${gradId})"/>
+            <rect x="14" y="66" width="46" height="22" rx="11" fill="${c1}"/>
+          `;
+        case 28:
+          return `
+            <rect x="12" y="12" width="76" height="76" rx="20" fill="url(#${gradId})"/>
+            <polygon points="58,18 26,54 48,54 40,82 74,44 52,44" fill="#08090d"/>
+          `;
+        case 29:
+          return `
+            <polygon points="32,10 68,10 90,32 90,68 68,90 32,90 10,68 10,32" fill="none" stroke="${c1}" stroke-width="10"/>
+            <path d="M62 32 H36 V50 H64 V68 H36" fill="none" stroke="${c2}" stroke-width="10" stroke-linecap="round"/>
+          `;
+        case 30:
+          return `
+            <rect x="14" y="28" width="48" height="56" rx="14" fill="${c1}" opacity="0.85"/>
+            <rect x="38" y="14" width="48" height="56" rx="14" fill="${c2}" opacity="0.85"/>
+            <rect x="38" y="28" width="24" height="42" rx="6" fill="#fff"/>
+          `;
 
-    // --- SVG Fetching & Gradient Engine ---
-    async function fetchSvg(iconName) {
-      if (svgCache.has(iconName)) return svgCache.get(iconName);
-      try {
-        const [prefix, name] = iconName.includes(':') ? iconName.split(':') : ['lucide', iconName];
-        const res = await fetch(`https://api.iconify.design/${prefix}/${name}.svg`);
-        if (!res.ok) throw new Error('SVG not found');
-        const text = await res.text();
-        svgCache.set(iconName, text);
-        return text;
-      } catch (e) {
-        console.warn('Failed to fetch SVG for', iconName, e);
-        return '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>';
+        // 04. ASCENT & STEP-UP GEOMETRY (31-40)
+        case 31:
+          return `
+            <rect x="12" y="62" width="24" height="24" rx="5" fill="${c1}"/>
+            <rect x="38" y="38" width="24" height="48" rx="5" fill="url(#${gradId})"/>
+            <rect x="64" y="14" width="24" height="72" rx="5" fill="${c2}"/>
+          `;
+        case 32:
+          return `
+            <rect x="12" y="68" width="14" height="20" rx="4" fill="${c1}" opacity="0.5"/>
+            <rect x="32" y="52" width="14" height="36" rx="4" fill="${c1}"/>
+            <rect x="52" y="34" width="14" height="54" rx="4" fill="url(#${gradId})"/>
+            <rect x="72" y="14" width="14" height="74" rx="4" fill="${c2}"/>
+            <circle cx="79" cy="14" r="7" fill="${c3}"/>
+          `;
+        case 33:
+          return `
+            <polygon points="10,86 88,12 88,86 64,86 64,62 40,62 40,86" fill="url(#${gradId})"/>
+          `;
+        case 34:
+          return `
+            <polygon points="50,52 86,68 50,84 14,68" fill="${c1}" opacity="0.5"/>
+            <polygon points="50,32 86,48 50,64 14,48" fill="url(#${gradId})"/>
+            <polygon points="50,12 86,28 50,44 14,28" fill="${c2}"/>
+          `;
+        case 35:
+          return `
+            <path d="M18 88 V38 A32 32 0 0 1 82 38 V88 H62 V70 H48 V54 H34 V38" fill="url(#${gradId})"/>
+          `;
+        case 36:
+          return `
+            <path d="M20 82 L50 56 L80 82" fill="none" stroke="${c1}" stroke-width="11" stroke-linecap="round"/>
+            <path d="M20 58 L50 32 L80 58" fill="none" stroke="url(#${gradId})" stroke-width="11" stroke-linecap="round"/>
+            <path d="M20 34 L50 8 L80 34" fill="none" stroke="${c2}" stroke-width="11" stroke-linecap="round"/>
+          `;
+        case 37:
+          return `
+            <rect x="12" y="66" width="76" height="18" rx="4" fill="${c1}"/>
+            <rect x="24" y="42" width="52" height="18" rx="4" fill="url(#${gradId})"/>
+            <rect x="36" y="18" width="28" height="18" rx="4" fill="${c2}"/>
+          `;
+        case 38:
+          return `
+            <path d="M14 82 H38 V58 H62 V34 H86 V12" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+        case 39:
+          return `
+            <path d="M22 24 V58 A28 28 0 0 0 78 58 V24" fill="none" stroke="url(#${gradId})" stroke-width="16" stroke-linecap="round"/>
+            <polygon points="50,8 34,32 66,32" fill="${c2}"/>
+          `;
+        case 40:
+          return `
+            <rect x="14" y="14" width="72" height="72" rx="16" fill="#11131c" stroke="${c1}" stroke-width="6"/>
+            <path d="M30 70 L70 30 M42 30 H70 V58" fill="none" stroke="${c2}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+
+        // 05. DEV, TERMINAL & AI BADGES (41-50)
+        case 41:
+          return `
+            <path d="M16 26 L46 50 L16 74" fill="none" stroke="${c1}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M52 74 H72 V52 H90" fill="none" stroke="${c2}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+        case 42:
+          return `
+            <rect x="24" y="24" width="52" height="52" rx="10" fill="url(#${gradId})"/>
+            <path d="M40 34 V64 H56 A9 9 0 0 0 56 46 H40" fill="none" stroke="#08090d" stroke-width="8" stroke-linecap="round"/>
+            <path d="M36 10 V24 M64 10 V24 M36 76 V90 M64 76 V90 M10 36 H24 M10 64 H24 M76 36 H90 M76 64 H90" stroke="${c2}" stroke-width="6" stroke-linecap="round"/>
+          `;
+        case 43:
+          return `
+            <rect x="14" y="68" width="16" height="16" rx="3" fill="${c1}"/>
+            <rect x="34" y="68" width="16" height="16" rx="3" fill="${c1}"/>
+            <rect x="34" y="48" width="16" height="16" rx="3" fill="url(#${gradId})"/>
+            <rect x="54" y="48" width="16" height="16" rx="3" fill="url(#${gradId})"/>
+            <rect x="54" y="28" width="16" height="16" rx="3" fill="${c2}"/>
+            <rect x="74" y="28" width="16" height="16" rx="3" fill="${c2}"/>
+            <rect x="74" y="8" width="16" height="16" rx="3" fill="${c3}"/>
+          `;
+        case 44:
+          return `
+            <path d="M50 8 Q50 50 92 50 Q50 50 50 92 Q50 50 8 50 Q50 50 50 8 Z" fill="url(#${gradId})"/>
+            <circle cx="76" cy="24" r="8" fill="${c3}"/>
+          `;
+        case 45:
+          return `
+            <path d="M26 84 V16" stroke="${c1}" stroke-width="12" stroke-linecap="round"/>
+            <path d="M26 64 C26 44 72 52 72 24" fill="none" stroke="${c2}" stroke-width="12" stroke-linecap="round"/>
+            <circle cx="26" cy="18" r="9" fill="${c1}"/>
+            <circle cx="72" cy="22" r="11" fill="${c2}"/>
+          `;
+        case 46:
+          return `
+            <path d="M34 34 V66 A12 12 0 1 1 22 54 H66 A12 12 0 1 1 54 66 V22 H84" fill="none" stroke="url(#${gradId})" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="88,22 72,10 72,34" fill="${c2}"/>
+          `;
+        case 47:
+          return `
+            <polygon points="50,10 86,30 86,70 50,90 14,70 14,30" fill="none" stroke="${c1}" stroke-width="8"/>
+            <path d="M26 64 H46 V46 H66 V28" fill="none" stroke="${c2}" stroke-width="10" stroke-linecap="round"/>
+          `;
+        case 48:
+          return `
+            <line x1="20" y1="84" x2="48" y2="24" stroke="${c1}" stroke-width="16" stroke-linecap="round"/>
+            <line x1="50" y1="74" x2="78" y2="14" stroke="${c2}" stroke-width="16" stroke-linecap="round"/>
+            <circle cx="82" cy="74" r="9" fill="${c3}"/>
+          `;
+        case 49:
+          return `
+            <path d="M28 18 H18 V44 L10 50 L18 56 V82 H28" fill="none" stroke="${c1}" stroke-width="8" stroke-linecap="round"/>
+            <path d="M72 18 H82 V44 L90 50 L82 56 V82 H72" fill="none" stroke="${c1}" stroke-width="8" stroke-linecap="round"/>
+            <path d="M40 24 V74 H58 A14 14 0 0 0 58 46 H40" fill="none" stroke="${c2}" stroke-width="11" stroke-linecap="round"/>
+          `;
+        case 50:
+          return `
+            <path d="M8 72 H28 V48 H52 V24 H76 V12 H92" fill="none" stroke="url(#${gradId})" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="52" cy="48" r="8" fill="${c3}"/>
+          `;
+
+        // 06. ENTERPRISE SU / SB MONOGRAMS (51-60)
+        case 51:
+          return `
+            <path d="M52 34 H24 A14 14 0 0 0 24 60 H44 A14 14 0 0 1 44 86 H16" fill="none" stroke="${c1}" stroke-width="13" stroke-linecap="round"/>
+            <path d="M58 42 L74 16 L90 42" fill="none" stroke="${c2}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+        case 52:
+          return `
+            <path d="M54 18 H22 V48 H54 V80 H18" fill="none" stroke="${c1}" stroke-width="13" stroke-linecap="square"/>
+            <path d="M46 28 V80 H82 V18" fill="none" stroke="${c2}" stroke-width="13" stroke-linecap="square"/>
+          `;
+        case 53:
+          return `
+            <path d="M46 20 H22 A14 14 0 0 0 22 48 H74 A16 16 0 0 1 74 82 H48 V16" fill="none" stroke="url(#${gradId})" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+        case 54:
+          return `
+            <polygon points="34,8 66,8 92,34 92,66 66,92 34,92 8,66 8,34" fill="none" stroke="url(#${gradId})" stroke-width="8" stroke-dasharray="18 6"/>
+            <path d="M36 26 V72 H60 A14 14 0 0 0 60 44 H36" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round"/>
+          `;
+        case 55:
+          return `
+            <path d="M22 24 V60 A26 26 0 0 0 74 60 V18" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round"/>
+            <polygon points="74,6 54,30 94,30" fill="${c2}"/>
+          `;
+        case 56:
+          return `
+            <ellipse cx="50" cy="50" rx="44" ry="18" transform="rotate(-25 50 50)" fill="none" stroke="${c2}" stroke-width="6"/>
+            <path d="M62 24 H38 A12 12 0 0 0 38 48 H62 A12 12 0 0 1 62 74 H34" fill="none" stroke="${c1}" stroke-width="14" stroke-linecap="round"/>
+          `;
+        case 57:
+          return `
+            <polygon points="10,78 26,34 44,60 62,22 90,78" fill="url(#${gradId})"/>
+            <circle cx="62" cy="14" r="6" fill="${c3}"/>
+          `;
+        case 58:
+          return `
+            <rect x="14" y="28" width="18" height="58" rx="4" fill="${c1}"/>
+            <rect x="41" y="18" width="18" height="68" rx="4" fill="url(#${gradId})"/>
+            <rect x="68" y="8" width="18" height="78" rx="4" fill="${c2}"/>
+          `;
+        case 59:
+          return `
+            <path d="M28 62 C10 62 10 34 28 34 C44 34 56 66 72 66 C90 66 90 38 72 38 C56 38 44 62 28 62 Z" transform="rotate(-20 50 50)" fill="none" stroke="url(#${gradId})" stroke-width="13" stroke-linecap="round"/>
+          `;
+        case 60:
+        default:
+          return `
+            <polygon points="50,6 62,38 94,50 62,62 50,94 38,62 6,50 38,38" fill="url(#${gradId})"/>
+            <circle cx="50" cy="50" r="10" fill="#08090d"/>
+          `;
       }
     }
 
-    function styleSvg(rawSvg, c1, c2, mode, uniqueId) {
-      const gradId = 'stebupGrad_' + uniqueId;
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(rawSvg, 'image/svg+xml');
-      const svg = doc.querySelector('svg');
-      if (!svg) return rawSvg;
+    // ============================================================================
+    // PURE CUSTOM ENGLISH WORDMARK GENERATOR (IDs 11-20)
+    // ============================================================================
+    function buildPureWordmarkSVG(variant, p, uid) {
+      const txt = lightCanvas ? '#0f172a' : p.text;
+      const gId = 'pwm_' + uid;
+      const defs = `<defs><linearGradient id="${gId}" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="${p.c1}"/><stop offset="100%" stop-color="${p.c2}"/></linearGradient></defs>`;
 
-      svg.removeAttribute('width');
-      svg.removeAttribute('height');
-      svg.setAttribute('class', 'w-full h-full object-contain');
+      switch (variant) {
+        case 1: // Negative-Space Step between b and u
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="24" y="74" font-family="'Outfit', sans-serif" font-weight="900" font-size="64" letter-spacing="-3" fill="${txt}">ste<tspan fill="url(#${gId})">b</tspan>up</text>
+            <polygon points="182,78 198,78 198,64 214,64 214,50" fill="${p.c2}"/>
+          </svg>`;
+        case 2: // ste[b]up Silicon Chip
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="22" y="72" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="56" letter-spacing="-2" fill="${txt}">ste</text>
+            <rect x="138" y="22" width="54" height="64" rx="12" fill="url(#${gId})"/>
+            <text x="148" y="71" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="54" fill="#08090d">b</text>
+            <text x="200" y="72" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="56" letter-spacing="-2" fill="${txt}">up</text>
+          </svg>`;
+        case 3: // steb^up Elevated Suffix
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="24" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">ste<tspan fill="${p.c1}">b</tspan></text>
+            <text x="196" y="54" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="48" letter-spacing="-1" fill="${p.c2}">up</text>
+            <rect x="198" y="64" width="76" height="8" rx="4" fill="url(#${gId})"/>
+          </svg>`;
+        case 4: // STEBUP 45° Laser Stencil
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="18" y="76" font-family="'Unbounded', sans-serif" font-weight="900" font-size="48" letter-spacing="-1" fill="${txt}">STE<tspan fill="url(#${gId})">B</tspan>UP</text>
+            <line x1="14" y1="54" x2="366" y2="54" stroke="${lightCanvas ? '#f1f5f9' : '#08090d'}" stroke-width="5"/>
+          </svg>`;
+        case 5: // stebup Arrow-Stem Logotype
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="28" y="76" font-family="'Sora', sans-serif" font-weight="800" font-size="58" letter-spacing="-2" fill="${txt}">ste<tspan fill="${p.c2}">b</tspan>up</text>
+            <polygon points="164,10 150,28 178,28" fill="${p.c2}"/>
+          </svg>`;
+        case 6: // steb_up Developer Stack
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="16" y="72" font-family="'JetBrains Mono', monospace" font-weight="800" font-size="50" letter-spacing="-2" fill="${txt}">ste<tspan fill="${p.c1}">b</tspan><tspan fill="${p.c2}">_</tspan>up</text>
+          </svg>`;
+        case 7: // ste(p->b)up Slang Override
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="20" y="76" font-family="'Outfit', sans-serif" font-weight="800" font-size="56" letter-spacing="-1" fill="${txt}">ste<tspan fill="#64748b" opacity="0.45">p</tspan><tspan fill="${p.c2}">b</tspan>up</text>
+            <line x1="126" y1="68" x2="162" y2="42" stroke="${p.c3}" stroke-width="5" stroke-linecap="round"/>
+          </svg>`;
+        case 8: // STEBUP Supersonic Italic
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="20" y="76" font-family="'Chakra Petch', sans-serif" font-style="italic" font-weight="700" font-size="60" letter-spacing="1" fill="${txt}">STE<tspan fill="url(#${gId})">B</tspan>UP</text>
+            <rect x="24" y="84" width="320" height="5" rx="2.5" fill="url(#${gId})"/>
+          </svg>`;
+        case 9: // stebUP Dual-Weight Contrast
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="24" y="74" font-family="'Outfit', sans-serif" font-weight="600" font-size="58" letter-spacing="-1" fill="${txt}">ste<tspan fill="${p.c2}" font-weight="900">b</tspan><tspan font-family="'Archivo Black', sans-serif" fill="url(#${gId})">UP</tspan></text>
+          </svg>`;
+        case 10: // <stebup/> Syntax Logotype
+        default:
+          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="14" y="72" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="50" letter-spacing="-1.5" fill="${txt}"><tspan fill="${p.c1}">&lt;</tspan>ste<tspan fill="${p.c2}">b</tspan>up<tspan fill="${p.c1}">/&gt;</tspan></text>
+          </svg>`;
+      }
+    }
 
-      // Inject gradient definition if needed
-      let defs = svg.querySelector('defs');
-      if (!defs) {
-        defs = doc.createElementNS('http://www.w3.org/2000/svg', 'defs');
-        svg.insertBefore(defs, svg.firstChild);
+    // ============================================================================
+    // FULL CARD LOCKUP SVG BUILDER (Icon + English Wordmark)
+    // ============================================================================
+    function buildLogoCardSVG(logo, p, uidSuffix = '') {
+      if (logo.pureWordmark) {
+        return buildPureWordmarkSVG(logo.wmVariant, p, logo.id + uidSuffix);
+      }
+      const gradId = 'lg_' + logo.id + '_' + uidSuffix;
+      const txtColor = lightCanvas ? '#0f172a' : p.text;
+      const iconContent = getIconInnerSVG(logo.id, p.c1, p.c2, p.c3, gradId);
+
+      let wordSVG = '';
+      if (logo.wordStyle === 'b-chip') {
+        wordSVG = `
+          <text x="118" y="67" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="-1.5" fill="${txtColor}">ste</text>
+          <rect x="214" y="25" width="44" height="52" rx="10" fill="url(#${gradId})"/>
+          <text x="222" y="66" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="44" fill="#08090d">b</text>
+          <text x="264" y="67" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="-1.5" fill="${txtColor}">up</text>
+        `;
+      } else if (logo.wordStyle === 'step-up') {
+        wordSVG = `
+          <text x="118" y="70" font-family="'Outfit', sans-serif" font-weight="800" font-size="50" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="${p.c1}">b</tspan></text>
+          <text x="256" y="50" font-family="'Outfit', sans-serif" font-weight="800" font-size="38" fill="${p.c2}">up</text>
+          <rect x="258" y="58" width="60" height="6" rx="3" fill="${p.c2}"/>
+        `;
+      } else if (logo.wordStyle === 'upper') {
+        wordSVG = `
+          <text x="118" y="68" font-family="'Syne', sans-serif" font-weight="800" font-size="44" letter-spacing="-1" fill="${txtColor}">STE<tspan fill="url(#${gradId})">B</tspan>UP</text>
+        `;
+      } else if (logo.wordStyle === 'dev-under') {
+        wordSVG = `
+          <text x="118" y="66" font-family="'JetBrains Mono', monospace" font-weight="800" font-size="42" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="${p.c2}">b</tspan>_up</text>
+        `;
+      } else if (logo.wordStyle === 'b-bracket') {
+        wordSVG = `
+          <text x="118" y="66" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="44" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="${p.c2}">[b]</tspan>up</text>
+        `;
+      } else if (logo.wordStyle === 'slash') {
+        wordSVG = `
+          <text x="118" y="66" font-family="'Chakra Petch', sans-serif" font-weight="700" font-size="48" letter-spacing="-1" fill="${txtColor}">ste<tspan fill="${p.c1}">b</tspan><tspan fill="${p.c3}">/</tspan>up</text>
+        `;
+      } else {
+        // Default: 'b-accent' or 'b-arrow'
+        wordSVG = `
+          <text x="118" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" letter-spacing="-2" fill="${txtColor}">ste<tspan fill="url(#${gradId})">b</tspan>up</text>
+          <circle cx="338" cy="60" r="5" fill="${p.c2}"/>
+        `;
       }
 
-      if (mode === 'gradient') {
-        const grad = doc.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
-        grad.setAttribute('id', gradId);
-        grad.setAttribute('x1', '0%');
-        grad.setAttribute('y1', '0%');
-        grad.setAttribute('x2', '100%');
-        grad.setAttribute('y2', '100%');
+      return `<svg viewBox="0 0 380 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${p.c1}"/>
+            <stop offset="100%" stop-color="${p.c2}"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(8, 0)">${iconContent}</g>
+        ${wordSVG}
+      </svg>`;
+    }
 
-        const stop1 = doc.createElementNS('http://www.w3.org/2000/svg', 'stop');
-        stop1.setAttribute('offset', '0%');
-        stop1.setAttribute('stop-color', c1);
+    // ============================================================================
+    // INTERACTIVE WORDMARK & B-TWIST CUSTOMIZER STATE
+    // ============================================================================
+    const FONTS = [
+      { name: 'Space Grotesk', css: "'Space Grotesk', sans-serif" },
+      { name: 'Outfit', css: "'Outfit', sans-serif" },
+      { name: 'Syne', css: "'Syne', sans-serif" },
+      { name: 'Unbounded', css: "'Unbounded', sans-serif" },
+      { name: 'Chakra Petch', css: "'Chakra Petch', sans-serif" },
+      { name: 'Plus Jakarta', css: "'Plus Jakarta Sans', sans-serif" },
+      { name: 'JetBrains Mono', css: "'JetBrains Mono', monospace" },
+      { name: 'Sora', css: "'Sora', sans-serif" },
+      { name: 'Bricolage', css: "'Bricolage Grotesque', sans-serif" },
+      { name: 'Orbitron', css: "'Orbitron', sans-serif" },
+      { name: 'Archivo Black', css: "'Archivo Black', sans-serif" },
+      { name: 'Rajdhani', css: "'Rajdhani', sans-serif" }
+    ];
 
-        const stop2 = doc.createElementNS('http://www.w3.org/2000/svg', 'stop');
-        stop2.setAttribute('offset', '100%');
-        stop2.setAttribute('stop-color', c2);
+    const B_TWISTS = [
+      { id: 'glow-b', label: 'Glow "b" Accent' },
+      { id: 'chip-b', label: 'Silicon Chip [b]' },
+      { id: 'step-up', label: 'Elevated "steb^up"' },
+      { id: 'override', label: 'Slang "ste(p→b)up"' },
+      { id: 'under', label: 'Terminal "steb_up"' },
+      { id: 'slash', label: 'Slash "steb/up"' },
+      { id: 'code', label: 'Code "<stebup/>"' }
+    ];
 
-        grad.appendChild(stop1);
-        grad.appendChild(stop2);
-        defs.appendChild(grad);
+    const CASES = [
+      { id: 'lower', label: 'stebup' },
+      { id: 'title', label: 'Stebup' },
+      { id: 'upper', label: 'STEBUP' },
+      { id: 'camel', label: 'stebUP' }
+    ];
+
+    const LAYOUTS = [
+      { id: 'icon-left', label: 'Icon + Wordmark' },
+      { id: 'word-only', label: 'Pure Wordmark Only' }
+    ];
+
+    let customState = {
+      fontIdx: 0,
+      bTwist: 'glow-b',
+      caseMode: 'lower',
+      layout: 'icon-left'
+    };
+
+    function initCustomControls() {
+      const fContainer = document.getElementById('fontChips');
+      fContainer.innerHTML = FONTS.map((f, i) =>
+        `<button class="chip-btn ${i === customState.fontIdx ? 'active' : ''}" style="font-family:${f.css}" onclick="setCustomFont(${i})">${f.name}</button>`
+      ).join('');
+
+      const bContainer = document.getElementById('bTwistChips');
+      bContainer.innerHTML = B_TWISTS.map(b =>
+        `<button class="chip-btn ${b.id === customState.bTwist ? 'active' : ''}" onclick="setCustomBTwist('${b.id}')">${b.label}</button>`
+      ).join('');
+
+      const cContainer = document.getElementById('caseChips');
+      cContainer.innerHTML = CASES.map(c =>
+        `<button class="chip-btn ${c.id === customState.caseMode ? 'active' : ''}" onclick="setCustomCase('${c.id}')">${c.label}</button>`
+      ).join('');
+
+      const lContainer = document.getElementById('layoutChips');
+      lContainer.innerHTML = LAYOUTS.map(l =>
+        `<button class="chip-btn ${l.id === customState.layout ? 'active' : ''}" onclick="setCustomLayout('${l.id}')">${l.label}</button>`
+      ).join('');
+    }
+
+    function setCustomFont(i) { customState.fontIdx = i; initCustomControls(); renderCustomBuilder(); }
+    function setCustomBTwist(id) { customState.bTwist = id; initCustomControls(); renderCustomBuilder(); }
+    function setCustomCase(id) { customState.caseMode = id; initCustomControls(); renderCustomBuilder(); }
+    function setCustomLayout(id) { customState.layout = id; initCustomControls(); renderCustomBuilder(); }
+
+    function buildCustomRemixSVG() {
+      const f = FONTS[customState.fontIdx];
+      const track = document.getElementById('trackSlider').value;
+      const slant = document.getElementById('slantSlider').value;
+      const iconId = parseInt(document.getElementById('iconIdxSlider').value, 10);
+      const p = activePalette;
+      const txtColor = lightCanvas ? '#0f172a' : p.text;
+      const gId = 'cust_grad';
+
+      let p1 = 'ste', bChar = 'b', p2 = 'up';
+      if (customState.caseMode === 'title') { p1 = 'Ste'; bChar = 'b'; p2 = 'up'; }
+      if (customState.caseMode === 'upper') { p1 = 'STE'; bChar = 'B'; p2 = 'UP'; }
+      if (customState.caseMode === 'camel') { p1 = 'ste'; bChar = 'b'; p2 = 'UP'; }
+
+      const hasIcon = customState.layout === 'icon-left';
+      const xText = hasIcon ? 124 : 36;
+      const fontSize = customState.caseMode === 'upper' ? 48 : 54;
+
+      let innerWord = '';
+      if (customState.bTwist === 'chip-b') {
+        innerWord = `<text x="${xText}" y="68" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c2}">[${bChar}]</tspan>${p2}</text>`;
+      } else if (customState.bTwist === 'step-up') {
+        innerWord = `
+          <text x="${xText}" y="72" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c1}">${bChar}</tspan><tspan dy="-18" font-size="${fontSize * 0.72}" fill="${p.c2}">${p2}</tspan></text>
+        `;
+      } else if (customState.bTwist === 'override') {
+        innerWord = `
+          <text x="${xText}" y="70" font-family="${f.css}" font-weight="800" font-size="${fontSize * 0.92}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="#64748b" opacity="0.45">p</tspan><tspan fill="${p.c2}">${bChar}</tspan>${p2}</text>
+        `;
+      } else if (customState.bTwist === 'under') {
+        innerWord = `<text x="${xText}" y="68" font-family="${f.css}" font-weight="800" font-size="${fontSize * 0.92}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c1}">${bChar}</tspan><tspan fill="${p.c2}">_</tspan>${p2}</text>`;
+      } else if (customState.bTwist === 'slash') {
+        innerWord = `<text x="${xText}" y="68" font-family="${f.css}" font-weight="800" font-size="${fontSize * 0.94}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c1}">${bChar}</tspan><tspan fill="${p.c3}">/</tspan>${p2}</text>`;
+      } else if (customState.bTwist === 'code') {
+        innerWord = `<text x="${xText}" y="68" font-family="${f.css}" font-weight="800" font-size="${fontSize * 0.88}" letter-spacing="${track}" fill="${txtColor}"><tspan fill="${p.c1}">&lt;</tspan>${p1}<tspan fill="${p.c2}">${bChar}</tspan>${p2}<tspan fill="${p.c1}">/&gt;</tspan></text>`;
+      } else {
+        innerWord = `<text x="${xText}" y="70" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="url(#${gId})">${bChar}</tspan>${p2}<tspan fill="${p.c2}">.</tspan></text>`;
       }
 
-      const paintFill = mode === 'gradient' ? `url(#${gradId})` : (mode === 'monochrome' ? '#FFFFFF' : c1);
-      const paintStroke = mode === 'gradient' ? `url(#${gradId})` : (mode === 'monochrome' ? '#FFFFFF' : c1);
+      const iconGroup = hasIcon ? `<g transform="translate(12, 0)">${getIconInnerSVG(iconId, p.c1, p.c2, p.c3, gId)}</g>` : '';
 
-      // Recursive recoloring of SVG elements
-      const elements = svg.querySelectorAll('path, circle, rect, polygon, polyline, ellipse, line, g');
-      elements.forEach(el => {
-        const fill = el.getAttribute('fill');
-        const stroke = el.getAttribute('stroke');
+      return `<svg viewBox="0 0 420 100" xmlns="http://www.w3.org/2000/svg" style="max-height:110px;width:100%;">
+        <defs>
+          <linearGradient id="${gId}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${p.c1}"/>
+            <stop offset="100%" stop-color="${p.c2}"/>
+          </linearGradient>
+        </defs>
+        ${iconGroup}
+        <g transform="skewX(${slant})">${innerWord}</g>
+      </svg>`;
+    }
 
-        if (fill && fill !== 'none') {
-          el.setAttribute('fill', paintFill);
-        }
-        if (stroke && stroke !== 'none') {
-          el.setAttribute('stroke', paintStroke);
-        }
-        if (!fill && !stroke) {
-          el.setAttribute('fill', paintFill);
-        }
+    function renderCustomBuilder() {
+      const stage = document.getElementById('customBuilderStage');
+      stage.innerHTML = buildCustomRemixSVG();
+      const f = FONTS[customState.fontIdx].name;
+      const b = B_TWISTS.find(x => x.id === customState.bTwist).label;
+      const iconId = document.getElementById('iconIdxSlider').value;
+      document.getElementById('customRecipeLabel').textContent = `${f} • ${b} • Icon #${String(iconId).padStart(2, '0')}`;
+    }
+
+    function applyCustomToNavbar() {
+      document.getElementById('liveNavbarLogo').innerHTML = `<div style="width:148px;height:36px;display:flex;align-items:center;">${buildCustomRemixSVG()}</div>`;
+      showToast('Mounted your Custom Remix in the live website navbar!');
+    }
+
+    // ============================================================================
+    // LIVE WEBSITE NAVBAR & APP ICON UPDATER
+    // ============================================================================
+    function previewLogoInHeader(id) {
+      const logo = LOGOS.find(l => l.id === id) || LOGOS[0];
+      const fullSVG = buildLogoCardSVG(logo, activePalette, 'nav');
+      document.getElementById('liveNavbarLogo').innerHTML = `<div style="width:142px;height:34px;display:flex;align-items:center;">${fullSVG}</div>`;
+
+      const iconId = logo.pureWordmark ? 1 : logo.id;
+      const iconOnly = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;">
+        <defs><linearGradient id="mini_g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${activePalette.c1}"/><stop offset="100%" stop-color="${activePalette.c2}"/></linearGradient></defs>
+        ${getIconInnerSVG(iconId, activePalette.c1, activePalette.c2, activePalette.c3, 'mini_g')}
+      </svg>`;
+      document.getElementById('liveAppIcon').innerHTML = iconOnly;
+      document.getElementById('liveFavicon').innerHTML = iconOnly;
+    }
+
+    // ============================================================================
+    // GALLERY RENDERER
+    // ============================================================================
+    let activeCategory = 'all';
+    let pollList = [];
+
+    function renderPalettes() {
+      const container = document.getElementById('paletteSwitcher');
+      container.innerHTML = PALETTES.map(p => `
+        <div class="pal-dot ${p.id === activePalette.id ? 'active' : ''}"
+             title="${p.name}"
+             style="background: linear-gradient(135deg, ${p.c1}, ${p.c2});"
+             onclick="selectPalette('${p.id}')"></div>
+      `).join('');
+    }
+
+    function selectPalette(id) {
+      activePalette = PALETTES.find(p => p.id === id) || PALETTES[0];
+      renderPalettes();
+      renderCustomBuilder();
+      renderGallery();
+      previewLogoInHeader(1);
+    }
+
+    function toggleCanvasTheme() {
+      lightCanvas = !lightCanvas;
+      document.body.classList.toggle('light-canvas', lightCanvas);
+      renderCustomBuilder();
+      renderGallery();
+    }
+
+    function setCols(n, btn) {
+      const grid = document.getElementById('logoGrid');
+      grid.className = 'logo-grid' + (n === 4 ? '' : ' cols-' + n);
+      btn.parentElement.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function renderGallery() {
+      const q = (document.getElementById('searchInput').value || '').toLowerCase();
+      const filtered = LOGOS.filter(l => {
+        const matchCat = activeCategory === 'all' || l.cat === activeCategory;
+        const matchQ = !q || l.title.toLowerCase().includes(q) || l.desc.toLowerCase().includes(q) || String(l.id).includes(q);
+        return matchCat && matchQ;
       });
 
-      return svg.outerHTML;
-    }
-
-    // --- Render Logo Cards ---
-    async function renderCards() {
-      logoGrid.innerHTML = '';
-      resultCount.textContent = currentIcons.length;
-
-      if (currentIcons.length === 0) {
-        emptyState.classList.remove('hidden');
-        return;
-      } else {
-        emptyState.classList.add('hidden');
-      }
-
-      for (let i = 0; i < currentIcons.length; i++) {
-        const item = currentIcons[i];
-        const cardId = 'card_' + i;
-        const isFav = favorites.has(item.name);
-
-        const card = document.createElement('div');
-        card.className = 'logo-card glow-card bg-obsidian-900/90 border border-obsidian-800 rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-indigo-500/10 relative group';
-        card.innerHTML = `
-          <!-- Top Card Header: Index & Category Pill & Favorite -->
-          <div class="flex items-center justify-between z-10">
-            <span class="text-[10px] font-mono font-bold text-slate-500">#${String(i + 1).padStart(2, '0')}</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-obsidian-800 border border-obsidian-700/80 text-slate-400 capitalize truncate max-w-[110px]">
-              ${item.category ? item.category.split(' ')[0] : 'Vector'}
-            </span>
-            <button class="fav-btn p-1 text-slate-500 hover:text-rose-400 transition ${isFav ? 'text-rose-500' : ''}" data-name="${item.name}">
-              <svg class="w-3.5 h-3.5" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            </button>
-          </div>
-
-          <!-- Canvas Preview -->
-          <div class="my-3 rounded-xl p-6 flex items-center justify-center cursor-pointer transition-colors relative group/canvas" style="background-color: ${cardCanvasBg}; min-height: 140px;" data-action="inspect" data-index="${i}">
-            <div id="${cardId}_canvas" class="logo-canvas w-14 h-14 flex items-center justify-center drop-shadow-md">
-              <div class="w-6 h-6 border-2 border-slate-700 border-t-indigo-500 rounded-full animate-spin"></div>
+      const grid = document.getElementById('logoGrid');
+      grid.innerHTML = filtered.map(l => {
+        const inPoll = pollList.some(item => item.id === l.id);
+        const svgMarkup = buildLogoCardSVG(l, activePalette, 'card');
+        return `
+          <div class="logo-card ${inPoll ? 'in-poll' : ''}">
+            <div class="card-top">
+              <span class="card-id">#${String(l.id).padStart(2, '0')}</span>
+              <span class="card-cat-tag">${l.cat.toUpperCase()}</span>
             </div>
-            <!-- Hover Zoom Hint -->
-            <div class="absolute inset-0 bg-indigo-600/10 rounded-xl opacity-0 group-hover/canvas:opacity-100 transition flex items-center justify-center pointer-events-none">
-              <span class="px-2.5 py-1 rounded-md bg-obsidian-900/90 text-[10px] font-mono text-indigo-300 border border-indigo-500/30 shadow">Inspect & Lockup</span>
+            <div class="card-canvas" onclick="previewLogoInHeader(${l.id}); showToast('Previewing #${String(l.id).padStart(2, '0')} in the Live Website Navbar!');">
+              ${svgMarkup}
+              <span class="try-header-hint">👆 Test in Website Header</span>
             </div>
-          </div>
-
-          <!-- Card Metadata & Quick Copy Bar -->
-          <div class="space-y-2 z-10">
-            <div>
-              <h4 class="text-xs font-bold text-white truncate font-mono">${item.label || item.name}</h4>
-              <p class="text-[10px] text-slate-400 truncate mt-0.5">${item.desc || item.name}</p>
+            <div class="card-info">
+              <div class="card-title">${l.title}</div>
+              <div class="card-desc">${l.desc}</div>
             </div>
-
-            <!-- Quick Action Row -->
-            <div class="pt-2 border-t border-obsidian-800 flex items-center justify-between gap-1 text-[11px]">
-              <button class="copy-card-btn flex-1 py-1.5 px-2 rounded-lg bg-emerald-600/15 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-300 font-semibold flex items-center justify-center space-x-1 transition" data-index="${i}" title="Copy 1200x630 WhatsApp Presentation Card">
-                <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
-                <span>WhatsApp</span>
-              </button>
-              
-              <button class="inspect-btn px-2.5 py-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white transition" data-index="${i}" title="Full Studio Mockup & Vector Export">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-              </button>
+            <div class="card-actions">
+              <button class="btn-act btn-copy" onclick="copyLogoPNG(${l.id})">📋 Copy PNG</button>
+              <button class="btn-act btn-wa" onclick="shareWhatsApp(${l.id})">💬 WhatsApp</button>
+              <button class="btn-act btn-poll ${inPoll ? 'active' : ''}" onclick="togglePoll(${l.id})">${inPoll ? '✓ In Poll' : '+ Poll'}</button>
+              <button class="btn-act" title="Download SVG" onclick="downloadSVG(${l.id})">SVG</button>
             </div>
           </div>
         `;
-
-        logoGrid.appendChild(card);
-
-        // Fetch and style SVG asynchronously
-        fetchSvg(item.name).then(rawSvg => {
-          const container = document.getElementById(cardId + '_canvas');
-          if (container) {
-            container.innerHTML = styleSvg(rawSvg, activeColor1, activeColor2, colorMode, cardId);
-          }
-        });
-      }
+      }).join('');
     }
 
-    // --- Search Iconify Global API ---
-    async function searchIconify(query) {
-      if (!query || query.trim() === '') return;
-      loadingState.classList.remove('hidden');
-      logoGrid.innerHTML = '';
-      emptyState.classList.add('hidden');
-
-      try {
-        const cleanQuery = encodeURIComponent(query.trim());
-        const res = await fetch(`https://api.iconify.design/search?query=${cleanQuery}&limit=64`);
-        const data = await res.json();
-
-        if (data && data.icons && data.icons.length > 0) {
-          currentIcons = data.icons.map(iconFullName => {
-            const parts = iconFullName.split(':');
-            const collection = parts[0] || 'icon';
-            const iconId = parts[1] || parts[0];
-            const cleanName = iconId.replace(/-/g, ' ').replace(/_/g, ' ');
-            const capitalized = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
-            return {
-              name: iconFullName,
-              label: capitalized,
-              category: query,
-              desc: `Collection: ${collection.toUpperCase()}`
-            };
-          });
-        } else {
-          currentIcons = [];
-        }
-      } catch (err) {
-        console.error('Iconify search failed', err);
-        currentIcons = [];
-      } finally {
-        loadingState.classList.add('hidden');
-        renderCards();
-      }
+    // ============================================================================
+    // CLIPBOARD PNG & WHATSAPP SHARING (1200x630 High-Res Card + A/B/C/D Poll Card)
+    // ============================================================================
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
     }
 
-    // --- Recolor All Rendered SVGs without reloading ---
-    function updateAllCardColors() {
-      for (let i = 0; i < currentIcons.length; i++) {
-        const item = currentIcons[i];
-        const cardId = 'card_' + i;
-        const container = document.getElementById(cardId + '_canvas');
-        if (container && svgCache.has(item.name)) {
-          const raw = svgCache.get(item.name);
-          container.innerHTML = styleSvg(raw, activeColor1, activeColor2, colorMode, cardId);
-        }
-      }
-      if (activeModalIcon) {
-        updateModalPreview();
-      }
-    }
-
-    // --- Toast Alerts ---
-    function showToast(title, desc) {
-      const toast = document.getElementById('globalToast');
-      document.getElementById('toastTitle').textContent = title;
-      document.getElementById('toastDesc').textContent = desc;
-      toast.classList.remove('translate-y-20', 'opacity-0');
-      setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3200);
-    }
-
-    // --- 1200x630 WhatsApp Presentation Card Generator ---
-    async function generateWhatsAppCard(item) {
-      const canvas = exportCanvas;
+    async function renderSVGToClipboardPNG(svgString, titleText, subText) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 630;
       const ctx = canvas.getContext('2d');
-      const w = 1200;
-      const h = 630;
 
-      // 1. Draw Deep Obsidian Background
-      const bgGrad = ctx.createLinearGradient(0, 0, w, h);
-      bgGrad.addColorStop(0, '#070A11');
-      bgGrad.addColorStop(0.5, '#0B0F19');
-      bgGrad.addColorStop(1, '#101625');
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = lightCanvas ? '#F1F5F9' : '#07080C';
+      ctx.fillRect(0, 0, 1200, 630);
 
-      // Subtle Grid background lines
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-      ctx.lineWidth = 1;
-      for (let x = 0; x < w; x += 40) {
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-      }
-      for (let y = 0; y < h; y += 40) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
-      }
+      // Subtle border frame
+      ctx.strokeStyle = activePalette.c1;
+      ctx.lineWidth = 4;
+      ctx.strokeRect(28, 28, 1144, 574);
 
-      // 2. Subtle Glow behind Logo Icon
-      const glowGrad = ctx.createRadialGradient(280, 315, 10, 280, 315, 240);
-      glowGrad.addColorStop(0, activeColor1 + '40'); // 25% opacity
-      glowGrad.addColorStop(0.6, activeColor2 + '20');
-      glowGrad.addColorStop(1, 'transparent');
-      ctx.fillStyle = glowGrad;
-      ctx.fillRect(40, 75, 480, 480);
+      // Header tag
+      ctx.fillStyle = activePalette.c2;
+      ctx.font = 'bold 22px Inter, sans-serif';
+      ctx.fillText('STEBUP — LOGO BRAINSTORMING OPTION', 64, 82);
 
-      // 3. Draw Icon in Left Card Container
-      ctx.fillStyle = 'rgba(16, 22, 37, 0.9)';
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-      ctx.lineWidth = 2;
-      roundRect(ctx, 100, 135, 360, 360, 28, true, true);
-
-      // Render SVG onto Canvas via Image
-      const rawSvg = await fetchSvg(item.name);
-      const styledSvg = styleSvg(rawSvg, activeColor1, activeColor2, colorMode, 'export');
-      const svgBlob = new Blob([styledSvg], { type: 'image/svg+xml;charset=utf-8' });
-      const URL = window.URL || window.webkitURL || window;
-      const blobURL = URL.createObjectURL(svgBlob);
+      // Render SVG in center
       const img = new Image();
+      const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
 
-      return new Promise(resolve => {
-        img.onload = () => {
-          ctx.drawImage(img, 180, 215, 200, 200);
-          URL.revokeObjectURL(blobURL);
-
-          // 4. Draw Right Content Section
-          // Brand Wordmark
-          ctx.fillStyle = '#FFFFFF';
-          ctx.font = 'bold 56px "Space Grotesk", monospace';
-          ctx.fillText('STEBUP', 520, 210);
-
-          // Category Badge
-          ctx.fillStyle = activeColor1;
-          ctx.font = 'bold 16px "Plus Jakarta Sans", sans-serif';
-          ctx.fillText(item.label.toUpperCase() + '  •  BRAND IDENTITY CONCEPT', 520, 248);
-
-          // Manifesto / Subtitle
-          ctx.fillStyle = '#94A3B8';
-          ctx.font = '500 20px "Plus Jakarta Sans", sans-serif';
-          ctx.fillText('Bridging Ambitious Vision and High-Performance Execution', 520, 290);
-
-          // Active Palette Hex Chips
-          ctx.fillStyle = '#64748B';
-          ctx.font = '14px monospace';
-          ctx.fillText('COLOR FORMULATION:', 520, 355);
-
-          // Swatch 1
-          ctx.fillStyle = activeColor1;
-          roundRect(ctx, 520, 370, 28, 28, 8, true, false);
-          ctx.fillStyle = '#E2E8F0';
-          ctx.font = 'bold 15px monospace';
-          ctx.fillText(activeColor1.toUpperCase(), 560, 390);
-
-          // Swatch 2 (if gradient)
-          if (colorMode === 'gradient') {
-            ctx.fillStyle = activeColor2;
-            roundRect(ctx, 680, 370, 28, 28, 8, true, false);
-            ctx.fillStyle = '#E2E8F0';
-            ctx.fillText(activeColor2.toUpperCase(), 720, 390);
-          }
-
-          // Stebup 8 Divisions Tagline
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-          roundRect(ctx, 520, 430, 580, 65, 14, true, false);
-          ctx.fillStyle = '#94A3B8';
-          ctx.font = '13px "Plus Jakarta Sans", sans-serif';
-          ctx.fillText('Software  •  Consultancy  •  Talent  •  Design  •  Ventures  •  FinTech  •  AI  •  Logistics', 540, 468);
-
-          // Footer / Timestamp
-          ctx.fillStyle = '#475569';
-          ctx.font = '12px monospace';
-          ctx.fillText('STEBUP BRAND EXPLORATION STUDIO  •  JEDDAH  •  DUBAI  •  INDIA  •  INDONESIA', 100, 565);
-
-          // Convert canvas to Blob
-          canvas.toBlob(blob => {
-            resolve(blob);
-          }, 'image/png');
-        };
-        img.src = blobURL;
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = url;
       });
-    }
+      ctx.drawImage(img, 140, 145, 920, 260);
+      URL.revokeObjectURL(url);
 
-    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
-      ctx.beginPath();
-      ctx.moveTo(x + radius, y);
-      ctx.lineTo(x + width - radius, y);
-      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-      ctx.lineTo(x + width, y + height - radius);
-      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-      ctx.lineTo(x + radius, y + height);
-      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-      ctx.lineTo(x, y + radius);
-      ctx.quadraticCurveTo(x, y, x + radius, y);
-      ctx.closePath();
-      if (fill) ctx.fill();
-      if (stroke) ctx.stroke();
-    }
+      // Footer details
+      ctx.fillStyle = lightCanvas ? '#0F172A' : '#FFFFFF';
+      ctx.font = 'bold 32px Inter, sans-serif';
+      ctx.fillText(titleText, 64, 515);
 
-    // --- Modal Inspector ---
-    async function openModal(index) {
-      const item = currentIcons[index];
-      if (!item) return;
-      activeModalIcon = item;
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '22px Inter, sans-serif';
+      ctx.fillText(subText, 64, 555);
 
-      document.getElementById('modalIconName').textContent = item.name;
-      document.getElementById('modalCollection').textContent = item.name.split(':')[0].toUpperCase();
-      document.getElementById('modalColorMode').textContent = colorMode.toUpperCase();
-      document.getElementById('modalHex1').textContent = activeColor1.toUpperCase();
-      document.getElementById('modalHex2').textContent = activeColor2.toUpperCase();
-      document.getElementById('modalSwatch1').style.backgroundColor = activeColor1;
-      document.getElementById('modalSwatch2').style.backgroundColor = activeColor2;
-
-      await updateModalPreview();
-      previewModal.classList.remove('hidden');
-    }
-
-    async function updateModalPreview() {
-      if (!activeModalIcon) return;
-      const raw = await fetchSvg(activeModalIcon.name);
-      const styled = styleSvg(raw, activeColor1, activeColor2, colorMode, 'modal');
-
-      document.getElementById('modalIconContainer').innerHTML = styled;
-      document.getElementById('modalStackedIcon').innerHTML = styled;
-      document.getElementById('modalTileIcon').innerHTML = styled;
-    }
-
-    function closeModal() {
-      previewModal.classList.add('hidden');
-      activeModalIcon = null;
-    }
-
-    // --- Event Listeners ---
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCards();
-
-      // Live Color Picker 1
-      colorPicker1.addEventListener('input', (e) => {
-        activeColor1 = e.target.value;
-        colorVal1.textContent = activeColor1.toUpperCase();
-        updateAllCardColors();
-      });
-
-      // Live Color Picker 2
-      colorPicker2.addEventListener('input', (e) => {
-        activeColor2 = e.target.value;
-        colorVal2.textContent = activeColor2.toUpperCase();
-        updateAllCardColors();
-      });
-
-      // Color Mode Buttons
-      modeGradient.addEventListener('click', () => {
-        colorMode = 'gradient';
-        modeGradient.className = 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition';
-        modeSolid.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
-        modeMonochrome.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
-        colorDivider.style.display = 'inline';
-        color2Wrapper.style.display = 'flex';
-        updateAllCardColors();
-      });
-
-      modeSolid.addEventListener('click', () => {
-        colorMode = 'solid';
-        modeSolid.className = 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition';
-        modeGradient.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
-        modeMonochrome.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
-        colorDivider.style.display = 'none';
-        color2Wrapper.style.display = 'none';
-        updateAllCardColors();
-      });
-
-      modeMonochrome.addEventListener('click', () => {
-        colorMode = 'monochrome';
-        modeMonochrome.className = 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition';
-        modeGradient.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
-        modeSolid.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
-        colorDivider.style.display = 'none';
-        color2Wrapper.style.display = 'none';
-        updateAllCardColors();
-      });
-
-      // Preset Pills
-      document.querySelectorAll('.preset-pill').forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeColor1 = btn.getAttribute('data-c1');
-          activeColor2 = btn.getAttribute('data-c2');
-          colorPicker1.value = activeColor1;
-          colorPicker2.value = activeColor2;
-          colorVal1.textContent = activeColor1.toUpperCase();
-          colorVal2.textContent = activeColor2.toUpperCase();
-          if (colorMode === 'monochrome') {
-            modeGradient.click();
-          } else {
-            updateAllCardColors();
-          }
-          showToast('Palette Applied', btn.getAttribute('data-name'));
-        });
-      });
-
-      // Canvas Background Switcher
-      bgDark.addEventListener('click', () => {
-        cardCanvasBg = '#070A11';
-        renderCards();
-      });
-      bgNavy.addEventListener('click', () => {
-        cardCanvasBg = '#0F172A';
-        renderCards();
-      });
-      bgLight.addEventListener('click', () => {
-        cardCanvasBg = '#F8FAFC';
-        renderCards();
-      });
-
-      // Grid Switcher
-      const gridCols5 = document.getElementById('gridCols5');
-      const gridCols4 = document.getElementById('gridCols4');
-      const gridCols3 = document.getElementById('gridCols3');
-
-      gridCols5.addEventListener('click', () => {
-        logoGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3';
-        gridCols5.className = 'px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold';
-        gridCols4.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
-        gridCols3.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
-      });
-
-      gridCols4.addEventListener('click', () => {
-        logoGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4';
-        gridCols4.className = 'px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold';
-        gridCols5.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
-        gridCols3.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
-      });
-
-      gridCols3.addEventListener('click', () => {
-        logoGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5';
-        gridCols3.className = 'px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold';
-        gridCols4.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
-        gridCols5.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
-      });
-
-      // Category Tabs
-      document.querySelectorAll('.category-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          document.querySelectorAll('.category-tab').forEach(t => {
-            t.className = 'category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition';
-          });
-          tab.className = 'category-tab active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium shadow-md shadow-indigo-600/20 transition';
-          
-          const q = tab.getAttribute('data-query');
-          if (q === 'curated-all') {
-            currentIcons = [...CURATED_ICONS];
-            renderCards();
-          } else {
-            searchIconify(q);
-          }
-        });
-      });
-
-      // Search Inputs
-      searchBtn.addEventListener('click', () => searchIconify(searchInput.value));
-      searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') searchIconify(searchInput.value);
-      });
-
-      // Random Inspiration
-      document.getElementById('randomBtn').addEventListener('click', () => {
-        const keywords = ['bridge', 'stairs', 'nexus', 'prism', 'infinity', 'cube', 'crown', 'wings', 'circuit', 'shield', 'falcon', 'growth'];
-        const pick = keywords[Math.floor(Math.random() * keywords.length)];
-        searchInput.value = pick;
-        searchIconify(pick);
-      });
-
-      // Grid Delegated Click Events (Inspect & Copy)
-      logoGrid.addEventListener('click', async (e) => {
-        const inspectTrigger = e.target.closest('[data-action="inspect"], .inspect-btn');
-        if (inspectTrigger) {
-          const idx = parseInt(inspectTrigger.getAttribute('data-index'), 10);
-          openModal(idx);
-          return;
-        }
-
-        const copyTrigger = e.target.closest('.copy-card-btn');
-        if (copyTrigger) {
-          const idx = parseInt(copyTrigger.getAttribute('data-index'), 10);
-          const item = currentIcons[idx];
-          if (!item) return;
-
-          copyTrigger.disabled = true;
-          copyTrigger.innerHTML = `<span class="text-[10px]">Generating...</span>`;
-
-          try {
-            const blob = await generateWhatsAppCard(item);
-            if (navigator.clipboard && window.ClipboardItem) {
-              await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-              showToast('1200×630 Slide Copied!', 'Directly paste (Ctrl+V) into your WhatsApp group chat');
-            } else {
-              // Fallback download if clipboard item not supported
-              const a = document.createElement('a');
-              a.href = URL.createObjectURL(blob);
-              a.download = `stebup-logo-${item.name.replace(/[:/]/g, '-')}.png`;
-              a.click();
-              showToast('Card Downloaded', 'Attached PNG for WhatsApp');
-            }
-          } catch (err) {
-            console.error('Clipboard copy failed', err);
-            showToast('Ready for WhatsApp', 'Open card inspection to save PNG');
-          } finally {
-            copyTrigger.disabled = false;
-            copyTrigger.innerHTML = `<svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg><span>WhatsApp</span>`;
-          }
-          return;
-        }
-
-        const favTrigger = e.target.closest('.fav-btn');
-        if (favTrigger) {
-          const name = favTrigger.getAttribute('data-name');
-          if (favorites.has(name)) {
-            favorites.delete(name);
-            favTrigger.classList.remove('text-rose-500');
-            favTrigger.querySelector('svg').setAttribute('fill', 'none');
-          } else {
-            favorites.add(name);
-            favTrigger.classList.add('text-rose-500');
-            favTrigger.querySelector('svg').setAttribute('fill', 'currentColor');
-          }
-          favCount.textContent = favorites.size;
-        }
-      });
-
-      // Modal Actions
-      closeModalBtn.addEventListener('click', closeModal);
-      previewModal.addEventListener('click', (e) => {
-        if (e.target === previewModal) closeModal();
-      });
-
-      // Modal Background Switcher
-      document.getElementById('modalBgDark').addEventListener('click', () => {
-        document.getElementById('modalPreviewBox').className = 'rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] bg-obsidian-950 border border-obsidian-800 shadow-inner transition-colors';
-        document.getElementById('modalStackedBox').className = 'rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center text-center space-y-2';
-        document.getElementById('modalTileBox').className = 'rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center space-y-2';
-      });
-
-      document.getElementById('modalBgLight').addEventListener('click', () => {
-        document.getElementById('modalPreviewBox').className = 'rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] bg-white border border-slate-200 shadow-inner transition-colors text-slate-900';
-        document.getElementById('modalStackedBox').className = 'rounded-xl p-5 bg-white border border-slate-200 flex flex-col items-center justify-center text-center space-y-2 text-slate-900';
-        document.getElementById('modalTileBox').className = 'rounded-xl p-5 bg-white border border-slate-200 flex flex-col items-center justify-center space-y-2 text-slate-900';
-      });
-
-      // Modal WhatsApp 1200x630 Card
-      document.getElementById('modalCopyCardBtn').addEventListener('click', async () => {
-        if (!activeModalIcon) return;
-        const btn = document.getElementById('modalCopyCardBtn');
-        const toast = document.getElementById('modalToast');
-        btn.disabled = true;
-        btn.textContent = 'Generating High-Res Slide...';
-
-        try {
-          const blob = await generateWhatsAppCard(activeModalIcon);
-          if (navigator.clipboard && window.ClipboardItem) {
-            await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-            toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 4000);
-          } else {
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `stebup-card-${activeModalIcon.name.replace(/[:/]/g, '-')}.png`;
-            a.click();
-            toast.textContent = '✓ Downloaded slide PNG!';
-            toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 4000);
-          }
-        } catch (e) {
-          console.error(e);
-        } finally {
-          btn.disabled = false;
-          btn.innerHTML = `<svg class="w-4 h-4 text-emerald-200" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-              </svg><span>Copy 1200×630 WhatsApp Slide</span>`;
-        }
-      });
-
-      // Modal Download SVG
-      document.getElementById('modalDownloadSvgBtn').addEventListener('click', async () => {
-        if (!activeModalIcon) return;
-        const raw = await fetchSvg(activeModalIcon.name);
-        const styled = styleSvg(raw, activeColor1, activeColor2, colorMode, 'dl');
-        const blob = new Blob([styled], { type: 'image/svg+xml;charset=utf-8' });
+      const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        showToast('✅ High-res PNG copied! Press Ctrl+V in your WhatsApp group.');
+      } catch (e) {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `stebup-${activeModalIcon.name.replace(/[:/]/g, '-')}.svg`;
+        a.download = 'stebup-logo-concept.png';
         a.click();
-        showToast('SVG Downloaded', 'Raw vector file saved');
-      });
+        showToast('📥 Downloaded PNG card ready for WhatsApp!');
+      }
+    }
 
-      // Modal Download PNG
-      document.getElementById('modalDownloadPngBtn').addEventListener('click', async () => {
-        if (!activeModalIcon) return;
-        const blob = await generateWhatsAppCard(activeModalIcon);
+    function copyLogoPNG(id) {
+      const l = LOGOS.find(x => x.id === id);
+      const svg = buildLogoCardSVG(l, activePalette, 'export');
+      renderSVGToClipboardPNG(svg, `#${String(l.id).padStart(2, '0')} — ${l.title}`, l.desc);
+    }
+
+    function copyCustomLogoPNG() {
+      const svg = buildCustomRemixSVG();
+      const recipe = document.getElementById('customRecipeLabel').textContent;
+      renderSVGToClipboardPNG(svg, 'Custom Stebup Remix', recipe);
+    }
+
+    function shareWhatsApp(id) {
+      const l = LOGOS.find(x => x.id === id);
+      const text = `Hey team! Check out Stebup Logo Option #${String(l.id).padStart(2, '0')} (${l.title}): "${l.desc}" — What do we think?`;
+      window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    function shareCustomWhatsApp() {
+      const recipe = document.getElementById('customRecipeLabel').textContent;
+      const text = `Hey team! I remixed a custom Stebup logo (${recipe}) — pasting the image right now!`;
+      window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    function downloadSVG(id) {
+      const l = LOGOS.find(x => x.id === id);
+      const svg = buildLogoCardSVG(l, activePalette, 'dl');
+      const blob = new Blob([svg], { type: 'image/svg+xml' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `stebup-logo-${l.id}.svg`;
+      a.click();
+    }
+
+    // ============================================================================
+    // TEAM WHATSAPP POLL GENERATOR (A vs B vs C vs D)
+    // ============================================================================
+    function togglePoll(id) {
+      const existingIdx = pollList.findIndex(x => x.id === id);
+      if (existingIdx >= 0) {
+        pollList.splice(existingIdx, 1);
+      } else {
+        if (pollList.length >= 4) {
+          showToast('Poll holds up to 4 options (A, B, C, D).');
+          return;
+        }
+        const l = LOGOS.find(x => x.id === id);
+        pollList.push({ id: l.id, title: `#${String(l.id).padStart(2, '0')} ${l.title}`, svg: buildLogoCardSVG(l, activePalette, 'poll_' + l.id) });
+      }
+      updatePollUI();
+      renderGallery();
+    }
+
+    function addCustomToPoll() {
+      if (pollList.length >= 4) {
+        showToast('Poll holds up to 4 options (A, B, C, D).');
+        return;
+      }
+      const f = FONTS[customState.fontIdx].name;
+      pollList.push({
+        id: 'custom_' + Date.now(),
+        title: `Remix (${f})`,
+        svg: buildCustomRemixSVG()
+      });
+      updatePollUI();
+      showToast('Added your Custom Remix to the WhatsApp Poll dock!');
+    }
+
+    function clearPoll() {
+      pollList = [];
+      updatePollUI();
+      renderGallery();
+    }
+
+    function updatePollUI() {
+      document.getElementById('pollCountLabel').textContent = `(${pollList.length}/4)`;
+      const letters = ['A', 'B', 'C', 'D'];
+      const slots = document.getElementById('pollSlots');
+      slots.innerHTML = letters.map((letChar, i) => {
+        const item = pollList[i];
+        if (!item) return `<div class="poll-slot">${letChar}</div>`;
+        return `<div class="poll-slot filled" title="${item.title}" style="color:#14b8a6;">${letChar}✓</div>`;
+      }).join('');
+    }
+
+    async function copyPollComparisonPNG() {
+      if (pollList.length < 2) {
+        showToast('Select at least 2 logos using "+ Poll" to generate a comparison card!');
+        return;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = 1600;
+      canvas.height = 960;
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#06070B';
+      ctx.fillRect(0, 0, 1600, 960);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 40px Inter, sans-serif';
+      ctx.fillText('STEBUP LOGO TEAM VOTE — Reply A, B, C, or D!', 60, 74);
+
+      const letters = ['OPTION A', 'OPTION B', 'OPTION C', 'OPTION D'];
+      const boxes = [
+        { x: 60, y: 110, w: 710, h: 390 },
+        { x: 830, y: 110, w: 710, h: 390 },
+        { x: 60, y: 530, w: 710, h: 390 },
+        { x: 830, y: 530, w: 710, h: 390 }
+      ];
+
+      for (let i = 0; i < pollList.length; i++) {
+        const b = boxes[i];
+        const item = pollList[i];
+
+        ctx.fillStyle = '#0D1018';
+        ctx.strokeStyle = '#14B8A6';
+        ctx.lineWidth = 3;
+        ctx.fillRect(b.x, b.y, b.w, b.h);
+        ctx.strokeRect(b.x, b.y, b.w, b.h);
+
+        ctx.fillStyle = '#14B8A6';
+        ctx.font = 'bold 26px Inter, sans-serif';
+        ctx.fillText(letters[i], b.x + 28, b.y + 46);
+
+        ctx.fillStyle = '#E2E8F0';
+        ctx.font = 'bold 24px Inter, sans-serif';
+        ctx.fillText(item.title, b.x + 190, b.y + 46);
+
+        const img = new Image();
+        const url = URL.createObjectURL(new Blob([item.svg], { type: 'image/svg+xml;charset=utf-8' }));
+        await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = url; });
+        ctx.drawImage(img, b.x + 65, b.y + 95, 580, 230);
+        URL.revokeObjectURL(url);
+      }
+
+      const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        showToast('🗳️ "A vs B vs C" Poll PNG copied! Paste (Ctrl+V) directly in WhatsApp!');
+      } catch (e) {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `stebup-brand-${activeModalIcon.name.replace(/[:/]/g, '-')}.png`;
+        a.download = 'stebup-team-poll.png';
         a.click();
-        showToast('PNG Downloaded', 'High resolution image saved');
-      });
+        showToast('📥 Downloaded Poll Comparison PNG!');
+      }
+    }
 
+    // Category Tab Listeners
+    document.querySelectorAll('#categoryTabs .cat-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#categoryTabs .cat-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.dataset.cat;
+        renderGallery();
+      });
     });
+
+    // Initialize Studio
+    renderPalettes();
+    initCustomControls();
+    renderCustomBuilder();
+    renderGallery();
+    previewLogoInHeader(1);
   </script>
 </body>
 </html>
