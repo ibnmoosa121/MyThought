@@ -3,849 +3,1177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup 56-Logo Exploration Studio</title>
+  <title>Stebup • Brand Logo & Vector Search Studio</title>
+  <meta name="description" content="Massive searchable vector logo and brand identity exploration studio with dynamic color engine and 1-click WhatsApp card export." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#070A11',
+              900: '#0B0F19',
+              850: '#101625',
+              800: '#161F33',
+              700: '#222E49',
+              600: '#334155',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0B0F19; }
+    ::-webkit-scrollbar-thumb { background: #222E49; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    
+    .logo-canvas svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .logo-card:hover .logo-canvas svg {
+      transform: scale(1.1);
+    }
+    .glass-panel {
+      background: rgba(16, 22, 37, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-card {
+      position: relative;
+    }
+    .glow-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(20, 184, 166, 0.15), transparent 70%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+    .glow-card:hover::after {
+      opacity: 1;
+    }
+  </style>
 </head>
-<body class="bg-[#050508] text-zinc-100 antialiased p-3 sm:p-6 selection:bg-cyan-400 selection:text-black">
-  <!-- Floating Toast -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-2.5 px-4 py-3 rounded-xl bg-emerald-400 text-zinc-950 font-bold text-xs shadow-2xl">
-    <span>✓</span>
-    <span id="toast-text">Copied to clipboard!</span>
-  </div>
+<body class="bg-obsidian-950 text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white flex flex-col">
 
-  <div class="max-w-[1600px] mx-auto space-y-5">
-    <!-- Compact Top Header & Website Brief -->
-    <div class="rounded-2xl bg-zinc-900/80 border border-white/10 p-4 sm:p-6 shadow-xl relative overflow-hidden">
-      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-white/10">
-        <div>
-          <div class="flex flex-wrap items-center gap-2 mb-1.5">
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-mono uppercase tracking-wider">
-              56 Website-Derived Concepts
-            </span>
-            <span class="text-xs text-zinc-400 font-mono">
-              Jeddah HQ • Dubai DIFC • India • Indonesia | 8 Core Divisions
-            </span>
+  <!-- Top Sticky Navigation & Search Header -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-obsidian-700/60 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        <!-- Brand Title & Tagline -->
+        <div class="flex items-center space-x-3.5">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-teal-500 to-amber-400 p-[1.5px] flex items-center justify-center shadow-lg shadow-indigo-500/20">
+            <div class="w-full h-full bg-obsidian-900 rounded-[10px] flex items-center justify-center">
+              <svg class="w-5 h-5 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
           </div>
-          <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
-            Steb<span class="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">up</span><span class="text-cyan-400">.</span> 56-Logo Master Deck
-          </h1>
-          <p class="text-xs sm:text-sm text-zinc-400 mt-1 max-w-4xl">
-            Every concept below is derived from your website’s core architecture: <strong>1. Bridging Vision &amp; Execution</strong>, <strong>2. The 8 Service Divisions</strong>, <strong>3. Software &amp; Neural AI</strong>, <strong>4. Jeddah/Gulf Vision 2030</strong>, <strong>5. "Step Up" Trajectory</strong>, <strong>6. FinTech, Ventures &amp; Logistics</strong>, and <strong>7. Pure Monograms</strong>. Click <strong>"Copy PNG"</strong> and hit <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-white font-mono text-xs">Ctrl+V</kbd> in WhatsApp.
-          </p>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-lg font-bold tracking-tight text-white font-mono">STEBUP <span class="text-indigo-400 font-sans font-medium text-sm px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20">Vector Studio</span></h1>
+              <span class="text-xs text-emerald-400 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">200k+ Icons Live</span>
+            </div>
+            <p class="text-xs text-slate-400">Massive searchable vector symbol library with dynamic color engine & WhatsApp cards</p>
+          </div>
         </div>
 
-        <!-- Quick View & Shortlist Controls -->
-        <div class="flex flex-wrap items-center gap-2 shrink-0">
-          <div class="inline-flex rounded-xl bg-black/60 border border-white/10 p-1">
-            <button onclick="setGridCols(4)" id="col-4" class="px-2.5 py-1.5 rounded-lg text-xs font-bold cursor-pointer">4-Col Compact</button>
-            <button onclick="setGridCols(3)" id="col-3" class="px-2.5 py-1.5 rounded-lg text-xs font-bold cursor-pointer">3-Col Medium</button>
-            <button onclick="setGridCols(2)" id="col-2" class="px-2.5 py-1.5 rounded-lg text-xs font-bold cursor-pointer">2-Col Large</button>
+        <!-- Global Search Bar with Live API trigger -->
+        <div class="flex-1 max-w-xl">
+          <div class="relative">
+            <input 
+              id="searchInput" 
+              type="text" 
+              placeholder="Search 200,000+ vector marks (e.g. bridge, ascent, nexus, neural, crest, crown, prism)..."
+              class="w-full pl-11 pr-24 py-2.5 rounded-xl bg-obsidian-900/90 border border-obsidian-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 text-sm text-white placeholder-slate-500 transition-all outline-none shadow-inner"
+            />
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+            <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-1">
+              <button id="searchBtn" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow transition-all flex items-center space-x-1">
+                <span>Search</span>
+              </button>
+            </div>
           </div>
-          <button onclick="filterCategory('FAV')" id="fav-btn" class="px-3.5 py-2 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-400/30 font-bold text-xs uppercase tracking-wider cursor-pointer hover:bg-amber-500/25">
-            ★ Shortlist (<span id="fav-count">0</span>)
+        </div>
+
+        <!-- Quick Actions & Stats -->
+        <div class="flex items-center space-x-2.5 text-xs">
+          <button id="randomBtn" title="Pick random creative inspiration" class="px-3 py-2 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white transition flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span>Surprise Me</span>
+          </button>
+          <button id="viewSavedBtn" class="px-3 py-2 rounded-lg bg-indigo-600/15 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600/25 transition flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span>Favorites (<span id="favCount">0</span>)</span>
           </button>
         </div>
-      </div>
 
-      <!-- Compact Control Strip -->
-      <div class="pt-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-3 items-center">
-        <!-- Website Palettes (6 cols) -->
-        <div class="xl:col-span-6">
-          <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1.5">Website Color Themes:</div>
-          <div id="palette-list" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1.5"></div>
-        </div>
-
-        <!-- Layout & Backdrop & Tagline (6 cols) -->
-        <div class="xl:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <div>
-            <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1">Lockup Mode:</div>
-            <div id="layout-list" class="flex gap-1"></div>
-          </div>
-          <div>
-            <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1">Card Surface:</div>
-            <div id="bg-list" class="flex gap-1"></div>
-          </div>
-          <div>
-            <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1">Subtitle Text:</div>
-            <input
-              id="tagline-input"
-              type="text"
-              value="DIGITAL HUB"
-              class="w-full px-2.5 py-1.5 rounded-lg bg-black border border-white/15 text-xs font-mono text-white focus:outline-none focus:border-cyan-400"
-            />
-          </div>
-        </div>
       </div>
     </div>
 
-    <!-- 7 Pillar Filter Tabs -->
-    <div id="category-pills" class="flex flex-wrap items-center gap-1.5"></div>
+    <!-- Live Color Control & Customizer Strip -->
+    <div class="bg-obsidian-900/95 border-t border-obsidian-800 px-4 sm:px-6 lg:px-8 py-2.5">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+        
+        <!-- Dynamic Color Engine -->
+        <div class="flex items-center flex-wrap gap-2.5">
+          <span class="font-mono font-bold text-slate-400 uppercase tracking-wider text-[11px] flex items-center space-x-1">
+            <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
+            <span>Live Color Studio:</span>
+          </span>
 
-    <!-- High-Density Logo Grid -->
-    <div id="concepts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+          <!-- Color Mode Toggle -->
+          <div class="flex bg-obsidian-800 rounded-lg p-0.5 border border-obsidian-700">
+            <button id="modeGradient" class="px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition">Gradient</button>
+            <button id="modeSolid" class="px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition">Solid</button>
+            <button id="modeMonochrome" class="px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition">Monochrome</button>
+          </div>
+
+          <!-- Color Pickers -->
+          <div class="flex items-center space-x-2 bg-obsidian-800 px-2.5 py-1 rounded-lg border border-obsidian-700">
+            <label class="flex items-center space-x-1.5 cursor-pointer">
+              <input type="color" id="colorPicker1" value="#6366F1" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent" />
+              <span id="colorVal1" class="font-mono text-slate-300">#6366F1</span>
+            </label>
+            <span id="colorDivider" class="text-slate-600 font-bold">→</span>
+            <label id="color2Wrapper" class="flex items-center space-x-1.5 cursor-pointer">
+              <input type="color" id="colorPicker2" value="#14B8A6" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent" />
+              <span id="colorVal2" class="font-mono text-slate-300">#14B8A6</span>
+            </label>
+          </div>
+
+          <!-- Quick Palette Presets -->
+          <div class="flex items-center space-x-1.5 overflow-x-auto py-0.5">
+            <span class="text-slate-500 text-[11px] font-mono mr-1">Presets:</span>
+            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#6366F1" data-c2="#14B8A6" data-name="Stebup Tech (Indigo/Teal)">
+              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#6366F1] to-[#14B8A6]"></span>
+              <span class="text-[11px] text-slate-300">Tech Bridge</span>
+            </button>
+            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#F59E0B" data-c2="#EF4444" data-name="Saudi Vision 2030 (Gold/Crimson)">
+              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#EF4444]"></span>
+              <span class="text-[11px] text-slate-300">Vision 2030</span>
+            </button>
+            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#06B6D4" data-c2="#3B82F6" data-name="Cyber Nexus (Cyan/Blue)">
+              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#3B82F6]"></span>
+              <span class="text-[11px] text-slate-300">Cyber Nexus</span>
+            </button>
+            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#8B5CF6" data-c2="#EC4899" data-name="Royal FinTech (Violet/Rose)">
+              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#EC4899]"></span>
+              <span class="text-[11px] text-slate-300">Royal FinTech</span>
+            </button>
+            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#10B981" data-c2="#06B6D4" data-name="Sustainable Growth (Emerald/Cyan)">
+              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#10B981] to-[#06B6D4]"></span>
+              <span class="text-[11px] text-slate-300">Emerald Growth</span>
+            </button>
+            <button class="preset-pill flex items-center space-x-1 px-2 py-0.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition" data-c1="#ECECE8" data-c2="#94A3B8" data-name="Alabaster Architectural (White/Slate)">
+              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#ECECE8] to-[#94A3B8]"></span>
+              <span class="text-[11px] text-slate-300">Alabaster Arch</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Density & Background Controls -->
+        <div class="flex items-center space-x-3">
+          <!-- Card Canvas Background Switcher -->
+          <div class="flex items-center space-x-1 bg-obsidian-800 px-1.5 py-0.5 rounded-lg border border-obsidian-700">
+            <span class="text-slate-400 text-[10px] uppercase font-mono px-1">Canvas:</span>
+            <button id="bgDark" class="w-5 h-5 rounded bg-[#070A11] border border-indigo-500/50 shadow" title="Obsidian Dark"></button>
+            <button id="bgNavy" class="w-5 h-5 rounded bg-[#0F172A] border border-slate-700" title="Midnight Navy"></button>
+            <button id="bgLight" class="w-5 h-5 rounded bg-[#F8FAFC] border border-slate-300" title="Alabaster Light"></button>
+          </div>
+
+          <!-- Grid Column Switcher -->
+          <div class="hidden sm:flex bg-obsidian-800 rounded-lg p-0.5 border border-obsidian-700">
+            <button id="gridCols5" class="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white">5 Col</button>
+            <button id="gridCols4" class="px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold">4 Col</button>
+            <button id="gridCols3" class="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white">3 Col</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Curated Stebup Category Filter Pills -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-3 w-full">
+    <div class="flex items-center justify-between gap-3 overflow-x-auto pb-1 text-xs border-b border-obsidian-800/80">
+      <div class="flex items-center space-x-2 shrink-0">
+        <span class="text-slate-400 font-mono text-[11px] uppercase mr-1">Pillars:</span>
+        <button class="category-tab active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium shadow-md shadow-indigo-600/20 transition" data-query="curated-all">
+          ✨ Curated Showcase (48)
+        </button>
+        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="bridge">
+          🌉 Bridges & Horizons
+        </button>
+        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="steps ascent growth">
+          📈 Steps & Upward Velocity
+        </button>
+        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="circuit neural network brain">
+          🧠 AI & Neural Circuits
+        </button>
+        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="nexus orbit galaxy hub">
+          🌐 Orbital 8-Hub Ecosystem
+        </button>
+        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="prism hexagon crystal cube">
+          💎 Geometric Prisms & 3D
+        </button>
+        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="crest shield crown emblem">
+          🛡️ Enterprise Crests & Emblems
+        </button>
+        <button class="category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition" data-query="arrow velocity speed wings">
+          ⚡ Kinetic Vectors & Wings
+        </button>
+      </div>
+
+      <div class="shrink-0 text-slate-400 font-mono text-[11px]">
+        Showing <span id="resultCount" class="text-indigo-400 font-bold">48</span> options
+      </div>
+    </div>
   </div>
 
-  <script>
-    const PALETTES = [
-      { id: 'master', name: 'Master Brand', c1: '#D946EF', c2: '#A855F7', c3: '#06B6D4', dot: '#06B6D4', glow: 'rgba(168,85,247,0.28)' },
-      { id: 'orbital', name: 'Jeddah Orbital', c1: '#10B981', c2: '#3B82F6', c3: '#F59E0B', dot: '#10B981', glow: 'rgba(16,185,129,0.28)' },
-      { id: 'software', name: 'Software & AI', c1: '#4F46E5', c2: '#0EA5E9', c3: '#22D3EE', dot: '#38BDF8', glow: 'rgba(14,165,233,0.28)' },
-      { id: 'consultancy', name: 'Vision 2030 KSA', c1: '#059669', c2: '#10B981', c3: '#2DD4BF', dot: '#34D399', glow: 'rgba(16,185,129,0.28)' },
-      { id: 'ventures', name: 'Ventures & Design', c1: '#EC4899', c2: '#F43F5E', c3: '#F59E0B', dot: '#FBBF24', glow: 'rgba(244,63,94,0.28)' },
-      { id: 'talent', name: 'Talent Monochrome', c1: '#FFFFFF', c2: '#D4D4D8', c3: '#71717A', dot: '#FFFFFF', glow: 'rgba(212,212,216,0.22)' }
-    ];
+  <!-- Main Grid Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex-1 w-full">
+    
+    <!-- Loading Spinner & State -->
+    <div id="loadingState" class="hidden py-24 text-center">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-indigo-500 border-t-transparent"></div>
+      <p class="mt-4 text-slate-300 text-sm font-medium">Searching 200,000+ vector marks from Iconify Global API...</p>
+      <p class="text-xs text-slate-500 mt-1 font-mono">Fetching Lucide, Phosphor, Carbon, Tabler, Material & Simple Icons</p>
+    </div>
 
-    const LAYOUTS = [
-      { id: 'horizontal', label: 'Horizontal' },
-      { id: 'stacked', label: 'Stacked' },
-      { id: 'icon', label: 'Icon Only' }
-    ];
+    <!-- Empty Search State -->
+    <div id="emptyState" class="hidden py-24 text-center max-w-md mx-auto">
+      <div class="w-16 h-16 rounded-2xl bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto text-slate-500">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="mt-4 text-base font-semibold text-white">No vector marks found</h3>
+      <p class="mt-1 text-xs text-slate-400">Try broader keywords like <span class="text-indigo-400 font-mono">tech</span>, <span class="text-indigo-400 font-mono">cube</span>, <span class="text-indigo-400 font-mono">star</span>, <span class="text-indigo-400 font-mono">wave</span>, or <span class="text-indigo-400 font-mono">matrix</span>.</p>
+    </div>
 
-    const BACKDROPS = [
-      { id: 'obsidian', label: 'Black', hex: '#060609' },
-      { id: 'navy', label: 'Navy', hex: '#070B19' },
-      { id: 'alabaster', label: 'Light', hex: '#ECECE8' }
-    ];
+    <!-- The Dynamic Logo Grid -->
+    <div id="logoGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- Cards injected dynamically via JS -->
+    </div>
 
-    const PILLARS = [
-      'ALL',
-      '1. Vision & Execution Bridge',
-      '2. 8-Division Ecosystem',
-      '3. Software, AI & Circuit',
-      '4. Jeddah HQ & Vision 2030',
-      '5. Step-Up & Trajectory',
-      '6. FinTech, Ventures & Fleet',
-      '7. Pure Wordmarks & Monograms'
-    ];
+  </main>
 
-    // 8 Distinct Wordmark Styles cycled/paired across the 56 concepts
-    function renderWordmark(wStyle, gradId, p, textColor, subTextColor, tagline, isLight) {
-      const baseWhite = isLight ? '#09090B' : `url(#${gradId}-w)`;
-      let word = '';
-      if (wStyle === 0) {
-        // Website Native: Steb + up (gradient) + glowing dot
-        word = `
-          <text x="6" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="60" font-weight="900" letter-spacing="-2">
-            <tspan fill="${baseWhite}">Steb</tspan><tspan fill="url(#${gradId}-a)">up</tspan>
-          </text>
-          <circle cx="218" cy="58" r="6" fill="${p.dot}" />
-        `;
-      } else if (wStyle === 1) {
-        // Uppercase Bold Italic (Homepage Hero style)
-        word = `
-          <g transform="skewX(-10)">
-            <text x="16" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="900" letter-spacing="-1">
-              <tspan fill="${textColor}">STEB</tspan><tspan fill="url(#${gradId}-a)">UP</tspan>
-            </text>
-          </g>
-          <circle cx="254" cy="58" r="5.5" fill="${p.dot}" />
-        `;
-      } else if (wStyle === 2) {
-        // Architectural Light + Heavy Split
-        word = `
-          <text x="6" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="48" letter-spacing="8">
-            <tspan fill="${textColor}" font-weight="300">STEB</tspan><tspan fill="url(#${gradId}-a)" font-weight="900">UP</tspan>
-          </text>
-        `;
-      } else if (wStyle === 3) {
-        // Lowercase Silicon Valley Tech: stebup.
-        word = `
-          <text x="6" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="60" font-weight="800" letter-spacing="-2.5">
-            <tspan fill="${textColor}">steb</tspan><tspan fill="url(#${gradId}-a)">up</tspan>
-          </text>
-          <circle cx="212" cy="28" r="5.5" fill="${p.dot}" />
-        `;
-      } else if (wStyle === 4) {
-        // Futuristic 3-Bar E (ST≡BUP)
-        word = `
-          <text x="6" y="68" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="6">ST</text>
-          <line x1="94" y1="32" x2="128" y2="32" stroke="${p.c1}" stroke-width="7.5" stroke-linecap="round" />
-          <line x1="94" y1="48" x2="122" y2="48" stroke="${p.c2}" stroke-width="7.5" stroke-linecap="round" />
-          <line x1="94" y1="64" x2="132" y2="64" stroke="${p.c3}" stroke-width="7.5" stroke-linecap="round" />
-          <text x="142" y="68" fill="url(#${gradId}-a)" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="6">BUP</text>
-        `;
-      } else if (wStyle === 5) {
-        // Hidden Upward Arrow in U (STEB↑P)
-        word = `
-          <text x="6" y="68" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="3">STEB</text>
-          <path d="M 196 30 V 54 C 196 63 203 68 214 68 C 225 68 232 63 232 54 V 24" stroke="url(#${gradId}-a)" stroke-width="9" stroke-linecap="round" fill="none" />
-          <polygon points="232,10 220,26 244,26" fill="${p.dot}" />
-          <text x="248" y="68" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="3">P</text>
-        `;
-      } else if (wStyle === 6) {
-        // Developer Slash STEB//UP
-        word = `
-          <text x="6" y="66" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="50" font-weight="900" letter-spacing="2">STEB</text>
-          <line x1="168" y1="68" x2="182" y2="26" stroke="${p.c1}" stroke-width="5" stroke-linecap="round" />
-          <line x1="179" y1="68" x2="193" y2="26" stroke="${p.c3}" stroke-width="5" stroke-linecap="round" />
-          <text x="200" y="66" fill="url(#${gradId}-a)" font-family="system-ui, -apple-system, sans-serif" font-size="50" font-weight="900" letter-spacing="2">UP</text>
-        `;
-      } else {
-        // Top Overline Bridge STEBUP
-        word = `
-          <text x="6" y="68" fill="${textColor}" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="5">
-            STEB<tspan fill="url(#${gradId}-a)">UP</tspan>
-          </text>
-          <rect x="8" y="16" width="110" height="4" rx="2" fill="url(#${gradId}-a)" />
-        `;
-      }
+  <!-- Interactive Brand Lockup & Inspection Modal -->
+  <div id="previewModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="bg-obsidian-900 border border-obsidian-700 rounded-2xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl relative my-8">
+      
+      <!-- Close Button -->
+      <button id="closeModalBtn" class="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
 
-      const sub = tagline
-        ? `<text x="8" y="94" fill="${subTextColor}" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" letter-spacing="5.5">${tagline.toUpperCase()}</text>`
-        : '';
-
-      return `<g>${word}${sub}</g>`;
-    }
-
-    // 56 Distinct Logo Concepts Derived from Stebup's Website
-    const CONCEPTS = [
-      // ─── PILLAR 1: VISION & EXECUTION BRIDGE (01 - 08) ───
-      {
-        id: 'c01', number: '01', name: 'Cantilever Keystone Bridge', category: '1. Vision & Execution Bridge', wStyle: 0,
-        derivation: 'Mission: "Bridging vision & execution"',
-        svg: (g, p) => `<path d="M8 82 L38 34 H50 L24 82 Z" fill="url(#${g}-a)"/><path d="M92 82 L62 34 H50 L76 82 Z" fill="url(#${g}-b)"/><rect x="6" y="60" width="88" height="7" rx="3.5" fill="url(#${g}-a)"/><polygon points="50,12 62,24 50,36 38,24" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c02', number: '02', name: 'Vision Lens × Execution Grid', category: '1. Vision & Execution Bridge', wStyle: 2,
-        derivation: 'Left smooth vision arc + Right execution matrix',
-        svg: (g, p) => `<path d="M48 14 A38 38 0 0 0 48 90 Z" fill="url(#${g}-a)"/><rect x="54" y="18" width="13" height="13" rx="3" fill="${p.c1}"/><rect x="72" y="18" width="13" height="13" rx="3" fill="${p.dot}"/><rect x="54" y="36" width="13" height="13" rx="3" fill="${p.c2}"/><rect x="72" y="36" width="13" height="13" rx="3" fill="${p.c3}"/><rect x="54" y="54" width="13" height="13" rx="3" fill="${p.c3}"/><rect x="72" y="54" width="13" height="13" rx="3" fill="${p.c2}"/><rect x="54" y="72" width="13" height="13" rx="3" fill="${p.c1}"/>`
-      },
-      {
-        id: 'c03', number: '03', name: 'Suspension Span Vector', category: '1. Vision & Execution Bridge', wStyle: 1,
-        derivation: 'Twin suspension towers with upward S-cable',
-        svg: (g, p) => `<rect x="20" y="16" width="8" height="76" rx="4" fill="${p.c1}"/><rect x="72" y="16" width="8" height="76" rx="4" fill="${p.c3}"/><path d="M8 72 Q50 18 92 28" stroke="url(#${g}-a)" stroke-width="8" stroke-linecap="round" fill="none"/><line x1="8" y1="74" x2="92" y2="74" stroke="${p.dot}" stroke-width="5" stroke-linecap="round"/>`
-      },
-      {
-        id: 'c04', number: '04', name: 'Interlocking Vision Links', category: '1. Vision & Execution Bridge', wStyle: 0,
-        derivation: 'Strategy & Engineering locked in synergy',
-        svg: (g, p) => `<rect x="10" y="28" width="52" height="34" rx="17" stroke="url(#${g}-a)" stroke-width="8" fill="none"/><rect x="38" y="44" width="52" height="34" rx="17" stroke="url(#${g}-b)" stroke-width="8" fill="none"/><circle cx="50" cy="53" r="6" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c05', number: '05', name: 'Synaptic Spark Gap', category: '1. Vision & Execution Bridge', wStyle: 6,
-        derivation: 'Idea spark jumping across execution terminals',
-        svg: (g, p) => `<path d="M10 78 L36 52" stroke="${p.c1}" stroke-width="10" stroke-linecap="round"/><path d="M64 52 L90 26" stroke="${p.c3}" stroke-width="10" stroke-linecap="round"/><polygon points="56,22 36,54 50,54 44,82 64,50 50,50" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c06', number: '06', name: 'Isometric Skybridge Towers', category: '1. Vision & Execution Bridge', wStyle: 7,
-        derivation: 'Gulf twin towers connected by high-altitude bridge',
-        svg: (g, p) => `<polygon points="14,88 14,28 34,18 34,88" fill="url(#${g}-a)"/><polygon points="66,88 66,28 86,18 86,88" fill="url(#${g}-b)"/><polygon points="24,42 76,26 76,42 24,58" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c07', number: '07', name: 'Blueprint-to-Reality Cube', category: '1. Vision & Execution Bridge', wStyle: 2,
-        derivation: 'Wireframe concept morphing into solid asset',
-        svg: (g, p) => `<polygon points="50,12 86,32 50,52 14,32" stroke="${p.c1}" stroke-width="4" stroke-dasharray="6 4" fill="none"/><polygon points="14,32 50,52 50,92 14,72" fill="url(#${g}-a)"/><polygon points="86,32 50,52 50,92 86,72" fill="url(#${g}-b)"/><circle cx="50" cy="12" r="5" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c08', number: '08', name: 'The Prism Spectrum Splitter', category: '1. Vision & Execution Bridge', wStyle: 0,
-        derivation: 'Single vision beam refracting into multi-sector execution',
-        svg: (g, p) => `<polygon points="46,16 82,84 14,84" stroke="url(#${g}-a)" stroke-width="6" stroke-linejoin="round" fill="none"/><line x1="6" y1="58" x2="36" y2="50" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/><line x1="60" y1="42" x2="94" y2="24" stroke="${p.c1}" stroke-width="4.5" stroke-linecap="round"/><line x1="64" y1="52" x2="94" y2="48" stroke="${p.c2}" stroke-width="4.5" stroke-linecap="round"/><line x1="68" y1="62" x2="94" y2="72" stroke="${p.c3}" stroke-width="4.5" stroke-linecap="round"/>`
-      },
-
-      // ─── PILLAR 2: THE 8-DIVISION ECOSYSTEM (09 - 16) ───
-      {
-        id: 'c09', number: '09', name: '8-Division Octa-Star', category: '2. 8-Division Ecosystem', wStyle: 0,
-        derivation: '8 blades = Stebup’s 8 core service verticals',
-        svg: (g, p) => `<g transform="translate(50,52)">${[0,45,90,135,180,225,270,315].map((a,i)=>`<polygon points="0,-42 8,-12 -8,-12" fill="${i%3===0?p.c1:i%3===1?p.c2:p.c3}" transform="rotate(${a})"/>`).join('')}<circle cx="0" cy="0" r="8" fill="#FFFFFF"/></g>`
-      },
-      {
-        id: 'c10', number: '10', name: '8-Node S-Constellation', category: '2. 8-Division Ecosystem', wStyle: 3,
-        derivation: '8 service nodes wired into an ascending S-curve',
-        svg: (g, p) => `<path d="M74 18 L48 16 L24 28 L34 48 L66 56 L76 76 L52 88 L26 86" stroke="url(#${g}-a)" stroke-width="4" fill="none"/>${[[74,18],[48,16],[24,28],[34,48],[66,56],[76,76],[52,88],[26,86]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="${i===0||i===7?6.5:5}" fill="${i%2===0?p.c1:p.c3}"/>`).join('')}`
-      },
-      {
-        id: 'c11', number: '11', name: 'Octagon Core Seal', category: '2. 8-Division Ecosystem', wStyle: 2,
-        derivation: '8-sided architectural fortress housing an upward portal',
-        svg: (g, p) => `<polygon points="34,12 66,12 88,34 88,66 66,88 34,88 12,66 12,34" stroke="url(#${g}-a)" stroke-width="6" fill="none"/><polygon points="50,26 70,52 58,52 58,74 42,74 42,52 30,52" fill="url(#${g}-a)"/>`
-      },
-      {
-        id: 'c12', number: '12', name: '3D Orbital Hub Gyroscope', category: '2. 8-Division Ecosystem', wStyle: 0,
-        derivation: 'Direct from InteractiveOrbitalHub on About Us page',
-        svg: (g, p) => `<ellipse cx="50" cy="52" rx="42" ry="16" transform="rotate(-30 50 52)" stroke="url(#${g}-a)" stroke-width="4.5" fill="none"/><ellipse cx="50" cy="52" rx="42" ry="16" transform="rotate(30 50 52)" stroke="url(#${g}-b)" stroke-width="4.5" fill="none"/><circle cx="50" cy="52" r="11" fill="url(#${g}-a)"/><circle cx="86" cy="32" r="5" fill="${p.c1}"/><circle cx="14" cy="34" r="5" fill="${p.c3}"/>`
-      },
-      {
-        id: 'c13', number: '13', name: 'Digital Studio Bento Mosaic', category: '2. 8-Division Ecosystem', wStyle: 3,
-        derivation: 'Modular UI/software blocks assembling upward',
-        svg: (g, p) => `<rect x="14" y="56" width="32" height="32" rx="8" fill="${p.c1}"/><circle cx="68" cy="72" r="16" fill="${p.c2}"/><rect x="14" y="16" width="32" height="32" rx="16" fill="url(#${g}-a)"/><polygon points="52,48 68,16 84,48" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c14', number: '14', name: 'Octa-Vortex Turbine', category: '2. 8-Division Ecosystem', wStyle: 1,
-        derivation: 'High-performance engine driving 8 verticals',
-        svg: (g, p) => `<g transform="translate(50,52)">${[0,45,90,135,180,225,270,315].map((a,i)=>`<path d="M6 -10 Q24 -28 8 -42 Q-4 -26 -4 -10 Z" fill="${i%2===0?p.c1:p.c3}" transform="rotate(${a})"/>`).join('')}<circle cx="0" cy="0" r="9" fill="${p.dot}"/></g>`
-      },
-      {
-        id: 'c15', number: '15', name: 'Ascending Infinity-8 Loop', category: '2. 8-Division Ecosystem', wStyle: 0,
-        derivation: 'Figure-8 infinity loop tilted at 30° growth angle',
-        svg: (g) => `<g transform="rotate(-28 50 52)"><path d="M50 52 C34 28 10 28 10 52 C10 76 34 76 50 52 C66 28 90 28 90 52 C90 76 66 76 50 52 Z" stroke="url(#${g}-a)" stroke-width="11" stroke-linecap="round" fill="none"/></g>`
-      },
-      {
-        id: 'c16', number: '16', name: '8-Channel Frequency Surge', category: '2. 8-Division Ecosystem', wStyle: 6,
-        derivation: '8 data/analytics bars rising in an exponential wave',
-        svg: (g, p) => `${[68,58,46,60,40,28,18,8].map((y,i)=>`<rect x="${10+i*10.5}" y="${y}" width="6.5" height="${92-y}" rx="3.2" fill="${i>4?p.dot:i>2?p.c2:p.c1}"/>`).join('')}`
-      },
-
-      // ─── PILLAR 3: SOFTWARE, AI & CIRCUIT (17 - 24) ───
-      {
-        id: 'c17', number: '17', name: 'Evolved PCB Circuit Brain 2.0', category: '3. Software, AI & Circuit', wStyle: 0,
-        derivation: 'Direct evolution of your current LogoIcon circuit brain',
-        svg: (g, p) => `<g stroke="url(#${g}-a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M24 30 H42 L50 20 H72"/><path d="M14 48 H34 L44 38 H68 L78 48 H90"/><path d="M18 66 H38 L48 56 H72 L82 66"/><path d="M32 80 H52 L60 70 H74"/><path d="M60 70 V94"/></g><circle cx="24" cy="30" r="4.5" fill="${p.c1}"/><circle cx="72" cy="20" r="4.5" fill="${p.c3}"/><circle cx="90" cy="48" r="4.5" fill="${p.dot}"/><circle cx="60" cy="94" r="5.5" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c18', number: '18', name: 'Code Brackets & Spire < ↑ >', category: '3. Software, AI & Circuit', wStyle: 6,
-        derivation: 'Software development (< >) + upward execution spire',
-        svg: (g, p) => `<path d="M32 28 L10 52 L32 76" stroke="${p.c1}" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M68 28 L90 52 L68 76" stroke="${p.c3}" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M50 88 V20" stroke="url(#${g}-a)" stroke-width="9" stroke-linecap="round"/><polygon points="50,8 36,26 64,26" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c19', number: '19', name: 'Quantum AI Eclipse Ring', category: '3. Software, AI & Circuit', wStyle: 3,
-        derivation: 'AI & Predictive Modeling photon ring',
-        svg: (g, p) => `<circle cx="50" cy="52" r="36" stroke="url(#${g}-a)" stroke-width="3" opacity="0.3" fill="none"/><path d="M14 52 A36 36 0 1 1 86 52" stroke="url(#${g}-a)" stroke-width="10" stroke-linecap="round" fill="none"/><circle cx="50" cy="52" r="13" fill="url(#${g}-b)"/><circle cx="78" cy="24" r="7" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c20', number: '20', name: '3×3 Neural Tensor Matrix', category: '3. Software, AI & Circuit', wStyle: 3,
-        derivation: 'AI & Data Analytics neural network grid with S-path',
-        svg: (g, p) => `<path d="M76 24 H24 L50 52 H76 L24 80 H76" stroke="url(#${g}-a)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>${[[24,24],[50,24],[76,24],[24,52],[50,52],[76,52],[24,80],[50,80],[76,80]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="${i===2||i===4||i===6?7:4.5}" fill="${i===2?p.dot:p.c1}"/>`).join('')}`
-      },
-      {
-        id: 'c21', number: '21', name: 'Parallel Data Bus S-Wave', category: '3. Software, AI & Circuit', wStyle: 0,
-        derivation: 'High-speed cloud & fiber data streams forming an S',
-        svg: (g, p) => `<path d="M74 16 H34 C18 16 18 48 34 48 H66 C82 48 82 84 66 84 H22" stroke="url(#${g}-a)" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M78 28 H40 C28 28 28 38 40 38 H60 C72 38 72 72 60 72 H18" stroke="${p.c3}" stroke-width="3.5" stroke-linecap="round" fill="none"/><circle cx="74" cy="16" r="5.5" fill="${p.dot}"/><circle cx="22" cy="84" r="5.5" fill="${p.c1}"/>`
-      },
-      {
-        id: 'c22', number: '22', name: 'Terminal Prompt >_ Launch', category: '3. Software, AI & Circuit', wStyle: 6,
-        derivation: 'Cloud DevOps & CLI engineering power',
-        svg: (g, p) => `<rect x="10" y="12" width="80" height="80" rx="20" fill="rgba(255,255,255,0.03)" stroke="url(#${g}-a)" stroke-width="5"/><path d="M28 34 L50 52 L28 70" stroke="url(#${g}-a)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="54" y1="70" x2="72" y2="70" stroke="${p.dot}" stroke-width="8" stroke-linecap="round"/>`
-      },
-      {
-        id: 'c23', number: '23', name: 'Silicon Hex-Core Processor', category: '3. Software, AI & Circuit', wStyle: 4,
-        derivation: 'High-tech AI hardware & cloud compute core',
-        svg: (g, p) => `<rect x="26" y="28" width="48" height="48" rx="10" stroke="url(#${g}-a)" stroke-width="6" fill="none"/><rect x="38" y="40" width="24" height="24" rx="4" fill="url(#${g}-a)"/>${[38,50,62].map(v=>`<line x1="${v}" y1="12" x2="${v}" y2="24" stroke="${p.c1}" stroke-width="4" stroke-linecap="round"/><line x1="${v}" y1="80" x2="${v}" y2="92" stroke="${p.c3}" stroke-width="4" stroke-linecap="round"/><line x1="10" y1="${v+2}" x2="22" y2="${v+2}" stroke="${p.c2}" stroke-width="4" stroke-linecap="round"/><line x1="78" y1="${v+2}" x2="90" y2="${v+2}" stroke="${p.dot}" stroke-width="4" stroke-linecap="round"/>`).join('')}`
-      },
-      {
-        id: 'c24', number: '24', name: 'Deep-Learning Isometric Stack', category: '3. Software, AI & Circuit', wStyle: 0,
-        derivation: '4 layered neural planes ascending in 3D space',
-        svg: (g, p) => `<polygon points="50,58 88,76 50,94 12,76" fill="${p.c3}" opacity="0.45"/><polygon points="50,42 88,60 50,78 12,60" fill="${p.c2}" opacity="0.65"/><polygon points="50,26 88,44 50,62 12,44" fill="url(#${g}-a)" opacity="0.85"/><polygon points="50,10 88,28 50,46 12,28" fill="url(#${g}-b)"/><circle cx="50" cy="28" r="5" fill="#FFFFFF"/>`
-      },
-
-      // ─── PILLAR 4: JEDDAH HQ, DUBAI & VISION 2030 (25 - 32) ───
-      {
-        id: 'c25', number: '25', name: 'Vision 2030 Rub el Hizb Star', category: '4. Jeddah HQ & Vision 2030', wStyle: 2,
-        derivation: 'Arabian 8-point geometry + glowing digital core',
-        svg: (g, p) => `<rect x="20" y="22" width="60" height="60" rx="8" stroke="url(#${g}-a)" stroke-width="5.5" fill="none"/><rect x="20" y="22" width="60" height="60" rx="8" transform="rotate(45 50 52)" stroke="url(#${g}-b)" stroke-width="5.5" fill="none"/><circle cx="50" cy="52" r="10" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c26', number: '26', name: 'Jeddah Fountain & Red Sea Arch', category: '4. Jeddah HQ & Vision 2030', wStyle: 0,
-        derivation: 'King Fahd’s Fountain landmark from your Orbital Hub',
-        svg: (g, p) => `<path d="M14 78 Q50 -10 86 78" stroke="url(#${g}-a)" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M28 78 Q50 20 72 78" stroke="url(#${g}-b)" stroke-width="5.5" stroke-linecap="round" fill="none"/><line x1="10" y1="90" x2="90" y2="90" stroke="${p.c3}" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="12" r="5" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c27', number: '27', name: 'Sovereign Gulf Falcon Wing', category: '4. Jeddah HQ & Vision 2030', wStyle: 2,
-        derivation: 'KSA & UAE falcon emblem in faceted low-poly vectors',
-        svg: (g, p) => `<polygon points="12,90 46,38 56,64" fill="url(#${g}-b)"/><polygon points="28,68 70,20 62,58" fill="url(#${g}-a)"/><polygon points="46,44 90,8 70,48" fill="${p.c1}"/><polygon points="70,48 90,8 84,36" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c28', number: '28', name: '4-Hub Compass (KSA•UAE•IND•IDN)', category: '4. Jeddah HQ & Vision 2030', wStyle: 7,
-        derivation: 'Represents Jeddah, Dubai, Trivandrum & Jakarta hubs',
-        svg: (g, p) => `<circle cx="50" cy="52" r="36" stroke="url(#${g}-a)" stroke-width="2.5" stroke-dasharray="120 40" fill="none"/><path d="M50 8 L60 42 L94 52 L60 62 L50 96 L40 62 L6 52 L40 42 Z" fill="url(#${g}-a)" transform="rotate(25 50 52)"/><circle cx="50" cy="52" r="6" fill="#FFFFFF"/>`
-      },
-      {
-        id: 'c29', number: '29', name: 'Jeddah Tower Skyscraper Spire', category: '4. Jeddah HQ & Vision 2030', wStyle: 2,
-        derivation: 'Soaring supertall Gulf architecture piercing an orbit',
-        svg: (g, p) => `<polygon points="50,6 32,92 48,82" fill="url(#${g}-a)"/><polygon points="50,6 68,92 52,82" fill="url(#${g}-b)"/><ellipse cx="50" cy="58" rx="40" ry="12" transform="rotate(-18 50 58)" stroke="${p.dot}" stroke-width="4" fill="none"/>`
-      },
-      {
-        id: 'c30', number: '30', name: 'Dune-to-Digital Wave', category: '4. Jeddah HQ & Vision 2030', wStyle: 0,
-        derivation: 'Arabian horizon curves transforming into digital bars',
-        svg: (g, p) => `<path d="M8 76 Q34 32 62 60 T92 28" stroke="url(#${g}-a)" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M12 90 Q40 54 68 76 T92 50" stroke="url(#${g}-b)" stroke-width="5" stroke-linecap="round" fill="none"/><circle cx="92" cy="28" r="5.5" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c31', number: '31', name: 'Mashrabiya Geometric Diamond', category: '4. Jeddah HQ & Vision 2030', wStyle: 2,
-        derivation: 'Al-Balad Jeddah architectural lattice geometry',
-        svg: (g, p) => `<polygon points="50,8 90,52 50,96 10,52" stroke="url(#${g}-a)" stroke-width="6" fill="none"/><polygon points="50,24 76,52 50,80 24,52" stroke="${p.c3}" stroke-width="4" fill="none"/><rect x="42" y="44" width="16" height="16" transform="rotate(45 50 52)" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c32', number: '32', name: 'Gulf Crescent & Polaris Vector', category: '4. Jeddah HQ & Vision 2030', wStyle: 1,
-        derivation: 'Dynamic crescent arc launching a 4-point star',
-        svg: (g, p) => `<path d="M76 74 A38 38 0 1 1 74 24 A30 30 0 1 0 76 74 Z" fill="url(#${g}-a)"/><polygon points="74,26 79,39 92,44 79,49 74,62 69,49 56,44 69,39" fill="${p.dot}"/>`
-      },
-
-      // ─── PILLAR 5: "STEBUP" — STEPPING UP & TRAJECTORY (33 - 40) ───
-      {
-        id: 'c33', number: '33', name: 'Isometric 3D Ribbon S', category: '5. Step-Up & Trajectory', wStyle: 4,
-        derivation: '3D folded ribbon forming both an S and ascending steps',
-        svg: (g) => `<path d="M18 40 L76 8 L76 28 L18 60 Z" fill="url(#${g}-a)"/><path d="M18 60 L50 44 L76 54 L46 70 Z" fill="url(#${g}-b)" opacity="0.9"/><path d="M18 80 L76 48 L76 68 L18 100 Z" fill="url(#${g}-a)"/>`
-      },
-      {
-        id: 'c34', number: '34', name: 'Kinetic 3-Step Staircase', category: '5. Step-Up & Trajectory', wStyle: 4,
-        derivation: 'Three precision isometric steps rising left-to-right',
-        svg: (g) => `<polygon points="34,22 86,6 86,24 34,40" fill="url(#${g}-a)"/><polygon points="22,50 74,34 74,52 22,68" fill="url(#${g}-b)"/><polygon points="10,78 62,62 62,80 10,96" fill="url(#${g}-a)"/>`
-      },
-      {
-        id: 'c35', number: '35', name: 'Our Trajectory Parabolic Arc', category: '5. Step-Up & Trajectory', wStyle: 1,
-        derivation: 'From About Us "Our Trajectory" headline + 3 pillars',
-        svg: (g, p) => `<rect x="18" y="66" width="13" height="28" rx="4" fill="${p.c1}" opacity="0.45"/><rect x="42" y="48" width="13" height="46" rx="4" fill="${p.c2}" opacity="0.7"/><rect x="66" y="26" width="13" height="68" rx="4" fill="${p.c3}"/><path d="M10 86 Q46 78 88 12" stroke="url(#${g}-a)" stroke-width="8" stroke-linecap="round" fill="none"/><polygon points="92,8 72,16 88,30" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c36', number: '36', name: 'Triple Rank Chevrons ^^^', category: '5. Step-Up & Trajectory', wStyle: 7,
-        derivation: 'Three ascending level-up chevrons',
-        svg: (g, p) => `<path d="M20 82 L50 56 L80 82" stroke="${p.c3}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M20 58 L50 32 L80 58" stroke="${p.c2}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M20 34 L50 8 L80 34" stroke="${p.c1}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-      },
-      {
-        id: 'c37', number: '37', name: 'Monolith Rising Blades ///', category: '5. Step-Up & Trajectory', wStyle: 3,
-        derivation: 'Silicon Valley style progressive slash pillars',
-        svg: (g, p) => `<rect x="24" y="54" width="15" height="42" rx="7.5" transform="rotate(20 31 75)" fill="${p.c3}" opacity="0.7"/><rect x="46" y="32" width="15" height="62" rx="7.5" transform="rotate(20 53 63)" fill="url(#${g}-b)"/><rect x="68" y="10" width="15" height="82" rx="7.5" transform="rotate(20 75 51)" fill="url(#${g}-a)"/><circle cx="84" cy="14" r="5" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c38', number: '38', name: 'Architectural Spiral Ascent', category: '5. Step-Up & Trajectory', wStyle: 2,
-        derivation: 'Golden-ratio Fibonacci spiral staircase from above',
-        svg: (g, p) => `<path d="M50 52 L50 12 A40 40 0 0 1 90 52 L50 52" fill="${p.c1}" opacity="0.9"/><path d="M50 52 L90 52 A40 40 0 0 1 50 92 L50 52" fill="${p.c2}" opacity="0.75"/><path d="M50 52 L50 92 A40 40 0 0 1 10 52 L50 52" fill="${p.c3}" opacity="0.55"/><circle cx="50" cy="52" r="10" fill="#FFFFFF"/>`
-      },
-      {
-        id: 'c39', number: '39', name: '4-Tier Step Ziggurat', category: '5. Step-Up & Trajectory', wStyle: 2,
-        derivation: 'Monumental stepped pyramid with glowing apex',
-        svg: (g, p) => `<rect x="10" y="76" width="80" height="12" rx="4" fill="${p.c3}" opacity="0.6"/><rect x="20" y="58" width="60" height="12" rx="4" fill="${p.c2}" opacity="0.8"/><rect x="30" y="40" width="40" height="12" rx="4" fill="url(#${g}-a)"/><polygon points="50,12 64,32 36,32" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c40', number: '40', name: 'Horizon Breakthrough Arrow ↗', category: '5. Step-Up & Trajectory', wStyle: 1,
-        derivation: '45° launch vector breaking through an orbital ring',
-        svg: (g, p) => `<circle cx="46" cy="56" r="34" stroke="${p.c2}" stroke-width="5" opacity="0.4" fill="none"/><path d="M22 80 L84 18 M54 18 H84 V48" stroke="url(#${g}-a)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-      },
-
-      // ─── PILLAR 6: FINTECH, VENTURES & LOGISTICS FLEET (41 - 48) ───
-      {
-        id: 'c41', number: '41', name: 'FinTech Compliance Shield', category: '6. FinTech, Ventures & Fleet', wStyle: 2,
-        derivation: 'PCI/AML security & 100% legal compliance crest',
-        svg: (g, p) => `<path d="M16 14 H84 V54 C84 78 50 96 50 96 C50 96 16 78 16 54 Z" stroke="url(#${g}-a)" stroke-width="6" fill="none"/><path d="M34 52 L46 64 L68 38" stroke="${p.dot}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-      },
-      {
-        id: 'c42', number: '42', name: 'Blockchain Supply-Chain Hex', category: '6. FinTech, Ventures & Fleet', wStyle: 6,
-        derivation: 'Logistics page "Blockchain-secured Supply Chain"',
-        svg: (g) => `<polygon points="38,14 66,30 66,62 38,78 10,62 10,30" stroke="url(#${g}-a)" stroke-width="6.5" fill="none"/><polygon points="62,26 90,42 90,74 62,90 34,74 34,42" stroke="url(#${g}-b)" stroke-width="6.5" fill="none"/>`
-      },
-      {
-        id: 'c43', number: '43', name: 'Global Route Meridian Sphere', category: '6. FinTech, Ventures & Fleet', wStyle: 0,
-        derivation: 'Logistics Global Route Optimization & Fleet tracking',
-        svg: (g, p) => `<circle cx="50" cy="52" r="38" stroke="url(#${g}-a)" stroke-width="4" fill="none"/><ellipse cx="50" cy="52" rx="18" ry="38" stroke="${p.c2}" stroke-width="3" fill="none"/><line x1="12" y1="52" x2="88" y2="52" stroke="${p.c3}" stroke-width="3"/><circle cx="76" cy="24" r="6" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c44', number: '44', name: 'Venture Incubator Rocket Delta', category: '6. FinTech, Ventures & Fleet', wStyle: 1,
-        derivation: 'Ventures page startup acceleration & incubation',
-        svg: (g, p) => `<path d="M50 8 C68 28 72 56 72 76 L50 64 L28 76 C28 56 32 28 50 8 Z" fill="url(#${g}-a)"/><polygon points="28,60 12,82 28,76" fill="${p.c1}"/><polygon points="72,60 88,82 72,76" fill="${p.c3}"/><circle cx="50" cy="42" r="6" fill="#FFFFFF"/>`
-      },
-      {
-        id: 'c45', number: '45', name: 'Fleet Forward Chevrons >>>', category: '6. FinTech, Ventures & Fleet', wStyle: 1,
-        derivation: 'Last-mile delivery fleet & rapid deployment',
-        svg: (g, p) => `<path d="M14 26 L40 52 L14 78" stroke="${p.c1}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M38 26 L64 52 L38 78" stroke="${p.c2}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M62 26 L88 52 L62 78" stroke="${p.dot}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-      },
-      {
-        id: 'c46', number: '46', name: 'Human × Tech DNA Helix', category: '6. FinTech, Ventures & Fleet', wStyle: 0,
-        derivation: 'Talent & Staffing + Software engineering synergy',
-        svg: (g, p) => `<path d="M22 90 C22 58 78 46 78 14" stroke="url(#${g}-a)" stroke-width="8.5" stroke-linecap="round" fill="none"/><path d="M78 90 C78 58 22 46 22 14" stroke="url(#${g}-b)" stroke-width="8.5" stroke-linecap="round" fill="none"/><line x1="34" y1="72" x2="66" y2="72" stroke="${p.c1}" stroke-width="4.5" stroke-linecap="round"/><line x1="34" y1="32" x2="66" y2="32" stroke="${p.dot}" stroke-width="4.5" stroke-linecap="round"/>`
-      },
-      {
-        id: 'c47', number: '47', name: 'Isometric Container S-Stack', category: '6. FinTech, Ventures & Fleet', wStyle: 4,
-        derivation: '3D modular cargo & cloud containers in S-formation',
-        svg: (g, p) => `<polygon points="50,8 84,24 50,40 16,24" fill="url(#${g}-a)"/><polygon points="16,24 50,40 50,62 16,46" fill="${p.c2}"/><polygon points="84,42 50,58 50,80 84,64" fill="url(#${g}-b)"/><polygon points="16,64 50,80 84,64 50,96" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c48', number: '48', name: 'FinTech Bullish Surge Candles', category: '6. FinTech, Ventures & Fleet', wStyle: 6,
-        derivation: 'FinTech & Banking real-time ledger & market growth',
-        svg: (g, p) => `<line x1="22" y1="52" x2="22" y2="88" stroke="${p.c1}" stroke-width="3"/><rect x="16" y="60" width="12" height="20" rx="3" fill="${p.c1}"/><line x1="50" y1="34" x2="50" y2="76" stroke="${p.c2}" stroke-width="3"/><rect x="44" y="42" width="12" height="24" rx="3" fill="${p.c2}"/><line x1="78" y1="10" x2="78" y2="60" stroke="${p.dot}" stroke-width="3"/><rect x="72" y="18" width="12" height="30" rx="3" fill="${p.dot}"/>`
-      },
-
-      // ─── PILLAR 7: PURE WORDMARKS & MONOGRAMS (49 - 56) ───
-      {
-        id: 'c49', number: '49', name: 'Stebup. Sonic Pulse Beacon', category: '7. Pure Wordmarks & Monograms', wStyle: 0,
-        derivation: 'Elevates the glowing dot from your Header wordmark',
-        svg: (g, p) => `<circle cx="50" cy="52" r="40" stroke="url(#${g}-a)" stroke-width="2.5" opacity="0.25" fill="none"/><circle cx="50" cy="52" r="27" stroke="url(#${g}-a)" stroke-width="5" stroke-dasharray="100 36" fill="none"/><circle cx="50" cy="52" r="14" fill="url(#${g}-a)"/><circle cx="76" cy="26" r="6" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c50', number: '50', name: 'Hidden-Arrow STEB↑P Monogram', category: '7. Pure Wordmarks & Monograms', wStyle: 5,
-        derivation: 'U + Arrow fusion representing "Steb-Up"',
-        svg: (g, p) => `<path d="M22 30 V58 C22 76 34 86 50 86 C66 86 78 76 78 58 V24" stroke="url(#${g}-a)" stroke-width="12" stroke-linecap="round" fill="none"/><polygon points="78,8 60,28 96,28" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c51', number: '51', name: 'Interlocked S+U Negative Arrow', category: '7. Pure Wordmarks & Monograms', wStyle: 5,
-        derivation: 'S and U frame a negative-space upward arrow inside',
-        svg: (g, p) => `<rect x="12" y="14" width="76" height="76" rx="20" stroke="url(#${g}-a)" stroke-width="6" fill="none"/><path d="M32 42 L50 24 L68 42 M50 24 V74" stroke="url(#${g}-a)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="50" cy="74" r="5" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c52', number: '52', name: 'Architectural Bridge Monogram', category: '7. Pure Wordmarks & Monograms', wStyle: 7,
-        derivation: 'Structural beam uniting S and U pillars',
-        svg: (g, p) => `<rect x="12" y="16" width="76" height="10" rx="5" fill="url(#${g}-a)"/><path d="M24 26 V68 C24 80 34 88 50 88 C66 88 76 80 76 68 V26" stroke="url(#${g}-b)" stroke-width="10" fill="none"/><circle cx="50" cy="54" r="8" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c53', number: '53', name: 'Quantum Element [Su⁸] Badge', category: '7. Pure Wordmarks & Monograms', wStyle: 3,
-        derivation: 'Periodic element style: Stebup to the power of 8 divisions',
-        svg: (g, p) => `<rect x="10" y="12" width="80" height="80" rx="18" stroke="url(#${g}-a)" stroke-width="5" fill="none"/><text x="22" y="68" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="44" font-weight="900">Su</text><text x="72" y="34" fill="${p.dot}" font-family="monospace" font-size="18" font-weight="900">8</text>`
-      },
-      {
-        id: 'c54', number: '54', name: 'Triple-Bar E-Step Crest', category: '7. Pure Wordmarks & Monograms', wStyle: 4,
-        derivation: '3 ascending horizontal step-bars inside a crest',
-        svg: (g) => `<rect x="28" y="20" width="52" height="14" rx="7" transform="skewX(-18)" fill="url(#${g}-a)"/><rect x="24" y="45" width="52" height="14" rx="7" transform="skewX(-18)" fill="url(#${g}-b)"/><rect x="20" y="70" width="52" height="14" rx="7" transform="skewX(-18)" fill="url(#${g}-a)"/>`
-      },
-      {
-        id: 'c55', number: '55', name: 'Continuous Ribbon s+u Loop', category: '7. Pure Wordmarks & Monograms', wStyle: 3,
-        derivation: 'Single unbrokenbezier stroke forming s and u',
-        svg: (g, p) => `<path d="M44 24 C20 24 16 48 36 52 C56 56 48 80 22 80 M56 28 V64 C56 76 64 80 74 80 C84 80 88 72 88 56 V28" stroke="url(#${g}-a)" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="88" cy="16" r="5" fill="${p.dot}"/>`
-      },
-      {
-        id: 'c56', number: '56', name: 'Twin Velocity Slashes //', category: '7. Pure Wordmarks & Monograms', wStyle: 6,
-        derivation: 'Minimalist twin hyper-slashes for high-speed execution',
-        svg: (g, p) => `<polygon points="38,14 56,14 32,90 14,90" fill="url(#${g}-a)"/><polygon points="66,14 84,14 60,90 42,90" fill="url(#${g}-b)"/><circle cx="82" cy="78" r="7" fill="${p.dot}"/>`
-      }
-    ];
-
-    let state = {
-      palette: PALETTES[0],
-      tagline: 'DIGITAL HUB',
-      layout: 'horizontal',
-      backdrop: BACKDROPS[0],
-      category: 'ALL',
-      cols: 4,
-      favorites: ['c01', 'c09', 'c12', 'c17', 'c25', 'c33']
-    };
-
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      const txt = document.getElementById('toast-text');
-      txt.textContent = msg;
-      t.classList.remove('hidden');
-      t.classList.add('flex');
-      setTimeout(() => {
-        t.classList.add('hidden');
-        t.classList.remove('flex');
-      }, 3200);
-    }
-
-    function buildConceptSvg(c) {
-      const gradId = `g-${c.id}`;
-      const p = state.palette;
-      const isLight = state.backdrop.id === 'alabaster';
-      const textColor = isLight ? '#09090B' : '#FFFFFF';
-      const subTextColor = isLight ? '#52525B' : '#94A3B8';
-
-      let inner = '';
-      if (state.layout === 'horizontal') {
-        inner = `
-          <g transform="translate(26, 48)">
-            <g filter="url(#${gradId}-glow)" transform="scale(1.0)">
-              ${c.svg(gradId, p)}
-            </g>
-            <g transform="translate(118, 6)">
-              ${renderWordmark(c.wStyle, gradId, p, textColor, subTextColor, state.tagline, isLight)}
-            </g>
-          </g>
-        `;
-      } else if (state.layout === 'stacked') {
-        inner = `
-          <g>
-            <g filter="url(#${gradId}-glow)" transform="translate(215, 8) scale(0.92)">
-              ${c.svg(gradId, p)}
-            </g>
-            <g transform="translate(115, 108) scale(0.9)">
-              ${renderWordmark(c.wStyle, gradId, p, textColor, subTextColor, state.tagline, isLight)}
-            </g>
-          </g>
-        `;
-      } else {
-        inner = `
-          <g filter="url(#${gradId}-glow)" transform="translate(185, 16) scale(1.55)">
-            ${c.svg(gradId, p)}
-          </g>
-        `;
-      }
-
-      return `
-        <svg id="svg-${c.id}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" class="w-full h-full max-h-[145px] relative z-10 select-none">
-          <defs>
-            <linearGradient id="${gradId}-w" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#FFFFFF" />
-              <stop offset="100%" stop-color="#D4D4D8" />
-            </linearGradient>
-            <linearGradient id="${gradId}-a" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="${p.c1}" />
-              <stop offset="50%" stop-color="${p.c2}" />
-              <stop offset="100%" stop-color="${p.c3}" />
-            </linearGradient>
-            <linearGradient id="${gradId}-b" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="${p.c3}" />
-              <stop offset="100%" stop-color="${p.c2}" />
-            </linearGradient>
-            <filter id="${gradId}-glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="${p.c2}" flood-opacity="0.26" />
-            </filter>
-          </defs>
-          ${inner}
-        </svg>
-      `;
-    }
-
-    async function renderLogoToPngBlob(concept) {
-      const svgEl = document.getElementById(`svg-${concept.id}`);
-      if (!svgEl) return null;
-      const clone = svgEl.cloneNode(true);
-      clone.setAttribute('width', '1200');
-      clone.setAttribute('height', '520');
-      const svgData = new XMLSerializer().serializeToString(clone);
-      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-      const url = URL.createObjectURL(svgBlob);
-
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = 1200;
-          canvas.height = 630;
-          const ctx = canvas.getContext('2d');
-          ctx.fillStyle = state.backdrop.hex;
-          ctx.fillRect(0, 0, 1200, 630);
-
-          const radGrad = ctx.createRadialGradient(240, 260, 20, 240, 260, 460);
-          radGrad.addColorStop(0, state.palette.glow);
-          radGrad.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.fillStyle = radGrad;
-          ctx.fillRect(0, 0, 1200, 630);
-
-          ctx.drawImage(img, 40, 30, 1120, 510);
-
-          ctx.fillStyle = state.backdrop.id === 'alabaster' ? 'rgba(9,9,11,0.08)' : 'rgba(255,255,255,0.08)';
-          ctx.fillRect(60, 562, 1080, 1);
-
-          ctx.fillStyle = state.backdrop.id === 'alabaster' ? '#52525B' : '#94A3B8';
-          ctx.font = '600 17px system-ui, -apple-system, sans-serif';
-          ctx.fillText(`STEBUP #${concept.number}: ${concept.name.toUpperCase()} — ${concept.derivation.toUpperCase()}`, 60, 600);
-          ctx.textAlign = 'right';
-          ctx.fillText(`${state.palette.name.toUpperCase()}`, 1140, 600);
-
-          URL.revokeObjectURL(url);
-          canvas.toBlob((b) => resolve(b), 'image/png', 1.0);
-        };
-        img.onerror = () => {
-          URL.revokeObjectURL(url);
-          resolve(null);
-        };
-        img.src = url;
-      });
-    }
-
-    async function copyForWhatsApp(id) {
-      const concept = CONCEPTS.find((c) => c.id === id);
-      if (!concept) return;
-      const blob = await renderLogoToPngBlob(concept);
-      if (!blob) return;
-      try {
-        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-        showToast(`Copied #${concept.number} "${concept.name}"! Press Ctrl+V in WhatsApp.`);
-      } catch (err) {
-        downloadPng(id);
-      }
-    }
-
-    async function shareToWhatsApp(id) {
-      const concept = CONCEPTS.find((c) => c.id === id);
-      if (!concept) return;
-      const blob = await renderLogoToPngBlob(concept);
-      const shareText = `*Stebup Logo #${concept.number}: ${concept.name}*\nDerived from: _${concept.derivation}_\nPillar: ${concept.category}\n\nThoughts on this logo for Stebup?`;
-
-      if (blob) {
-        const file = new File([blob], `Stebup-Logo-${concept.number}.png`, { type: 'image/png' });
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          try {
-            await navigator.share({ title: concept.name, text: shareText, files: [file] });
-            return;
-          } catch (e) {}
-        }
-        try {
-          await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-        } catch (e) {}
-      }
-      showToast(`PNG copied! Opening WhatsApp — press Ctrl+V in chat.`);
-      const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n\n(Image copied to clipboard — press Ctrl+V to paste!)')}`;
-      window.open(waUrl, '_blank', 'noopener,noreferrer');
-    }
-
-    async function downloadPng(id) {
-      const concept = CONCEPTS.find((c) => c.id === id);
-      if (!concept) return;
-      const blob = await renderLogoToPngBlob(concept);
-      if (!blob) return;
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Stebup-Logo-${concept.number}.png`;
-      a.click();
-      URL.revokeObjectURL(url);
-      showToast(`Downloaded Stebup-Logo-${concept.number}.png`);
-    }
-
-    function toggleFav(id) {
-      if (state.favorites.includes(id)) {
-        state.favorites = state.favorites.filter((x) => x !== id);
-      } else {
-        state.favorites.push(id);
-      }
-      renderAll();
-    }
-
-    function filterCategory(cat) {
-      state.category = cat;
-      renderAll();
-    }
-
-    function setGridCols(n) {
-      state.cols = n;
-      renderAll();
-    }
-
-    function renderControls() {
-      document.getElementById('fav-count').textContent = state.favorites.length;
-
-      [2, 3, 4].forEach((n) => {
-        const btn = document.getElementById(`col-${n}`);
-        btn.className = `px-2.5 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all ${
-          state.cols === n ? 'bg-cyan-400 text-black' : 'text-zinc-400 hover:text-white'
-        }`;
-      });
-
-      const palEl = document.getElementById('palette-list');
-      palEl.innerHTML = PALETTES.map((p) => `
-        <button onclick="setPalette('${p.id}')" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl border text-xs font-bold cursor-pointer transition-all ${
-          state.palette.id === p.id
-            ? 'bg-white/15 border-cyan-400 text-white'
-            : 'bg-black/40 border-white/10 text-zinc-400 hover:text-white'
-        }">
-          <span class="truncate pr-1">${p.name}</span>
-          <span class="flex items-center gap-0.5 shrink-0">
-            <span class="w-2 h-2 rounded-full" style="background:${p.c1}"></span>
-            <span class="w-2 h-2 rounded-full" style="background:${p.c2}"></span>
-            <span class="w-2 h-2 rounded-full" style="background:${p.c3}"></span>
-          </span>
-        </button>
-      `).join('');
-
-      const pillsEl = document.getElementById('category-pills');
-      pillsEl.innerHTML = PILLARS.map((cat) => {
-        const count = cat === 'ALL' ? CONCEPTS.length : CONCEPTS.filter((c) => c.category === cat).length;
-        return `
-          <button onclick="filterCategory('${cat}')" class="px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-            state.category === cat
-              ? 'bg-cyan-400 text-black border-transparent shadow-sm'
-              : 'bg-zinc-900/80 text-zinc-400 border-white/10 hover:text-white'
-          }">${cat === 'ALL' ? `All (${count})` : `${cat} (${count})`}</button>
-        `;
-      }).join('');
-
-      const layEl = document.getElementById('layout-list');
-      layEl.innerHTML = LAYOUTS.map((l) => `
-        <button onclick="setLayout('${l.id}')" class="flex-1 px-2 py-1.5 rounded-lg text-xs font-semibold border cursor-pointer ${
-          state.layout === l.id
-            ? 'bg-white/15 border-cyan-400 text-white'
-            : 'bg-black/40 border-white/10 text-zinc-400'
-        }">${l.label}</button>
-      `).join('');
-
-      const bgEl = document.getElementById('bg-list');
-      bgEl.innerHTML = BACKDROPS.map((b) => `
-        <button onclick="setBackdrop('${b.id}')" class="flex-1 flex items-center justify-center gap-1 px-2 py-1.5 rounded-lg text-xs font-semibold border cursor-pointer ${
-          state.backdrop.id === b.id
-            ? 'bg-white/15 border-cyan-400 text-white'
-            : 'bg-black/40 border-white/10 text-zinc-400'
-        }">
-          <span class="w-2.5 h-2.5 rounded-full border border-white/30" style="background:${b.hex}"></span>
-          <span>${b.label}</span>
-        </button>
-      `).join('');
-    }
-
-    function renderGrid() {
-      const grid = document.getElementById('concepts-grid');
-      if (state.cols === 4) {
-        grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5';
-      } else if (state.cols === 3) {
-        grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4';
-      } else {
-        grid.className = 'grid grid-cols-1 lg:grid-cols-2 gap-5';
-      }
-
-      const filtered = CONCEPTS.filter((c) => {
-        if (state.category === 'ALL') return true;
-        if (state.category === 'FAV') return state.favorites.includes(c.id);
-        return c.category === state.category;
-      });
-
-      grid.innerHTML = filtered.map((c) => {
-        const isFav = state.favorites.includes(c.id);
-        return `
-          <div class="bg-zinc-900/70 border ${isFav ? 'border-cyan-400/60' : 'border-white/10 hover:border-white/25'} rounded-2xl overflow-hidden flex flex-col transition-all">
-            <!-- Compact Card Header -->
-            <div class="px-3.5 py-2.5 flex items-center justify-between border-b border-white/10 bg-white/[0.02]">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-xs font-bold text-cyan-300 shrink-0">#${c.number}</span>
-                <span class="font-bold text-xs text-white truncate">${c.name}</span>
-              </div>
-              <button onclick="toggleFav('${c.id}')" class="px-2 py-0.5 rounded text-xs font-bold cursor-pointer shrink-0 ${isFav ? 'text-amber-300' : 'text-zinc-500 hover:text-white'}">
-                ${isFav ? '★' : '☆'}
-              </button>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Left Column: Visual Mockup Showcase -->
+        <div class="md:col-span-7 flex flex-col space-y-4">
+          
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-bold flex items-center space-x-1.5">
+              <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+              <span id="modalIconName">lucide:bridge</span>
+            </span>
+            <div class="flex space-x-2 text-xs">
+              <button id="modalBgDark" class="px-2.5 py-1 rounded bg-obsidian-950 text-white font-mono border border-slate-700">Dark</button>
+              <button id="modalBgLight" class="px-2.5 py-1 rounded bg-white text-slate-900 font-mono border border-slate-300">Light</button>
             </div>
+          </div>
 
-            <!-- Compact Logo Preview Canvas -->
-            <div class="relative w-full h-36 flex items-center justify-center p-3 overflow-hidden" style="background:${state.backdrop.hex}">
-              <div class="absolute -left-6 top-1/2 -translate-y-1/2 w-36 h-36 rounded-full blur-[50px] pointer-events-none opacity-45" style="background:${state.palette.glow}"></div>
-              ${buildConceptSvg(c)}
-            </div>
-
-            <!-- Derivation Tag & 1-Click WhatsApp Actions -->
-            <div class="p-3 flex flex-col gap-2.5 bg-black/20">
-              <div class="text-xs text-zinc-400 truncate" title="${c.derivation}">
-                <span class="text-zinc-500">Origin:</span> ${c.derivation}
+          <!-- Primary Horizontal Lockup Canvas -->
+          <div id="modalPreviewBox" class="rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] bg-obsidian-950 border border-obsidian-800 shadow-inner transition-colors">
+            <div class="flex items-center space-x-4">
+              <div id="modalIconContainer" class="w-16 h-16 flex items-center justify-center">
+                <!-- Injected SVG -->
               </div>
-              <div class="flex items-center gap-1.5">
-                <button onclick="copyForWhatsApp('${c.id}')" class="flex-1 py-2 px-2.5 rounded-lg bg-white text-black hover:bg-cyan-300 font-bold text-xs uppercase tracking-wider cursor-pointer transition-colors">
-                  Copy PNG
-                </button>
-                <button onclick="shareToWhatsApp('${c.id}')" class="py-2 px-2.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 font-bold text-xs uppercase tracking-wider cursor-pointer transition-colors">
-                  WhatsApp
-                </button>
-                <button onclick="downloadPng('${c.id}')" class="py-2 px-2 rounded-lg bg-white/10 text-zinc-200 hover:bg-white/20 font-bold text-xs cursor-pointer transition-colors" title="Download PNG">
-                  ↓
-                </button>
+              <div class="flex flex-col">
+                <span class="text-3xl font-extrabold tracking-tight font-mono text-white tracking-wide">STEBUP</span>
+                <span class="text-[11px] uppercase tracking-widest text-slate-400 font-medium">Bridging Vision & Execution</span>
               </div>
             </div>
           </div>
+
+          <!-- Secondary Variations: Stacked & App Icon Squircle -->
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Stacked Lockup -->
+            <div id="modalStackedBox" class="rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center text-center space-y-2">
+              <div id="modalStackedIcon" class="w-10 h-10 flex items-center justify-center"></div>
+              <span class="text-sm font-bold font-mono tracking-wider text-white">STEBUP</span>
+              <span class="text-[9px] uppercase tracking-wider text-slate-400">Global Ecosystem</span>
+            </div>
+
+            <!-- App Icon / Favicon Tile -->
+            <div id="modalTileBox" class="rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center space-y-2">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-obsidian-900 to-obsidian-800 border border-slate-700/80 p-3 shadow-xl flex items-center justify-center relative group">
+                <div id="modalTileIcon" class="w-full h-full flex items-center justify-center"></div>
+              </div>
+              <span class="text-[10px] font-mono text-slate-400">Mobile App Icon (iOS/Web)</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Metadata, Palette details & WhatsApp Export -->
+        <div class="md:col-span-5 flex flex-col justify-between space-y-6">
+          
+          <div>
+            <h3 class="text-xl font-bold text-white">Stebup Brand Concept</h3>
+            <p class="text-xs text-slate-400 mt-1" id="modalIconDesc">High-concept vector mark representing technological bridging, scale, and enterprise execution.</p>
+            
+            <div class="mt-4 space-y-3 bg-obsidian-950/70 p-4 rounded-xl border border-obsidian-800 text-xs">
+              <div class="flex justify-between">
+                <span class="text-slate-400 font-mono">Source Collection:</span>
+                <span id="modalCollection" class="text-indigo-400 font-mono font-medium">Lucide Vector</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400 font-mono">Color Formulation:</span>
+                <span id="modalColorMode" class="text-emerald-400 font-mono">Linear Gradient (135°)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400 font-mono">Active Swatches:</span>
+                <div class="flex items-center space-x-1.5">
+                  <span id="modalHex1" class="font-mono text-slate-300">#6366F1</span>
+                  <span class="w-3 h-3 rounded-full border border-slate-700" id="modalSwatch1"></span>
+                  <span class="text-slate-600">•</span>
+                  <span id="modalHex2" class="font-mono text-slate-300">#14B8A6</span>
+                  <span class="w-3 h-3 rounded-full border border-slate-700" id="modalSwatch2"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sharing & Export Action Center -->
+          <div class="space-y-2.5">
+            <div class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">Export & WhatsApp Actions</div>
+            
+            <!-- 1-Click WhatsApp Presentation Card -->
+            <button id="modalCopyCardBtn" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-500 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-emerald-500/10 flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5">
+              <svg class="w-4 h-4 text-emerald-200" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span>Copy 1200×630 WhatsApp Slide</span>
+            </button>
+
+            <!-- Vector Download Buttons -->
+            <div class="grid grid-cols-2 gap-2">
+              <button id="modalDownloadSvgBtn" class="py-2.5 px-3 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <span>Download SVG</span>
+              </button>
+              <button id="modalDownloadPngBtn" class="py-2.5 px-3 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <span>Download PNG</span>
+              </button>
+            </div>
+
+            <!-- Toast / Status message -->
+            <div id="modalToast" class="hidden text-center py-2 px-3 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-medium animate-bounce">
+              ✓ Copied high-res card to clipboard! Paste (Ctrl+V) into WhatsApp now.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Hidden Offscreen Canvas for Rendering WhatsApp Slide -->
+  <canvas id="exportCanvas" width="1200" height="630" class="hidden"></canvas>
+
+  <!-- Notification Toast Container -->
+  <div id="globalToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-obsidian-900 border border-indigo-500/40 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3">
+    <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">✓</div>
+    <div>
+      <div id="toastTitle" class="text-xs font-bold text-white">Copied to Clipboard</div>
+      <div id="toastDesc" class="text-[11px] text-slate-400">Ready to paste into WhatsApp</div>
+    </div>
+  </div>
+
+  <!-- Studio Script -->
+  <script>
+    // --- Initial 48 Premier Curated Icons for Stebup ---
+    const CURATED_ICONS = [
+      // 1. Bridges & Spans (Manifesto: The bridge between vision & execution)
+      { name: 'lucide:bridge', label: 'Suspension Span', category: 'bridge', desc: 'Symmetrical structural bridge connecting vision to execution.' },
+      { name: 'ph:bridge-bold', label: 'Monolithic Viaduct', category: 'bridge', desc: 'Heavy architectural span with high-load pillars.' },
+      { name: 'tabler:route', label: 'Connected Corridor', category: 'bridge', desc: 'Strategic point-to-point regional bridge corridor.' },
+      { name: 'carbon:pedestrian-child', label: 'Human Span', category: 'bridge', desc: 'Human-centered talent and execution pathway.' },
+      { name: 'mingcute:bridge-fill', label: 'Arch Keystone', category: 'bridge', desc: 'Geometric arch bridge with solid keystone.' },
+      { name: 'hugeicons:bridge', label: 'Modern Flyover', category: 'bridge', desc: 'Curved high-speed viaduct for enterprise velocity.' },
+      { name: 'lucide:split', label: 'Convergence Fork', category: 'bridge', desc: 'Multiple streams uniting into a single execution channel.' },
+      { name: 'tabler:arrow-ramp-right-2', label: 'Ascent Ramp', category: 'bridge', desc: 'Elevated highway ramp scaling up into the horizon.' },
+
+      // 2. Steps & Upward Velocity (Stebup meaning: Stepping up)
+      { name: 'lucide:trending-up', label: 'Stebup Velocity', category: 'steps ascent growth', desc: 'High-growth trajectory line breaking through the ceiling.' },
+      { name: 'tabler:stairs-up', label: 'Enterprise Steps', category: 'steps ascent growth', desc: 'Four-tier structural staircase representing scaling stages.' },
+      { name: 'ph:stairs-bold', label: 'Brutalist Steps', category: 'steps ascent growth', desc: 'Bold minimalist steps ascending towards the right.' },
+      { name: 'carbon:growth', label: 'Exponential Curve', category: 'steps ascent growth', desc: 'Compound scale curve for venture investments.' },
+      { name: 'lucide:bar-chart-3', label: 'Ascending Pillars', category: 'steps ascent growth', desc: 'Ascending geometric monoliths signifying quantitative execution.' },
+      { name: 'mingcute:rise-fill', label: 'Momentum Vector', category: 'steps ascent growth', desc: 'Sharp upward chevron with aerodynamic lift.' },
+      { name: 'tabler:chart-arrows', label: 'Dual Vector Leap', category: 'steps ascent growth', desc: 'Simultaneous vertical and lateral scaling.' },
+      { name: 'lucide:chevrons-up', label: 'Double Chevron', category: 'steps ascent growth', desc: 'Supersonic upward push for division leaders.' },
+
+      // 3. AI, Neural & Intelligence (Software, Data Analytics, Deep Tech)
+      { name: 'lucide:brain-circuit', label: 'Neural Circuit Core', category: 'circuit neural network brain', desc: 'Synthetic brain hemisphere with integrated PCB traces.' },
+      { name: 'ph:cpu-bold', label: 'Quantum Silicon', category: 'circuit neural network brain', desc: 'Central processing matrix with 8 bus lines.' },
+      { name: 'carbon:network-4', label: 'Synaptic Mesh', category: 'circuit neural network brain', desc: 'Interconnected neural nodes in continuous learning state.' },
+      { name: 'lucide:sparkles', label: 'Generative Core', category: 'circuit neural network brain', desc: 'Precision intelligence beacon radiating algorithmic insights.' },
+      { name: 'tabler:circuit-switch-closed', label: 'Switch Grid', category: 'circuit neural network brain', desc: 'High-throughput electronic circuit pathway.' },
+      { name: 'mingcute:ai-fill', label: 'Autonomous Nexus', category: 'circuit neural network brain', desc: 'Autonomous intelligent agents executing in parallel.' },
+      { name: 'carbon:chip', label: 'Bionic Core', category: 'circuit neural network brain', desc: 'Enterprise compute chip embedded with brand geometry.' },
+      { name: 'lucide:git-merge', label: 'Code Convergence', category: 'circuit neural network brain', desc: 'Software engineering branch merging into core master.' },
+
+      // 4. Orbital Nexus & 8 Hubs (Ecosystem of 8 Divisions & Corridors)
+      { name: 'lucide:orbit', label: 'Orbital Cosmos', category: 'nexus orbit galaxy hub', desc: 'Planetary orbital rings around the central Stebup core.' },
+      { name: 'ph:circles-four-bold', label: '4-Corridor Nexus', category: 'nexus orbit galaxy hub', desc: 'Jeddah, Dubai, India, and Indonesia regional hubs.' },
+      { name: 'tabler:atom-2', label: 'Octa-Atom Matrix', category: 'nexus orbit galaxy hub', desc: 'Atomic energy valence shells housing the 8 business divisions.' },
+      { name: 'carbon:radar', label: 'Panoramic Radar', category: 'nexus orbit galaxy hub', desc: '360° global market scanning for venture opportunities.' },
+      { name: 'mingcute:planet-fill', label: 'Gravitational Ring', category: 'nexus orbit galaxy hub', desc: 'Enterprise gravitational pull attracting elite global talent.' },
+      { name: 'lucide:compass', label: 'North Star Compass', category: 'nexus orbit galaxy hub', desc: 'Navigation instrument aligning visionary founders with execution.' },
+      { name: 'tabler:circle-dot', label: 'Focal Keystone', category: 'nexus orbit galaxy hub', desc: 'Laser-focused central point with outward concentric waves.' },
+      { name: 'ph:asterisk-simple-bold', label: '8-Axis Starburst', category: 'nexus orbit galaxy hub', desc: '8-pointed radial star representing the 8 Stebup divisions.' },
+
+      // 5. Geometric Prisms & 3D Form (Architectural, Modernist)
+      { name: 'lucide:box', label: 'Isometric Prism', category: 'prism hexagon crystal cube', desc: 'Architectural cube revealing spatial multidimensional execution.' },
+      { name: 'tabler:cube', label: 'Brutalist Block', category: 'prism hexagon crystal cube', desc: 'Solid monolithic block crafted from cast concrete and glass.' },
+      { name: 'ph:diamond-bold', label: 'Refracted Prism', category: 'prism hexagon crystal cube', desc: 'Precision cut diamond splitting strategy into executed actions.' },
+      { name: 'carbon:carbon-ui-builder', label: 'Modular Lattice', category: 'prism hexagon crystal cube', desc: 'Building-block architecture assembled for enterprise agility.' },
+      { name: 'lucide:layers', label: 'Stratified Decks', category: 'prism hexagon crystal cube', desc: 'Multi-layered corporate stack from infra to front-end.' },
+      { name: 'mingcute:cube-3d-fill', label: 'Hypercube 4D', category: 'prism hexagon crystal cube', desc: 'Advanced geometry representing futuristic digital products.' },
+      { name: 'tabler:pyramid', label: 'Solid Pyramid', category: 'prism hexagon crystal cube', desc: 'Stepped apex pyramid representing institutional stability.' },
+      { name: 'ph:polygon-bold', label: 'Hex Core Matrix', category: 'prism hexagon crystal cube', desc: 'Nature’s most resilient geometry applied to venture building.' },
+
+      // 6. Enterprise Crests, Emblems & Shields (Corporate Trust, FinTech)
+      { name: 'lucide:shield-check', label: 'Verified Sovereign', category: 'crest shield crown emblem', desc: 'Institutional grade trust and compliance shield.' },
+      { name: 'ph:crown-simple-bold', label: 'Apex Crown', category: 'crest shield crown emblem', desc: 'Kingdom leadership and GCC regional authority.' },
+      { name: 'tabler:badge', label: 'Quality Seal', category: 'crest shield crown emblem', desc: 'Certified standard of world-class design and engineering.' },
+      { name: 'carbon:security', label: 'FinTech Vault', category: 'crest shield crown emblem', desc: 'Cryptographic security shielding venture capital assets.' },
+      { name: 'mingcute:medal-fill', label: 'Prestige Medal', category: 'crest shield crown emblem', desc: 'Distinguished mark of high-performance delivery.' },
+      { name: 'lucide:gem', label: 'Treasury Jewel', category: 'crest shield crown emblem', desc: 'High-value venture assets cultivated with precision.' },
+      { name: 'ph:seal-check-bold', label: 'Vision 2030 Seal', category: 'crest shield crown emblem', desc: 'Formal alignment with Saudi Arabian economic transformation.' },
+      { name: 'tabler:shield-star', label: 'Guardian Keystone', category: 'crest shield crown emblem', desc: 'Fortified shield carrying the central beacon of Stebup.' },
+
+      // 7. Kinetic Vectors & Wings (Velocity, High-Performance Execution)
+      { name: 'lucide:zap', label: 'Kinetic Strike', category: 'arrow velocity speed wings', desc: 'Pure execution velocity transforming sluggish roadmaps.' },
+      { name: 'ph:lightning-bold', label: 'High Voltage', category: 'arrow velocity speed wings', desc: 'Energy transfer fueling breakthrough client transformations.' },
+      { name: 'tabler:flare', label: 'Cosmic Flare', category: 'arrow velocity speed wings', desc: 'Brilliant illumination over previously obscure challenges.' },
+      { name: 'lucide:send', label: 'Aero Vector', category: 'arrow velocity speed wings', desc: 'Aerodynamic dart dispatched directly into target objectives.' },
+      { name: 'carbon:launch', label: 'Venture Rocket', category: 'arrow velocity speed wings', desc: 'Escape-velocity launch for early-stage portfolio ventures.' },
+      { name: 'mingcute:flash-fill', label: 'Instant Execution', category: 'arrow velocity speed wings', desc: 'Rapid sprint cycles delivering production grade software.' },
+      { name: 'tabler:wind', label: 'Trade Meridian', category: 'arrow velocity speed wings', desc: 'Smooth logistical flow across international trade borders.' },
+      { name: 'ph:crosshair-bold', label: 'Target Precision', category: 'arrow velocity speed wings', desc: 'Zero tolerance for operational waste or inaccurate milestones.' }
+    ];
+
+    // --- State Management ---
+    let currentIcons = [...CURATED_ICONS];
+    let activeColor1 = '#6366F1';
+    let activeColor2 = '#14B8A6';
+    let colorMode = 'gradient'; // 'gradient', 'solid', 'monochrome'
+    let cardCanvasBg = '#070A11';
+    let activeModalIcon = null;
+    let favorites = new Set();
+    const svgCache = new Map();
+
+    // --- DOM Elements ---
+    const logoGrid = document.getElementById('logoGrid');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const loadingState = document.getElementById('loadingState');
+    const emptyState = document.getElementById('emptyState');
+    const resultCount = document.getElementById('resultCount');
+    const colorPicker1 = document.getElementById('colorPicker1');
+    const colorPicker2 = document.getElementById('colorPicker2');
+    const colorVal1 = document.getElementById('colorVal1');
+    const colorVal2 = document.getElementById('colorVal2');
+    const modeGradient = document.getElementById('modeGradient');
+    const modeSolid = document.getElementById('modeSolid');
+    const modeMonochrome = document.getElementById('modeMonochrome');
+    const colorDivider = document.getElementById('colorDivider');
+    const color2Wrapper = document.getElementById('color2Wrapper');
+    const bgDark = document.getElementById('bgDark');
+    const bgNavy = document.getElementById('bgNavy');
+    const bgLight = document.getElementById('bgLight');
+    const previewModal = document.getElementById('previewModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const exportCanvas = document.getElementById('exportCanvas');
+    const favCount = document.getElementById('favCount');
+
+    // --- SVG Fetching & Gradient Engine ---
+    async function fetchSvg(iconName) {
+      if (svgCache.has(iconName)) return svgCache.get(iconName);
+      try {
+        const [prefix, name] = iconName.includes(':') ? iconName.split(':') : ['lucide', iconName];
+        const res = await fetch(`https://api.iconify.design/${prefix}/${name}.svg`);
+        if (!res.ok) throw new Error('SVG not found');
+        const text = await res.text();
+        svgCache.set(iconName, text);
+        return text;
+      } catch (e) {
+        console.warn('Failed to fetch SVG for', iconName, e);
+        return '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>';
+      }
+    }
+
+    function styleSvg(rawSvg, c1, c2, mode, uniqueId) {
+      const gradId = 'stebupGrad_' + uniqueId;
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(rawSvg, 'image/svg+xml');
+      const svg = doc.querySelector('svg');
+      if (!svg) return rawSvg;
+
+      svg.removeAttribute('width');
+      svg.removeAttribute('height');
+      svg.setAttribute('class', 'w-full h-full object-contain');
+
+      // Inject gradient definition if needed
+      let defs = svg.querySelector('defs');
+      if (!defs) {
+        defs = doc.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        svg.insertBefore(defs, svg.firstChild);
+      }
+
+      if (mode === 'gradient') {
+        const grad = doc.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        grad.setAttribute('id', gradId);
+        grad.setAttribute('x1', '0%');
+        grad.setAttribute('y1', '0%');
+        grad.setAttribute('x2', '100%');
+        grad.setAttribute('y2', '100%');
+
+        const stop1 = doc.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop1.setAttribute('offset', '0%');
+        stop1.setAttribute('stop-color', c1);
+
+        const stop2 = doc.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop2.setAttribute('offset', '100%');
+        stop2.setAttribute('stop-color', c2);
+
+        grad.appendChild(stop1);
+        grad.appendChild(stop2);
+        defs.appendChild(grad);
+      }
+
+      const paintFill = mode === 'gradient' ? `url(#${gradId})` : (mode === 'monochrome' ? '#FFFFFF' : c1);
+      const paintStroke = mode === 'gradient' ? `url(#${gradId})` : (mode === 'monochrome' ? '#FFFFFF' : c1);
+
+      // Recursive recoloring of SVG elements
+      const elements = svg.querySelectorAll('path, circle, rect, polygon, polyline, ellipse, line, g');
+      elements.forEach(el => {
+        const fill = el.getAttribute('fill');
+        const stroke = el.getAttribute('stroke');
+
+        if (fill && fill !== 'none') {
+          el.setAttribute('fill', paintFill);
+        }
+        if (stroke && stroke !== 'none') {
+          el.setAttribute('stroke', paintStroke);
+        }
+        if (!fill && !stroke) {
+          el.setAttribute('fill', paintFill);
+        }
+      });
+
+      return svg.outerHTML;
+    }
+
+    // --- Render Logo Cards ---
+    async function renderCards() {
+      logoGrid.innerHTML = '';
+      resultCount.textContent = currentIcons.length;
+
+      if (currentIcons.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      for (let i = 0; i < currentIcons.length; i++) {
+        const item = currentIcons[i];
+        const cardId = 'card_' + i;
+        const isFav = favorites.has(item.name);
+
+        const card = document.createElement('div');
+        card.className = 'logo-card glow-card bg-obsidian-900/90 border border-obsidian-800 rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-indigo-500/10 relative group';
+        card.innerHTML = `
+          <!-- Top Card Header: Index & Category Pill & Favorite -->
+          <div class="flex items-center justify-between z-10">
+            <span class="text-[10px] font-mono font-bold text-slate-500">#${String(i + 1).padStart(2, '0')}</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-obsidian-800 border border-obsidian-700/80 text-slate-400 capitalize truncate max-w-[110px]">
+              ${item.category ? item.category.split(' ')[0] : 'Vector'}
+            </span>
+            <button class="fav-btn p-1 text-slate-500 hover:text-rose-400 transition ${isFav ? 'text-rose-500' : ''}" data-name="${item.name}">
+              <svg class="w-3.5 h-3.5" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </button>
+          </div>
+
+          <!-- Canvas Preview -->
+          <div class="my-3 rounded-xl p-6 flex items-center justify-center cursor-pointer transition-colors relative group/canvas" style="background-color: ${cardCanvasBg}; min-height: 140px;" data-action="inspect" data-index="${i}">
+            <div id="${cardId}_canvas" class="logo-canvas w-14 h-14 flex items-center justify-center drop-shadow-md">
+              <div class="w-6 h-6 border-2 border-slate-700 border-t-indigo-500 rounded-full animate-spin"></div>
+            </div>
+            <!-- Hover Zoom Hint -->
+            <div class="absolute inset-0 bg-indigo-600/10 rounded-xl opacity-0 group-hover/canvas:opacity-100 transition flex items-center justify-center pointer-events-none">
+              <span class="px-2.5 py-1 rounded-md bg-obsidian-900/90 text-[10px] font-mono text-indigo-300 border border-indigo-500/30 shadow">Inspect & Lockup</span>
+            </div>
+          </div>
+
+          <!-- Card Metadata & Quick Copy Bar -->
+          <div class="space-y-2 z-10">
+            <div>
+              <h4 class="text-xs font-bold text-white truncate font-mono">${item.label || item.name}</h4>
+              <p class="text-[10px] text-slate-400 truncate mt-0.5">${item.desc || item.name}</p>
+            </div>
+
+            <!-- Quick Action Row -->
+            <div class="pt-2 border-t border-obsidian-800 flex items-center justify-between gap-1 text-[11px]">
+              <button class="copy-card-btn flex-1 py-1.5 px-2 rounded-lg bg-emerald-600/15 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-300 font-semibold flex items-center justify-center space-x-1 transition" data-index="${i}" title="Copy 1200x630 WhatsApp Presentation Card">
+                <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+                <span>WhatsApp</span>
+              </button>
+              
+              <button class="inspect-btn px-2.5 py-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-700 text-slate-300 hover:text-white transition" data-index="${i}" title="Full Studio Mockup & Vector Export">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              </button>
+            </div>
+          </div>
         `;
-      }).join('');
+
+        logoGrid.appendChild(card);
+
+        // Fetch and style SVG asynchronously
+        fetchSvg(item.name).then(rawSvg => {
+          const container = document.getElementById(cardId + '_canvas');
+          if (container) {
+            container.innerHTML = styleSvg(rawSvg, activeColor1, activeColor2, colorMode, cardId);
+          }
+        });
+      }
     }
 
-    window.setPalette = (id) => {
-      state.palette = PALETTES.find((p) => p.id === id) || PALETTES[0];
-      renderAll();
-    };
-    window.setLayout = (id) => {
-      state.layout = id;
-      renderAll();
-    };
-    window.setBackdrop = (id) => {
-      state.backdrop = BACKDROPS.find((b) => b.id === id) || BACKDROPS[0];
-      renderAll();
-    };
-    window.toggleFav = toggleFav;
-    window.filterCategory = filterCategory;
-    window.setGridCols = setGridCols;
-    window.copyForWhatsApp = copyForWhatsApp;
-    window.shareToWhatsApp = shareToWhatsApp;
-    window.downloadPng = downloadPng;
+    // --- Search Iconify Global API ---
+    async function searchIconify(query) {
+      if (!query || query.trim() === '') return;
+      loadingState.classList.remove('hidden');
+      logoGrid.innerHTML = '';
+      emptyState.classList.add('hidden');
 
-    document.getElementById('tagline-input').addEventListener('input', (e) => {
-      state.tagline = e.target.value;
-      renderGrid();
+      try {
+        const cleanQuery = encodeURIComponent(query.trim());
+        const res = await fetch(`https://api.iconify.design/search?query=${cleanQuery}&limit=64`);
+        const data = await res.json();
+
+        if (data && data.icons && data.icons.length > 0) {
+          currentIcons = data.icons.map(iconFullName => {
+            const parts = iconFullName.split(':');
+            const collection = parts[0] || 'icon';
+            const iconId = parts[1] || parts[0];
+            const cleanName = iconId.replace(/-/g, ' ').replace(/_/g, ' ');
+            const capitalized = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
+            return {
+              name: iconFullName,
+              label: capitalized,
+              category: query,
+              desc: `Collection: ${collection.toUpperCase()}`
+            };
+          });
+        } else {
+          currentIcons = [];
+        }
+      } catch (err) {
+        console.error('Iconify search failed', err);
+        currentIcons = [];
+      } finally {
+        loadingState.classList.add('hidden');
+        renderCards();
+      }
+    }
+
+    // --- Recolor All Rendered SVGs without reloading ---
+    function updateAllCardColors() {
+      for (let i = 0; i < currentIcons.length; i++) {
+        const item = currentIcons[i];
+        const cardId = 'card_' + i;
+        const container = document.getElementById(cardId + '_canvas');
+        if (container && svgCache.has(item.name)) {
+          const raw = svgCache.get(item.name);
+          container.innerHTML = styleSvg(raw, activeColor1, activeColor2, colorMode, cardId);
+        }
+      }
+      if (activeModalIcon) {
+        updateModalPreview();
+      }
+    }
+
+    // --- Toast Alerts ---
+    function showToast(title, desc) {
+      const toast = document.getElementById('globalToast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastDesc').textContent = desc;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3200);
+    }
+
+    // --- 1200x630 WhatsApp Presentation Card Generator ---
+    async function generateWhatsAppCard(item) {
+      const canvas = exportCanvas;
+      const ctx = canvas.getContext('2d');
+      const w = 1200;
+      const h = 630;
+
+      // 1. Draw Deep Obsidian Background
+      const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+      bgGrad.addColorStop(0, '#070A11');
+      bgGrad.addColorStop(0.5, '#0B0F19');
+      bgGrad.addColorStop(1, '#101625');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Subtle Grid background lines
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < w; x += 40) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 0; y < h; y += 40) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // 2. Subtle Glow behind Logo Icon
+      const glowGrad = ctx.createRadialGradient(280, 315, 10, 280, 315, 240);
+      glowGrad.addColorStop(0, activeColor1 + '40'); // 25% opacity
+      glowGrad.addColorStop(0.6, activeColor2 + '20');
+      glowGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = glowGrad;
+      ctx.fillRect(40, 75, 480, 480);
+
+      // 3. Draw Icon in Left Card Container
+      ctx.fillStyle = 'rgba(16, 22, 37, 0.9)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.lineWidth = 2;
+      roundRect(ctx, 100, 135, 360, 360, 28, true, true);
+
+      // Render SVG onto Canvas via Image
+      const rawSvg = await fetchSvg(item.name);
+      const styledSvg = styleSvg(rawSvg, activeColor1, activeColor2, colorMode, 'export');
+      const svgBlob = new Blob([styledSvg], { type: 'image/svg+xml;charset=utf-8' });
+      const URL = window.URL || window.webkitURL || window;
+      const blobURL = URL.createObjectURL(svgBlob);
+      const img = new Image();
+
+      return new Promise(resolve => {
+        img.onload = () => {
+          ctx.drawImage(img, 180, 215, 200, 200);
+          URL.revokeObjectURL(blobURL);
+
+          // 4. Draw Right Content Section
+          // Brand Wordmark
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = 'bold 56px "Space Grotesk", monospace';
+          ctx.fillText('STEBUP', 520, 210);
+
+          // Category Badge
+          ctx.fillStyle = activeColor1;
+          ctx.font = 'bold 16px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText(item.label.toUpperCase() + '  •  BRAND IDENTITY CONCEPT', 520, 248);
+
+          // Manifesto / Subtitle
+          ctx.fillStyle = '#94A3B8';
+          ctx.font = '500 20px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('Bridging Ambitious Vision and High-Performance Execution', 520, 290);
+
+          // Active Palette Hex Chips
+          ctx.fillStyle = '#64748B';
+          ctx.font = '14px monospace';
+          ctx.fillText('COLOR FORMULATION:', 520, 355);
+
+          // Swatch 1
+          ctx.fillStyle = activeColor1;
+          roundRect(ctx, 520, 370, 28, 28, 8, true, false);
+          ctx.fillStyle = '#E2E8F0';
+          ctx.font = 'bold 15px monospace';
+          ctx.fillText(activeColor1.toUpperCase(), 560, 390);
+
+          // Swatch 2 (if gradient)
+          if (colorMode === 'gradient') {
+            ctx.fillStyle = activeColor2;
+            roundRect(ctx, 680, 370, 28, 28, 8, true, false);
+            ctx.fillStyle = '#E2E8F0';
+            ctx.fillText(activeColor2.toUpperCase(), 720, 390);
+          }
+
+          // Stebup 8 Divisions Tagline
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+          roundRect(ctx, 520, 430, 580, 65, 14, true, false);
+          ctx.fillStyle = '#94A3B8';
+          ctx.font = '13px "Plus Jakarta Sans", sans-serif';
+          ctx.fillText('Software  •  Consultancy  •  Talent  •  Design  •  Ventures  •  FinTech  •  AI  •  Logistics', 540, 468);
+
+          // Footer / Timestamp
+          ctx.fillStyle = '#475569';
+          ctx.font = '12px monospace';
+          ctx.fillText('STEBUP BRAND EXPLORATION STUDIO  •  JEDDAH  •  DUBAI  •  INDIA  •  INDONESIA', 100, 565);
+
+          // Convert canvas to Blob
+          canvas.toBlob(blob => {
+            resolve(blob);
+          }, 'image/png');
+        };
+        img.src = blobURL;
+      });
+    }
+
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    // --- Modal Inspector ---
+    async function openModal(index) {
+      const item = currentIcons[index];
+      if (!item) return;
+      activeModalIcon = item;
+
+      document.getElementById('modalIconName').textContent = item.name;
+      document.getElementById('modalCollection').textContent = item.name.split(':')[0].toUpperCase();
+      document.getElementById('modalColorMode').textContent = colorMode.toUpperCase();
+      document.getElementById('modalHex1').textContent = activeColor1.toUpperCase();
+      document.getElementById('modalHex2').textContent = activeColor2.toUpperCase();
+      document.getElementById('modalSwatch1').style.backgroundColor = activeColor1;
+      document.getElementById('modalSwatch2').style.backgroundColor = activeColor2;
+
+      await updateModalPreview();
+      previewModal.classList.remove('hidden');
+    }
+
+    async function updateModalPreview() {
+      if (!activeModalIcon) return;
+      const raw = await fetchSvg(activeModalIcon.name);
+      const styled = styleSvg(raw, activeColor1, activeColor2, colorMode, 'modal');
+
+      document.getElementById('modalIconContainer').innerHTML = styled;
+      document.getElementById('modalStackedIcon').innerHTML = styled;
+      document.getElementById('modalTileIcon').innerHTML = styled;
+    }
+
+    function closeModal() {
+      previewModal.classList.add('hidden');
+      activeModalIcon = null;
+    }
+
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCards();
+
+      // Live Color Picker 1
+      colorPicker1.addEventListener('input', (e) => {
+        activeColor1 = e.target.value;
+        colorVal1.textContent = activeColor1.toUpperCase();
+        updateAllCardColors();
+      });
+
+      // Live Color Picker 2
+      colorPicker2.addEventListener('input', (e) => {
+        activeColor2 = e.target.value;
+        colorVal2.textContent = activeColor2.toUpperCase();
+        updateAllCardColors();
+      });
+
+      // Color Mode Buttons
+      modeGradient.addEventListener('click', () => {
+        colorMode = 'gradient';
+        modeGradient.className = 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition';
+        modeSolid.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
+        modeMonochrome.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
+        colorDivider.style.display = 'inline';
+        color2Wrapper.style.display = 'flex';
+        updateAllCardColors();
+      });
+
+      modeSolid.addEventListener('click', () => {
+        colorMode = 'solid';
+        modeSolid.className = 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition';
+        modeGradient.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
+        modeMonochrome.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
+        colorDivider.style.display = 'none';
+        color2Wrapper.style.display = 'none';
+        updateAllCardColors();
+      });
+
+      modeMonochrome.addEventListener('click', () => {
+        colorMode = 'monochrome';
+        modeMonochrome.className = 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium shadow transition';
+        modeGradient.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
+        modeSolid.className = 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white font-medium transition';
+        colorDivider.style.display = 'none';
+        color2Wrapper.style.display = 'none';
+        updateAllCardColors();
+      });
+
+      // Preset Pills
+      document.querySelectorAll('.preset-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeColor1 = btn.getAttribute('data-c1');
+          activeColor2 = btn.getAttribute('data-c2');
+          colorPicker1.value = activeColor1;
+          colorPicker2.value = activeColor2;
+          colorVal1.textContent = activeColor1.toUpperCase();
+          colorVal2.textContent = activeColor2.toUpperCase();
+          if (colorMode === 'monochrome') {
+            modeGradient.click();
+          } else {
+            updateAllCardColors();
+          }
+          showToast('Palette Applied', btn.getAttribute('data-name'));
+        });
+      });
+
+      // Canvas Background Switcher
+      bgDark.addEventListener('click', () => {
+        cardCanvasBg = '#070A11';
+        renderCards();
+      });
+      bgNavy.addEventListener('click', () => {
+        cardCanvasBg = '#0F172A';
+        renderCards();
+      });
+      bgLight.addEventListener('click', () => {
+        cardCanvasBg = '#F8FAFC';
+        renderCards();
+      });
+
+      // Grid Switcher
+      const gridCols5 = document.getElementById('gridCols5');
+      const gridCols4 = document.getElementById('gridCols4');
+      const gridCols3 = document.getElementById('gridCols3');
+
+      gridCols5.addEventListener('click', () => {
+        logoGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3';
+        gridCols5.className = 'px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold';
+        gridCols4.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
+        gridCols3.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
+      });
+
+      gridCols4.addEventListener('click', () => {
+        logoGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4';
+        gridCols4.className = 'px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold';
+        gridCols5.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
+        gridCols3.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
+      });
+
+      gridCols3.addEventListener('click', () => {
+        logoGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5';
+        gridCols3.className = 'px-2 py-0.5 rounded text-[11px] font-mono bg-indigo-600 text-white font-bold';
+        gridCols4.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
+        gridCols5.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 hover:text-white';
+      });
+
+      // Category Tabs
+      document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.category-tab').forEach(t => {
+            t.className = 'category-tab px-3 py-1.5 rounded-lg bg-obsidian-800/90 text-slate-300 hover:text-white hover:bg-obsidian-700 border border-obsidian-700 transition';
+          });
+          tab.className = 'category-tab active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-medium shadow-md shadow-indigo-600/20 transition';
+          
+          const q = tab.getAttribute('data-query');
+          if (q === 'curated-all') {
+            currentIcons = [...CURATED_ICONS];
+            renderCards();
+          } else {
+            searchIconify(q);
+          }
+        });
+      });
+
+      // Search Inputs
+      searchBtn.addEventListener('click', () => searchIconify(searchInput.value));
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') searchIconify(searchInput.value);
+      });
+
+      // Random Inspiration
+      document.getElementById('randomBtn').addEventListener('click', () => {
+        const keywords = ['bridge', 'stairs', 'nexus', 'prism', 'infinity', 'cube', 'crown', 'wings', 'circuit', 'shield', 'falcon', 'growth'];
+        const pick = keywords[Math.floor(Math.random() * keywords.length)];
+        searchInput.value = pick;
+        searchIconify(pick);
+      });
+
+      // Grid Delegated Click Events (Inspect & Copy)
+      logoGrid.addEventListener('click', async (e) => {
+        const inspectTrigger = e.target.closest('[data-action="inspect"], .inspect-btn');
+        if (inspectTrigger) {
+          const idx = parseInt(inspectTrigger.getAttribute('data-index'), 10);
+          openModal(idx);
+          return;
+        }
+
+        const copyTrigger = e.target.closest('.copy-card-btn');
+        if (copyTrigger) {
+          const idx = parseInt(copyTrigger.getAttribute('data-index'), 10);
+          const item = currentIcons[idx];
+          if (!item) return;
+
+          copyTrigger.disabled = true;
+          copyTrigger.innerHTML = `<span class="text-[10px]">Generating...</span>`;
+
+          try {
+            const blob = await generateWhatsAppCard(item);
+            if (navigator.clipboard && window.ClipboardItem) {
+              await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+              showToast('1200×630 Slide Copied!', 'Directly paste (Ctrl+V) into your WhatsApp group chat');
+            } else {
+              // Fallback download if clipboard item not supported
+              const a = document.createElement('a');
+              a.href = URL.createObjectURL(blob);
+              a.download = `stebup-logo-${item.name.replace(/[:/]/g, '-')}.png`;
+              a.click();
+              showToast('Card Downloaded', 'Attached PNG for WhatsApp');
+            }
+          } catch (err) {
+            console.error('Clipboard copy failed', err);
+            showToast('Ready for WhatsApp', 'Open card inspection to save PNG');
+          } finally {
+            copyTrigger.disabled = false;
+            copyTrigger.innerHTML = `<svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg><span>WhatsApp</span>`;
+          }
+          return;
+        }
+
+        const favTrigger = e.target.closest('.fav-btn');
+        if (favTrigger) {
+          const name = favTrigger.getAttribute('data-name');
+          if (favorites.has(name)) {
+            favorites.delete(name);
+            favTrigger.classList.remove('text-rose-500');
+            favTrigger.querySelector('svg').setAttribute('fill', 'none');
+          } else {
+            favorites.add(name);
+            favTrigger.classList.add('text-rose-500');
+            favTrigger.querySelector('svg').setAttribute('fill', 'currentColor');
+          }
+          favCount.textContent = favorites.size;
+        }
+      });
+
+      // Modal Actions
+      closeModalBtn.addEventListener('click', closeModal);
+      previewModal.addEventListener('click', (e) => {
+        if (e.target === previewModal) closeModal();
+      });
+
+      // Modal Background Switcher
+      document.getElementById('modalBgDark').addEventListener('click', () => {
+        document.getElementById('modalPreviewBox').className = 'rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] bg-obsidian-950 border border-obsidian-800 shadow-inner transition-colors';
+        document.getElementById('modalStackedBox').className = 'rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center text-center space-y-2';
+        document.getElementById('modalTileBox').className = 'rounded-xl p-5 bg-obsidian-950 border border-obsidian-800 flex flex-col items-center justify-center space-y-2';
+      });
+
+      document.getElementById('modalBgLight').addEventListener('click', () => {
+        document.getElementById('modalPreviewBox').className = 'rounded-2xl p-8 flex flex-col items-center justify-center min-h-[220px] bg-white border border-slate-200 shadow-inner transition-colors text-slate-900';
+        document.getElementById('modalStackedBox').className = 'rounded-xl p-5 bg-white border border-slate-200 flex flex-col items-center justify-center text-center space-y-2 text-slate-900';
+        document.getElementById('modalTileBox').className = 'rounded-xl p-5 bg-white border border-slate-200 flex flex-col items-center justify-center space-y-2 text-slate-900';
+      });
+
+      // Modal WhatsApp 1200x630 Card
+      document.getElementById('modalCopyCardBtn').addEventListener('click', async () => {
+        if (!activeModalIcon) return;
+        const btn = document.getElementById('modalCopyCardBtn');
+        const toast = document.getElementById('modalToast');
+        btn.disabled = true;
+        btn.textContent = 'Generating High-Res Slide...';
+
+        try {
+          const blob = await generateWhatsAppCard(activeModalIcon);
+          if (navigator.clipboard && window.ClipboardItem) {
+            await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4000);
+          } else {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `stebup-card-${activeModalIcon.name.replace(/[:/]/g, '-')}.png`;
+            a.click();
+            toast.textContent = '✓ Downloaded slide PNG!';
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4000);
+          }
+        } catch (e) {
+          console.error(e);
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = `<svg class="w-4 h-4 text-emerald-200" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg><span>Copy 1200×630 WhatsApp Slide</span>`;
+        }
+      });
+
+      // Modal Download SVG
+      document.getElementById('modalDownloadSvgBtn').addEventListener('click', async () => {
+        if (!activeModalIcon) return;
+        const raw = await fetchSvg(activeModalIcon.name);
+        const styled = styleSvg(raw, activeColor1, activeColor2, colorMode, 'dl');
+        const blob = new Blob([styled], { type: 'image/svg+xml;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `stebup-${activeModalIcon.name.replace(/[:/]/g, '-')}.svg`;
+        a.click();
+        showToast('SVG Downloaded', 'Raw vector file saved');
+      });
+
+      // Modal Download PNG
+      document.getElementById('modalDownloadPngBtn').addEventListener('click', async () => {
+        if (!activeModalIcon) return;
+        const blob = await generateWhatsAppCard(activeModalIcon);
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `stebup-brand-${activeModalIcon.name.replace(/[:/]/g, '-')}.png`;
+        a.click();
+        showToast('PNG Downloaded', 'High resolution image saved');
+      });
+
     });
-
-    function renderAll() {
-      renderControls();
-      renderGrid();
-    }
-
-    renderAll();
   </script>
 </body>
 </html>
