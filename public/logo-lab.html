@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup — Top 50 Unique Logos (Tech • Consulting • HR • AI)</title>
+  <title>Stebup — 50 Modern 3D Tech, AI, HR & Consulting Logo Sculptures</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:wght@600;800&family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600;800&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Chakra+Petch:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Sora:wght@700;800&family=Space+Grotesk:wght@700&family=Syne:wght@700;800&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050508;
-      --surface: #0c0e14;
-      --surface-2: #131622;
-      --surface-3: #1c2030;
+      --bg: #040508;
+      --surface: #0b0d14;
+      --surface-2: #121624;
+      --surface-3: #1b2136;
       --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(99, 102, 241, 0.5);
+      --border-hover: rgba(99, 102, 241, 0.55);
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --accent-tech: #6366f1;      /* Tech: Electric Indigo */
-      --accent-consult: #14b8a6;   /* Consulting: Vision Teal */
-      --accent-hr: #f59e0b;        /* HR / Talent: Warm Amber Gold */
-      --accent-ai: #ec4899;        /* AI: Neural Magenta/Violet */
-      --card-canvas: #08090f;
+      --accent-1: #6366f1;
+      --accent-2: #14b8a6;
+      --accent-3: #f59e0b;
+      --accent-4: #ec4899;
+      --card-canvas: radial-gradient(circle at 50% 35%, #131829 0%, #07080e 75%);
     }
     body.light-canvas {
-      --card-canvas: #f8fafc;
+      --card-canvas: radial-gradient(circle at 50% 35%, #ffffff 0%, #e2e8f0 85%);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -41,13 +41,13 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(5, 5, 8, 0.9);
-      backdrop-filter: blur(20px);
+      background: rgba(4, 5, 8, 0.88);
+      backdrop-filter: blur(22px);
       border-bottom: 1px solid var(--border);
       padding: 10px 24px;
     }
     .context-inner {
-      max-width: 1560px;
+      max-width: 1580px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -63,34 +63,34 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--accent-consult);
+      color: #38bdf8;
     }
     .sim-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #10b981;
-      box-shadow: 0 0 10px #10b981;
+      box-shadow: 0 0 12px #10b981;
       animation: pulse 2s infinite;
     }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
     .mock-navbar {
       flex: 1;
-      max-width: 780px;
-      background: rgba(16, 18, 28, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.11);
+      max-width: 790px;
+      background: rgba(15, 18, 30, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 999px;
-      padding: 7px 18px;
+      padding: 6px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.8);
     }
     .mock-nav-brand {
       display: flex;
       align-items: center;
-      min-height: 34px;
+      min-height: 36px;
     }
     .mock-nav-links {
       display: flex;
@@ -102,12 +102,13 @@
     }
     .mock-nav-links span:first-child { color: #fff; font-weight: 600; }
     .mock-nav-cta {
-      background: linear-gradient(135deg, var(--accent-tech), #4f46e5);
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
       color: #fff;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       padding: 6px 14px;
       border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
     }
 
     .mini-mocks {
@@ -127,23 +128,24 @@
       color: var(--text-muted);
     }
     .app-squircle {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-      background: #08090f;
-      border: 1px solid rgba(255,255,255,0.15);
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: radial-gradient(circle at 30% 25%, #1e2540, #07080e);
+      border: 1px solid rgba(255,255,255,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.25);
     }
 
     .container {
-      max-width: 1560px;
+      max-width: 1580px;
       margin: 0 auto;
       padding: 24px;
     }
 
-    /* Hero + 4 Pillars Legend */
+    /* Header */
     .studio-header {
       display: flex;
       flex-wrap: wrap;
@@ -156,15 +158,18 @@
     }
     .studio-title-group h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(24px, 3vw, 34px);
+      font-size: clamp(24px, 3vw, 35px);
       font-weight: 700;
       letter-spacing: -0.03em;
+      background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 50%, #5eead4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .studio-subtitle {
       color: var(--text-muted);
       font-size: 13.5px;
       margin-top: 6px;
-      max-width: 820px;
+      max-width: 860px;
       line-height: 1.55;
     }
     .pillar-badges {
@@ -181,19 +186,19 @@
       font-weight: 600;
       padding: 5px 12px;
       border-radius: 999px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.28);
       color: #e2e8f0;
     }
-    .p-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* Interactive Co-Creation Customizer Lab */
+    /* Interactive 3D Co-Creation Lab */
     .co-creation-lab {
-      background: linear-gradient(180deg, rgba(19, 22, 34, 0.9), rgba(12, 14, 20, 0.95));
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(18, 22, 36, 0.92), rgba(10, 12, 20, 0.96));
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 20px;
       padding: 18px 20px;
       margin-bottom: 24px;
+      box-shadow: 0 25px 60px -20px rgba(99, 102, 241, 0.25);
     }
     .lab-top-bar {
       display: flex;
@@ -212,17 +217,18 @@
       font-weight: 700;
     }
     .lab-badge {
-      background: linear-gradient(135deg, var(--accent-tech), var(--accent-consult));
+      background: linear-gradient(135deg, #6366f1, #ec4899, #14b8a6);
       color: #fff;
       font-size: 10px;
       font-weight: 800;
-      padding: 3px 8px;
+      padding: 3px 9px;
       border-radius: 6px;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     .lab-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1.9fr;
+      grid-template-columns: 1.15fr 1.85fr;
       gap: 18px;
       align-items: stretch;
     }
@@ -232,13 +238,14 @@
     }
     .lab-stage {
       background: var(--card-canvas);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 16px;
-      min-height: 210px;
+      min-height: 225px;
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
     }
     .lab-stage-center {
       flex: 1;
@@ -257,7 +264,7 @@
     }
     .lab-controls {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
       gap: 12px;
     }
     .control-box {
@@ -287,11 +294,12 @@
       cursor: pointer;
       transition: all 0.15s;
     }
-    .chip-btn:hover { border-color: var(--accent-tech); color: #fff; }
+    .chip-btn:hover { border-color: var(--accent-1); color: #fff; }
     .chip-btn.active {
-      background: rgba(99, 102, 241, 0.24);
-      border-color: var(--accent-tech);
+      background: rgba(99, 102, 241, 0.25);
+      border-color: var(--accent-1);
       color: #fff;
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
     }
     .slider-row {
       display: flex;
@@ -299,8 +307,8 @@
       gap: 8px;
       margin-bottom: 7px;
     }
-    .slider-row span { font-size: 11px; color: var(--text-muted); min-width: 65px; }
-    .slider-row input[type="range"] { flex: 1; accent-color: var(--accent-tech); cursor: pointer; }
+    .slider-row span { font-size: 11px; color: var(--text-muted); min-width: 72px; }
+    .slider-row input[type="range"] { flex: 1; accent-color: var(--accent-1); cursor: pointer; }
 
     /* Toolbar */
     .toolbar {
@@ -328,7 +336,11 @@
       transition: all 0.15s;
     }
     .cat-tab:hover { color: #fff; background: var(--surface-2); }
-    .cat-tab.active { background: var(--accent-tech); color: #fff; }
+    .cat-tab.active {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+    }
 
     .right-tools { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .palette-dots {
@@ -341,15 +353,15 @@
       border: 1px solid var(--border);
     }
     .pal-dot {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       cursor: pointer;
       border: 2px solid transparent;
       transition: transform 0.15s;
     }
     .pal-dot:hover { transform: scale(1.15); }
-    .pal-dot.active { border-color: #fff; transform: scale(1.15); }
+    .pal-dot.active { border-color: #fff; transform: scale(1.18); }
 
     .search-input {
       background: var(--surface-2);
@@ -358,14 +370,15 @@
       padding: 6px 12px;
       border-radius: 8px;
       font-size: 12px;
-      width: 190px;
+      width: 185px;
     }
 
-    /* Compact High-Density Grid */
+    /* 3D Perspective Grid & Cards */
     .logo-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      gap: 15px;
+      perspective: 1200px;
     }
     .logo-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
     .logo-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
@@ -376,20 +389,21 @@
     .logo-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: all 0.18s ease;
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s, box-shadow 0.2s;
+      transform-style: preserve-3d;
     }
     .logo-card:hover {
       border-color: var(--border-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.65);
+      transform: translateY(-4px) rotateX(2deg);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(99, 102, 241, 0.25);
     }
     .logo-card.in-poll {
-      border-color: var(--accent-consult);
-      box-shadow: 0 0 0 1px var(--accent-consult);
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 1px var(--accent-2);
     }
 
     .card-top {
@@ -398,42 +412,39 @@
       align-items: center;
       padding: 8px 12px;
       font-size: 11px;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .card-id {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      color: var(--accent-tech);
-    }
-    .card-pillars {
-      display: flex;
-      gap: 4px;
+      color: #818cf8;
     }
     .mini-tag {
       font-size: 9.5px;
       font-weight: 600;
       color: #cbd5e1;
-      background: rgba(255,255,255,0.05);
-      padding: 2px 6px;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 7px;
       border-radius: 4px;
     }
 
     .card-canvas {
       background: var(--card-canvas);
-      height: 142px;
+      height: 152px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px;
+      padding: 10px 14px;
       cursor: pointer;
       position: relative;
-      transition: background 0.2s;
+      overflow: hidden;
     }
     .card-canvas svg {
       width: 100%;
       height: 100%;
-      max-width: 285px;
-      max-height: 115px;
+      max-width: 295px;
+      max-height: 128px;
+      overflow: visible;
     }
     .try-header-hint {
       position: absolute;
@@ -441,10 +452,11 @@
       right: 8px;
       font-size: 9.5px;
       font-weight: 600;
-      color: var(--accent-consult);
-      background: rgba(12, 14, 20, 0.88);
-      padding: 2px 6px;
-      border-radius: 4px;
+      color: #38bdf8;
+      background: rgba(11, 13, 20, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 2px 7px;
+      border-radius: 5px;
       opacity: 0;
       transition: opacity 0.15s;
       pointer-events: none;
@@ -493,40 +505,40 @@
     }
     .btn-act:hover { background: var(--surface-3); color: #fff; }
     .btn-copy {
-      background: rgba(99, 102, 241, 0.16);
-      border-color: rgba(99, 102, 241, 0.35);
+      background: rgba(99, 102, 241, 0.18);
+      border-color: rgba(99, 102, 241, 0.4);
       color: #c7d2fe;
     }
-    .btn-copy:hover { background: var(--accent-tech); color: #fff; }
+    .btn-copy:hover { background: var(--accent-1); color: #fff; }
     .btn-wa {
-      background: rgba(16, 185, 129, 0.14);
-      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.38);
       color: #6ee7b7;
     }
     .btn-wa:hover { background: #10b981; color: #052e16; }
     .btn-poll.active {
-      background: var(--accent-consult);
+      background: var(--accent-2);
       color: #042f2e;
-      border-color: var(--accent-consult);
+      border-color: var(--accent-2);
       font-weight: 700;
     }
 
-    /* Floating WhatsApp Team Poll Dock */
+    /* Floating WhatsApp Poll Dock */
     .poll-dock {
       position: fixed;
       bottom: 18px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 120;
-      background: rgba(14, 16, 25, 0.96);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(20, 184, 166, 0.45);
+      background: rgba(12, 15, 24, 0.96);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(20, 184, 166, 0.5);
       border-radius: 999px;
       padding: 8px 18px;
       display: flex;
       align-items: center;
       gap: 14px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
     }
     .poll-slots { display: flex; align-items: center; gap: 8px; }
     .poll-slot {
@@ -534,7 +546,7 @@
       height: 34px;
       border-radius: 8px;
       background: var(--surface-2);
-      border: 1px dashed rgba(255,255,255,0.2);
+      border: 1px dashed rgba(255,255,255,0.22);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -544,11 +556,11 @@
     }
     .poll-slot.filled {
       border-style: solid;
-      border-color: var(--accent-consult);
+      border-color: var(--accent-2);
       background: #08090f;
     }
     .btn-poll-generate {
-      background: linear-gradient(135deg, #14b8a6, #0d9488);
+      background: linear-gradient(135deg, #14b8a6, #06b6d4);
       color: #042f2e;
       font-weight: 800;
       font-size: 12px;
@@ -569,7 +581,7 @@
       font-size: 13px;
       padding: 12px 20px;
       border-radius: 10px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
       transform: translateY(30px);
       opacity: 0;
       pointer-events: none;
@@ -580,15 +592,36 @@
 </head>
 <body>
 
+  <!-- GLOBAL SHARED SVG 3D FILTERS (Volumetric Lighting, Ambient Glow, Deep 3D Cast Shadows) -->
+  <svg width="0" height="0" style="position:absolute;pointer-events:none;">
+    <defs>
+      <filter id="shadow3d" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.65"/>
+        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.45"/>
+      </filter>
+      <filter id="glow3d" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="5" result="blur"/>
+        <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000000" flood-opacity="0.6"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <filter id="softCrease" x="-25%" y="-25%" width="150%" height="150%">
+        <feDropShadow dx="-2" dy="5" stdDeviation="4" flood-color="#020308" flood-opacity="0.72"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- LIVE WEBSITE NAVBAR & APP ICON TESTER -->
   <div class="live-context-bar">
     <div class="context-inner">
       <div class="sim-label">
         <span class="sim-dot"></span>
-        <span>Live Stebup Header Tester</span>
+        <span>Live 3D Header Preview</span>
       </div>
 
-      <div class="mock-navbar" title="Click any of the 50 logos below to preview it inside the Stebup navbar">
+      <div class="mock-navbar" title="Click any 3D logo below to test it inside the live Stebup navbar">
         <div class="mock-nav-brand" id="liveNavbarLogo"></div>
         <div class="mock-nav-links">
           <span>Home</span>
@@ -602,10 +635,10 @@
       <div class="mini-mocks">
         <div class="mini-mock-item">
           <div class="app-squircle" id="liveAppIcon"></div>
-          <span>App Icon</span>
+          <span>3D App Icon</span>
         </div>
         <div class="mini-mock-item">
-          <div style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;" id="liveFavicon"></div>
+          <div style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;" id="liveFavicon"></div>
           <span>Favicon</span>
         </div>
       </div>
@@ -613,79 +646,79 @@
   </div>
 
   <div class="container">
-    <!-- HEADER -->
+    <!-- STUDIO HEADER -->
     <div class="studio-header">
       <div class="studio-title-group">
-        <h1>Stebup — Top 50 Unique Logos (Tech • Consulting • HR • AI)</h1>
+        <h1>Stebup — 50 Modern 3D Tech, AI, HR &amp; Consulting Sculptures</h1>
         <p class="studio-subtitle">
-          Curated specifically for what Stebup offers: <strong>Software Technology, Strategic Consulting, HR &amp; Talent Staffing, and AI Intelligence</strong>. Every concept is engineered to be effortless, memorable, and iconic—combining the human element of HR, the directional clarity of Consulting, the precision of Tech, and the spark of AI.
+          Zero flat 2D boxes. Every mark is rendered with <strong>3D Volumetric Tubes, Copilot-Style Folded Glass Ribbons, VisionOS Frosted Lenses, Specular Studio Rim-Lighting, and Deep Cast Shadows</strong>—uniting <strong>Tech, Consulting, HR Talent, and AI Intelligence</strong>.
         </p>
         <div class="pillar-badges">
-          <span class="pillar-pill"><span class="p-dot" style="background:#6366f1;"></span>Tech &amp; Engineering (Precision Geometry)</span>
-          <span class="pillar-pill"><span class="p-dot" style="background:#14b8a6;"></span>Consulting (North-East Direction &amp; Bridge)</span>
-          <span class="pillar-pill"><span class="p-dot" style="background:#f59e0b;"></span>HR &amp; Talent (Human Node &amp; Connection)</span>
-          <span class="pillar-pill"><span class="p-dot" style="background:#ec4899;"></span>AI Intelligence (4-Point Spark ✦ &amp; Neural Core)</span>
+          <span class="pillar-pill">✨ Copilot-Style 3D Folded Ribbons</span>
+          <span class="pillar-pill">🔮 Spline 3D Volumetric Tubes &amp; Knots</span>
+          <span class="pillar-pill">🧊 VisionOS Frosted 3D Glassmorphism</span>
+          <span class="pillar-pill">🧠 Siri/OpenAI 3D Neural Orbs</span>
         </div>
       </div>
     </div>
 
-    <!-- INTERACTIVE CO-CREATION LAB -->
+    <!-- INTERACTIVE 3D STUDIO & WORDMARK MIXER -->
     <div class="co-creation-lab">
       <div class="lab-top-bar">
         <div class="lab-title">
-          <span class="lab-badge">Live Customizer</span>
-          <span>Remix Any Icon + Custom "Stebup" Wordmark (Tech • Consulting • HR • AI)</span>
+          <span class="lab-badge">3D Live Studio</span>
+          <span>Interactive 3D Sculpture &amp; Wordmark Customizer</span>
         </div>
-        <span style="font-size:12px;color:var(--text-muted);">Combine any of the 50 symbols with custom wordmark treatments for the letter <strong>"b"</strong></span>
+        <span style="font-size:12px;color:var(--text-muted);">Rotate 3D sculptures, switch fonts, and customize how the 3D mark pairs with <strong>stebup</strong></span>
       </div>
 
       <div class="lab-grid">
         <div class="lab-stage">
           <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);">
-            <span id="customRecipeLabel">Outfit • AI-Spark "b" • Icon #01</span>
-            <span style="color:var(--accent-consult);cursor:pointer;" onclick="applyCustomToNavbar()">↻ Test in Website Navbar</span>
+            <span id="customRecipeLabel">Outfit • 3D Sculpture #01 • Specular Glass Wordmark</span>
+            <span style="color:#38bdf8;cursor:pointer;" onclick="applyCustomToNavbar()">↻ Mount in Live Navbar</span>
           </div>
           <div class="lab-stage-center" id="customBuilderStage"></div>
           <div class="lab-stage-actions">
-            <button class="btn-act btn-copy" style="padding:7px 14px;" onclick="copyCustomLogoPNG()">📋 Copy Custom PNG for WhatsApp</button>
+            <button class="btn-act btn-copy" style="padding:7px 14px;" onclick="copyCustomLogoPNG()">📋 Copy 3D PNG for WhatsApp</button>
             <button class="btn-act btn-wa" style="padding:7px 14px;" onclick="shareCustomWhatsApp()">💬 Share on WhatsApp</button>
-            <button class="btn-act" style="padding:7px 12px;" onclick="addCustomToPoll()">+ Add to Poll</button>
+            <button class="btn-act" style="padding:7px 12px;" onclick="addCustomToPoll()">+ Add 3D Remix to Poll</button>
           </div>
         </div>
 
         <div class="lab-controls">
           <div class="control-box">
-            <label>1. Font Family</label>
+            <label>1. Tech Font Family</label>
             <div class="chip-group" id="fontChips"></div>
           </div>
 
           <div class="control-box">
-            <label>2. Wordmark Hook (HR / AI / Consulting / B-Twist)</label>
+            <label>2. 3D Wordmark Styling</label>
             <div class="chip-group" id="bTwistChips"></div>
           </div>
 
           <div class="control-box">
-            <label>3. Case &amp; Lockup Mode</label>
+            <label>3. Case &amp; Lockup</label>
             <div class="chip-group" id="caseChips"></div>
             <div style="margin-top:8px;">
-              <label>Symbol Pairing</label>
+              <label>3D Mark Pairing</label>
               <div class="chip-group" id="layoutChips"></div>
             </div>
           </div>
 
           <div class="control-box">
-            <label>4. Adjust Symbol &amp; Spacing</label>
+            <label>4. 3D Sculpture &amp; Perspective</label>
             <div class="slider-row">
-              <span>Icon # (1-50)</span>
+              <span>3D Icon #</span>
               <input type="range" id="iconIdxSlider" min="1" max="50" value="1" oninput="renderCustomBuilder()" />
             </div>
             <div class="slider-row">
-              <span>Tracking</span>
-              <input type="range" id="trackSlider" min="-6" max="14" value="-2" oninput="renderCustomBuilder()" />
+              <span>3D Spin°</span>
+              <input type="range" id="rotSlider" min="-35" max="35" value="0" oninput="renderCustomBuilder()" />
             </div>
             <div class="slider-row">
-              <span>Slant</span>
-              <input type="range" id="slantSlider" min="-12" max="0" value="0" oninput="renderCustomBuilder()" />
+              <span>Tracking</span>
+              <input type="range" id="trackSlider" min="-5" max="12" value="-2" oninput="renderCustomBuilder()" />
             </div>
           </div>
         </div>
@@ -695,34 +728,34 @@
     <!-- TOOLBAR -->
     <div class="toolbar">
       <div class="cat-tabs" id="categoryTabs">
-        <button class="cat-tab active" data-cat="all">All 50 Best Examples</button>
-        <button class="cat-tab" data-cat="human-ai">01. Human (HR) + AI Synergy (10)</button>
-        <button class="cat-tab" data-cat="four-pillar">02. 4-Pillar Nexus: Tech•Consult•HR•AI (10)</button>
-        <button class="cat-tab" data-cat="consulting">03. Consulting &amp; Strategic Ascent (10)</button>
-        <button class="cat-tab" data-cat="iconic">04. Minimalist S &amp; b Icons (10)</button>
-        <button class="cat-tab" data-cat="wordmark">05. Pure Signature Wordmarks (10)</button>
+        <button class="cat-tab active" data-cat="all">All 50 3D Sculptures</button>
+        <button class="cat-tab" data-cat="ribbon3d">01. Copilot 3D Folded Ribbons (10)</button>
+        <button class="cat-tab" data-cat="tube3d">02. Spline 3D Volumetric Tubes &amp; Knots (10)</button>
+        <button class="cat-tab" data-cat="glass3d">03. VisionOS 3D Frosted Glass Lenses (10)</button>
+        <button class="cat-tab" data-cat="orb3d">04. 3D AI Neural Orbs &amp; Energy Fields (10)</button>
+        <button class="cat-tab" data-cat="word3d">05. 3D Integrated Wordmark Sculptures (10)</button>
       </div>
 
       <div class="right-tools">
-        <div class="palette-dots" id="paletteSwitcher" title="Switch Brand Color Palette"></div>
-        <button class="chip-btn" onclick="toggleCanvasTheme()">☀/🌙 Canvas</button>
+        <div class="palette-dots" id="paletteSwitcher" title="Switch 3D Iridescent Material Palette"></div>
+        <button class="chip-btn" onclick="toggleCanvasTheme()">☀/🌙 Studio Light</button>
         <div class="chip-group">
           <button class="chip-btn active" onclick="setCols(4, this)">4 Col</button>
           <button class="chip-btn" onclick="setCols(3, this)">3 Col</button>
           <button class="chip-btn" onclick="setCols(2, this)">2 Col</button>
         </div>
-        <input type="text" class="search-input" id="searchInput" placeholder="Filter e.g. AI, human, bridge..." oninput="renderGallery()" />
+        <input type="text" class="search-input" id="searchInput" placeholder="Search 3D ribbon, orb, helix..." oninput="renderGallery()" />
       </div>
     </div>
 
-    <!-- 50 LOGO GRID -->
+    <!-- 50 3D LOGO GRID -->
     <div class="logo-grid" id="logoGrid"></div>
   </div>
 
   <!-- WHATSAPP POLL DOCK -->
   <div class="poll-dock">
     <div style="font-size:12px;font-weight:700;color:#e2e8f0;">
-      🗳️ Team Poll Builder <span style="color:var(--accent-consult);" id="pollCountLabel">(0/4)</span>
+      🗳️ 3D Poll Builder <span style="color:#38bdf8;" id="pollCountLabel">(0/4)</span>
     </div>
     <div class="poll-slots" id="pollSlots">
       <div class="poll-slot">A</div>
@@ -730,7 +763,7 @@
       <div class="poll-slot">C</div>
       <div class="poll-slot">D</div>
     </div>
-    <button class="btn-poll-generate" onclick="copyPollComparisonPNG()">📋 Copy "A vs B vs C" Poll PNG</button>
+    <button class="btn-poll-generate" onclick="copyPollComparisonPNG()">📋 Copy "A vs B vs C" 3D Poll PNG</button>
     <button class="chip-btn" onclick="clearPoll()" style="padding:5px 8px;">Clear</button>
   </div>
 
@@ -738,516 +771,707 @@
 
   <script>
     // ============================================================================
-    // BRAND PALETTES (Representing Tech, Consulting, HR, and AI)
+    // 3D IRIDESCENT & METALLIC STUDIO MATERIAL PALETTES
     // ============================================================================
     const PALETTES = [
-      { id: 'stebup-core', name: 'Stebup Core (Indigo Tech + Teal Consulting + Amber HR)', c1: '#6366F1', c2: '#14B8A6', c3: '#F59E0B', text: '#FFFFFF' },
-      { id: 'ai-synergy', name: 'AI & Neural Synergy (Indigo + AI Magenta + Cyan)', c1: '#6366F1', c2: '#EC4899', c3: '#06B6D4', text: '#FFFFFF' },
-      { id: 'consulting-emerald', name: 'Executive Consulting (Emerald + Sky + Gold)', c1: '#10B981', c2: '#38BDF8', c3: '#F59E0B', text: '#FFFFFF' },
-      { id: 'talent-warm', name: 'Human Talent & AI (Warm Orange + Violet + Teal)', c1: '#F97316', c2: '#8B5CF6', c3: '#14B8A6', text: '#FFFFFF' },
-      { id: 'monochrome-lux', name: 'Architectural Alabaster (Talent Page Theme)', c1: '#ECECE8', c2: '#94A3B8', c3: '#6366F1', text: '#ECECE8' }
+      { id: 'copilot-aurora', name: 'Copilot Iridescent (Indigo • Cyan • Magenta • Gold)', c1: '#6366F1', c2: '#06B6D4', c3: '#EC4899', c4: '#F59E0B', dark: '#1E1B4B', text: '#FFFFFF' },
+      { id: 'stebup-emerald', name: 'Vision 3D Teal & Indigo (Indigo • Emerald • Sky • Amber)', c1: '#4F46E5', c2: '#10B981', c3: '#38BDF8', c4: '#F59E0B', dark: '#064E3B', text: '#FFFFFF' },
+      { id: 'spline-neon', name: 'Spline Ultraviolet (Violet • Fuchsia • Peach • Cyan)', c1: '#8B5CF6', c2: '#F43F5E', c3: '#FB923C', c4: '#2DD4BF', dark: '#2E1065', text: '#FFFFFF' },
+      { id: 'liquid-chrome', name: 'Apple M3 Liquid Titanium (Silver • Ice Blue • Indigo • Gold)', c1: '#E2E8F0', c2: '#38BDF8', c3: '#818CF8', c4: '#FBBF24', dark: '#0F172A', text: '#F8FAFC' },
+      { id: 'solar-flare', name: 'Warm Human + AI Gold (Amber • Rose • Violet • Teal)', c1: '#F59E0B', c2: '#EC4899', c3: '#6366F1', c4: '#14B8A6', dark: '#451A03', text: '#FFFFFF' }
     ];
     let activePalette = PALETTES[0];
     let lightCanvas = false;
 
     // ============================================================================
-    // TOP 50 UNIQUE LOGOS (TECH • CONSULTING • HR • AI)
+    // 50 MODERN 3D SCULPTURE CONCEPTS (TECH • CONSULTING • HR • AI)
     // ============================================================================
     const LOGOS = [
-      // 01. HUMAN (HR) + AI SYNERGY (1-10)
-      { id: 1, cat: 'human-ai', pillars: 'HR • AI • Tech', title: 'The AI-Crowned Human "b"', desc: 'Clean lowercase "b" topped with a human node and a 4-point AI spark inside its core.', wordStyle: 'ai-spark-b' },
-      { id: 2, cat: 'human-ai', pillars: 'HR • AI • Consult', title: 'Dual-Mind S-Bridge', desc: 'Organic human curve (HR) and precision AI spark curve interlocking into a seamless S.', wordStyle: 'b-accent' },
-      { id: 3, cat: 'human-ai', pillars: 'HR • AI • Ascent', title: 'Spark-Head Ascender', desc: 'Minimalist human silhouette stepping upward with an AI 4-point star as its cognitive crown.', wordStyle: 'human-b' },
-      { id: 4, cat: 'human-ai', pillars: 'HR • Tech • Consult', title: 'Talent-Tech Handshake S', desc: 'Two connected people/talent nodes bridging across an upward strategic S-curve.', wordStyle: 'b-accent' },
-      { id: 5, cat: 'human-ai', pillars: 'AI • HR • Tech', title: 'Negative-Space Spark "b"', desc: 'Bold geometric "b" whose inner counter is carved into a razor-sharp 4-point AI star (✦).', wordStyle: 'ai-spark-b' },
-      { id: 6, cat: 'human-ai', pillars: 'HR • AI • Consult', title: 'Human Orbiting AI Core', desc: 'Two embracing human/talent arcs orbiting a central glowing AI intelligence diamond.', wordStyle: 'b-accent' },
-      { id: 7, cat: 'human-ai', pillars: 'HR • Tech • AI', title: 'The Empowered Step Avatar', desc: 'Three ascending tech steps lifting a human + AI halo node to the summit.', wordStyle: 'step-up' },
-      { id: 8, cat: 'human-ai', pillars: 'Consult • HR • AI', title: 'Twin-Pillar Mentor Bridge', desc: 'Consultant pillar and Talent pillar connected by an upward AI spark trajectory.', wordStyle: 'human-b' },
-      { id: 9, cat: 'human-ai', pillars: 'Tech • HR • AI', title: 'Synaptic S-Person', desc: 'Continuous S-ribbon with a human circle at the base and an AI star at the apex.', wordStyle: 'ai-spark-b' },
-      { id: 10, cat: 'human-ai', pillars: 'HR • Consult • AI', title: 'Wings of Talent & AI', desc: 'Open human arms morphing into an upward northeast consulting arrow and AI spark.', wordStyle: 'b-accent' },
+      // 01. COPILOT-STYLE 3D FOLDED RIBBONS (1-10)
+      { id: 1, cat: 'ribbon3d', pillars: 'HR • AI • Tech', title: '3D Copilot Ribbon "b" + Orb', desc: 'Three flowing 3D silk ribbons folding over each other into a "b" with a 3D lit human/AI sphere.', wordStyle: '3d-glow' },
+      { id: 2, cat: 'ribbon3d', pillars: 'Tech • Consult • AI', title: '3D Liquid Ribbon S-Wave', desc: 'Two iridescent 3D ribbons twisting in perspective with deep fold shadows and a 3D AI core.', wordStyle: '3d-glow' },
+      { id: 3, cat: 'ribbon3d', pillars: 'Consult • Ascent', title: '3D Aerodynamic Wing Fold', desc: 'Sweeping 3D sculpted ribbon folding three times as it climbs northeast toward execution.', wordStyle: 'consult-3d' },
+      { id: 4, cat: 'ribbon3d', pillars: 'HR • AI Synergy', title: '3D Mobius Twist Ribbon', desc: 'Seamless 3D Mobius strip uniting Human warmth and AI intelligence in one continuous loop.', wordStyle: '3d-orb' },
+      { id: 5, cat: 'ribbon3d', pillars: 'All 4 Pillars', title: '3D 4-Petal Bloom Vortex', desc: 'Four curved 3D glass-silk petals (Tech, Consulting, HR, AI) swirling around a 3D chrome pearl.', wordStyle: 'four-3d' },
+      { id: 6, cat: 'ribbon3d', pillars: 'Slang P→B • Tech', title: '3D Hinged P→B Ribbon Flip', desc: 'Upper 3D translucent loop folding downward in perspective to lock into a glowing 3D "b".', wordStyle: '3d-glow' },
+      { id: 7, cat: 'ribbon3d', pillars: 'Consult • HR • AI', title: '3D Infinity Bridge Ribbon', desc: 'Twisted 3D silk bridge spanning two levitating 3D spheres (Consultant & Client/Talent).', wordStyle: '3d-orb' },
+      { id: 8, cat: 'ribbon3d', pillars: 'Tech • Ascent', title: '3D Helical Escalator Ribbon', desc: 'Continuous 3D ribbon spiraling upward like a futuristic architectural ramp.', wordStyle: 'consult-3d' },
+      { id: 9, cat: 'ribbon3d', pillars: 'AI • Tech', title: '3D Origami S-Prism Sails', desc: 'Curved 3D iridescent sails catching studio rim light in an S-formation.', wordStyle: '3d-glow' },
+      { id: 10, cat: 'ribbon3d', pillars: 'HR • AI • Consult', title: '3D Embrace Wave + AI Pearl', desc: 'Two sweeping 3D human-arm ribbons cradling a levitating 3D iridescent AI sphere.', wordStyle: '3d-orb' },
 
-      // 02. THE 4-PILLAR NEXUS: TECH • CONSULTING • HR • AI (11-20)
-      { id: 11, cat: 'four-pillar', pillars: 'All 4 Pillars', title: '4-Pillar S-Constellation', desc: 'Square (Tech), Arrow (Consulting), Circle (HR), and Spark (AI) linked in an S-path.', wordStyle: 'four-dots' },
-      { id: 12, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'Quad-Synergy Pinwheel', desc: 'Four geometric petals (Tech, Consulting, HR, AI) rotating around a negative-space S.', wordStyle: 'four-dots' },
-      { id: 13, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'The 4-Pillar Escalator', desc: 'Four ascending bars—topped with a human dot and AI spark—stepping up in unison.', wordStyle: 'b-accent' },
-      { id: 14, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'Tetra-Link Diamond Bridge', desc: 'Four interlocking nodes forming a strategic compass with an AI spark center.', wordStyle: 'four-dots' },
-      { id: 15, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'Bauhaus 4-Element "b"', desc: 'Lowercase "b" constructed from 4 distinct shapes: pillar, arc, human dot, and AI star.', wordStyle: 'ai-spark-b' },
-      { id: 16, cat: 'four-pillar', pillars: 'All 4 Pillars', title: '4-Vector Convergence', desc: 'Four directional streams converging into a single high-performance upward arrow.', wordStyle: 'consult-arrow' },
-      { id: 17, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'Harmonic 4-Ring Nexus', desc: 'Four interconnected rings arranged in an ascending step with a glowing AI core.', wordStyle: 'four-dots' },
-      { id: 18, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'Quad-Core S-Chip', desc: 'Minimalist silicon badge split into 4 service quadrants by a negative-space S.', wordStyle: 'b-chip' },
-      { id: 19, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'The 4-Tier Pyramid Spark', desc: 'Three foundational steps (Tech, HR, Consulting) crowned by a glowing AI apex star.', wordStyle: 'ai-spark-b' },
-      { id: 20, cat: 'four-pillar', pillars: 'All 4 Pillars', title: 'Compass of the 4 Pillars', desc: 'Asymmetric 4-point star whose northeast arm extends into a stepped consulting vector.', wordStyle: 'consult-arrow' },
+      // 02. SPLINE-STYLE 3D VOLUMETRIC TUBES & KNOTS (11-20)
+      { id: 11, cat: 'tube3d', pillars: 'HR • Tech • AI', title: '3D Volumetric Tube "b"', desc: 'True 3D shaded cylindrical tube bending in X-Y-Z depth into a "b" with a hovering 3D talent orb.', wordStyle: '3d-orb' },
+      { id: 12, cat: 'tube3d', pillars: 'HR • AI DNA', title: '3D Double-Helix S-Spiral', desc: 'Two intertwined 3D volumetric tubes (Human Talent + AI Tech) spiraling upward.', wordStyle: '3d-glow' },
+      { id: 13, cat: 'tube3d', pillars: 'All 4 Pillars', title: '3D Torus Knot Nexus', desc: 'Continuous 3D sculpted trefoil knot representing the unbreakable fusion of all 4 pillars.', wordStyle: 'four-3d' },
+      { id: 14, cat: 'tube3d', pillars: 'Ascent • Tech', title: '3D Vortex Spring Ascent', desc: '3D perspective coil expanding upward toward a glowing 3D execution apex.', wordStyle: 'consult-3d' },
+      { id: 15, cat: 'tube3d', pillars: 'Tech • Brand', title: '3D Liquid Chrome S-Tube', desc: 'Ultra-smooth 3D metallic tube sculpted into a tilted S with studio specular reflections.', wordStyle: '3d-glow' },
+      { id: 16, cat: 'tube3d', pillars: 'Consult • AI • Tech', title: '3D Gyroscope Rings + Core', desc: 'Two 3D volumetric rings orbiting at 45° angles around a central 3D lit AI sphere.', wordStyle: '3d-orb' },
+      { id: 17, cat: 'tube3d', pillars: 'Consult • Ascent', title: '3D Slingshot Orbit "b"', desc: '3D tube loop whipping around in depth to launch a glowing 3D sphere northeast.', wordStyle: 'consult-3d' },
+      { id: 18, cat: 'tube3d', pillars: 'HR • Tech', title: '3D Interlocked Torus Link', desc: 'Two thick 3D donut rings linked in 3D space (Human Talent + Technology).', wordStyle: '3d-orb' },
+      { id: 19, cat: 'tube3d', pillars: 'Tech • Slang-B', title: '3D Neon Tube "sb" Sculpture', desc: 'Continuous 3D bent tube flowing seamlessly from an "s" curve into a rising "b" loop.', wordStyle: '3d-glow' },
+      { id: 20, cat: 'tube3d', pillars: 'Tech • AI • HR', title: '3D U-Portal Lifting Orb', desc: 'Sculpted 3D horseshoe tube magnetizing a glowing 3D AI/Talent sphere upward.', wordStyle: '3d-orb' },
 
-      // 03. STRATEGIC CONSULTING & ASCENT MARKS (21-30)
-      { id: 21, cat: 'consulting', pillars: 'Consult • Tech • AI', title: 'North-Star S-Compass', desc: 'Bold geometric S pierced by a 45° northeast strategic consulting arrow.', wordStyle: 'consult-arrow' },
-      { id: 22, cat: 'consulting', pillars: 'Consult • HR • AI', title: 'Vision-to-Execution Bridge', desc: 'Sleek suspension arch connecting two human/tech nodes with an AI keystone spark.', wordStyle: 'b-accent' },
-      { id: 23, cat: 'consulting', pillars: 'Consult • Tech', title: 'Guided Trajectory "b"', desc: 'Lowercase "b" whose bowl forms a slingshot orbit launching a node northeast.', wordStyle: 'consult-arrow' },
-      { id: 24, cat: 'consulting', pillars: 'Consult • HR', title: 'Double-Chevron Advisory', desc: 'Two nested upward chevrons (Strategy + Execution) crowned with a human talent dot.', wordStyle: 'human-b' },
-      { id: 25, cat: 'consulting', pillars: 'Consult • Tech • AI', title: 'The Transformation Pivot', desc: 'Horizontal baseline pivoting 45° upward through a glowing AI transformation node.', wordStyle: 'step-up' },
-      { id: 26, cat: 'consulting', pillars: 'Consult • Tech', title: '3-Step Strategic Archway', desc: 'Architectural portal framing a 3-step ascending staircase in negative space.', wordStyle: 'b-accent' },
-      { id: 27, cat: 'consulting', pillars: 'Consult • AI', title: 'Origami Wayfinder S', desc: 'Precision folded paper-plane / S-ribbon pointing toward exponential growth.', wordStyle: 'consult-arrow' },
-      { id: 28, cat: 'consulting', pillars: 'Consult • HR • Tech', title: 'The Fulcrum Lever', desc: 'Strategic triangle fulcrum lifting a tech beam and human node upward.', wordStyle: 'b-accent' },
-      { id: 29, cat: 'consulting', pillars: 'Consult • AI • Tech', title: 'Horizon Breakthrough', desc: 'Glowing orbital arc breaking upward through a stepped architectural grid.', wordStyle: 'ai-spark-b' },
-      { id: 30, cat: 'consulting', pillars: 'Consult • Tech', title: 'Vector Step Bracket [↗]', desc: 'Clean consulting frame housing a stepped 45° northeast execution arrow.', wordStyle: 'consult-arrow' },
+      // 03. VISION-OS FROSTED 3D GLASSMORPHISM (21-30)
+      { id: 21, cat: 'glass3d', pillars: 'Tech • AI • Brand', title: 'VisionOS 3D Glass "b" Lens', desc: 'Frosted 3D glass "b" floating over a glowing gradient sphere, refracting light through its core.', wordStyle: '3d-glow' },
+      { id: 22, cat: 'glass3d', pillars: 'Ascent • Consult', title: '3D Levitating Glass Decks', desc: 'Three tilted 3D frosted glass planes rising in perspective with glowing specular rims.', wordStyle: 'consult-3d' },
+      { id: 23, cat: 'glass3d', pillars: 'AI • Tech', title: '3D Glass Ring + AI Star', desc: 'Sculpted 3D 4-point AI star suspended inside a tilted translucent 3D glass ring.', wordStyle: '3d-orb' },
+      { id: 24, cat: 'glass3d', pillars: 'Tech • Consult', title: '3D Layered S-Glass Blades', desc: 'Three overlapping 3D curved glass fins forming a volumetric S with deep drop shadows.', wordStyle: '3d-glow' },
+      { id: 25, cat: 'glass3d', pillars: 'HR • AI Synergy', title: '3D Eclipse Lens (Human + AI)', desc: 'Glowing 3D AI sphere partially eclipsed by a frosted 3D glass crescent and talent pearl.', wordStyle: '3d-orb' },
+      { id: 26, cat: 'glass3d', pillars: 'Consult • Strategy', title: '3D Glass Compass Wayfinder', desc: 'Translucent 3D diamond needle hovering over a glowing 3D horizon orb.', wordStyle: 'consult-3d' },
+      { id: 27, cat: 'glass3d', pillars: 'Tech • Ascent', title: '3D Plump Capsule Stack', desc: 'Three 3D studio-lit rounded capsules floating in an ascending S-curve.', wordStyle: '3d-glow' },
+      { id: 28, cat: 'glass3d', pillars: 'Consult • HR', title: '3D Glass Archway Bridge', desc: 'Frosted 3D arch spanning two glowing 3D spheres with a specular keystone.', wordStyle: '3d-orb' },
+      { id: 29, cat: 'glass3d', pillars: 'All 4 Pillars', title: '3D Quad-Lens Pinwheel', desc: 'Four translucent 3D glass petals overlapping at the center to create a glowing core.', wordStyle: 'four-3d' },
+      { id: 30, cat: 'glass3d', pillars: 'HR • AI', title: '3D Halo Avatar Sculpture', desc: 'Sculpted 3D human shoulder arc + 3D sphere head crowned by a tilted 3D AI halo ring.', wordStyle: '3d-orb' },
 
-      // 04. MINIMALIST ICONIC S & b MARKS (31-40)
-      { id: 31, cat: 'iconic', pillars: 'HR • AI • Slang-B', title: 'The Friendly Wink "b"', desc: 'Inspired by Careem/Airbnb: a warm lowercase "b" with a human smile curve and AI spark.', wordStyle: 'human-b' },
-      { id: 32, cat: 'iconic', pillars: 'Tech • AI', title: 'Negative-Space Star S', desc: 'Two bold interlocking S-blocks that form a hidden 4-point AI star in the center gap.', wordStyle: 'ai-spark-b' },
-      { id: 33, cat: 'iconic', pillars: 'HR • Consult', title: 'Two-Node S-Wave', desc: 'Two human dots on opposite sides of a single sweeping S-curve bridge.', wordStyle: 'b-accent' },
-      { id: 34, cat: 'iconic', pillars: 'Slang P→B • AI', title: 'Pure P→B Flip + Spark', desc: 'Ultra-minimalist P loop flipping down into a B, ignited by a 4-point AI star.', wordStyle: 'ai-spark-b' },
-      { id: 35, cat: 'iconic', pillars: 'HR • AI • Tech', title: 'Infinity Person Ascent', desc: 'Upward-tilted infinity loop topped with a glowing human talent head.', wordStyle: 'human-b' },
-      { id: 36, cat: 'iconic', pillars: 'Tech • Consult', title: '3-Pill Stepped S', desc: 'Three smooth stadium capsules offset diagonally to read as both an S and stairs.', wordStyle: 'b-accent' },
-      { id: 37, cat: 'iconic', pillars: 'HR • AI • Consult', title: 'Triad Neural S', desc: 'Three nodes (Tech, HR, Consulting) linked by a glowing AI neural S-trace.', wordStyle: 'four-dots' },
-      { id: 38, cat: 'iconic', pillars: 'Tech • AI • Ascent', title: 'U-Magnet Lifting AI Spark', desc: 'Bold U-portal elevating a 4-point AI star and human dot.', wordStyle: 'ai-spark-b' },
-      { id: 39, cat: 'iconic', pillars: 'Tech • Consult', title: 'Continuous Monoline sb↗', desc: 'Single unbroken geometric stroke forming an s, a b, and an upward arrow.', wordStyle: 'consult-arrow' },
-      { id: 40, cat: 'iconic', pillars: 'HR • Tech • AI', title: 'Pebble + Spark Stack', desc: 'Two warm organic pebbles stacked at a 45° angle with a crisp AI star.', wordStyle: 'b-accent' },
+      // 04. 3D AI NEURAL ORBS & QUANTUM ENERGY FIELDS (31-40)
+      { id: 31, cat: 'orb3d', pillars: 'AI • Tech • HR', title: '3D Siri-Style Plasma Orb S', desc: 'Luminous 3D dark-glass sphere wrapped in glowing 3D silk energy waves forming an S.', wordStyle: '3d-orb' },
+      { id: 32, cat: 'orb3d', pillars: 'AI • Consult', title: '3D Faceted Chrome AI Star', desc: 'Bevel-lit 3D 4-point AI star sculpture with concave specular facets and orbiting 3D pearls.', wordStyle: '3d-glow' },
+      { id: 33, cat: 'orb3d', pillars: 'HR • AI Synergy', title: '3D Binary Star Orbit', desc: 'Warm 3D HR Gold sphere and Cool 3D AI Indigo sphere spiraling together with 3D light trails.', wordStyle: '3d-orb' },
+      { id: 34, cat: 'orb3d', pillars: 'AI • Tech • HR', title: '3D Neural Sphere Cluster "b"', desc: 'Seven 3D lit spheres of varying depths assembling in perspective into a lowercase "b".', wordStyle: '3d-glow' },
+      { id: 35, cat: 'orb3d', pillars: 'AI • Ascent', title: '3D Sonic Wave Elevation', desc: 'Smooth 3D undulating wave surfaces rising into a glowing 3D apex pearl.', wordStyle: 'consult-3d' },
+      { id: 36, cat: 'orb3d', pillars: 'Consult • AI', title: '3D Warp-Vector Comet', desc: 'Glowing 3D sphere launching northeast with a 3D tapered iridescent tail.', wordStyle: 'consult-3d' },
+      { id: 37, cat: 'orb3d', pillars: 'HR • AI • Brand', title: '3D Pearl in Shell "b"', desc: 'Iridescent 3D pearl nestled inside two sweeping 3D curved shells forming a "b".', wordStyle: '3d-orb' },
+      { id: 38, cat: 'orb3d', pillars: 'Tech • AI • Ascent', title: '3D Gravity Funnel Launch', desc: '3D curved vortex ring propelling a studio-lit 3D sphere straight upward.', wordStyle: '3d-orb' },
+      { id: 39, cat: 'orb3d', pillars: 'All 4 Pillars', title: '3D Tetra-Sphere Fusion', desc: 'Four 3D glossy spheres (Tech, Consulting, HR, AI) fused around a central light source.', wordStyle: 'four-3d' },
+      { id: 40, cat: 'orb3d', pillars: 'AI • Consult • Tech', title: '3D Aurora Curtain S', desc: 'Vertical 3D shimmering aurora borealis waves folding into a 3D S-curve.', wordStyle: '3d-glow' },
 
-      // 05. PURE SIGNATURE ENGLISH WORDMARKS (41-50)
-      { id: 41, cat: 'wordmark', pillars: 'AI • Tech • Brand', title: 'stebup (AI-Spark Inside "b")', desc: 'Pure wordmark where the inner loop of the "b" is a glowing 4-point AI star (✦).', pureWordmark: true, wmVariant: 1 },
-      { id: 42, cat: 'wordmark', pillars: 'HR • Ascent • Brand', title: 'stebup (Human-Node "b")', desc: 'A glowing circular head above the "b" turns the letter into a person stepping up.', pureWordmark: true, wmVariant: 2 },
-      { id: 43, cat: 'wordmark', pillars: 'AI • Consult • Brand', title: 'steb✦up (Spark Bridge)', desc: 'Clean grotesque wordmark with a 4-point AI star bridging "steb" and "up".', pureWordmark: true, wmVariant: 3 },
-      { id: 44, cat: 'wordmark', pillars: 'Consult • Tech', title: 'steb↗up (Vector Trajectory)', desc: 'A 45° northeast consulting arrow launches directly out of the "b" into "up".', pureWordmark: true, wmVariant: 4 },
-      { id: 45, cat: 'wordmark', pillars: 'All 4 Pillars', title: 'Stebup (4-Pillar Underline)', desc: 'Executive wordmark underscored by 4 color-coded bars for Tech, Consulting, HR & AI.', pureWordmark: true, wmVariant: 5 },
-      { id: 46, cat: 'wordmark', pillars: 'Tech • AI • Slang-B', title: 'ste[b✦]up (AI Silicon Badge)', desc: 'The "b" and an AI spark sit inside a high-contrast rounded tech keycap.', pureWordmark: true, wmVariant: 6 },
-      { id: 47, cat: 'wordmark', pillars: 'Consult • HR', title: 'steb⌒up (Connected Bridge)', desc: 'A sweeping consulting arch connects the stem of "b" to "u" with human dots.', pureWordmark: true, wmVariant: 7 },
-      { id: 48, cat: 'wordmark', pillars: 'Ascent • Consult', title: 'steb^up (Elevated Advisory)', desc: 'The "up" is physically elevated one step higher above a strategic chevron.', pureWordmark: true, wmVariant: 8 },
-      { id: 49, cat: 'wordmark', pillars: 'Tech • AI • Executive', title: 'STEBUP (Precision AI Cut)', desc: 'Bold uppercase logotype with a 45° laser step and glowing AI star inside the B.', pureWordmark: true, wmVariant: 9 },
-      { id: 50, cat: 'wordmark', pillars: 'All 4 Pillars', title: 'stebup. (Quad-Node Period)', desc: 'Ultra-clean Silicon Valley wordmark ending with a 4-node Tech/Consult/HR/AI cluster.', pureWordmark: true, wmVariant: 10 }
+      // 05. 3D INTEGRATED WORDMARK SCULPTURES (41-50)
+      { id: 41, cat: 'word3d', pillars: '3D Ribbon Wordmark', title: 'stebup (3D Copilot Ribbon "b")', desc: 'The letter "b" inside stebup is a real 3D folded silk ribbon sculpture.', pureWordmark: true, wmVariant: 1 },
+      { id: 42, cat: 'word3d', pillars: 'HR • AI Wordmark', title: 'stebup (3D Levitating Orb "b")', desc: 'The "b" features a 3D tube loop and a 3D studio-lit sphere hovering above its stem.', pureWordmark: true, wmVariant: 2 },
+      { id: 43, cat: 'word3d', pillars: 'AI • Tech Wordmark', title: 'steb✦up (3D Bevel AI Star)', desc: 'A 3D sculpted metallic 4-point star bridges "steb" and "up" with a deep cast shadow.', pureWordmark: true, wmVariant: 3 },
+      { id: 44, cat: 'word3d', pillars: 'Glass 3D Wordmark', title: 'ste(b)up (3D Frosted Glass Lens)', desc: 'A translucent 3D glass sphere hovers over the "b" with a glowing specular rim.', pureWordmark: true, wmVariant: 4 },
+      { id: 45, cat: 'word3d', pillars: 'Consult 3D Wordmark', title: 'steb↗up (3D Swept Wing)', desc: 'A 3D aerodynamic ribbon wing launches northeast out of the "b" over "up".', pureWordmark: true, wmVariant: 5 },
+      { id: 46, cat: 'word3d', pillars: '3D Tube Wordmark', title: 'stebup (3D Torus Loop "b")', desc: 'The bowl of the "b" is a thick 3D volumetric torus ring with studio lighting.', pureWordmark: true, wmVariant: 6 },
+      { id: 47, cat: 'word3d', pillars: 'All 4 Pillars 3D', title: 'Stebup (4 Floating 3D Pearls)', desc: 'Four 3D lit spheres (Tech, Consulting, HR, AI) arc in 3D perspective above the wordmark.', pureWordmark: true, wmVariant: 7 },
+      { id: 48, cat: 'word3d', pillars: '3D Extruded Type', title: 'STEBUP (3D Metallic Relief)', desc: 'Deep 3D extruded typography with a glowing 3D "B" and top-edge specular highlight.', pureWordmark: true, wmVariant: 8 },
+      { id: 49, cat: 'word3d', pillars: 'Ascent 3D Wordmark', title: 'steb^up (3D Levitation Pad)', desc: 'The "up" levitates in 3D space above a glowing 3D perspective platform.', pureWordmark: true, wmVariant: 9 },
+      { id: 50, cat: 'word3d', pillars: 'Executive 3D Lockup', title: 'stebup (3D Plasma Orb Finale)', desc: 'Sleek wordmark paired with a 3D Siri-style multi-layered orb at the terminal point.', pureWordmark: true, wmVariant: 10 }
     ];
 
     // ============================================================================
-    // HELPER: 4-POINT AI SPARK PATH
+    // 3D VOLUMETRIC RENDERING ENGINE (Spheres, Parametric 3D Tubes, 3D Ribbons)
     // ============================================================================
-    function sparkPath(cx, cy, r) {
-      return `M ${cx} ${cy - r} Q ${cx} ${cy} ${cx + r} ${cy} Q ${cx} ${cy} ${cx} ${cy + r} Q ${cx} ${cy} ${cx - r} ${cy} Q ${cx} ${cy} ${cx} ${cy - r} Z`;
+    function defs3D(uid, p) {
+      return `
+        <defs>
+          <!-- 5-Stop Iridescent 3D Ribbon Gradient A -->
+          <linearGradient id="ribA_${uid}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="18%" stop-color="${p.c2}"/>
+            <stop offset="55%" stop-color="${p.c1}"/>
+            <stop offset="85%" stop-color="${p.dark}"/>
+            <stop offset="100%" stop-color="${p.c3}"/>
+          </linearGradient>
+          <!-- 5-Stop Iridescent 3D Ribbon Gradient B -->
+          <linearGradient id="ribB_${uid}" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="${p.dark}"/>
+            <stop offset="25%" stop-color="${p.c1}"/>
+            <stop offset="65%" stop-color="${p.c3}"/>
+            <stop offset="90%" stop-color="${p.c4}"/>
+            <stop offset="100%" stop-color="#ffffff"/>
+          </linearGradient>
+          <!-- 3D Warm Gold/HR Ribbon Gradient C -->
+          <linearGradient id="ribC_${uid}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fffbeb"/>
+            <stop offset="25%" stop-color="${p.c4}"/>
+            <stop offset="70%" stop-color="${p.c3}"/>
+            <stop offset="100%" stop-color="${p.dark}"/>
+          </linearGradient>
+          <!-- 3D Studio Lit Sphere Gradient 1 (Primary) -->
+          <radialGradient id="sph1_${uid}" cx="50%" cy="50%" r="50%" fx="28%" fy="25%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="22%" stop-color="${p.c2}"/>
+            <stop offset="65%" stop-color="${p.c1}"/>
+            <stop offset="92%" stop-color="${p.dark}"/>
+            <stop offset="100%" stop-color="${p.c3}"/>
+          </radialGradient>
+          <!-- 3D Studio Lit Sphere Gradient 2 (Warm HR/AI Orb) -->
+          <radialGradient id="sph2_${uid}" cx="50%" cy="50%" r="50%" fx="30%" fy="25%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="25%" stop-color="${p.c4}"/>
+            <stop offset="68%" stop-color="${p.c3}"/>
+            <stop offset="95%" stop-color="#1e1b4b"/>
+            <stop offset="100%" stop-color="${p.c2}"/>
+          </radialGradient>
+          <!-- Frosted 3D Glass Surface -->
+          <linearGradient id="glass_${uid}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+            <stop offset="40%" stop-color="${p.c2}" stop-opacity="0.28"/>
+            <stop offset="80%" stop-color="${p.c1}" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0.4"/>
+          </linearGradient>
+          <!-- Specular Glass Rim Stroke -->
+          <linearGradient id="rim_${uid}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+            <stop offset="50%" stop-color="${p.c2}" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0.7"/>
+          </linearGradient>
+        </defs>
+      `;
     }
 
-    // ============================================================================
-    // SVG SYMBOL GENERATOR (50 Unique Tech • Consulting • HR • AI Icons)
-    // ============================================================================
-    function getIconInnerSVG(id, c1, c2, c3, gradId) {
-      const bgCut = lightCanvas ? '#f8fafc' : '#08090f';
+    // Parametric 3D Tube Generator: Draws Z-sorted 3D shaded spheres along a 3D curve fn(t) -> {x,y,z,r,grad}
+    function renderParametric3DTube(steps, fn) {
+      const pts = [];
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        pts.push(fn(t));
+      }
+      // Sort back-to-front by Z so front segments naturally overlap back segments in 3D!
+      pts.sort((a, b) => a.z - b.z);
+      return pts.map(pt => {
+        const scale = 1 + pt.z * 0.006;
+        const r = Math.max(2, pt.r * scale);
+        return `<circle cx="${pt.x.toFixed(1)}" cy="${pt.y.toFixed(1)}" r="${r.toFixed(1)}" fill="url(#${pt.grad})"/>`;
+      }).join('');
+    }
+
+    // 3D Bevel AI Star Helper
+    function star3D(cx, cy, r, uid) {
+      const ir = r * 0.28;
+      return `
+        <g filter="url(#shadow3d)">
+          <polygon points="${cx},${cy - r} ${cx + ir},${cy - ir} ${cx},${cy} ${cx - ir},${cy - ir}" fill="url(#ribA_${uid})"/>
+          <polygon points="${cx + r},${cy} ${cx + ir},${cy + ir} ${cx},${cy} ${cx + ir},${cy - ir}" fill="url(#ribB_${uid})"/>
+          <polygon points="${cx},${cy + r} ${cx - ir},${cy + ir} ${cx},${cy} ${cx + ir},${cy + ir}" fill="url(#ribC_${uid})"/>
+          <polygon points="${cx - r},${cy} ${cx - ir},${cy - ir} ${cx},${cy} ${cx - ir},${cy + ir}" fill="url(#ribA_${uid})"/>
+          <path d="M${cx} ${cy - r} L${cx} ${cy + r} M${cx - r} ${cy} L${cx + r} ${cy}" stroke="#ffffff" stroke-width="1.2" opacity="0.7"/>
+        </g>
+      `;
+    }
+
+    function get3DIconInnerSVG(id, p, uid) {
+      const s1 = `sph1_${uid}`, s2 = `sph2_${uid}`, rA = `ribA_${uid}`, rB = `ribB_${uid}`, rC = `ribC_${uid}`, gl = `glass_${uid}`, rim = `rim_${uid}`;
+
       switch (id) {
-        // 01. HUMAN (HR) + AI SYNERGY (1-10)
-        case 1: // AI-Crowned Human 'b'
+        // ====================================================================
+        // 01. COPILOT-STYLE 3D FOLDED RIBBONS (1-10)
+        // ====================================================================
+        case 1: // 3D Copilot Ribbon 'b' + Orb
           return `
-            <circle cx="30" cy="14" r="9" fill="${c3}"/>
-            <path d="M30 28 V84 H58 A22 22 0 0 0 58 40 H30" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="${sparkPath(56, 62, 13)}" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              <path d="M22 14 C22 6 38 6 38 14 V78 C38 88 22 88 22 78 Z" fill="url(#${rA})" stroke="url(#${rim})" stroke-width="1"/>
+              <path d="M24 48 C24 34 78 30 82 56 C86 80 42 92 24 76 C36 74 64 70 62 56 C60 44 36 46 24 48 Z" fill="url(#${rB})" filter="url(#softCrease)" stroke="url(#${rim})" stroke-width="1.2"/>
+              <path d="M22 72 C34 88 74 88 80 64 C70 76 42 78 22 60 Z" fill="url(#${rC})" opacity="0.92"/>
+              <circle cx="56" cy="20" r="11" fill="url(#${s2})"/>
+            </g>
           `;
-        case 2: // Dual-Mind S-Bridge (Human + AI)
+        case 2: // 3D Liquid Ribbon S-Wave
           return `
-            <path d="M72 24 C44 10 18 32 36 50 C54 68 82 52 64 78" fill="none" stroke="${c1}" stroke-width="13" stroke-linecap="round"/>
-            <path d="M28 76 C56 90 82 68 64 50" fill="none" stroke="${c2}" stroke-width="13" stroke-linecap="round"/>
-            <circle cx="28" cy="24" r="9" fill="${c3}"/>
-            <path d="${sparkPath(74, 22, 13)}" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              <path d="M76 22 C46 4 14 20 22 44 C30 64 78 50 78 76 C78 92 40 94 20 78 C42 84 60 78 58 68 C56 56 12 60 12 36 C12 12 52 2 76 22 Z" fill="url(#${rA})" stroke="url(#${rim})" stroke-width="1.2"/>
+              <path d="M22 44 C36 58 84 48 84 74 C84 88 54 94 26 82 C52 84 66 76 64 66 C62 54 28 56 22 44 Z" fill="url(#${rB})" filter="url(#softCrease)"/>
+              <circle cx="50" cy="50" r="11" fill="url(#${s2})"/>
+            </g>
           `;
-        case 3: // Spark-Head Ascender
+        case 3: // 3D Aerodynamic Wing Fold
           return `
-            <path d="${sparkPath(58, 18, 15)}" fill="${c3}"/>
-            <path d="M20 76 Q42 42 78 36" fill="none" stroke="url(#${gradId})" stroke-width="14" stroke-linecap="round"/>
-            <path d="M36 88 L56 54 L76 88" fill="none" stroke="${c1}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+            <g filter="url(#shadow3d)">
+              <path d="M12 78 C24 52 52 38 88 14 C72 42 54 58 28 84 Z" fill="url(#${rA})" stroke="url(#${rim})" stroke-width="1"/>
+              <path d="M24 84 C40 62 64 48 90 32 C76 56 58 70 38 88 Z" fill="url(#${rB})" filter="url(#softCrease)"/>
+              <path d="M42 88 C56 72 74 62 92 52 C80 72 66 82 52 92 Z" fill="url(#${rC})" filter="url(#softCrease)"/>
+              <circle cx="30" cy="26" r="10" fill="url(#${s2})"/>
+            </g>
           `;
-        case 4: // Talent-Tech Handshake S
+        case 4: // 3D Mobius Twist Ribbon
           return `
-            <circle cx="24" cy="26" r="9" fill="${c3}"/>
-            <circle cx="76" cy="74" r="9" fill="${c2}"/>
-            <path d="M68 22 H38 A14 14 0 0 0 38 50 H62 A14 14 0 0 1 62 78 H32" fill="none" stroke="url(#${gradId})" stroke-width="14" stroke-linecap="round"/>
+            <g filter="url(#shadow3d)">
+              <path d="M18 50 C18 20 50 18 66 36 C82 54 88 30 74 20 C92 32 90 74 64 78 C42 82 32 54 18 50 Z" fill="url(#${rA})" stroke="url(#${rim})" stroke-width="1.2"/>
+              <path d="M82 50 C82 80 50 82 34 64 C18 46 12 70 26 80 C8 68 10 26 36 22 C58 18 68 46 82 50 Z" fill="url(#${rB})" filter="url(#softCrease)" stroke="url(#${rim})" stroke-width="1"/>
+              <circle cx="50" cy="50" r="10" fill="url(#${s2})"/>
+            </g>
           `;
-        case 5: // Negative-Space Spark 'b'
+        case 5: // 3D 4-Petal Bloom Vortex
           return `
-            <path d="M22 10 H40 V38 H58 A24 24 0 1 1 34 62 V88 H22 Z" fill="url(#${gradId})"/>
-            <path d="${sparkPath(56, 62, 16)}" fill="${bgCut}"/>
-            <circle cx="31" cy="10" r="6" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <path d="M50 50 C26 32 32 8 56 12 C72 14 68 38 50 50 Z" fill="url(#${rA})" stroke="url(#${rim})"/>
+              <path d="M50 50 C68 26 92 32 88 56 C86 72 62 68 50 50 Z" fill="url(#${rB})" filter="url(#softCrease)" stroke="url(#${rim})"/>
+              <path d="M50 50 C74 68 68 92 44 88 C28 86 32 62 50 50 Z" fill="url(#${rC})" filter="url(#softCrease)" stroke="url(#${rim})"/>
+              <path d="M50 50 C32 74 8 68 12 44 C14 28 38 32 50 50 Z" fill="url(#${gl})" filter="url(#softCrease)" stroke="url(#${rim})" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="11" fill="url(#${s1})"/>
+            </g>
           `;
-        case 6: // Human Orbiting AI Core
+        case 6: // 3D Hinged P->B Ribbon Flip
           return `
-            <path d="M22 64 A34 34 0 0 1 78 28" fill="none" stroke="${c1}" stroke-width="12" stroke-linecap="round"/>
-            <path d="M78 36 A34 34 0 0 1 22 72" fill="none" stroke="${c2}" stroke-width="12" stroke-linecap="round"/>
-            <path d="${sparkPath(50, 50, 17)}" fill="${c3}"/>
-            <circle cx="22" cy="44" r="7" fill="${c1}"/>
-            <circle cx="78" cy="56" r="7" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              <rect x="18" y="10" width="16" height="80" rx="8" fill="url(#${rA})" stroke="url(#${rim})"/>
+              <path d="M28 14 C68 8 82 38 48 48 C40 50 32 48 28 46 C50 42 58 24 28 24 Z" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="1.5"/>
+              <path d="M26 46 C76 40 92 78 52 88 C36 92 26 84 26 76 C56 80 68 56 26 56 Z" fill="url(#${rB})" filter="url(#softCrease)" stroke="url(#${rim})"/>
+              ${star3D(76, 24, 13, uid)}
+            </g>
           `;
-        case 7: // Empowered Step Avatar
+        case 7: // 3D Infinity Bridge Ribbon
           return `
-            <rect x="14" y="66" width="18" height="22" rx="5" fill="${c1}"/>
-            <rect x="38" y="48" width="18" height="40" rx="5" fill="url(#${gradId})"/>
-            <rect x="62" y="30" width="18" height="58" rx="5" fill="${c2}"/>
-            <circle cx="71" cy="15" r="9" fill="${c3}"/>
-            <path d="${sparkPath(30, 26, 12)}" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              <path d="M12 68 C24 26 56 26 88 68 C72 48 40 48 12 68 Z" fill="url(#${rA})" stroke="url(#${rim})"/>
+              <path d="M18 76 C38 42 64 42 84 32 C68 62 42 68 18 76 Z" fill="url(#${rB})" filter="url(#softCrease)"/>
+              <circle cx="22" cy="34" r="11" fill="url(#${s1})"/>
+              <circle cx="78" cy="24" r="13" fill="url(#${s2})"/>
+            </g>
           `;
-        case 8: // Twin-Pillar Mentor Bridge
+        case 8: // 3D Helical Escalator Ribbon
           return `
-            <rect x="20" y="34" width="16" height="54" rx="8" fill="${c1}"/>
-            <circle cx="28" cy="20" r="8" fill="${c1}"/>
-            <rect x="64" y="24" width="16" height="64" rx="8" fill="${c2}"/>
-            <path d="${sparkPath(72, 11, 10)}" fill="${c3}"/>
-            <path d="M28 56 Q50 34 72 44" fill="none" stroke="url(#${gradId})" stroke-width="10" stroke-linecap="round"/>
+            <g filter="url(#shadow3d)">
+              <path d="M14 82 C36 86 64 74 76 62 C54 64 28 70 14 82 Z" fill="url(#${rA})"/>
+              <path d="M22 60 C46 64 74 52 84 38 C60 40 36 48 22 60 Z" fill="url(#${rB})" filter="url(#softCrease)" stroke="url(#${rim})"/>
+              <path d="M32 36 C56 40 80 28 88 14 C64 16 44 24 32 36 Z" fill="url(#${rC})" filter="url(#softCrease)" stroke="url(#${rim})"/>
+              <circle cx="26" cy="20" r="9" fill="url(#${s2})"/>
+            </g>
           `;
-        case 9: // Synaptic S-Person
+        case 9: // 3D Origami S-Prism Sails
           return `
-            <path d="M68 22 H36 A14 14 0 0 0 36 50 H64 A14 14 0 0 1 64 78 H32" fill="none" stroke="url(#${gradId})" stroke-width="14" stroke-linecap="round"/>
-            <circle cx="24" cy="78" r="9" fill="${c3}"/>
-            <path d="${sparkPath(76, 22, 13)}" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              <path d="M68 10 C32 12 16 32 30 50 L68 34 Z" fill="url(#${rA})" stroke="url(#${rim})"/>
+              <path d="M30 50 C48 64 82 52 70 86 L24 66 Z" fill="url(#${rB})" filter="url(#softCrease)" stroke="url(#${rim})"/>
+              <path d="M24 38 L76 60 L32 88 C44 66 40 52 24 38 Z" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="1.5"/>
+            </g>
           `;
-        case 10: // Wings of Talent & AI
+        case 10: // 3D Embrace Wave + AI Pearl
           return `
-            <circle cx="50" cy="20" r="10" fill="${c3}"/>
-            <path d="M16 42 Q50 64 84 26" fill="none" stroke="url(#${gradId})" stroke-width="14" stroke-linecap="round"/>
-            <path d="M32 78 L50 52 L68 78" fill="none" stroke="${c1}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-            <polygon points="88,20 70,22 84,38" fill="${c2}"/>
-          `;
-
-        // 02. THE 4-PILLAR NEXUS (11-20)
-        case 11: // 4-Pillar S-Constellation
-          return `
-            <path d="M26 76 L72 56 L28 38 L74 18" fill="none" stroke="url(#${gradId})" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="16" y="66" width="18" height="18" rx="4" fill="${c1}"/>
-            <circle cx="72" cy="56" r="10" fill="${c3}"/>
-            <polygon points="28,26 16,44 40,44" fill="${c2}"/>
-            <path d="${sparkPath(74, 18, 14)}" fill="${c2}"/>
-          `;
-        case 12: // Quad-Synergy Pinwheel
-          return `
-            <path d="M50 12 A20 20 0 0 1 70 32 V50 H50 Z" fill="${c1}"/>
-            <path d="M88 50 A20 20 0 0 1 68 70 H50 V50 Z" fill="${c2}"/>
-            <path d="M50 88 A20 20 0 0 1 30 68 V50 H50 Z" fill="${c3}"/>
-            <path d="M12 50 A20 20 0 0 1 32 30 H50 V50 Z" fill="url(#${gradId})"/>
-            <path d="${sparkPath(50, 50, 12)}" fill="${bgCut}"/>
-          `;
-        case 13: // 4-Pillar Escalator
-          return `
-            <rect x="12" y="64" width="14" height="24" rx="4" fill="${c1}"/>
-            <rect x="32" y="50" width="14" height="38" rx="4" fill="${c2}"/>
-            <rect x="52" y="36" width="14" height="52" rx="4" fill="${c3}"/>
-            <rect x="72" y="22" width="14" height="66" rx="4" fill="url(#${gradId})"/>
-            <path d="${sparkPath(79, 11, 10)}" fill="${c2}"/>
-          `;
-        case 14: // Tetra-Link Diamond Bridge
-          return `
-            <line x1="50" y1="16" x2="84" y2="50" stroke="${c2}" stroke-width="10"/>
-            <line x1="84" y1="50" x2="50" y2="84" stroke="${c1}" stroke-width="10"/>
-            <line x1="50" y1="84" x2="16" y2="50" stroke="${c1}" stroke-width="10"/>
-            <line x1="16" y1="50" x2="50" y2="16" stroke="${c2}" stroke-width="10"/>
-            <circle cx="50" cy="16" r="9" fill="${c3}"/>
-            <circle cx="84" cy="50" r="9" fill="${c2}"/>
-            <circle cx="50" cy="84" r="9" fill="${c1}"/>
-            <circle cx="16" cy="50" r="9" fill="${c3}"/>
-            <path d="${sparkPath(50, 50, 15)}" fill="${c2}"/>
-          `;
-        case 15: // Bauhaus 4-Element 'b'
-          return `
-            <rect x="20" y="26" width="16" height="62" rx="5" fill="${c1}"/>
-            <circle cx="28" cy="14" r="8" fill="${c3}"/>
-            <path d="M40 44 H58 A22 22 0 0 1 58 88 H40 Z" fill="url(#${gradId})"/>
-            <path d="${sparkPath(68, 24, 13)}" fill="${c2}"/>
-          `;
-        case 16: // 4-Vector Convergence
-          return `
-            <path d="M14 82 L50 46 M14 58 L50 46 M38 86 L50 46" stroke="${c1}" stroke-width="8" stroke-linecap="round"/>
-            <path d="M50 46 L84 16" stroke="${c2}" stroke-width="14" stroke-linecap="round"/>
-            <polygon points="88,12 64,16 84,36" fill="${c2}"/>
-            <circle cx="50" cy="46" r="10" fill="${c3}"/>
-          `;
-        case 17: // Harmonic 4-Ring Nexus
-          return `
-            <circle cx="34" cy="64" r="16" fill="none" stroke="${c1}" stroke-width="9"/>
-            <circle cx="66" cy="64" r="16" fill="none" stroke="${c3}" stroke-width="9"/>
-            <circle cx="34" cy="36" r="16" fill="none" stroke="${c2}" stroke-width="9"/>
-            <circle cx="66" cy="36" r="16" fill="none" stroke="url(#${gradId})" stroke-width="9"/>
-            <path d="${sparkPath(66, 36, 10)}" fill="${c2}"/>
-          `;
-        case 18: // Quad-Core S-Chip
-          return `
-            <rect x="14" y="14" width="32" height="32" rx="8" fill="${c1}"/>
-            <rect x="54" y="14" width="32" height="32" rx="8" fill="${c2}"/>
-            <rect x="14" y="54" width="32" height="32" rx="8" fill="${c3}"/>
-            <rect x="54" y="54" width="32" height="32" rx="8" fill="url(#${gradId})"/>
-            <path d="${sparkPath(50, 50, 14)}" fill="#fff"/>
-          `;
-        case 19: // 4-Tier Pyramid Spark
-          return `
-            <rect x="14" y="72" width="72" height="14" rx="5" fill="${c1}"/>
-            <rect x="24" y="52" width="52" height="14" rx="5" fill="url(#${gradId})"/>
-            <rect x="34" y="32" width="32" height="14" rx="5" fill="${c2}"/>
-            <path d="${sparkPath(50, 14, 14)}" fill="${c3}"/>
-          `;
-        case 20: // Compass of the 4 Pillars
-          return `
-            <polygon points="50,10 62,38 92,50 62,62 50,90 38,62 8,50 38,38" fill="url(#${gradId})"/>
-            <path d="M50 50 L84 16" stroke="${c3}" stroke-width="10" stroke-linecap="round"/>
-            <circle cx="84" cy="16" r="7" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <path d="M14 48 C14 82 64 94 86 58 C66 76 34 70 28 42 Z" fill="url(#${rA})" stroke="url(#${rim})"/>
+              <path d="M24 32 C38 72 78 68 88 30 C74 54 46 52 24 32 Z" fill="url(#${rB})" filter="url(#softCrease)" stroke="url(#${rim})"/>
+              <circle cx="54" cy="24" r="14" fill="url(#${s2})"/>
+            </g>
           `;
 
-        // 03. STRATEGIC CONSULTING & ASCENT MARKS (21-30)
-        case 21: // North-Star S-Compass
+        // ====================================================================
+        // 02. SPLINE-STYLE 3D VOLUMETRIC TUBES & KNOTS (11-20)
+        // ====================================================================
+        case 11: // 3D Volumetric Tube 'b'
           return `
-            <path d="M68 20 H34 A15 15 0 0 0 34 50 H66 A15 15 0 0 1 66 80 H28" fill="none" stroke="${c1}" stroke-width="13" stroke-linecap="round"/>
-            <path d="M22 78 L80 20" stroke="${c2}" stroke-width="10" stroke-linecap="round"/>
-            <polygon points="86,14 64,18 82,36" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(34, t => {
+                if (t < 0.42) {
+                  const u = t / 0.42;
+                  return { x: 28, y: 16 + u * 66, z: (1 - u) * 15, r: 9.5, grad: s1 };
+                } else {
+                  const a = ((t - 0.42) / 0.58) * Math.PI * 1.85 - Math.PI * 0.45;
+                  return { x: 52 + Math.cos(a) * 24, y: 62 + Math.sin(a) * 20, z: Math.sin(a) * 25, r: 10, grad: s1 };
+                }
+              })}
+              <circle cx="64" cy="20" r="12" fill="url(#${s2})"/>
+            </g>
           `;
-        case 22: // Vision-to-Execution Bridge
+        case 12: // 3D Double-Helix S-Spiral (Human + AI DNA)
           return `
-            <path d="M12 72 Q50 22 88 72" fill="none" stroke="url(#${gradId})" stroke-width="14" stroke-linecap="round"/>
-            <circle cx="16" cy="74" r="9" fill="${c1}"/>
-            <circle cx="84" cy="74" r="9" fill="${c2}"/>
-            <path d="${sparkPath(50, 26, 15)}" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(36, t => {
+                const isB = t > 0.5;
+                const u = isB ? (t - 0.5) * 2 : t * 2;
+                const phase = u * Math.PI * 2 + (isB ? Math.PI : 0);
+                return {
+                  x: 50 + Math.sin(phase) * 26,
+                  y: 84 - u * 68,
+                  z: Math.cos(phase) * 30,
+                  r: 8.5,
+                  grad: isB ? s2 : s1
+                };
+              })}
+            </g>
           `;
-        case 23: // Guided Trajectory 'b'
+        case 13: // 3D Torus Knot Nexus (4-Pillar Fusion)
           return `
-            <path d="M24 14 V84 H56 A20 20 0 0 0 56 44 H24" fill="none" stroke="${c1}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M36 64 L82 18" stroke="${c2}" stroke-width="10" stroke-linecap="round"/>
-            <polygon points="88,12 66,16 84,34" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(44, t => {
+                const a = t * Math.PI * 2;
+                const r = 22 + 10 * Math.cos(3 * a);
+                return {
+                  x: 50 + r * Math.cos(2 * a),
+                  y: 50 + r * Math.sin(2 * a),
+                  z: 25 * Math.sin(3 * a),
+                  r: 7.5,
+                  grad: (Math.sin(3 * a) > 0) ? s2 : s1
+                };
+              })}
+            </g>
           `;
-        case 24: // Double-Chevron Advisory
+        case 14: // 3D Vortex Spring Ascent
           return `
-            <path d="M18 82 L50 52 L82 82" fill="none" stroke="${c1}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M18 56 L50 26 L82 56" fill="none" stroke="${c2}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="50" cy="12" r="8" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(38, t => {
+                const a = t * Math.PI * 3.5;
+                const rad = 12 + t * 22;
+                return {
+                  x: 46 + Math.cos(a) * rad,
+                  y: 82 - t * 64 + Math.sin(a) * (rad * 0.35),
+                  z: Math.sin(a) * 30,
+                  r: 6 + t * 5,
+                  grad: t > 0.75 ? s2 : s1
+                };
+              })}
+            </g>
           `;
-        case 25: // Transformation Pivot
+        case 15: // 3D Liquid Chrome S-Tube
           return `
-            <path d="M12 72 H48 L84 20" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="48" cy="72" r="10" fill="${c3}"/>
-            <path d="${sparkPath(84, 20, 13)}" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(36, t => {
+                const a = (t - 0.5) * Math.PI * 2.1;
+                return {
+                  x: 50 + Math.sin(a) * 26,
+                  y: 50 - (t - 0.5) * 68,
+                  z: Math.cos(a) * 28,
+                  r: 10.5,
+                  grad: s1
+                };
+              })}
+              ${star3D(78, 22, 12, uid)}
+            </g>
           `;
-        case 26: // 3-Step Strategic Archway
+        case 16: // 3D Gyroscope Rings + Core
           return `
-            <path d="M16 88 V40 A34 34 0 0 1 84 40 V88 H64 V68 H48 V50 H32 V88 Z" fill="url(#${gradId})"/>
-            <circle cx="50" cy="24" r="6" fill="#fff"/>
+            <g filter="url(#shadow3d)">
+              <ellipse cx="50" cy="50" rx="40" ry="16" transform="rotate(-32 50 50)" fill="none" stroke="url(#${rA})" stroke-width="10"/>
+              <ellipse cx="50" cy="50" rx="40" ry="16" transform="rotate(32 50 50)" fill="none" stroke="url(#${rB})" stroke-width="10" filter="url(#softCrease)"/>
+              <circle cx="50" cy="50" r="15" fill="url(#${s2})"/>
+            </g>
           `;
-        case 27: // Origami Wayfinder S
+        case 17: // 3D Slingshot Orbit 'b'
           return `
-            <polygon points="14,76 88,14 58,56" fill="${c2}"/>
-            <polygon points="14,76 58,56 48,88" fill="${c1}"/>
-            <circle cx="84" cy="16" r="6" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(32, t => {
+                const a = t * Math.PI * 1.75;
+                return {
+                  x: 44 + Math.cos(a) * 26 + (t > 0.7 ? (t - 0.7) * 90 : 0),
+                  y: 56 + Math.sin(a) * 24 - (t > 0.7 ? (t - 0.7) * 120 : 0),
+                  z: t * 30,
+                  r: 7 + t * 4,
+                  grad: t > 0.72 ? s2 : s1
+                };
+              })}
+            </g>
           `;
-        case 28: // The Fulcrum Lever
+        case 18: // 3D Interlocked Torus Link
           return `
-            <polygon points="50,56 30,86 70,86" fill="${c1}"/>
-            <line x1="16" y1="62" x2="84" y2="28" stroke="${c2}" stroke-width="13" stroke-linecap="round"/>
-            <circle cx="80" cy="16" r="9" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <circle cx="38" cy="54" r="22" fill="none" stroke="url(#${rA})" stroke-width="13"/>
+              <circle cx="62" cy="44" r="22" fill="none" stroke="url(#${rB})" stroke-width="13" filter="url(#softCrease)"/>
+              <path d="M52 36 A22 22 0 0 1 60 54" fill="none" stroke="url(#${rA})" stroke-width="13"/>
+            </g>
           `;
-        case 29: // Horizon Breakthrough
+        case 19: // 3D Neon Tube 'sb' Sculpture
           return `
-            <path d="M14 68 A38 38 0 0 1 86 68" fill="none" stroke="${c1}" stroke-width="12" stroke-linecap="round"/>
-            <path d="M28 84 L74 22" stroke="${c2}" stroke-width="13" stroke-linecap="round"/>
-            <path d="${sparkPath(76, 20, 14)}" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(38, t => {
+                const x = 18 + t * 64;
+                const y = 52 + Math.sin(t * Math.PI * 2.5) * 26;
+                return { x, y, z: Math.cos(t * Math.PI * 2) * 25, r: 9, grad: t > 0.5 ? s2 : s1 };
+              })}
+            </g>
           `;
-        case 30: // Vector Step Bracket [↗]
+        case 20: // 3D U-Portal Lifting Orb
           return `
-            <path d="M36 16 H16 V84 H36" fill="none" stroke="${c1}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M36 68 H56 V48 H76 V24" fill="none" stroke="${c2}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-            <polygon points="76,12 60,28 92,28" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              ${renderParametric3DTube(30, t => {
+                const a = Math.PI * 0.1 + t * Math.PI * 0.8;
+                return {
+                  x: 50 - Math.cos(a) * 28,
+                  y: 44 + Math.sin(a) * 32,
+                  z: Math.sin(a * 2) * 20,
+                  r: 10,
+                  grad: s1
+                };
+              })}
+              <circle cx="50" cy="24" r="15" fill="url(#${s2})"/>
+            </g>
           `;
 
-        // 04. MINIMALIST ICONIC S & b MARKS (31-40)
-        case 31: // Friendly Wink 'b'
+        // ====================================================================
+        // 03. VISION-OS FROSTED 3D GLASSMORPHISM (21-30)
+        // ====================================================================
+        case 21: // VisionOS 3D Glass 'b' Lens
           return `
-            <path d="M24 14 V62" stroke="${c1}" stroke-width="15" stroke-linecap="round"/>
-            <path d="M24 62 Q52 94 78 58" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round"/>
-            <circle cx="52" cy="48" r="8" fill="${c3}"/>
-            <path d="${sparkPath(74, 28, 13)}" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              <circle cx="62" cy="40" r="24" fill="url(#${s2})"/>
+              <path d="M22 12 H40 V38 H56 A24 24 0 1 1 32 62 V86 H22 Z" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2" backdrop-filter="blur(10px)"/>
+              <circle cx="54" cy="62" r="10" fill="url(#${s1})"/>
+            </g>
           `;
-        case 32: // Negative-Space Star S
+        case 22: // 3D Levitating Glass Decks
           return `
-            <rect x="20" y="14" width="60" height="32" rx="16" fill="${c1}"/>
-            <rect x="20" y="54" width="60" height="32" rx="16" fill="${c2}"/>
-            <path d="${sparkPath(50, 50, 18)}" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <ellipse cx="34" cy="72" rx="24" ry="11" transform="rotate(-18 34 72)" fill="url(#${rA})"/>
+              <ellipse cx="50" cy="50" rx="26" ry="12" transform="rotate(-18 50 50)" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+              <ellipse cx="66" cy="28" rx="24" ry="11" transform="rotate(-18 66 28)" fill="url(#${rB})" stroke="url(#${rim})" stroke-width="1.5"/>
+              <circle cx="68" cy="18" r="8" fill="url(#${s2})"/>
+            </g>
           `;
-        case 33: // Two-Node S-Wave
+        case 23: // 3D Glass Ring + AI Star
           return `
-            <path d="M20 74 C20 34 80 66 80 26" fill="none" stroke="url(#${gradId})" stroke-width="16" stroke-linecap="round"/>
-            <circle cx="28" cy="30" r="11" fill="${c3}"/>
-            <circle cx="72" cy="70" r="11" fill="${c2}"/>
+            <g filter="url(#shadow3d)">
+              ${star3D(50, 50, 32, uid)}
+              <ellipse cx="50" cy="50" rx="40" ry="18" transform="rotate(-28 50 50)" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2.5"/>
+            </g>
           `;
-        case 34: // Pure P->B Flip + Spark
+        case 24: // 3D Layered S-Glass Blades
           return `
-            <path d="M26 14 V86" stroke="${c1}" stroke-width="15" stroke-linecap="round"/>
-            <path d="M26 48 H58 A19 19 0 0 1 58 86 H26" fill="none" stroke="url(#${gradId})" stroke-width="15" stroke-linecap="round"/>
-            <path d="${sparkPath(62, 26, 15)}" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <rect x="30" y="14" width="54" height="22" rx="11" transform="rotate(-10 57 25)" fill="url(#${rA})" stroke="url(#${rim})"/>
+              <rect x="20" y="39" width="58" height="22" rx="11" transform="rotate(-10 49 50)" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+              <rect x="14" y="64" width="54" height="22" rx="11" transform="rotate(-10 41 75)" fill="url(#${rB})" stroke="url(#${rim})"/>
+            </g>
           `;
-        case 35: // Infinity Person Ascent
+        case 25: // 3D Eclipse Lens (Human + AI)
           return `
-            <path d="M28 66 C10 66 10 38 28 38 C46 38 54 66 72 66 C90 66 90 38 72 38 C54 38 46 66 28 66 Z" transform="rotate(-22 50 52)" fill="none" stroke="url(#${gradId})" stroke-width="13"/>
-            <circle cx="50" cy="16" r="10" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <circle cx="58" cy="44" r="26" fill="url(#${s2})"/>
+              <circle cx="38" cy="56" r="26" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2.2"/>
+              <circle cx="26" cy="24" r="9" fill="url(#${s1})"/>
+            </g>
           `;
-        case 36: // 3-Pill Stepped S
+        case 26: // 3D Glass Compass Wayfinder
           return `
-            <rect x="36" y="14" width="48" height="18" rx="9" fill="${c2}"/>
-            <rect x="26" y="41" width="48" height="18" rx="9" fill="url(#${gradId})"/>
-            <rect x="16" y="68" width="48" height="18" rx="9" fill="${c1}"/>
+            <g filter="url(#shadow3d)">
+              <circle cx="44" cy="56" r="28" fill="url(#${s1})"/>
+              <polygon points="86,14 34,42 50,50 58,66" fill="url(#${rC})" stroke="#fff" stroke-width="1"/>
+              <polygon points="16,84 66,56 50,50 42,34" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+            </g>
           `;
-        case 37: // Triad Neural S
+        case 27: // 3D Plump Capsule Stack
           return `
-            <path d="M70 22 L30 50 L70 78" fill="none" stroke="url(#${gradId})" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="70" cy="22" r="11" fill="${c2}"/>
-            <circle cx="30" cy="50" r="11" fill="${c3}"/>
-            <circle cx="70" cy="78" r="11" fill="${c1}"/>
+            <g filter="url(#shadow3d)">
+              <rect x="12" y="62" width="46" height="22" rx="11" fill="url(#${s1})"/>
+              <rect x="26" y="38" width="48" height="22" rx="11" fill="url(#${s2})"/>
+              <rect x="42" y="14" width="46" height="22" rx="11" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+            </g>
           `;
-        case 38: // U-Magnet Lifting AI Spark
+        case 28: // 3D Glass Archway Bridge
           return `
-            <path d="M22 34 V58 A28 28 0 0 0 78 58 V34" fill="none" stroke="url(#${gradId})" stroke-width="16" stroke-linecap="round"/>
-            <path d="${sparkPath(50, 22, 16)}" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <circle cx="22" cy="70" r="14" fill="url(#${s1})"/>
+              <circle cx="78" cy="70" r="14" fill="url(#${s2})"/>
+              <path d="M16 66 C16 16 84 16 84 66 C70 36 30 36 16 66 Z" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+            </g>
           `;
-        case 39: // Continuous Monoline sb↗
+        case 29: // 3D Quad-Lens Pinwheel
           return `
-            <path d="M42 32 H22 A12 12 0 0 0 22 56 H38 A12 12 0 0 1 38 80 H18 M54 14 V80 H74 A14 14 0 0 0 74 52 H54" fill="none" stroke="url(#${gradId})" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="54" cy="14" r="6" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <circle cx="38" cy="38" r="20" fill="url(#${s1})"/>
+              <circle cx="62" cy="62" r="20" fill="url(#${s2})"/>
+              <circle cx="62" cy="38" r="20" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+              <circle cx="38" cy="62" r="20" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+            </g>
+          `;
+        case 30: // 3D Halo Avatar Sculpture
+          return `
+            <g filter="url(#shadow3d)">
+              <path d="M20 84 C20 54 80 54 80 84 Z" fill="url(#${s1})"/>
+              <circle cx="50" cy="40" r="16" fill="url(#${s2})"/>
+              <ellipse cx="50" cy="22" rx="28" ry="8" transform="rotate(-12 50 22)" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+            </g>
+          `;
+
+        // ====================================================================
+        // 04. 3D AI NEURAL ORBS & QUANTUM ENERGY FIELDS (31-40)
+        // ====================================================================
+        case 31: // 3D Siri-Style Plasma Orb S
+          return `
+            <g filter="url(#shadow3d)">
+              <circle cx="50" cy="50" r="38" fill="url(#${s1})"/>
+              <path d="M20 58 C34 20 66 80 80 42 C66 68 34 32 20 58 Z" fill="url(#${rB})" opacity="0.9"/>
+              <path d="M26 36 C48 14 52 86 74 64 C52 74 48 26 26 36 Z" fill="url(#${rC})" opacity="0.85"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="url(#${rim})" stroke-width="2"/>
+            </g>
+          `;
+        case 32: // 3D Faceted Chrome AI Star
+          return `
+            <g>
+              ${star3D(50, 50, 38, uid)}
+              <circle cx="76" cy="24" r="9" fill="url(#${s2})"/>
+              <circle cx="24" cy="76" r="7" fill="url(#${s1})"/>
+            </g>
+          `;
+        case 33: // 3D Binary Star Orbit
+          return `
+            <g filter="url(#shadow3d)">
+              <path d="M20 70 C10 30 60 10 80 30 C60 22 28 38 20 70 Z" fill="url(#${rA})"/>
+              <path d="M80 30 C90 70 40 90 20 70 C40 78 72 62 80 30 Z" fill="url(#${rB})"/>
+              <circle cx="34" cy="36" r="16" fill="url(#${s1})"/>
+              <circle cx="66" cy="64" r="18" fill="url(#${s2})"/>
+            </g>
+          `;
+        case 34: // 3D Neural Sphere Cluster 'b'
+          return `
+            <g filter="url(#shadow3d)">
+              <circle cx="28" cy="20" r="10" fill="url(#${s2})"/>
+              <circle cx="28" cy="42" r="11" fill="url(#${s1})"/>
+              <circle cx="28" cy="66" r="13" fill="url(#${s1})"/>
+              <circle cx="50" cy="46" r="12" fill="url(#${s1})"/>
+              <circle cx="70" cy="58" r="14" fill="url(#${s2})"/>
+              <circle cx="52" cy="76" r="13" fill="url(#${s1})"/>
+            </g>
+          `;
+        case 35: // 3D Sonic Wave Elevation
+          return `
+            <g filter="url(#shadow3d)">
+              <path d="M10 78 Q32 46 54 68 T90 36 L90 84 L10 84 Z" fill="url(#${rA})" opacity="0.85"/>
+              <path d="M10 84 Q38 56 62 72 T90 48 L90 88 L10 88 Z" fill="url(#${rB})" filter="url(#softCrease)"/>
+              <circle cx="76" cy="22" r="12" fill="url(#${s2})"/>
+            </g>
+          `;
+        case 36: // 3D Warp-Vector Comet
+          return `
+            <g filter="url(#shadow3d)">
+              <path d="M12 86 C28 56 48 38 78 22 C62 52 44 70 12 86 Z" fill="url(#${rA})"/>
+              <circle cx="74" cy="26" r="16" fill="url(#${s2})"/>
+            </g>
+          `;
+        case 37: // 3D Pearl in Shell 'b'
+          return `
+            <g filter="url(#shadow3d)">
+              <path d="M24 12 C38 28 38 68 24 88 C14 68 14 28 24 12 Z" fill="url(#${rA})"/>
+              <path d="M24 50 C52 26 88 44 82 70 C76 92 40 90 24 72 Z" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+              <circle cx="56" cy="62" r="14" fill="url(#${s2})"/>
+            </g>
+          `;
+        case 38: // 3D Gravity Funnel Launch
+          return `
+            <g filter="url(#shadow3d)">
+              <ellipse cx="50" cy="76" rx="36" ry="10" fill="url(#${rA})"/>
+              <ellipse cx="50" cy="56" rx="24" ry="8" fill="url(#${rB})"/>
+              <circle cx="50" cy="26" r="16" fill="url(#${s2})"/>
+            </g>
+          `;
+        case 39: // 3D Tetra-Sphere Fusion
+          return `
+            <g filter="url(#shadow3d)">
+              <circle cx="34" cy="64" r="18" fill="url(#${s1})"/>
+              <circle cx="66" cy="64" r="18" fill="url(#${s1})"/>
+              <circle cx="50" cy="36" r="18" fill="url(#${s2})"/>
+              <circle cx="50" cy="54" r="14" fill="url(#${gl})" stroke="url(#${rim})" stroke-width="2"/>
+            </g>
           `;
         case 40:
-        default: // Pebble + Spark Stack
+        default: // 3D Aurora Curtain S
           return `
-            <rect x="18" y="52" width="48" height="28" rx="14" transform="rotate(-18 42 66)" fill="${c1}"/>
-            <rect x="30" y="24" width="48" height="28" rx="14" transform="rotate(-18 54 38)" fill="${c2}"/>
-            <path d="${sparkPath(78, 66, 13)}" fill="${c3}"/>
+            <g filter="url(#shadow3d)">
+              <path d="M22 20 C44 6 56 34 78 20 V78 C56 92 44 64 22 78 Z" fill="url(#${rA})" stroke="url(#${rim})"/>
+              <path d="M32 32 C50 20 50 46 68 32 V68 C50 80 50 54 32 68 Z" fill="url(#${rB})" filter="url(#softCrease)"/>
+            </g>
           `;
       }
     }
 
     // ============================================================================
-    // PURE SIGNATURE ENGLISH WORDMARKS (IDs 41-50)
+    // 05. 3D INTEGRATED WORDMARK SCULPTURES (IDs 41-50)
     // ============================================================================
-    function buildPureWordmarkSVG(variant, p, uid) {
+    function build3DPureWordmarkSVG(variant, p, uid) {
       const txt = lightCanvas ? '#0f172a' : p.text;
-      const gId = 'pwm_' + uid;
-      const defs = `<defs><linearGradient id="${gId}" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="${p.c1}"/><stop offset="100%" stop-color="${p.c2}"/></linearGradient></defs>`;
+      const defs = defs3D(uid, p);
 
       switch (variant) {
-        case 1: // AI-Spark Inside 'b'
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="26" y="76" font-family="'Outfit', sans-serif" font-weight="900" font-size="62" letter-spacing="-2" fill="${txt}">ste<tspan fill="${p.c1}">b</tspan>up</text>
-            <path d="${sparkPath(165, 59, 9)}" fill="${p.c3}"/>
+        case 1: // stebup (3D Copilot Ribbon 'b')
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="18" y="76" font-family="'Outfit', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">ste</text>
+            <g transform="translate(116, 6) scale(0.92)">${get3DIconInnerSVG(1, p, uid)}</g>
+            <text x="202" y="76" font-family="'Outfit', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">up</text>
           </svg>`;
-        case 2: // Human-Node 'b'
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="26" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">ste<tspan fill="url(#${gId})">b</tspan>up</text>
-            <circle cx="151" cy="18" r="7.5" fill="${p.c3}"/>
+        case 2: // stebup (3D Levitating Orb 'b')
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="18" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">ste</text>
+            <g transform="translate(116, 6) scale(0.92)">${get3DIconInnerSVG(11, p, uid)}</g>
+            <text x="202" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">up</text>
           </svg>`;
-        case 3: // steb✦up (Spark Bridge)
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="20" y="74" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="56" letter-spacing="-2" fill="${txt}">ste<tspan fill="${p.c1}">b</tspan></text>
-            <path d="${sparkPath(192, 54, 16)}" fill="${p.c3}"/>
-            <text x="214" y="74" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="56" letter-spacing="-2" fill="${p.c2}">up</text>
+        case 3: // steb✦up (3D Bevel AI Star)
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="16" y="74" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="56" letter-spacing="-2" fill="${txt}">ste<tspan fill="url(#ribA_${uid})">b</tspan></text>
+            ${star3D(196, 54, 24, uid)}
+            <text x="224" y="74" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="56" letter-spacing="-2" fill="${txt}">up</text>
           </svg>`;
-        case 4: // steb↗up (Vector Trajectory)
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="18" y="74" font-family="'Outfit', sans-serif" font-weight="800" font-size="56" letter-spacing="-1.5" fill="${txt}">ste<tspan fill="${p.c1}">b</tspan><tspan fill="${p.c2}">↗</tspan>up</text>
+        case 4: // ste(b)up (3D Frosted Glass Lens)
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="24" y="74" font-family="'Outfit', sans-serif" font-weight="800" font-size="58" letter-spacing="-1.5" fill="${txt}">ste<tspan fill="url(#ribB_${uid})">b</tspan>up</text>
+            <circle cx="164" cy="56" r="32" fill="url(#glass_${uid})" stroke="url(#rim_${uid})" stroke-width="2.2" filter="url(#shadow3d)"/>
+            <circle cx="184" cy="30" r="8" fill="url(#sph2_${uid})"/>
           </svg>`;
-        case 5: // Stebup (4-Pillar Underline)
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="34" y="68" font-family="'Sora', sans-serif" font-weight="800" font-size="56" letter-spacing="-2" fill="${txt}">Ste<tspan fill="url(#${gId})">b</tspan>up</text>
-            <rect x="38" y="82" width="64" height="7" rx="3.5" fill="#6366f1"/>
-            <rect x="110" y="82" width="64" height="7" rx="3.5" fill="#14b8a6"/>
-            <rect x="182" y="82" width="64" height="7" rx="3.5" fill="#f59e0b"/>
-            <rect x="254" y="82" width="64" height="7" rx="3.5" fill="#ec4899"/>
+        case 5: // steb↗up (3D Swept Wing)
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="22" y="78" font-family="'Outfit', sans-serif" font-weight="800" font-size="58" letter-spacing="-2" fill="${txt}">ste<tspan fill="url(#ribA_${uid})">b</tspan>up</text>
+            <path d="M150 34 C180 12 220 8 264 6 C234 24 196 32 150 34 Z" fill="url(#ribB_${uid})" filter="url(#shadow3d)"/>
           </svg>`;
-        case 6: // ste[b✦]up (AI Silicon Badge)
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="18" y="72" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="54" letter-spacing="-2" fill="${txt}">ste</text>
-            <rect x="128" y="20" width="68" height="66" rx="14" fill="url(#${gId})"/>
-            <text x="138" y="70" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="52" fill="#08090f">b</text>
-            <path d="${sparkPath(180, 36, 9)}" fill="#fff"/>
-            <text x="206" y="72" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="54" letter-spacing="-2" fill="${txt}">up</text>
+        case 6: // stebup (3D Torus Loop 'b')
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="22" y="76" font-family="'Sora', sans-serif" font-weight="800" font-size="58" letter-spacing="-2" fill="${txt}">ste</text>
+            <rect x="134" y="18" width="13" height="62" rx="6.5" fill="url(#ribA_${uid})" filter="url(#shadow3d)"/>
+            <circle cx="162" cy="58" r="18" fill="none" stroke="url(#ribB_${uid})" stroke-width="12" filter="url(#shadow3d)"/>
+            <text x="194" y="76" font-family="'Sora', sans-serif" font-weight="800" font-size="58" letter-spacing="-2" fill="${txt}">up</text>
           </svg>`;
-        case 7: // steb⌒up (Connected Bridge)
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="28" y="78" font-family="'Outfit', sans-serif" font-weight="800" font-size="58" letter-spacing="-1.5" fill="${txt}">ste<tspan fill="${p.c1}">b</tspan><tspan fill="${p.c2}">u</tspan>p</text>
-            <path d="M154 24 Q192 4 230 28" fill="none" stroke="${p.c3}" stroke-width="6" stroke-linecap="round"/>
-            <circle cx="154" cy="24" r="5" fill="${p.c1}"/>
-            <circle cx="230" cy="28" r="5" fill="${p.c2}"/>
+        case 7: // Stebup (4 Floating 3D Pearls)
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="28" y="82" font-family="'Outfit', sans-serif" font-weight="800" font-size="58" letter-spacing="-2" fill="${txt}">Ste<tspan fill="url(#ribA_${uid})">b</tspan>up</text>
+            <g filter="url(#shadow3d)">
+              <circle cx="144" cy="22" r="7" fill="url(#sph1_${uid})"/>
+              <circle cx="172" cy="15" r="8.5" fill="url(#sph2_${uid})"/>
+              <circle cx="204" cy="15" r="8.5" fill="url(#sph1_${uid})"/>
+              <circle cx="232" cy="22" r="7" fill="url(#sph2_${uid})"/>
+            </g>
           </svg>`;
-        case 8: // steb^up (Elevated Advisory)
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="24" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="58" letter-spacing="-2" fill="${txt}">ste<tspan fill="${p.c1}">b</tspan></text>
-            <path d="M188 68 L202 48 L216 68" fill="none" stroke="${p.c3}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="224" y="56" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="48" fill="${p.c2}">up</text>
+        case 8: // STEBUP (3D Metallic Relief)
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="22" y="79" font-family="'Syne', sans-serif" font-weight="800" font-size="50" letter-spacing="-1" fill="#020308" opacity="0.7">STEBUP</text>
+            <text x="18" y="74" font-family="'Syne', sans-serif" font-weight="800" font-size="50" letter-spacing="-1" fill="${txt}" filter="url(#shadow3d)">STE<tspan fill="url(#ribA_${uid})">B</tspan>UP</text>
           </svg>`;
-        case 9: // STEBUP (Precision AI Cut)
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="20" y="76" font-family="'Syne', sans-serif" font-weight="800" font-size="52" letter-spacing="-1" fill="${txt}">STE<tspan fill="url(#${gId})">B</tspan>UP</text>
-            <path d="${sparkPath(354, 34, 12)}" fill="${p.c3}"/>
+        case 9: // steb^up (3D Levitation Pad)
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="22" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="58" letter-spacing="-2" fill="${txt}">ste<tspan fill="url(#ribA_${uid})">b</tspan></text>
+            <ellipse cx="242" cy="78" rx="46" ry="9" fill="url(#ribB_${uid})" filter="url(#shadow3d)"/>
+            <text x="206" y="56" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="48" fill="${txt}" filter="url(#shadow3d)">up</text>
           </svg>`;
-        case 10: // stebup. (Quad-Node Period)
+        case 10: // stebup (3D Plasma Orb Finale)
         default:
-          return `<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">${defs}
-            <text x="24" y="74" font-family="'Outfit', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">ste<tspan fill="url(#${gId})">b</tspan>up</text>
-            <circle cx="326" cy="54" r="5.5" fill="#6366f1"/>
-            <circle cx="342" cy="54" r="5.5" fill="#14b8a6"/>
-            <circle cx="326" cy="70" r="5.5" fill="#f59e0b"/>
-            <circle cx="342" cy="70" r="5.5" fill="#ec4899"/>
+          return `<svg viewBox="0 0 390 110" xmlns="http://www.w3.org/2000/svg">${defs}
+            <text x="22" y="74" font-family="'Outfit', sans-serif" font-weight="800" font-size="60" letter-spacing="-2" fill="${txt}">ste<tspan fill="url(#ribA_${uid})">b</tspan>up</text>
+            <g transform="translate(302, 24) scale(0.55)">${get3DIconInnerSVG(31, p, uid)}</g>
           </svg>`;
       }
     }
 
     // ============================================================================
-    // FULL LOCKUP BUILDER (Icon + Wordmark)
+    // FULL 3D CARD LOCKUP BUILDER (3D Sculpture + English Wordmark)
     // ============================================================================
     function buildLogoCardSVG(logo, p, uidSuffix = '') {
+      const uid = logo.id + '_' + uidSuffix;
       if (logo.pureWordmark) {
-        return buildPureWordmarkSVG(logo.wmVariant, p, logo.id + uidSuffix);
+        return build3DPureWordmarkSVG(logo.wmVariant, p, uid);
       }
-      const gradId = 'lg_' + logo.id + '_' + uidSuffix;
       const txtColor = lightCanvas ? '#0f172a' : p.text;
-      const iconContent = getIconInnerSVG(logo.id, p.c1, p.c2, p.c3, gradId);
+      const defs = defs3D(uid, p);
+      const iconContent = get3DIconInnerSVG(logo.id, p, uid);
 
       let wordSVG = '';
-      if (logo.wordStyle === 'ai-spark-b') {
+      if (logo.wordStyle === '3d-orb') {
         wordSVG = `
-          <text x="118" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" letter-spacing="-2" fill="${txtColor}">ste<tspan fill="url(#${gradId})">b</tspan>up</text>
-          <path d="${sparkPath(342, 34, 10)}" fill="${p.c3}"/>
+          <text x="118" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" letter-spacing="-2" fill="${txtColor}">ste<tspan fill="url(#ribA_${uid})">b</tspan>up</text>
+          <circle cx="222" cy="18" r="7" fill="url(#sph2_${uid})" filter="url(#shadow3d)"/>
         `;
-      } else if (logo.wordStyle === 'human-b') {
+      } else if (logo.wordStyle === 'consult-3d') {
         wordSVG = `
-          <text x="118" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="50" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="${p.c1}">b</tspan>up</text>
-          <circle cx="222" cy="20" r="6" fill="${p.c3}"/>
+          <text x="118" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="50" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="url(#ribA_${uid})">b</tspan><tspan dy="-14" font-size="38" fill="url(#ribB_${uid})">up</tspan></text>
         `;
-      } else if (logo.wordStyle === 'four-dots') {
+      } else if (logo.wordStyle === 'four-3d') {
         wordSVG = `
-          <text x="118" y="64" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="url(#${gradId})">b</tspan>up</text>
-          <rect x="120" y="76" width="42" height="5" rx="2.5" fill="#6366f1"/>
-          <rect x="168" y="76" width="42" height="5" rx="2.5" fill="#14b8a6"/>
-          <rect x="216" y="76" width="42" height="5" rx="2.5" fill="#f59e0b"/>
-          <rect x="264" y="76" width="42" height="5" rx="2.5" fill="#ec4899"/>
-        `;
-      } else if (logo.wordStyle === 'consult-arrow') {
-        wordSVG = `
-          <text x="118" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="48" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="${p.c1}">b</tspan><tspan fill="${p.c2}">↗</tspan>up</text>
-        `;
-      } else if (logo.wordStyle === 'step-up') {
-        wordSVG = `
-          <text x="118" y="70" font-family="'Outfit', sans-serif" font-weight="800" font-size="50" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="${p.c1}">b</tspan></text>
-          <text x="254" y="50" font-family="'Outfit', sans-serif" font-weight="800" font-size="38" fill="${p.c2}">up</text>
-          <rect x="256" y="58" width="58" height="6" rx="3" fill="${p.c3}"/>
-        `;
-      } else if (logo.wordStyle === 'b-chip') {
-        wordSVG = `
-          <text x="118" y="67" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="-1.5" fill="${txtColor}">ste</text>
-          <rect x="212" y="25" width="44" height="52" rx="10" fill="url(#${gradId})"/>
-          <text x="220" y="66" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="44" fill="#08090f">b</text>
-          <text x="262" y="67" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="-1.5" fill="${txtColor}">up</text>
+          <text x="118" y="64" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="48" letter-spacing="-1.5" fill="${txtColor}">ste<tspan fill="url(#ribA_${uid})">b</tspan>up</text>
+          <circle cx="132" cy="80" r="5" fill="url(#sph1_${uid})"/>
+          <circle cx="152" cy="80" r="5" fill="url(#sph2_${uid})"/>
+          <circle cx="172" cy="80" r="5" fill="url(#sph1_${uid})"/>
+          <circle cx="192" cy="80" r="5" fill="url(#sph2_${uid})"/>
         `;
       } else {
         wordSVG = `
-          <text x="118" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" letter-spacing="-2" fill="${txtColor}">ste<tspan fill="url(#${gradId})">b</tspan>up</text>
-          <circle cx="338" cy="60" r="5.5" fill="${p.c2}"/>
+          <text x="118" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" letter-spacing="-2" fill="${txtColor}">ste<tspan fill="url(#ribA_${uid})">b</tspan>up</text>
+          <circle cx="338" cy="58" r="7" fill="url(#sph2_${uid})" filter="url(#shadow3d)"/>
         `;
       }
 
-      return `<svg viewBox="0 0 380 100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="${p.c1}"/>
-            <stop offset="100%" stop-color="${p.c2}"/>
-          </linearGradient>
-        </defs>
+      return `<svg viewBox="0 0 385 100" xmlns="http://www.w3.org/2000/svg">
+        ${defs}
         <g transform="translate(8, 0)">${iconContent}</g>
         ${wordSVG}
       </svg>`;
     }
 
     // ============================================================================
-    // INTERACTIVE WORDMARK & SYMBOL MIXER
+    // INTERACTIVE 3D STUDIO & WORDMARK CUSTOMIZER
     // ============================================================================
     const FONTS = [
       { name: 'Outfit', css: "'Outfit', sans-serif" },
@@ -1257,17 +1481,15 @@
       { name: 'Syne', css: "'Syne', sans-serif" },
       { name: 'Unbounded', css: "'Unbounded', sans-serif" },
       { name: 'Bricolage', css: "'Bricolage Grotesque', sans-serif" },
-      { name: 'Chakra Petch', css: "'Chakra Petch', sans-serif" },
-      { name: 'JetBrains Mono', css: "'JetBrains Mono', monospace" }
+      { name: 'Chakra Petch', css: "'Chakra Petch', sans-serif" }
     ];
 
     const B_TWISTS = [
-      { id: 'ai-spark', label: 'AI Spark "steb✦up"' },
-      { id: 'human-dot', label: 'HR Human-Dot "b"' },
-      { id: 'consult-arrow', label: 'Consult "steb↗up"' },
-      { id: 'four-pillars', label: '4-Pillar Underline' },
-      { id: 'chip-b', label: 'Tech Chip "ste[b]up"' },
-      { id: 'step-up', label: 'Elevated "steb^up"' }
+      { id: '3d-iridescent', label: '3D Iridescent "b"' },
+      { id: '3d-orb-b', label: '3D Levitating Orb "b"' },
+      { id: '3d-star-bridge', label: '3D Bevel Star "steb✦up"' },
+      { id: '3d-glass-lens', label: '3D Glass Lens "ste(b)up"' },
+      { id: '3d-step-up', label: '3D Elevated "steb^up"' }
     ];
 
     const CASES = [
@@ -1277,13 +1499,13 @@
     ];
 
     const LAYOUTS = [
-      { id: 'icon-left', label: 'Symbol + Wordmark' },
-      { id: 'word-only', label: 'Wordmark Only' }
+      { id: 'icon-left', label: '3D Sculpture + Wordmark' },
+      { id: 'word-only', label: '3D Wordmark Only' }
     ];
 
     let customState = {
       fontIdx: 0,
-      bTwist: 'ai-spark',
+      bTwist: '3d-iridescent',
       caseMode: 'lower',
       layout: 'icon-left'
     };
@@ -1314,11 +1536,12 @@
     function buildCustomRemixSVG() {
       const f = FONTS[customState.fontIdx];
       const track = document.getElementById('trackSlider').value;
-      const slant = document.getElementById('slantSlider').value;
+      const rot = document.getElementById('rotSlider').value;
       const iconId = parseInt(document.getElementById('iconIdxSlider').value, 10);
       const p = activePalette;
       const txtColor = lightCanvas ? '#0f172a' : p.text;
-      const gId = 'cust_grad';
+      const uid = 'cust3d';
+      const defs = defs3D(uid, p);
 
       let p1 = 'ste', bChar = 'b', p2 = 'up';
       if (customState.caseMode === 'title') { p1 = 'Ste'; bChar = 'b'; p2 = 'up'; }
@@ -1329,45 +1552,40 @@
       const fontSize = customState.caseMode === 'upper' ? 48 : 54;
 
       let innerWord = '';
-      if (customState.bTwist === 'ai-spark') {
+      if (customState.bTwist === '3d-orb-b') {
         innerWord = `
-          <text x="${xText}" y="68" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="url(#${gId})">${bChar}</tspan>${p2}</text>
-          <path d="${sparkPath(xText + 225, 30, 12)}" fill="${p.c3}"/>
+          <text x="${xText}" y="70" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="url(#ribA_${uid})">${bChar}</tspan>${p2}</text>
+          <circle cx="${xText + 105}" cy="16" r="8" fill="url(#sph2_${uid})" filter="url(#shadow3d)"/>
         `;
-      } else if (customState.bTwist === 'human-dot') {
+      } else if (customState.bTwist === '3d-star-bridge') {
         innerWord = `
-          <text x="${xText}" y="70" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c1}">${bChar}</tspan>${p2}</text>
-          <circle cx="${xText + 106}" cy="18" r="7" fill="${p.c3}"/>
+          <text x="${xText}" y="70" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="url(#ribA_${uid})">${bChar}</tspan>${p2}</text>
+          ${star3D(xText + 225, 34, 16, uid)}
         `;
-      } else if (customState.bTwist === 'consult-arrow') {
+      } else if (customState.bTwist === '3d-glass-lens') {
         innerWord = `
-          <text x="${xText}" y="68" font-family="${f.css}" font-weight="800" font-size="${fontSize * 0.92}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c1}">${bChar}</tspan><tspan fill="${p.c2}">↗</tspan>${p2}</text>
+          <text x="${xText}" y="70" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="url(#ribB_${uid})">${bChar}</tspan>${p2}</text>
+          <circle cx="${xText + 112}" cy="52" r="26" fill="url(#glass_${uid})" stroke="url(#rim_${uid})" stroke-width="2" filter="url(#shadow3d)"/>
         `;
-      } else if (customState.bTwist === 'four-pillars') {
+      } else if (customState.bTwist === '3d-step-up') {
         innerWord = `
-          <text x="${xText}" y="64" font-family="${f.css}" font-weight="800" font-size="${fontSize * 0.94}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="url(#${gId})">${bChar}</tspan>${p2}</text>
-          <rect x="${xText}" y="76" width="46" height="6" rx="3" fill="#6366f1"/>
-          <rect x="${xText + 52}" y="76" width="46" height="6" rx="3" fill="#14b8a6"/>
-          <rect x="${xText + 104}" y="76" width="46" height="6" rx="3" fill="#f59e0b"/>
-          <rect x="${xText + 156}" y="76" width="46" height="6" rx="3" fill="#ec4899"/>
+          <text x="${xText}" y="72" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="url(#ribA_${uid})">${bChar}</tspan><tspan dy="-16" font-size="${fontSize * 0.72}" fill="url(#ribB_${uid})">${p2}</tspan></text>
         `;
-      } else if (customState.bTwist === 'chip-b') {
-        innerWord = `<text x="${xText}" y="68" font-family="${f.css}" font-weight="800" font-size="${fontSize * 0.92}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c2}">[${bChar}]</tspan>${p2}</text>`;
       } else {
-        innerWord = `<text x="${xText}" y="72" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}">${p1}<tspan fill="${p.c1}">${bChar}</tspan><tspan dy="-16" font-size="${fontSize * 0.72}" fill="${p.c2}">${p2}</tspan></text>`;
+        innerWord = `
+          <text x="${xText}" y="70" font-family="${f.css}" font-weight="800" font-size="${fontSize}" letter-spacing="${track}" fill="${txtColor}" filter="url(#shadow3d)">${p1}<tspan fill="url(#ribA_${uid})">${bChar}</tspan>${p2}</text>
+          <circle cx="${xText + 225}" cy="58" r="8" fill="url(#sph2_${uid})" filter="url(#shadow3d)"/>
+        `;
       }
 
-      const iconGroup = hasIcon ? `<g transform="translate(12, 0)">${getIconInnerSVG(iconId, p.c1, p.c2, p.c3, gId)}</g>` : '';
+      const iconGroup = hasIcon
+        ? `<g transform="translate(12, 0) rotate(${rot} 50 50)">${get3DIconInnerSVG(iconId <= 40 ? iconId : 1, p, uid)}</g>`
+        : '';
 
-      return `<svg viewBox="0 0 420 100" xmlns="http://www.w3.org/2000/svg" style="max-height:110px;width:100%;">
-        <defs>
-          <linearGradient id="${gId}" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="${p.c1}"/>
-            <stop offset="100%" stop-color="${p.c2}"/>
-          </linearGradient>
-        </defs>
+      return `<svg viewBox="0 0 420 100" xmlns="http://www.w3.org/2000/svg" style="max-height:118px;width:100%;">
+        ${defs}
         ${iconGroup}
-        <g transform="skewX(${slant})">${innerWord}</g>
+        ${innerWord}
       </svg>`;
     }
 
@@ -1376,12 +1594,12 @@
       const f = FONTS[customState.fontIdx].name;
       const b = B_TWISTS.find(x => x.id === customState.bTwist).label;
       const iconId = document.getElementById('iconIdxSlider').value;
-      document.getElementById('customRecipeLabel').textContent = `${f} • ${b} • Symbol #${String(iconId).padStart(2, '0')}`;
+      document.getElementById('customRecipeLabel').textContent = `${f} • ${b} • 3D Sculpture #${String(iconId).padStart(2, '0')}`;
     }
 
     function applyCustomToNavbar() {
-      document.getElementById('liveNavbarLogo').innerHTML = `<div style="width:148px;height:34px;display:flex;align-items:center;">${buildCustomRemixSVG()}</div>`;
-      showToast('Previewing your Custom Remix inside the Stebup navbar!');
+      document.getElementById('liveNavbarLogo').innerHTML = `<div style="width:148px;height:36px;display:flex;align-items:center;">${buildCustomRemixSVG()}</div>`;
+      showToast('Mounted your 3D Custom Remix in the live navbar!');
     }
 
     // ============================================================================
@@ -1390,12 +1608,12 @@
     function previewLogoInHeader(id) {
       const logo = LOGOS.find(l => l.id === id) || LOGOS[0];
       const fullSVG = buildLogoCardSVG(logo, activePalette, 'nav');
-      document.getElementById('liveNavbarLogo').innerHTML = `<div style="width:144px;height:34px;display:flex;align-items:center;">${fullSVG}</div>`;
+      document.getElementById('liveNavbarLogo').innerHTML = `<div style="width:146px;height:36px;display:flex;align-items:center;">${fullSVG}</div>`;
 
       const iconId = logo.pureWordmark ? 1 : logo.id;
-      const iconOnly = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;">
-        <defs><linearGradient id="mini_g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${activePalette.c1}"/><stop offset="100%" stop-color="${activePalette.c2}"/></linearGradient></defs>
-        ${getIconInnerSVG(iconId, activePalette.c1, activePalette.c2, activePalette.c3, 'mini_g')}
+      const iconOnly = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;">
+        ${defs3D('mini', activePalette)}
+        ${get3DIconInnerSVG(iconId, activePalette, 'mini')}
       </svg>`;
       document.getElementById('liveAppIcon').innerHTML = iconOnly;
       document.getElementById('liveFavicon').innerHTML = iconOnly;
@@ -1411,7 +1629,7 @@
       document.getElementById('paletteSwitcher').innerHTML = PALETTES.map(p => `
         <div class="pal-dot ${p.id === activePalette.id ? 'active' : ''}"
              title="${p.name}"
-             style="background: linear-gradient(135deg, ${p.c1}, ${p.c2});"
+             style="background: linear-gradient(135deg, ${p.c1}, ${p.c2}, ${p.c3});"
              onclick="selectPalette('${p.id}')"></div>
       `).join('');
     }
@@ -1455,9 +1673,9 @@
               <span class="card-id">#${String(l.id).padStart(2, '0')}</span>
               <span class="mini-tag">${l.pillars}</span>
             </div>
-            <div class="card-canvas" onclick="previewLogoInHeader(${l.id}); document.getElementById('iconIdxSlider').value = ${l.pureWordmark ? 1 : l.id}; renderCustomBuilder(); showToast('Loaded #${String(l.id).padStart(2, '0')} into Live Header & Customizer!');">
+            <div class="card-canvas" onclick="previewLogoInHeader(${l.id}); document.getElementById('iconIdxSlider').value = ${l.pureWordmark ? 1 : l.id}; renderCustomBuilder(); showToast('Loaded 3D Concept #${String(l.id).padStart(2, '0')} into Live Header & 3D Studio!');">
               ${svgMarkup}
-              <span class="try-header-hint">👆 Test in Header &amp; Remix</span>
+              <span class="try-header-hint">👆 Test 3D in Header</span>
             </div>
             <div class="card-info">
               <div class="card-title">${l.title}</div>
@@ -1491,7 +1709,15 @@
       canvas.height = 630;
       const ctx = canvas.getContext('2d');
 
-      ctx.fillStyle = lightCanvas ? '#F8FAFC' : '#07080D';
+      const grad = ctx.createRadialGradient(600, 240, 50, 600, 315, 700);
+      if (lightCanvas) {
+        grad.addColorStop(0, '#FFFFFF');
+        grad.addColorStop(1, '#E2E8F0');
+      } else {
+        grad.addColorStop(0, '#13182B');
+        grad.addColorStop(1, '#06070C');
+      }
+      ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 1200, 630);
 
       ctx.strokeStyle = activePalette.c1;
@@ -1500,14 +1726,14 @@
 
       ctx.fillStyle = activePalette.c2;
       ctx.font = 'bold 20px Inter, sans-serif';
-      ctx.fillText('STEBUP — TECH • CONSULTING • HR • AI IDENTITY', 64, 80);
+      ctx.fillText('STEBUP — 3D TECH • CONSULTING • HR • AI IDENTITY', 64, 80);
 
       const img = new Image();
       const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
       const url = URL.createObjectURL(svgBlob);
 
       await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; img.src = url; });
-      ctx.drawImage(img, 140, 145, 920, 260);
+      ctx.drawImage(img, 140, 140, 920, 265);
       URL.revokeObjectURL(url);
 
       ctx.fillStyle = lightCanvas ? '#0F172A' : '#FFFFFF';
@@ -1521,13 +1747,13 @@
       const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
       try {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-        showToast('✅ High-res PNG copied! Paste (Ctrl+V) directly in WhatsApp.');
+        showToast('✅ High-res 3D PNG copied! Paste (Ctrl+V) directly in WhatsApp.');
       } catch (e) {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'stebup-logo.png';
+        a.download = 'stebup-3d-logo.png';
         a.click();
-        showToast('📥 Downloaded PNG card ready for WhatsApp!');
+        showToast('📥 Downloaded 3D PNG card ready for WhatsApp!');
       }
     }
 
@@ -1540,18 +1766,18 @@
     function copyCustomLogoPNG() {
       const svg = buildCustomRemixSVG();
       const recipe = document.getElementById('customRecipeLabel').textContent;
-      renderSVGToClipboardPNG(svg, 'Custom Stebup Identity Remix', recipe);
+      renderSVGToClipboardPNG(svg, 'Custom 3D Stebup Identity', recipe);
     }
 
     function shareWhatsApp(id) {
       const l = LOGOS.find(x => x.id === id);
-      const text = `Team, check out Stebup Logo #${String(l.id).padStart(2, '0')} (${l.title} — ${l.pillars}): "${l.desc}"`;
+      const text = `Team, check out Stebup 3D Logo #${String(l.id).padStart(2, '0')} (${l.title}): "${l.desc}"`;
       window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
     }
 
     function shareCustomWhatsApp() {
       const recipe = document.getElementById('customRecipeLabel').textContent;
-      const text = `Team, check out this custom Stebup logo remix (${recipe})!`;
+      const text = `Team, check out this 3D Stebup logo remix (${recipe})!`;
       window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
     }
 
@@ -1561,7 +1787,7 @@
       const blob = new Blob([svg], { type: 'image/svg+xml' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = `stebup-logo-${l.id}.svg`;
+      a.download = `stebup-3d-logo-${l.id}.svg`;
       a.click();
     }
 
@@ -1581,9 +1807,9 @@
     function addCustomToPoll() {
       if (pollList.length >= 4) { showToast('Poll holds up to 4 options (A, B, C, D).'); return; }
       const f = FONTS[customState.fontIdx].name;
-      pollList.push({ id: 'custom_' + Date.now(), title: `Remix (${f})`, svg: buildCustomRemixSVG() });
+      pollList.push({ id: 'custom_' + Date.now(), title: `3D Remix (${f})`, svg: buildCustomRemixSVG() });
       updatePollUI();
-      showToast('Added Custom Remix to Poll!');
+      showToast('Added 3D Remix to Poll!');
     }
 
     function clearPoll() { pollList = []; updatePollUI(); renderGallery(); }
@@ -1593,14 +1819,14 @@
       const letters = ['A', 'B', 'C', 'D'];
       document.getElementById('pollSlots').innerHTML = letters.map((c, i) =>
         pollList[i]
-          ? `<div class="poll-slot filled" title="${pollList[i].title}" style="color:#14b8a6;">${c}✓</div>`
+          ? `<div class="poll-slot filled" title="${pollList[i].title}" style="color:#38bdf8;">${c}✓</div>`
           : `<div class="poll-slot">${c}</div>`
       ).join('');
     }
 
     async function copyPollComparisonPNG() {
       if (pollList.length < 2) {
-        showToast('Click "+ Poll" on at least 2 logos to create a team comparison card!');
+        showToast('Click "+ Poll" on at least 2 3D logos to create a team comparison card!');
         return;
       }
       const canvas = document.createElement('canvas');
@@ -1608,12 +1834,12 @@
       canvas.height = 960;
       const ctx = canvas.getContext('2d');
 
-      ctx.fillStyle = '#06070B';
+      ctx.fillStyle = '#05060B';
       ctx.fillRect(0, 0, 1600, 960);
 
       ctx.fillStyle = '#FFFFFF';
       ctx.font = 'bold 38px Inter, sans-serif';
-      ctx.fillText('STEBUP LOGO TEAM VOTE (Tech • Consulting • HR • AI) — Reply A, B, C, or D!', 60, 72);
+      ctx.fillText('STEBUP 3D LOGO TEAM VOTE — Reply A, B, C, or D!', 60, 72);
 
       const letters = ['OPTION A', 'OPTION B', 'OPTION C', 'OPTION D'];
       const boxes = [
@@ -1626,13 +1852,13 @@
       for (let i = 0; i < pollList.length; i++) {
         const b = boxes[i];
         const item = pollList[i];
-        ctx.fillStyle = '#0D1018';
-        ctx.strokeStyle = '#14B8A6';
+        ctx.fillStyle = '#0C0F1C';
+        ctx.strokeStyle = '#38BDF8';
         ctx.lineWidth = 3;
         ctx.fillRect(b.x, b.y, b.w, b.h);
         ctx.strokeRect(b.x, b.y, b.w, b.h);
 
-        ctx.fillStyle = '#14B8A6';
+        ctx.fillStyle = '#38BDF8';
         ctx.font = 'bold 26px Inter, sans-serif';
         ctx.fillText(letters[i], b.x + 28, b.y + 46);
 
@@ -1650,11 +1876,11 @@
       const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
       try {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-        showToast('🗳️ "A vs B vs C" Poll PNG copied! Paste (Ctrl+V) in WhatsApp!');
+        showToast('🗳️ 3D "A vs B vs C" Poll PNG copied! Paste (Ctrl+V) in WhatsApp!');
       } catch (e) {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'stebup-team-poll.png';
+        a.download = 'stebup-3d-team-poll.png';
         a.click();
       }
     }
