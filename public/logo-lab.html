@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup — Seamless "STEBUP" E-Slips + B Logo Study (2 Colors)</title>
+  <title>Stebup — 2-Color Logo Explorer (Stemless B Rounds + E Slips)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
       --card-border: #E5E3DC;
       --text-main: #111113;
       --text-muted: #6E6D68;
-      --c1: #111113; /* Primary Color: Wordmark & B Structure */
+      --c1: #111113; /* Primary Color: Wordmark & B Rounds */
       --c2: #7C3AED; /* Secondary Color: E Horizontal Slips / Step Accent */
     }
 
@@ -173,7 +173,7 @@
       font-family: inherit;
       font-size: 13px;
       font-weight: 700;
-      padding: 10px 16px;
+      padding: 10px 15px;
       border-radius: 10px;
       cursor: pointer;
       display: inline-flex;
@@ -217,6 +217,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      line-height: 1.5;
     }
 
     .tab-desc-box strong {
@@ -261,23 +262,20 @@
       border-bottom: 1px solid var(--card-border);
     }
 
-    /* Standalone icon SVG */
     .stage svg.mark-svg {
       width: 140px;
       height: 140px;
       overflow: visible;
     }
 
-    /* Full seamless STEBUP wordmark SVG */
     .stage svg.word-svg {
       width: 100%;
-      max-width: 340px;
+      max-width: 345px;
       height: auto;
       overflow: visible;
       display: none;
     }
 
-    /* Standard lockup for non-EB tabs */
     .wordmark-lockup {
       display: none;
       align-items: center;
@@ -315,7 +313,6 @@
       color: var(--c2);
     }
 
-    /* Alignment guide lines toggle */
     .guide-line {
       opacity: 0;
       transition: opacity 0.2s ease;
@@ -338,13 +335,13 @@
     }
 
     .mini-preview svg.mini-word {
-      width: 84px;
+      width: 86px;
       height: 24px;
     }
 
     .mini-preview svg.mini-mark {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
     }
 
     .mini-preview span {
@@ -429,7 +426,7 @@
   <header>
     <div class="brand-title">
       <h1>Stebup — 2-Color Logo Explorer</h1>
-      <span>Seamless Wordmark & Symbol Study</span>
+      <span>Stemless "B" Rounds + "E" Slips Study</span>
     </div>
 
     <div class="controls">
@@ -465,7 +462,7 @@
         <span class="control-label">View</span>
         <button class="btn active" id="viewLockupBtn" onclick="setView('lockup')">Full "STEBUP" Word</button>
         <button class="btn" id="viewMarkBtn" onclick="setView('mark')">Symbol Only (EB / B)</button>
-        <button class="btn" id="guideBtn" onclick="toggleGuides()" title="Show Cap-Height & Baseline Alignment Lines"> Alignment Lines</button>
+        <button class="btn" id="guideBtn" onclick="toggleGuides()" title="Show Cap-Height & Baseline Alignment Lines">Alignment Lines</button>
       </div>
 
       <div class="control-group">
@@ -476,8 +473,11 @@
 
   <!-- Category Tabs -->
   <nav class="tab-bar">
-    <button class="tab-btn active" onclick="setTab('eb', this)">
-      ★ Seamless "STEBUP" (E-Slips + B) <span class="tab-count">12</span>
+    <button class="tab-btn active" onclick="setTab('rounds', this)">
+      ★ New: Stemless "B" Rounds + "E" Slips <span class="tab-count">12</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('eb', this)">
+      Seamless "STEBUP" (E-Slips + Full B) <span class="tab-count">12</span>
     </button>
     <button class="tab-btn" onclick="setTab('steps', this)">
       Tab 1: Architectural "B + Steps" <span class="tab-count">12</span>
@@ -492,13 +492,13 @@
       Tab 4: Chevrons & S+B <span class="tab-count">5</span>
     </button>
     <button class="tab-btn" onclick="setTab('all', this)">
-      View All <span class="tab-count">40</span>
+      View All <span class="tab-count">52</span>
     </button>
   </nav>
 
   <div class="tab-desc-banner">
     <div class="tab-desc-box" id="tabDescBox">
-      <span><strong>Seamless "STEBUP" Wordmark Study:</strong> All 6 letters (<strong>S · T · E · B · U · P</strong>) are precision-drawn to the <strong>exact same cap-height (64px), baseline, and 14px stroke weight</strong> so the horizontal-slip <strong>E</strong> and <strong>B</strong> sit seamlessly inside the word. Click <em>"Alignment Lines"</em> above to verify the exact cap &amp; baseline match!</span>
+      <span><strong>★ Stemless "B" Rounds + "E" Horizontal Slips:</strong> Both the vertical stem of <strong>E</strong> and the vertical stem of <strong>B</strong> are removed! <strong>E</strong> is purely 3 horizontal step-slips (<code>≡</code>) and <strong>B</strong> is purely its 2 curved rounds (<code>⊃⊃</code>)—your eye automatically completes the vertical spine in the negative space between them.</span>
     </div>
   </div>
 
@@ -509,11 +509,6 @@
   <script>
     // Precision geometric paths for S, T (left of EB) and U, P (right of EB)
     // Cap-height: y = 28 | Baseline: y = 92 | Total Height = 64px | Stroke = 14px
-    // S: x = 16..64
-    // T: x = 72..120
-    // [E: x = 128..174] [B: x = 182..234]  <-- 106px center stage for E + B
-    // U: x = 244..294
-    // P: x = 304..354
     const ST_PATH = `
       <!-- S (x=16..64, y=28..92, 14px stroke) -->
       <path d="
@@ -540,14 +535,11 @@
       <line class="guide-line" x1="6" y1="92" x2="364" y2="92" stroke="#EF4444" stroke-width="1" stroke-dasharray="4 3" />
     `;
 
-    // Helper: wraps an EB center design (x=128..234, y=28..92) into both:
-    // 1. Full seamless STEBUP wordmark (viewBox 0 0 370 120)
-    // 2. Standalone centered EB symbol (viewBox 118 16 126 88)
-    function makeEBConcept(id, title, desc, ebPaths, customWordSvg = null) {
+    function makeWordConcept(id, cat, catLabel, title, desc, ebPaths, customWordSvg = null) {
       return {
         id,
-        cat: "eb",
-        catLabel: "Seamless ST·EB·UP",
+        cat,
+        catLabel,
         isSeamlessEB: true,
         title,
         desc,
@@ -563,20 +555,268 @@
     }
 
     const concepts = [
+      // =========================================================================
+      // ★ NEW TAB: STEMLESS "B" ROUNDS + "E" HORIZONTAL SLIPS (41 - 52)
+      // Zero vertical line in E and zero vertical line in B!
+      // =========================================================================
+      makeWordConcept(
+        "41",
+        "rounds",
+        "Stemless B Rounds",
+        "Pure Gestalt Closure: 3 Stepped 'E' Slips + 2 Open 'B' Rounds",
+        "No vertical stem in E or B: 3 ascending horizontal E-slips on the left and 2 open B-rounds on the right create a phantom vertical spine in negative space.",
+        `
+          <!-- E: 3 Stepped Horizontal Slips (Color 2) ending at x=178 -->
+          <rect x="140" y="28" width="38" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="50" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B: Strictly the 2 Open Curved Rounds (NO vertical line! Starts at x=188) -->
+          <path d="
+            M188 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 212 92 H188 V78 H210 C217 78 221 75 221 71 C221 67 217 65 210 65 H194 V55 H209 C216 55 219 52 219 48 C219 44 216 42 209 42 H188 V28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "42",
+        "rounds",
+        "Stemless B Rounds",
+        "Twin Detached Crescent 'B' Bowls + 3 'E' Slips",
+        "B is reduced to two completely separate, floating C-rounds (top bowl + bottom bowl) aligned with the 3 horizontal slips of E.",
+        `
+          <!-- E: 3 Stepped Horizontal Slips (Color 2) -->
+          <rect x="138" y="28" width="38" height="14" rx="2" fill="var(--c2)" />
+          <rect x="133" y="53" width="43" height="14" rx="2" fill="var(--c2)" />
+          <rect x="128" y="78" width="48" height="14" rx="2" fill="var(--c2)" />
+          <!-- B Top Detached Round (y=28..58) -->
+          <path d="
+            M186 28 H211 C225 28 234 34 234 43 C234 52 225 58 211 58 H186 V46 H209 C216 46 219 45 219 43 C219 41 216 40 209 40 H186 V28 Z
+          " fill="var(--c1)" />
+          <!-- B Bottom Detached Round (y=62..92) -->
+          <path d="
+            M186 62 H212 C226 62 235 68 235 77 C235 86 226 92 212 92 H186 V80 H210 C217 80 220 79 220 77 C220 75 217 74 210 74 H186 V62 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "43",
+        "rounds",
+        "Stemless B Rounds",
+        "Interlocking Teeth: 'E' Slips Tuck Inside Stemless 'B' Rounds",
+        "The 3 horizontal slips of E and the 2 open rounds of B reach into the same vertical zone without touching, locking together like gears.",
+        `
+          <!-- E: 3 Slips extending to x=188 (middle slip shorter so B's waist tucks in!) -->
+          <rect x="138" y="28" width="44" height="13" rx="1.5" fill="var(--c2)" />
+          <rect x="132" y="53.5" width="38" height="13" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="79" width="54" height="13" rx="1.5" fill="var(--c2)" />
+          <!-- B: Stemless rounds whose middle waist tucks left into the shorter middle E-slip -->
+          <path d="
+            M190 28 H213 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 213 92 H190 V79 H211 C218 79 221 76 221 72 C221 68 218 66.5 211 66.5 H178 V53.5 H210 C216 53.5 219 51 219 47 C219 43 216 41 210 41 H190 V28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "44",
+        "rounds",
+        "Stemless B Rounds",
+        "Solid Half-Moon 'B' Domes (◗) + 3 Stepped 'E' Slips",
+        "Bauhaus geometric purity: E is 3 horizontal step bars and B is 2 bold D-shaped half-moon rounds with no vertical stem.",
+        `
+          <!-- E: 3 Stepped Slips (Color 2) -->
+          <rect x="140" y="28" width="38" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="50" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B: 2 Solid Geometric Half-Moon Rounds (Color 1) -->
+          <path d="M188 28 H206 C222 28 234 34 234 43 C234 52 222 58 206 58 H188 V28 Z" fill="var(--c1)" />
+          <path d="M188 62 H207 C223 62 235 68 235 77 C235 86 223 92 207 92 H188 V62 Z" fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "45",
+        "rounds",
+        "Stemless B Rounds",
+        "Diagonal Step-Gap Between 'E' Slips & Stemless 'B' Rounds",
+        "Both the right ends of the E-slips and the open left mouths of the B-rounds step diagonally upward at a 45° angle.",
+        `
+          <!-- E: 3 Slips shifting right as they ascend (Color 2) -->
+          <rect x="128" y="78" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="140" y="28" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B: 2 Open Rounds also stepping rightward to mirror E's diagonal ascent -->
+          <path d="
+            M192 28 H215 C227 28 235 34 235 44 C235 51 231 57 223 60 C231 62 236 68 236 76 C236 86 227 92 213 92 H180 V78 H211 C218 78 221 75 221 71 C221 67 218 65 211 65 H186 V53 H212 C218 53 221 51 221 47 C221 43 218 42 212 42 H192 V28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "46",
+        "rounds",
+        "Stemless B Rounds",
+        "The 'FedEx' Hidden Arrow: 'E' Slips + Stemless 'B' Rounds",
+        "Look closely at the white space between E and B: the angled right tips of E and open rounds of B form a hidden forward arrow!",
+        `
+          <!-- E: 3 Horizontal Slips with angled arrow-notch tips on the right (Color 2) -->
+          <polygon points="138,28 182,28 170,42 138,42" fill="var(--c2)" />
+          <polygon points="132,53 170,53 182,60 170,67 132,67" fill="var(--c2)" />
+          <polygon points="128,78 170,78 182,92 128,92" fill="var(--c2)" />
+          <!-- B: Stemless Open Rounds with angled arrow terminals on the left (Color 1) -->
+          <path d="
+            M192 28 H213 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 213 92 H192 L180 78 H211 C218 78 221 75 221 71 C221 67 218 65 211 65 H192 L198 60 L192 55 H210 C216 55 219 52 219 48 C219 44 216 42 210 42 H180 L192 28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "47",
+        "rounds",
+        "Stemless B Rounds",
+        "Continuous Ribbon: 'E' Slips Curve Directly Into 'B' Rounds",
+        "Zero vertical stem anywhere: the 3 horizontal slips of E flow across and loop directly into the 2 rounds of B, separated only by a clean step cut.",
+        `
+          <!-- Left half: 3 Stepped E Slips (Color 2) -->
+          <rect x="138" y="28" width="42" height="14" fill="var(--c2)" />
+          <rect x="133" y="53" width="47" height="14" fill="var(--c2)" />
+          <rect x="128" y="78" width="52" height="14" fill="var(--c2)" />
+          <!-- Right half: Stemless B Rounds meeting the 3 slips across a 6px precision slit (Color 1) -->
+          <path d="
+            M186 28 H213 C226 28 234 34 234 44 C234 51 230 56 222 59.5 C231 62 236 68 236 76 C236 86 227 92 213 92 H186 V78 H211 C218 78 221 75 221 71.5 C221 68 218 67 211 67 H186 V53 H210 C216 53 219 51 219 47.5 C219 44 216 42 210 42 H186 V28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "48",
+        "rounds",
+        "Stemless B Rounds",
+        "Color-Swapped Accent: Color-1 'E' Slips + Color-2 'B' Rounds",
+        "The 3 horizontal slips of E match the primary wordmark color while the 2 stemless rounds of B pop in the secondary accent color.",
+        `
+          <!-- E: 3 Stepped Slips in Primary Color 1 -->
+          <rect x="140" y="28" width="38" height="14" rx="1.5" fill="var(--c1)" />
+          <rect x="134" y="53" width="44" height="14" rx="1.5" fill="var(--c1)" />
+          <rect x="128" y="78" width="50" height="14" rx="1.5" fill="var(--c1)" />
+          <!-- B: 2 Stemless Open Rounds in Accent Color 2 -->
+          <path d="
+            M188 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 212 92 H188 V78 H210 C217 78 221 75 221 71 C221 67 217 65 210 65 H194 V55 H209 C216 55 219 52 219 48 C219 44 216 42 209 42 H188 V28 Z
+          " fill="var(--c2)" />
+        `
+      ),
+
+      makeWordConcept(
+        "49",
+        "rounds",
+        "Stemless B Rounds",
+        "The 'P → B' Split Round: Top B-Round (Color 1) + Bottom B-Round & E-Slips (Color 2)",
+        "Combines both ideas: E is 3 horizontal slips, B has no vertical stem, and B's bottom round shares Color 2 to highlight the P-to-B twist.",
+        `
+          <!-- E: 3 Stepped Slips (Color 2) -->
+          <rect x="140" y="28" width="38" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="50" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B Top Stemless Round (Color 1) -->
+          <path d="
+            M188 28 H211 C225 28 234 34 234 43 C234 52 225 58 211 58 H188 V45 H209 C216 45 219 44 219 43 C219 41 216 41 209 41 H188 V28 Z
+          " fill="var(--c1)" />
+          <!-- B Bottom Stemless Round (Color 2) -->
+          <path d="
+            M188 62 H212 C226 62 235 68 235 77 C235 86 226 92 212 92 H188 V79 H210 C217 79 220 78 220 77 C220 75 217 75 210 75 H188 V62 Z
+          " fill="var(--c2)" />
+        `
+      ),
+
+      makeWordConcept(
+        "50",
+        "rounds",
+        "Stemless B Rounds",
+        "Aerodynamic Wave Rounds 'B' + 45° Speed Slips 'E'",
+        "Sleek variable-width crescent arcs form the stemless B rounds, paired with 45°-chamfered horizontal E slips.",
+        `
+          <!-- E: 45-degree Chamfered Slips (Color 2) -->
+          <polygon points="142,28 178,28 178,42 128,42" fill="var(--c2)" />
+          <polygon points="136,53 178,53 178,67 122,67" transform="translate(6,0)" fill="var(--c2)" />
+          <polygon points="142,78 178,78 178,92 128,92" fill="var(--c2)" />
+          <!-- B: Sleek Crescent Wave Rounds with no vertical stem (Color 1) -->
+          <path d="
+            M186 28 H210 C226 28 235 35 235 44 C235 52 228 58 216 60 C229 62 236 68 236 76 C236 85 226 92 210 92 H186 L194 79 H209 C217 79 221 76 221 72 C221 68 217 65 208 65 H194 V55 H208 C216 55 220 52 220 48 C220 44 216 41 209 41 H194 L186 28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "51",
+        "rounds",
+        "Stemless B Rounds",
+        "Middle-Bridge Lock: Center 'E' Slip Connects Into Stemless 'B' Waist",
+        "B has no vertical stem, but the middle horizontal slip of E reaches across to form the shared center waist of B's two open rounds.",
+        `
+          <!-- Top & Bottom Stemless B Rounds (Color 1) -->
+          <path d="
+            M188 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 59 H206 C215 58 219 53 219 47.5 C219 43 215 41 209 41 H188 V28 Z
+            M188 79 H210 C217 79 221 76 221 71.5 C221 66 216 62 206 61 H222 C231 63 236 69 236 77 C236 86 227 92 212 92 H188 V79 Z
+          " fill="var(--c1)" />
+          <!-- E's 3 Slips where the middle slip extends right to pinch B's waist (Color 2) -->
+          <rect x="140" y="28" width="38" height="13" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53.5" width="82" height="13" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="79" width="50" height="13" rx="1.5" fill="var(--c2)" />
+        `
+      ),
+
+      makeWordConcept(
+        "52",
+        "rounds",
+        "Stemless B Rounds",
+        "Unified Brand Typeface: Stemless 'E' Slips + Stemless 'B' & 'P' Rounds",
+        "What if the stemless round motif of B also echoes in the final letter P? Creates a 100% proprietary custom wordmark.",
+        `
+          <!-- E: 3 Stepped Slips (Color 2) -->
+          <rect x="140" y="28" width="38" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="50" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B: Stemless Twin Rounds (Color 1) -->
+          <path d="
+            M188 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 212 92 H188 V78 H210 C217 78 221 75 221 71 C221 67 217 65 210 65 H194 V55 H209 C216 55 219 52 219 48 C219 44 216 42 209 42 H188 V28 Z
+          " fill="var(--c1)" />
+        `,
+        `
+          ${GUIDE_LINES}
+          ${ST_PATH}
+          <!-- E: 3 Stepped Slips -->
+          <rect x="140" y="28" width="38" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="44" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="50" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B: Stemless Twin Rounds -->
+          <path d="
+            M188 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 212 92 H188 V78 H210 C217 78 221 75 221 71 C221 67 217 65 210 65 H194 V55 H209 C216 55 219 52 219 48 C219 44 216 42 209 42 H188 V28 Z
+          " fill="var(--c1)" />
+          <!-- U -->
+          <path d="
+            M244 28 H258 V68 C258 75 262 78 269 78 C276 78 280 75 280 68 V28 H294 V69 C294 84 284 92 269 92 C254 92 244 84 244 69 V28 Z
+          " fill="var(--c1)" />
+          <!-- P with detached round matching B's open round! -->
+          <rect x="304" y="28" width="14" height="64" fill="var(--c1)" />
+          <path d="
+            M324 28 H336 C348 28 356 35 356 48 C356 61 348 68 336 68 H324 V54 H334 C339 54 342 52 342 48 C342 44 339 42 334 42 H324 V28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
       // ================================================================
-      // SEAMLESS "STEBUP" WORDMARK WITH STANDARD-SIZE E-SLIPS + B (29 - 40)
-      // Every E and B is strictly y=28 (top) to y=92 (bottom), 14px stroke!
+      // SEAMLESS "STEBUP" WORDMARK WITH SPINE (29 - 40)
       // ================================================================
-      makeEBConcept(
+      makeWordConcept(
         "29",
+        "eb",
+        "Seamless ST·EB·UP",
         "Stepped Horizontal Slips 'E' + Standard 'B'",
         "Within the exact 64px cap-height, 'E' is 3 horizontal slips stepping upward from left to right directly before 'B'.",
         `
-          <!-- E: 3 Stepped Horizontal Slips (y=28..92, 14px thick) -->
           <rect x="140" y="28" width="34" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="134" y="53" width="40" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
-          <!-- B: Exact matching 64px height & 14px stroke (x=182..234, y=28..92) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
             M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
@@ -584,33 +824,31 @@
           " fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "30",
+        "eb",
+        "Seamless ST·EB·UP",
         "Fused 'EB' — E-Slips Flow Continuously Into 'B'",
         "The 3 horizontal slips of 'E' extend right into 'B' to form its top bar, waist bar, and bottom bar at identical thickness.",
         `
-          <!-- 3 Horizontal Slips of E (Color 2) -->
           <rect x="128" y="28" width="54" height="14" fill="var(--c2)" />
           <rect x="136" y="53" width="46" height="14" fill="var(--c2)" />
           <rect x="128" y="78" width="54" height="14" fill="var(--c2)" />
-          <!-- B Loops locking seamlessly onto the 3 slips (Color 1) -->
           <path d="
             M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V78 H212 C218 78 221 76 221 72.5 C221 69 218 67 212 67 H182 V53 H211 C216 53 219 51 219 47.5 C219 44 216 42 211 42 H182 V28 Z
           " fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "31",
+        "eb",
+        "Seamless ST·EB·UP",
         "45° Speed-Cut Slips 'E' + 'B'",
         "The 3 horizontal slips of 'E' have crisp 45° diagonal cuts on their left tips, creating an upward step line inside STEBUP.",
         `
-          <!-- 3 45-degree Chamfered Slips for E (y=28..92) -->
           <polygon points="144,28 174,28 174,42 130,42" fill="var(--c2)" />
           <polygon points="138,53 174,53 174,67 124,67" transform="translate(6,0)" fill="var(--c2)" />
           <polygon points="142,78 174,78 174,92 128,92" fill="var(--c2)" />
-          <!-- Matching B (x=182..235, y=28..92) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
             M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
@@ -618,67 +856,63 @@
           " fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "32",
-        "Equal Floating Slips 'E' + Highlighted 'B'",
+        "eb",
+        "Seamless ST·EB·UP",
+        "Equal Floating Slips 'E' + Highlighted Spine 'B'",
         "Classic E proportion stripped to 3 pure horizontal slips (middle slip shorter) paired with a bold 2-color B.",
         `
-          <!-- 3 Pure Horizontal Slips for E -->
           <rect x="128" y="28" width="46" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="53" width="38" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
-          <!-- B with Color 2 Spine & Color 1 Loops -->
           <rect x="182" y="28" width="14" height="64" fill="var(--c2)" />
           <path d="
             M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 V28 Z
           " fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "33",
+        "eb",
+        "Seamless ST·EB·UP",
         "Staggered Escalator Slips 'E' + Stepped-Spine 'B'",
         "The 3 horizontal slips of 'E' shift progressively right as they rise, locking into a matching stepped recess on 'B'.",
         `
-          <!-- Escalating Horizontal Slips for E -->
           <rect x="126" y="78" width="42" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="134" y="53" width="42" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="142" y="28" width="42" height="14" rx="1.5" fill="var(--c2)" />
-          <!-- B whose left spine steps to match E -->
           <path d="
             M190 28 H215 C227 28 234 34 234 44 C234 51 230 56 223 59 C231 61 236 67 236 75 C236 86 228 92 215 92 H174 V78 H213 C219 78 222 76 222 72.5 C222 69 219 67 213 67 H182 V53 H212 C217 53 220 51 220 47.5 C220 44 217 42 212 42 H190 V28 Z
           " fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "34",
+        "eb",
+        "Seamless ST·EB·UP",
         "Through-Waist Slip Bridge 'EB'",
         "The middle horizontal slip of 'E' shoots straight through the vertical stem of 'B' to become 'B's center waist bar.",
         `
-          <!-- B Outer Body (Color 1) -->
           <path d="
             M182 28 H214 C226 28 233 34 233 44 C233 50 230 55 224 58 H209 C216 58 219 52 219 47.5 C219 43 216 41 211 41 H196 V53 H182 V28 Z
             M182 67 H196 V79 H212 C218 79 221 76 221 72.5 C221 68 217 66 210 66 H225 C231 69 235 74 235 80 C235 87 227 92 214 92 H182 V67 Z
           " fill="var(--c1)" />
-          <!-- E's 3 Horizontal Slips where the middle slip bridges right through B (Color 2) -->
           <rect x="128" y="28" width="46" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="53" width="96" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "35",
+        "eb",
+        "Seamless ST·EB·UP",
         "Stair-Backed 'E' Slips + Twin-Arc 'B'",
         "The 3 horizontal slips of 'E' are connected on the left by stepped risers, forming a staircase inside the E slot before B.",
         `
-          <!-- Stair-backed E within y=28..92 -->
           <path d="
             M128 92 V72 H137 V48 H146 V28 H174 V41 H159 V54 H174 V66 H150 V79 H174 V92 H128 Z
           " fill="var(--c2)" />
-          <!-- Standard B -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
             M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
@@ -686,17 +920,16 @@
           " fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "36",
+        "eb",
+        "Seamless ST·EB·UP",
         "Interlocking Finger-Joint 'EB'",
         "The 3 horizontal slips of 'E' (Color 2) and the 2 counter bars of 'B' (Color 1) interlock like precision architectural teeth.",
         `
-          <!-- 3 Horizontal Slips of E reaching into B's spine -->
           <rect x="128" y="28" width="68" height="14" fill="var(--c2)" />
           <rect x="136" y="53" width="60" height="14" fill="var(--c2)" />
           <rect x="128" y="78" width="68" height="14" fill="var(--c2)" />
-          <!-- B Loops locking between the slips -->
           <path d="
             M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V78 H212 C218 78 221 76 221 72.5 C221 69 218 67 212 67 H196 V53 H211 C216 53 219 51 219 47.5 C219 44 216 42 211 42 H196 V28 Z
           " fill="var(--c1)" />
@@ -704,51 +937,48 @@
           <rect x="182" y="67" width="14" height="11" fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "37",
+        "eb",
+        "Seamless ST·EB·UP",
         "Base-Step Underlined 'EB' Connection",
         "The bottom horizontal slip of 'E' extends seamlessly into the bottom bar of 'B', tying E and B onto one shared step.",
         `
-          <!-- Top & Middle Slips of E + Shared Bottom Step Bar (Color 2) -->
           <rect x="138" y="28" width="36" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="133" y="53" width="41" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="78" width="88" height="14" rx="1.5" fill="var(--c2)" />
-          <!-- Upper B Body & Loops (Color 1) -->
           <path d="
             M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 85 228 92 216 92 V78 C219 78 221 76 221 72.5 C221 69 218 66 212 66 H196 V78 H182 V28 Z
             M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
           " fill-rule="evenodd" clip-rule="evenodd" fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "38",
+        "eb",
+        "Seamless ST·EB·UP",
         "Split-Color 'E' Slips + 'B' Loops",
         "Both 'E' and 'B' share the 2-color system: E's 3 horizontal slips and B's spine are Color 1, while B's twin step-loops are Color 2.",
         `
-          <!-- 3 Stepped Slips of E + B Vertical Spine (Color 1) -->
           <rect x="138" y="28" width="36" height="14" rx="1.5" fill="var(--c1)" />
           <rect x="133" y="53" width="41" height="14" rx="1.5" fill="var(--c1)" />
           <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c1)" />
           <rect x="182" y="28" width="14" height="64" rx="1.5" fill="var(--c1)" />
-          <!-- Twin B Loops (Color 2) -->
           <path d="
             M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 V28 Z
           " fill="var(--c2)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "39",
+        "eb",
+        "Seamless ST·EB·UP",
         "Z-Step Bridge Between 'E' and 'B'",
         "The top and middle slips of 'E' step diagonally into the middle and bottom bars of 'B', creating an upward Z-step.",
         `
-          <!-- E Slips stepping diagonally into B (Color 2) -->
           <rect x="128" y="28" width="46" height="14" rx="1.5" fill="var(--c2)" />
           <polygon points="128,53 174,53 196,28 196,42 174,67 128,67" fill="var(--c2)" />
           <polygon points="128,78 174,78 196,53 196,67 174,92 128,92" fill="var(--c2)" />
-          <!-- B Structure (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
             M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
@@ -756,17 +986,16 @@
           " fill="var(--c1)" />
         `
       ),
-
-      makeEBConcept(
+      makeWordConcept(
         "40",
+        "eb",
+        "Seamless ST·EB·UP",
         "Inverted Accent: Color-2 'EB' Core Inside STEBUP",
         "Both the 3 stepped horizontal slips of 'E' and the hero 'B' are rendered in Color 2 at exact wordmark height.",
         `
-          <!-- E: 3 Stepped Slips (Color 2) -->
           <rect x="138" y="28" width="36" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="133" y="53" width="41" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
-          <!-- B: Full Hero B in Color 2 -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
             M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
@@ -1198,15 +1427,16 @@
     ];
 
     const tabDescriptions = {
-      eb: "<strong>Seamless 'STEBUP' Wordmark Study:</strong> All 6 letters (<strong>S · T · E · B · U · P</strong>) are precision-drawn to the <strong>exact same cap-height (64px), baseline, and 14px stroke weight</strong> so the horizontal-slip <strong>E</strong> and <strong>B</strong> sit seamlessly inside the word. Click <em>'Alignment Lines'</em> above to verify the exact cap &amp; baseline match!",
+      rounds: "<strong>★ Stemless 'B' Rounds + 'E' Horizontal Slips:</strong> Both the vertical stem of <strong>E</strong> and the vertical stem of <strong>B</strong> are skipped! <strong>E</strong> is purely 3 horizontal step-slips (<code>≡</code>) and <strong>B</strong> is purely its 2 curved rounds (<code>⊃⊃</code>)—your eye automatically completes the missing vertical spine in negative space.",
+      eb: "<strong>Seamless 'STEBUP' Wordmark (With B Spine):</strong> All 6 letters (<strong>S · T · E · B · U · P</strong>) are precision-drawn to the exact same 64px cap-height, baseline, and 14px stroke weight.",
       steps: "<strong>Tab 1 — Architectural 'B + Steps':</strong> Direct geometric fusion of ascending stair treads and risers with the letter B.",
       tech: "<strong>Tab 2 — Tech Syntax, Code & Digital Steps:</strong> Terminal prompts (<code>&gt;_</code>), forward code slashes (<code>//</code>), pixel/voxel steps, and stacked tech layers forming the B.",
       linguistic: "<strong>Tab 3 — The 'P → B' Linguistic Twist:</strong> Visualizing the exact cultural origin of Stebup—where 'P' transforms or flips upward into 'B'.",
       momentum: "<strong>Tab 4 — Upward Chevrons, Isometric Planes & S+B Monograms:</strong> Expressing 'Step Up' through launch chevrons (<code>^</code>), negative-space arrows (<code>↗</code>), and S+B interlocks.",
-      all: "<strong>All 40 Concepts:</strong> Complete side-by-side library of every 2-color direction."
+      all: "<strong>All 52 Concepts:</strong> Complete side-by-side library of every 2-color direction."
     };
 
-    let activeTab = 'eb';
+    let activeTab = 'rounds';
     const grid = document.getElementById('logoGrid');
     const tabDescBox = document.getElementById('tabDescBox');
 
@@ -1216,8 +1446,7 @@
       if (btn) btn.classList.add('active');
       tabDescBox.innerHTML = `<span>${tabDescriptions[tab]}</span>`;
 
-      // Automatically switch to Full Word view on the Seamless STEBUP tab
-      if (tab === 'eb') {
+      if (tab === 'rounds' || tab === 'eb') {
         setView('lockup');
       }
       render();
@@ -1241,7 +1470,7 @@
                   ${item.svg}
                 </svg>
 
-                <!-- Full Seamless STEBUP Wordmark (all letters exact same 64px height & 14px stroke) -->
+                <!-- Full Seamless STEBUP Wordmark -->
                 <svg class="word-svg" viewBox="0 0 370 120" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
                   ${item.wordSvg}
                 </svg>
@@ -1265,7 +1494,6 @@
           `;
         }
 
-        // Standard cards for Tabs 1 - 4
         return `
           <div class="card">
             <div class="stage">
