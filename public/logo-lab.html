@@ -1,1244 +1,647 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup — 50 Executive Wordmarks (Tech • Consulting • HR • AI)</title>
+  <title>Stebup — Letter B + Steps Logo Study (2 Colors)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;1,800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070510;
-      --surface: #0e0b1c;
-      --surface-2: #17132b;
-      --surface-3: #221c3d;
-      --border: rgba(255, 255, 255, 0.09);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --violet: #7C3AED;
-      --violet-light: #A78BFA;
-      --gold: #F59E0B;
-      --gold-light: #FDE68A;
-      --card-canvas: #090714;
-    }
-    body.light-canvas {
-      --card-canvas: #FAF8F5;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      padding-bottom: 110px;
+      --bg: #F6F5F2;
+      --card-bg: #FFFFFF;
+      --card-border: #E5E3DC;
+      --text-main: #111113;
+      --text-muted: #6E6D68;
+      --c1: #111113; /* Primary Color: Letter B body */
+      --c2: #7C3AED; /* Secondary Color: Steps accent */
     }
 
-    /* Sticky Live Header Simulator */
-    .live-header-bar {
+    body.dark {
+      --bg: #0B0B0E;
+      --card-bg: #141419;
+      --card-border: #24242C;
+      --text-main: #F4F4F6;
+      --text-muted: #8E8E99;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      padding-bottom: 80px;
+    }
+
+    header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(7, 5, 16, 0.94);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 24px;
-    }
-    .header-inner {
-      max-width: 1560px;
-      margin: 0 auto;
+      z-index: 50;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px 32px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      flex-wrap: wrap;
     }
-    .sim-tag {
+
+    .brand-title {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .brand-title h1 {
+      font-size: 18px;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gold);
+      letter-spacing: -0.03em;
     }
-    .sim-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 10px #10b981;
-    }
-    .mock-navbar {
-      flex: 1;
-      max-width: 780px;
-      background: #0d0a1a;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 999px;
-      padding: 7px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    }
-    .mock-links {
-      display: flex;
-      gap: 18px;
-      font-size: 12px;
-      color: #94a3b8;
+
+    .brand-title span {
+      font-size: 13px;
+      color: var(--text-muted);
       font-weight: 500;
     }
-    .mock-links span:first-child { color: #fff; font-weight: 600; }
-    .mock-cta {
-      background: linear-gradient(135deg, var(--violet), #4c1d95);
-      color: #fff;
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg);
+      padding: 4px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+
+    .control-label {
       font-size: 11px;
       font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.15);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 0 6px;
+    }
+
+    .btn {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: rgba(128, 128, 128, 0.1);
+    }
+
+    .btn.active {
+      background: var(--text-main);
+      color: var(--card-bg);
+    }
+
+    .swatch-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(128,128,128,0.25);
+    }
+
+    .color-picker-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0 6px;
+    }
+
+    input[type="color"] {
+      -webkit-appearance: none;
+      border: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
     }
 
     .container {
-      max-width: 1560px;
-      margin: 0 auto;
-      padding: 24px;
+      max-width: 1360px;
+      margin: 36px auto 0;
+      padding: 0 32px;
     }
 
-    /* Hero Banner */
-    .hero-banner {
-      background: linear-gradient(135deg, rgba(23, 19, 43, 0.95), rgba(14, 11, 28, 0.98));
-      border: 1px solid rgba(124, 58, 237, 0.35);
-      border-radius: 20px;
-      padding: 24px 28px;
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .step-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gold);
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 8px;
-    }
-    .hero-banner h1 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-    .hero-banner p {
-      color: var(--text-muted);
-      font-size: 13.5px;
-      max-width: 860px;
-      line-height: 1.55;
-    }
-
-    /* Toolbar */
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 18px;
-      margin-bottom: 22px;
-    }
-    .cat-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
-    .cat-tab {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid transparent;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .cat-tab:hover { color: #fff; background: var(--surface-2); }
-    .cat-tab.active {
-      background: linear-gradient(135deg, var(--violet), #4c1d95);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
-    }
-
-    .tools-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .chip-btn {
-      background: var(--surface-2);
-      color: #cbd5e1;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 6px 12px;
-      font-size: 11.5px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .chip-btn.active {
-      background: rgba(245, 158, 11, 0.18);
-      color: var(--gold-light);
-      border-color: var(--gold);
-    }
-    .search-input {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      width: 170px;
-    }
-
-    /* 50 Options Grid */
-    .logo-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 24px;
     }
-    .logo-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .logo-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 1300px) { .logo-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 950px) { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .logo-grid { grid-template-columns: 1fr; } }
 
-    .logo-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: all 0.18s;
-    }
-    .logo-card:hover {
-      border-color: rgba(124, 58, 237, 0.6);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(124, 58, 237, 0.3);
-    }
-    .logo-card.in-poll {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 1px var(--gold);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .card-top {
-      padding: 8px 12px;
-      background: rgba(255,255,255,0.02);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-    }
-    .card-id {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    .card-tag {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: rgba(124, 58, 237, 0.2);
-      color: var(--violet-light);
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
     }
 
-    .card-canvas {
-      height: 145px;
-      background: var(--card-canvas);
+    .stage {
+      height: 280px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px 16px;
-      cursor: pointer;
+      padding: 32px;
       position: relative;
+      border-bottom: 1px solid var(--card-border);
     }
-    .card-canvas svg {
-      width: 100%;
-      height: 100%;
-      max-width: 295px;
-      max-height: 115px;
-    }
-    .canvas-hint {
-      position: absolute;
-      bottom: 6px;
-      right: 8px;
-      font-size: 9.5px;
-      font-weight: 700;
-      color: var(--gold);
-      background: rgba(14, 11, 28, 0.9);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      padding: 2px 6px;
-      border-radius: 4px;
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-    .card-canvas:hover .canvas-hint { opacity: 1; }
 
-    .card-body {
-      padding: 12px 14px 10px;
-      flex: 1;
+    .stage svg.mark-svg {
+      width: 140px;
+      height: 140px;
+      overflow: visible;
     }
-    .card-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px;
+
+    .wordmark-lockup {
+      display: none;
+      align-items: center;
+      gap: 16px;
+    }
+
+    body.show-lockup .stage > svg.mark-svg {
+      display: none;
+    }
+
+    body.show-lockup .stage .wordmark-lockup {
+      display: flex;
+    }
+
+    .wordmark-lockup svg {
+      width: 68px;
+      height: 68px;
+      flex-shrink: 0;
+    }
+
+    .wordmark-text {
+      font-size: 42px;
       font-weight: 800;
-      color: #fff;
-      margin-bottom: 3px;
+      letter-spacing: -0.04em;
+      color: var(--c1);
+      line-height: 1;
     }
-    .card-desc {
-      font-size: 11px;
+
+    .wordmark-text em {
+      font-style: normal;
+      color: var(--c2);
+    }
+
+    .mini-preview {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .mini-preview svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .mini-preview span {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--c1);
+    }
+
+    .num-badge {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .info {
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .info-text h2 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .info-text p {
+      font-size: 13px;
       color: var(--text-muted);
       line-height: 1.4;
     }
 
-    .card-actions {
-      display: grid;
-      grid-template-columns: 1.2fr 1.2fr 0.8fr 0.6fr;
-      gap: 5px;
-      padding: 8px 10px 10px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .btn-act {
-      border: 1px solid var(--border);
-      background: var(--surface-2);
-      color: #e2e8f0;
+    .dl-btn {
+      flex-shrink: 0;
+      border: 1px solid var(--card-border);
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: inherit;
       font-size: 11px;
       font-weight: 700;
-      padding: 6px 5px;
-      border-radius: 7px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-    .btn-act:hover { background: var(--surface-3); color: #fff; }
-    .btn-copy {
-      background: rgba(124, 58, 237, 0.2);
-      border-color: rgba(124, 58, 237, 0.4);
-      color: #c4b5fd;
-    }
-    .btn-copy:hover { background: var(--violet); color: #fff; }
-    .btn-wa {
-      background: rgba(16, 185, 129, 0.15);
-      border-color: rgba(16, 185, 129, 0.38);
-      color: #6ee7b7;
-    }
-    .btn-wa:hover { background: #10b981; color: #052e16; }
-    .btn-poll.active {
-      background: var(--gold);
-      color: #1c1917;
-      border-color: var(--gold);
-      font-weight: 800;
-    }
-
-    /* Floating WhatsApp Poll Dock */
-    .poll-dock {
-      position: fixed;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 120;
-      background: rgba(14, 11, 28, 0.96);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(245, 158, 11, 0.5);
-      border-radius: 999px;
-      padding: 8px 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
-    }
-    .poll-slots { display: flex; align-items: center; gap: 8px; }
-    .poll-slot {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      background: var(--surface-2);
-      border: 1px dashed rgba(255,255,255,0.22);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-    .poll-slot.filled {
-      border-style: solid;
-      border-color: var(--gold);
-      background: #070510;
-      color: var(--gold-light);
-    }
-    .btn-poll-generate {
-      background: linear-gradient(135deg, var(--gold), #d97706);
-      color: #1c1917;
-      font-weight: 800;
-      font-size: 12px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: none;
+      padding: 7px 11px;
+      border-radius: 6px;
       cursor: pointer;
     }
 
-    .toast {
-      position: fixed;
-      bottom: 80px;
-      right: 24px;
-      z-index: 200;
-      background: #10b981;
-      color: #052e16;
-      font-weight: 800;
-      font-size: 13px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-      transform: translateY(30px);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s;
+    .dl-btn:hover {
+      border-color: var(--text-main);
     }
-    .toast.show { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 768px) {
+      header { padding: 14px 16px; }
+      .container { padding: 0 16px; }
+      .grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- STICKY LIVE WEBSITE HEADER SIMULATOR -->
-  <div class="live-header-bar">
-    <div class="header-inner">
-      <div class="sim-tag">
-        <span class="sim-dot"></span>
-        <span>Live Stebup Header Fit</span>
-      </div>
+  <header>
+    <div class="brand-title">
+      <h1>Stebup — "B + Steps" Logo Study</h1>
+      <span>12 Modern Marks · Strictly 2 Solid Colors</span>
+    </div>
 
-      <div class="mock-navbar" title="Click any logo below to test it live inside your website navigation bar">
-        <div id="liveNavbarLogo" style="display:flex;align-items:center;height:34px;"></div>
-        <div class="mock-links">
-          <span>Home</span>
-          <span>Consulting</span>
-          <span>Tech &amp; AI</span>
-          <span>HR &amp; Talent</span>
+    <div class="controls">
+      <div class="control-group">
+        <span class="control-label">2 Colors</span>
+        <button class="btn active" onclick="setPalette('#111113', '#7C3AED', this)">
+          <i class="swatch-dot" style="background: linear-gradient(135deg, #111113 50%, #7C3AED 50%)"></i>
+          Ink + Violet
+        </button>
+        <button class="btn" onclick="setPalette('#111113', '#F59E0B', this)">
+          <i class="swatch-dot" style="background: linear-gradient(135deg, #111113 50%, #F59E0B 50%)"></i>
+          Ink + Gold
+        </button>
+        <button class="btn" onclick="setPalette('#0F172A', '#2563EB', this)">
+          <i class="swatch-dot" style="background: linear-gradient(135deg, #0F172A 50%, #2563EB 50%)"></i>
+          Navy + Blue
+        </button>
+        <button class="btn" onclick="setPalette('#111113', '#10B981', this)">
+          <i class="swatch-dot" style="background: linear-gradient(135deg, #111113 50%, #10B981 50%)"></i>
+          Ink + Emerald
+        </button>
+        <button class="btn" onclick="setPalette('#111113', '#71717A', this)">
+          <i class="swatch-dot" style="background: linear-gradient(135deg, #111113 50%, #71717A 50%)"></i>
+          Monochrome
+        </button>
+        <div class="color-picker-wrap" title="Pick Custom 2 Colors">
+          <input type="color" id="picker1" value="#111113" oninput="customColor()" />
+          <input type="color" id="picker2" value="#7C3AED" oninput="customColor()" />
         </div>
-        <div class="mock-cta">Get in Touch ↗</div>
       </div>
 
-      <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);padding:5px 10px;border-radius:8px;border:1px solid var(--border);">
-        <div id="liveFavicon" style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;"></div>
-        <span style="font-size:11px;color:var(--text-muted);">Favicon</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="hero-banner">
-      <div>
-        <span class="step-tag">Locked Spec: High-Trust Executive Wordmark</span>
-        <h1>Stebup — 50 Executive Wordmark Options</h1>
-        <p>
-          Engineered in <strong>Plus Jakarta Sans (800 ExtraBold)</strong> with your chosen <strong>Neural Violet (#7C3AED) + Executive Gold (#F59E0B)</strong> palette. Explore 50 distinct architectural treatments for the letter <strong>"b"</strong> and <strong>"b-u"</strong> transition. Toggle between <strong>3D Color</strong> and <strong>Pure B&amp;W</strong>, test in the live header, or build an <strong>A vs B vs C WhatsApp Poll</strong>.
-        </p>
-      </div>
-    </div>
-
-    <!-- TOOLBAR -->
-    <div class="toolbar">
-      <div class="cat-tabs" id="categoryTabs">
-        <button class="cat-tab active" data-cat="all">All 50 Options</button>
-        <button class="cat-tab" data-cat="chevron">01. Ascent Chevrons (10)</button>
-        <button class="cat-tab" data-cat="spark">02. Negative-Space AI Stars (10)</button>
-        <button class="cat-tab" data-cat="bridge">03. Vision-to-Execution Bridges (10)</button>
-        <button class="cat-tab" data-cat="precision">04. 45° Precision Cuts &amp; Keystones (10)</button>
-        <button class="cat-tab" data-cat="ribbon">05. 3D Interlocking Monoliths (10)</button>
+      <div class="control-group">
+        <span class="control-label">View</span>
+        <button class="btn active" id="viewMarkBtn" onclick="setView('mark')">Symbol Only</button>
+        <button class="btn" id="viewLockupBtn" onclick="setView('lockup')">With "Stebup"</button>
       </div>
 
-      <div class="tools-right">
-        <button class="chip-btn" id="btnBW" onclick="toggleColorMode()">◐ Color: Violet+Gold</button>
-        <button class="chip-btn" onclick="toggleCanvasTheme()">☀/🌙 Surface</button>
-        <button class="chip-btn active" id="caseBtn" onclick="toggleCase()">Case: Stebup</button>
-        <div style="display:flex;gap:4px;">
-          <button class="chip-btn active" onclick="setCols(4, this)">4 Col</button>
-          <button class="chip-btn" onclick="setCols(3, this)">3 Col</button>
-          <button class="chip-btn" onclick="setCols(2, this)">2 Col</button>
-        </div>
-        <input type="text" class="search-input" id="searchInput" placeholder="Search 50 options..." oninput="renderGrid()" />
+      <div class="control-group">
+        <button class="btn" id="themeBtn" onclick="toggleTheme()">Dark BG</button>
       </div>
     </div>
+  </header>
 
-    <!-- 50 LOGOS GRID -->
-    <div class="logo-grid" id="logoGrid"></div>
-  </div>
-
-  <!-- WHATSAPP POLL DOCK -->
-  <div class="poll-dock">
-    <div style="font-size:12px;font-weight:800;color:#fff;">
-      🗳️ WhatsApp Poll <span style="color:var(--gold);" id="pollCountLabel">(0/4)</span>
-    </div>
-    <div class="poll-slots" id="pollSlots">
-      <div class="poll-slot">A</div>
-      <div class="poll-slot">B</div>
-      <div class="poll-slot">C</div>
-      <div class="poll-slot">D</div>
-    </div>
-    <button class="btn-poll-generate" onclick="copyPollComparisonPNG()">📋 Copy "A vs B vs C" PNG</button>
-    <button class="chip-btn" onclick="clearPoll()" style="padding:5px 8px;">Clear</button>
-  </div>
-
-  <div class="toast" id="toast">Copied to clipboard!</div>
+  <main class="container">
+    <div class="grid" id="logoGrid"></div>
+  </main>
 
   <script>
-    let isColor = true;
-    let isTitleCase = true;
-    let activeCat = 'all';
-    let pollList = [];
-
-    // Helper: 4-Point AI Spark Path
-    function spark(cx, cy, r) {
-      return `M ${cx} ${cy - r} Q ${cx} ${cy} ${cx + r} ${cy} Q ${cx} ${cy} ${cx} ${cy + r} Q ${cx} ${cy} ${cx - r} ${cy} Q ${cx} ${cy} ${cx} ${cy - r} Z`;
-    }
-
-    // ============================================================================
-    // 50 EXECUTIVE WORDMARK CONCEPTS
-    // ============================================================================
-    const LOGOS = [];
-
-    // 01. ASCENT CHEVRONS & ARROWS (1-10)
-    const cat1 = [
-      { id: 1, title: 'Ascent Chevron Over "b"', desc: 'Accenture-inspired gold upward chevron crowning the vertical stem of "b".', variant: 'chev-crown' },
-      { id: 2, title: '45° Northeast Arrow Cap', desc: 'The "b" ascender terminates in a solid 45° execution arrow.', variant: 'arrow-stem' },
-      { id: 3, title: 'Double-Tier Advisory Chevrons', desc: 'Two nested gold chevrons lifting above the "b" (Strategy + Execution).', variant: 'double-chev' },
-      { id: 4, title: 'The Caret Accent (Steb̂up)', desc: 'Subtle typographic circumflex accent floating directly above "b".', variant: 'caret' },
-      { id: 5, title: 'Ascending Radar Arc', desc: 'Concentric consulting signal waves broadcasting upward from the "b".', variant: 'radar-arc' },
-      { id: 6, title: 'The Flying Chevron Bridge', desc: 'Upward chevron launching diagonally from "b" across "up".', variant: 'fly-chev' },
-      { id: 7, title: 'Arrow-Cut Ascender', desc: 'Precision negative-space arrow notched inside the vertical "b" stem.', variant: 'notch-arrow' },
-      { id: 8, title: 'Compass Crown "b"', desc: '4-point micro star cap guiding the summit of the "b".', variant: 'star-cap' },
-      { id: 9, title: 'The Apex Summit Cap', desc: 'Solid triangular crown turning the "b" into a growth milestone.', variant: 'apex-cap' },
-      { id: 10, title: 'Stepped Chevron Triple', desc: 'Three subtle horizontal steps ascending up the side of the "b" ascender.', variant: 'triple-step' }
-    ];
-
-    // 02. NEGATIVE-SPACE AI STARS & COMPASS (11-20)
-    const cat2 = [
-      { id: 11, title: 'Negative-Space 4-Point AI Star', desc: 'Inner counter of "b" carved into a crisp 4-point AI & Consulting spark (✦).', variant: 'ns-spark' },
-      { id: 12, title: 'AI Star + Human Node Cap', desc: '4-point star inside the "b" bowl paired with a gold talent node above.', variant: 'spark-node' },
-      { id: 13, title: 'Negative-Space Diamond Prism', desc: 'Inner counter of "b" is a 45° diamond prism representing data precision.', variant: 'ns-diamond' },
-      { id: 14, title: 'Slit-Core Optical "b"', desc: 'Vertical laser slit cutting through the "b" counter to reveal an AI beam.', variant: 'slit-core' },
-      { id: 15, title: 'Dual-Node Cognitive Counter', desc: 'Two micro circles (Human + AI) sharing the inner counter space.', variant: 'dual-node' },
-      { id: 16, title: 'Hexagonal Silicon Counter', desc: 'Inner bowl cut as an authoritative hexagonal micro-core.', variant: 'ns-hex' },
-      { id: 17, title: 'Quadrant-Divided "b"', desc: 'Counter divided into 4 service quadrants (Tech, Consulting, HR, AI).', variant: 'quad-counter' },
-      { id: 18, title: 'Negative-Space Upward Arrow', desc: 'FedEx-style hidden upward arrow formed inside the "b" counter.', variant: 'ns-arrow' },
-      { id: 19, title: 'The Luminous Core "b"', desc: 'Solid violet bowl with a floating gold AI spark suspended in center.', variant: 'lum-core' },
-      { id: 20, title: 'Offset Keyhole Counter', desc: 'Architectural keyhole counter unlocking transformation capabilities.', variant: 'keyhole' }
-    ];
-
-    // 03. VISION-TO-EXECUTION BRIDGES (21-30)
-    const cat3 = [
-      { id: 21, title: 'Suspension Bridge Arc ("b" to "u")', desc: 'Graceful architectural arc spanning from the "b" stem into the "u".', variant: 'bridge-arc' },
-      { id: 22, title: 'Twin-Node Mentor Handshake', desc: 'Consultant node and Talent node connected across an elevated bridge.', variant: 'twin-node' },
-      { id: 23, title: 'Cantilevered Overpass', desc: 'Horizontal beam extending from "b" and sheltering the word "up".', variant: 'cantilever' },
-      { id: 24, title: 'The Stepped Viaduct', desc: 'Two-tier ascending bridge steps connecting "steb" to "up".', variant: 'viaduct' },
-      { id: 25, title: 'The Horizon Arc Bridge', desc: 'Wide sweeping gold arch rising over the letters "b" and "u".', variant: 'horizon-arc' },
-      { id: 26, title: 'Neural Fiber Synapse', desc: 'Curved energy trace bridging intelligence from "b" to "u".', variant: 'synapse' },
-      { id: 27, title: 'The Keystone Arch', desc: 'Rounded keystone linking the tops of "b" and "u" into an archway.', variant: 'keystone-arch' },
-      { id: 28, title: 'Sloped Trajectory Rail', desc: 'Straight 30° ascending rail launching from the "b" bowl into "up".', variant: 'rail-bridge' },
-      { id: 29, title: 'The Handshake Loop', desc: 'S-shaped ribbon bridge locking "b" and "u" together.', variant: 'loop-bridge' },
-      { id: 30, title: 'Double-Pillar Portal', desc: 'The stems of "t" and "b" act as portal pillars supporting an arch.', variant: 'double-pillar' }
-    ];
-
-    // 04. 45° PRECISION CUTS & KEYSTONES (31-40)
-    const cat4 = [
-      { id: 31, title: '45° Sliced Ascender + Keystone', desc: 'Diagonal laser cut through the "b" stem with a floating gold diamond.', variant: 'slice-diamond' },
-      { id: 32, title: 'Floating Prism Keystone', desc: 'Ascender stops short beneath a floating 45° executive prism.', variant: 'float-prism' },
-      { id: 33, title: 'Stepped Ascender Notches', desc: 'Two 45° architectural notches stepping up the right side of the "b".', variant: 'notched-stem' },
-      { id: 34, title: 'Brutalist Stencil Cut', desc: 'Precision 45° stencil gap separating the "b" stem and its bowl.', variant: 'stencil-b' },
-      { id: 35, title: 'Chiseled Terminal Bevel', desc: '3D beveled top facet on the "b" catching studio specular light.', variant: 'bevel-top' },
-      { id: 36, title: 'Diagonal Split-Core', desc: '45° laser slice dividing the "b" into two interlocking facets.', variant: 'split-core' },
-      { id: 37, title: 'Elevated Baseline Step ("b-u")', desc: 'The baseline of "up" is physically stepped up 6px higher than "steb".', variant: 'stepped-base' },
-      { id: 38, title: 'Diamond Pierced Stem', desc: 'A hollow diamond cutout punched directly through the "b" ascender.', variant: 'pierced-stem' },
-      { id: 39, title: 'The Oblique Speed Cut', desc: '14° forward-leaning cut on the "b" ascender signaling rapid execution.', variant: 'speed-cut' },
-      { id: 40, title: 'The Apex Notch "b"', desc: 'Inverted triangular notch on the summit of "b" acting as an arrow sight.', variant: 'apex-notch' }
-    ];
-
-    // 05. 3D INTERLOCKING MONOLITHS & RIBBONS (41-50)
-    const cat5 = [
-      { id: 41, title: 'Interlocking 3D Ribbon "b"', desc: 'Two-piece violet pillar + gold loop with detachable 16px icon capability.', variant: 'ribbon-2piece' },
-      { id: 42, title: 'The Mobius Infinity "b"', desc: 'Continuous figure-8 / Mobius ribbon forming the "b" and an upward step.', variant: 'mobius-b' },
-      { id: 43, title: 'Dual-Pillar Monolith', desc: 'Two parallel vertical stems forming the "b" (Human Talent + Technology).', variant: 'dual-pillar' },
-      { id: 44, title: 'The Silicon Keycap [b]', desc: 'The letter "b" sits inside an authoritative rounded tech keycap.', variant: 'keycap-b' },
-      { id: 45, title: 'The Ascending Loop "b"', desc: 'The bowl of the "b" wraps around and elevates above the ascender line.', variant: 'ascend-loop' },
-      { id: 46, title: 'The Nested Torus "b"', desc: '3D shaded gold donut ring linked through the violet vertical stem.', variant: 'torus-link' },
-      { id: 47, title: 'The Floating Halo "b"', desc: 'A gold halo ring levitating in 3D perspective above the "b" ascender.', variant: 'halo-b' },
-      { id: 48, title: 'The Capsule Fold "b"', desc: 'Two rounded stadium capsules folded into an authoritative "b".', variant: 'capsule-fold' },
-      { id: 49, title: 'The Circuit Trace "b"', desc: 'Precision PCB traces forming the "b" with glowing gold solder pads.', variant: 'circuit-b' },
-      { id: 50, title: 'The Executive Crest "b"', desc: 'A shield-like architectural loop turning the "b" into an institutional seal.', variant: 'crest-b' }
-    ];
-
-    cat1.forEach(x => LOGOS.push({ ...x, cat: 'chevron', catName: 'Ascent Chevrons' }));
-    cat2.forEach(x => LOGOS.push({ ...x, cat: 'spark', catName: 'AI Stars' }));
-    cat3.forEach(x => LOGOS.push({ ...x, cat: 'bridge', catName: 'Bridges' }));
-    cat4.forEach(x => LOGOS.push({ ...x, cat: 'precision', catName: 'Precision Cuts' }));
-    cat5.forEach(x => LOGOS.push({ ...x, cat: 'ribbon', catName: '3D Monoliths' }));
-
-    // ============================================================================
-    // WORDMARK SVG GENERATOR (50 Custom Architectural Variations)
-    // ============================================================================
-    function buildWordmarkSVG(logo, forNav = false, uid = '') {
-      const p1 = isTitleCase ? 'Ste' : 'ste';
-      const isDark = !document.body.classList.contains('light-canvas');
-      const baseTxt = isDark ? '#FFFFFF' : '#0F0A1C';
-      const bgCut = isDark ? '#090714' : '#FAF8F5';
-
-      // Palette application
-      const vCol = isColor ? (isDark ? '#A78BFA' : '#7C3AED') : baseTxt;
-      const gCol = isColor ? '#F59E0B' : baseTxt;
-      const gLight = isColor ? '#FDE68A' : baseTxt;
-
-      const fs = forNav ? 54 : 64;
-      const yBase = forNav ? 68 : 78;
-      const xStart = forNav ? 10 : 24;
-
-      // Base wordmark geometry
-      let bAccentSVG = '';
-
-      switch (logo.variant) {
-        // --- 01. CHEVRONS & ARROWS (1-10) ---
-        case 'chev-crown':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 106 : 94)} ${yBase - 48} L${xStart + (isTitleCase ? 118 : 106)} ${yBase - 60} L${xStart + (isTitleCase ? 130 : 118)} ${yBase - 48}" fill="none" stroke="${gCol}" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
-          `;
-          break;
-        case 'arrow-stem':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 118 : 106)},${yBase - 62} ${xStart + (isTitleCase ? 108 : 96)},${yBase - 48} ${xStart + (isTitleCase ? 128 : 116)},${yBase - 48}" fill="${gCol}"/>
-          `;
-          break;
-        case 'double-chev':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 108 : 96)} ${yBase - 44} L${xStart + (isTitleCase ? 118 : 106)} ${yBase - 54} L${xStart + (isTitleCase ? 128 : 116)} ${yBase - 44}" fill="none" stroke="${vCol}" stroke-width="5" stroke-linecap="round"/>
-            <path d="${xStart + (isTitleCase ? 108 : 96)} ${yBase - 54} L${xStart + (isTitleCase ? 118 : 106)} ${yBase - 64} L${xStart + (isTitleCase ? 128 : 116)} ${yBase - 54}" fill="none" stroke="${gCol}" stroke-width="5" stroke-linecap="round"/>
-          `;
-          break;
-        case 'caret':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 111 : 99)} ${yBase - 50} L${xStart + (isTitleCase ? 118 : 106)} ${yBase - 58} L${xStart + (isTitleCase ? 125 : 113)} ${yBase - 50}" fill="none" stroke="${gCol}" stroke-width="5" stroke-linecap="round"/>
-          `;
-          break;
-        case 'radar-arc':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 106 : 94)} ${yBase - 48} A12 12 0 0 1 ${xStart + (isTitleCase ? 130 : 118)} ${yBase - 48}" fill="none" stroke="${gCol}" stroke-width="4.5" stroke-linecap="round"/>
-            <path d="${xStart + (isTitleCase ? 110 : 98)} ${yBase - 56} A8 8 0 0 1 ${xStart + (isTitleCase ? 126 : 114)} ${yBase - 56}" fill="none" stroke="${vCol}" stroke-width="4.5" stroke-linecap="round"/>
-          `;
-          break;
-        case 'fly-chev':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 124 : 112)} ${yBase - 52} L${xStart + (isTitleCase ? 144 : 132)} ${yBase - 64} L${xStart + (isTitleCase ? 144 : 132)} ${yBase - 48}" fill="none" stroke="${gCol}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          `;
-          break;
-        case 'notch-arrow':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 118 : 106)},${yBase - 36} ${xStart + (isTitleCase ? 112 : 100)},${yBase - 26} ${xStart + (isTitleCase ? 124 : 112)},${yBase - 26}" fill="${bgCut}"/>
-            <circle cx="${xStart + (isTitleCase ? 118 : 106)}" cy="${yBase - 52}" r="5" fill="${gCol}"/>
-          `;
-          break;
-        case 'star-cap':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${spark(xStart + (isTitleCase ? 118 : 106), yBase - 54, 9)}" fill="${gCol}"/>
-          `;
-          break;
-        case 'apex-cap':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 118 : 106)},${yBase - 58} ${xStart + (isTitleCase ? 112 : 100)},${yBase - 46} ${xStart + (isTitleCase ? 124 : 112)},${yBase - 46}" fill="${gCol}"/>
-          `;
-          break;
-        case 'triple-step':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <line x1="${xStart + (isTitleCase ? 126 : 114)}" y1="${yBase - 40}" x2="${xStart + (isTitleCase ? 134 : 122)}" y2="${yBase - 40}" stroke="${gCol}" stroke-width="3" stroke-linecap="round"/>
-            <line x1="${xStart + (isTitleCase ? 126 : 114)}" y1="${yBase - 48}" x2="${xStart + (isTitleCase ? 138 : 126)}" y2="${yBase - 48}" stroke="${gCol}" stroke-width="3" stroke-linecap="round"/>
-            <line x1="${xStart + (isTitleCase ? 126 : 114)}" y1="${yBase - 56}" x2="${xStart + (isTitleCase ? 142 : 130)}" y2="${yBase - 56}" stroke="${gCol}" stroke-width="3" stroke-linecap="round"/>
-          `;
-          break;
-
-        // --- 02. NEGATIVE-SPACE AI STARS (11-20) ---
-        case 'ns-spark':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="11" fill="${vCol}"/>
-            <path d="${spark(xStart + (isTitleCase ? 134 : 122), yBase - 18, 12)}" fill="${bgCut}"/>
-          `;
-          break;
-        case 'spark-node':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="11" fill="${vCol}"/>
-            <path d="${spark(xStart + (isTitleCase ? 134 : 122), yBase - 18, 12)}" fill="${bgCut}"/>
-            <circle cx="${xStart + (isTitleCase ? 118 : 106)}" cy="${yBase - 52}" r="5" fill="${gCol}"/>
-          `;
-          break;
-        case 'ns-diamond':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="11" fill="${vCol}"/>
-            <polygon points="${xStart + (isTitleCase ? 134 : 122)},${yBase - 26} ${xStart + (isTitleCase ? 142 : 130)},${yBase - 18} ${xStart + (isTitleCase ? 134 : 122)},${yBase - 10} ${xStart + (isTitleCase ? 126 : 114)},${yBase - 18}" fill="${bgCut}"/>
-          `;
-          break;
-        case 'slit-core':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <rect x="${xStart + (isTitleCase ? 132 : 120)}" y="${yBase - 28}" width="4" height="20" rx="2" fill="${gCol}"/>
-          `;
-          break;
-        case 'dual-node':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 130 : 118)}" cy="${yBase - 18}" r="4" fill="${bgCut}"/>
-            <circle cx="${xStart + (isTitleCase ? 138 : 126)}" cy="${yBase - 18}" r="4" fill="${gCol}"/>
-          `;
-          break;
-        case 'ns-hex':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="11" fill="${vCol}"/>
-            <polygon points="${xStart + (isTitleCase ? 134 : 122)},${yBase - 26} ${xStart + (isTitleCase ? 141 : 129)},${yBase - 22} ${xStart + (isTitleCase ? 141 : 129)},${yBase - 14} ${xStart + (isTitleCase ? 134 : 122)},${yBase - 10} ${xStart + (isTitleCase ? 127 : 115)},${yBase - 14} ${xStart + (isTitleCase ? 127 : 115)},${yBase - 22}" fill="${bgCut}"/>
-          `;
-          break;
-        case 'quad-counter':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="10" fill="${vCol}"/>
-            <line x1="${xStart + (isTitleCase ? 124 : 112)}" y1="${yBase - 18}" x2="${xStart + (isTitleCase ? 144 : 132)}" y2="${yBase - 18}" stroke="${bgCut}" stroke-width="2"/>
-            <line x1="${xStart + (isTitleCase ? 134 : 122)}" y1="${yBase - 28}" x2="${xStart + (isTitleCase ? 134 : 122)}" y2="${yBase - 8}" stroke="${bgCut}" stroke-width="2"/>
-          `;
-          break;
-        case 'ns-arrow':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="11" fill="${vCol}"/>
-            <polygon points="${xStart + (isTitleCase ? 134 : 122)},${yBase - 25} ${xStart + (isTitleCase ? 128 : 116)},${yBase - 16} ${xStart + (isTitleCase ? 132 : 120)},${yBase - 16} ${xStart + (isTitleCase ? 132 : 120)},${yBase - 11} ${xStart + (isTitleCase ? 136 : 124)},${yBase - 11} ${xStart + (isTitleCase ? 136 : 124)},${yBase - 16} ${xStart + (isTitleCase ? 140 : 128)},${yBase - 16}" fill="${bgCut}"/>
-          `;
-          break;
-        case 'lum-core':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="5" fill="${gCol}"/>
-          `;
-          break;
-        case 'keyhole':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 20}" r="4" fill="${bgCut}"/>
-            <polygon points="${xStart + (isTitleCase ? 132 : 120)},${yBase - 19} ${xStart + (isTitleCase ? 136 : 124)},${yBase - 19} ${xStart + (isTitleCase ? 138 : 126)},${yBase - 12} ${xStart + (isTitleCase ? 130 : 118)},${yBase - 12}" fill="${bgCut}"/>
-          `;
-          break;
-
-        // --- 03. BRIDGES & LIGATURES (21-30) ---
-        case 'bridge-arc':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 118 : 106)} ${yBase - 48} C${xStart + (isTitleCase ? 138 : 126)} ${yBase - 68} ${xStart + (isTitleCase ? 166 : 154)} ${yBase - 68} ${xStart + (isTitleCase ? 180 : 168)} ${yBase - 42}" fill="none" stroke="${gCol}" stroke-width="6" stroke-linecap="round"/>
-          `;
-          break;
-        case 'twin-node':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 118 : 106)} ${yBase - 46} C${xStart + (isTitleCase ? 140 : 128)} ${yBase - 66} ${xStart + (isTitleCase ? 160 : 148)} ${yBase - 66} ${xStart + (isTitleCase ? 178 : 166)} ${yBase - 44}" fill="none" stroke="${gCol}" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="${xStart + (isTitleCase ? 118 : 106)}" cy="${yBase - 46}" r="5" fill="${gCol}"/>
-            <circle cx="${xStart + (isTitleCase ? 178 : 166)}" cy="${yBase - 44}" r="5" fill="${vCol}"/>
-          `;
-          break;
-        case 'cantilever':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <line x1="${xStart + (isTitleCase ? 116 : 104)}" y1="${yBase - 52}" x2="${xStart + (isTitleCase ? 190 : 178)}" y2="${yBase - 52}" stroke="${gCol}" stroke-width="5" stroke-linecap="round"/>
-          `;
-          break;
-        case 'viaduct':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 118 : 106)} ${yBase - 48} H${xStart + (isTitleCase ? 148 : 136)} V${yBase - 58} H${xStart + (isTitleCase ? 178 : 166)}" fill="none" stroke="${gCol}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-          `;
-          break;
-        case 'horizon-arc':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 104 : 92)} ${yBase - 36} A36 20 0 0 1 ${xStart + (isTitleCase ? 196 : 184)} ${yBase - 36}" fill="none" stroke="${gCol}" stroke-width="5" stroke-linecap="round"/>
-          `;
-          break;
-        case 'synapse':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 118 : 106)} ${yBase - 48} Q${xStart + (isTitleCase ? 148 : 136)} ${yBase - 64} ${xStart + (isTitleCase ? 176 : 164)} ${yBase - 36}" fill="none" stroke="${gCol}" stroke-width="4" stroke-dasharray="6 4" stroke-linecap="round"/>
-          `;
-          break;
-        case 'keystone-arch':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 116 : 104)} ${yBase - 42} C${xStart + (isTitleCase ? 116 : 104)} ${yBase - 60} ${xStart + (isTitleCase ? 180 : 168)} ${yBase - 60} ${xStart + (isTitleCase ? 180 : 168)} ${yBase - 42}" fill="none" stroke="${gCol}" stroke-width="5"/>
-            <polygon points="${xStart + (isTitleCase ? 148 : 136)},${yBase - 64} ${xStart + (isTitleCase ? 143 : 131)},${yBase - 54} ${xStart + (isTitleCase ? 153 : 141)},${yBase - 54}" fill="${vCol}"/>
-          `;
-          break;
-        case 'rail-bridge':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <line x1="${xStart + (isTitleCase ? 118 : 106)}" y1="${yBase - 32}" x2="${xStart + (isTitleCase ? 188 : 176)}" y2="${yBase - 62}" stroke="${gCol}" stroke-width="5" stroke-linecap="round"/>
-          `;
-          break;
-        case 'loop-bridge':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 118 : 106)} ${yBase - 48} C${xStart + (isTitleCase ? 160 : 148)} ${yBase - 72} ${xStart + (isTitleCase ? 135 : 123)} ${yBase - 28} ${xStart + (isTitleCase ? 178 : 166)} ${yBase - 42}" fill="none" stroke="${gCol}" stroke-width="4.5" stroke-linecap="round"/>
-          `;
-          break;
-        case 'double-pillar':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <line x1="${xStart + (isTitleCase ? 86 : 74)}" y1="${yBase - 42}" x2="${xStart + (isTitleCase ? 118 : 106)}" y2="${yBase - 42}" stroke="${gCol}" stroke-width="5" stroke-linecap="round"/>
-          `;
-          break;
-
-        // --- 04. 45° PRECISION CUTS (31-40) ---
-        case 'slice-diamond':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <line x1="${xStart + (isTitleCase ? 110 : 98)}" y1="${yBase - 36}" x2="${xStart + (isTitleCase ? 128 : 116)}" y2="${yBase - 22}" stroke="${bgCut}" stroke-width="6"/>
-            <polygon points="${xStart + (isTitleCase ? 118 : 106)},${yBase - 60} ${xStart + (isTitleCase ? 126 : 114)},${yBase - 52} ${xStart + (isTitleCase ? 118 : 106)},${yBase - 44} ${xStart + (isTitleCase ? 110 : 98)},${yBase - 52}" fill="${gCol}"/>
-          `;
-          break;
-        case 'float-prism':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 118 : 106)},${yBase - 64} ${xStart + (isTitleCase ? 128 : 116)},${yBase - 54} ${xStart + (isTitleCase ? 118 : 106)},${yBase - 44} ${xStart + (isTitleCase ? 108 : 96)},${yBase - 54}" fill="${gCol}"/>
-          `;
-          break;
-        case 'notched-stem':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 124 : 112)},${yBase - 42} ${xStart + (isTitleCase ? 116 : 104)},${yBase - 42} ${xStart + (isTitleCase ? 124 : 112)},${yBase - 34}" fill="${bgCut}"/>
-            <circle cx="${xStart + (isTitleCase ? 118 : 106)}" cy="${yBase - 54}" r="5" fill="${gCol}"/>
-          `;
-          break;
-        case 'stencil-b':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <line x1="${xStart + (isTitleCase ? 112 : 100)}" y1="${yBase - 16}" x2="${xStart + (isTitleCase ? 126 : 114)}" y2="${yBase - 16}" stroke="${bgCut}" stroke-width="5"/>
-          `;
-          break;
-        case 'bevel-top':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 112 : 100)},${yBase - 52} ${xStart + (isTitleCase ? 124 : 112)},${yBase - 52} ${xStart + (isTitleCase ? 124 : 112)},${yBase - 42}" fill="${gCol}"/>
-          `;
-          break;
-        case 'split-core':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <line x1="${xStart + (isTitleCase ? 104 : 92)}" y1="${yBase - 6}" x2="${xStart + (isTitleCase ? 144 : 132)}" y2="${yBase - 46}" stroke="${gCol}" stroke-width="3" stroke-linecap="round"/>
-          `;
-          break;
-        case 'stepped-base':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan></text>
-            <text x="${xStart + (isTitleCase ? 148 : 136)}" y="${yBase - 6}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs * 0.94}" letter-spacing="-2" fill="${gCol}">up</text>
-          `;
-          break;
-        case 'pierced-stem':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 118 : 106)},${yBase - 46} ${xStart + (isTitleCase ? 123 : 111)},${yBase - 40} ${xStart + (isTitleCase ? 118 : 106)},${yBase - 34} ${xStart + (isTitleCase ? 113 : 101)},${yBase - 40}" fill="${gCol}"/>
-          `;
-          break;
-        case 'speed-cut':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 112 : 100)},${yBase - 52} ${xStart + (isTitleCase ? 124 : 112)},${yBase - 56} ${xStart + (isTitleCase ? 124 : 112)},${yBase - 52}" fill="${gCol}"/>
-          `;
-          break;
-        case 'apex-notch':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <polygon points="${xStart + (isTitleCase ? 118 : 106)},${yBase - 46} ${xStart + (isTitleCase ? 114 : 102)},${yBase - 54} ${xStart + (isTitleCase ? 122 : 110)},${yBase - 54}" fill="${bgCut}"/>
-          `;
-          break;
-
-        // --- 05. 3D MONOLITHS & RIBBONS (41-50) ---
-        case 'ribbon-2piece':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}</text>
-            <rect x="${xStart + (isTitleCase ? 110 : 98)}" y="${yBase - 48}" width="11" height="50" rx="5.5" fill="${vCol}"/>
-            <path d="${xStart + (isTitleCase ? 126 : 114)} ${yBase - 26} H${xStart + (isTitleCase ? 138 : 126)} A14 14 0 0 1 ${xStart + (isTitleCase ? 138 : 126)} ${yBase + 2} H${xStart + (isTitleCase ? 126 : 114)}" fill="none" stroke="${gCol}" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="${xStart + (isTitleCase ? 115.5 : 103.5)}" cy="${yBase - 56}" r="4.5" fill="${gCol}"/>
-            <text x="${xStart + (isTitleCase ? 162 : 150)}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">up</text>
-          `;
-          break;
-        case 'mobius-b':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <ellipse cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" rx="14" ry="7" transform="rotate(-30 ${xStart + (isTitleCase ? 134 : 122)} ${yBase - 18})" fill="none" stroke="${gCol}" stroke-width="3"/>
-          `;
-          break;
-        case 'dual-pillar':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}</text>
-            <rect x="${xStart + (isTitleCase ? 108 : 96)}" y="${yBase - 48}" width="6" height="48" rx="3" fill="${vCol}"/>
-            <rect x="${xStart + (isTitleCase ? 116 : 104)}" y="${yBase - 48}" width="6" height="48" rx="3" fill="${gCol}"/>
-            <path d="${xStart + (isTitleCase ? 122 : 110)} ${yBase - 24} H${xStart + (isTitleCase ? 136 : 124)} A12 12 0 0 1 ${xStart + (isTitleCase ? 136 : 124)} ${yBase} H${xStart + (isTitleCase ? 122 : 110)}" fill="none" stroke="${vCol}" stroke-width="8" stroke-linecap="round"/>
-            <text x="${xStart + (isTitleCase ? 154 : 142)}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">up</text>
-          `;
-          break;
-        case 'keycap-b':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}</text>
-            <rect x="${xStart + (isTitleCase ? 104 : 92)}" y="${yBase - 52}" width="44" height="54" rx="10" fill="${vCol}"/>
-            <text x="${xStart + (isTitleCase ? 116 : 104)}" y="${yBase - 10}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs * 0.88}" fill="#FFFFFF">b</text>
-            <circle cx="${xStart + (isTitleCase ? 140 : 128)}" cy="${yBase - 42}" r="3.5" fill="${gCol}"/>
-            <text x="${xStart + (isTitleCase ? 154 : 142)}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">up</text>
-          `;
-          break;
-        case 'ascend-loop':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 118 : 106)} ${yBase - 20} C${xStart + (isTitleCase ? 118 : 106)} ${yBase - 60} ${xStart + (isTitleCase ? 152 : 140)} ${yBase - 60} ${xStart + (isTitleCase ? 152 : 140)} ${yBase - 20}" fill="none" stroke="${gCol}" stroke-width="4.5"/>
-          `;
-          break;
-        case 'torus-link':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 134 : 122)}" cy="${yBase - 18}" r="14" fill="none" stroke="${gCol}" stroke-width="4.5"/>
-          `;
-          break;
-        case 'halo-b':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <ellipse cx="${xStart + (isTitleCase ? 118 : 106)}" cy="${yBase - 54}" rx="14" ry="4" transform="rotate(-15 ${xStart + (isTitleCase ? 118 : 106)} ${yBase - 54})" fill="none" stroke="${gCol}" stroke-width="3"/>
-          `;
-          break;
-        case 'capsule-fold':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}</text>
-            <rect x="${xStart + (isTitleCase ? 110 : 98)}" y="${yBase - 48}" width="12" height="48" rx="6" fill="${vCol}"/>
-            <rect x="${xStart + (isTitleCase ? 122 : 110)}" y="${yBase - 24}" width="28" height="24" rx="12" fill="${gCol}"/>
-            <text x="${xStart + (isTitleCase ? 156 : 144)}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">up</text>
-          `;
-          break;
-        case 'circuit-b':
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <circle cx="${xStart + (isTitleCase ? 118 : 106)}" cy="${yBase - 52}" r="3.5" fill="${gCol}"/>
-            <circle cx="${xStart + (isTitleCase ? 146 : 134)}" cy="${yBase - 18}" r="3.5" fill="${gCol}"/>
-            <line x1="${xStart + (isTitleCase ? 118 : 106)}" y1="${yBase - 52}" x2="${xStart + (isTitleCase ? 134 : 122)}" y2="${yBase - 36}" stroke="${gCol}" stroke-width="2"/>
-          `;
-          break;
-        case 'crest-b':
-        default:
-          bAccentSVG = `
-            <text x="${xStart}" y="${yBase}" font-family="'Plus Jakarta Sans',sans-serif" font-weight="800" font-size="${fs}" letter-spacing="-2.2" fill="${baseTxt}">${p1}<tspan fill="${vCol}">b</tspan>up</text>
-            <path d="${xStart + (isTitleCase ? 110 : 98)} ${yBase - 48} H${xStart + (isTitleCase ? 126 : 114)} L${xStart + (isTitleCase ? 118 : 106)} ${yBase - 58} Z" fill="${gCol}"/>
-          `;
-          break;
+    const concepts = [
+      {
+        id: "01",
+        title: "The Stepped Spine B",
+        desc: "The left vertical spine of the B is formed by 3 ascending steps that lock into the twin bowls.",
+        svg: `
+          <!-- 3 ascending steps on the left spine (Color 2) -->
+          <path d="M16 110 V80 H32 V50 H48 V18 H64 V50 H48 V80 H32 V110 H16 Z" fill="var(--c2)" />
+          <!-- Right bowls of the B (Color 1) -->
+          <path d="
+            M64 18 H80 C97 18 108 28 108 42 C108 51 102 59 93 62 C104 65 112 74 112 86 C112 101 99 110 80 110 H32 V92 H78 C87 92 93 88 93 81 C93 74 87 70 78 70 H48 V54 H77 C85 54 90 50 90 43 C90 36 85 33 77 33 H64 V18 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "02",
+        title: "Negative-Space Staircase B",
+        desc: "A bold geometric B where the interior counter cutouts form a rising 3-step staircase.",
+        svg: `
+          <!-- Outer B Monolith (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M22 16 H78 C97 16 108 27 108 42 C108 52 102 59 93 62 C104 65 112 74 112 86 C112 102 98 112 78 112 H22 V16 Z
+            M42 34 V94 H76 C85 94 92 89 92 82 C92 75 85 70 76 70 H58 V56 H74 C82 56 88 51 88 45 C88 38 82 34 74 34 H42 Z
+          " fill="var(--c1)" />
+          <!-- 3-Step Staircase inside the counter (Color 2) -->
+          <path d="M42 94 V74 H58 V54 H74 V34 H42 V94 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "03",
+        title: "3-Pillar Step + Twin Arcs B",
+        desc: "Three ascending step bars on the left paired with two sharp geometric B semi-circles on the right.",
+        svg: `
+          <!-- 3 Ascending Step Pillars (Color 2) -->
+          <rect x="14" y="72" width="14" height="38" rx="3" fill="var(--c2)" />
+          <rect x="33" y="45" width="14" height="65" rx="3" fill="var(--c2)" />
+          <rect x="52" y="18" width="14" height="92" rx="3" fill="var(--c2)" />
+          <!-- Twin B Loops (Color 1) -->
+          <path d="
+            M72 18 H82 C99 18 110 29 110 43 C110 53 103 61 93 64 C104 67 112 76 112 87 C112 101 100 110 82 110 H72 V93 H80 C89 93 94 89 94 82 C94 75 89 71 80 71 H72 V56 H80 C88 56 93 51 93 44 C93 37 88 33 80 33 H72 V18 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "04",
+        title: "Cantilever Step 'b' (Lowercase)",
+        desc: "Minimalist lowercase 'b' whose vertical stem climbs upward in 3 crisp geometric steps.",
+        svg: `
+          <!-- Circular bowl of lowercase b (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M34 64 H70 C92 64 110 75 110 89 C110 103 92 114 70 114 H34 V64 Z
+            M52 79 V99 H69 C81 99 90 95 90 89 C90 83 81 79 69 79 H52 Z
+          " fill="var(--c1)" />
+          <!-- 3 Rising Steps forming the ascender of the 'b' (Color 2) -->
+          <path d="M18 64 V46 H34 V28 H50 V12 H68 V30 H52 V48 H36 V64 H18 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "05",
+        title: "Split-Level Offset B",
+        desc: "The upper loop of the B physically steps up and right from the lower loop, anchored by two step risers.",
+        svg: `
+          <!-- Lower B Loop (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M18 64 H74 C92 64 104 74 104 88 C104 102 92 112 74 112 H18 V64 Z
+            M38 79 V97 H71 C80 97 85 93 85 88 C85 83 80 79 71 79 H38 Z
+          " fill="var(--c1)" />
+          <!-- Upper B Loop shifted right (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M38 16 H86 C102 16 112 26 112 40 C112 54 102 64 86 64 H38 V16 Z
+            M56 31 V49 H83 C90 49 94 45 94 40 C94 35 90 31 83 31 H56 Z
+          " fill="var(--c1)" />
+          <!-- Left Step Treads (Color 2) -->
+          <path d="M18 64 V40 H38 V64 H18 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "06",
+        title: "The Terrace Cut B",
+        desc: "Heavy architectural B with its upper-left corner carved into rising stair terraces.",
+        svg: `
+          <!-- Solid B Body with stepped top-left terrace (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M58 16 H78 C96 16 108 26 108 42 C108 51 102 58 93 61 C104 64 112 73 112 86 C112 102 98 112 78 112 H22 V52 H40 V34 H58 V16 Z
+            M44 36 V54 H74 C82 54 88 50 88 45 C88 39 82 36 74 36 H44 Z
+            M44 72 V92 H76 C85 92 91 88 91 82 C91 76 85 72 76 72 H44 Z
+          " fill="var(--c1)" />
+          <!-- Parallel Step Ribbon on Top-Left (Color 2) -->
+          <path d="M14 44 H32 V26 H50 V10 H62 V22 H44 V40 H26 V56 H14 V44 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "07",
+        title: "Continuous Ribbon Step B",
+        desc: "A uniform geometric band that climbs 3 steps on the left and loops smoothly into a B on the right.",
+        svg: `
+          <!-- Left 3-Step Ribbon Spine (Color 2) -->
+          <path d="M16 108 V78 H34 V48 H52 V18 H68 V34 H50 V64 H32 V92 H52 V108 H16 Z" fill="var(--c2)" />
+          <!-- Right Dual B Loops (Color 1) -->
+          <path d="
+            M68 18 H82 C99 18 110 28 110 42 C110 51 104 59 95 62 C106 65 112 74 112 85 C112 100 100 108 82 108 H52 V92 H80 C89 92 94 88 94 82 C94 76 89 71 80 71 H50 V55 H80 C88 55 93 51 93 44 C93 38 88 34 80 34 H68 V18 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "08",
+        title: "The Step-Up Crossbar B",
+        desc: "The center waist of the B transforms into an ascending step bridge from left to right.",
+        svg: `
+          <!-- Upper and Lower B Halves (Color 1) -->
+          <path d="
+            M24 16 H78 C96 16 108 26 108 41 C108 48 105 54 99 58 H80 C86 55 89 49 89 43 C89 36 84 32 75 32 H44 V54 H24 V16 Z
+            M24 82 H44 V96 H76 C86 96 92 91 92 84 C92 78 87 74 78 73 H101 C108 78 112 85 112 94 C112 105 98 112 78 112 H24 V82 Z
+          " fill="var(--c1)" />
+          <!-- Center Ascending Step Crossbar (Color 2) -->
+          <path d="M14 78 H58 V62 H102 V46 H46 V62 H14 V78 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "09",
+        title: "Inside-Bowl Staircase 'b'",
+        desc: "Clean modern lowercase 'b' housing a sharp 3-step staircase inside its circular counter.",
+        svg: `
+          <!-- Outer lowercase 'b' ring + stem (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M22 14 H42 V48 C49 42 59 38 70 38 C94 38 112 56 112 78 C112 100 94 116 68 116 C55 116 45 112 38 105 V114 H22 V14 Z
+            M42 77 C42 91 52 100 66 100 C81 100 92 91 92 77 C92 63 81 54 66 54 C52 54 42 63 42 77 Z
+          " fill="var(--c1)" />
+          <!-- 3-Step Staircase inside the bowl (Color 2) -->
+          <path d="M46 95 V83 H58 V71 H70 V59 H85 V95 H46 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "10",
+        title: "Cornerstone Step Foundation B",
+        desc: "A 3-step staircase block at the bottom-left foundation elevates the upper B structure.",
+        svg: `
+          <!-- Elevated Upper B (Color 1) -->
+          <path d="
+            M38 14 H80 C98 14 110 24 110 39 C110 48 104 55 95 58 C106 61 112 70 112 82 C112 98 99 108 80 108 H64 V91 H78 C87 91 93 87 93 80 C93 73 87 69 78 69 H64 V52 H78 C86 52 91 48 91 41 C91 34 86 30 78 30 H56 V52 H38 V14 Z
+          " fill="var(--c1)" />
+          <!-- 3-Step Base Cornerstone (Color 2) -->
+          <path d="M16 112 V92 H30 V72 H44 V52 H58 V112 H16 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "11",
+        title: "Staggered Horizontal Step Slabs B",
+        desc: "Three rising horizontal step bars on the left that lock into the curved right loops of the B.",
+        svg: `
+          <!-- 3 Staggered Horizontal Step Slabs (Color 2) -->
+          <rect x="12" y="88" width="48" height="20" rx="4" fill="var(--c2)" />
+          <rect x="24" y="54" width="48" height="20" rx="4" fill="var(--c2)" />
+          <rect x="36" y="20" width="48" height="20" rx="4" fill="var(--c2)" />
+          <!-- Right Curved B Loops (Color 1) -->
+          <path d="
+            M72 20 H84 C100 20 110 29 110 42 C110 52 104 60 94 63 C105 66 112 75 112 87 C112 100 102 108 84 108 H64 V88 H81 C88 88 93 84 93 78 C93 72 88 68 81 68 H72 V54 H80 C87 54 91 50 91 44 C91 39 87 35 80 35 H72 V20 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "12",
+        title: "Diagonal Step-Apex B",
+        desc: "Sharp modern B where the left stem steps upward in two crisp increments to a 45° apex.",
+        svg: `
+          <!-- Left Stepped Stem with 45° Apex (Color 2) -->
+          <path d="M18 112 V74 L32 60 V36 L52 16 V112 H34 V78 L18 94 Z" fill="var(--c2)" />
+          <path d="M18 112 V72 H34 V42 H50 V16 H64 V112 H18 Z" fill="var(--c2)" opacity="0" />
+          <!-- Clean 2-Step Chamfered Spine (Color 2) -->
+          <polygon points="18,112 18,74 34,58 34,32 50,16 50,112" fill="var(--c2)" />
+          <!-- Twin Geometric B Loops (Color 1) -->
+          <path d="
+            M56 16 H80 C98 16 110 27 110 42 C110 52 104 59 94 62 C105 65 112 74 112 86 C112 102 99 112 80 112 H56 V94 H78 C87 94 93 89 93 82 C93 75 87 70 78 70 H56 V54 H77 C85 54 91 49 91 42 C91 35 85 31 77 31 H56 V16 Z
+          " fill="var(--c1)" />
+        `
       }
+    ];
 
-      const vbW = forNav ? 340 : 380;
-      const vbH = forNav ? 90 : 105;
+    const grid = document.getElementById('logoGrid');
 
-      return `<svg viewBox="0 0 ${vbW} ${vbH}" xmlns="http://www.w3.org/2000/svg">
-        ${bAccentSVG}
-      </svg>`;
-    }
+    function render() {
+      grid.innerHTML = concepts.map(item => `
+        <div class="card">
+          <div class="stage">
+            <span class="num-badge">#${item.id}</span>
 
-    // Favicon SVG generator for the top simulator
-    function buildFaviconSVG(logo) {
-      const isDark = !document.body.classList.contains('light-canvas');
-      const vCol = isColor ? '#8B5CF6' : (isDark ? '#FFF' : '#0F0A1C');
-      const gCol = isColor ? '#F59E0B' : (isDark ? '#FFF' : '#0F0A1C');
+            <svg class="mark-svg" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
+              ${item.svg}
+            </svg>
 
-      return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 28 L46 12 L68 28" fill="none" stroke="${gCol}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M34 36 V86 H62 A20 20 0 0 0 62 46 H34" fill="none" stroke="${vCol}" stroke-width="16" stroke-linecap="round"/>
-      </svg>`;
-    }
-
-    // ============================================================================
-    // RENDER 50 OPTIONS GRID
-    // ============================================================================
-    function renderGrid() {
-      const q = (document.getElementById('searchInput').value || '').toLowerCase();
-      const filtered = LOGOS.filter(l => {
-        const matchCat = activeCat === 'all' || l.cat === activeCat;
-        const matchQ = !q || l.title.toLowerCase().includes(q) || l.desc.toLowerCase().includes(q) || String(l.id).includes(q);
-        return matchCat && matchQ;
-      });
-
-      document.getElementById('logoGrid').innerHTML = filtered.map(l => {
-        const inPoll = pollList.some(item => item.id === l.id);
-        const svgMarkup = buildWordmarkSVG(l, false, 'grid_' + l.id);
-        return `
-          <div class="logo-card ${inPoll ? 'in-poll' : ''}">
-            <div class="card-top">
-              <span class="card-id">#${String(l.id).padStart(2, '0')}</span>
-              <span class="card-tag">${l.catName}</span>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                ${item.svg}
+              </svg>
+              <span class="wordmark-text">Ste<em>b</em>up</span>
             </div>
-            <div class="card-canvas" onclick="mountNavbar(${l.id}); showToast('Previewing #${String(l.id).padStart(2, '0')} in Live Header!');">
-              ${svgMarkup}
-              <span class="canvas-hint">👆 Test in Live Header</span>
-            </div>
-            <div class="card-body">
-              <div class="card-title">${l.title}</div>
-              <div class="card-desc">${l.desc}</div>
-            </div>
-            <div class="card-actions">
-              <button class="btn-act btn-copy" onclick="copyPNG(${l.id})">📋 Copy PNG</button>
-              <button class="btn-act btn-wa" onclick="shareWA(${l.id})">💬 WhatsApp</button>
-              <button class="btn-act btn-poll ${inPoll ? 'active' : ''}" onclick="togglePoll(${l.id})">${inPoll ? '✓ Poll' : '+ Poll'}</button>
-              <button class="btn-act" onclick="downloadSVG(${l.id})">SVG</button>
+
+            <div class="mini-preview" title="20px Navbar Scale">
+              <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                ${item.svg}
+              </svg>
+              <span>Stebup</span>
             </div>
           </div>
-        `;
-      }).join('');
+
+          <div class="info">
+            <div class="info-text">
+              <h2>${item.title}</h2>
+              <p>${item.desc}</p>
+            </div>
+            <button class="dl-btn" onclick="downloadSvg('${item.id}', '${item.title}')">SVG</button>
+          </div>
+        </div>
+      `).join('');
     }
 
-    function mountNavbar(id) {
-      const l = LOGOS.find(x => x.id === id) || LOGOS[0];
-      document.getElementById('liveNavbarLogo').innerHTML = buildWordmarkSVG(l, true, 'nav');
-      document.getElementById('liveFavicon').innerHTML = buildFaviconSVG(l);
-    }
+    function setPalette(c1, c2, btn) {
+      const isDark = document.body.classList.contains('dark');
+      const resolvedC1 = (isDark && (c1 === '#111113' || c1 === '#0F172A')) ? '#F4F4F6' : c1;
+      document.documentElement.style.setProperty('--c1', resolvedC1);
+      document.documentElement.style.setProperty('--c2', c2);
+      document.getElementById('picker1').value = resolvedC1;
+      document.getElementById('picker2').value = c2;
 
-    function toggleColorMode() {
-      isColor = !isColor;
-      document.getElementById('btnBW').textContent = isColor ? '◐ Color: Violet+Gold' : '◐ Color: Pure B&W';
-      document.getElementById('btnBW').classList.toggle('active', !isColor);
-      renderGrid();
-      mountNavbar(1);
-    }
-
-    function toggleCanvasTheme() {
-      document.body.classList.toggle('light-canvas');
-      renderGrid();
-      mountNavbar(1);
-    }
-
-    function toggleCase() {
-      isTitleCase = !isTitleCase;
-      document.getElementById('caseBtn').textContent = isTitleCase ? 'Case: Stebup' : 'Case: stebup';
-      renderGrid();
-      mountNavbar(1);
-    }
-
-    function setCols(n, btn) {
-      const grid = document.getElementById('logoGrid');
-      grid.className = 'logo-grid' + (n === 4 ? '' : ' cols-' + n);
-      btn.parentElement.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-
-    // Category Tabs
-    document.querySelectorAll('#categoryTabs .cat-tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#categoryTabs .cat-tab').forEach(b => b.classList.remove('active'));
+      if (btn) {
+        document.querySelectorAll('.control-group:first-child .btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeCat = btn.dataset.cat;
-        renderGrid();
-      });
-    });
-
-    // ============================================================================
-    // PNG CLIPBOARD & WHATSAPP SHARING
-    // ============================================================================
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.classList.add('show');
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
-    }
-
-    async function copyPNG(id) {
-      const l = LOGOS.find(x => x.id === id);
-      const svgStr = buildWordmarkSVG(l, false, 'export');
-      const canvas = document.createElement('canvas');
-      canvas.width = 1200;
-      canvas.height = 540;
-      const ctx = canvas.getContext('2d');
-
-      ctx.fillStyle = '#070510';
-      ctx.fillRect(0, 0, 1200, 540);
-
-      ctx.strokeStyle = '#7C3AED';
-      ctx.lineWidth = 3;
-      ctx.strokeRect(24, 24, 1152, 492);
-
-      ctx.fillStyle = '#F59E0B';
-      ctx.font = 'bold 20px Inter, sans-serif';
-      ctx.fillText('STEBUP LOGO OPTION #' + String(l.id).padStart(2, '0') + ' (' + l.catName.toUpperCase() + ')', 60, 72);
-
-      const img = new Image();
-      const url = URL.createObjectURL(new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' }));
-      await new Promise(r => { img.onload = r; img.src = url; });
-      ctx.drawImage(img, 120, 110, 960, 270);
-      URL.revokeObjectURL(url);
-
-      ctx.fillStyle = '#FFFFFF';
-      ctx.font = 'bold 28px Inter, sans-serif';
-      ctx.fillText(l.title, 60, 445);
-
-      ctx.fillStyle = '#94A3B8';
-      ctx.font = '20px Inter, sans-serif';
-      ctx.fillText(l.desc, 60, 480);
-
-      const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
-      try {
-        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-        showToast('✅ High-res PNG copied! Press Ctrl+V in your WhatsApp chat.');
-      } catch (e) {
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'stebup-option-' + l.id + '.png';
-        a.click();
-        showToast('📥 Downloaded option #' + l.id + ' PNG!');
       }
     }
 
-    function shareWA(id) {
-      const l = LOGOS.find(x => x.id === id);
-      const text = `Team, check out Stebup Logo Option #${String(l.id).padStart(2, '0')} (${l.title}): "${l.desc}" — Thoughts on this for our website header?`;
-      window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    function customColor() {
+      const c1 = document.getElementById('picker1').value;
+      const c2 = document.getElementById('picker2').value;
+      document.documentElement.style.setProperty('--c1', c1);
+      document.documentElement.style.setProperty('--c2', c2);
+      document.querySelectorAll('.control-group:first-child .btn').forEach(b => b.classList.remove('active'));
     }
 
-    function downloadSVG(id) {
-      const l = LOGOS.find(x => x.id === id);
-      const svgStr = buildWordmarkSVG(l, false, 'dl');
-      const blob = new Blob([svgStr], { type: 'image/svg+xml' });
+    function setView(mode) {
+      document.body.classList.toggle('show-lockup', mode === 'lockup');
+      document.getElementById('viewMarkBtn').classList.toggle('active', mode === 'mark');
+      document.getElementById('viewLockupBtn').classList.toggle('active', mode === 'lockup');
+    }
+
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark');
+      document.getElementById('themeBtn').textContent = isDark ? 'Light BG' : 'Dark BG';
+      const currentC1 = getComputedStyle(document.documentElement).getPropertyValue('--c1').trim();
+      if (isDark && (currentC1 === '#111113' || currentC1 === '#0F172A')) {
+        document.documentElement.style.setProperty('--c1', '#F4F4F6');
+        document.getElementById('picker1').value = '#F4F4F6';
+      } else if (!isDark && currentC1 === '#F4F4F6') {
+        document.documentElement.style.setProperty('--c1', '#111113');
+        document.getElementById('picker1').value = '#111113';
+      }
+    }
+
+    function downloadSvg(id, title) {
+      const svgEl = document.getElementById('svg-' + id);
+      const c1 = getComputedStyle(document.documentElement).getPropertyValue('--c1').trim();
+      const c2 = getComputedStyle(document.documentElement).getPropertyValue('--c2').trim();
+      let raw = svgEl.outerHTML
+        .replaceAll('var(--c1)', c1)
+        .replaceAll('var(--c2)', c2);
+      const blob = new Blob([raw], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'stebup-logo-' + l.id + '.svg';
+      a.href = url;
+      a.download = `stebup-b-steps-${id}.svg`;
       a.click();
+      URL.revokeObjectURL(url);
     }
 
-    // ============================================================================
-    // WHATSAPP POLL BUILDER (A vs B vs C vs D)
-    // ============================================================================
-    function togglePoll(id) {
-      const idx = pollList.findIndex(x => x.id === id);
-      if (idx >= 0) {
-        pollList.splice(idx, 1);
-      } else {
-        if (pollList.length >= 4) { showToast('Poll holds up to 4 options (A, B, C, D).'); return; }
-        const l = LOGOS.find(x => x.id === id);
-        pollList.push({ id: l.id, title: '#' + String(l.id).padStart(2, '0') + ' ' + l.title, svg: buildWordmarkSVG(l, false, 'poll_' + l.id) });
-      }
-      updatePollUI();
-      renderGrid();
-    }
-
-    function clearPoll() {
-      pollList = [];
-      updatePollUI();
-      renderGrid();
-    }
-
-    function updatePollUI() {
-      document.getElementById('pollCountLabel').textContent = '(' + pollList.length + '/4)';
-      const letters = ['A', 'B', 'C', 'D'];
-      document.getElementById('pollSlots').innerHTML = letters.map((c, i) =>
-        pollList[i]
-          ? `<div class="poll-slot filled" title="${pollList[i].title}">${c}✓</div>`
-          : `<div class="poll-slot">${c}</div>`
-      ).join('');
-    }
-
-    async function copyPollComparisonPNG() {
-      if (pollList.length < 2) {
-        showToast('Select at least 2 logos using "+ Poll" to create a comparison card!');
-        return;
-      }
-      const canvas = document.createElement('canvas');
-      canvas.width = 1600;
-      canvas.height = 960;
-      const ctx = canvas.getContext('2d');
-
-      ctx.fillStyle = '#070510';
-      ctx.fillRect(0, 0, 1600, 960);
-
-      ctx.fillStyle = '#F59E0B';
-      ctx.font = 'bold 22px Inter, sans-serif';
-      ctx.fillText('STEBUP LOGO TEAM POLL — WHICH OPTION DO WE SELECT?', 60, 60);
-
-      ctx.fillStyle = '#FFFFFF';
-      ctx.font = 'bold 36px Inter, sans-serif';
-      ctx.fillText('Reply with your vote: A, B, C, or D!', 60, 105);
-
-      const letters = ['OPTION A', 'OPTION B', 'OPTION C', 'OPTION D'];
-      const boxes = [
-        { x: 60, y: 140, w: 710, h: 360 },
-        { x: 830, y: 140, w: 710, h: 360 },
-        { x: 60, y: 535, w: 710, h: 360 },
-        { x: 830, y: 535, w: 710, h: 360 }
-      ];
-
-      for (let i = 0; i < pollList.length; i++) {
-        const b = boxes[i];
-        const item = pollList[i];
-
-        ctx.fillStyle = '#0E0B1C';
-        ctx.strokeStyle = '#7C3AED';
-        ctx.lineWidth = 3;
-        ctx.fillRect(b.x, b.y, b.w, b.h);
-        ctx.strokeRect(b.x, b.y, b.w, b.h);
-
-        ctx.fillStyle = '#F59E0B';
-        ctx.font = 'bold 24px Inter, sans-serif';
-        ctx.fillText(letters[i], b.x + 24, b.y + 42);
-
-        ctx.fillStyle = '#E2E8F0';
-        ctx.font = 'bold 20px Inter, sans-serif';
-        ctx.fillText(item.title, b.x + 180, b.y + 42);
-
-        const img = new Image();
-        const url = URL.createObjectURL(new Blob([item.svg], { type: 'image/svg+xml;charset=utf-8' }));
-        await new Promise(r => { img.onload = r; img.src = url; });
-        ctx.drawImage(img, b.x + 40, b.y + 70, 630, 240);
-        URL.revokeObjectURL(url);
-      }
-
-      const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
-      try {
-        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-        showToast('🗳️ Poll card copied! Paste (Ctrl+V) in your WhatsApp group!');
-      } catch (e) {
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'stebup-poll.png';
-        a.click();
-      }
-    }
-
-    // Initialize
-    renderGrid();
-    mountNavbar(1);
+    render();
   </script>
 </body>
 </html>
