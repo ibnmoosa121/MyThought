@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup — 2-Color Logo Explorer (E-Slips + B · Tech · Step)</title>
+  <title>Stebup — Seamless "STEBUP" E-Slips + B Logo Study (2 Colors)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
       --card-border: #E5E3DC;
       --text-main: #111113;
       --text-muted: #6E6D68;
-      --c1: #111113; /* Primary Color: B Structure */
-      --c2: #7C3AED; /* Secondary Color: E Horizontal Slips / Steps */
+      --c1: #111113; /* Primary Color: Wordmark & B Structure */
+      --c2: #7C3AED; /* Secondary Color: E Horizontal Slips / Step Accent */
     }
 
     body.dark {
@@ -157,7 +157,6 @@
       border-radius: 4px;
     }
 
-    /* Category Tab Bar */
     .tab-bar {
       max-width: 1360px;
       margin: 24px auto 0;
@@ -232,7 +231,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
       gap: 24px;
     }
 
@@ -252,27 +251,33 @@
     }
 
     .stage {
-      height: 270px;
+      height: 260px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 32px;
+      padding: 28px;
       position: relative;
       border-bottom: 1px solid var(--card-border);
     }
 
+    /* Standalone icon SVG */
     .stage svg.mark-svg {
-      width: 148px;
-      height: 148px;
+      width: 140px;
+      height: 140px;
       overflow: visible;
     }
 
-    .stage svg.mark-svg.wide-svg {
-      width: 280px;
-      height: 120px;
+    /* Full seamless STEBUP wordmark SVG */
+    .stage svg.word-svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      overflow: visible;
+      display: none;
     }
 
+    /* Standard lockup for non-EB tabs */
     .wordmark-lockup {
       display: none;
       align-items: center;
@@ -283,13 +288,17 @@
       display: none;
     }
 
+    body.show-lockup .stage > svg.word-svg {
+      display: block;
+    }
+
     body.show-lockup .stage .wordmark-lockup {
       display: flex;
     }
 
-    .wordmark-lockup svg.inline-eb-svg {
-      width: 66px;
-      height: 66px;
+    .wordmark-lockup svg {
+      width: 64px;
+      height: 64px;
       flex-shrink: 0;
     }
 
@@ -299,13 +308,20 @@
       letter-spacing: -0.04em;
       color: var(--c1);
       line-height: 1;
-      display: inline-flex;
-      align-items: center;
     }
 
     .wordmark-text em {
       font-style: normal;
       color: var(--c2);
+    }
+
+    /* Alignment guide lines toggle */
+    .guide-line {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    body.show-guides .guide-line {
+      opacity: 1;
     }
 
     .mini-preview {
@@ -321,13 +337,18 @@
       border: 1px solid var(--card-border);
     }
 
-    .mini-preview svg {
-      width: 22px;
-      height: 22px;
+    .mini-preview svg.mini-word {
+      width: 84px;
+      height: 24px;
+    }
+
+    .mini-preview svg.mini-mark {
+      width: 20px;
+      height: 20px;
     }
 
     .mini-preview span {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--c1);
@@ -403,12 +424,12 @@
     }
   </style>
 </head>
-<body>
+<body class="show-lockup">
 
   <header>
     <div class="brand-title">
       <h1>Stebup — 2-Color Logo Explorer</h1>
-      <span>Keywords: E-Slips + B · Tech · Step</span>
+      <span>Seamless Wordmark & Symbol Study</span>
     </div>
 
     <div class="controls">
@@ -442,8 +463,9 @@
 
       <div class="control-group">
         <span class="control-label">View</span>
-        <button class="btn active" id="viewMarkBtn" onclick="setView('mark')">Symbol Only</button>
-        <button class="btn" id="viewLockupBtn" onclick="setView('lockup')">In "STEBUP" Word</button>
+        <button class="btn active" id="viewLockupBtn" onclick="setView('lockup')">Full "STEBUP" Word</button>
+        <button class="btn" id="viewMarkBtn" onclick="setView('mark')">Symbol Only (EB / B)</button>
+        <button class="btn" id="guideBtn" onclick="toggleGuides()" title="Show Cap-Height & Baseline Alignment Lines"> Alignment Lines</button>
       </div>
 
       <div class="control-group">
@@ -455,7 +477,7 @@
   <!-- Category Tabs -->
   <nav class="tab-bar">
     <button class="tab-btn active" onclick="setTab('eb', this)">
-      ★ New Tab: "E" Horizontal Slips + "B" (ST·EB·UP) <span class="tab-count">12</span>
+      ★ Seamless "STEBUP" (E-Slips + B) <span class="tab-count">12</span>
     </button>
     <button class="tab-btn" onclick="setTab('steps', this)">
       Tab 1: Architectural "B + Steps" <span class="tab-count">12</span>
@@ -476,7 +498,7 @@
 
   <div class="tab-desc-banner">
     <div class="tab-desc-box" id="tabDescBox">
-      <span><strong>"E" Horizontal Slips + "B" (ST·EB·UP):</strong> Right in the center of <strong>STEBUP</strong>, the letter <strong>E</strong> becomes 3 horizontal step-slips positioned right before the letter <strong>B</strong>. Click <em>"In STEBUP Word"</em> at the top to see each mark embedded directly inside the full name!</span>
+      <span><strong>Seamless "STEBUP" Wordmark Study:</strong> All 6 letters (<strong>S · T · E · B · U · P</strong>) are precision-drawn to the <strong>exact same cap-height (64px), baseline, and 14px stroke weight</strong> so the horizontal-slip <strong>E</strong> and <strong>B</strong> sit seamlessly inside the word. Click <em>"Alignment Lines"</em> above to verify the exact cap &amp; baseline match!</span>
     </div>
   </div>
 
@@ -485,253 +507,273 @@
   </main>
 
   <script>
-    const tabDescriptions = {
-      eb: "<strong>'E' Horizontal Slips + 'B' (ST·EB·UP):</strong> Right in the heart of <strong>STEBUP</strong>, the letter <strong>E</strong> is built from 3 horizontal step-slips right before the letter <strong>B</strong>. Toggle <em>'In STEBUP Word'</em> above to see how it reads inside the full brand name.",
-      steps: "<strong>Tab 1 — Architectural 'B + Steps':</strong> Direct geometric fusion of ascending stair treads and risers with the letter B.",
-      tech: "<strong>Tab 2 — Tech Syntax, Code & Digital Steps:</strong> Terminal prompts (<code>&gt;_</code>), forward code slashes (<code>//</code>), pixel/voxel steps, and stacked tech layers forming the B.",
-      linguistic: "<strong>Tab 3 — The 'P → B' Linguistic Twist:</strong> Visualizing the exact cultural origin of Stebup—where 'P' transforms or flips upward into 'B'.",
-      momentum: "<strong>Tab 4 — Upward Chevrons, Isometric Planes & S+B Monograms:</strong> Expressing 'Step Up' through launch chevrons (<code>^</code>), negative-space arrows (<code>↗</code>), and S+B interlocks.",
-      all: "<strong>All 40 Concepts:</strong> Complete side-by-side library of every 2-color direction."
-    };
+    // Precision geometric paths for S, T (left of EB) and U, P (right of EB)
+    // Cap-height: y = 28 | Baseline: y = 92 | Total Height = 64px | Stroke = 14px
+    // S: x = 16..64
+    // T: x = 72..120
+    // [E: x = 128..174] [B: x = 182..234]  <-- 106px center stage for E + B
+    // U: x = 244..294
+    // P: x = 304..354
+    const ST_PATH = `
+      <!-- S (x=16..64, y=28..92, 14px stroke) -->
+      <path d="
+        M62 28 H32 C22 28 16 34 16 44 C16 54 22 60 34 62 L46 64 C50 65 51 67 51 71 C51 75 48 78 42 78 H16 V92 H44 C56 92 64 85 64 73 C64 62 58 56 45 54 L34 52 C30 51 29 49 29 45 C29 43 31 42 36 42 H62 V28 Z
+      " fill="var(--c1)" />
+      <!-- T (x=72..120, y=28..92, 14px stroke) -->
+      <path d="M72 28 H120 V42 H103 V92 H89 V42 H72 V28 Z" fill="var(--c1)" />
+    `;
+
+    const UP_PATH = `
+      <!-- U (x=244..294, y=28..92, 14px stroke) -->
+      <path d="
+        M244 28 H258 V68 C258 75 262 78 269 78 C276 78 280 75 280 68 V28 H294 V69 C294 84 284 92 269 92 C254 92 244 84 244 69 V28 Z
+      " fill="var(--c1)" />
+      <!-- P (x=304..354, y=28..92, 14px stroke) -->
+      <path fill-rule="evenodd" clip-rule="evenodd" d="
+        M304 28 H334 C346 28 354 36 354 48 C354 60 346 68 334 68 H318 V92 H304 V28 Z
+        M318 42 V54 H332 C337 54 340 52 340 48 C340 44 337 42 332 42 H318 Z
+      " fill="var(--c1)" />
+    `;
+
+    const GUIDE_LINES = `
+      <line class="guide-line" x1="6" y1="28" x2="364" y2="28" stroke="#EF4444" stroke-width="1" stroke-dasharray="4 3" />
+      <line class="guide-line" x1="6" y1="92" x2="364" y2="92" stroke="#EF4444" stroke-width="1" stroke-dasharray="4 3" />
+    `;
+
+    // Helper: wraps an EB center design (x=128..234, y=28..92) into both:
+    // 1. Full seamless STEBUP wordmark (viewBox 0 0 370 120)
+    // 2. Standalone centered EB symbol (viewBox 118 16 126 88)
+    function makeEBConcept(id, title, desc, ebPaths, customWordSvg = null) {
+      return {
+        id,
+        cat: "eb",
+        catLabel: "Seamless ST·EB·UP",
+        isSeamlessEB: true,
+        title,
+        desc,
+        wordSvg: customWordSvg || `
+          ${GUIDE_LINES}
+          ${ST_PATH}
+          ${ebPaths}
+          ${UP_PATH}
+        `,
+        markViewBox: "118 16 126 88",
+        svg: ebPaths
+      };
+    }
 
     const concepts = [
       // ================================================================
-      // NEW TAB: "E" HORIZONTAL SLIPS + "B" IN ST[EB]UP (29 - 40)
+      // SEAMLESS "STEBUP" WORDMARK WITH STANDARD-SIZE E-SLIPS + B (29 - 40)
+      // Every E and B is strictly y=28 (top) to y=92 (bottom), 14px stroke!
       // ================================================================
-      {
-        id: "29",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Ascending Step-Slips 'E' + Bold 'B'",
-        desc: "Three horizontal slips step inward from bottom-left to top-right to form the 'E', sitting right before the solid geometric 'B'.",
-        svg: `
-          <!-- 3 Ascending Horizontal Slips forming 'E' (Color 2) -->
-          <rect x="8"  y="88" width="44" height="16" rx="2" fill="var(--c2)" />
-          <rect x="18" y="56" width="34" height="16" rx="2" fill="var(--c2)" />
-          <rect x="28" y="24" width="24" height="16" rx="2" fill="var(--c2)" />
-          <!-- Solid Geometric 'B' right after E (Color 1) -->
+      makeEBConcept(
+        "29",
+        "Stepped Horizontal Slips 'E' + Standard 'B'",
+        "Within the exact 64px cap-height, 'E' is 3 horizontal slips stepping upward from left to right directly before 'B'.",
+        `
+          <!-- E: 3 Stepped Horizontal Slips (y=28..92, 14px thick) -->
+          <rect x="140" y="28" width="34" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="40" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B: Exact matching 64px height & 14px stroke (x=182..234, y=28..92) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M60 24 H92 C108 24 118 32 118 45 C118 54 113 60 104 63 C114 66 120 74 120 85 C120 98 109 104 92 104 H60 V24 Z
-            M78 38 V57 H89 C96 57 100 53 100 47 C100 41 96 38 89 38 H78 Z
-            M78 71 V90 H91 C99 90 103 86 103 80 C103 74 99 71 91 71 H78 Z
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
+            M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
+            M196 66 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 Z
           " fill="var(--c1)" />
         `
-      },
-      {
-        id: "30",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Fused 'EB' — E-Slips Become B's Loops",
-        desc: "The 3 horizontal slips of 'E' slide directly into the top, middle waist, and bottom bars of the 'B' with no vertical break.",
-        svg: `
-          <!-- 3 Horizontal Slips of E on the left (Color 2) -->
-          <rect x="10" y="22" width="48" height="16" rx="2" fill="var(--c2)" />
-          <rect x="20" y="56" width="38" height="16" rx="2" fill="var(--c2)" />
-          <rect x="10" y="90" width="48" height="16" rx="2" fill="var(--c2)" />
-          <!-- Right B Loops locking directly onto the 3 E-slips (Color 1) -->
+      ),
+
+      makeEBConcept(
+        "30",
+        "Fused 'EB' — E-Slips Flow Continuously Into 'B'",
+        "The 3 horizontal slips of 'E' extend right into 'B' to form its top bar, waist bar, and bottom bar at identical thickness.",
+        `
+          <!-- 3 Horizontal Slips of E (Color 2) -->
+          <rect x="128" y="28" width="54" height="14" fill="var(--c2)" />
+          <rect x="136" y="53" width="46" height="14" fill="var(--c2)" />
+          <rect x="128" y="78" width="54" height="14" fill="var(--c2)" />
+          <!-- B Loops locking seamlessly onto the 3 slips (Color 1) -->
           <path d="
-            M58 22 H88 C105 22 116 32 116 46 C116 54 110 61 101 64 C112 67 118 75 118 86 C118 99 106 106 88 106 H58 V90 H85 C94 90 99 86 99 81 C99 75 94 72 85 72 H58 V56 H84 C92 56 97 52 97 45 C97 39 92 38 84 38 H58 V22 Z
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V78 H212 C218 78 221 76 221 72.5 C221 69 218 67 212 67 H182 V53 H211 C216 53 219 51 219 47.5 C219 44 216 42 211 42 H182 V28 Z
           " fill="var(--c1)" />
         `
-      },
-      {
-        id: "31",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "45° Speed-Cut Slips 'E' + 'B'",
-        desc: "The 3 horizontal slips of 'E' feature sharp 45° angled left edges that form an upward ramp right before the 'B'.",
-        svg: `
-          <!-- 3 Chamfered Horizontal Slips forming E (Color 2) -->
-          <polygon points="34,22 54,22 54,38 18,38" fill="var(--c2)" />
-          <polygon points="22,56 54,56 54,72 6,72" fill="var(--c2)" />
-          <polygon points="10,90 54,90 54,106 -6,106" transform="translate(12,0)" fill="var(--c2)" />
-          <!-- Bold Modern B (Color 1) -->
+      ),
+
+      makeEBConcept(
+        "31",
+        "45° Speed-Cut Slips 'E' + 'B'",
+        "The 3 horizontal slips of 'E' have crisp 45° diagonal cuts on their left tips, creating an upward step line inside STEBUP.",
+        `
+          <!-- 3 45-degree Chamfered Slips for E (y=28..92) -->
+          <polygon points="144,28 174,28 174,42 130,42" fill="var(--c2)" />
+          <polygon points="138,53 174,53 174,67 124,67" transform="translate(6,0)" fill="var(--c2)" />
+          <polygon points="142,78 174,78 174,92 128,92" fill="var(--c2)" />
+          <!-- Matching B (x=182..235, y=28..92) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M62 22 H92 C108 22 118 31 118 44 C118 53 113 60 104 63 C114 66 120 74 120 85 C120 99 109 106 92 106 H62 V22 Z
-            M80 36 V56 H90 C97 56 101 52 101 46 C101 40 97 36 90 36 H80 Z
-            M80 70 V92 H92 C99 92 103 88 103 81 C103 74 99 70 92 70 H80 Z
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
+            M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
+            M196 66 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 Z
           " fill="var(--c1)" />
         `
-      },
-      {
-        id: "32",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Staggered Step-Tread 'E' + Arch 'B'",
-        desc: "Each horizontal slip of 'E' shifts progressively upward and rightward like floating stair treads leading into 'B'.",
-        svg: `
-          <!-- Floating Step Treads forming E (Color 2) -->
-          <rect x="8"  y="88" width="38" height="15" rx="3" fill="var(--c2)" />
-          <rect x="20" y="56" width="38" height="15" rx="3" fill="var(--c2)" />
-          <rect x="32" y="24" width="38" height="15" rx="3" fill="var(--c2)" />
-          <!-- B with stepped spine recess (Color 1) -->
+      ),
+
+      makeEBConcept(
+        "32",
+        "Equal Floating Slips 'E' + Highlighted 'B'",
+        "Classic E proportion stripped to 3 pure horizontal slips (middle slip shorter) paired with a bold 2-color B.",
+        `
+          <!-- 3 Pure Horizontal Slips for E -->
+          <rect x="128" y="28" width="46" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="53" width="38" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B with Color 2 Spine & Color 1 Loops -->
+          <rect x="182" y="28" width="14" height="64" fill="var(--c2)" />
           <path d="
-            M76 24 H94 C109 24 118 33 118 45 C118 54 113 60 104 63 C114 66 120 74 120 85 C120 97 110 103 94 103 H52 V88 H91 C98 88 102 85 102 79 C102 73 98 71 91 71 H64 V56 H90 C97 56 101 53 101 47 C101 41 97 39 90 39 H76 V24 Z
+            M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 V28 Z
           " fill="var(--c1)" />
         `
-      },
-      {
-        id: "33",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Through-Spine Interlocking 'EB'",
-        desc: "The 3 horizontal slips of 'E' pierce straight through the vertical stem of 'B' to form its inner crossbar and loops.",
-        svg: `
-          <!-- Vertical Stem & Right Curves of B (Color 1) -->
+      ),
+
+      makeEBConcept(
+        "33",
+        "Staggered Escalator Slips 'E' + Stepped-Spine 'B'",
+        "The 3 horizontal slips of 'E' shift progressively right as they rise, locking into a matching stepped recess on 'B'.",
+        `
+          <!-- Escalating Horizontal Slips for E -->
+          <rect x="126" y="78" width="42" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="42" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="142" y="28" width="42" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B whose left spine steps to match E -->
           <path d="
-            M48 18 H90 C107 18 118 28 118 43 C118 52 112 60 103 63 C114 66 120 75 120 87 C120 101 108 110 90 110 H48 V18 Z
-            M66 34 V56 H87 C95 56 100 52 100 45 C100 38 95 34 87 34 H66 Z
-            M66 72 V94 H89 C97 94 102 90 102 83 C102 76 97 72 89 72 H66 Z
-          " fill-rule="evenodd" clip-rule="evenodd" fill="var(--c1)" />
-          <!-- 3 Horizontal E-Slips piercing from left into B (Color 2) -->
-          <rect x="10" y="18" width="56" height="16" fill="var(--c2)" />
-          <rect x="20" y="56" width="66" height="16" fill="var(--c2)" />
-          <rect x="10" y="94" width="56" height="16" fill="var(--c2)" />
-        `
-      },
-      {
-        id: "34",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Equal Precision Slips 'E' + Monolith 'B'",
-        desc: "Ultra-minimal Braun/Dieter Rams style: 3 razor-sharp horizontal bars for 'E' beside a monolithic geometric 'B'.",
-        svg: `
-          <!-- 3 Minimalist Horizontal Slips for E (Color 2) -->
-          <rect x="12" y="22" width="38" height="16" rx="2" fill="var(--c2)" />
-          <rect x="12" y="56" width="30" height="16" rx="2" fill="var(--c2)" />
-          <rect x="12" y="90" width="38" height="16" rx="2" fill="var(--c2)" />
-          <!-- Heavy Monolith B (Color 1) -->
-          <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M58 22 H92 C109 22 118 31 118 45 C118 54 113 61 104 64 C114 67 120 75 120 86 C120 99 109 106 92 106 H58 V22 Z
-            M76 37 V56 H89 C96 56 100 52 100 46 C100 40 96 37 89 37 H76 Z
-            M76 71 V91 H91 C98 91 102 87 102 81 C102 75 98 71 91 71 H76 Z
+            M190 28 H215 C227 28 234 34 234 44 C234 51 230 56 223 59 C231 61 236 67 236 75 C236 86 228 92 215 92 H174 V78 H213 C219 78 222 76 222 72.5 C222 69 219 67 213 67 H182 V53 H212 C217 53 220 51 220 47.5 C220 44 217 42 212 42 H190 V28 Z
           " fill="var(--c1)" />
         `
-      },
-      {
-        id: "35",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Rising Wedge Slips 'E' + 'B'",
-        desc: "The 3 horizontal slips of 'E' angle slightly upward like launch ramps, propelling into the vertical spine of 'B'.",
-        svg: `
-          <!-- 3 Upward Tilted Slips forming E (Color 2) -->
-          <polygon points="12,34 50,22 50,37 12,49" fill="var(--c2)" />
-          <polygon points="16,66 50,55 50,70 16,81" fill="var(--c2)" />
-          <polygon points="12,98 50,86 50,101 12,113" fill="var(--c2)" />
-          <!-- Solid B (Color 1) -->
-          <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M58 20 H92 C108 20 118 29 118 43 C118 52 113 59 104 62 C114 65 120 73 120 85 C120 99 109 106 92 106 H58 V20 Z
-            M76 35 V55 H89 C96 55 100 51 100 45 C100 39 96 35 89 35 H76 Z
-            M76 69 V91 H91 C98 91 102 87 102 80 C102 73 98 69 91 69 H76 Z
-          " fill="var(--c1)" />
+      ),
+
+      makeEBConcept(
+        "34",
+        "Through-Waist Slip Bridge 'EB'",
+        "The middle horizontal slip of 'E' shoots straight through the vertical stem of 'B' to become 'B's center waist bar.",
         `
-      },
-      {
-        id: "36",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Reverse-Step Slips 'E' (Top-Wide) + 'B'",
-        desc: "Top slip of 'E' extends furthest left like an overhanging upper step, with 2 shorter slips below it before 'B'.",
-        svg: `
-          <!-- Top-Wide Stepped E Slips (Color 2) -->
-          <rect x="8"  y="22" width="44" height="16" rx="2" fill="var(--c2)" />
-          <rect x="20" y="56" width="32" height="16" rx="2" fill="var(--c2)" />
-          <rect x="32" y="90" width="20" height="16" rx="2" fill="var(--c2)" />
-          <!-- B (Color 1) -->
-          <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M60 22 H92 C108 22 118 31 118 44 C118 53 113 60 104 63 C114 66 120 74 120 85 C120 99 109 106 92 106 H60 V22 Z
-            M78 36 V56 H89 C96 56 100 52 100 46 C100 40 96 36 89 36 H78 Z
-            M78 70 V91 H91 C98 91 102 87 102 80 C102 73 98 70 91 70 H78 Z
-          " fill="var(--c1)" />
-        `
-      },
-      {
-        id: "37",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Connected Stair-Riser 'E' Slips + 'B'",
-        desc: "The 3 horizontal slips of 'E' are linked on the left by stepped vertical risers, forming both an 'E' and a staircase before 'B'.",
-        svg: `
-          <!-- Stepped E with 3 Horizontal Slips (Color 2) -->
+          <!-- B Outer Body (Color 1) -->
           <path d="
-            M8 106 V82 H20 V52 H32 V22 H54 V36 H44 V56 H54 V70 H32 V92 H54 V106 H8 Z
+            M182 28 H214 C226 28 233 34 233 44 C233 50 230 55 224 58 H209 C216 58 219 52 219 47.5 C219 43 216 41 211 41 H196 V53 H182 V28 Z
+            M182 67 H196 V79 H212 C218 79 221 76 221 72.5 C221 68 217 66 210 66 H225 C231 69 235 74 235 80 C235 87 227 92 214 92 H182 V67 Z
+          " fill="var(--c1)" />
+          <!-- E's 3 Horizontal Slips where the middle slip bridges right through B (Color 2) -->
+          <rect x="128" y="28" width="46" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="53" width="96" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
+        `
+      ),
+
+      makeEBConcept(
+        "35",
+        "Stair-Backed 'E' Slips + Twin-Arc 'B'",
+        "The 3 horizontal slips of 'E' are connected on the left by stepped risers, forming a staircase inside the E slot before B.",
+        `
+          <!-- Stair-backed E within y=28..92 -->
+          <path d="
+            M128 92 V72 H137 V48 H146 V28 H174 V41 H159 V54 H174 V66 H150 V79 H174 V92 H128 Z
           " fill="var(--c2)" />
-          <!-- Bold B (Color 1) -->
+          <!-- Standard B -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M62 22 H92 C108 22 118 31 118 44 C118 53 113 60 104 63 C114 66 120 74 120 85 C120 99 109 106 92 106 H62 V22 Z
-            M80 36 V56 H90 C97 56 101 52 101 46 C101 40 97 36 90 36 H80 Z
-            M80 70 V91 H92 C99 91 103 87 103 80 C103 73 99 70 92 70 H80 Z
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
+            M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
+            M196 66 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 Z
           " fill="var(--c1)" />
         `
-      },
-      {
-        id: "38",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Lowercase 'e' Slips + Lowercase 'b'",
-        desc: "Three horizontal slips curve around to form a modern 'e' that steps directly into the tall ascender of 'b'.",
-        svg: `
-          <!-- 3 Horizontal Slips forming 'e' on the left (Color 2) -->
-          <rect x="16" y="48" width="36" height="13" rx="3" fill="var(--c2)" />
-          <rect x="10" y="72" width="42" height="13" rx="3" fill="var(--c2)" />
-          <rect x="22" y="96" width="30" height="13" rx="3" fill="var(--c2)" />
-          <!-- Tall Geometric lowercase 'b' (Color 1) -->
+      ),
+
+      makeEBConcept(
+        "36",
+        "Interlocking Finger-Joint 'EB'",
+        "The 3 horizontal slips of 'E' (Color 2) and the 2 counter bars of 'B' (Color 1) interlock like precision architectural teeth.",
+        `
+          <!-- 3 Horizontal Slips of E reaching into B's spine -->
+          <rect x="128" y="28" width="68" height="14" fill="var(--c2)" />
+          <rect x="136" y="53" width="60" height="14" fill="var(--c2)" />
+          <rect x="128" y="78" width="68" height="14" fill="var(--c2)" />
+          <!-- B Loops locking between the slips -->
+          <path d="
+            M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V78 H212 C218 78 221 76 221 72.5 C221 69 218 67 212 67 H196 V53 H211 C216 53 219 51 219 47.5 C219 44 216 42 211 42 H196 V28 Z
+          " fill="var(--c1)" />
+          <rect x="182" y="42" width="14" height="11" fill="var(--c1)" />
+          <rect x="182" y="67" width="14" height="11" fill="var(--c1)" />
+        `
+      ),
+
+      makeEBConcept(
+        "37",
+        "Base-Step Underlined 'EB' Connection",
+        "The bottom horizontal slip of 'E' extends seamlessly into the bottom bar of 'B', tying E and B onto one shared step.",
+        `
+          <!-- Top & Middle Slips of E + Shared Bottom Step Bar (Color 2) -->
+          <rect x="138" y="28" width="36" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="133" y="53" width="41" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="88" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- Upper B Body & Loops (Color 1) -->
+          <path d="
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 85 228 92 216 92 V78 C219 78 221 76 221 72.5 C221 69 218 66 212 66 H196 V78 H182 V28 Z
+            M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
+          " fill-rule="evenodd" clip-rule="evenodd" fill="var(--c1)" />
+        `
+      ),
+
+      makeEBConcept(
+        "38",
+        "Split-Color 'E' Slips + 'B' Loops",
+        "Both 'E' and 'B' share the 2-color system: E's 3 horizontal slips and B's spine are Color 1, while B's twin step-loops are Color 2.",
+        `
+          <!-- 3 Stepped Slips of E + B Vertical Spine (Color 1) -->
+          <rect x="138" y="28" width="36" height="14" rx="1.5" fill="var(--c1)" />
+          <rect x="133" y="53" width="41" height="14" rx="1.5" fill="var(--c1)" />
+          <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c1)" />
+          <rect x="182" y="28" width="14" height="64" rx="1.5" fill="var(--c1)" />
+          <!-- Twin B Loops (Color 2) -->
+          <path d="
+            M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 V28 Z
+          " fill="var(--c2)" />
+        `
+      ),
+
+      makeEBConcept(
+        "39",
+        "Z-Step Bridge Between 'E' and 'B'",
+        "The top and middle slips of 'E' step diagonally into the middle and bottom bars of 'B', creating an upward Z-step.",
+        `
+          <!-- E Slips stepping diagonally into B (Color 2) -->
+          <rect x="128" y="28" width="46" height="14" rx="1.5" fill="var(--c2)" />
+          <polygon points="128,53 174,53 196,28 196,42 174,67 128,67" fill="var(--c2)" />
+          <polygon points="128,78 174,78 196,53 196,67 174,92 128,92" fill="var(--c2)" />
+          <!-- B Structure (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M60 16 H78 V52 C84 48 91 46 98 46 C113 46 122 58 122 78 C122 98 111 110 94 110 C86 110 80 107 76 102 V109 H60 V16 Z
-            M78 78 C78 89 84 95 92 95 C101 95 106 89 106 78 C106 67 101 61 92 61 C84 61 78 67 78 78 Z
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
+            M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
+            M196 66 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 Z
           " fill="var(--c1)" />
         `
-      },
-      {
-        id: "39",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        title: "Underlined Step Platform 'EB'",
-        desc: "The bottom horizontal slip of 'E' extends all the way underneath 'B', acting as a step platform carrying the 'B'.",
-        svg: `
-          <!-- 3 Horizontal Slips of E where bottom slip extends under B (Color 2) -->
-          <rect x="24" y="20" width="28" height="16" rx="2" fill="var(--c2)" />
-          <rect x="16" y="54" width="36" height="16" rx="2" fill="var(--c2)" />
-          <path d="M8 88 H60 V96 H116 V110 H8 V88 Z" fill="var(--c2)" />
-          <!-- Elevated B sitting on the E step platform (Color 1) -->
+      ),
+
+      makeEBConcept(
+        "40",
+        "Inverted Accent: Color-2 'EB' Core Inside STEBUP",
+        "Both the 3 stepped horizontal slips of 'E' and the hero 'B' are rendered in Color 2 at exact wordmark height.",
+        `
+          <!-- E: 3 Stepped Slips (Color 2) -->
+          <rect x="138" y="28" width="36" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="133" y="53" width="41" height="14" rx="1.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="46" height="14" rx="1.5" fill="var(--c2)" />
+          <!-- B: Full Hero B in Color 2 -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M60 20 H92 C108 20 118 28 118 40 C118 48 113 54 105 57 C114 60 120 67 120 77 C120 89 109 94 92 94 H60 V20 Z
-            M78 33 V50 H89 C96 50 100 47 100 41 C100 36 96 33 89 33 H78 Z
-            M78 63 V81 H91 C98 81 102 78 102 72 C102 66 98 63 91 63 H78 Z
-          " fill="var(--c1)" />
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
+            M196 41 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 Z
+            M196 66 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 Z
+          " fill="var(--c2)" />
         `
-      },
-      {
-        id: "40",
-        cat: "eb",
-        catLabel: "E-Slips + B",
-        isEB: true,
-        wide: true,
-        title: "Full 'STEBUP' Wordmark with E-Slips + B",
-        desc: "Complete custom geometric wordmark where 'E' is 3 stepped horizontal slips right before the hero 'B'.",
-        svg: `
-          <!-- S & T (Color 1) -->
-          <text x="4" y="84" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="var(--c1)">ST</text>
-          <!-- E as 3 Horizontal Step Slips (Color 2) -->
-          <rect x="78" y="42" width="28" height="9" rx="1.5" fill="var(--c2)" />
-          <rect x="73" y="59" width="33" height="9" rx="1.5" fill="var(--c2)" />
-          <rect x="68" y="76" width="38" height="9" rx="1.5" fill="var(--c2)" />
-          <!-- Hero B + UP (Color 1 with B highlighted) -->
-          <text x="111" y="84" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="var(--c1)">BUP</text>
-        `
-      },
+      ),
 
       // ==========================================
       // TAB 1: ARCHITECTURAL B + STEPS (01 - 12)
@@ -1155,6 +1197,15 @@
       }
     ];
 
+    const tabDescriptions = {
+      eb: "<strong>Seamless 'STEBUP' Wordmark Study:</strong> All 6 letters (<strong>S · T · E · B · U · P</strong>) are precision-drawn to the <strong>exact same cap-height (64px), baseline, and 14px stroke weight</strong> so the horizontal-slip <strong>E</strong> and <strong>B</strong> sit seamlessly inside the word. Click <em>'Alignment Lines'</em> above to verify the exact cap &amp; baseline match!",
+      steps: "<strong>Tab 1 — Architectural 'B + Steps':</strong> Direct geometric fusion of ascending stair treads and risers with the letter B.",
+      tech: "<strong>Tab 2 — Tech Syntax, Code & Digital Steps:</strong> Terminal prompts (<code>&gt;_</code>), forward code slashes (<code>//</code>), pixel/voxel steps, and stacked tech layers forming the B.",
+      linguistic: "<strong>Tab 3 — The 'P → B' Linguistic Twist:</strong> Visualizing the exact cultural origin of Stebup—where 'P' transforms or flips upward into 'B'.",
+      momentum: "<strong>Tab 4 — Upward Chevrons, Isometric Planes & S+B Monograms:</strong> Expressing 'Step Up' through launch chevrons (<code>^</code>), negative-space arrows (<code>↗</code>), and S+B interlocks.",
+      all: "<strong>All 40 Concepts:</strong> Complete side-by-side library of every 2-color direction."
+    };
+
     let activeTab = 'eb';
     const grid = document.getElementById('logoGrid');
     const tabDescBox = document.getElementById('tabDescBox');
@@ -1164,6 +1215,11 @@
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
       tabDescBox.innerHTML = `<span>${tabDescriptions[tab]}</span>`;
+
+      // Automatically switch to Full Word view on the Seamless STEBUP tab
+      if (tab === 'eb') {
+        setView('lockup');
+      }
       render();
     }
 
@@ -1173,55 +1229,78 @@
         : concepts.filter(c => c.cat === activeTab);
 
       grid.innerHTML = filtered.map(item => {
-        const viewBox = item.wide ? "0 0 230 120" : "0 0 128 128";
-        const svgClass = item.wide ? "mark-svg wide-svg" : "mark-svg";
+        if (item.isSeamlessEB) {
+          return `
+            <div class="card">
+              <div class="stage">
+                <span class="num-badge">#${item.id}</span>
+                <span class="cat-pill">${item.catLabel}</span>
 
-        // When viewing in "STEBUP" word mode:
-        // If it's an EB concept, render ST + [EB SVG] + UP so E-slips + B sit right inside STEBUP!
-        const lockupHtml = item.isEB && !item.wide
-          ? `<div class="wordmark-lockup">
-               <span class="wordmark-text">ST</span>
-               <svg class="inline-eb-svg" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 -4px;">
-                 ${item.svg}
-               </svg>
-               <span class="wordmark-text">UP</span>
-             </div>`
-          : `<div class="wordmark-lockup">
-               <svg class="inline-eb-svg" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 ${item.svg}
-               </svg>
-               <span class="wordmark-text">Ste<em>b</em>up</span>
-             </div>`;
+                <!-- Standalone EB Symbol (when in Symbol Only view) -->
+                <svg class="mark-svg" viewBox="${item.markViewBox}" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  ${item.svg}
+                </svg>
 
+                <!-- Full Seamless STEBUP Wordmark (all letters exact same 64px height & 14px stroke) -->
+                <svg class="word-svg" viewBox="0 0 370 120" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
+                  ${item.wordSvg}
+                </svg>
+
+                <!-- Mini Navbar Scale Preview -->
+                <div class="mini-preview" title="Navbar Scale Preview">
+                  <svg class="mini-word" viewBox="0 0 370 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    ${item.wordSvg}
+                  </svg>
+                </div>
+              </div>
+
+              <div class="info">
+                <div class="info-text">
+                  <h2>${item.title}</h2>
+                  <p>${item.desc}</p>
+                </div>
+                <button class="dl-btn" onclick="downloadSvg('${item.id}', '${item.title}')">SVG</button>
+              </div>
+            </div>
+          `;
+        }
+
+        // Standard cards for Tabs 1 - 4
         return `
-        <div class="card">
-          <div class="stage">
-            <span class="num-badge">#${item.id}</span>
-            <span class="cat-pill">${item.catLabel}</span>
+          <div class="card">
+            <div class="stage">
+              <span class="num-badge">#${item.id}</span>
+              <span class="cat-pill">${item.catLabel}</span>
 
-            <svg class="${svgClass}" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
-              ${item.svg}
-            </svg>
-
-            ${lockupHtml}
-
-            <div class="mini-preview" title="Navbar Scale Preview">
-              <svg viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="mark-svg" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
                 ${item.svg}
               </svg>
-              <span>STEBUP</span>
-            </div>
-          </div>
 
-          <div class="info">
-            <div class="info-text">
-              <h2>${item.title}</h2>
-              <p>${item.desc}</p>
+              <div class="wordmark-lockup">
+                <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  ${item.svg}
+                </svg>
+                <span class="wordmark-text">Ste<em>b</em>up</span>
+              </div>
+
+              <div class="mini-preview" title="Navbar Scale Preview">
+                <svg class="mini-mark" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  ${item.svg}
+                </svg>
+                <span>STEBUP</span>
+              </div>
             </div>
-            <button class="dl-btn" onclick="downloadSvg('${item.id}', '${item.title}')">SVG</button>
+
+            <div class="info">
+              <div class="info-text">
+                <h2>${item.title}</h2>
+                <p>${item.desc}</p>
+              </div>
+              <button class="dl-btn" onclick="downloadSvg('${item.id}', '${item.title}')">SVG</button>
+            </div>
           </div>
-        </div>
-      `}).join('');
+        `;
+      }).join('');
     }
 
     function setPalette(c1, c2, btn) {
@@ -1252,6 +1331,11 @@
       document.getElementById('viewLockupBtn').classList.toggle('active', mode === 'lockup');
     }
 
+    function toggleGuides() {
+      const active = document.body.classList.toggle('show-guides');
+      document.getElementById('guideBtn').classList.toggle('active', active);
+    }
+
     function toggleTheme() {
       const isDark = document.body.classList.toggle('dark');
       document.getElementById('themeBtn').textContent = isDark ? 'Light BG' : 'Dark BG';
@@ -1276,7 +1360,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `stebup-logo-${id}.svg`;
+      a.download = `stebup-wordmark-${id}.svg`;
       a.click();
       URL.revokeObjectURL(url);
     }
