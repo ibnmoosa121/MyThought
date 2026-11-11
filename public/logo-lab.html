@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup — Letter B + Steps Logo Study (2 Colors)</title>
+  <title>Stebup — 2-Color Logo Study (Tech · Step · Letter B)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
       --card-border: #E5E3DC;
       --text-main: #111113;
       --text-muted: #6E6D68;
-      --c1: #111113; /* Primary Color: Letter B body */
-      --c2: #7C3AED; /* Secondary Color: Steps accent */
+      --c1: #111113; /* Primary Color: Structure */
+      --c2: #7C3AED; /* Secondary Color: Step / B-Twist Accent */
     }
 
     body.dark {
@@ -46,7 +46,7 @@
       z-index: 50;
       background: var(--card-bg);
       border-bottom: 1px solid var(--card-border);
-      padding: 16px 32px;
+      padding: 14px 32px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -76,13 +76,13 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .control-group {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: var(--bg);
       padding: 4px 6px;
       border-radius: 8px;
@@ -105,7 +105,7 @@
       font-family: inherit;
       font-size: 12px;
       font-weight: 600;
-      padding: 6px 12px;
+      padding: 6px 11px;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
@@ -135,7 +135,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      padding: 0 6px;
+      padding: 0 4px;
     }
 
     input[type="color"] {
@@ -157,9 +157,76 @@
       border-radius: 4px;
     }
 
+    /* Clean Category Tab Bar */
+    .tab-bar {
+      max-width: 1360px;
+      margin: 24px auto 0;
+      padding: 0 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      border-color: var(--text-muted);
+    }
+
+    .tab-btn.active {
+      background: var(--text-main);
+      color: var(--card-bg);
+      border-color: var(--text-main);
+    }
+
+    .tab-count {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 99px;
+      background: rgba(128, 128, 128, 0.18);
+    }
+
+    .tab-desc-banner {
+      max-width: 1360px;
+      margin: 16px auto 0;
+      padding: 0 32px;
+    }
+
+    .tab-desc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .tab-desc-box strong {
+      color: var(--text-main);
+    }
+
     .container {
       max-width: 1360px;
-      margin: 36px auto 0;
+      margin: 20px auto 0;
       padding: 0 32px;
     }
 
@@ -185,7 +252,7 @@
     }
 
     .stage {
-      height: 280px;
+      height: 270px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -269,6 +336,21 @@
       letter-spacing: 0.04em;
     }
 
+    .cat-pill {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text-muted);
+      border: 1px solid var(--card-border);
+    }
+
     .info {
       padding: 18px 22px;
       display: flex;
@@ -309,7 +391,7 @@
 
     @media (max-width: 768px) {
       header { padding: 14px 16px; }
-      .container { padding: 0 16px; }
+      .tab-bar, .tab-desc-banner, .container { padding: 0 16px; }
       .grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -318,8 +400,8 @@
 
   <header>
     <div class="brand-title">
-      <h1>Stebup — "B + Steps" Logo Study</h1>
-      <span>12 Modern Marks · Strictly 2 Solid Colors</span>
+      <h1>Stebup — 2-Color Logo Explorer</h1>
+      <span>Keywords: Tech · Step · Linguistic "B"</span>
     </div>
 
     <div class="controls">
@@ -363,20 +445,56 @@
     </div>
   </header>
 
+  <!-- Category Tabs -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" onclick="setTab('steps', this)">
+      Tab 1: Architectural "B + Steps" <span class="tab-count">12</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('tech', this)">
+      Tab 2: Tech Syntax, Code & Vectors <span class="tab-count">6</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('linguistic', this)">
+      Tab 3: "P → B" Linguistic Twist <span class="tab-count">5</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('momentum', this)">
+      Tab 4: Chevrons, Isometric & S+B <span class="tab-count">5</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('all', this)">
+      View All <span class="tab-count">28</span>
+    </button>
+  </nav>
+
+  <div class="tab-desc-banner">
+    <div class="tab-desc-box" id="tabDescBox">
+      <span><strong>Tab 1 — Architectural "B + Steps":</strong> Direct geometric fusion of ascending stair treads with the uppercase & lowercase letter B.</span>
+    </div>
+  </div>
+
   <main class="container">
     <div class="grid" id="logoGrid"></div>
   </main>
 
   <script>
+    const tabDescriptions = {
+      steps: "<strong>Tab 1 — Architectural 'B + Steps':</strong> Direct geometric fusion of ascending stair treads and risers with the letter B.",
+      tech: "<strong>Tab 2 — Tech Syntax, Code & Digital Steps:</strong> Terminal prompts (<code>&gt;_</code>), forward code slashes (<code>//</code>), pixel/voxel steps, and stacked tech layers forming the B.",
+      linguistic: "<strong>Tab 3 — The 'P → B' Linguistic Twist:</strong> Visualizing the exact cultural origin of Stebup—where 'P' transforms or flips upward into 'B', plus phonetic emphasis marks.",
+      momentum: "<strong>Tab 4 — Upward Chevrons, Isometric Planes & S+B Monograms:</strong> Expressing 'Step Up' through launch chevrons (<code>^</code>), negative-space arrows (<code>↗</code>), and S+B interlocks.",
+      all: "<strong>All 28 Concepts:</strong> Complete side-by-side view of every 'Tech + Step + B' direction."
+    };
+
     const concepts = [
+      // ==========================================
+      // TAB 1: ARCHITECTURAL B + STEPS (01 - 12)
+      // ==========================================
       {
         id: "01",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "The Stepped Spine B",
         desc: "The left vertical spine of the B is formed by 3 ascending steps that lock into the twin bowls.",
         svg: `
-          <!-- 3 ascending steps on the left spine (Color 2) -->
           <path d="M16 110 V80 H32 V50 H48 V18 H64 V50 H48 V80 H32 V110 H16 Z" fill="var(--c2)" />
-          <!-- Right bowls of the B (Color 1) -->
           <path d="
             M64 18 H80 C97 18 108 28 108 42 C108 51 102 59 93 62 C104 65 112 74 112 86 C112 101 99 110 80 110 H32 V92 H78 C87 92 93 88 93 81 C93 74 87 70 78 70 H48 V54 H77 C85 54 90 50 90 43 C90 36 85 33 77 33 H64 V18 Z
           " fill="var(--c1)" />
@@ -384,28 +502,28 @@
       },
       {
         id: "02",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Negative-Space Staircase B",
         desc: "A bold geometric B where the interior counter cutouts form a rising 3-step staircase.",
         svg: `
-          <!-- Outer B Monolith (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M22 16 H78 C97 16 108 27 108 42 C108 52 102 59 93 62 C104 65 112 74 112 86 C112 102 98 112 78 112 H22 V16 Z
             M42 34 V94 H76 C85 94 92 89 92 82 C92 75 85 70 76 70 H58 V56 H74 C82 56 88 51 88 45 C88 38 82 34 74 34 H42 Z
           " fill="var(--c1)" />
-          <!-- 3-Step Staircase inside the counter (Color 2) -->
           <path d="M42 94 V74 H58 V54 H74 V34 H42 V94 Z" fill="var(--c2)" />
         `
       },
       {
         id: "03",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "3-Pillar Step + Twin Arcs B",
         desc: "Three ascending step bars on the left paired with two sharp geometric B semi-circles on the right.",
         svg: `
-          <!-- 3 Ascending Step Pillars (Color 2) -->
           <rect x="14" y="72" width="14" height="38" rx="3" fill="var(--c2)" />
           <rect x="33" y="45" width="14" height="65" rx="3" fill="var(--c2)" />
           <rect x="52" y="18" width="14" height="92" rx="3" fill="var(--c2)" />
-          <!-- Twin B Loops (Color 1) -->
           <path d="
             M72 18 H82 C99 18 110 29 110 43 C110 53 103 61 93 64 C104 67 112 76 112 87 C112 101 100 110 82 110 H72 V93 H80 C89 93 94 89 94 82 C94 75 89 71 80 71 H72 V56 H80 C88 56 93 51 93 44 C93 37 88 33 80 33 H72 V18 Z
           " fill="var(--c1)" />
@@ -413,60 +531,59 @@
       },
       {
         id: "04",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Cantilever Step 'b' (Lowercase)",
         desc: "Minimalist lowercase 'b' whose vertical stem climbs upward in 3 crisp geometric steps.",
         svg: `
-          <!-- Circular bowl of lowercase b (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M34 64 H70 C92 64 110 75 110 89 C110 103 92 114 70 114 H34 V64 Z
             M52 79 V99 H69 C81 99 90 95 90 89 C90 83 81 79 69 79 H52 Z
           " fill="var(--c1)" />
-          <!-- 3 Rising Steps forming the ascender of the 'b' (Color 2) -->
           <path d="M18 64 V46 H34 V28 H50 V12 H68 V30 H52 V48 H36 V64 H18 Z" fill="var(--c2)" />
         `
       },
       {
         id: "05",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Split-Level Offset B",
-        desc: "The upper loop of the B physically steps up and right from the lower loop, anchored by two step risers.",
+        desc: "The upper loop of the B physically steps up and right from the lower loop, anchored by a step riser.",
         svg: `
-          <!-- Lower B Loop (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M18 64 H74 C92 64 104 74 104 88 C104 102 92 112 74 112 H18 V64 Z
             M38 79 V97 H71 C80 97 85 93 85 88 C85 83 80 79 71 79 H38 Z
           " fill="var(--c1)" />
-          <!-- Upper B Loop shifted right (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M38 16 H86 C102 16 112 26 112 40 C112 54 102 64 86 64 H38 V16 Z
             M56 31 V49 H83 C90 49 94 45 94 40 C94 35 90 31 83 31 H56 Z
           " fill="var(--c1)" />
-          <!-- Left Step Treads (Color 2) -->
           <path d="M18 64 V40 H38 V64 H18 Z" fill="var(--c2)" />
         `
       },
       {
         id: "06",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "The Terrace Cut B",
         desc: "Heavy architectural B with its upper-left corner carved into rising stair terraces.",
         svg: `
-          <!-- Solid B Body with stepped top-left terrace (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M58 16 H78 C96 16 108 26 108 42 C108 51 102 58 93 61 C104 64 112 73 112 86 C112 102 98 112 78 112 H22 V52 H40 V34 H58 V16 Z
             M44 36 V54 H74 C82 54 88 50 88 45 C88 39 82 36 74 36 H44 Z
             M44 72 V92 H76 C85 92 91 88 91 82 C91 76 85 72 76 72 H44 Z
           " fill="var(--c1)" />
-          <!-- Parallel Step Ribbon on Top-Left (Color 2) -->
           <path d="M14 44 H32 V26 H50 V10 H62 V22 H44 V40 H26 V56 H14 V44 Z" fill="var(--c2)" />
         `
       },
       {
         id: "07",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Continuous Ribbon Step B",
         desc: "A uniform geometric band that climbs 3 steps on the left and loops smoothly into a B on the right.",
         svg: `
-          <!-- Left 3-Step Ribbon Spine (Color 2) -->
           <path d="M16 108 V78 H34 V48 H52 V18 H68 V34 H50 V64 H32 V92 H52 V108 H16 Z" fill="var(--c2)" />
-          <!-- Right Dual B Loops (Color 1) -->
           <path d="
             M68 18 H82 C99 18 110 28 110 42 C110 51 104 59 95 62 C106 65 112 74 112 85 C112 100 100 108 82 108 H52 V92 H80 C89 92 94 88 94 82 C94 76 89 71 80 71 H50 V55 H80 C88 55 93 51 93 44 C93 38 88 34 80 34 H68 V18 Z
           " fill="var(--c1)" />
@@ -474,55 +591,55 @@
       },
       {
         id: "08",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "The Step-Up Crossbar B",
         desc: "The center waist of the B transforms into an ascending step bridge from left to right.",
         svg: `
-          <!-- Upper and Lower B Halves (Color 1) -->
           <path d="
             M24 16 H78 C96 16 108 26 108 41 C108 48 105 54 99 58 H80 C86 55 89 49 89 43 C89 36 84 32 75 32 H44 V54 H24 V16 Z
             M24 82 H44 V96 H76 C86 96 92 91 92 84 C92 78 87 74 78 73 H101 C108 78 112 85 112 94 C112 105 98 112 78 112 H24 V82 Z
           " fill="var(--c1)" />
-          <!-- Center Ascending Step Crossbar (Color 2) -->
           <path d="M14 78 H58 V62 H102 V46 H46 V62 H14 V78 Z" fill="var(--c2)" />
         `
       },
       {
         id: "09",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Inside-Bowl Staircase 'b'",
         desc: "Clean modern lowercase 'b' housing a sharp 3-step staircase inside its circular counter.",
         svg: `
-          <!-- Outer lowercase 'b' ring + stem (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M22 14 H42 V48 C49 42 59 38 70 38 C94 38 112 56 112 78 C112 100 94 116 68 116 C55 116 45 112 38 105 V114 H22 V14 Z
             M42 77 C42 91 52 100 66 100 C81 100 92 91 92 77 C92 63 81 54 66 54 C52 54 42 63 42 77 Z
           " fill="var(--c1)" />
-          <!-- 3-Step Staircase inside the bowl (Color 2) -->
           <path d="M46 95 V83 H58 V71 H70 V59 H85 V95 H46 Z" fill="var(--c2)" />
         `
       },
       {
         id: "10",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Cornerstone Step Foundation B",
         desc: "A 3-step staircase block at the bottom-left foundation elevates the upper B structure.",
         svg: `
-          <!-- Elevated Upper B (Color 1) -->
           <path d="
             M38 14 H80 C98 14 110 24 110 39 C110 48 104 55 95 58 C106 61 112 70 112 82 C112 98 99 108 80 108 H64 V91 H78 C87 91 93 87 93 80 C93 73 87 69 78 69 H64 V52 H78 C86 52 91 48 91 41 C91 34 86 30 78 30 H56 V52 H38 V14 Z
           " fill="var(--c1)" />
-          <!-- 3-Step Base Cornerstone (Color 2) -->
           <path d="M16 112 V92 H30 V72 H44 V52 H58 V112 H16 Z" fill="var(--c2)" />
         `
       },
       {
         id: "11",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Staggered Horizontal Step Slabs B",
         desc: "Three rising horizontal step bars on the left that lock into the curved right loops of the B.",
         svg: `
-          <!-- 3 Staggered Horizontal Step Slabs (Color 2) -->
           <rect x="12" y="88" width="48" height="20" rx="4" fill="var(--c2)" />
           <rect x="24" y="54" width="48" height="20" rx="4" fill="var(--c2)" />
           <rect x="36" y="20" width="48" height="20" rx="4" fill="var(--c2)" />
-          <!-- Right Curved B Loops (Color 1) -->
           <path d="
             M72 20 H84 C100 20 110 29 110 42 C110 52 104 60 94 63 C105 66 112 75 112 87 C112 100 102 108 84 108 H64 V88 H81 C88 88 93 84 93 78 C93 72 88 68 81 68 H72 V54 H80 C87 54 91 50 91 44 C91 39 87 35 80 35 H72 V20 Z
           " fill="var(--c1)" />
@@ -530,29 +647,319 @@
       },
       {
         id: "12",
+        cat: "steps",
+        catLabel: "B + Steps",
         title: "Diagonal Step-Apex B",
-        desc: "Sharp modern B where the left stem steps upward in two crisp increments to a 45° apex.",
+        desc: "Sharp modern B where the left stem steps upward in two crisp 45° increments.",
         svg: `
-          <!-- Left Stepped Stem with 45° Apex (Color 2) -->
-          <path d="M18 112 V74 L32 60 V36 L52 16 V112 H34 V78 L18 94 Z" fill="var(--c2)" />
-          <path d="M18 112 V72 H34 V42 H50 V16 H64 V112 H18 Z" fill="var(--c2)" opacity="0" />
-          <!-- Clean 2-Step Chamfered Spine (Color 2) -->
           <polygon points="18,112 18,74 34,58 34,32 50,16 50,112" fill="var(--c2)" />
-          <!-- Twin Geometric B Loops (Color 1) -->
           <path d="
             M56 16 H80 C98 16 110 27 110 42 C110 52 104 59 94 62 C105 65 112 74 112 86 C112 102 99 112 80 112 H56 V94 H78 C87 94 93 89 93 82 C93 75 87 70 78 70 H56 V54 H77 C85 54 91 49 91 42 C91 35 85 31 77 31 H56 V16 Z
+          " fill="var(--c1)" />
+        `
+      },
+
+      // ==========================================
+      // TAB 2: TECH SYNTAX, CODE & DIGITAL STEPS (13 - 18)
+      // ==========================================
+      {
+        id: "13",
+        cat: "tech",
+        catLabel: "Tech Syntax",
+        title: "The Terminal Prompt '>B'",
+        desc: "A developer command prompt chevron (>) forms the left step spine, driving into the twin B bowls.",
+        svg: `
+          <!-- Terminal Prompt '>' + '_' step (Color 2) -->
+          <path d="M16 26 L54 64 L16 102 L28 112 L74 64 L28 16 L16 26 Z" fill="var(--c2)" />
+          <!-- B Loops wrapping the prompt (Color 1) -->
+          <path d="
+            M56 16 H82 C99 16 110 26 110 41 C110 51 104 59 94 62 C105 65 112 74 112 86 C112 101 100 112 82 112 H56 V95 H80 C89 95 94 90 94 83 C94 76 89 72 80 72 H72 V56 H79 C87 56 92 51 92 43 C92 36 87 32 79 32 H56 V16 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "14",
+        cat: "tech",
+        catLabel: "Tech Syntax",
+        title: "Digital Voxel / Pixel Step B",
+        desc: "Three ascending square tech nodes (pixels/blocks) step up diagonally into a sharp geometric B.",
+        svg: `
+          <!-- 3 Stepping Tech Nodes (Color 2) -->
+          <rect x="12" y="84" width="22" height="22" rx="4" fill="var(--c2)" />
+          <rect x="26" y="53" width="22" height="22" rx="4" fill="var(--c2)" />
+          <rect x="40" y="22" width="22" height="22" rx="4" fill="var(--c2)" />
+          <!-- Connected B Frame (Color 1) -->
+          <path d="
+            M70 22 H84 C100 22 110 31 110 44 C110 53 104 60 95 63 C106 66 112 75 112 86 C112 100 101 108 84 108 H42 V90 H82 C90 90 94 86 94 80 C94 74 90 70 82 70 H56 V56 H81 C88 56 92 52 92 45 C92 39 88 36 81 36 H70 V22 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "15",
+        cat: "tech",
+        catLabel: "Tech Syntax",
+        title: "Code Slash Step '//B'",
+        desc: "Two parallel forward code slashes (//) step upward on the left and lock into bold B loops.",
+        svg: `
+          <!-- Stepped Code Slashes // (Color 2) -->
+          <polygon points="12,110 32,46 48,46 28,110" fill="var(--c2)" />
+          <polygon points="34,92 54,18 70,18 50,92" fill="var(--c2)" />
+          <!-- B Loops (Color 1) -->
+          <path d="
+            M74 18 H86 C101 18 112 28 112 42 C112 52 105 60 95 63 C106 66 114 75 114 87 C114 101 102 110 84 110 H38 L43 93 H82 C90 93 96 89 96 82 C96 75 90 71 82 71 H64 L68 55 H83 C90 55 95 51 95 44 C95 37 90 34 83 34 H70 L74 18 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "16",
+        cat: "tech",
+        catLabel: "Tech Syntax",
+        title: "Full-Stack Layered B",
+        desc: "Three horizontal tech stack layers that step inward on the left and curve into a B on the right.",
+        svg: `
+          <!-- Top & Bottom Tech Stack Bars (Color 1) -->
+          <path d="M44 18 H84 C101 18 112 28 112 42 C112 50 107 57 98 60 H44 V44 H82 C89 44 93 41 93 36 C93 31 89 28 82 28 H44 V18 Z" fill="var(--c1)" />
+          <path d="M16 68 H98 C107 71 112 78 112 87 C112 101 101 110 84 110 H16 V94 H82 C89 94 93 91 93 86 C93 81 89 78 82 78 H16 V68 Z" fill="var(--c1)" />
+          <!-- Stepped Accent Stack Bars (Color 2) -->
+          <rect x="28" y="48" width="64" height="16" rx="4" fill="var(--c2)" />
+          <rect x="16" y="94" width="36" height="16" rx="3" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "17",
+        cat: "tech",
+        catLabel: "Tech Syntax",
+        title: "Command Cursor Step 'b_'",
+        desc: "Three blinking-style terminal cursor blocks step upward to form the stem of a modern tech 'b'.",
+        svg: `
+          <!-- 3 Stepping Terminal Cursors (Color 2) -->
+          <rect x="14" y="56" width="24" height="12" rx="2" fill="var(--c2)" />
+          <rect x="24" y="36" width="24" height="12" rx="2" fill="var(--c2)" />
+          <rect x="34" y="16" width="24" height="12" rx="2" fill="var(--c2)" />
+          <!-- Lowercase 'b' Tech Ring (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M34 48 H52 V54 C58 49 66 46 75 46 C96 46 112 61 112 80 C112 99 96 114 75 114 C54 114 34 99 34 78 V48 Z
+            M52 80 C52 91 61 98 73 98 C85 98 94 91 94 80 C94 69 85 62 73 62 C61 62 52 69 52 80 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "18",
+        cat: "tech",
+        catLabel: "Tech Syntax",
+        title: "Circuit Node Step B",
+        desc: "Tech pathway traces that step upward through 3 connection nodes to complete the letter B.",
+        svg: `
+          <!-- Stepped Tech Trace & Nodes (Color 2) -->
+          <path d="M22 98 V70 H40 V40 H58 V24" stroke="var(--c2)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="22" cy="98" r="10" fill="var(--c2)" />
+          <circle cx="40" cy="70" r="10" fill="var(--c2)" />
+          <circle cx="58" cy="24" r="10" fill="var(--c2)" />
+          <!-- Right B Loops (Color 1) -->
+          <path d="
+            M72 18 H84 C100 18 110 28 110 42 C110 52 104 59 94 62 C105 65 112 74 112 86 C112 101 100 110 82 110 H44 V94 H80 C89 94 94 89 94 82 C94 75 89 71 80 71 H60 V55 H81 C88 55 93 50 93 43 C93 36 88 33 81 33 H72 V18 Z
+          " fill="var(--c1)" />
+        `
+      },
+
+      // ==========================================
+      // TAB 3: "P -> B" LINGUISTIC TWIST (19 - 23)
+      // ==========================================
+      {
+        id: "19",
+        cat: "linguistic",
+        catLabel: "P → B Twist",
+        title: "The 'P-to-B' Step Evolution",
+        desc: "Color 1 forms a clean letter 'P' (Step), while Color 2 adds the stepped lower loop that turns 'P' into 'B' (Stebup).",
+        svg: `
+          <!-- Letter P in Color 1 -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M24 16 H78 C98 16 110 28 110 44 C110 60 98 72 78 72 H44 V112 H24 V16 Z
+            M44 33 V55 H75 C85 55 91 50 91 44 C91 38 85 33 75 33 H44 Z
+          " fill="var(--c1)" />
+          <!-- Stepped Bottom Loop in Color 2 that turns P into B -->
+          <path d="
+            M52 72 H82 C101 72 112 81 112 93 C112 105 101 112 82 112 H52 V96 H79 C88 96 93 94 93 90 C93 86 88 84 79 84 H52 V72 Z
+          " fill="var(--c2)" />
+        `
+      },
+      {
+        id: "20",
+        cat: "linguistic",
+        catLabel: "P → B Twist",
+        title: "The Flipped 'p → b' Step-Up",
+        desc: "A lowercase 'p' literally steps upward into a lowercase 'b'—visualizing the exact linguistic twist.",
+        svg: `
+          <!-- Lower left 'p' descender step (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M18 46 H54 C72 46 84 57 84 72 C84 87 72 98 54 98 H36 V116 H18 V46 Z
+            M36 62 V82 H52 C61 82 66 78 66 72 C66 66 61 62 52 62 H36 Z
+          " fill="var(--c1)" />
+          <!-- Stepped-up 'b' ascender & loop (Color 2) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M56 12 H74 V46 H84 C102 46 114 57 114 72 C114 87 102 98 84 98 H56 V12 Z
+            M74 62 V82 H82 C91 82 96 78 96 72 C96 66 91 62 82 62 H74 Z
+          " fill="var(--c2)" />
+        `
+      },
+      {
+        id: "21",
+        cat: "linguistic",
+        catLabel: "P → B Twist",
+        title: "Phonetic Dictionary '/b/' Step",
+        desc: "Inspired by linguistic phonetic notation (/b/): two rising slash steps frame a bold modern 'b'.",
+        svg: `
+          <!-- Rising Phonetic Slashes / / (Color 2) -->
+          <polygon points="10,104 28,28 40,28 22,104" fill="var(--c2)" />
+          <polygon points="94,96 112,20 124,20 106,96" fill="var(--c2)" />
+          <!-- Center Geometric 'b' (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M44 18 H60 V48 C65 44 71 42 78 42 C93 42 104 54 104 71 C104 88 93 100 76 100 C68 100 62 97 58 92 V98 H44 V18 Z
+            M60 71 C60 80 66 86 74 86 C83 86 89 80 89 71 C89 62 83 56 74 56 C66 56 60 62 60 71 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "22",
+        cat: "linguistic",
+        catLabel: "P → B Twist",
+        title: "Speech-Step Bubble 'b'",
+        desc: "Spoken slang meets elevation: the bowl of the 'b' is a speech mark while the stem is a 3-step riser.",
+        svg: `
+          <!-- 3-Step Ascender Stem (Color 2) -->
+          <path d="M22 68 V48 H36 V28 H50 V12 H66 V48 H50 V68 H22 Z" fill="var(--c2)" />
+          <!-- Speech Bubble Bowl of the 'b' (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M36 52 H74 C96 52 112 66 112 84 C112 102 96 114 74 114 H22 L36 98 V52 Z
+            M54 68 V98 H72 C84 98 92 92 92 83 C92 74 84 68 72 68 H54 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "23",
+        cat: "linguistic",
+        catLabel: "P → B Twist",
+        title: "The Highlighted B-Step Block",
+        desc: "Monumental B where the bottom loop is an elevated step block in Color 2, emphasizing the B twist.",
+        svg: `
+          <!-- Upper Stem & Top Loop (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M22 16 H78 C97 16 108 27 108 42 C108 55 99 64 84 66 H42 V112 H22 V16 Z
+            M42 32 V52 H75 C84 52 89 48 89 42 C89 36 84 32 75 32 H42 Z
+          " fill="var(--c1)" />
+          <!-- Stepped Lower B Bowl (Color 2) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M48 58 H84 C102 58 114 69 114 85 C114 101 102 112 84 112 H48 V58 Z
+            M66 74 V96 H82 C90 96 96 92 96 85 C96 78 90 74 82 74 H66 Z
+          " fill="var(--c2)" />
+        `
+      },
+
+      // ==========================================
+      // TAB 4: CHEVRONS, ISOMETRIC & S+B (24 - 28)
+      // ==========================================
+      {
+        id: "24",
+        cat: "momentum",
+        catLabel: "Momentum & S+B",
+        title: "Double Up-Chevron '^^B'",
+        desc: "Two stacked upward chevrons (^^) form the left spine of the B, signaling rapid elevation.",
+        svg: `
+          <!-- Stacked Upward Chevrons (Color 2) -->
+          <path d="M14 58 L38 34 L62 58 L50 70 L38 58 L26 70 L14 58 Z" fill="var(--c2)" />
+          <path d="M14 94 L38 70 L62 94 L50 106 L38 94 L26 106 L14 94 Z" fill="var(--c2)" />
+          <!-- Right B Loops (Color 1) -->
+          <path d="
+            M50 18 H80 C98 18 110 28 110 42 C110 52 104 60 94 63 C105 66 112 75 112 87 C112 101 100 110 80 110 H58 V94 H78 C87 94 93 90 93 83 C93 76 87 71 78 71 H64 V55 H78 C86 55 91 51 91 44 C91 37 86 34 78 34 H50 V18 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "25",
+        cat: "momentum",
+        catLabel: "Momentum & S+B",
+        title: "Negative-Space Launch Arrow B",
+        desc: "A bold B where a 45° upward launch arrow (↗) cuts through the center waist into the upper loop.",
+        svg: `
+          <!-- B Body (Color 1) -->
+          <path d="
+            M22 16 H78 C97 16 108 27 108 42 C108 52 102 59 93 62 C104 65 112 74 112 86 C112 102 98 112 78 112 H22 V84 H76 C85 84 91 80 91 74 C91 68 85 64 76 64 H56 V48 H75 C83 48 88 44 88 38 C88 32 83 28 75 28 H42 V64 H22 V16 Z
+          " fill="var(--c1)" />
+          <!-- Upward Step/Arrow Vector (Color 2) -->
+          <path d="M18 96 L56 58 H36 V42 H82 V88 H66 V68 L28 106 L18 96 Z" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "26",
+        cat: "momentum",
+        catLabel: "Momentum & S+B",
+        title: "The 'S + B' Step Monogram",
+        desc: "Interlocks 'S' (Step) on the left in Color 2 with 'B' (Stebup) on the right in Color 1.",
+        svg: `
+          <!-- Left Stepped 'S' Spine (Color 2) -->
+          <path d="M58 18 H26 C18 18 14 23 14 31 V54 C14 62 18 67 26 67 H44 V92 H14 V108 H48 C56 108 60 103 60 95 V67 C60 59 56 54 48 54 H30 V34 H58 V18 Z" fill="var(--c2)" />
+          <!-- Right 'B' Loops (Color 1) -->
+          <path d="
+            M66 18 H84 C100 18 112 28 112 42 C112 52 105 60 95 63 C106 66 114 75 114 87 C114 101 102 108 84 108 H66 V92 H82 C90 92 95 88 95 81 C95 74 90 70 82 70 H66 V54 H81 C89 54 94 50 94 43 C94 36 89 34 81 34 H66 V18 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "27",
+        cat: "momentum",
+        catLabel: "Momentum & S+B",
+        title: "Isometric 3D Step Cube B",
+        desc: "Flat 2-color isometric hexagon where 3 rising steps on the left merge into an architectural B.",
+        svg: `
+          <!-- Left Isometric Stair Facets (Color 2) -->
+          <polygon points="16,88 36,76 36,56 56,44 56,24 64,20 64,108 16,88" fill="var(--c2)" />
+          <!-- Right Isometric B Facet (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M64 20 L112 40 V62 L96 70 L112 78 V98 L64 114 V20 Z
+            M78 40 V58 L96 50 V47 L78 40 Z
+            M78 74 V94 L96 87 V81 L78 74 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "28",
+        cat: "momentum",
+        catLabel: "Momentum & S+B",
+        title: "Apex Spearhead Step 'b'",
+        desc: "Lowercase 'b' whose vertical ascender is a stepped upward spearhead lifting the geometric ring.",
+        svg: `
+          <!-- Upward Stepped Spearhead Stem (Color 2) -->
+          <polygon points="32,12 52,32 42,32 42,54 52,54 52,112 32,112 32,68 22,68 22,32 12,32" fill="var(--c2)" />
+          <!-- Circular B Ring (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M52 46 H74 C96 46 112 60 112 79 C112 98 96 112 74 112 H52 V95 H72 C84 95 93 89 93 79 C93 69 84 63 72 63 H52 V46 Z
           " fill="var(--c1)" />
         `
       }
     ];
 
+    let activeTab = 'steps';
     const grid = document.getElementById('logoGrid');
+    const tabDescBox = document.getElementById('tabDescBox');
+
+    function setTab(tab, btn) {
+      activeTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      tabDescBox.innerHTML = `<span>${tabDescriptions[tab]}</span>`;
+      render();
+    }
 
     function render() {
-      grid.innerHTML = concepts.map(item => `
+      const filtered = activeTab === 'all'
+        ? concepts
+        : concepts.filter(c => c.cat === activeTab);
+
+      grid.innerHTML = filtered.map(item => `
         <div class="card">
           <div class="stage">
             <span class="num-badge">#${item.id}</span>
+            <span class="cat-pill">${item.catLabel}</span>
 
             <svg class="mark-svg" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
               ${item.svg}
@@ -636,7 +1043,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `stebup-b-steps-${id}.svg`;
+      a.download = `stebup-logo-${id}.svg`;
       a.click();
       URL.revokeObjectURL(url);
     }
