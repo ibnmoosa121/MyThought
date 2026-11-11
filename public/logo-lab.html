@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup — 2-Color Logo Study (Tech · Step · Letter B)</title>
+  <title>Stebup — 2-Color Logo Explorer (E-Slips + B · Tech · Step)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
       --card-border: #E5E3DC;
       --text-main: #111113;
       --text-muted: #6E6D68;
-      --c1: #111113; /* Primary Color: Structure */
-      --c2: #7C3AED; /* Secondary Color: Step / B-Twist Accent */
+      --c1: #111113; /* Primary Color: B Structure */
+      --c2: #7C3AED; /* Secondary Color: E Horizontal Slips / Steps */
     }
 
     body.dark {
@@ -157,7 +157,7 @@
       border-radius: 4px;
     }
 
-    /* Clean Category Tab Bar */
+    /* Category Tab Bar */
     .tab-bar {
       max-width: 1360px;
       margin: 24px auto 0;
@@ -174,7 +174,7 @@
       font-family: inherit;
       font-size: 13px;
       font-weight: 700;
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: 10px;
       cursor: pointer;
       display: inline-flex;
@@ -263,15 +263,20 @@
     }
 
     .stage svg.mark-svg {
-      width: 140px;
-      height: 140px;
+      width: 148px;
+      height: 148px;
       overflow: visible;
+    }
+
+    .stage svg.mark-svg.wide-svg {
+      width: 280px;
+      height: 120px;
     }
 
     .wordmark-lockup {
       display: none;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     body.show-lockup .stage > svg.mark-svg {
@@ -282,18 +287,20 @@
       display: flex;
     }
 
-    .wordmark-lockup svg {
-      width: 68px;
-      height: 68px;
+    .wordmark-lockup svg.inline-eb-svg {
+      width: 66px;
+      height: 66px;
       flex-shrink: 0;
     }
 
     .wordmark-text {
-      font-size: 42px;
+      font-size: 40px;
       font-weight: 800;
       letter-spacing: -0.04em;
       color: var(--c1);
       line-height: 1;
+      display: inline-flex;
+      align-items: center;
     }
 
     .wordmark-text em {
@@ -315,8 +322,8 @@
     }
 
     .mini-preview svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
     }
 
     .mini-preview span {
@@ -401,7 +408,7 @@
   <header>
     <div class="brand-title">
       <h1>Stebup — 2-Color Logo Explorer</h1>
-      <span>Keywords: Tech · Step · Linguistic "B"</span>
+      <span>Keywords: E-Slips + B · Tech · Step</span>
     </div>
 
     <div class="controls">
@@ -436,7 +443,7 @@
       <div class="control-group">
         <span class="control-label">View</span>
         <button class="btn active" id="viewMarkBtn" onclick="setView('mark')">Symbol Only</button>
-        <button class="btn" id="viewLockupBtn" onclick="setView('lockup')">With "Stebup"</button>
+        <button class="btn" id="viewLockupBtn" onclick="setView('lockup')">In "STEBUP" Word</button>
       </div>
 
       <div class="control-group">
@@ -447,26 +454,29 @@
 
   <!-- Category Tabs -->
   <nav class="tab-bar">
-    <button class="tab-btn active" onclick="setTab('steps', this)">
+    <button class="tab-btn active" onclick="setTab('eb', this)">
+      ★ New Tab: "E" Horizontal Slips + "B" (ST·EB·UP) <span class="tab-count">12</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('steps', this)">
       Tab 1: Architectural "B + Steps" <span class="tab-count">12</span>
     </button>
     <button class="tab-btn" onclick="setTab('tech', this)">
-      Tab 2: Tech Syntax, Code & Vectors <span class="tab-count">6</span>
+      Tab 2: Tech Syntax & Code B <span class="tab-count">6</span>
     </button>
     <button class="tab-btn" onclick="setTab('linguistic', this)">
       Tab 3: "P → B" Linguistic Twist <span class="tab-count">5</span>
     </button>
     <button class="tab-btn" onclick="setTab('momentum', this)">
-      Tab 4: Chevrons, Isometric & S+B <span class="tab-count">5</span>
+      Tab 4: Chevrons & S+B <span class="tab-count">5</span>
     </button>
     <button class="tab-btn" onclick="setTab('all', this)">
-      View All <span class="tab-count">28</span>
+      View All <span class="tab-count">40</span>
     </button>
   </nav>
 
   <div class="tab-desc-banner">
     <div class="tab-desc-box" id="tabDescBox">
-      <span><strong>Tab 1 — Architectural "B + Steps":</strong> Direct geometric fusion of ascending stair treads with the uppercase & lowercase letter B.</span>
+      <span><strong>"E" Horizontal Slips + "B" (ST·EB·UP):</strong> Right in the center of <strong>STEBUP</strong>, the letter <strong>E</strong> becomes 3 horizontal step-slips positioned right before the letter <strong>B</strong>. Click <em>"In STEBUP Word"</em> at the top to see each mark embedded directly inside the full name!</span>
     </div>
   </div>
 
@@ -476,14 +486,253 @@
 
   <script>
     const tabDescriptions = {
+      eb: "<strong>'E' Horizontal Slips + 'B' (ST·EB·UP):</strong> Right in the heart of <strong>STEBUP</strong>, the letter <strong>E</strong> is built from 3 horizontal step-slips right before the letter <strong>B</strong>. Toggle <em>'In STEBUP Word'</em> above to see how it reads inside the full brand name.",
       steps: "<strong>Tab 1 — Architectural 'B + Steps':</strong> Direct geometric fusion of ascending stair treads and risers with the letter B.",
       tech: "<strong>Tab 2 — Tech Syntax, Code & Digital Steps:</strong> Terminal prompts (<code>&gt;_</code>), forward code slashes (<code>//</code>), pixel/voxel steps, and stacked tech layers forming the B.",
-      linguistic: "<strong>Tab 3 — The 'P → B' Linguistic Twist:</strong> Visualizing the exact cultural origin of Stebup—where 'P' transforms or flips upward into 'B', plus phonetic emphasis marks.",
+      linguistic: "<strong>Tab 3 — The 'P → B' Linguistic Twist:</strong> Visualizing the exact cultural origin of Stebup—where 'P' transforms or flips upward into 'B'.",
       momentum: "<strong>Tab 4 — Upward Chevrons, Isometric Planes & S+B Monograms:</strong> Expressing 'Step Up' through launch chevrons (<code>^</code>), negative-space arrows (<code>↗</code>), and S+B interlocks.",
-      all: "<strong>All 28 Concepts:</strong> Complete side-by-side view of every 'Tech + Step + B' direction."
+      all: "<strong>All 40 Concepts:</strong> Complete side-by-side library of every 2-color direction."
     };
 
     const concepts = [
+      // ================================================================
+      // NEW TAB: "E" HORIZONTAL SLIPS + "B" IN ST[EB]UP (29 - 40)
+      // ================================================================
+      {
+        id: "29",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Ascending Step-Slips 'E' + Bold 'B'",
+        desc: "Three horizontal slips step inward from bottom-left to top-right to form the 'E', sitting right before the solid geometric 'B'.",
+        svg: `
+          <!-- 3 Ascending Horizontal Slips forming 'E' (Color 2) -->
+          <rect x="8"  y="88" width="44" height="16" rx="2" fill="var(--c2)" />
+          <rect x="18" y="56" width="34" height="16" rx="2" fill="var(--c2)" />
+          <rect x="28" y="24" width="24" height="16" rx="2" fill="var(--c2)" />
+          <!-- Solid Geometric 'B' right after E (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M60 24 H92 C108 24 118 32 118 45 C118 54 113 60 104 63 C114 66 120 74 120 85 C120 98 109 104 92 104 H60 V24 Z
+            M78 38 V57 H89 C96 57 100 53 100 47 C100 41 96 38 89 38 H78 Z
+            M78 71 V90 H91 C99 90 103 86 103 80 C103 74 99 71 91 71 H78 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "30",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Fused 'EB' — E-Slips Become B's Loops",
+        desc: "The 3 horizontal slips of 'E' slide directly into the top, middle waist, and bottom bars of the 'B' with no vertical break.",
+        svg: `
+          <!-- 3 Horizontal Slips of E on the left (Color 2) -->
+          <rect x="10" y="22" width="48" height="16" rx="2" fill="var(--c2)" />
+          <rect x="20" y="56" width="38" height="16" rx="2" fill="var(--c2)" />
+          <rect x="10" y="90" width="48" height="16" rx="2" fill="var(--c2)" />
+          <!-- Right B Loops locking directly onto the 3 E-slips (Color 1) -->
+          <path d="
+            M58 22 H88 C105 22 116 32 116 46 C116 54 110 61 101 64 C112 67 118 75 118 86 C118 99 106 106 88 106 H58 V90 H85 C94 90 99 86 99 81 C99 75 94 72 85 72 H58 V56 H84 C92 56 97 52 97 45 C97 39 92 38 84 38 H58 V22 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "31",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "45° Speed-Cut Slips 'E' + 'B'",
+        desc: "The 3 horizontal slips of 'E' feature sharp 45° angled left edges that form an upward ramp right before the 'B'.",
+        svg: `
+          <!-- 3 Chamfered Horizontal Slips forming E (Color 2) -->
+          <polygon points="34,22 54,22 54,38 18,38" fill="var(--c2)" />
+          <polygon points="22,56 54,56 54,72 6,72" fill="var(--c2)" />
+          <polygon points="10,90 54,90 54,106 -6,106" transform="translate(12,0)" fill="var(--c2)" />
+          <!-- Bold Modern B (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M62 22 H92 C108 22 118 31 118 44 C118 53 113 60 104 63 C114 66 120 74 120 85 C120 99 109 106 92 106 H62 V22 Z
+            M80 36 V56 H90 C97 56 101 52 101 46 C101 40 97 36 90 36 H80 Z
+            M80 70 V92 H92 C99 92 103 88 103 81 C103 74 99 70 92 70 H80 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "32",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Staggered Step-Tread 'E' + Arch 'B'",
+        desc: "Each horizontal slip of 'E' shifts progressively upward and rightward like floating stair treads leading into 'B'.",
+        svg: `
+          <!-- Floating Step Treads forming E (Color 2) -->
+          <rect x="8"  y="88" width="38" height="15" rx="3" fill="var(--c2)" />
+          <rect x="20" y="56" width="38" height="15" rx="3" fill="var(--c2)" />
+          <rect x="32" y="24" width="38" height="15" rx="3" fill="var(--c2)" />
+          <!-- B with stepped spine recess (Color 1) -->
+          <path d="
+            M76 24 H94 C109 24 118 33 118 45 C118 54 113 60 104 63 C114 66 120 74 120 85 C120 97 110 103 94 103 H52 V88 H91 C98 88 102 85 102 79 C102 73 98 71 91 71 H64 V56 H90 C97 56 101 53 101 47 C101 41 97 39 90 39 H76 V24 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "33",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Through-Spine Interlocking 'EB'",
+        desc: "The 3 horizontal slips of 'E' pierce straight through the vertical stem of 'B' to form its inner crossbar and loops.",
+        svg: `
+          <!-- Vertical Stem & Right Curves of B (Color 1) -->
+          <path d="
+            M48 18 H90 C107 18 118 28 118 43 C118 52 112 60 103 63 C114 66 120 75 120 87 C120 101 108 110 90 110 H48 V18 Z
+            M66 34 V56 H87 C95 56 100 52 100 45 C100 38 95 34 87 34 H66 Z
+            M66 72 V94 H89 C97 94 102 90 102 83 C102 76 97 72 89 72 H66 Z
+          " fill-rule="evenodd" clip-rule="evenodd" fill="var(--c1)" />
+          <!-- 3 Horizontal E-Slips piercing from left into B (Color 2) -->
+          <rect x="10" y="18" width="56" height="16" fill="var(--c2)" />
+          <rect x="20" y="56" width="66" height="16" fill="var(--c2)" />
+          <rect x="10" y="94" width="56" height="16" fill="var(--c2)" />
+        `
+      },
+      {
+        id: "34",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Equal Precision Slips 'E' + Monolith 'B'",
+        desc: "Ultra-minimal Braun/Dieter Rams style: 3 razor-sharp horizontal bars for 'E' beside a monolithic geometric 'B'.",
+        svg: `
+          <!-- 3 Minimalist Horizontal Slips for E (Color 2) -->
+          <rect x="12" y="22" width="38" height="16" rx="2" fill="var(--c2)" />
+          <rect x="12" y="56" width="30" height="16" rx="2" fill="var(--c2)" />
+          <rect x="12" y="90" width="38" height="16" rx="2" fill="var(--c2)" />
+          <!-- Heavy Monolith B (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M58 22 H92 C109 22 118 31 118 45 C118 54 113 61 104 64 C114 67 120 75 120 86 C120 99 109 106 92 106 H58 V22 Z
+            M76 37 V56 H89 C96 56 100 52 100 46 C100 40 96 37 89 37 H76 Z
+            M76 71 V91 H91 C98 91 102 87 102 81 C102 75 98 71 91 71 H76 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "35",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Rising Wedge Slips 'E' + 'B'",
+        desc: "The 3 horizontal slips of 'E' angle slightly upward like launch ramps, propelling into the vertical spine of 'B'.",
+        svg: `
+          <!-- 3 Upward Tilted Slips forming E (Color 2) -->
+          <polygon points="12,34 50,22 50,37 12,49" fill="var(--c2)" />
+          <polygon points="16,66 50,55 50,70 16,81" fill="var(--c2)" />
+          <polygon points="12,98 50,86 50,101 12,113" fill="var(--c2)" />
+          <!-- Solid B (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M58 20 H92 C108 20 118 29 118 43 C118 52 113 59 104 62 C114 65 120 73 120 85 C120 99 109 106 92 106 H58 V20 Z
+            M76 35 V55 H89 C96 55 100 51 100 45 C100 39 96 35 89 35 H76 Z
+            M76 69 V91 H91 C98 91 102 87 102 80 C102 73 98 69 91 69 H76 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "36",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Reverse-Step Slips 'E' (Top-Wide) + 'B'",
+        desc: "Top slip of 'E' extends furthest left like an overhanging upper step, with 2 shorter slips below it before 'B'.",
+        svg: `
+          <!-- Top-Wide Stepped E Slips (Color 2) -->
+          <rect x="8"  y="22" width="44" height="16" rx="2" fill="var(--c2)" />
+          <rect x="20" y="56" width="32" height="16" rx="2" fill="var(--c2)" />
+          <rect x="32" y="90" width="20" height="16" rx="2" fill="var(--c2)" />
+          <!-- B (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M60 22 H92 C108 22 118 31 118 44 C118 53 113 60 104 63 C114 66 120 74 120 85 C120 99 109 106 92 106 H60 V22 Z
+            M78 36 V56 H89 C96 56 100 52 100 46 C100 40 96 36 89 36 H78 Z
+            M78 70 V91 H91 C98 91 102 87 102 80 C102 73 98 70 91 70 H78 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "37",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Connected Stair-Riser 'E' Slips + 'B'",
+        desc: "The 3 horizontal slips of 'E' are linked on the left by stepped vertical risers, forming both an 'E' and a staircase before 'B'.",
+        svg: `
+          <!-- Stepped E with 3 Horizontal Slips (Color 2) -->
+          <path d="
+            M8 106 V82 H20 V52 H32 V22 H54 V36 H44 V56 H54 V70 H32 V92 H54 V106 H8 Z
+          " fill="var(--c2)" />
+          <!-- Bold B (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M62 22 H92 C108 22 118 31 118 44 C118 53 113 60 104 63 C114 66 120 74 120 85 C120 99 109 106 92 106 H62 V22 Z
+            M80 36 V56 H90 C97 56 101 52 101 46 C101 40 97 36 90 36 H80 Z
+            M80 70 V91 H92 C99 91 103 87 103 80 C103 73 99 70 92 70 H80 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "38",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Lowercase 'e' Slips + Lowercase 'b'",
+        desc: "Three horizontal slips curve around to form a modern 'e' that steps directly into the tall ascender of 'b'.",
+        svg: `
+          <!-- 3 Horizontal Slips forming 'e' on the left (Color 2) -->
+          <rect x="16" y="48" width="36" height="13" rx="3" fill="var(--c2)" />
+          <rect x="10" y="72" width="42" height="13" rx="3" fill="var(--c2)" />
+          <rect x="22" y="96" width="30" height="13" rx="3" fill="var(--c2)" />
+          <!-- Tall Geometric lowercase 'b' (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M60 16 H78 V52 C84 48 91 46 98 46 C113 46 122 58 122 78 C122 98 111 110 94 110 C86 110 80 107 76 102 V109 H60 V16 Z
+            M78 78 C78 89 84 95 92 95 C101 95 106 89 106 78 C106 67 101 61 92 61 C84 61 78 67 78 78 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "39",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        title: "Underlined Step Platform 'EB'",
+        desc: "The bottom horizontal slip of 'E' extends all the way underneath 'B', acting as a step platform carrying the 'B'.",
+        svg: `
+          <!-- 3 Horizontal Slips of E where bottom slip extends under B (Color 2) -->
+          <rect x="24" y="20" width="28" height="16" rx="2" fill="var(--c2)" />
+          <rect x="16" y="54" width="36" height="16" rx="2" fill="var(--c2)" />
+          <path d="M8 88 H60 V96 H116 V110 H8 V88 Z" fill="var(--c2)" />
+          <!-- Elevated B sitting on the E step platform (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M60 20 H92 C108 20 118 28 118 40 C118 48 113 54 105 57 C114 60 120 67 120 77 C120 89 109 94 92 94 H60 V20 Z
+            M78 33 V50 H89 C96 50 100 47 100 41 C100 36 96 33 89 33 H78 Z
+            M78 63 V81 H91 C98 81 102 78 102 72 C102 66 98 63 91 63 H78 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "40",
+        cat: "eb",
+        catLabel: "E-Slips + B",
+        isEB: true,
+        wide: true,
+        title: "Full 'STEBUP' Wordmark with E-Slips + B",
+        desc: "Complete custom geometric wordmark where 'E' is 3 stepped horizontal slips right before the hero 'B'.",
+        svg: `
+          <!-- S & T (Color 1) -->
+          <text x="4" y="84" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="var(--c1)">ST</text>
+          <!-- E as 3 Horizontal Step Slips (Color 2) -->
+          <rect x="78" y="42" width="28" height="9" rx="1.5" fill="var(--c2)" />
+          <rect x="73" y="59" width="33" height="9" rx="1.5" fill="var(--c2)" />
+          <rect x="68" y="76" width="38" height="9" rx="1.5" fill="var(--c2)" />
+          <!-- Hero B + UP (Color 1 with B highlighted) -->
+          <text x="111" y="84" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="54" letter-spacing="-2" fill="var(--c1)">BUP</text>
+        `
+      },
+
       // ==========================================
       // TAB 1: ARCHITECTURAL B + STEPS (01 - 12)
       // ==========================================
@@ -669,9 +918,7 @@
         title: "The Terminal Prompt '>B'",
         desc: "A developer command prompt chevron (>) forms the left step spine, driving into the twin B bowls.",
         svg: `
-          <!-- Terminal Prompt '>' + '_' step (Color 2) -->
           <path d="M16 26 L54 64 L16 102 L28 112 L74 64 L28 16 L16 26 Z" fill="var(--c2)" />
-          <!-- B Loops wrapping the prompt (Color 1) -->
           <path d="
             M56 16 H82 C99 16 110 26 110 41 C110 51 104 59 94 62 C105 65 112 74 112 86 C112 101 100 112 82 112 H56 V95 H80 C89 95 94 90 94 83 C94 76 89 72 80 72 H72 V56 H79 C87 56 92 51 92 43 C92 36 87 32 79 32 H56 V16 Z
           " fill="var(--c1)" />
@@ -684,11 +931,9 @@
         title: "Digital Voxel / Pixel Step B",
         desc: "Three ascending square tech nodes (pixels/blocks) step up diagonally into a sharp geometric B.",
         svg: `
-          <!-- 3 Stepping Tech Nodes (Color 2) -->
           <rect x="12" y="84" width="22" height="22" rx="4" fill="var(--c2)" />
           <rect x="26" y="53" width="22" height="22" rx="4" fill="var(--c2)" />
           <rect x="40" y="22" width="22" height="22" rx="4" fill="var(--c2)" />
-          <!-- Connected B Frame (Color 1) -->
           <path d="
             M70 22 H84 C100 22 110 31 110 44 C110 53 104 60 95 63 C106 66 112 75 112 86 C112 100 101 108 84 108 H42 V90 H82 C90 90 94 86 94 80 C94 74 90 70 82 70 H56 V56 H81 C88 56 92 52 92 45 C92 39 88 36 81 36 H70 V22 Z
           " fill="var(--c1)" />
@@ -701,10 +946,8 @@
         title: "Code Slash Step '//B'",
         desc: "Two parallel forward code slashes (//) step upward on the left and lock into bold B loops.",
         svg: `
-          <!-- Stepped Code Slashes // (Color 2) -->
           <polygon points="12,110 32,46 48,46 28,110" fill="var(--c2)" />
           <polygon points="34,92 54,18 70,18 50,92" fill="var(--c2)" />
-          <!-- B Loops (Color 1) -->
           <path d="
             M74 18 H86 C101 18 112 28 112 42 C112 52 105 60 95 63 C106 66 114 75 114 87 C114 101 102 110 84 110 H38 L43 93 H82 C90 93 96 89 96 82 C96 75 90 71 82 71 H64 L68 55 H83 C90 55 95 51 95 44 C95 37 90 34 83 34 H70 L74 18 Z
           " fill="var(--c1)" />
@@ -717,10 +960,8 @@
         title: "Full-Stack Layered B",
         desc: "Three horizontal tech stack layers that step inward on the left and curve into a B on the right.",
         svg: `
-          <!-- Top & Bottom Tech Stack Bars (Color 1) -->
           <path d="M44 18 H84 C101 18 112 28 112 42 C112 50 107 57 98 60 H44 V44 H82 C89 44 93 41 93 36 C93 31 89 28 82 28 H44 V18 Z" fill="var(--c1)" />
           <path d="M16 68 H98 C107 71 112 78 112 87 C112 101 101 110 84 110 H16 V94 H82 C89 94 93 91 93 86 C93 81 89 78 82 78 H16 V68 Z" fill="var(--c1)" />
-          <!-- Stepped Accent Stack Bars (Color 2) -->
           <rect x="28" y="48" width="64" height="16" rx="4" fill="var(--c2)" />
           <rect x="16" y="94" width="36" height="16" rx="3" fill="var(--c2)" />
         `
@@ -732,11 +973,9 @@
         title: "Command Cursor Step 'b_'",
         desc: "Three blinking-style terminal cursor blocks step upward to form the stem of a modern tech 'b'.",
         svg: `
-          <!-- 3 Stepping Terminal Cursors (Color 2) -->
           <rect x="14" y="56" width="24" height="12" rx="2" fill="var(--c2)" />
           <rect x="24" y="36" width="24" height="12" rx="2" fill="var(--c2)" />
           <rect x="34" y="16" width="24" height="12" rx="2" fill="var(--c2)" />
-          <!-- Lowercase 'b' Tech Ring (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M34 48 H52 V54 C58 49 66 46 75 46 C96 46 112 61 112 80 C112 99 96 114 75 114 C54 114 34 99 34 78 V48 Z
             M52 80 C52 91 61 98 73 98 C85 98 94 91 94 80 C94 69 85 62 73 62 C61 62 52 69 52 80 Z
@@ -750,12 +989,10 @@
         title: "Circuit Node Step B",
         desc: "Tech pathway traces that step upward through 3 connection nodes to complete the letter B.",
         svg: `
-          <!-- Stepped Tech Trace & Nodes (Color 2) -->
           <path d="M22 98 V70 H40 V40 H58 V24" stroke="var(--c2)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
           <circle cx="22" cy="98" r="10" fill="var(--c2)" />
           <circle cx="40" cy="70" r="10" fill="var(--c2)" />
           <circle cx="58" cy="24" r="10" fill="var(--c2)" />
-          <!-- Right B Loops (Color 1) -->
           <path d="
             M72 18 H84 C100 18 110 28 110 42 C110 52 104 59 94 62 C105 65 112 74 112 86 C112 101 100 110 82 110 H44 V94 H80 C89 94 94 89 94 82 C94 75 89 71 80 71 H60 V55 H81 C88 55 93 50 93 43 C93 36 88 33 81 33 H72 V18 Z
           " fill="var(--c1)" />
@@ -772,12 +1009,10 @@
         title: "The 'P-to-B' Step Evolution",
         desc: "Color 1 forms a clean letter 'P' (Step), while Color 2 adds the stepped lower loop that turns 'P' into 'B' (Stebup).",
         svg: `
-          <!-- Letter P in Color 1 -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M24 16 H78 C98 16 110 28 110 44 C110 60 98 72 78 72 H44 V112 H24 V16 Z
             M44 33 V55 H75 C85 55 91 50 91 44 C91 38 85 33 75 33 H44 Z
           " fill="var(--c1)" />
-          <!-- Stepped Bottom Loop in Color 2 that turns P into B -->
           <path d="
             M52 72 H82 C101 72 112 81 112 93 C112 105 101 112 82 112 H52 V96 H79 C88 96 93 94 93 90 C93 86 88 84 79 84 H52 V72 Z
           " fill="var(--c2)" />
@@ -790,12 +1025,10 @@
         title: "The Flipped 'p → b' Step-Up",
         desc: "A lowercase 'p' literally steps upward into a lowercase 'b'—visualizing the exact linguistic twist.",
         svg: `
-          <!-- Lower left 'p' descender step (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M18 46 H54 C72 46 84 57 84 72 C84 87 72 98 54 98 H36 V116 H18 V46 Z
             M36 62 V82 H52 C61 82 66 78 66 72 C66 66 61 62 52 62 H36 Z
           " fill="var(--c1)" />
-          <!-- Stepped-up 'b' ascender & loop (Color 2) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M56 12 H74 V46 H84 C102 46 114 57 114 72 C114 87 102 98 84 98 H56 V12 Z
             M74 62 V82 H82 C91 82 96 78 96 72 C96 66 91 62 82 62 H74 Z
@@ -809,10 +1042,8 @@
         title: "Phonetic Dictionary '/b/' Step",
         desc: "Inspired by linguistic phonetic notation (/b/): two rising slash steps frame a bold modern 'b'.",
         svg: `
-          <!-- Rising Phonetic Slashes / / (Color 2) -->
           <polygon points="10,104 28,28 40,28 22,104" fill="var(--c2)" />
           <polygon points="94,96 112,20 124,20 106,96" fill="var(--c2)" />
-          <!-- Center Geometric 'b' (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M44 18 H60 V48 C65 44 71 42 78 42 C93 42 104 54 104 71 C104 88 93 100 76 100 C68 100 62 97 58 92 V98 H44 V18 Z
             M60 71 C60 80 66 86 74 86 C83 86 89 80 89 71 C89 62 83 56 74 56 C66 56 60 62 60 71 Z
@@ -826,9 +1057,7 @@
         title: "Speech-Step Bubble 'b'",
         desc: "Spoken slang meets elevation: the bowl of the 'b' is a speech mark while the stem is a 3-step riser.",
         svg: `
-          <!-- 3-Step Ascender Stem (Color 2) -->
           <path d="M22 68 V48 H36 V28 H50 V12 H66 V48 H50 V68 H22 Z" fill="var(--c2)" />
-          <!-- Speech Bubble Bowl of the 'b' (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M36 52 H74 C96 52 112 66 112 84 C112 102 96 114 74 114 H22 L36 98 V52 Z
             M54 68 V98 H72 C84 98 92 92 92 83 C92 74 84 68 72 68 H54 Z
@@ -842,12 +1071,10 @@
         title: "The Highlighted B-Step Block",
         desc: "Monumental B where the bottom loop is an elevated step block in Color 2, emphasizing the B twist.",
         svg: `
-          <!-- Upper Stem & Top Loop (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M22 16 H78 C97 16 108 27 108 42 C108 55 99 64 84 66 H42 V112 H22 V16 Z
             M42 32 V52 H75 C84 52 89 48 89 42 C89 36 84 32 75 32 H42 Z
           " fill="var(--c1)" />
-          <!-- Stepped Lower B Bowl (Color 2) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M48 58 H84 C102 58 114 69 114 85 C114 101 102 112 84 112 H48 V58 Z
             M66 74 V96 H82 C90 96 96 92 96 85 C96 78 90 74 82 74 H66 Z
@@ -865,10 +1092,8 @@
         title: "Double Up-Chevron '^^B'",
         desc: "Two stacked upward chevrons (^^) form the left spine of the B, signaling rapid elevation.",
         svg: `
-          <!-- Stacked Upward Chevrons (Color 2) -->
           <path d="M14 58 L38 34 L62 58 L50 70 L38 58 L26 70 L14 58 Z" fill="var(--c2)" />
           <path d="M14 94 L38 70 L62 94 L50 106 L38 94 L26 106 L14 94 Z" fill="var(--c2)" />
-          <!-- Right B Loops (Color 1) -->
           <path d="
             M50 18 H80 C98 18 110 28 110 42 C110 52 104 60 94 63 C105 66 112 75 112 87 C112 101 100 110 80 110 H58 V94 H78 C87 94 93 90 93 83 C93 76 87 71 78 71 H64 V55 H78 C86 55 91 51 91 44 C91 37 86 34 78 34 H50 V18 Z
           " fill="var(--c1)" />
@@ -881,11 +1106,9 @@
         title: "Negative-Space Launch Arrow B",
         desc: "A bold B where a 45° upward launch arrow (↗) cuts through the center waist into the upper loop.",
         svg: `
-          <!-- B Body (Color 1) -->
           <path d="
             M22 16 H78 C97 16 108 27 108 42 C108 52 102 59 93 62 C104 65 112 74 112 86 C112 102 98 112 78 112 H22 V84 H76 C85 84 91 80 91 74 C91 68 85 64 76 64 H56 V48 H75 C83 48 88 44 88 38 C88 32 83 28 75 28 H42 V64 H22 V16 Z
           " fill="var(--c1)" />
-          <!-- Upward Step/Arrow Vector (Color 2) -->
           <path d="M18 96 L56 58 H36 V42 H82 V88 H66 V68 L28 106 L18 96 Z" fill="var(--c2)" />
         `
       },
@@ -896,9 +1119,7 @@
         title: "The 'S + B' Step Monogram",
         desc: "Interlocks 'S' (Step) on the left in Color 2 with 'B' (Stebup) on the right in Color 1.",
         svg: `
-          <!-- Left Stepped 'S' Spine (Color 2) -->
           <path d="M58 18 H26 C18 18 14 23 14 31 V54 C14 62 18 67 26 67 H44 V92 H14 V108 H48 C56 108 60 103 60 95 V67 C60 59 56 54 48 54 H30 V34 H58 V18 Z" fill="var(--c2)" />
-          <!-- Right 'B' Loops (Color 1) -->
           <path d="
             M66 18 H84 C100 18 112 28 112 42 C112 52 105 60 95 63 C106 66 114 75 114 87 C114 101 102 108 84 108 H66 V92 H82 C90 92 95 88 95 81 C95 74 90 70 82 70 H66 V54 H81 C89 54 94 50 94 43 C94 36 89 34 81 34 H66 V18 Z
           " fill="var(--c1)" />
@@ -911,9 +1132,7 @@
         title: "Isometric 3D Step Cube B",
         desc: "Flat 2-color isometric hexagon where 3 rising steps on the left merge into an architectural B.",
         svg: `
-          <!-- Left Isometric Stair Facets (Color 2) -->
           <polygon points="16,88 36,76 36,56 56,44 56,24 64,20 64,108 16,88" fill="var(--c2)" />
-          <!-- Right Isometric B Facet (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M64 20 L112 40 V62 L96 70 L112 78 V98 L64 114 V20 Z
             M78 40 V58 L96 50 V47 L78 40 Z
@@ -928,9 +1147,7 @@
         title: "Apex Spearhead Step 'b'",
         desc: "Lowercase 'b' whose vertical ascender is a stepped upward spearhead lifting the geometric ring.",
         svg: `
-          <!-- Upward Stepped Spearhead Stem (Color 2) -->
           <polygon points="32,12 52,32 42,32 42,54 52,54 52,112 32,112 32,68 22,68 22,32 12,32" fill="var(--c2)" />
-          <!-- Circular B Ring (Color 1) -->
           <path fill-rule="evenodd" clip-rule="evenodd" d="
             M52 46 H74 C96 46 112 60 112 79 C112 98 96 112 74 112 H52 V95 H72 C84 95 93 89 93 79 C93 69 84 63 72 63 H52 V46 Z
           " fill="var(--c1)" />
@@ -938,7 +1155,7 @@
       }
     ];
 
-    let activeTab = 'steps';
+    let activeTab = 'eb';
     const grid = document.getElementById('logoGrid');
     const tabDescBox = document.getElementById('tabDescBox');
 
@@ -955,28 +1172,44 @@
         ? concepts
         : concepts.filter(c => c.cat === activeTab);
 
-      grid.innerHTML = filtered.map(item => `
+      grid.innerHTML = filtered.map(item => {
+        const viewBox = item.wide ? "0 0 230 120" : "0 0 128 128";
+        const svgClass = item.wide ? "mark-svg wide-svg" : "mark-svg";
+
+        // When viewing in "STEBUP" word mode:
+        // If it's an EB concept, render ST + [EB SVG] + UP so E-slips + B sit right inside STEBUP!
+        const lockupHtml = item.isEB && !item.wide
+          ? `<div class="wordmark-lockup">
+               <span class="wordmark-text">ST</span>
+               <svg class="inline-eb-svg" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin: 0 -4px;">
+                 ${item.svg}
+               </svg>
+               <span class="wordmark-text">UP</span>
+             </div>`
+          : `<div class="wordmark-lockup">
+               <svg class="inline-eb-svg" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 ${item.svg}
+               </svg>
+               <span class="wordmark-text">Ste<em>b</em>up</span>
+             </div>`;
+
+        return `
         <div class="card">
           <div class="stage">
             <span class="num-badge">#${item.id}</span>
             <span class="cat-pill">${item.catLabel}</span>
 
-            <svg class="mark-svg" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
+            <svg class="${svgClass}" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-${item.id}">
               ${item.svg}
             </svg>
 
-            <div class="wordmark-lockup">
-              <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                ${item.svg}
-              </svg>
-              <span class="wordmark-text">Ste<em>b</em>up</span>
-            </div>
+            ${lockupHtml}
 
-            <div class="mini-preview" title="20px Navbar Scale">
-              <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="mini-preview" title="Navbar Scale Preview">
+              <svg viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg">
                 ${item.svg}
               </svg>
-              <span>Stebup</span>
+              <span>STEBUP</span>
             </div>
           </div>
 
@@ -988,7 +1221,7 @@
             <button class="dl-btn" onclick="downloadSvg('${item.id}', '${item.title}')">SVG</button>
           </div>
         </div>
-      `).join('');
+      `}).join('');
     }
 
     function setPalette(c1, c2, btn) {
