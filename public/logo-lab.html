@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stebup — 2-Color Logo Explorer (Stemless B Rounds + E Slips)</title>
+  <title>Stebup — Logo Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -421,17 +421,17 @@
     }
   </style>
 </head>
-<body class="show-lockup">
+<body>
 
   <header>
     <div class="brand-title">
-      <h1>Stebup — 2-Color Logo Explorer</h1>
-      <span>Stemless "B" Rounds + "E" Slips Study</span>
+      <h1>Stebup — Logo Explorer</h1>
+      <span>64 Concepts across 3 Focused Groups</span>
     </div>
 
     <div class="controls">
       <div class="control-group">
-        <span class="control-label">2 Colors</span>
+        <span class="control-label">Colors</span>
         <button class="btn active" onclick="setPalette('#111113', '#7C3AED', this)">
           <i class="swatch-dot" style="background: linear-gradient(135deg, #111113 50%, #7C3AED 50%)"></i>
           Ink + Violet
@@ -452,7 +452,7 @@
           <i class="swatch-dot" style="background: linear-gradient(135deg, #111113 50%, #71717A 50%)"></i>
           Monochrome
         </button>
-        <div class="color-picker-wrap" title="Pick Custom 2 Colors">
+        <div class="color-picker-wrap" title="Pick Custom Colors">
           <input type="color" id="picker1" value="#111113" oninput="customColor()" />
           <input type="color" id="picker2" value="#7C3AED" oninput="customColor()" />
         </div>
@@ -460,8 +460,8 @@
 
       <div class="control-group">
         <span class="control-label">View</span>
-        <button class="btn active" id="viewLockupBtn" onclick="setView('lockup')">Full "STEBUP" Word</button>
-        <button class="btn" id="viewMarkBtn" onclick="setView('mark')">Symbol Only (EB / B)</button>
+        <button class="btn" id="viewLockupBtn" onclick="setView('lockup')">Full "STEBUP" Word</button>
+        <button class="btn active" id="viewMarkBtn" onclick="setView('mark')">Symbol Only</button>
         <button class="btn" id="guideBtn" onclick="toggleGuides()" title="Show Cap-Height & Baseline Alignment Lines">Alignment Lines</button>
       </div>
 
@@ -471,37 +471,22 @@
     </div>
   </header>
 
-  <!-- Category Tabs -->
+  <!-- 3 Main Category Tabs -->
   <nav class="tab-bar">
     <button class="tab-btn active" onclick="setTab('symbols', this)">
-      ★ New: Symbol-Only Creative "EB" Marks <span class="tab-count">12</span>
+      EB Symbols <span class="tab-count">12</span>
     </button>
-    <button class="tab-btn" onclick="setTab('rounds', this)">
-      Stemless "B" Rounds + "E" Slips (Wordmark) <span class="tab-count">12</span>
+    <button class="tab-btn" onclick="setTab('wordmarks', this)">
+      STEBUP Wordmarks <span class="tab-count">24</span>
     </button>
-    <button class="tab-btn" onclick="setTab('eb', this)">
-      Seamless "STEBUP" (E-Slips + Full B) <span class="tab-count">12</span>
-    </button>
-    <button class="tab-btn" onclick="setTab('steps', this)">
-      Tab 1: Architectural "B + Steps" <span class="tab-count">12</span>
-    </button>
-    <button class="tab-btn" onclick="setTab('tech', this)">
-      Tab 2: Tech Syntax & Code B <span class="tab-count">6</span>
-    </button>
-    <button class="tab-btn" onclick="setTab('linguistic', this)">
-      Tab 3: "P → B" Linguistic Twist <span class="tab-count">5</span>
-    </button>
-    <button class="tab-btn" onclick="setTab('momentum', this)">
-      Tab 4: Chevrons & S+B <span class="tab-count">5</span>
-    </button>
-    <button class="tab-btn" onclick="setTab('all', this)">
-      View All <span class="tab-count">64</span>
+    <button class="tab-btn" onclick="setTab('b_marks', this)">
+      B + Steps &amp; Tech <span class="tab-count">28</span>
     </button>
   </nav>
 
   <div class="tab-desc-banner">
     <div class="tab-desc-box" id="tabDescBox">
-      <span><strong>★ Stemless "B" Rounds + "E" Horizontal Slips:</strong> Both the vertical stem of <strong>E</strong> and the vertical stem of <strong>B</strong> are removed! <strong>E</strong> is purely 3 horizontal step-slips (<code>≡</code>) and <strong>B</strong> is purely its 2 curved rounds (<code>⊃⊃</code>)—your eye automatically completes the vertical spine in the negative space between them.</span>
+      <span><strong>EB Symbols (12 Concepts):</strong> Creative standalone icon marks fusing 3 horizontal E-slips (<code>≡</code>) with stemless B-rounds (<code>⊃⊃</code>).</span>
     </div>
   </div>
 
@@ -1079,7 +1064,7 @@
         "eb",
         "Seamless ST·EB·UP",
         "Equal Floating Slips 'E' + Highlighted Spine 'B'",
-        "Classic E proportion stripped to 3 pure horizontal slips (middle slip shorter) paired with a bold 2-color B.",
+        "Classic E proportion stripped to 3 pure horizontal slips (middle slip shorter) paired with a bold accented B.",
         `
           <rect x="128" y="28" width="46" height="14" rx="1.5" fill="var(--c2)" />
           <rect x="128" y="53" width="38" height="14" rx="1.5" fill="var(--c2)" />
@@ -1176,7 +1161,7 @@
         "eb",
         "Seamless ST·EB·UP",
         "Split-Color 'E' Slips + 'B' Loops",
-        "Both 'E' and 'B' share the 2-color system: E's 3 horizontal slips and B's spine are Color 1, while B's twin step-loops are Color 2.",
+        "Both 'E' and 'B' share the dual-tone system: E's 3 horizontal slips and B's spine are Color 1, while B's twin step-loops are Color 2.",
         `
           <rect x="138" y="28" width="36" height="14" rx="1.5" fill="var(--c1)" />
           <rect x="133" y="53" width="41" height="14" rx="1.5" fill="var(--c1)" />
@@ -1619,7 +1604,7 @@
         cat: "momentum",
         catLabel: "Momentum & S+B",
         title: "Isometric 3D Step Cube B",
-        desc: "Flat 2-color isometric hexagon where 3 rising steps on the left merge into an architectural B.",
+        desc: "Flat isometric hexagon where 3 rising steps on the left merge into an architectural B.",
         svg: `
           <polygon points="16,88 36,76 36,56 56,44 56,24 64,20 64,108 16,88" fill="var(--c2)" />
           <path fill-rule="evenodd" clip-rule="evenodd" d="
@@ -1645,16 +1630,18 @@
     ];
 
     const tabDescriptions = {
-      rounds: "<strong>★ Stemless 'B' Rounds + 'E' Horizontal Slips:</strong> Both the vertical stem of <strong>E</strong> and the vertical stem of <strong>B</strong> are skipped! <strong>E</strong> is purely 3 horizontal step-slips (<code>≡</code>) and <strong>B</strong> is purely its 2 curved rounds (<code>⊃⊃</code>)—your eye automatically completes the missing vertical spine in negative space.",
-      eb: "<strong>Seamless 'STEBUP' Wordmark (With B Spine):</strong> All 6 letters (<strong>S · T · E · B · U · P</strong>) are precision-drawn to the exact same 64px cap-height, baseline, and 14px stroke weight.",
-      steps: "<strong>Tab 1 — Architectural 'B + Steps':</strong> Direct geometric fusion of ascending stair treads and risers with the letter B.",
-      tech: "<strong>Tab 2 — Tech Syntax, Code & Digital Steps:</strong> Terminal prompts (<code>&gt;_</code>), forward code slashes (<code>//</code>), pixel/voxel steps, and stacked tech layers forming the B.",
-      linguistic: "<strong>Tab 3 — The 'P → B' Linguistic Twist:</strong> Visualizing the exact cultural origin of Stebup—where 'P' transforms or flips upward into 'B'.",
-      momentum: "<strong>Tab 4 — Upward Chevrons, Isometric Planes & S+B Monograms:</strong> Expressing 'Step Up' through launch chevrons (<code>^</code>), negative-space arrows (<code>↗</code>), and S+B interlocks.",
-      all: "<strong>All 52 Concepts:</strong> Complete side-by-side library of every 2-color direction."
+      symbols: "<strong>EB Symbols (12 Concepts):</strong> Creative standalone icon marks fusing 3 horizontal E-slips (<code>≡</code>) with stemless B-rounds (<code>⊃⊃</code>).",
+      wordmarks: "<strong>STEBUP Wordmarks (24 Concepts):</strong> Complete seamless <code>STEBUP</code> wordmarks featuring horizontal-slip <strong>E</strong> before stemless <strong>B</strong> rounds (<code>#41–#52</code>) and full-spine <strong>B</strong> (<code>#29–#40</code>).",
+      b_marks: "<strong>B + Steps &amp; Tech (28 Concepts):</strong> Architectural B + Steps (<code>#01–#12</code>), Tech Syntax &amp; Code (<code>#13–#18</code>), P → B Linguistic Twist (<code>#19–#23</code>), and Chevrons &amp; S+B Monograms (<code>#24–#28</code>)."
     };
 
-    let activeTab = 'rounds';
+    const tabGroups = {
+      symbols: ['symbols'],
+      wordmarks: ['rounds', 'eb'],
+      b_marks: ['steps', 'tech', 'linguistic', 'momentum']
+    };
+
+    let activeTab = 'symbols';
     const grid = document.getElementById('logoGrid');
     const tabDescBox = document.getElementById('tabDescBox');
 
@@ -1664,16 +1651,17 @@
       if (btn) btn.classList.add('active');
       tabDescBox.innerHTML = `<span>${tabDescriptions[tab]}</span>`;
 
-      if (tab === 'rounds' || tab === 'eb') {
+      if (tab === 'wordmarks') {
         setView('lockup');
+      } else {
+        setView('mark');
       }
       render();
     }
 
     function render() {
-      const filtered = activeTab === 'all'
-        ? concepts
-        : concepts.filter(c => c.cat === activeTab);
+      const allowedCats = tabGroups[activeTab] || [];
+      const filtered = concepts.filter(c => allowedCats.includes(c.cat));
 
       grid.innerHTML = filtered.map(item => {
         if (item.isSeamlessEB) {
