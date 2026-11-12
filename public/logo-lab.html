@@ -556,19 +556,20 @@
         id: "65",
         cat: "improvised",
         catLabel: "From #53 · Kinetic + Squircle",
-        title: "Kinetic 10° Launch-Arrow 'EB' in Squircle",
-        desc: "Refines #53 with a 10° forward tech slant, machined rounded terminals, and a squircle app-icon frame so the center arrow (↑) stays razor-sharp at 16px.",
+        title: "Kinetic Launch-Arrow 'EB' in Squircle",
+        desc: "Refines #53: safely inset inside a machined squircle with balanced optical breathing room and a crisp negative-space upward arrow (↑) between E and B.",
         svg: `
           <!-- Outer machined squircle housing (Color 1) -->
           <rect x="8" y="8" width="112" height="112" rx="28" fill="none" stroke="var(--c1)" stroke-width="6" />
-          <g transform="translate(64,64) skewX(-9) translate(-64,-64)">
-            <!-- 3 Tapered Stepped E-Slips sculpting left of center launch arrow (Color 2) -->
-            <path d="M27 28 H62 L52 41 H27 C24.8 41 23 39.2 23 37 V32 C23 29.8 24.8 28 27 28 Z" fill="var(--c2)" />
-            <path d="M22 57 H57 C59.2 57 61 58.8 61 61 V66 C61 68.2 59.2 70 57 70 H22 C19.8 70 18 68.2 18 66 V61 C18 58.8 19.8 57 22 57 Z" fill="var(--c2)" />
-            <path d="M17 86 H57 C59.2 86 61 87.8 61 90 V95 C61 97.2 59.2 99 57 99 H17 C14.8 99 13 97.2 13 95 V90 C13 87.8 14.8 86 17 86 Z" fill="var(--c2)" />
-            <!-- Stemless B Rounds with matching arrow shoulder (Color 1) -->
+          <!-- Inset & Centered Kinetic Mark (zero border collision) -->
+          <g transform="translate(64,64) scale(0.76) skewX(-8) translate(-64,-64)">
+            <!-- 3 Stepped E-Slips sculpting left half of center arrow (Color 2) -->
+            <path d="M26 24 H61 L48 39 H26 C23.8 39 22 37.2 22 35 V28 C22 25.8 23.8 24 26 24 Z" fill="var(--c2)" />
+            <path d="M19 56 H55 C57.2 56 59 57.8 59 60 V68 C59 70.2 57.2 72 55 72 H19 C16.8 72 15 70.2 15 68 V60 C15 57.8 16.8 56 19 56 Z" fill="var(--c2)" />
+            <path d="M12 88 H55 C57.2 88 59 89.8 59 92 V100 C59 102.2 57.2 104 55 104 H12 C9.8 104 8 102.2 8 100 V92 C8 89.8 9.8 88 12 88 Z" fill="var(--c2)" />
+            <!-- Stemless B Rounds sculpting right half of center arrow (Color 1) -->
             <path d="
-              M69 28 H91 C104 28 112 35 112 45 C112 52 107 58 99 61 C108 64 114 70 114 80 C114 91 105 99 91 99 H72 C69.8 99 68 97.2 68 95 V89 C68 86.8 69.8 85 72 85 H89 C95 85 99 82 99 77 C99 72 95 69 89 69 H72 C69.8 69 68 67.2 68 65 V60 C68 57.8 69.8 56 72 56 H88 C94 56 98 53 98 48 C98 43 94 41 88 41 H79 L69 28 Z
+              M69 24 H93 C107 24 116 32 116 44 C116 52 110 59 101 62 C111 65 118 73 118 84 C118 96 108 104 93 104 H72 C69.8 104 68 102.2 68 100 V92 C68 89.8 69.8 88 72 88 H91 C98 88 102 85 102 79 C102 73 98 70 91 70 H72 C69.8 70 68 68.2 68 66 V59 C68 56.8 69.8 55 72 55 H90 C97 55 101 52 101 46 C101 41 97 39 90 39 H82 L69 24 Z
             " fill="var(--c1)" />
           </g>
         `
@@ -619,18 +620,15 @@
         cat: "improvised",
         catLabel: "From #60 · Single Stroke",
         title: "Continuous Single-Stroke Diagonal 'EB'",
-        desc: "Upgrades #60 from 5 separate pieces into a bold 2-part continuous flow—a 45° diagonal staircase ribbon feeding into seamless B rounds.",
+        desc: "Refines #60: a clean parallel 45° zig-zag ribbon forms the 3 steps of E in a single unbroken stroke, separated by a crisp 8px diagonal channel from the B rounds.",
         svg: `
-          <!-- Continuous Zig-Zag 45-deg Step Ribbon for E (Color 2) -->
+          <!-- Clean Continuous 3-Slip Ribbon for E (Color 2) -->
           <path d="
-            M26 22 H72 C75 22 77 25 75 28 L64 38 H32 L26 22 Z
-          " fill="var(--c2)" opacity="0" />
-          <path d="
-            M24 20 H74 L60 36 H34 L24 56 H60 L46 72 H22 L12 92 H48 L34 108 H8 C5 108 3 105 5 102 L22 68 L14 68 C11 68 9 65 11 62 L24 34 L20 34 C17 34 15 31 17 28 L24 20 Z
+            M29 20 H73 L61 35 H38 L31 56 H54 L42 71 H23 L16 93 H37 L25 108 H4 L18 68 L29 20 Z
           " fill="var(--c2)" />
-          <!-- Matching 45-deg Terminal Stemless B Rounds (Color 1) -->
+          <!-- Matching 45-deg Terminal Stemless B Rounds (Color 1) with clean 8px diagonal gap -->
           <path d="
-            M84 20 H98 C112 20 122 29 122 42 C122 52 115 59 104 63 C115 66 122 75 122 87 C122 100 111 108 94 108 H46 L60 92 H92 C100 92 105 88 105 82 C105 76 100 72 92 72 H60 L74 56 H94 C101 56 105 52 105 45 C105 39 101 36 94 36 H70 L84 20 Z
+            M83 20 H98 C112 20 122 29 122 42 C122 52 115 59 104 63 C115 66 122 75 122 87 C122 100 111 108 94 108 H38 L50 93 H92 C100 93 105 89 105 82 C105 76 100 72 92 72 H54 L66 57 H94 C101 57 105 52 105 45 C105 39 101 35 94 35 H71 L83 20 Z
           " fill="var(--c1)" />
         `
       },
@@ -639,18 +637,18 @@
         cat: "improvised",
         catLabel: "From #62 · AI Spark Crest",
         title: "AI-Spark Crown 'EB' Crest",
-        desc: "Refines #62 with smooth machined radii and carves a subtle 4-point AI intelligence spark (✦) inside the central crown apex.",
+        desc: "Refines #62: widens the center apex channel so the 4-point AI spark (✦) floats cleanly in negative space without colliding with E or B.",
         svg: `
-          <!-- 3 Aerodynamic Crown-Pitched E-Slips (Color 2) -->
-          <path d="M20 34 L58 17 C60 16 62 17.5 62 20 V30 C62 31.5 61 33 59.5 33.8 L22 50 C19.5 51 17 49.5 17 47 V38 C17 36 18.2 34.8 20 34 Z" fill="var(--c2)" />
-          <path d="M15 66 L54 49 C56 48 58 49.5 58 52 V62 C58 63.5 57 65 55.5 65.8 L17 82 C14.5 83 12 81.5 12 79 V70 C12 68 13.2 66.8 15 66 Z" fill="var(--c2)" />
-          <path d="M10 98 L58 77 C60 76 62 77.5 62 80 V90 C62 91.5 61 93 59.5 93.8 L12 114 C9.5 115 7 113.5 7 111 V102 C7 100 8.2 98.8 10 98 Z" fill="var(--c2)" />
-          <!-- Twin B Rounds + Center 4-point AI Spark (Color 1) -->
+          <!-- 3 Aerodynamic Crown-Pitched E-Slips stopping cleanly at x=54 (Color 2) -->
+          <path d="M18 35 L51 20 C53 19 55 20.5 55 23 V32 C55 33.5 54 35 52.5 35.8 L20 50 C17.5 51 15 49.5 15 47 V39 C15 37 16.2 35.8 18 35 Z" fill="var(--c2)" />
+          <path d="M13 67 L49 51 C51 50 53 51.5 53 54 V63 C53 64.5 52 66 50.5 66.8 L15 82 C12.5 83 10 81.5 10 79 V71 C10 69 11.2 67.8 13 67 Z" fill="var(--c2)" />
+          <path d="M8 99 L51 80 C53 79 55 80.5 55 83 V92 C55 93.5 54 95 52.5 95.8 L10 114 C7.5 115 5 113.5 5 111 V103 C5 101 6.2 99.8 8 99 Z" fill="var(--c2)" />
+          <!-- Twin B Rounds starting cleanly at x=73 (Color 1) -->
           <path d="
-            M70 17 L108 32 C116 35 120 42 120 50 C120 58 115 64 106 66 C116 70 122 78 122 88 C122 100 112 108 96 108 H72 C69.8 108 68 106.2 68 104 V94 C68 91.8 69.8 90 72 90 H94 C101 90 105 87 105 83 C105 78 101 74 94 72 L70 63 V49 L94 57 C100 59 103 56 103 51 C103 46 100 43 94 41 L70 32 C68.8 31.5 68 30.2 68 28.8 V19.5 C68 17.5 69 16.6 70 17 Z
+            M75 20 L110 34 C117 37 121 43 121 51 C121 59 116 64 107 67 C117 71 122 78 122 88 C122 100 112 108 96 108 H76 C73.8 108 72 106.2 72 104 V94 C72 91.8 73.8 90 76 90 H94 C101 90 105 87 105 83 C105 78 101 74 94 72 L73 64 V50 L94 58 C100 60 103 57 103 52 C103 47 100 44 94 42 L74 34 C72.8 33.5 72 32.2 72 30.8 V22.5 C72 20.5 73.2 19.3 75 20 Z
           " fill="var(--c1)" />
-          <!-- 4-Point AI Spark Star at Center Apex (Color 2) -->
-          <path d="M64 38 L67 47 L76 50 L67 53 L64 62 L61 53 L52 50 L61 47 Z" fill="var(--c2)" />
+          <!-- Cleanly Framed 4-Point AI Spark Floating at Center Apex (x=64, y=22) -->
+          <path d="M64 10 L67 19 L76 22 L67 25 L64 34 L61 25 L52 22 L61 19 Z" fill="var(--c2)" />
         `
       },
 
@@ -662,14 +660,14 @@
         "70",
         "improvised",
         "From #41 · Optical Balance",
-        "Optical-Balanced 'STEBUP' (Tight Rhythm + 3px Radii)",
-        "Refines #41: thickens E's horizontal slips to 15px for even visual weight next to T, tightens E–B gap for instant legibility, and adds machined 3px radii.",
+        "Optical-Balanced 'STEBUP' (Even Rhythm + 14px Weight)",
+        "Refines #41: aligns E's left clearance to T (10px breathing room), matches B's top/mid/bottom bars to E's 14px optical weight, and balances kerning.",
         `
-          <rect x="139" y="28" width="38" height="15" rx="3" fill="var(--c2)" />
-          <rect x="133" y="52.5" width="44" height="15" rx="3" fill="var(--c2)" />
-          <rect x="127" y="77" width="50" height="15" rx="3" fill="var(--c2)" />
+          <rect x="138" y="28" width="38" height="14" rx="2" fill="var(--c2)" />
+          <rect x="134" y="53" width="42" height="14" rx="2" fill="var(--c2)" />
+          <rect x="130" y="78" width="46" height="14" rx="2" fill="var(--c2)" />
           <path d="
-            M185 28 H211 C225 28 233 34 233 44 C233 51 229 57 221 60 C230 62 235 68 235 76 C235 86 226 92 211 92 H185 C183.3 92 182 90.7 182 89 V81 C182 79.3 183.3 78 185 78 H209 C216 78 220 75 220 71 C220 67 216 65 209 65 H193 C191.3 65 190 63.7 190 62 V58 C190 56.3 191.3 55 193 55 H208 C215 55 218 52 218 48 C218 44 215 42 208 42 H185 C183.3 42 182 40.7 182 39 V31 C182 29.3 183.3 28 185 28 Z
+            M186 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 212 92 H186 C184.9 92 184 91.1 184 90 V80 C184 78.9 184.9 78 186 78 H210 C217 78 221 75 221 71 C221 67 217 65 210 65 H192 C190.9 65 190 64.1 190 63 V57 C190 55.9 190.9 55 192 55 H209 C216 55 219 52 219 48 C219 44 216 42 209 42 H186 C184.9 42 184 41.1 184 40 V30 C184 28.9 184.9 28 186 28 Z
           " fill="var(--c1)" />
         `
       ),
@@ -708,13 +706,13 @@
         "improvised",
         "From #47 · Ink-Trap Slit",
         "Ink-Trapped Seamless 'STEBUP' Ligature",
-        "Refines #47: uses a crisp 5px optical channel between E-slips and stemless B-rounds, adding subtle ink-trap notches at B's center waist for sharp small-size rendering.",
+        "Refines #47: uses a clean 6px parallel ligature channel between uniform 14px E-slips and stemless B-rounds, with smooth corner radii for sharp small-size rendering.",
         `
-          <rect x="138" y="28" width="42" height="14.5" rx="2.5" fill="var(--c2)" />
-          <rect x="133" y="52.8" width="47" height="14.5" rx="2.5" fill="var(--c2)" />
-          <rect x="128" y="77.5" width="52" height="14.5" rx="2.5" fill="var(--c2)" />
+          <rect x="140" y="28" width="40" height="14" rx="2.5" fill="var(--c2)" />
+          <rect x="134" y="53" width="46" height="14" rx="2.5" fill="var(--c2)" />
+          <rect x="128" y="78" width="52" height="14" rx="2.5" fill="var(--c2)" />
           <path d="
-            M185 28 H213 C226 28 234 34 234 44 C234 51 230 56 222 59.5 C231 62 236 68 236 76 C236 86 227 92 213 92 H185 V78 H211 C218 78 221 75 221 71.5 C221 68 218 67 211 67 H185 L189 60 L185 53 H210 C216 53 219 51 219 47.5 C219 44 216 42 210 42 H185 V28 Z
+            M186 28 H213 C226 28 234 34.5 234 44 C234 51 229.5 56.5 222 59.5 C230.5 62.5 236 68.5 236 76.5 C236 86 227 92 213 92 H186 V78 H211 C217.5 78 221 75.5 221 72 C221 68.5 217.5 66.5 211 66.5 H186 V53.5 H210 C216 53.5 219 51 219 47.5 C219 44 216 42 210 42 H186 V28 Z
           " fill="var(--c1)" />
         `
       ),
@@ -724,13 +722,13 @@
         "improvised",
         "From #48 · Tapered Speed",
         "Tapered Speed-Slip 'STEBUP' (Accented B-Rounds)",
-        "Refines #48: transforms E's 3 bars into sleek tapered speed-slips (Color 1) launching directly into rounded, accented stemless B-rounds (Color 2).",
+        "Refines #48: transforms E's 3 bars into bold aerodynamic tapered speed-slips (Color 1) clear of T, launching into crisp stemless B-rounds (Color 2).",
         `
-          <path d="M140 29 L176 28 C177.7 28 179 29.3 179 31 V40 C179 41.7 177.7 43 176 43 L140 41 C138.8 40.9 138 39.9 138 38.7 V31.3 C138 30.1 138.8 29.1 140 29 Z" fill="var(--c1)" />
-          <path d="M134 53.5 L176 52.5 C177.7 52.5 179 53.8 179 55.5 V64.5 C179 66.2 177.7 67.5 176 67.5 L134 65.5 C132.8 65.4 132 64.4 132 63.2 V55.8 C132 54.6 132.8 53.6 134 53.5 Z" fill="var(--c1)" />
-          <path d="M128 78 L176 77 C177.7 77 179 78.3 179 80 V89 C179 90.7 177.7 92 176 92 L128 90 C126.8 89.9 126 88.9 126 87.7 V80.3 C126 79.1 126.8 78.1 128 78 Z" fill="var(--c1)" />
+          <path d="M140 31 L178 28 V42 L140 39 Z" fill="var(--c1)" />
+          <path d="M135 56 L178 53 V67 L135 64 Z" fill="var(--c1)" />
+          <path d="M130 81 L178 78 V92 L130 89 Z" fill="var(--c1)" />
           <path d="
-            M187 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 212 92 H187 C185.3 92 184 90.7 184 89 V81 C184 79.3 185.3 78 187 78 H210 C217 78 221 75 221 71 C221 67 217 65 210 65 H194 C192.3 65 191 63.7 191 62 V58 C191 56.3 192.3 55 194 55 H209 C216 55 219 52 219 48 C219 44 216 42 209 42 H187 C185.3 42 184 40.7 184 39 V31 C184 29.3 185.3 28 187 28 Z
+            M185 28 H212 C226 28 234 34 234 44 C234 51 230 56.5 222 59.5 C231 62.5 236 68.5 236 76 C236 86 227 92 212 92 H185 V78 H210 C217 78 221 75 221 71.5 C221 68 217 66.5 210 66.5 H185 V53.5 H209 C216 53.5 219 51 219 47.5 C219 44 216 42 209 42 H185 V28 Z
           " fill="var(--c2)" />
         `
       ),
@@ -740,16 +738,16 @@
         "improvised",
         "From #32 · Chamfered Spine",
         "Precision-Weighted 'STEBUP' (Chamfered B-Spine)",
-        "Refines #32: adds a 45° upward step chamfer at the top of B's accent spine and balances E's floating slips to match T's optical density.",
+        "Refines #32: pairs crisp geometric E-slips with a 45° chamfered B-spine and a clean 4px optical gap separating the spine from B's loops.",
         `
-          <rect x="128" y="28" width="46" height="15" rx="2.5" fill="var(--c2)" />
-          <rect x="128" y="52.5" width="38" height="15" rx="2.5" fill="var(--c2)" />
-          <rect x="128" y="77" width="46" height="15" rx="2.5" fill="var(--c2)" />
+          <rect x="130" y="28" width="46" height="14" rx="1" fill="var(--c2)" />
+          <rect x="130" y="53" width="38" height="14" rx="1" fill="var(--c2)" />
+          <rect x="130" y="78" width="46" height="14" rx="1" fill="var(--c2)" />
           <!-- 45-deg Chamfered B Spine (Color 2) -->
           <polygon points="182,36 190,28 196,28 196,92 182,92" fill="var(--c2)" />
-          <!-- B Loops (Color 1) -->
+          <!-- B Loops with 4px optical gap (Color 1) -->
           <path d="
-            M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V78 H212 C218 78 221 75.5 221 72 C221 68.5 218 66 212 66 H196 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 V28 Z
+            M200 28 H215 C227 28 234 34 234 44 C234 51 230 56 223 59 C231 61 236 67 236 75 C236 86 228 92 215 92 H200 V78 H213 C219 78 222 75.5 222 72 C222 68.5 219 66.5 213 66.5 H200 V53.5 H212 C217 53.5 220 51 220 47.5 C220 44 217 42 212 42 H200 V28 Z
           " fill="var(--c1)" />
         `
       ),
@@ -796,15 +794,15 @@
         cat: "improvised",
         catLabel: "From #01 · Machined Radii",
         title: "Precision Stepped-Spine 'B' (Ink-Trapped)",
-        desc: "Refines #01: replaces sharp stair corners with 4px machined radii and crisp optical ink-traps at B's loop intersections for flawless 16px scaling.",
+        desc: "Refines #01: separates the 3 machined ascending steps from B's loops with a crisp 4px negative-space channel, eliminating overlap at every scale.",
         svg: `
           <!-- Machined 3-Step Spine (Color 2) -->
           <path d="
-            M20 110 H32 C34.2 110 36 108.2 36 106 V84 H48 C50.2 84 52 82.2 52 80 V54 H64 C66.2 54 68 52.2 68 50 V22 C68 19.8 66.2 18 64 18 H52 C49.8 18 48 19.8 48 22 V46 H36 C33.8 46 32 47.8 32 50 V76 H20 C17.8 76 16 77.8 16 80 V106 C16 108.2 17.8 110 20 110 Z
+            M20 110 H30 C32.2 110 34 108.2 34 106 V84 H46 C48.2 84 50 82.2 50 80 V54 H62 C64.2 54 66 52.2 66 50 V22 C66 19.8 64.2 18 62 18 H52 C49.8 18 48 19.8 48 22 V48 H36 C33.8 48 32 49.8 32 52 V78 H20 C17.8 78 16 79.8 16 82 V106 C16 108.2 17.8 110 20 110 Z
           " fill="var(--c2)" />
-          <!-- B Bowls with subtle ink-trap cuts (Color 1) -->
+          <!-- B Bowls with 4px negative-space channel (Color 1) -->
           <path d="
-            M68 18 H82 C98 18 109 28 109 42 C109 51 103 58 94 61.5 C105 65 112 74 112 86 C112 101 99 110 82 110 H36 V92 H79 C88 92 94 88 94 81 C94 74 88 70 79 70 H52 V54 H78 C86 54 91 50 91 43 C91 36 86 33 78 33 H68 V18 Z
+            M70 18 H84 C100 18 110 27 110 41 C110 50 104 57 95 60.5 C106 64 113 73 113 85 C113 100 100 110 83 110 H38 V92 H81 C90 92 95 88 95 81 C95 74 90 70 81 70 H54 V54 H80 C88 54 92 50 92 43 C92 36 88 34 80 34 H70 V18 Z
           " fill="var(--c1)" />
         `
       },
@@ -830,14 +828,14 @@
         cat: "improvised",
         catLabel: "From #11 · Squircle Icon",
         title: "Squircle-Framed Staggered Slabs 'B'",
-        desc: "Refines #11: locks the 3 staggered horizontal step slabs and curved B bridges inside an engineered SaaS squircle container.",
+        desc: "Refines #11: aligns 3 staggered horizontal slabs 1-to-1 with B's loops across a clean 5px separation gap inside an engineered SaaS squircle container.",
         svg: `
           <rect x="8" y="8" width="112" height="112" rx="28" fill="none" stroke="var(--c1)" stroke-width="6" />
-          <rect x="22" y="80" width="38" height="16" rx="4" fill="var(--c2)" />
-          <rect x="31" y="56" width="38" height="16" rx="4" fill="var(--c2)" />
-          <rect x="40" y="32" width="38" height="16" rx="4" fill="var(--c2)" />
+          <rect x="22" y="84" width="30" height="16" rx="4" fill="var(--c2)" />
+          <rect x="30" y="56" width="30" height="16" rx="4" fill="var(--c2)" />
+          <rect x="38" y="28" width="30" height="16" rx="4" fill="var(--c2)" />
           <path d="
-            M72 32 H83 C96 32 104 39 104 50 C104 58 99 64 91 66 C100 68 106 75 106 84 C106 95 97 96 83 96 H66 V80 H81 C87 80 90 77 90 73 C90 69 87 66 81 66 H72 V56 H80 C86 56 89 53 89 48 C89 44 86 41 80 41 H72 V32 Z
+            M73 28 H84 C96 28 103 34.5 103 44.5 C103 52 98.5 57.5 91 60.5 C99.5 63.5 105 70 105 79.5 C105 91 96.5 100 83 100 H57 V84 H81 C87 84 90 81 90 77 C90 73 87 72 81 72 H65 V56 H80 C85.5 56 88.5 53 88.5 49 C88.5 45 85.5 44 80 44 H73 V28 Z
           " fill="var(--c1)" />
         `
       },
@@ -846,16 +844,16 @@
         cat: "improvised",
         catLabel: "From #14 · Neural Matrix",
         title: "AI Neural Node-Step 'B'",
-        desc: "Refines #14: connects the 3 ascending tech voxel nodes with diagonal neural bridges, turning static pixels into an intelligent upward pipeline.",
+        desc: "Refines #14: links 3 stepped voxel nodes with clean orthogonal circuit traces and separates B's right loops by a crisp 6px gap with zero overlap.",
         svg: `
           <!-- Connected Neural Step Nodes (Color 2) -->
-          <rect x="12" y="84" width="22" height="22" rx="6" fill="var(--c2)" />
-          <rect x="26" y="53" width="22" height="22" rx="6" fill="var(--c2)" />
-          <rect x="40" y="22" width="22" height="22" rx="6" fill="var(--c2)" />
-          <line x1="23" y1="95" x2="51" y2="33" stroke="var(--c2)" stroke-width="7" stroke-linecap="round" />
+          <rect x="14" y="88" width="18" height="18" rx="5" fill="var(--c2)" />
+          <rect x="28" y="55" width="18" height="18" rx="5" fill="var(--c2)" />
+          <rect x="42" y="22" width="18" height="18" rx="5" fill="var(--c2)" />
+          <path d="M23 88 V64 H28 M37 55 V31 H42" fill="none" stroke="var(--c2)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
           <!-- Aerodynamic B Frame (Color 1) -->
           <path d="
-            M70 22 H84 C100 22 110 31 110 44 C110 53 104 60 95 63 C106 66 112 75 112 86 C112 100 101 108 84 108 H44 C41.8 108 40 106.2 40 104 V94 C40 91.8 41.8 90 44 90 H82 C90 90 94 86 94 80 C94 74 90 70 82 70 H58 C55.8 70 54 68.2 54 66 V60 C54 57.8 55.8 56 58 56 H81 C88 56 92 52 92 45 C92 39 88 36 81 36 H70 C67.8 36 66 34.2 66 32 V26 C66 23.8 67.8 22 70 22 Z
+            M66 22 H84 C99 22 109 30 109 42.5 C109 51 103.5 58 95 61.5 C105.5 65 112 73 112 84.5 C112 97.5 101 106 84 106 H38 V88 H82 C90 88 94 84.5 94 79.5 C94 74.5 90 73 82 73 H52 V55 H81 C88 55 92 51.5 92 46.5 C92 41.5 88 40 81 40 H66 V22 Z
           " fill="var(--c1)" />
         `
       },
