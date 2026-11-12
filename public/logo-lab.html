@@ -473,8 +473,11 @@
 
   <!-- Category Tabs -->
   <nav class="tab-bar">
-    <button class="tab-btn active" onclick="setTab('rounds', this)">
-      ★ New: Stemless "B" Rounds + "E" Slips <span class="tab-count">12</span>
+    <button class="tab-btn active" onclick="setTab('symbols', this)">
+      ★ New: Symbol-Only Creative "EB" Marks <span class="tab-count">12</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('rounds', this)">
+      Stemless "B" Rounds + "E" Slips (Wordmark) <span class="tab-count">12</span>
     </button>
     <button class="tab-btn" onclick="setTab('eb', this)">
       Seamless "STEBUP" (E-Slips + Full B) <span class="tab-count">12</span>
@@ -492,7 +495,7 @@
       Tab 4: Chevrons & S+B <span class="tab-count">5</span>
     </button>
     <button class="tab-btn" onclick="setTab('all', this)">
-      View All <span class="tab-count">52</span>
+      View All <span class="tab-count">64</span>
     </button>
   </nav>
 
@@ -556,8 +559,223 @@
 
     const concepts = [
       // =========================================================================
-      // ★ NEW TAB: STEMLESS "B" ROUNDS + "E" HORIZONTAL SLIPS (41 - 52)
-      // Zero vertical line in E and zero vertical line in B!
+      // ★ NEW TAB: SYMBOL-ONLY CREATIVE "EB" MARKS (53 - 64)
+      // Built specifically as iconic standalone marks fusing 3 E-Slips + Stemless B Rounds
+      // =========================================================================
+      {
+        id: "53",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "The Negative-Space Upward Arrow 'EB' Mark",
+        desc: "3 stepped E-slips on the left and 2 stemless B-rounds on the right carve a bold upward launch arrow (↑) in the center negative space.",
+        svg: `
+          <!-- 3 Stepped E-Slips with 45° upward arrow tips on right (Color 2) -->
+          <polygon points="22,22 60,22 48,36 22,36" fill="var(--c2)" />
+          <polygon points="16,56 58,56 58,70 16,70" fill="var(--c2)" />
+          <polygon points="10,90 58,90 58,104 10,104" fill="var(--c2)" />
+          <!-- 2 Stemless B-Rounds with matching arrow tip on top-left (Color 1) -->
+          <path d="
+            M68 22 H92 C108 22 118 31 118 43 C118 52 112 59 102 62 C113 65 120 73 120 84 C120 97 109 104 92 104 H72 V88 H90 C98 88 103 84 103 78 C103 72 98 69 90 69 H72 V55 H89 C96 55 101 51 101 45 C101 39 96 36 89 36 H80 L68 22 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "54",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "Interwoven Equalizer Pills 'EB'",
+        desc: "3 horizontal rounded step-slips (E) interlock rhythmically into the open mouths of 2 stemless B rings.",
+        svg: `
+          <!-- 3 Rounded Step Pills for E (Color 2) -->
+          <rect x="26" y="20" width="44" height="16" rx="8" fill="var(--c2)" />
+          <rect x="16" y="56" width="42" height="16" rx="8" fill="var(--c2)" />
+          <rect x="8"  y="92" width="62" height="16" rx="8" fill="var(--c2)" />
+          <!-- 2 Stemless B Loops with rounded terminals tucking into the middle gap (Color 1) -->
+          <path d="
+            M80 20 H94 C110 20 120 30 120 42 C120 53 112 61 100 64 C113 67 122 76 122 87 C122 100 111 108 94 108 H80 C75 108 72 104 72 100 C72 96 75 92 80 92 H92 C100 92 105 88 105 82 C105 76 100 72 92 72 H68 C63 72 60 68 60 64 C60 60 63 56 68 56 H91 C98 56 103 52 103 45 C103 39 98 36 91 36 H80 C75 36 72 32 72 28 C72 24 75 20 80 20 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "55",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "Circular App-Icon Badge ('EB' Negative Cut)",
+        desc: "A bold circular coin split into 3 horizontal E-slips on the left and 2 stemless B-crescents on the right.",
+        svg: `
+          <!-- Left Hemisphere: 3 Horizontal Step Slips carved from a circle (Color 2) -->
+          <path d="M22 34 H58 V50 H14 C16 44 18 39 22 34 Z" fill="var(--c2)" />
+          <path d="M12 56 H58 V72 H12 C11.5 67 11.5 61 12 56 Z" fill="var(--c2)" />
+          <path d="M14 78 H58 V94 H22 C18 89 16 84 14 78 Z" fill="var(--c2)" />
+          <!-- Right Hemisphere: Twin Stemless B Rounds forming the right half of the circle (Color 1) -->
+          <path d="
+            M68 16 C96 16 116 32 116 48 C116 56 111 61 103 64 C111 67 116 72 116 80 C116 96 96 112 68 112 V96 C85 96 98 89 98 80 C98 73 88 70 68 70 V58 C88 58 98 55 98 48 C98 39 85 32 68 32 V16 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "56",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "Isometric 3D Step-Blocks 'E' + Winged 'B'",
+        desc: "Three 30° isometric rising step-slabs form the E on the left, projecting into two angular B loops on the right.",
+        svg: `
+          <!-- 3 Isometric Rising Step Slabs for E (Color 2) -->
+          <polygon points="28,36 60,20 60,36 28,52" fill="var(--c2)" />
+          <polygon points="20,66 60,46 60,62 20,82" fill="var(--c2)" />
+          <polygon points="12,96 60,72 60,88 12,112" fill="var(--c2)" />
+          <!-- Angular Stemless B Loops (Color 1) -->
+          <path d="
+            M70 20 L114 34 V54 L96 62 L116 70 V92 L70 108 V92 L98 82 V76 L70 66 V54 L96 44 V38 L70 36 V20 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "57",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "The Infinity-Step Ribbon 'EB'",
+        desc: "A continuous S-like geometric ribbon connects the 3 horizontal slips of E directly into the 2 open rounds of B.",
+        svg: `
+          <!-- 3 Stepped E-Slips with diagonal ribbon bridges (Color 2) -->
+          <path d="
+            M28 20 H62 V36 H28 V20 Z
+            M18 56 H62 V72 H18 V56 Z
+            M8  92 H62 V108 H8 V92 Z
+          " fill="var(--c2)" />
+          <polygon points="46,36 62,36 34,56 18,56" fill="var(--c2)" />
+          <polygon points="36,72 52,72 24,92 8,92" fill="var(--c2)" />
+          <!-- Stemless B Rounds on the right (Color 1) -->
+          <path d="
+            M72 20 H94 C110 20 120 29 120 42 C120 52 114 59 104 63 C115 66 122 75 122 86 C122 100 110 108 94 108 H72 V92 H92 C100 92 105 88 105 82 C105 76 100 72 92 72 H72 V56 H91 C99 56 103 52 103 45 C103 39 99 36 91 36 H72 V20 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "58",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "Double-D Monolith 'EB' (Bauhaus Geometric)",
+        desc: "3 razor-sharp stepped horizontal rectangles for E balanced against 2 solid semicircular D-domes for B.",
+        svg: `
+          <!-- 3 Stepped E Rectangles (Color 2) -->
+          <rect x="30" y="20" width="32" height="18" rx="2" fill="var(--c2)" />
+          <rect x="20" y="55" width="42" height="18" rx="2" fill="var(--c2)" />
+          <rect x="10" y="90" width="52" height="18" rx="2" fill="var(--c2)" />
+          <!-- 2 Solid Semicircular B Domes with inner step cutouts (Color 1) -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M72 20 H92 C108 20 120 29 120 41 C120 53 108 62 92 62 H72 V20 Z
+            M72 34 V48 H90 C97 48 102 45 102 41 C102 37 97 34 90 34 H72 Z
+          " fill="var(--c1)" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M72 66 H94 C110 66 122 75 122 87 C122 99 110 108 94 108 H72 V66 Z
+            M72 80 V94 H92 C99 94 104 91 104 87 C104 83 99 80 92 80 H72 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "59",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "The AI Spark Core 'EB' Symbol",
+        desc: "The gap between E's 3 horizontal slips and B's 2 stemless rounds is sculpted into a 4-point AI star (✦) at the center!",
+        svg: `
+          <!-- 3 E-Slips sculpted around left side of center star (Color 2) -->
+          <rect x="24" y="20" width="36" height="16" rx="2" fill="var(--c2)" />
+          <path d="M16 56 H46 L58 64 L46 72 H16 V56 Z" fill="var(--c2)" />
+          <rect x="10" y="92" width="50" height="16" rx="2" fill="var(--c2)" />
+          <!-- 2 Stemless B Rounds sculpted around right side of center star (Color 1) -->
+          <path d="
+            M68 20 H94 C110 20 120 29 120 42 C120 52 113 59 102 63 C114 66 122 75 122 87 C122 100 110 108 94 108 H68 V92 H92 C100 92 105 88 105 82 C105 76 100 72 92 72 H82 L70 64 L82 56 H91 C99 56 103 52 103 45 C103 39 99 36 91 36 H68 V20 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "60",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "Diagonal Stair-Channel 'EB' Monogram",
+        desc: "The entire central channel between the 3 E-slips and 2 B-rounds climbs at a bold 45° angle from bottom-left to top-right.",
+        svg: `
+          <!-- 3 E-Slips with 45° angled right ends climbing up-right (Color 2) -->
+          <polygon points="24,20 74,20 60,36 24,36" fill="var(--c2)" />
+          <polygon points="16,56 60,56 46,72 16,72" fill="var(--c2)" />
+          <polygon points="8,92 46,92 32,108 8,108" fill="var(--c2)" />
+          <!-- 2 Stemless B Rounds with matching 45° left terminals (Color 1) -->
+          <path d="
+            M84 20 H98 C112 20 122 29 122 42 C122 52 115 59 104 63 C115 66 122 75 122 87 C122 100 111 108 94 108 H44 L58 92 H92 C100 92 105 88 105 82 C105 76 100 72 92 72 H58 L72 56 H94 C101 56 105 52 105 45 C105 39 101 36 94 36 H70 L84 20 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "61",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "Concentric Sonic Waves 'EB'",
+        desc: "3 stepped horizontal E-bars on the left emit 2 bold concentric C-wave arcs that form the stemless B on the right.",
+        svg: `
+          <!-- 3 Stepped E Bars (Color 2) -->
+          <rect x="28" y="22" width="32" height="16" rx="3" fill="var(--c2)" />
+          <rect x="18" y="56" width="42" height="16" rx="3" fill="var(--c2)" />
+          <rect x="8"  y="90" width="52" height="16" rx="3" fill="var(--c2)" />
+          <!-- 2 Sweeping Crescent B Arcs (Color 1) -->
+          <path d="M70 20 C102 20 120 30 120 43 C120 56 102 64 70 64 V50 C90 50 102 48 102 43 C102 38 90 36 70 36 V20 Z" fill="var(--c1)" />
+          <path d="M70 64 C104 64 122 74 122 87 C122 100 104 108 70 108 V92 C92 92 104 90 104 87 C104 84 92 78 70 78 V64 Z" fill="var(--c1)" />
+        `
+      },
+      {
+        id: "62",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "The Crown-Apex 'EB' Crest",
+        desc: "The top slip of E and top round of B pitch upward at the center like a chevron crown, giving the EB icon a regal upward point.",
+        svg: `
+          <!-- 3 E-Slips pitching upward toward center (Color 2) -->
+          <polygon points="22,34 60,16 60,32 22,50" fill="var(--c2)" />
+          <polygon points="16,66 60,48 60,64 16,82" fill="var(--c2)" />
+          <polygon points="10,98 60,80 60,96 10,114" fill="var(--c2)" />
+          <!-- 2 Stemless B Rounds pitching down-right from the crown apex (Color 1) -->
+          <path d="
+            M68 16 L108 32 C116 35 120 42 120 50 C120 58 115 64 106 66 C116 70 122 78 122 88 C122 100 112 108 96 108 H68 V92 H94 C101 92 105 89 105 84 C105 79 101 75 94 73 L68 64 V48 L94 57 C100 59 103 56 103 51 C103 46 100 43 94 41 L68 32 V16 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "63",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "Overlapping Loop-Through 'EB'",
+        desc: "The middle horizontal slip of E extends right into the center of B, while B's two stemless rounds wrap above and below it.",
+        svg: `
+          <!-- Top & Bottom Stepped E Slips + Extended Center Slip (Color 2) -->
+          <rect x="28" y="20" width="34" height="16" rx="2" fill="var(--c2)" />
+          <rect x="18" y="56" width="84" height="16" rx="2" fill="var(--c2)" />
+          <rect x="8"  y="92" width="54" height="16" rx="2" fill="var(--c2)" />
+          <!-- Top & Bottom Detached B Loops arching over and under the center E slip (Color 1) -->
+          <path d="M70 20 H96 C111 20 120 28 120 40 C120 47 116 53 108 56 H88 C96 54 102 49 102 42 C102 38 98 36 92 36 H70 V20 Z" fill="var(--c1)" />
+          <path d="M70 92 H94 C100 92 104 90 104 86 C104 79 98 74 90 72 H110 C118 75 122 81 122 88 C122 100 112 108 96 108 H70 V92 Z" fill="var(--c1)" />
+        `
+      },
+      {
+        id: "64",
+        cat: "symbols",
+        catLabel: "EB Symbol",
+        title: "The Split-Pillar 'P → B' + 'E' Slips",
+        desc: "Top B-round is Color 1, bottom B-round steps out in Color 2, and the 3 horizontal E-slips balance the left side.",
+        svg: `
+          <!-- 3 Stepped E Slips on Left (Color 2) -->
+          <rect x="28" y="20" width="32" height="16" rx="2" fill="var(--c2)" />
+          <rect x="18" y="56" width="42" height="16" rx="2" fill="var(--c2)" />
+          <rect x="8"  y="92" width="52" height="16" rx="2" fill="var(--c2)" />
+          <!-- Top Stemless B Round (Color 1) -->
+          <path d="M70 20 H94 C110 20 120 29 120 41 C120 53 110 62 94 62 H70 V46 H92 C99 46 103 44 103 41 C103 38 99 36 92 36 H70 V20 Z" fill="var(--c1)" />
+          <!-- Bottom Stepped-Out Stemless B Round (Color 2) -->
+          <path d="M76 66 H98 C114 66 124 75 124 87 C124 99 114 108 98 108 H76 V92 H96 C103 92 107 90 107 87 C107 84 103 82 96 82 H76 V66 Z" fill="var(--c2)" />
+        `
+      },
+
+      // =========================================================================
+      // STEMLESS "B" ROUNDS + "E" HORIZONTAL SLIPS WORDMARKS (41 - 52)
       // =========================================================================
       makeWordConcept(
         "41",
