@@ -426,11 +426,6 @@
 <body class="auto-mixed">
 
   <header>
-    <div class="brand-title">
-      <h1>Stebup — Logo Explorer</h1>
-      <span>80 Concepts across 4 Tabs</span>
-    </div>
-
     <div class="controls">
       <div class="control-group">
         <span class="control-label">Colors</span>
@@ -459,24 +454,13 @@
           <input type="color" id="picker2" value="#7C3AED" oninput="customColor()" />
         </div>
       </div>
-
-      <div class="control-group">
-        <span class="control-label">View</span>
-        <button class="btn" id="viewLockupBtn" onclick="setView('lockup')">Full "STEBUP" Word</button>
-        <button class="btn active" id="viewMarkBtn" onclick="setView('mark')">Symbol Only</button>
-        <button class="btn" id="guideBtn" onclick="toggleGuides()" title="Show Cap-Height & Baseline Alignment Lines">Alignment Lines</button>
-      </div>
-
-      <div class="control-group">
-        <button class="btn" id="themeBtn" onclick="toggleTheme()">Dark BG</button>
-      </div>
     </div>
   </header>
 
   <!-- Category Tabs -->
   <nav class="tab-bar">
     <button class="tab-btn active" onclick="setTab('improvised', this)">
-      ★ Improvised <span class="tab-count">16</span>
+      Improvised <span class="tab-count">16</span>
     </button>
     <button class="tab-btn" onclick="setTab('symbols', this)">
       EB Symbols <span class="tab-count">12</span>
@@ -488,12 +472,6 @@
       B + Steps &amp; Tech <span class="tab-count">28</span>
     </button>
   </nav>
-
-  <div class="tab-desc-banner">
-    <div class="tab-desc-box" id="tabDescBox">
-      <span><strong>★ Improvised (16 Refined Concepts):</strong> Upgraded versions of your shortlisted favorites (<code>53, 54, 58, 60, 62, 41, 45, 47, 48, 32, 33, 40, 01, 03, 11, 14</code>) engineered with machined corner radii, optical ink traps, 10° kinetic tilt, tapered fluid slips, AI sparks (✦), and squircle app-icon framing.</span>
-    </div>
-  </div>
 
   <main class="container">
     <div class="grid" id="logoGrid"></div>
@@ -1959,23 +1937,21 @@
 
     let activeTab = 'improvised';
     const grid = document.getElementById('logoGrid');
-    const tabDescBox = document.getElementById('tabDescBox');
 
     function setTab(tab, btn) {
       activeTab = tab;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      tabDescBox.innerHTML = `<span>${tabDescriptions[tab]}</span>`;
 
       if (tab === 'improvised') {
         document.body.classList.remove('show-lockup');
         document.body.classList.add('auto-mixed');
-        document.getElementById('viewMarkBtn').classList.add('active');
-        document.getElementById('viewLockupBtn').classList.remove('active');
       } else if (tab === 'wordmarks') {
-        setView('lockup');
+        document.body.classList.remove('auto-mixed');
+        document.body.classList.add('show-lockup');
       } else {
-        setView('mark');
+        document.body.classList.remove('auto-mixed');
+        document.body.classList.remove('show-lockup');
       }
       render();
     }
@@ -2083,8 +2059,6 @@
     function setView(mode) {
       document.body.classList.remove('auto-mixed');
       document.body.classList.toggle('show-lockup', mode === 'lockup');
-      document.getElementById('viewMarkBtn').classList.toggle('active', mode === 'mark');
-      document.getElementById('viewLockupBtn').classList.toggle('active', mode === 'lockup');
     }
 
     function toggleGuides() {
