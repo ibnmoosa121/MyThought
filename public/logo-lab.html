@@ -282,11 +282,13 @@
       gap: 14px;
     }
 
-    body.show-lockup .stage > svg.mark-svg {
+    body.show-lockup .stage > svg.mark-svg,
+    body.auto-mixed .stage.is-word > svg.mark-svg {
       display: none;
     }
 
-    body.show-lockup .stage > svg.word-svg {
+    body.show-lockup .stage > svg.word-svg,
+    body.auto-mixed .stage.is-word > svg.word-svg {
       display: block;
     }
 
@@ -421,12 +423,12 @@
     }
   </style>
 </head>
-<body>
+<body class="auto-mixed">
 
   <header>
     <div class="brand-title">
       <h1>Stebup — Logo Explorer</h1>
-      <span>64 Concepts across 3 Focused Groups</span>
+      <span>80 Concepts across 4 Tabs</span>
     </div>
 
     <div class="controls">
@@ -471,9 +473,12 @@
     </div>
   </header>
 
-  <!-- 3 Main Category Tabs -->
+  <!-- Category Tabs -->
   <nav class="tab-bar">
-    <button class="tab-btn active" onclick="setTab('symbols', this)">
+    <button class="tab-btn active" onclick="setTab('improvised', this)">
+      ★ Improvised <span class="tab-count">16</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('symbols', this)">
       EB Symbols <span class="tab-count">12</span>
     </button>
     <button class="tab-btn" onclick="setTab('wordmarks', this)">
@@ -486,7 +491,7 @@
 
   <div class="tab-desc-banner">
     <div class="tab-desc-box" id="tabDescBox">
-      <span><strong>EB Symbols (12 Concepts):</strong> Creative standalone icon marks fusing 3 horizontal E-slips (<code>≡</code>) with stemless B-rounds (<code>⊃⊃</code>).</span>
+      <span><strong>★ Improvised (16 Refined Concepts):</strong> Upgraded versions of your shortlisted favorites (<code>53, 54, 58, 60, 62, 41, 45, 47, 48, 32, 33, 40, 01, 03, 11, 14</code>) engineered with machined corner radii, optical ink traps, 10° kinetic tilt, tapered fluid slips, AI sparks (✦), and squircle app-icon framing.</span>
     </div>
   </div>
 
@@ -544,8 +549,319 @@
 
     const concepts = [
       // =========================================================================
-      // ★ NEW TAB: SYMBOL-ONLY CREATIVE "EB" MARKS (53 - 64)
-      // Built specifically as iconic standalone marks fusing 3 E-Slips + Stemless B Rounds
+      // ★ IMPROVISED TAB: REFINED & UPGRADED WITH MODERN TECH BRAND STANDARDS (65 - 80)
+      // Based on: 53, 54, 58, 60, 62, 41, 45, 47, 48, 32, 33, 40, 01, 03, 11, 14
+      // =========================================================================
+      {
+        id: "65",
+        cat: "improvised",
+        catLabel: "From #53 · Kinetic + Squircle",
+        title: "Kinetic 10° Launch-Arrow 'EB' in Squircle",
+        desc: "Refines #53 with a 10° forward tech slant, machined rounded terminals, and a squircle app-icon frame so the center arrow (↑) stays razor-sharp at 16px.",
+        svg: `
+          <!-- Outer machined squircle housing (Color 1) -->
+          <rect x="8" y="8" width="112" height="112" rx="28" fill="none" stroke="var(--c1)" stroke-width="6" />
+          <g transform="translate(64,64) skewX(-9) translate(-64,-64)">
+            <!-- 3 Tapered Stepped E-Slips sculpting left of center launch arrow (Color 2) -->
+            <path d="M27 28 H62 L52 41 H27 C24.8 41 23 39.2 23 37 V32 C23 29.8 24.8 28 27 28 Z" fill="var(--c2)" />
+            <path d="M22 57 H57 C59.2 57 61 58.8 61 61 V66 C61 68.2 59.2 70 57 70 H22 C19.8 70 18 68.2 18 66 V61 C18 58.8 19.8 57 22 57 Z" fill="var(--c2)" />
+            <path d="M17 86 H57 C59.2 86 61 87.8 61 90 V95 C61 97.2 59.2 99 57 99 H17 C14.8 99 13 97.2 13 95 V90 C13 87.8 14.8 86 17 86 Z" fill="var(--c2)" />
+            <!-- Stemless B Rounds with matching arrow shoulder (Color 1) -->
+            <path d="
+              M69 28 H91 C104 28 112 35 112 45 C112 52 107 58 99 61 C108 64 114 70 114 80 C114 91 105 99 91 99 H72 C69.8 99 68 97.2 68 95 V89 C68 86.8 69.8 85 72 85 H89 C95 85 99 82 99 77 C99 72 95 69 89 69 H72 C69.8 69 68 67.2 68 65 V60 C68 57.8 69.8 56 72 56 H88 C94 56 98 53 98 48 C98 43 94 41 88 41 H79 L69 28 Z
+            " fill="var(--c1)" />
+          </g>
+        `
+      },
+      {
+        id: "66",
+        cat: "improvised",
+        catLabel: "From #54 · Tapered Fluid",
+        title: "Aerodynamic Tapered Pills 'EB'",
+        desc: "Upgrades #54: E-slips taper dynamically from thin-left to thick-right like speed lines launching into smooth, optically weighted B loops.",
+        svg: `
+          <!-- 3 Tapered Speed-Pill E-Slips (thin left -> thick right, Color 2) -->
+          <path d="M32 23 L66 19 C70 19 73 22 73 26 V31 C73 35 70 38 66 38 L32 34 C29 33.5 27 31.5 27 28.5 C27 25.5 29 23.5 32 23 Z" fill="var(--c2)" />
+          <path d="M21 59 L54 55 C58 55 61 58 61 62 V66 C61 70 58 73 54 73 L21 69 C18 68.5 16 66.5 16 64 C16 61.5 18 59.5 21 59 Z" fill="var(--c2)" />
+          <path d="M12 94 L66 89 C70 89 73 92 73 96 V101 C73 105 70 108 66 108 L12 103 C9 102.5 7 100.5 7 98.5 C7 96.5 9 94.5 12 94 Z" fill="var(--c2)" />
+          <!-- Fluid Stemless B Loops with optical waist ink-trap (Color 1) -->
+          <path d="
+            M82 19 H95 C110 19 119 28 119 41 C119 51 112 59 101 62 C113 65 121 74 121 86 C121 99 110 108 95 108 H82 C77 108 74 104 74 100 C74 96 77 92 82 92 H93 C101 92 105 88 105 82 C105 76 101 72 93 72 H71 C66 72 63 68 63 64 C63 60 66 56 71 56 H92 C99 56 103 52 103 45 C103 39 99 36 92 36 H82 C77 36 74 32 74 28 C74 23 77 19 82 19 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "67",
+        cat: "improvised",
+        catLabel: "From #58 · Squircle Badge",
+        title: "Machined Bauhaus Squircle 'EB' Icon",
+        desc: "Upgrades #58 for 16px app-icon perfection: 3 bold stepped slips + twin D-domes carved cleanly inside a solid rounded squircle.",
+        svg: `
+          <!-- Solid Squircle Container (Color 1) -->
+          <rect x="10" y="10" width="108" height="108" rx="26" fill="var(--c1)" />
+          <!-- 3 Stepped E-Slips knocked out in Color 2 -->
+          <rect x="36" y="28" width="24" height="14" rx="3" fill="var(--c2)" />
+          <rect x="28" y="57" width="32" height="14" rx="3" fill="var(--c2)" />
+          <rect x="20" y="86" width="40" height="14" rx="3" fill="var(--c2)" />
+          <!-- Twin Stemless D-Domes knocked out in pure white/bg via mask-like white contrast -->
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M68 28 H84 C98 28 107 35 107 44.5 C107 54 98 61 84 61 H68 V28 Z
+            M76 38 V51 H83 C89 51 93 48.5 93 44.5 C93 40.5 89 38 83 38 H76 Z
+          " fill="var(--card-bg)" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M68 67 H85 C99 67 108 74 108 83.5 C108 93 99 100 85 100 H68 V67 Z
+            M76 77 V90 H84 C90 90 94 87.5 94 83.5 C94 79.5 90 77 84 77 H76 Z
+          " fill="var(--card-bg)" />
+        `
+      },
+      {
+        id: "68",
+        cat: "improvised",
+        catLabel: "From #60 · Single Stroke",
+        title: "Continuous Single-Stroke Diagonal 'EB'",
+        desc: "Upgrades #60 from 5 separate pieces into a bold 2-part continuous flow—a 45° diagonal staircase ribbon feeding into seamless B rounds.",
+        svg: `
+          <!-- Continuous Zig-Zag 45-deg Step Ribbon for E (Color 2) -->
+          <path d="
+            M26 22 H72 C75 22 77 25 75 28 L64 38 H32 L26 22 Z
+          " fill="var(--c2)" opacity="0" />
+          <path d="
+            M24 20 H74 L60 36 H34 L24 56 H60 L46 72 H22 L12 92 H48 L34 108 H8 C5 108 3 105 5 102 L22 68 L14 68 C11 68 9 65 11 62 L24 34 L20 34 C17 34 15 31 17 28 L24 20 Z
+          " fill="var(--c2)" />
+          <!-- Matching 45-deg Terminal Stemless B Rounds (Color 1) -->
+          <path d="
+            M84 20 H98 C112 20 122 29 122 42 C122 52 115 59 104 63 C115 66 122 75 122 87 C122 100 111 108 94 108 H46 L60 92 H92 C100 92 105 88 105 82 C105 76 100 72 92 72 H60 L74 56 H94 C101 56 105 52 105 45 C105 39 101 36 94 36 H70 L84 20 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "69",
+        cat: "improvised",
+        catLabel: "From #62 · AI Spark Crest",
+        title: "AI-Spark Crown 'EB' Crest",
+        desc: "Refines #62 with smooth machined radii and carves a subtle 4-point AI intelligence spark (✦) inside the central crown apex.",
+        svg: `
+          <!-- 3 Aerodynamic Crown-Pitched E-Slips (Color 2) -->
+          <path d="M20 34 L58 17 C60 16 62 17.5 62 20 V30 C62 31.5 61 33 59.5 33.8 L22 50 C19.5 51 17 49.5 17 47 V38 C17 36 18.2 34.8 20 34 Z" fill="var(--c2)" />
+          <path d="M15 66 L54 49 C56 48 58 49.5 58 52 V62 C58 63.5 57 65 55.5 65.8 L17 82 C14.5 83 12 81.5 12 79 V70 C12 68 13.2 66.8 15 66 Z" fill="var(--c2)" />
+          <path d="M10 98 L58 77 C60 76 62 77.5 62 80 V90 C62 91.5 61 93 59.5 93.8 L12 114 C9.5 115 7 113.5 7 111 V102 C7 100 8.2 98.8 10 98 Z" fill="var(--c2)" />
+          <!-- Twin B Rounds + Center 4-point AI Spark (Color 1) -->
+          <path d="
+            M70 17 L108 32 C116 35 120 42 120 50 C120 58 115 64 106 66 C116 70 122 78 122 88 C122 100 112 108 96 108 H72 C69.8 108 68 106.2 68 104 V94 C68 91.8 69.8 90 72 90 H94 C101 90 105 87 105 83 C105 78 101 74 94 72 L70 63 V49 L94 57 C100 59 103 56 103 51 C103 46 100 43 94 41 L70 32 C68.8 31.5 68 30.2 68 28.8 V19.5 C68 17.5 69 16.6 70 17 Z
+          " fill="var(--c1)" />
+          <!-- 4-Point AI Spark Star at Center Apex (Color 2) -->
+          <path d="M64 38 L67 47 L76 50 L67 53 L64 62 L61 53 L52 50 L61 47 Z" fill="var(--c2)" />
+        `
+      },
+
+      // =========================================================================
+      // WORDMARK IMPROVISATIONS (70 - 76) — From 41, 45, 47, 48, 32, 33, 40
+      // Engineered with optical density balance, tight ST-EB-UP kerning, 3px machined corners & kinetic flow
+      // =========================================================================
+      makeWordConcept(
+        "70",
+        "improvised",
+        "From #41 · Optical Balance",
+        "Optical-Balanced 'STEBUP' (Tight Rhythm + 3px Radii)",
+        "Refines #41: thickens E's horizontal slips to 15px for even visual weight next to T, tightens E–B gap for instant legibility, and adds machined 3px radii.",
+        `
+          <rect x="139" y="28" width="38" height="15" rx="3" fill="var(--c2)" />
+          <rect x="133" y="52.5" width="44" height="15" rx="3" fill="var(--c2)" />
+          <rect x="127" y="77" width="50" height="15" rx="3" fill="var(--c2)" />
+          <path d="
+            M185 28 H211 C225 28 233 34 233 44 C233 51 229 57 221 60 C230 62 235 68 235 76 C235 86 226 92 211 92 H185 C183.3 92 182 90.7 182 89 V81 C182 79.3 183.3 78 185 78 H209 C216 78 220 75 220 71 C220 67 216 65 209 65 H193 C191.3 65 190 63.7 190 62 V58 C190 56.3 191.3 55 193 55 H208 C215 55 218 52 218 48 C218 44 215 42 208 42 H185 C183.3 42 182 40.7 182 39 V31 C182 29.3 183.3 28 185 28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "71",
+        "improvised",
+        "From #45 · Kinetic 9° Tilt",
+        "Kinetic 9° Slanted 'STEBUP' (Forward Tech Velocity)",
+        "Refines #45: applies a dynamic 9° forward slant across the entire STEBUP wordmark, turning the diagonal E–B step gap into a sleek motion vector.",
+        `
+          <rect x="128" y="77" width="43" height="15" rx="3" fill="var(--c2)" />
+          <rect x="134" y="52.5" width="43" height="15" rx="3" fill="var(--c2)" />
+          <rect x="140" y="28" width="43" height="15" rx="3" fill="var(--c2)" />
+          <path d="
+            M191 28 H214 C226 28 234 34 234 44 C234 51 230 57 222 60 C230 62 235 68 235 76 C235 86 226 92 212 92 H179 C177.3 92 176 90.7 176 89 V81 C176 79.3 177.3 78 179 78 H210 C217 78 220 75 220 71 C220 67 217 65 210 65 H185 C183.3 65 182 63.7 182 62 V56 C182 54.3 183.3 53 185 53 H211 C217 53 220 51 220 47 C220 43 217 42 211 42 H191 C189.3 42 188 40.7 188 39 V31 C188 29.3 189.3 28 191 28 Z
+          " fill="var(--c1)" />
+        `,
+        `
+          ${GUIDE_LINES}
+          <g transform="translate(185,60) skewX(-9) translate(-185,-60)">
+            ${ST_PATH}
+            <rect x="128" y="77" width="43" height="15" rx="3" fill="var(--c2)" />
+            <rect x="134" y="52.5" width="43" height="15" rx="3" fill="var(--c2)" />
+            <rect x="140" y="28" width="43" height="15" rx="3" fill="var(--c2)" />
+            <path d="
+              M191 28 H214 C226 28 234 34 234 44 C234 51 230 57 222 60 C230 62 235 68 235 76 C235 86 226 92 212 92 H179 C177.3 92 176 90.7 176 89 V81 C176 79.3 177.3 78 179 78 H210 C217 78 220 75 220 71 C220 67 217 65 210 65 H185 C183.3 65 182 63.7 182 62 V56 C182 54.3 183.3 53 185 53 H211 C217 53 220 51 220 47 C220 43 217 42 211 42 H191 C189.3 42 188 40.7 188 39 V31 C188 29.3 189.3 28 191 28 Z
+            " fill="var(--c1)" />
+            ${UP_PATH}
+          </g>
+        `
+      ),
+
+      makeWordConcept(
+        "72",
+        "improvised",
+        "From #47 · Ink-Trap Slit",
+        "Ink-Trapped Seamless 'STEBUP' Ligature",
+        "Refines #47: uses a crisp 5px optical channel between E-slips and stemless B-rounds, adding subtle ink-trap notches at B's center waist for sharp small-size rendering.",
+        `
+          <rect x="138" y="28" width="42" height="14.5" rx="2.5" fill="var(--c2)" />
+          <rect x="133" y="52.8" width="47" height="14.5" rx="2.5" fill="var(--c2)" />
+          <rect x="128" y="77.5" width="52" height="14.5" rx="2.5" fill="var(--c2)" />
+          <path d="
+            M185 28 H213 C226 28 234 34 234 44 C234 51 230 56 222 59.5 C231 62 236 68 236 76 C236 86 227 92 213 92 H185 V78 H211 C218 78 221 75 221 71.5 C221 68 218 67 211 67 H185 L189 60 L185 53 H210 C216 53 219 51 219 47.5 C219 44 216 42 210 42 H185 V28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "73",
+        "improvised",
+        "From #48 · Tapered Speed",
+        "Tapered Speed-Slip 'STEBUP' (Accented B-Rounds)",
+        "Refines #48: transforms E's 3 bars into sleek tapered speed-slips (Color 1) launching directly into rounded, accented stemless B-rounds (Color 2).",
+        `
+          <path d="M140 29 L176 28 C177.7 28 179 29.3 179 31 V40 C179 41.7 177.7 43 176 43 L140 41 C138.8 40.9 138 39.9 138 38.7 V31.3 C138 30.1 138.8 29.1 140 29 Z" fill="var(--c1)" />
+          <path d="M134 53.5 L176 52.5 C177.7 52.5 179 53.8 179 55.5 V64.5 C179 66.2 177.7 67.5 176 67.5 L134 65.5 C132.8 65.4 132 64.4 132 63.2 V55.8 C132 54.6 132.8 53.6 134 53.5 Z" fill="var(--c1)" />
+          <path d="M128 78 L176 77 C177.7 77 179 78.3 179 80 V89 C179 90.7 177.7 92 176 92 L128 90 C126.8 89.9 126 88.9 126 87.7 V80.3 C126 79.1 126.8 78.1 128 78 Z" fill="var(--c1)" />
+          <path d="
+            M187 28 H212 C226 28 234 34 234 44 C234 51 230 57 222 60 C231 62 236 68 236 76 C236 86 227 92 212 92 H187 C185.3 92 184 90.7 184 89 V81 C184 79.3 185.3 78 187 78 H210 C217 78 221 75 221 71 C221 67 217 65 210 65 H194 C192.3 65 191 63.7 191 62 V58 C191 56.3 192.3 55 194 55 H209 C216 55 219 52 219 48 C219 44 216 42 209 42 H187 C185.3 42 184 40.7 184 39 V31 C184 29.3 185.3 28 187 28 Z
+          " fill="var(--c2)" />
+        `
+      ),
+
+      makeWordConcept(
+        "74",
+        "improvised",
+        "From #32 · Chamfered Spine",
+        "Precision-Weighted 'STEBUP' (Chamfered B-Spine)",
+        "Refines #32: adds a 45° upward step chamfer at the top of B's accent spine and balances E's floating slips to match T's optical density.",
+        `
+          <rect x="128" y="28" width="46" height="15" rx="2.5" fill="var(--c2)" />
+          <rect x="128" y="52.5" width="38" height="15" rx="2.5" fill="var(--c2)" />
+          <rect x="128" y="77" width="46" height="15" rx="2.5" fill="var(--c2)" />
+          <!-- 45-deg Chamfered B Spine (Color 2) -->
+          <polygon points="182,36 190,28 196,28 196,92 182,92" fill="var(--c2)" />
+          <!-- B Loops (Color 1) -->
+          <path d="
+            M196 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H196 V78 H212 C218 78 221 75.5 221 72 C221 68.5 218 66 212 66 H196 V54 H211 C216 54 219 51 219 47.5 C219 44 216 41 211 41 H196 V28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "75",
+        "improvised",
+        "From #33 · Machined Escalator",
+        "Machined Escalator 'STEBUP' (Uniform Optical Flow)",
+        "Refines #33: rounds the escalator E-slips cleanly and aligns the stepped recess of B's spine to maintain an unbroken diagonal rhythm.",
+        `
+          <rect x="126" y="77" width="43" height="15" rx="3" fill="var(--c2)" />
+          <rect x="134" y="52.5" width="43" height="15" rx="3" fill="var(--c2)" />
+          <rect x="142" y="28" width="43" height="15" rx="3" fill="var(--c2)" />
+          <path d="
+            M191 28 H215 C227 28 234 34 234 44 C234 51 230 56 223 59 C231 61 236 67 236 75 C236 86 228 92 215 92 H175 C173.3 92 172 90.7 172 89 V81 C172 79.3 173.3 78 175 78 H213 C219 78 222 76 222 72.5 C222 69 219 67 213 67 H183 C181.3 67 180 65.7 180 64 V56 C180 54.3 181.3 53 183 53 H212 C217 53 220 51 220 47.5 C220 44 217 42 212 42 H191 C189.3 42 188 40.7 188 39 V31 C188 29.3 189.3 28 191 28 Z
+          " fill="var(--c1)" />
+        `
+      ),
+
+      makeWordConcept(
+        "76",
+        "improvised",
+        "From #40 · AI Spark Counter",
+        "AI-Core 'EB' Highlighted 'STEBUP'",
+        "Refines #40: highlights both the stepped E-slips and B in Color 2, while sculpting B's upper counter into a subtle 4-point AI spark silhouette.",
+        `
+          <rect x="139" y="28" width="35" height="15" rx="2.5" fill="var(--c2)" />
+          <rect x="134" y="52.5" width="40" height="15" rx="2.5" fill="var(--c2)" />
+          <rect x="128" y="77" width="46" height="15" rx="2.5" fill="var(--c2)" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="
+            M182 28 H214 C226 28 233 34 233 44 C233 51 229 56 222 59 C230 61 235 67 235 75 C235 86 227 92 214 92 H182 V28 Z
+            M207 37 L210 44 L217 47 L210 50 L207 57 L204 50 L197 47 L204 44 Z
+            M196 66 V79 H212 C218 79 221 76 221 72.5 C221 69 218 66 212 66 H196 Z
+          " fill="var(--c2)" />
+        `
+      ),
+
+      // =========================================================================
+      // B + STEPS & TECH IMPROVISATIONS (77 - 80) — From 01, 03, 11, 14
+      // =========================================================================
+      {
+        id: "77",
+        cat: "improvised",
+        catLabel: "From #01 · Machined Radii",
+        title: "Precision Stepped-Spine 'B' (Ink-Trapped)",
+        desc: "Refines #01: replaces sharp stair corners with 4px machined radii and crisp optical ink-traps at B's loop intersections for flawless 16px scaling.",
+        svg: `
+          <!-- Machined 3-Step Spine (Color 2) -->
+          <path d="
+            M20 110 H32 C34.2 110 36 108.2 36 106 V84 H48 C50.2 84 52 82.2 52 80 V54 H64 C66.2 54 68 52.2 68 50 V22 C68 19.8 66.2 18 64 18 H52 C49.8 18 48 19.8 48 22 V46 H36 C33.8 46 32 47.8 32 50 V76 H20 C17.8 76 16 77.8 16 80 V106 C16 108.2 17.8 110 20 110 Z
+          " fill="var(--c2)" />
+          <!-- B Bowls with subtle ink-trap cuts (Color 1) -->
+          <path d="
+            M68 18 H82 C98 18 109 28 109 42 C109 51 103 58 94 61.5 C105 65 112 74 112 86 C112 101 99 110 82 110 H36 V92 H79 C88 92 94 88 94 81 C94 74 88 70 79 70 H52 V54 H78 C86 54 91 50 91 43 C91 36 86 33 78 33 H68 V18 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "78",
+        cat: "improvised",
+        catLabel: "From #03 · Kinetic Pillars",
+        title: "Kinetic 3-Pillar + Tapered Arcs 'B'",
+        desc: "Refines #03: turns the 3 ascending pillars into modern pill-capped progress bars and adds a subtle 8° forward velocity lean.",
+        svg: `
+          <g transform="translate(64,64) skewX(-7) translate(-64,-64)">
+            <rect x="14" y="70" width="14" height="40" rx="7" fill="var(--c2)" />
+            <rect x="33" y="44" width="14" height="66" rx="7" fill="var(--c2)" />
+            <rect x="52" y="18" width="14" height="92" rx="7" fill="var(--c2)" />
+            <path d="
+              M74 18 H84 C100 18 110 29 110 43 C110 53 103 61 93 64 C104 67 112 76 112 87 C112 101 100 110 84 110 H74 C71.8 110 70 108.2 70 106 V96 C70 93.8 71.8 92 74 92 H82 C90 92 95 88 95 82 C95 75 90 71 82 71 H74 C71.8 71 70 69.2 70 67 V58 C70 55.8 71.8 54 74 54 H81 C88 54 93 50 93 44 C93 37 88 33 81 33 H74 C71.8 33 70 31.2 70 29 V22 C70 19.8 71.8 18 74 18 Z
+            " fill="var(--c1)" />
+          </g>
+        `
+      },
+      {
+        id: "79",
+        cat: "improvised",
+        catLabel: "From #11 · Squircle Icon",
+        title: "Squircle-Framed Staggered Slabs 'B'",
+        desc: "Refines #11: locks the 3 staggered horizontal step slabs and curved B bridges inside an engineered SaaS squircle container.",
+        svg: `
+          <rect x="8" y="8" width="112" height="112" rx="28" fill="none" stroke="var(--c1)" stroke-width="6" />
+          <rect x="22" y="80" width="38" height="16" rx="4" fill="var(--c2)" />
+          <rect x="31" y="56" width="38" height="16" rx="4" fill="var(--c2)" />
+          <rect x="40" y="32" width="38" height="16" rx="4" fill="var(--c2)" />
+          <path d="
+            M72 32 H83 C96 32 104 39 104 50 C104 58 99 64 91 66 C100 68 106 75 106 84 C106 95 97 96 83 96 H66 V80 H81 C87 80 90 77 90 73 C90 69 87 66 81 66 H72 V56 H80 C86 56 89 53 89 48 C89 44 86 41 80 41 H72 V32 Z
+          " fill="var(--c1)" />
+        `
+      },
+      {
+        id: "80",
+        cat: "improvised",
+        catLabel: "From #14 · Neural Matrix",
+        title: "AI Neural Node-Step 'B'",
+        desc: "Refines #14: connects the 3 ascending tech voxel nodes with diagonal neural bridges, turning static pixels into an intelligent upward pipeline.",
+        svg: `
+          <!-- Connected Neural Step Nodes (Color 2) -->
+          <rect x="12" y="84" width="22" height="22" rx="6" fill="var(--c2)" />
+          <rect x="26" y="53" width="22" height="22" rx="6" fill="var(--c2)" />
+          <rect x="40" y="22" width="22" height="22" rx="6" fill="var(--c2)" />
+          <line x1="23" y1="95" x2="51" y2="33" stroke="var(--c2)" stroke-width="7" stroke-linecap="round" />
+          <!-- Aerodynamic B Frame (Color 1) -->
+          <path d="
+            M70 22 H84 C100 22 110 31 110 44 C110 53 104 60 95 63 C106 66 112 75 112 86 C112 100 101 108 84 108 H44 C41.8 108 40 106.2 40 104 V94 C40 91.8 41.8 90 44 90 H82 C90 90 94 86 94 80 C94 74 90 70 82 70 H58 C55.8 70 54 68.2 54 66 V60 C54 57.8 55.8 56 58 56 H81 C88 56 92 52 92 45 C92 39 88 36 81 36 H70 C67.8 36 66 34.2 66 32 V26 C66 23.8 67.8 22 70 22 Z
+          " fill="var(--c1)" />
+        `
+      },
+
+      // =========================================================================
+      // ★ SYMBOL-ONLY CREATIVE "EB" MARKS (53 - 64)
       // =========================================================================
       {
         id: "53",
@@ -1630,18 +1946,20 @@
     ];
 
     const tabDescriptions = {
+      improvised: "<strong>★ Improvised (16 Refined Concepts):</strong> Upgraded versions of your shortlisted favorites (<code>53, 54, 58, 60, 62, 41, 45, 47, 48, 32, 33, 40, 01, 03, 11, 14</code>) engineered with machined corner radii, optical ink traps, 10° kinetic tilt, tapered fluid slips, AI sparks (✦), and squircle app-icon framing.",
       symbols: "<strong>EB Symbols (12 Concepts):</strong> Creative standalone icon marks fusing 3 horizontal E-slips (<code>≡</code>) with stemless B-rounds (<code>⊃⊃</code>).",
       wordmarks: "<strong>STEBUP Wordmarks (24 Concepts):</strong> Complete seamless <code>STEBUP</code> wordmarks featuring horizontal-slip <strong>E</strong> before stemless <strong>B</strong> rounds (<code>#41–#52</code>) and full-spine <strong>B</strong> (<code>#29–#40</code>).",
       b_marks: "<strong>B + Steps &amp; Tech (28 Concepts):</strong> Architectural B + Steps (<code>#01–#12</code>), Tech Syntax &amp; Code (<code>#13–#18</code>), P → B Linguistic Twist (<code>#19–#23</code>), and Chevrons &amp; S+B Monograms (<code>#24–#28</code>)."
     };
 
     const tabGroups = {
+      improvised: ['improvised'],
       symbols: ['symbols'],
       wordmarks: ['rounds', 'eb'],
       b_marks: ['steps', 'tech', 'linguistic', 'momentum']
     };
 
-    let activeTab = 'symbols';
+    let activeTab = 'improvised';
     const grid = document.getElementById('logoGrid');
     const tabDescBox = document.getElementById('tabDescBox');
 
@@ -1651,7 +1969,12 @@
       if (btn) btn.classList.add('active');
       tabDescBox.innerHTML = `<span>${tabDescriptions[tab]}</span>`;
 
-      if (tab === 'wordmarks') {
+      if (tab === 'improvised') {
+        document.body.classList.remove('show-lockup');
+        document.body.classList.add('auto-mixed');
+        document.getElementById('viewMarkBtn').classList.add('active');
+        document.getElementById('viewLockupBtn').classList.remove('active');
+      } else if (tab === 'wordmarks') {
         setView('lockup');
       } else {
         setView('mark');
@@ -1667,7 +1990,7 @@
         if (item.isSeamlessEB) {
           return `
             <div class="card">
-              <div class="stage">
+              <div class="stage is-word">
                 <span class="num-badge">#${item.id}</span>
                 <span class="cat-pill">${item.catLabel}</span>
 
@@ -1760,6 +2083,7 @@
     }
 
     function setView(mode) {
+      document.body.classList.remove('auto-mixed');
       document.body.classList.toggle('show-lockup', mode === 'lockup');
       document.getElementById('viewMarkBtn').classList.toggle('active', mode === 'mark');
       document.getElementById('viewLockupBtn').classList.toggle('active', mode === 'lockup');
