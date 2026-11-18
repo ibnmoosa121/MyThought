@@ -57,9 +57,9 @@ export const TalentFooter = () => {
                                 viewport={{ once: false, amount: 0.2 }}
                                 className="text-5xl md:text-8xl font-black text-zinc-950 italic uppercase tracking-[-0.05em] leading-[0.85] mb-12"
                             >
-                                Unlock Your <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-400">
-                                    Potential
+                                Build Your <br />
+                                <span className="text-zinc-600">
+                                    Team
                                 </span>
                             </motion.h2>
 
@@ -83,7 +83,7 @@ export const TalentFooter = () => {
 
                                 <div className="hidden md:block">
                                     <p className="text-zinc-600 text-lg max-w-xs leading-snug font-medium">
-                                        Ready to bridge the gap with elite talent? Let's engineer your success.
+                                        Need vetted riders, technical specialists, or full operational teams? Tell us what you're hiring for.
                                     </p>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@ export const TalentFooter = () => {
                                         </a>
                                         <a href="tel:+966564008986" className="group block">
                                             <p className="text-zinc-500 text-[10px] font-mono uppercase tracking-widest mb-1 group-hover:text-zinc-950 transition-colors">
-                                                Call Experts
+                                                Phone
                                             </p>
                                             <p className="text-2xl text-zinc-950 font-black italic uppercase tracking-tighter group-hover:text-zinc-600 transition-colors group-hover:translate-x-2 duration-300">
                                                 +966 564008986
@@ -174,7 +174,7 @@ export const TalentFooter = () => {
                                     <p className="text-zinc-500 text-[10px] font-mono font-bold uppercase tracking-[0.4em] leading-relaxed">
                                         © 2026 <span className="normal-case tracking-tight text-zinc-950 font-black">Stebup</span>. <br />
                                         All Rights Reserved. <br />
-                                        Engineering Success.
+                                        Talent &amp; Staffing.
                                     </p>
                                 </div>
                             </div>

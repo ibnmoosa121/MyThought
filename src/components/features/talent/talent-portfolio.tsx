@@ -9,39 +9,49 @@ const TALENT_SERVICES = [
         id: "blue-collar",
         title: "Last-Mile & Logistics",
         desc: "High-volume recruitment for delivery riders, fleet, and warehouse teams.",
-        longDesc: "From food delivery riders to warehouse management, we provide rapid-scale staffing for the Gulf's leading quick-commerce and logistics giants.",
+        longDesc: "From delivery riders to warehouse supervisors, we manage rapid-scale staffing for quick-commerce and logistics operators across the Gulf.",
         icon: Truck,
-        stats: "10k+ Riders Deployed"
+        stats: "10k+ Riders Placed"
     },
     {
         id: "tech-squads",
         title: "Professional & Tech",
-        desc: "Elite technical, AI, and project management augmentation.",
-        longDesc: "Access highly vetted software engineers, AI researchers, and PMO specialists who integrate into your tech stack within 14 days.",
+        desc: "Vetted software, data, and project management specialists.",
+        longDesc: "Add experienced software engineers, AI practitioners, and PMO leads who integrate directly into your engineering workflows within 14 days.",
         icon: Cpu,
-        stats: "140+ Experts"
+        stats: "140+ Specialists"
     },
     {
         id: "retail-hospitality",
         title: "Retail & Hospitality",
-        desc: "Premium workforce for global brands and luxury hospitality.",
-        longDesc: "We staff world-class retail outlets and hotels with trained professionals, ensuring consistent brand standards across all customer touchpoints.",
+        desc: "Trained frontline staff for retail brands and hospitality venues.",
+        longDesc: "We staff flagship retail outlets and hotels with trained frontline professionals who uphold your service standards across every location.",
         icon: ShoppingBag,
-        stats: "Global Brand Focus"
+        stats: "GCC & Global Brands"
     },
     {
         id: "compliance",
         title: "Full-Scale Compliance",
-        desc: "Navigating regional labor laws across all sectors.",
-        longDesc: "Handling visas, payroll, and 100% legal compliance for high-volume blue-collar teams to specialized C-suite executives.",
+        desc: "End-to-end visas, payroll, and regional labor law compliance.",
+        longDesc: "We handle sponsorships, visas, payroll administration, and local labor compliance—from high-volume field teams to senior executives.",
         icon: ShieldCheck,
-        stats: "100% Secured"
+        stats: "End-to-End Managed"
     }
 ];
 
 export const TalentPortfolio = () => {
-    const [talentState, setTalentState] = useState(TALENT_SERVICES.map(s => ({ ...s, status: null as null | 'email' | 'success' })));
+    const [talentState, setTalentState] = useState(
+        TALENT_SERVICES.map(s => ({ ...s, status: null as null | 'email' | 'success', email: '' }))
+    );
     const [openId, setOpenId] = useState<string | null>(null);
+
+    const submitEmail = (idx: number) => {
+        setTalentState(prev =>
+            prev.map((item, i) =>
+                i === idx && item.email.trim().includes('@') ? { ...item, status: 'success' } : item
+            )
+        );
+    };
 
     return (
         <section className="relative py-32 bg-transparent overflow-hidden">
@@ -54,11 +64,11 @@ export const TalentPortfolio = () => {
                     className="max-w-4xl mb-20"
                 >
                     <span className="text-zinc-500 font-mono font-bold uppercase tracking-[0.4em] text-xs mb-4 block">
-                        01 // Success Engine
+                        01 — Core Practices
                     </span>
                     <h2 className="text-4xl md:text-8xl font-black text-zinc-950 italic uppercase tracking-tighter leading-[0.85]">
                         Strategic <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-400">
+                        <span className="text-zinc-600">
                             Talent
                         </span>{" "}
                         Portfolio
@@ -77,9 +87,18 @@ export const TalentPortfolio = () => {
                                 transition={{ duration: 0.6, delay: i * 0.08 }}
                                 className="group"
                             >
-                                <button
+                                <div
+                                    role="button"
+                                    tabIndex={0}
+                                    aria-expanded={isOpen}
                                     onClick={() => setOpenId(isOpen ? null : service.id)}
-                                    className={`w-full text-left relative overflow-hidden rounded-[2rem] md:rounded-[3rem] transition-all duration-500 border backdrop-blur-md
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            setOpenId(isOpen ? null : service.id);
+                                        }
+                                    }}
+                                    className={`w-full text-left relative overflow-hidden rounded-[2rem] md:rounded-[3rem] transition-all duration-500 border backdrop-blur-md cursor-pointer
                                         ${isOpen
                                             ? 'bg-zinc-950 text-white border-zinc-900 shadow-[0_30px_70px_rgba(0,0,0,0.28)]'
                                             : 'bg-white/75 text-zinc-950 border-zinc-900/10 hover:bg-white/90 hover:border-zinc-900/25 shadow-[0_18px_45px_rgba(0,0,0,0.06)]'}
@@ -164,6 +183,7 @@ export const TalentPortfolio = () => {
                                                                 {!service.status ? (
                                                                     <motion.button
                                                                         key="btn"
+                                                                        type="button"
                                                                         initial={{ opacity: 0 }}
                                                                         animate={{ opacity: 1 }}
                                                                         exit={{ opacity: 0, y: -10 }}
@@ -177,7 +197,7 @@ export const TalentPortfolio = () => {
                                                                         }}
                                                                         className="flex items-center gap-3 px-8 py-4 rounded-full bg-white text-zinc-950 font-black uppercase italic tracking-widest text-sm hover:scale-105 transition-transform active:scale-95"
                                                                     >
-                                                                        Enquire Experts <ArrowRight size={18} />
+                                                                        Request Talent <ArrowRight size={18} />
                                                                     </motion.button>
                                                                 ) : service.status === 'email' ? (
                                                                     <motion.div
@@ -191,26 +211,26 @@ export const TalentPortfolio = () => {
                                                                         <input
                                                                             autoFocus
                                                                             type="email"
-                                                                            placeholder="ENTER YOUR EMAIL"
-                                                                            className="bg-transparent border-none outline-none text-white text-[10px] uppercase font-bold w-full placeholder:text-white/40"
+                                                                            value={service.email}
+                                                                            onChange={(e) => {
+                                                                                const val = e.target.value;
+                                                                                setTalentState(prev =>
+                                                                                    prev.map((item, idx) =>
+                                                                                        idx === i ? { ...item, email: val } : item
+                                                                                    )
+                                                                                );
+                                                                            }}
+                                                                            placeholder="Enter your work email"
+                                                                            className="bg-transparent border-none outline-none text-white text-xs font-medium w-full placeholder:text-white/40"
                                                                             onKeyDown={(e) => {
                                                                                 if (e.key === 'Enter') {
-                                                                                    setTalentState(prev =>
-                                                                                        prev.map((item, idx) =>
-                                                                                            idx === i ? { ...item, status: 'success' } : item
-                                                                                        )
-                                                                                    );
+                                                                                    submitEmail(i);
                                                                                 }
                                                                             }}
                                                                         />
                                                                         <button
-                                                                            onClick={() => {
-                                                                                setTalentState(prev =>
-                                                                                    prev.map((item, idx) =>
-                                                                                        idx === i ? { ...item, status: 'success' } : item
-                                                                                    )
-                                                                                );
-                                                                            }}
+                                                                            type="button"
+                                                                            onClick={() => submitEmail(i)}
                                                                             className="bg-white text-zinc-950 px-6 py-3 rounded-full text-[10px] font-black uppercase italic hover:scale-105 transition-transform"
                                                                         >
                                                                             Submit
@@ -223,9 +243,9 @@ export const TalentPortfolio = () => {
                                                                         animate={{ opacity: 1, x: 0 }}
                                                                         className="flex items-center gap-3 text-white"
                                                                     >
-                                                                        <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                                                                        <div className="w-2 h-2 rounded-full bg-emerald-400" />
                                                                         <span className="text-[10px] md:text-xs font-black uppercase italic tracking-widest leading-relaxed">
-                                                                            We will get in touch with you personally on this.
+                                                                            Request received. Our team will reach out shortly.
                                                                         </span>
                                                                     </motion.div>
                                                                 )}
@@ -241,7 +261,7 @@ export const TalentPortfolio = () => {
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
-                                </button>
+                                </div>
                             </motion.div>
                         );
                     })}

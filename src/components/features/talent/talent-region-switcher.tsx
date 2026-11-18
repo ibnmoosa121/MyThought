@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, ArrowUpRight, Trophy, Landmark, Users2, Building2 } from "lucide-react";
+import { MapPin, Trophy, Landmark, Users2, Building2 } from "lucide-react";
 
 const REGIONS = [
     {
         id: "ksa",
         name: "Saudi Arabia",
         label: "KSA",
-        tagline: "Vision 2030 Catalyst",
+        tagline: "Kingdom Operations",
         highlight: {
-            title: "National Transformation",
-            desc: "Rapid deployment of 500+ delivery riders and retail staff for the Kingdom's largest quick-commerce and luxury retail rollouts.",
+            title: "National Scale",
+            desc: "Rapid deployment of 500+ delivery riders and retail staff for the Kingdom's largest quick-commerce and retail rollouts.",
             stat: "800+ Placements",
             icon: Landmark
         },
@@ -22,24 +22,24 @@ const REGIONS = [
         id: "dubai",
         name: "Dubai / GCC",
         label: "UAE",
-        tagline: "Regional Powerhouse",
+        tagline: "GCC Logistics & Hospitality",
         highlight: {
             title: "Last-Mile Excellence",
-            desc: "Optimizing the workforce for major logistics hubs in JAFZA and scaling hospitality teams for Dubai's ultra-luxury hotel sector.",
-            stat: "Elite Workforce",
+            desc: "Staffing major logistics hubs in JAFZA and scaling hospitality teams for Dubai's premier hotel and retail operators.",
+            stat: "GCC Hub",
             icon: Building2
         },
-        services: ["Logistics Ops", "Hospitality Elite", "Tech Squads"]
+        services: ["Logistics Ops", "Hospitality Teams", "Tech Squads"]
     },
     {
         id: "india",
         name: "India",
         label: "IND",
-        tagline: "Global Talent Pool",
+        tagline: "Engineering & Ops Supply",
         highlight: {
             title: "Scale & Quality",
-            desc: "Managing high-volume recruitment pipelines for remote customer support and specialized engineering centers serving the Middle East.",
-            stat: "25yr Deep Supply",
+            desc: "Managing high-volume recruitment pipelines for customer support and dedicated engineering centers serving the Middle East.",
+            stat: "25yr Network",
             icon: Users2
         },
         services: ["Support Hubs", "Remote Engineering", "Back-Office Ops"]
@@ -48,14 +48,14 @@ const REGIONS = [
         id: "indonesia",
         name: "Indonesia",
         label: "IDN",
-        tagline: "SE Asia Gateway",
+        tagline: "SE Asia Expansion",
         highlight: {
-            title: "Emerging Sector Bridge",
-            desc: "Connecting high-potential talent in logistics, fintech, and digital commerce with global infrastructure projects.",
-            stat: "Strategic Bridge",
+            title: "Regional Talent Bridge",
+            desc: "Connecting specialists in logistics, fintech, and digital commerce with cross-border infrastructure projects.",
+            stat: "SE Asia Hub",
             icon: Trophy
         },
-        services: ["Digital Fleet", "Tech Devs", "Ops Leadership"]
+        services: ["Digital Fleet", "Software Devs", "Ops Leadership"]
     }
 ];
 
@@ -73,11 +73,11 @@ export const TalentRegionSwitcher = () => {
                     className="flex flex-col items-center mb-20"
                 >
                     <span className="text-zinc-500 font-mono font-bold uppercase tracking-[0.4em] text-xs mb-4">
-                        03 // Global Footprint
+                        03 — Regional Presence
                     </span>
                     <h2 className="text-4xl md:text-7xl font-black text-zinc-950 italic uppercase tracking-tighter leading-tight text-center">
                         Market-Specific <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-400">
+                        <span className="text-zinc-600">
                             Leadership
                         </span>
                     </h2>
@@ -173,14 +173,13 @@ export const TalentRegionSwitcher = () => {
                                     </div>
 
                                     <div className="w-full md:w-auto flex flex-col items-center md:items-end justify-center">
-                                        <div className="p-8 rounded-[2.5rem] bg-white text-zinc-950 flex flex-col items-center justify-center group cursor-pointer hover:scale-105 transition-transform duration-500 min-w-[200px]">
-                                            <span className="text-[10px] font-mono font-bold uppercase tracking-widest mb-1 text-zinc-500">
-                                                Legacy Success
+                                        <div className="p-8 rounded-[2.5rem] bg-white text-zinc-950 flex flex-col items-center justify-center min-w-[200px]">
+                                            <span className="text-[10px] font-mono font-bold uppercase tracking-widest mb-2 text-zinc-500">
+                                                Footprint
                                             </span>
-                                            <span className="text-3xl font-black italic uppercase leading-none">
+                                            <span className="text-3xl font-black italic uppercase leading-none text-center">
                                                 {activeRegion.highlight.stat}
                                             </span>
-                                            <ArrowUpRight className="mt-4" size={24} />
                                         </div>
                                     </div>
                                 </div>

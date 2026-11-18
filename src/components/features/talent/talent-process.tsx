@@ -11,32 +11,32 @@ gsap.registerPlugin(ScrollTrigger);
 const PROCESS_STEPS = [
     {
         title: "Needs Assessment",
-        desc: "Deep dive into your operational requirements, sector challenges, and team culture to identify the perfect profile.",
+        desc: "We align on your operational requirements, headcount targets, and site timelines to define the exact candidate profile.",
         icon: Search
     },
     {
-        title: "Omni-Sector Sourcing",
-        desc: "Leveraging our 25-year network to find vetted talent across tech, logistics, and retail who deliver results.",
+        title: "Cross-Sector Sourcing",
+        desc: "Drawing on our 25-year network to source vetted talent across logistics, engineering, and retail.",
         icon: UserPlus
     },
     {
         title: "Rigorous Vetting",
-        desc: "Multi-stage assessments and background checks tailored to each sector to ensure 100% compliance and skill match.",
+        desc: "Role-specific assessments, document verification, and background checks to ensure readiness and regulatory compliance.",
         icon: Filter
     },
     {
         title: "Rapid Onboarding",
-        desc: "Handling logistics, visas, and legal integration to get your new team members productive from day one.",
+        desc: "Managing mobilization, visas, and contracts so your new hires are productive from day one.",
         icon: Rocket
     },
     {
         title: "Performance Management",
-        desc: "Ongoing support and performance tracking to ensure continued excellence across your entire workforce.",
+        desc: "Ongoing attendance, payroll, and field supervision to keep retention and output steady.",
         icon: Activity
     },
     {
-        title: "Workforce Secured",
-        desc: "Your operation scaled with precision. Vision and execution bridged perfectly across all sectors.",
+        title: "Ongoing Operations",
+        desc: "Dedicated account support and capacity scaling as your regional operations expand.",
         icon: CheckCircle2
     }
 ];
@@ -107,18 +107,18 @@ export const TalentProcess = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             className="text-zinc-500 font-mono font-bold uppercase tracking-[0.4em] text-xs mb-4 block"
                         >
-                            02 // Success Blueprint
+                            02 — How We Deploy
                         </motion.span>
                         <h2 className="text-4xl md:text-6xl font-black text-zinc-950 italic uppercase tracking-tighter leading-[0.85]">
                             Seamless <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-400">
+                            <span className="text-zinc-600">
                                 Workforce
                             </span>{" "}
                             <br />
                             Integration
                         </h2>
                         <p className="mt-6 text-zinc-600 text-base md:text-lg font-medium leading-relaxed">
-                            Our six-step methodology ensures zero friction between hiring and execution. Engineered for the Gulf market.
+                            Six clear stages from role intake to compliant on-site deployment across the Gulf.
                         </p>
                     </div>
                 </div>
@@ -148,7 +148,6 @@ export const TalentProcess = () => {
                                 stroke="#09090B"
                                 strokeWidth="4"
                                 strokeLinecap="round"
-                                className="drop-shadow-[0_0_8px_rgba(9,9,11,0.25)]"
                             />
                         </svg>
                     </div>
