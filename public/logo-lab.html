@@ -537,193 +537,23 @@
       {
         id: "86",
         cat: "master",
-        catLabel: "Master Lab · Perceptual Sculpture",
-        title: "The Ascent Paradox — Impossible Mobius-Staircase 'EB'",
-        desc: "A 5-layer optical sculpture: (1) 3 horizontal isometric terraces on the left form 'E', (2) each flat step physically twists 90° in 3D space to become the vertical sweeping vaults of 'B', (3) together they form an infinite upward Penrose loop, (4) the central negative-space fissure carves an ascending prism breaking through the upper horizon, and (5) micro-guilloché contour filaments give carved architectural depth.",
+        catLabel: "Master Lab · Pure Constructivist Geometry",
+        title: "The Joinery 'B' — Interlocking 15px Staircase & Bowls",
+        desc: "Zero gradients, zero decoration — two pure 15px constant-width forms locked on an 18px diagonal module. The left spine IS an unbroken 3-step staircase (Color 2), while B's three horizontal bars (Color 1) step inward at x=80, x=62, and x=44 to nest into each stair riser across a 5px negative-space channel.",
         svg: `
-          <defs>
-            <!-- Soft architectural levitation shadow -->
-            <filter id="sculpt-ao" x="-15%" y="-15%" width="130%" height="135%">
-              <feDropShadow dx="0" dy="5" stdDeviation="4.5" flood-color="var(--c1)" flood-opacity="0.16" />
-            </filter>
+          <!-- Shape 1: Unbroken 15px Ascending Staircase Spine (Color 2) -->
+          <path d="
+            M14 97 H24 V56.5 H42 V16 H75 V31 H57 V71.5 H39 V112 H14 V97 Z
+          " fill="var(--c2)" />
 
-            <!-- Zenith-lit top terrace surfaces (Step treads) -->
-            <linearGradient id="tread-top" x1="0%" y1="0%" x2="100%" y2="20%">
-              <stop offset="0%" stop-color="var(--c2)" stop-opacity="0.32" />
-              <stop offset="48%" stop-color="var(--c2)" stop-opacity="0.72" />
-              <stop offset="85%" stop-color="var(--c1)" stop-opacity="0.88" />
-              <stop offset="100%" stop-color="var(--c1)" stop-opacity="1" />
-            </linearGradient>
-
-            <!-- Shadowed vertical step risers (Front faces of E steps) -->
-            <linearGradient id="riser-front" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="var(--c1)" stop-opacity="0.96" />
-              <stop offset="65%" stop-color="var(--c1)" stop-opacity="0.78" />
-              <stop offset="100%" stop-color="var(--c2)" stop-opacity="0.55" />
-            </linearGradient>
-
-            <!-- Upper Mobius B-Vault: twists from lit terrace into deep sculptural arch -->
-            <linearGradient id="mobius-upper" x1="15%" y1="0%" x2="95%" y2="100%">
-              <stop offset="0%" stop-color="var(--c1)" stop-opacity="1" />
-              <stop offset="42%" stop-color="var(--c1)" stop-opacity="0.86" />
-              <stop offset="78%" stop-color="var(--c2)" stop-opacity="0.92" />
-              <stop offset="100%" stop-color="var(--c1)" stop-opacity="0.98" />
-            </linearGradient>
-
-            <!-- Lower Mobius B-Vault: sweeping chiaroscuro roll -->
-            <linearGradient id="mobius-lower" x1="10%" y1="10%" x2="95%" y2="95%">
-              <stop offset="0%" stop-color="var(--c2)" stop-opacity="0.88" />
-              <stop offset="38%" stop-color="var(--c1)" stop-opacity="0.95" />
-              <stop offset="76%" stop-color="var(--c1)" stop-opacity="1" />
-              <stop offset="100%" stop-color="var(--c2)" stop-opacity="0.65" />
-            </linearGradient>
-
-            <!-- Deep interior recessed vault wall (Ambient Occlusion inside B loops) -->
-            <linearGradient id="vault-recess" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="var(--c1)" stop-opacity="0.45" />
-              <stop offset="50%" stop-color="var(--c2)" stop-opacity="0.22" />
-              <stop offset="100%" stop-color="var(--c1)" stop-opacity="0.62" />
-            </linearGradient>
-
-            <!-- Central Singularity / Ascent Spire glow -->
-            <linearGradient id="spire-beam" x1="50%" y1="100%" x2="50%" y2="0%">
-              <stop offset="0%" stop-color="var(--c2)" stop-opacity="0.0" />
-              <stop offset="45%" stop-color="var(--c2)" stop-opacity="0.35" />
-              <stop offset="100%" stop-color="var(--c1)" stop-opacity="0.9" />
-            </linearGradient>
-          </defs>
-
-          <!-- LAYER 0: Subtle Parametric Gravitational / Guilloché Horizon Field -->
-          <g fill="none" stroke="var(--c2)" stroke-linecap="round">
-            <path d="M18 114 C48 111 86 111 112 114" stroke-width="0.5" stroke-opacity="0.22" />
-            <path d="M12 118 C48 114 88 114 116 118" stroke-width="0.4" stroke-opacity="0.14" />
-            <!-- Zenith breakthrough harmonic arcs radiating above the top step -->
-            <path d="M46 13 C56 8 68 8 78 13" stroke-width="0.55" stroke-opacity="0.32" />
-            <path d="M51 9 C58 5.5 66 5.5 73 9" stroke-width="0.45" stroke-opacity="0.2" />
-          </g>
-
-          <g filter="url(#sculpt-ao)">
-            <!-- ================================================================= -->
-            <!-- LAYER 1: IMPOSSIBLE ESCHER PENROSE RISERS (Hidden left pillars)   -->
-            <!-- Connects Step 1 -> Step 2 -> Step 3 in an impossible depth loop   -->
-            <!-- ================================================================= -->
-            <!-- Deep recessed pillar rising from Step 1 back-edge into Step 2 underside -->
-            <polygon points="22,82 31,76 31,58 22,64" fill="var(--c1)" fill-opacity="0.28" />
-            <polygon points="31,76 37,79 37,61 31,58" fill="var(--c2)" fill-opacity="0.18" />
-            <!-- Deep recessed pillar rising from Step 2 back-edge into Step 3 underside -->
-            <polygon points="32,49 41,43 41,25 32,31" fill="var(--c1)" fill-opacity="0.28" />
-            <polygon points="41,43 47,46 47,28 41,25" fill="var(--c2)" fill-opacity="0.18" />
-
-            <!-- ================================================================= -->
-            <!-- LAYER 2: INNER RECESSED VAULT WALLS OF 'B' (3D Depth Undersides)  -->
-            <!-- Creates the illusion of hollow carved tunnels inside B's 2 loops  -->
-            <!-- ================================================================= -->
-            <!-- Upper B loop interior tunnel wall -->
-            <path d="
-              M66 28 H88 C99 28 106 33.5 106 41.5 C106 49.5 99 55 88 55 H66 V48 H85 C92.5 48 96.5 45.5 96.5 41.5 C96.5 37.5 92.5 35 85 35 H66 V28 Z
-            " fill="url(#vault-recess)" />
-            <!-- Lower B loop interior tunnel wall -->
-            <path d="
-              M62 67 H89 C102 67 110 73.5 110 83 C110 92.5 102 99 89 99 H60 V91 H86 C94.5 91 99.5 88 99.5 83 C99.5 78 94.5 75 86 75 H62 V67 Z
-            " fill="url(#vault-recess)" />
-
-            <!-- ================================================================= -->
-            <!-- LAYER 3: THE 3 ASCENDING STEP TERRACES ('E') TWISTING INTO 'B'    -->
-            <!-- Each step has a zenith-lit top plane + dark vertical front riser  -->
-            <!-- ================================================================= -->
-
-            <!-- STEP 1 (FOUNDATION: Bottom-Left) -> Twists into Lower B Base -->
-            <!-- Lit Top Plane of Step 1 (Tilted in isometric perspective) -->
-            <path d="
-              M8 90 L20 81 H56 L53 90 H8 Z
-            " fill="url(#tread-top)" />
-            <!-- Shadowed Vertical Front Riser of Step 1 sweeping into Lower B Arch -->
-            <path d="
-              M8 90 H53 L56 101 H8 V90 Z
-            " fill="url(#riser-front)" />
-
-            <!-- STEP 2 (THRESHOLD: Middle-Left) -> Dovetails into B Waist -->
-            <!-- Lit Top Plane of Step 2 -->
-            <path d="
-              M18 57 L30 48 H58 L55 57 H18 Z
-            " fill="url(#tread-top)" />
-            <!-- Shadowed Vertical Front Riser of Step 2 -->
-            <path d="
-              M18 57 H55 L58 68 H18 V57 Z
-            " fill="url(#riser-front)" />
-
-            <!-- STEP 3 (ZENITH: Top-Left) -> Launches into Upper B Crown -->
-            <!-- Lit Top Plane of Step 3 -->
-            <path d="
-              M28 24 L40 15 H60 L57 24 H28 Z
-            " fill="url(#tread-top)" />
-            <!-- Shadowed Vertical Front Riser of Step 3 -->
-            <path d="
-              M28 24 H57 L60 35 H28 V24 Z
-            " fill="url(#riser-front)" />
-
-            <!-- ================================================================= -->
-            <!-- LAYER 4: THE MOBIUS 'B' VAULTS (Twisting 90° in 3D Space)         -->
-            <!-- ================================================================= -->
-            <!-- Upper Mobius Ribbon: emerges from Top Zenith (x=66,y=15), sweeps  -->
-            <!-- around upper B bowl, and twists into the Middle Waist (x=64,y=67) -->
-            <path d="
-              M66 15 H90 C106 15 116 24.5 116 39 C116 49.5 109.5 57 99 60.5
-              C91 63 80 65.5 64 66.5 L67 55.5 H88 C97.5 55.5 103 50 103 42
-              C103 33.5 97 28 87 28 H63 L66 15 Z
-            " fill="url(#mobius-upper)" />
-
-            <!-- Lower Mobius Ribbon: emerges from Middle Waist twist (x=68,y=56), -->
-            <!-- cantilevers out to x=119, and folds into the Foundation base      -->
-            <path d="
-              M67 55.5 H91 C108 55.5 119 65.5 119 81.5 C119 97.5 107.5 108 89 108
-              H59 L56 95 H87 C97.5 95 104.5 89.5 104.5 81 C104.5 72.5 98 67 88 67
-              H64 L67 55.5 Z
-            " fill="url(#mobius-lower)" />
-
-            <!-- Impossible Escher Fold-Back: connects B's bottom foundation (59,108) -->
-            <!-- back under Step 1 (20,108 -> 8,101) so the loop has no beginning or end -->
-            <polygon points="8,101 56,101 59,108 16,108" fill="var(--c1)" fill-opacity="0.42" />
-
-            <!-- ================================================================= -->
-            <!-- LAYER 5: GUILLOCHÉ ENGRAVING & SPECULAR ARCHITECTURAL EDGES       -->
-            <!-- Gives currency-grade linework & destroys the "flat SVG" feel      -->
-            <!-- ================================================================= -->
-            <g fill="none" stroke="var(--card-bg)" stroke-opacity="0.28" stroke-width="0.55">
-              <!-- Parametric contour ribs curving through Upper B Vault -->
-              <path d="M65 18.5 H89.5 C103.5 18.5 112.5 26.8 112.5 39.5 C112.5 49 106 55.5 95 58.5" />
-              <path d="M64.2 22 H88.5 C101 22 109 29.2 109 40 C109 48.2 103 54 92 56.8" />
-              <path d="M63.5 25 H87.5 C98.5 25 105.5 31.2 105.5 40.5" />
-              <!-- Parametric contour ribs curving through Lower B Vault -->
-              <path d="M66 59 H90.5 C105.5 59 115.5 67.8 115.5 81.5 C115.5 95.5 105 104.5 88 104.5 H58" />
-              <path d="M65 62.5 H89.5 C103 62.5 112 70.2 112 81.5 C112 93.5 102.5 101 87.5 101 H57" />
-              <path d="M92 65.5 C102.5 66.5 108.5 72.8 108.5 81.2 C108.5 91 100 97.8 87 97.8" />
-              <!-- Isometric step-riser engraving lines on E -->
-              <line x1="10" y1="93.5" x2="54" y2="93.5" />
-              <line x1="10" y1="97" x2="55" y2="97" />
-              <line x1="20" y1="60.5" x2="56" y2="60.5" />
-              <line x1="20" y1="64" x2="57" y2="64" />
-              <line x1="30" y1="27.5" x2="58" y2="27.5" />
-              <line x1="30" y1="31" x2="59" y2="31" />
-            </g>
-
-            <!-- Specular Rim-Light Edges along the 3D Creases -->
-            <g fill="none" stroke="var(--card-bg)" stroke-opacity="0.7" stroke-width="0.75" stroke-linecap="round">
-              <line x1="8.5" y1="90" x2="52.5" y2="90" />
-              <line x1="18.5" y1="57" x2="54.5" y2="57" />
-              <line x1="28.5" y1="24" x2="56.5" y2="24" />
-              <path d="M67 55.5 H91 C104 55.5 113 61 117 70" />
-            </g>
-
-            <!-- ================================================================= -->
-            <!-- LAYER 6: THE NEGATIVE-SPACE BREAKTHROUGH PRISM (Center Fissure)   -->
-            <!-- A razor-sharp vertical trajectory piercing upward through the gap -->
-            <!-- ================================================================= -->
-            <polygon points="59.5,104 61.5,12 63.5,104" fill="url(#spire-beam)" />
-            <!-- Zenith Diamond Singularity at the exact breakthrough apex (61.5, 12) -->
-            <polygon points="61.5,5 64,12 61.5,19 59,12" fill="var(--c1)" />
-            <circle cx="61.5" cy="12" r="1.2" fill="var(--card-bg)" />
-          </g>
+          <!-- Shape 2: Interlocking 15px B Bowls Stepping at x=80, x=62, x=44 (Color 1) -->
+          <path d="
+            M80 16 H88.5 C104.5 16 115 26.2 115 41.5 C115 51.2 109.5 58.8 100 62.8
+            C110.5 66.8 117 75 117 86 C117 101.8 105.5 112 88.5 112
+            H44 V97 H87 C96.5 97 102 92.8 102 84.5 C102 76.2 96.5 71.5 87 71.5
+            H62 V56.5 H86 C95 56.5 100 52 100 43.8 C100 35.5 95 31 86 31
+            H80 V16 Z
+          " fill="var(--c1)" />
         `
       },
       {
