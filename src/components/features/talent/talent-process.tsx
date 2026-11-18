@@ -96,37 +96,35 @@ export const TalentProcess = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative py-32 bg-transparent overflow-hidden min-h-screen">
+        <section ref={containerRef} className="relative py-24 md:py-32 bg-transparent overflow-hidden min-h-screen">
             <div className="container mx-auto px-6 h-full flex flex-col md:flex-row gap-12">
 
                 {/* Sticky Left Content */}
-                <div className="md:w-1/3 md:sticky md:top-32 h-fit mb-20 md:mb-0">
-                    <div className="p-8 rounded-[2rem] bg-white/75 backdrop-blur-md border border-zinc-900/10 shadow-[0_18px_45px_rgba(0,0,0,0.06)]">
+                <div className="md:w-1/3 md:sticky md:top-32 h-fit mb-12 md:mb-0">
+                    <div className="p-6 md:p-8 rounded-2xl bg-white/45 backdrop-blur-md border border-zinc-900/10">
                         <motion.span
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="text-zinc-500 font-mono font-bold uppercase tracking-[0.4em] text-xs mb-4 block"
+                            className="text-zinc-500 font-mono text-xs mb-3 block"
                         >
-                            02 — How We Deploy
+                            02 // Deployment flow
                         </motion.span>
-                        <h2 className="text-4xl md:text-6xl font-black text-zinc-950 italic uppercase tracking-tighter leading-[0.85]">
-                            Seamless <br />
+                        <h2 className="text-3xl md:text-5xl font-semibold text-zinc-950 tracking-tight leading-tight">
+                            Workforce{" "}
                             <span className="text-zinc-600">
-                                Workforce
-                            </span>{" "}
-                            <br />
-                            Integration
+                                integration
+                            </span>
                         </h2>
-                        <p className="mt-6 text-zinc-600 text-base md:text-lg font-medium leading-relaxed">
-                            Six clear stages from role intake to compliant on-site deployment across the Gulf.
+                        <p className="mt-4 text-zinc-600 text-base leading-relaxed">
+                            Six structured stages from role intake to compliant on-site deployment across the Gulf.
                         </p>
                     </div>
                 </div>
 
                 {/* Vertical Scroll Steps */}
-                <div className="md:w-2/3 relative pl-8 md:pl-20 py-10">
+                <div className="md:w-2/3 relative pl-8 md:pl-16 py-6">
                     {/* Architectural Ink Connector Path */}
-                    <div className="absolute left-0 top-0 bottom-0 w-2 h-full flex justify-center py-20">
+                    <div className="absolute left-0 top-0 bottom-0 w-2 h-full flex justify-center py-16">
                         <svg
                             ref={svgRef}
                             width="2"
@@ -146,13 +144,13 @@ export const TalentProcess = () => {
                                 ref={pathRef}
                                 d="M1 0V1000"
                                 stroke="#09090B"
-                                strokeWidth="4"
+                                strokeWidth="3"
                                 strokeLinecap="round"
                             />
                         </svg>
                     </div>
 
-                    <div className="space-y-24">
+                    <div className="space-y-12">
                         {PROCESS_STEPS.map((step, i) => (
                             <div
                                 key={step.title}
@@ -160,27 +158,23 @@ export const TalentProcess = () => {
                                 className="relative"
                             >
                                 {/* Connector Dot */}
-                                <div className="absolute -left-8 md:-left-20 top-8 w-4 h-4 rounded-full bg-[#ECECE8] border-2 border-zinc-900 z-10 flex items-center justify-center">
-                                    <motion.div
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        className="w-1.5 h-1.5 rounded-full bg-zinc-950"
-                                    />
+                                <div className="absolute -left-8 md:-left-16 top-7 w-3.5 h-3.5 rounded-full bg-[#ECECE8] border-2 border-zinc-900 z-10 flex items-center justify-center">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-950" />
                                 </div>
 
-                                <div className="p-8 md:p-12 rounded-[2.5rem] bg-white/80 hover:bg-zinc-950 border border-zinc-900/10 hover:border-zinc-900 transition-all duration-500 group backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:shadow-[0_25px_65px_rgba(0,0,0,0.22)]">
-                                    <div className="flex items-center justify-between gap-6 mb-6">
-                                        <div className="p-4 rounded-2xl bg-zinc-950 text-white group-hover:bg-white group-hover:text-zinc-950 transition-all duration-500 shadow-[0_8px_20px_rgba(0,0,0,0.15)]">
-                                            <step.icon size={30} />
+                                <div className="p-6 md:p-8 rounded-xl md:rounded-2xl bg-white/45 hover:bg-zinc-950/85 border border-zinc-900/10 hover:border-zinc-900 transition-colors duration-200 group backdrop-blur-md">
+                                    <div className="flex items-center justify-between gap-4 mb-4">
+                                        <div className="p-3 rounded-lg bg-zinc-950 text-white group-hover:bg-white group-hover:text-zinc-950 transition-colors duration-200">
+                                            <step.icon size={22} strokeWidth={1.75} />
                                         </div>
-                                        <div className="text-zinc-900/15 group-hover:text-white/15 font-black text-5xl italic transition-colors">
+                                        <div className="text-zinc-900/20 group-hover:text-white/20 font-mono text-2xl tabular-nums transition-colors">
                                             0{i + 1}
                                         </div>
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-black text-zinc-950 group-hover:text-white italic uppercase tracking-tighter mb-3 transition-colors">
+                                    <h3 className="text-xl md:text-2xl font-semibold text-zinc-950 group-hover:text-white tracking-tight mb-2 transition-colors">
                                         {step.title}
                                     </h3>
-                                    <p className="text-zinc-600 group-hover:text-zinc-300 text-lg leading-relaxed transition-colors">
+                                    <p className="text-zinc-600 group-hover:text-zinc-300 text-sm md:text-base leading-relaxed transition-colors">
                                         {step.desc}
                                     </p>
                                 </div>

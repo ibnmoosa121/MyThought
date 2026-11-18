@@ -63,32 +63,32 @@ export const TalentRegionSwitcher = () => {
     const [activeRegion, setActiveRegion] = useState(REGIONS[0]);
 
     return (
-        <section className="relative py-32 bg-transparent overflow-hidden">
+        <section className="relative py-24 md:py-32 bg-transparent overflow-hidden">
             <div className="container mx-auto px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 0.7 }}
-                    className="flex flex-col items-center mb-20"
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col items-center mb-14"
                 >
-                    <span className="text-zinc-500 font-mono font-bold uppercase tracking-[0.4em] text-xs mb-4">
-                        03 — Regional Presence
+                    <span className="text-zinc-500 font-mono text-xs mb-3">
+                        03 // Regional presence
                     </span>
-                    <h2 className="text-4xl md:text-7xl font-black text-zinc-950 italic uppercase tracking-tighter leading-tight text-center">
-                        Market-Specific <br />
+                    <h2 className="text-3xl md:text-5xl font-semibold text-zinc-950 tracking-tight leading-tight text-center">
+                        Regional{" "}
                         <span className="text-zinc-600">
-                            Leadership
+                            operations
                         </span>
                     </h2>
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.15 }}
-                    transition={{ duration: 0.7, delay: 0.1 }}
-                    className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-stretch h-full md:h-[500px]"
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 items-stretch h-full md:min-h-[420px]"
                 >
                     {/* Region Selector */}
                     <div className="flex flex-row md:flex-col gap-3 md:w-1/4">
@@ -98,22 +98,22 @@ export const TalentRegionSwitcher = () => {
                                 <button
                                     key={region.id}
                                     onClick={() => setActiveRegion(region)}
-                                    className={`flex-1 flex flex-col md:flex-row items-center justify-between p-4 md:p-8 rounded-3xl md:rounded-[2rem] border transition-all duration-500 text-left group backdrop-blur-md
+                                    className={`flex-1 flex flex-col md:flex-row items-center justify-between p-4 md:p-5 rounded-xl border transition-colors duration-200 text-left group backdrop-blur-md
                                         ${isSelected
-                                            ? 'bg-zinc-950 text-white border-zinc-950 shadow-[0_20px_50px_rgba(0,0,0,0.22)]'
-                                            : 'bg-white/75 text-zinc-950 border-zinc-900/10 hover:bg-white/95 hover:border-zinc-900/25 shadow-[0_12px_30px_rgba(0,0,0,0.05)]'}
+                                            ? 'bg-zinc-950/85 text-white border-zinc-950'
+                                            : 'bg-white/45 text-zinc-950 border-zinc-900/10 hover:bg-white/65 hover:border-zinc-900/20'}
                                     `}
                                 >
                                     <div className="flex flex-col">
                                         <span
-                                            className={`text-[10px] font-mono font-bold uppercase tracking-widest mb-1 transition-colors ${
+                                            className={`text-xs font-mono mb-0.5 transition-colors ${
                                                 isSelected ? 'text-zinc-400' : 'text-zinc-500'
                                             }`}
                                         >
                                             {region.label}
                                         </span>
                                         <span
-                                            className={`text-sm font-black uppercase italic tracking-tighter hidden md:block ${
+                                            className={`text-sm font-medium hidden md:block ${
                                                 isSelected ? 'text-white' : 'text-zinc-950'
                                             }`}
                                         >
@@ -121,7 +121,8 @@ export const TalentRegionSwitcher = () => {
                                         </span>
                                     </div>
                                     <MapPin
-                                        size={20}
+                                        size={18}
+                                        strokeWidth={1.75}
                                         className={`transition-colors hidden md:block ${
                                             isSelected ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-950'
                                         }`}
@@ -131,40 +132,40 @@ export const TalentRegionSwitcher = () => {
                         })}
                     </div>
 
-                    {/* Content Display (Obsidian Architectural Stage) */}
-                    <div className="flex-1 relative rounded-[3rem] bg-zinc-950/90 text-white backdrop-blur-md border border-zinc-800 p-8 md:p-16 overflow-hidden flex flex-col justify-end shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+                    {/* Content Display */}
+                    <div className="flex-1 relative rounded-2xl bg-zinc-950/85 text-white backdrop-blur-md border border-zinc-800 p-8 md:p-12 overflow-hidden flex flex-col justify-end">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeRegion.id}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 12 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.45 }}
+                                exit={{ opacity: 0, y: -12 }}
+                                transition={{ duration: 0.3 }}
                                 className="relative z-10 w-full"
                             >
-                                <div className="flex flex-col md:flex-row gap-12 items-start justify-between">
+                                <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
                                     <div className="flex-1">
-                                        <div className="flex items-center gap-4 mb-6">
-                                            <div className="p-3.5 rounded-2xl bg-white text-zinc-950">
-                                                <activeRegion.highlight.icon size={30} />
+                                        <div className="flex items-center gap-4 mb-5">
+                                            <div className="p-3 rounded-lg bg-white text-zinc-950">
+                                                <activeRegion.highlight.icon size={24} strokeWidth={1.75} />
                                             </div>
                                             <div>
-                                                <p className="text-zinc-400 font-mono font-bold uppercase tracking-[0.3em] text-[10px] mb-1">
+                                                <p className="text-zinc-400 font-mono text-xs mb-0.5">
                                                     {activeRegion.tagline}
                                                 </p>
-                                                <h3 className="text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter">
+                                                <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
                                                     {activeRegion.highlight.title}
                                                 </h3>
                                             </div>
                                         </div>
-                                        <p className="text-zinc-300 text-lg leading-relaxed mb-8 max-w-xl">
+                                        <p className="text-zinc-300 text-base leading-relaxed mb-6 max-w-xl">
                                             {activeRegion.highlight.desc}
                                         </p>
-                                        <div className="flex flex-wrap gap-3">
+                                        <div className="flex flex-wrap gap-2">
                                             {activeRegion.services.map(s => (
                                                 <span
                                                     key={s}
-                                                    className="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-zinc-200 text-xs font-black uppercase italic tracking-widest"
+                                                    className="px-3 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200 text-xs font-medium"
                                                 >
                                                     {s}
                                                 </span>
@@ -173,11 +174,11 @@ export const TalentRegionSwitcher = () => {
                                     </div>
 
                                     <div className="w-full md:w-auto flex flex-col items-center md:items-end justify-center">
-                                        <div className="p-8 rounded-[2.5rem] bg-white text-zinc-950 flex flex-col items-center justify-center min-w-[200px]">
-                                            <span className="text-[10px] font-mono font-bold uppercase tracking-widest mb-2 text-zinc-500">
+                                        <div className="p-6 rounded-xl bg-white text-zinc-950 flex flex-col items-center justify-center min-w-[180px]">
+                                            <span className="text-xs font-mono mb-1.5 text-zinc-500">
                                                 Footprint
                                             </span>
-                                            <span className="text-3xl font-black italic uppercase leading-none text-center">
+                                            <span className="text-2xl font-semibold tabular-nums leading-none text-center">
                                                 {activeRegion.highlight.stat}
                                             </span>
                                         </div>

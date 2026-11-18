@@ -62,38 +62,30 @@ const ClientsSection: React.FC = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-black relative overflow-hidden">
-      {/* Dynamic Background */}
+    <section ref={sectionRef} className="py-20 md:py-28 bg-black relative overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        {/* Standardized Animated Grid */}
-        <div className="absolute inset-0 design-grid opacity-[0.08]" />
-
-        {/* Standardized Glow Orbs */}
-        <div className="theme-glow absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-white/5" />
-        <div className="theme-glow absolute bottom-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-white/5 delay-1000" />
+        <div className="absolute inset-0 design-grid opacity-[0.03]" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
-          <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold mb-6 tracking-widest uppercase">
-            Trusted Partners
-          </span>
-          <div className="flex flex-col items-center justify-center mb-8">
+        <div className="text-center mb-12 md:mb-16 max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-zinc-400 mb-4 tracking-wide">
+            <span>CLIENT NETWORK</span>
+            <span className="text-zinc-600">//</span>
+            <span>REGIONAL SECTOR LEADERS</span>
+          </div>
+          <div className="flex flex-col items-center justify-center mb-4">
             <ScrollRevealText
-              text="Fueling Growth for"
-              className="text-4xl md:text-6xl font-bold text-white tracking-tight"
-            />
-            <ScrollRevealText
-              text="Market Leaders"
-              className="text-4xl md:text-6xl font-bold text-white tracking-tight"
-              delay={0.2}
+              text="Selected client engagements"
+              className="text-3xl md:text-5xl font-semibold text-white tracking-tight"
             />
           </div>
           <ScrollRevealText
-            text="We are proud to partner with visionary organizations across the Kingdom and beyond, delivering scalable technology solutions that drive real impact."
-            className="text-lg md:text-xl text-white/60 leading-relaxed"
-            delay={0.4}
+            text="Institutions, conglomerates, and high-growth ventures we support across Saudi Arabia and the GCC."
+            className="text-base text-zinc-400 leading-relaxed"
+            delay={0.2}
           />
         </div>
 
@@ -101,40 +93,21 @@ const ClientsSection: React.FC = () => {
         <div ref={loopRef} className="w-full">
           <LogoLoop
             logos={clients}
-            speed={50} // Slightly slower for readability
-            gap={60}
-            logoHeight={60} // Adjusted for better visibility
-            scaleOnHover={true}
+            speed={40}
+            gap={24}
+            logoHeight={48}
+            scaleOnHover={false}
             fadeOut={true}
-            fadeOutColor="#000000" // Match black background
+            fadeOutColor="#000000"
             renderItem={(item) => (
-              <div className="flex items-center justify-center px-4">
-                <div className="group relative">
-                  {/* Outer Orbit / Glow */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-white/0 via-white/5 to-white/0 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-
-                  {/* The Capsule Container */}
-                  <div className="relative flex items-center gap-6 px-12 py-5 rounded-full bg-zinc-950/40 border border-white/5 backdrop-blur-2xl transition-all duration-700 group-hover:bg-zinc-900/60 group-hover:border-white/20 group-hover:scale-105 group-hover:-translate-y-1 shadow-2xl">
-
-                    {/* Icon Circle */}
-                    <div className="relative w-12 h-12 flex-shrink-0">
-                      <div className="absolute inset-0 bg-white/5 rounded-full animate-pulse transition-all group-hover:scale-110"></div>
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full border border-white/10 flex items-center justify-center text-white font-black text-xl shadow-lg transform transition-transform group-hover:rotate-12">
-                        {item.name.charAt(0)}
-                      </div>
-                    </div>
-
-                    {/* Brand Name */}
-                    <div className="flex flex-col">
-                      <span className="text-sm font-black uppercase tracking-[0.3em] text-white/20 group-hover:text-white/40 transition-colors duration-500">Partner</span>
-                      <span className="text-xl font-black italic uppercase tracking-tighter text-white/50 group-hover:text-white transition-all duration-500 whitespace-nowrap">
-                        {item.name}
-                      </span>
-                    </div>
-
-                    {/* Interactive Scan Line Effect */}
-                    <div className="absolute bottom-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div className="flex items-center justify-center px-2">
+                <div className="flex items-center gap-3 px-5 py-2.5 rounded-lg bg-zinc-950 border border-white/10 hover:border-white/20 transition-colors duration-150">
+                  <div className="w-7 h-7 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-xs font-mono text-zinc-400">
+                    {item.name.charAt(0)}
                   </div>
+                  <span className="text-sm font-medium text-zinc-300 whitespace-nowrap">
+                    {item.name}
+                  </span>
                 </div>
               </div>
             )}

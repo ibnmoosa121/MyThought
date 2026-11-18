@@ -99,10 +99,7 @@ export const HeroParallax = ({
         }}
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
       >
-        <div className="absolute inset-0 design-grid opacity-[0.05]" />
-        <div className="theme-glow absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] bg-white/5" />
-        <div className="theme-glow absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] md:w-[35vw] md:h-[35vw] bg-white/5 animation-delay-2000" />
-        <div className="theme-glow absolute bottom-[-10%] left-[20%] w-[70vw] h-[70vw] md:w-[45vw] md:h-[45vw] bg-white/5 animation-delay-4000" />
+        <div className="absolute inset-0 design-grid opacity-[0.03]" />
       </motion.div>
 
       <motion.div
@@ -148,21 +145,26 @@ import { ScrollRevealText } from "./scroll-reveal-text";
 export const Header = () => {
   return (
     <div className="max-w-xl md:max-w-7xl relative mx-auto pt-32 pb-6 md:pt-40 md:pb-24 px-6 md:px-4 w-full left-0 top-0 z-20 flex flex-col items-start text-left">
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-zinc-400 mb-6 tracking-wide">
+        <span>GCC STUDIO</span>
+        <span className="text-zinc-600">//</span>
+        <span>ENGINEERING & ADVISORY</span>
+      </div>
       <ScrollRevealText
-        text="The Ultimate"
-        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter w-full text-left"
+        text="Digital systems and"
+        className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight w-full text-left"
         delay={0.2}
         animateOnMount={true}
       />
       <ScrollRevealText
-        text="Digital Studio"
-        className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter w-full text-left"
+        text="strategic engineering"
+        className="text-4xl md:text-6xl lg:text-7xl font-semibold text-zinc-300 tracking-tight w-full text-left"
         delay={0.3}
         animateOnMount={true}
       />
       <ScrollRevealText
-        text="We bridge ambitious vision and high-performance execution. An elite digital powerhouse powering custom software, AI analytics, fintech, and strategic growth across the Gulf region."
-        className="max-w-2xl text-sm md:text-xl mt-6 text-zinc-400 font-medium tracking-tight leading-relaxed text-left"
+        text="Stebup develops custom software architectures, analytics infrastructure, and specialized operational capability for growth-stage companies and institutions across the Gulf."
+        className="max-w-2xl text-base md:text-lg mt-6 text-zinc-400 font-normal tracking-normal leading-relaxed text-left"
         delay={0.5}
         animateOnMount={true}
       />
@@ -213,15 +215,12 @@ export const ProductCard = ({
         delay: index * 0.05,
       }}
       whileHover={{
-        y: -15,
-        scale: 1.05,
-        zIndex: 50,
-        boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
-        transition: { type: "spring", stiffness: 400, damping: 25 }
+        y: -4,
+        transition: { duration: 0.2, ease: "easeOut" }
       }}
-      whileTap={{ scale: 0.95 }}
+      whileTap={{ scale: 0.98 }}
       key={product.title}
-      className="group/product h-48 w-[16rem] sm:h-56 sm:w-[18rem] md:h-64 md:w-[20rem] relative shrink-0 rounded-2xl overflow-hidden shadow-2xl border border-white/10 [transform-style:preserve-3d] will-change-transform"
+      className="group/product h-48 w-[16rem] sm:h-56 sm:w-[18rem] md:h-64 md:w-[20rem] relative shrink-0 rounded-xl overflow-hidden border border-white/10 [transform-style:preserve-3d] will-change-transform bg-zinc-950"
     >
       <motion.div
         className="h-full w-full will-change-transform"
@@ -234,17 +233,22 @@ export const ProductCard = ({
             src={product.thumbnail}
             height="400"
             width="400"
-            className="object-cover object-center absolute h-full w-full inset-0 transition-transform duration-700 group-hover/product:scale-110"
+            className="object-cover object-center absolute h-full w-full inset-0 transition-opacity duration-300 opacity-90 group-hover/product:opacity-100"
             alt={product.title}
             loading={isCritical ? "eager" : "lazy"}
             fetchPriority={isCritical ? "high" : "auto"}
             decoding="async"
           />
         </a>
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover/product:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-        <h2 className="absolute bottom-4 left-4 md:bottom-6 md:left-6 opacity-100 md:opacity-0 md:group-hover/product:opacity-100 text-white font-bold text-sm md:text-lg transform translate-y-0 md:translate-y-2 md:group-hover/product:translate-y-0 transition-all duration-300">
-          {product.title}
-        </h2>
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+          <h2 className="text-white font-medium text-sm md:text-base">
+            {product.title}
+          </h2>
+          <span className="text-[11px] font-mono text-zinc-400 opacity-0 group-hover/product:opacity-100 transition-opacity duration-200">
+            VIEW →
+          </span>
+        </div>
       </motion.div>
     </motion.div>
   );

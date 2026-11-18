@@ -3,7 +3,6 @@ import TiltedCard from "../../ui/tilted-card";
 import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, RefreshCw, Settings, Users, Lightbulb, Rocket, Monitor, Briefcase, Box, Landmark, BarChart3, Wallet, Brain, Database, Cpu, Truck } from 'lucide-react'
 import { ScrollRevealText } from "../../ui/scroll-reveal-text";
-import { WavyBackground } from "../../ui/wavy-background";
 import { prefetchPage } from "../../../lib/prefetch";
 
 const services = [
@@ -275,7 +274,6 @@ const services = [
 
 export default function ServicesTabs() {
   const [activeTab, setActiveTab] = useState(services[0].id)
-  const activeService = services.find(s => s.id === activeTab) || services[0]
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window !== "undefined") {
       return window.innerWidth < 768;
@@ -292,47 +290,44 @@ export default function ServicesTabs() {
   }, []);
 
   return (
-    <section className="py-12 md:py-24 bg-black text-white relative overflow-hidden min-h-0 md:min-h-[800px]">
-      {/* Wavy Background - Dynamic color based on active service */}
-      <WavyBackground color={activeService.theme.plasmaColor} className="opacity-20" />
-
+    <section className="py-16 md:py-24 bg-black text-white relative overflow-hidden min-h-0 md:min-h-[800px]">
       {/* Background Gradients (Standardized) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        <div className="absolute inset-0 design-grid opacity-[0.05]" />
+        <div className="absolute inset-0 design-grid opacity-[0.03]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="mb-12">
-          <h2 className="text-sm font-bold tracking-[0.3em] text-white/50 uppercase mb-3 text-center lg:text-left">Expertise</h2>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-zinc-400 mb-3 tracking-wide">
+            <span>CORE CAPABILITIES</span>
+          </div>
           <div className="flex justify-center lg:justify-start">
             <ScrollRevealText
-              text="Explore our range of services"
-              className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2"
+              text="Specialized service practices"
+              className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-2"
             />
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
           {/* Left Column: Tabs */}
-          <div className="lg:w-1/4 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-2 lg:gap-6 justify-start scrollbar-none snap-x snap-mandatory mask-horizontal-scroll lg:[mask-image:none] lg:[-webkit-mask-image:none] relative z-20">
+          <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-2 lg:gap-3 justify-start scrollbar-none snap-x snap-mandatory relative z-20">
             {services.map((service) => (
               <button
                 key={service.id}
                 onClick={() => setActiveTab(service.id)}
                 onMouseEnter={() => prefetchPage(service.id)}
-                className={`text-left text-base lg:text-xl font-bold transition-all duration-300 relative pl-0 lg:pl-6 py-3 px-4 lg:px-0 lg:py-2 group shrink-0 snap-align-start`}
+                className={`text-left text-sm lg:text-base font-medium transition-colors duration-200 relative pl-0 lg:pl-4 py-2.5 px-3 lg:px-0 group shrink-0 snap-align-start`}
               >
                 {activeTab === service.id && (
                   <motion.div
                     layoutId="activeTabIndicator"
-                    className={`absolute left-0 bottom-0 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 h-0.5 w-full lg:h-full lg:w-1.5 ${service.theme.bg} rounded-full shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
-                    style={{ backgroundColor: service.theme.plasmaColor }}
+                    className="absolute left-0 bottom-0 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 h-0.5 w-full lg:h-5 lg:w-1 bg-white rounded-full"
                   />
                 )}
                 <span
-                  className={`relative z-10 inline-block transition-colors duration-300 ${activeTab === service.id ? '' : 'text-white/30 group-hover:text-white/60'
+                  className={`relative z-10 inline-block transition-colors duration-200 ${activeTab === service.id ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'
                     }`}
-                  style={{ color: activeTab === service.id ? service.theme.plasmaColor : undefined }}
                 >
                   {service.label}
                 </span>
@@ -341,7 +336,7 @@ export default function ServicesTabs() {
           </div>
 
           {/* Right Column: Content */}
-          <div className="lg:w-3/4">
+          <div className="flex-1 min-w-0">
             <AnimatePresence mode="wait">
               {services.map((service) => (
                 service.id === activeTab && (
@@ -351,24 +346,15 @@ export default function ServicesTabs() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                    className="space-y-12"
+                    className="space-y-10"
                   >
-                    <div className="flex items-center justify-center w-full mb-16 px-4 md:px-0 relative group/card-area">
-                      {/* Ambient Thematic Glow */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 0.4, scale: 1 }}
-                        key={`glow-${service.id}`}
-                        className="absolute w-[80%] h-[80%] blur-[120px] rounded-full pointer-events-none opacity-20 transition-colors duration-1000"
-                        style={{ backgroundColor: service.theme.plasmaColor }}
-                      />
-
+                    <div className="flex items-center justify-start w-full mb-8 relative group/card-area">
                       <a
                         href={service.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         onMouseEnter={() => prefetchPage(service.id)}
-                        className="relative w-full max-w-4xl transition-transform duration-500 hover:scale-[1.02] block cursor-pointer group/card-link"
+                        className="relative w-full block cursor-pointer group/card-link"
                       >
                         <TiltedCard
                           imageSrc={isMobile || !service.video ? service.image : undefined}
@@ -379,135 +365,56 @@ export default function ServicesTabs() {
                           containerWidth="100%"
                           imageHeight="auto"
                           imageWidth="100%"
-                          rotateAmplitude={10}
-                          scaleOnHover={1.05}
-                          showTooltip={true}
+                          rotateAmplitude={4}
+                          scaleOnHover={1.01}
+                          showTooltip={false}
                           displayOverlayContent={true}
-                          mediaClassName={service.id === 'talent' ? 'scale-[1.5]' : ''}
+                          mediaClassName={service.id === 'talent' ? 'scale-[1.2]' : ''}
                           overlayContent={
-                            <div className="relative w-full aspect-video rounded-[24px] md:rounded-[40px] overflow-hidden group pointer-events-none">
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
-                              <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20 w-full flex flex-col items-center lg:items-start">
-                                <motion.span
-                                  initial={{ y: 10, opacity: 0 }}
-                                  animate={{ y: 0, opacity: 1 }}
-                                  className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-white/40 mb-2"
-                                >
-                                  Service Excellence
-                                </motion.span>
-                                <motion.h3
-                                  initial={{ y: 20, opacity: 0 }}
-                                  animate={{ y: 0, opacity: 1 }}
-                                  className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tighter drop-shadow-2xl uppercase text-white italic"
-                                >
+                            <div className="relative w-full aspect-video rounded-xl md:rounded-2xl overflow-hidden group pointer-events-none">
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
+                              <div className="absolute bottom-0 left-0 p-6 md:p-10 z-20 w-full flex flex-col items-start">
+                                <span className="text-xs font-mono text-zinc-400 mb-2">
+                                  {service.tagline}
+                                </span>
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-3 tracking-tight text-white">
                                   {service.label}
-                                </motion.h3>
-                                <motion.div
-                                  initial={{ width: 0 }}
-                                  animate={{ width: "80px" }}
-                                  className="h-1.5 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-                                  style={{ backgroundColor: service.theme.plasmaColor }}
-                                />
+                                </h3>
+                                <div className="h-0.5 w-12 bg-white/40 rounded-full" />
                               </div>
                             </div>
                           }
                         />
-
-                        {/* Creative Corner Accents */}
-                        <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-white/20 rounded-tl-2xl pointer-events-none transition-colors group-hover/card-link:border-white/40" />
-                        <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-white/20 rounded-br-2xl pointer-events-none transition-colors group-hover/card-link:border-white/40" />
                       </a>
                     </div>
 
-
-
-                    <div className="max-w-4xl mx-auto text-center lg:text-left space-y-6">
-                      <p className="text-xl md:text-2xl text-white/50 leading-relaxed font-medium">
+                    <div className="max-w-3xl text-left space-y-4">
+                      <p className="text-base md:text-lg text-zinc-400 leading-relaxed font-normal">
                         {service.description}
                       </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 pt-4">
+                    <div className="grid md:grid-cols-3 gap-6 pt-4">
                       {service.cards.map((card, idx) => (
                         <motion.div
                           key={idx}
-                          initial={{ opacity: 0, y: 30 }}
+                          initial={{ opacity: 0, y: 15 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.1 + 0.3 }}
-                          className="bg-white/[0.04] border p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] transition-all duration-700 group relative overflow-hidden"
-                          style={{
-                            boxShadow: `0 10px 30px -15px ${service.theme.plasmaColor}4d`,
-                            borderColor: `${service.theme.plasmaColor}22`,
-                          }}
-                          whileHover={{
-                            y: -5,
-                            boxShadow: `0 20px 50px -15px ${service.theme.plasmaColor}66`,
-                            borderColor: `${service.theme.plasmaColor}66`,
-                            backgroundColor: "rgba(255, 255, 255, 0.06)",
-                          }}
+                          transition={{ delay: idx * 0.08 + 0.2 }}
+                          className="bg-zinc-950 border border-white/10 p-6 md:p-8 rounded-xl transition-colors duration-200 group relative overflow-hidden hover:border-white/20"
                         >
-                          {/* Constant Background Glow with Pulse Effect */}
-                          <motion.div
-                            className="absolute -right-16 -top-16 w-48 h-48 rounded-full blur-[80px] pointer-events-none z-0"
-                            style={{ backgroundColor: service.theme.plasmaColor }}
-                            animate={{
-                              opacity: [0.15, 0.3, 0.15],
-                              scale: [1, 1.2, 1],
-                            }}
-                            transition={{
-                              duration: 4,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                          />
-
-                          {/* Secondary Glow for Depth */}
-                          <div
-                            className="absolute -left-10 -bottom-10 w-32 h-32 rounded-full blur-[60px] opacity-10 pointer-events-none z-0"
-                            style={{ backgroundColor: service.theme.plasmaColor }}
-                          />
-
-                          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-                            <card.icon className="w-20 h-20 md:w-24 md:h-24" />
-                          </div>
-
-                          <div className="mb-6 md:mb-8 relative z-10">
-                            <div
-                              className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center border transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg"
-                              style={{
-                                backgroundColor: `${service.theme.plasmaColor}22`,
-                                borderColor: `${service.theme.plasmaColor}44`,
-                                boxShadow: `0 0 20px ${service.theme.plasmaColor}33`,
-                              }}
-                            >
-                              <card.icon
-                                className="w-6 h-6 md:w-7 md:h-7 transition-colors duration-500"
-                                style={{ color: service.theme.plasmaColor }}
-                              />
+                          <div className="mb-6 relative z-10">
+                            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300">
+                              <card.icon className="w-5 h-5" />
                             </div>
                           </div>
 
-                          <h4 className="text-xl md:text-2xl font-bold mb-4 md:mb-5 tracking-tight relative z-10 text-white transition-colors duration-300">
+                          <h4 className="text-lg font-medium mb-2 tracking-tight relative z-10 text-white">
                             {card.title}
                           </h4>
-                          <p className="text-white/50 leading-relaxed text-sm md:text-lg relative z-10 group-hover:text-white/80 transition-colors duration-500">
+                          <p className="text-zinc-400 leading-relaxed text-sm relative z-10">
                             {card.text}
                           </p>
-
-                          {/* Persistent Accent Line */}
-                          <div
-                            className="absolute bottom-0 left-0 h-[2px] w-full"
-                            style={{
-                              background: `linear-gradient(to right, ${service.theme.plasmaColor}, transparent)`,
-                              opacity: 0.5,
-                            }}
-                          />
-
-                          {/* Animated Hover Line Overlay */}
-                          <div
-                            className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r transition-all duration-700 w-0 group-hover:w-full z-20"
-                            style={{ backgroundImage: `linear-gradient(to right, ${service.theme.plasmaColor}, #fff, transparent)` }}
-                          />
                         </motion.div>
                       ))}
                     </div>
