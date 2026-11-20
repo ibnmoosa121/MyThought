@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { criticalImages } from "../../lib/asset-loader";
 import { services } from "../../data/services";
 import type { ServiceKey } from "../../data/services";
+import { StebupWordmark } from "./stebup-logo";
 
 export const Preloader = () => {
     const location = useLocation();
@@ -117,21 +118,11 @@ export const Preloader = () => {
                             }
                         >
                             {pageName === "Stebup" ? (
-                                <>
-                                    <span className="bg-gradient-to-b from-white via-white to-zinc-300 bg-clip-text text-transparent">
-                                        Steb
-                                    </span>
-                                    <span className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                                        up
-                                    </span>
-                                    <span
-                                        className="w-2 h-2 rounded-full ml-1 mb-0.5"
-                                        style={{
-                                            backgroundColor: "#06b6d4",
-                                            boxShadow: "0 0 10px #06b6d4"
-                                        }}
-                                    />
-                                </>
+                                <StebupWordmark
+                                    accentColor={themeColor === "#ffffff" ? "#A1A1AA" : themeColor}
+                                    primaryColor="#F4F4F6"
+                                    className="h-8 w-[140px] md:h-10 md:w-[175px]"
+                                />
                             ) : (
                                 pageName
                             )}

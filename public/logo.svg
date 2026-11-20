@@ -1,35 +1,21 @@
-<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-  <!-- Glow Effect -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 120" fill="none">
   <defs>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');</style>
   </defs>
-
-  <!-- Outer Ring 1 (Dashed) -->
-  <circle cx="50" cy="50" r="45" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="10 20" opacity="0.3" />
-
-  <!-- Outer Ring 2 (Dashed) -->
-  <circle cx="50" cy="50" r="45" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="5 15" opacity="0.2" />
-
-  <!-- Main brain/thought shape -->
-  <path d="M50 85C69.33 85 85 69.33 85 50C85 30.67 69.33 15 50 15C30.67 15 15 30.67 15 50C15 69.33 30.67 85 50 85Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" filter="url(#glow)" />
-
-  <!-- Pulsing Inner Neural Network -->
-  <path d="M35 50L45 40L55 60L65 50" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-
-  <!-- Upper Branch -->
-  <path d="M40 35L50 45L60 35" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
-
-  <!-- Lower Branch -->
-  <path d="M40 65L50 55L60 65" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
-
-  <!-- Center Thinking Spark -->
-  <circle cx="50" cy="50" r="6" fill="#FFFFFF" opacity="0.6" filter="blur(1px)" />
-
-  <!-- Orbiting particles -->
-  <circle cx="80" cy="50" r="2" fill="#FFFFFF" opacity="0.8" />
-  <circle cx="35" cy="76" r="2" fill="#FFFFFF" opacity="0.8" />
-  <circle cx="35" cy="24" r="2" fill="#FFFFFF" opacity="0.8" />
+  <text x="128" y="92" text-anchor="end" fill="#F4F4F6" font-family="'Space Grotesk', sans-serif" font-size="91" font-weight="700" letter-spacing="-3.5">ST</text>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="
+    M148 28 H177 A3 3 0 0 1 180 31 V37 A3 3 0 0 1 177 40 H148 A3 3 0 0 1 145 37 V31 A3 3 0 0 1 148 28 Z
+    M151 31.8 A2.2 2.2 0 1 0 151 36.2 A2.2 2.2 0 1 0 151 31.8 Z
+    M136 54 H177 A3 3 0 0 1 180 57 V63 A3 3 0 0 1 177 66 H136 A3 3 0 0 1 133 63 V57 A3 3 0 0 1 136 54 Z
+    M139 57.8 A2.2 2.2 0 1 0 139 62.2 A2.2 2.2 0 1 0 139 57.8 Z
+    M124 80 H177 A3 3 0 0 1 180 83 V89 A3 3 0 0 1 177 92 H124 A3 3 0 0 1 121 89 V83 A3 3 0 0 1 124 80 Z
+    M127 83.8 A2.2 2.2 0 1 0 127 88.2 A2.2 2.2 0 1 0 127 83.8 Z
+  " fill="#A1A1AA" />
+  <path d="M127 80 V60 H133 M139 54 V34 H145" fill="none" stroke="#A1A1AA" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="127" cy="60" r="2.1" fill="#A1A1AA" />
+  <circle cx="139" cy="34" r="2.1" fill="#A1A1AA" />
+  <path d="
+    M188 28 H215 C228.5 28 237 34 237 43.5 C237 50.5 232.5 55.8 224.5 58.8 C234 61.8 239 67.8 239 76 C239 85.8 229.5 92 215 92 H188 C186.9 92 186 91.1 186 90 V82 C186 80.9 186.9 80 188 80 H213.5 C220.5 80 224 77.5 224 73 C224 68.5 220.5 66 213.5 66 H188 C186.9 66 186 65.1 186 64 V56 C186 54.9 186.9 54 188 54 H212.5 C219 54 222.5 51.5 222.5 47 C222.5 42.8 219 40 212.5 40 H188 C186.9 40 186 39.1 186 38 V30 C186 28.9 186.9 28 188 28 Z
+  " fill="#F4F4F6" />
+  <text x="244" y="92" text-anchor="start" fill="#F4F4F6" font-family="'Space Grotesk', sans-serif" font-size="91" font-weight="700" letter-spacing="-3.5">UP</text>
 </svg>

@@ -21,7 +21,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { LogoIcon } from '@/components/ui/logo-icon'
+import { StebupWordmark } from '@/components/ui/stebup-logo'
 import { services } from '../../data/services'
 import { useLocation } from 'react-router-dom'
 import { prefetchPage } from '../../lib/prefetch'
@@ -67,67 +67,39 @@ const AppBrand = ({ className = "" }: { className?: string }) => {
 
   const getSubtitle = () => {
     if (currentService) return currentService.title.split(' ')[0]
-    return 'Digital Hub'
+    return 'Digital Studio'
   }
 
   const getSubtitleColor = () => {
-    return currentService ? currentService.theme.text : 'text-white/70'
+    return currentService ? currentService.theme.text : 'text-zinc-400'
   }
 
-  const getThemeColor = () => {
-    return currentService ? currentService.theme.plasmaColor : '#FFFFFF'
-  }
+  // The designed stepped "E" takes the respective page's accent color
+  const accentColor = currentService ? currentService.theme.plasmaColor : '#A1A1AA'
+
+  // Sync the browser tab favicon's designed "E" to the active page color
+  useEffect(() => {
+    const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
+    if (!link) return
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none"><rect width="128" height="128" rx="28" fill="#0B0B0E"/><g transform="translate(-85, 16) scale(0.82)"><path fill-rule="evenodd" clip-rule="evenodd" d="M148 28 H177 A3 3 0 0 1 180 31 V37 A3 3 0 0 1 177 40 H148 A3 3 0 0 1 145 37 V31 A3 3 0 0 1 148 28 Z M151 31.8 A2.2 2.2 0 1 0 151 36.2 A2.2 2.2 0 1 0 151 31.8 Z M136 54 H177 A3 3 0 0 1 180 57 V63 A3 3 0 0 1 177 66 H136 A3 3 0 0 1 133 63 V57 A3 3 0 0 1 136 54 Z M139 57.8 A2.2 2.2 0 1 0 139 62.2 A2.2 2.2 0 1 0 139 57.8 Z M124 80 H177 A3 3 0 0 1 180 83 V89 A3 3 0 0 1 177 92 H124 A3 3 0 0 1 121 89 V83 A3 3 0 0 1 124 80 Z M127 83.8 A2.2 2.2 0 1 0 127 88.2 A2.2 2.2 0 1 0 127 83.8 Z" fill="${accentColor}"/><path d="M127 80 V60 H133 M139 54 V34 H145" fill="none" stroke="${accentColor}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="127" cy="60" r="2.1" fill="${accentColor}"/><circle cx="139" cy="34" r="2.1" fill="${accentColor}"/><path d="M188 28 H215 C228.5 28 237 34 237 43.5 C237 50.5 232.5 55.8 224.5 58.8 C234 61.8 239 67.8 239 76 C239 85.8 229.5 92 215 92 H188 C186.9 92 186 91.1 186 90 V82 C186 80.9 186.9 80 188 80 H213.5 C220.5 80 224 77.5 224 73 C224 68.5 220.5 66 213.5 66 H188 C186.9 66 186 65.1 186 64 V56 C186 54.9 186.9 54 188 54 H212.5 C219 54 222.5 51.5 222.5 47 C222.5 42.8 219 40 212.5 40 H188 C186.9 40 186 39.1 186 38 V30 C186 28.9 186.9 28 188 28 Z" fill="#F4F4F6"/></g></svg>`
+    link.href = `data:image/svg+xml,${encodeURIComponent(svg)}`
+  }, [accentColor])
 
   return (
     <motion.div
-      className={`group flex items-center cursor-pointer gap-2.5 ${className}`}
+      className={`group flex flex-col items-start cursor-pointer ${className}`}
       onClick={() => window.location.hash = '#/'}
-      whileHover={{ scale: 1.03 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      whileHover={{ opacity: 0.92 }}
+      transition={{ duration: 0.15 }}
     >
-      <LogoIcon
-        size={38}
-        color={getThemeColor()}
-        className="drop-shadow-[0_0_12px_rgba(217,70,239,0.25)] transition-transform duration-500 group-hover:scale-105"
+      <StebupWordmark
+        accentColor={accentColor}
+        primaryColor="#F4F4F6"
+        className="h-[15px] w-[66px] sm:h-[16px] sm:w-[70px]"
       />
-      <div className="flex flex-col">
-        <div className="flex items-baseline">
-          <h1
-            className="text-[22px] font-black tracking-tight leading-none transition-all duration-500 flex items-baseline"
-            style={{
-              textShadow: currentService
-                ? `0 0 18px ${currentService.theme.plasmaColor}55`
-                : '0 0 18px rgba(168, 85, 247, 0.25)'
-            }}
-          >
-            <span className="bg-gradient-to-b from-white via-white to-zinc-300 bg-clip-text text-transparent">
-              Steb
-            </span>
-            <span
-              className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent transition-all duration-500"
-              style={
-                currentService
-                  ? {
-                      backgroundImage: `linear-gradient(135deg, #ffffff 0%, ${currentService.theme.plasmaColor} 100%)`
-                    }
-                  : undefined
-              }
-            >
-              up
-            </span>
-          </h1>
-          <span
-            className="w-1.5 h-1.5 rounded-full ml-0.5 mb-0.5 transition-all duration-500 group-hover:scale-125"
-            style={{
-              backgroundColor: currentService ? currentService.theme.plasmaColor : '#06b6d4',
-              boxShadow: `0 0 8px ${currentService ? currentService.theme.plasmaColor : '#06b6d4'}`
-            }}
-          />
-        </div>
-        <p className={`text-[9px] uppercase tracking-[0.26em] font-extrabold leading-tight mt-0.5 transition-colors duration-500 ${getSubtitleColor()}`}>
-          {getSubtitle()}
-        </p>
-      </div>
+      <p className={`text-[8px] font-mono uppercase tracking-[0.2em] font-medium leading-none mt-1 transition-colors duration-300 ${getSubtitleColor()}`}>
+        {getSubtitle()}
+      </p>
     </motion.div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LogoIcon } from '@/components/ui/logo-icon'
+import { StebupWordmark } from '@/components/ui/stebup-logo'
 import { Twitter, Linkedin, Github, Mail, MapPin, Phone } from 'lucide-react'
 import { services } from '../../data/services'
 import { useLocation } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom'
 export const Footer: React.FC = () => {
   const { pathname } = useLocation()
   const currentService = Object.values(services).find(s => pathname.includes(s.key))
-  const themeColor = currentService ? currentService.theme.plasmaColor : '#FFFFFF'
+  const accentColor = currentService ? currentService.theme.plasmaColor : '#A1A1AA'
 
   return (
     <footer className="bg-black text-white border-t border-white/10">
@@ -17,45 +17,12 @@ export const Footer: React.FC = () => {
 
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <LogoIcon
-                size={38}
-                color={themeColor}
-                className="group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(217,70,239,0.25)]"
+            <Link to="/" className="inline-flex items-center group">
+              <StebupWordmark
+                accentColor={accentColor}
+                primaryColor="#F4F4F6"
+                className="h-6 w-[105px] transition-opacity duration-200 group-hover:opacity-85"
               />
-              <div className="flex items-baseline">
-                <span
-                  className="text-[22px] font-black tracking-tight leading-none transition-all duration-500 flex items-baseline"
-                  style={{
-                    textShadow: currentService
-                      ? `0 0 18px ${currentService.theme.plasmaColor}55`
-                      : '0 0 18px rgba(168, 85, 247, 0.25)'
-                  }}
-                >
-                  <span className="bg-gradient-to-b from-white via-white to-zinc-300 bg-clip-text text-transparent">
-                    Steb
-                  </span>
-                  <span
-                    className="bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent transition-all duration-500"
-                    style={
-                      currentService
-                        ? {
-                            backgroundImage: `linear-gradient(135deg, #ffffff 0%, ${currentService.theme.plasmaColor} 100%)`
-                          }
-                        : undefined
-                    }
-                  >
-                    up
-                  </span>
-                </span>
-                <span
-                  className="w-1.5 h-1.5 rounded-full ml-0.5 mb-0.5 transition-all duration-500 group-hover:scale-125"
-                  style={{
-                    backgroundColor: currentService ? currentService.theme.plasmaColor : '#06b6d4',
-                    boxShadow: `0 0 8px ${currentService ? currentService.theme.plasmaColor : '#06b6d4'}`
-                  }}
-                />
-              </div>
             </Link>
             <p className="text-white/70 leading-relaxed max-w-xs">
               Pioneering the future of technology, business, and design. We turn visionary ideas into reality.
