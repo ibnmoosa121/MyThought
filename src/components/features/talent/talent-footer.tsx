@@ -76,21 +76,21 @@ export const TalentFooter = () => {
 
                                 <div>
                                     <span className="text-zinc-500 font-mono text-xs block mb-4">
-                                        Offices
+                                        Regional Network
                                     </span>
                                     <div className="space-y-4 text-zinc-700">
                                         <div className="flex gap-3">
                                             <MapPin size={18} className="text-zinc-950 shrink-0 mt-0.5" />
                                             <div>
-                                                <p className="text-sm font-medium text-zinc-950">Jeddah Hub, KSA</p>
-                                                <p className="text-zinc-500 text-xs font-mono">Headquarters</p>
+                                                <p className="text-sm font-medium text-zinc-950">Middle East &amp; GCC</p>
+                                                <p className="text-zinc-500 text-xs font-mono">Regional Operations</p>
                                             </div>
                                         </div>
                                         <div className="flex gap-3">
                                             <MapPin size={18} className="text-zinc-500 shrink-0 mt-0.5" />
                                             <div>
-                                                <p className="text-sm font-medium text-zinc-950">DIFC, Dubai, UAE</p>
-                                                <p className="text-zinc-500 text-xs font-mono">Regional Hub</p>
+                                                <p className="text-sm font-medium text-zinc-950">Saudi Arabia &amp; UAE</p>
+                                                <p className="text-zinc-500 text-xs font-mono">Market Coverage</p>
                                             </div>
                                         </div>
                                     </div>

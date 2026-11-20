@@ -102,7 +102,7 @@ export const ContactForm = () => {
                             {[
                                 { icon: Mail, label: "Direct Email", val: "hello@stebup.com" },
                                 { icon: Phone, label: "Direct Phone", val: "+966 (12) 000-1234" },
-                                { icon: MapPin, label: "Regional Headquarters", val: "Jeddah, Kingdom of Saudi Arabia" }
+                                { icon: MapPin, label: "Regional Presence", val: "Middle East & GCC" }
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}

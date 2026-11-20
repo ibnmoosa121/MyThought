@@ -21,49 +21,49 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const services = [
     {
         title: "System Integration",
-        description: "Seamlessly connecting your software ecosystems for maximum efficiency and data flow.",
+        description: "Connecting disparate APIs, legacy databases, and third-party services into unified workflows.",
         icon: Cpu,
         color: "#3B82F6",
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Custom Software",
-        description: "Tailored solutions built from the ground up to address your unique business challenges.",
+        description: "Purpose-built applications engineered around your operational workflows and domain requirements.",
         icon: Code2,
         color: "#10B981",
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Mobile Apps",
-        description: "Scalable and intuitive mobile experiences developed for both iOS and Android platforms.",
+        description: "Native and cross-platform mobile applications built for iOS and Android.",
         icon: Smartphone,
         color: "#F59E0B",
         image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Web Platforms",
-        description: "Modern, responsive, and high-performance web applications built with the latest technologies.",
+        description: "Fast, accessible web applications and internal portals built with modern frontend frameworks.",
         icon: Globe,
         color: "#EF4444",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=1200&auto=format&fit=crop"
     },
     {
         title: "Managed Support",
-        description: "Comprehensive end-to-end technical management to ensure your systems perform at their peak.",
+        description: "Ongoing maintenance, SLA-backed monitoring, and technical support for production systems.",
         icon: Settings,
         color: "#8B5CF6",
         image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=75&w=1200&auto=format&fit=crop"
     },
     {
-        title: "Cloud Logic",
-        description: "Enhancing your cloud infrastructure for better performance, security, and cost-efficiency.",
+        title: "Cloud Infrastructure",
+        description: "Cloud architecture optimization for uptime, security, and predictable infrastructure spend.",
         icon: Cloud,
         color: "#06B6D4",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=75&w=1200&auto=format&fit=crop"
     },
     {
-        title: "DevOps Core",
-        description: "Automating your software delivery pipeline for faster, more reliable releases.",
+        title: "DevOps & CI/CD",
+        description: "Automated build, test, and deployment pipelines for reliable, repeatable releases.",
         icon: Terminal,
         color: "#EC4899",
         image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=75&w=1200&auto=format&fit=crop"
@@ -219,22 +219,22 @@ export const SoftwareServices = () => {
                             </div>
                         </motion.div>
                         <motion.h2
-                            initial={{ opacity: 0, scale: 0.9 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            className="text-6xl md:text-8xl font-black text-white uppercase italic tracking-tighter leading-none"
+                            className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-none"
                         >
-                            The Neural <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary/50">Infrastructure</span>
+                            Core Engineering <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary/50">Capabilities</span>
                         </motion.h2>
 
                         <motion.p
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            transition={{ delay: 1 }}
-                            className="text-[10px] md:text-xs text-white/30 mt-6 uppercase tracking-[0.3em] font-black flex items-center justify-center gap-3"
+                            transition={{ delay: 0.5 }}
+                            className="text-xs text-white/40 mt-5 font-mono flex items-center justify-center gap-2.5"
                         >
-                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-                            Click nodes to reveal technical specifications
+                            <span className="w-2 h-2 rounded-full bg-primary" />
+                            Select a capability to inspect technical focus
                         </motion.p>
                     </div>
                 </div>
@@ -306,7 +306,7 @@ export const SoftwareServices = () => {
                                     }}
                                 >
                                     <h3
-                                        className="text-3xl font-black uppercase italic tracking-tighter"
+                                        className="text-2xl font-semibold tracking-tight"
                                         style={{ color: displayIdx === index ? service.color : "#ffffff" }}
                                     >
                                         {service.title}

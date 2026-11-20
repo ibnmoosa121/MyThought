@@ -4,7 +4,6 @@ import { Marquee } from "../../ui/marquee";
 import { Card, CardContent } from "../../ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { CheckCircle2, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
 
 const PAYMENT_SLIPS = [
     {
@@ -55,7 +54,7 @@ const PAYMENT_SLIPS = [
         time: "10:51 AM",
         method: "Local Transfer",
         img: "https://api.dicebear.com/7.x/avataaars/svg?seed=Omar",
-        location: "Jeddah, KSA"
+        location: "Riyadh, KSA"
     },
     {
         amount: "IDR 15.5M",
@@ -71,25 +70,25 @@ const PAYMENT_SLIPS = [
 
 function PaymentSlip({ amount, recipient, id, time, method, img, location }: (typeof PAYMENT_SLIPS)[number]) {
     return (
-        <Card className="w-[320px] bg-zinc-950 border border-teal-500/20 shadow-[0_0_30px_rgba(20,184,166,0.1)] backdrop-blur-xl group hover:border-teal-500/50 transition-all duration-300">
+        <Card className="w-[320px] bg-zinc-950 border border-white/10 group hover:border-teal-500/40 transition-colors duration-200">
             <CardContent className="p-5">
                 {/* Header: Success Status */}
-                <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
-                    <div className="flex items-center gap-2 text-teal-500">
-                        <CheckCircle2 size={16} className="fill-teal-500/20" />
-                        <span className="text-xs font-bold uppercase tracking-wider">Payment success</span>
+                <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
+                    <div className="flex items-center gap-2 text-teal-400">
+                        <CheckCircle2 size={15} />
+                        <span className="text-xs font-medium">Settled</span>
                     </div>
-                    <span className="text-[10px] font-mono text-zinc-500">{time}</span>
+                    <span className="text-[11px] font-mono text-zinc-500 tabular-nums">{time}</span>
                 </div>
 
                 {/* Body: Amount & Recipient */}
                 <div className="flex items-start justify-between mb-4">
                     <div className="flex flex-col">
-                        <span className="text-xs text-zinc-400 mb-1">Total Amount</span>
-                        <span className="text-2xl font-black text-white tracking-tight">{amount}</span>
+                        <span className="text-xs text-zinc-500 mb-1">Amount</span>
+                        <span className="text-2xl font-semibold text-white tracking-tight tabular-nums">{amount}</span>
                     </div>
-                    <div className="p-2 bg-teal-500/10 rounded-lg group-hover:bg-teal-500/20 transition-colors">
-                        <ArrowUpRight size={20} className="text-teal-500" />
+                    <div className="p-2 bg-teal-500/10 rounded-lg">
+                        <ArrowUpRight size={18} className="text-teal-400" />
                     </div>
                 </div>
 
@@ -101,13 +100,13 @@ function PaymentSlip({ amount, recipient, id, time, method, img, location }: (ty
                             <AvatarFallback>{recipient[0]}</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col">
-                            <span className="text-xs font-bold text-zinc-200">{recipient}</span>
-                            <span className="text-[10px] text-zinc-500">{location}</span>
+                            <span className="text-xs font-medium text-zinc-200">{recipient}</span>
+                            <span className="text-[11px] text-zinc-500">{location}</span>
                         </div>
                     </div>
                     <div className="flex flex-col items-end">
-                        <span className="text-[10px] mobile-font font-mono text-teal-400">{method}</span>
-                        <span className="text-[9px] font-mono text-zinc-600">{id}</span>
+                        <span className="text-[11px] font-mono text-teal-400">{method}</span>
+                        <span className="text-[10px] font-mono text-zinc-500">{id}</span>
                     </div>
                 </div>
             </CardContent>
@@ -117,28 +116,24 @@ function PaymentSlip({ amount, recipient, id, time, method, img, location }: (ty
 
 export const FintechTestimonials = () => {
     return (
-        <section id="fintech-testimonials" className="relative py-32 bg-black overflow-hidden border-t border-white/5">
-            <div className="container mx-auto px-6 mb-20 relative z-20">
-                <div className="max-w-4xl">
-                    <motion.span
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="flex items-center gap-2 text-teal-500 font-black uppercase tracking-[0.4em] text-xs mb-4"
-                    >
-                        <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
-                        Live Ledger Feed
-                    </motion.span>
-                    <h2 id="fintech-velocity-title" className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-tight">
-                        Global <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-500 to-emerald-600">
-                            Transaction Velocity
+        <section id="fintech-testimonials" className="relative py-24 md:py-32 bg-black overflow-hidden border-t border-white/10">
+            <div className="container mx-auto px-6 max-w-6xl mb-16 relative z-20">
+                <div className="max-w-3xl">
+                    <span className="flex items-center gap-2 text-teal-400 font-mono text-xs mb-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+                        03 // Settlement architecture
+                    </span>
+                    <h2 id="fintech-velocity-title" className="text-3xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
+                        Multi-currency{" "}
+                        <span className="text-teal-400">
+                            settlement stream
                         </span>
                     </h2>
                 </div>
             </div>
 
-            {/* 3D Perspective Wrapper - Angled Upwards like a rising stream */}
-            <div className="relative h-[600px] w-full flex items-center justify-center [perspective:1000px]">
+            {/* 3D Perspective Wrapper */}
+            <div className="relative h-[560px] w-full flex items-center justify-center [perspective:1000px]">
                 <div
                     className="flex flex-row items-center justify-center gap-6 w-max"
                     style={{
@@ -175,9 +170,9 @@ export const FintechTestimonials = () => {
                 <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
             </div>
 
-            <div className="mt-16 text-center relative z-20">
-                <p className="text-zinc-600 text-xs font-black uppercase tracking-[0.5em]">
-                    Real-time Settlement via <span className="normal-case tracking-tight text-zinc-400">Stebup</span> Nodes
+            <div className="mt-12 text-center relative z-20">
+                <p className="text-zinc-500 text-xs font-mono">
+                    Illustrative multi-currency ledger preview · Stebup FinTech
                 </p>
             </div>
         </section>

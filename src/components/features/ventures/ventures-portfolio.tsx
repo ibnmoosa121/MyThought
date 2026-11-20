@@ -5,61 +5,54 @@ import { Building2, GraduationCap, Coins, Rocket, Handshake, CalendarRange, Arro
 
 const VENTURES_SERVICES = [
     {
+        code: "TRK-01",
         title: "Venture Building",
-        desc: "Drawing from extensive hands-on experience in crafting innovative solutions, we're here to turn your entrepreneurial dreams into fully operational businesses.",
-        icon: Building2,
-        color: "from-amber-400 to-orange-600"
+        desc: "Hands-on product engineering, architecture, and go-to-market execution to take early concepts into operating companies.",
+        icon: Building2
     },
     {
-        title: "Mentorship & Sharing",
-        desc: "Engage in enlightening sessions tailored to guide, challenge, and inspire, sharing our wealth of knowledge to foster your growth.",
-        icon: GraduationCap,
-        color: "from-orange-400 to-red-600"
+        code: "TRK-02",
+        title: "Founder Advisory",
+        desc: "Direct operational guidance from technical and commercial leads across product roadmap, hiring, and governance.",
+        icon: GraduationCap
     },
     {
+        code: "TRK-03",
         title: "Investment Syndicate",
-        desc: "Join our consortium of investors, collaborating to identify potential and back game-changing innovations.",
-        icon: Coins,
-        color: "from-yellow-400 to-amber-600"
+        desc: "Co-investing alongside regional family offices and institutional partners in high-conviction technology startups.",
+        icon: Coins
     },
     {
-        title: "Early-Stage Investment",
-        desc: "Fueling the future by investing in promising startups at their foundational stages, fostering growth and innovation.",
-        icon: Rocket,
-        color: "from-amber-500 to-orange-700"
+        code: "TRK-04",
+        title: "Early-Stage Capital",
+        desc: "Pre-seed and seed capital backing technical teams solving enterprise, fintech, and logistics bottlenecks.",
+        icon: Rocket
     },
     {
-        title: "Ventures Partnership",
-        desc: "Collaborate with us for strategic alignment, resource pooling, and mutual growth in the ever-evolving tech landscape.",
-        icon: Handshake,
-        color: "from-orange-500 to-amber-700"
+        code: "TRK-05",
+        title: "Corporate Partnerships",
+        desc: "Structuring joint ventures, pilot deployments, and commercial distribution with established GCC enterprises.",
+        icon: Handshake
     },
     {
-        title: "Networking Events",
-        desc: "Connect, converse, and collaborate at our curated events, bridging the gap between entrepreneurs and industry leaders.",
-        icon: CalendarRange,
-        color: "from-amber-300 to-yellow-500"
+        code: "TRK-06",
+        title: "Founder Network",
+        desc: "Curated roundtables and operator forums connecting founders with enterprise buyers, regulators, and co-investors.",
+        icon: CalendarRange
     }
 ];
 
 export const VenturesPortfolio = () => {
     return (
-        <section className="relative py-32 bg-black overflow-hidden">
-            {/* Background Texture */}
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/p6.png')] opacity-10 pointer-events-none" />
-
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-3xl mb-24">
-                    <motion.span
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="text-amber-500 font-black uppercase tracking-[0.4em] text-xs mb-4 block"
-                    >
-                        Success Engine
-                    </motion.span>
-                    <h2 className="text-5xl md:text-8xl font-black text-white italic uppercase tracking-[ - 0.05em] leading-[0.8]">
-                        Strategic <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-500">Service</span> Portfolio
+        <section id="ventures-portfolio" className="relative py-24 md:py-32 bg-black overflow-hidden">
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                <div className="max-w-3xl mb-14 md:mb-16">
+                    <span className="text-amber-500 font-mono text-xs mb-3 block">
+                        01 // Venture capabilities
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
+                        Studio &amp; investment{" "}
+                        <span className="text-zinc-400">capabilities</span>
                     </h2>
                 </div>
 
@@ -67,36 +60,34 @@ export const VenturesPortfolio = () => {
                     {VENTURES_SERVICES.map((service, i) => (
                         <motion.div
                             key={service.title}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            whileHover={{ y: -10 }}
-                            className="group relative p-8 rounded-[2.5rem] bg-zinc-900/50 border border-white/5 hover:border-amber-500/20 transition-all duration-500 overflow-hidden"
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: i * 0.05 }}
+                            className="group relative p-6 md:p-8 rounded-xl bg-zinc-950 border border-white/10 hover:border-amber-500/40 transition-colors duration-200 flex flex-col"
                         >
-                            {/* Card Glow */}
-                            <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity duration-700`} />
-
-                            <div className="relative z-10 flex flex-col h-full">
-                                <div className="flex justify-between items-start mb-8">
-                                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white group-hover:bg-amber-500 group-hover:text-black transition-all duration-500">
-                                        <service.icon size={32} />
-                                    </div>
-                                    <ArrowUpRight className="text-white/20 group-hover:text-amber-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" size={24} />
+                            <div className="flex justify-between items-start mb-6">
+                                <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-zinc-300 group-hover:bg-amber-500 group-hover:text-black group-hover:border-amber-500 flex items-center justify-center transition-colors duration-200">
+                                    <service.icon size={18} strokeWidth={1.75} />
                                 </div>
+                                <ArrowUpRight className="text-zinc-600 group-hover:text-amber-500 transition-colors" size={18} />
+                            </div>
 
-                                <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter mb-4 group-hover:text-amber-400 transition-colors">
-                                    {service.title}
-                                </h3>
+                            <h3 className="text-lg md:text-xl font-semibold text-white tracking-tight mb-2.5">
+                                {service.title}
+                            </h3>
 
-                                <p className="text-zinc-500 group-hover:text-zinc-300 transition-colors text-sm leading-relaxed mb-6">
-                                    {service.desc}
-                                </p>
+                            <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                                {service.desc}
+                            </p>
 
-                                <div className="mt-auto pt-6 border-t border-white/5">
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 group-hover:text-amber-500 transition-colors">
-                                        Phase: Scale Ready
-                                    </span>
-                                </div>
+                            <div className="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
+                                <span className="text-xs font-mono text-zinc-500">
+                                    {service.code}
+                                </span>
+                                <span className="text-xs font-mono text-zinc-400 group-hover:text-amber-500 transition-colors">
+                                    Active
+                                </span>
                             </div>
                         </motion.div>
                     ))}

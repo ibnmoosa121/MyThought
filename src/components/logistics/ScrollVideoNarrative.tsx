@@ -16,45 +16,45 @@ import {
 const steps = [
   {
     id: "pickup",
-    title: "Doorstep Pickup",
-    description: "Your journey begins at home. Our professional couriers arrive directly at your door to securely collect and label your shipment for the journey ahead.",
+    title: "Origin Pickup",
+    description: "Scheduled collection at your warehouse or facility with barcode scanning, manifest generation, and initial chain-of-custody logging.",
     visual: PickupVisual,
-    icon: <Zap className="w-6 h-6 text-cyan-400" />
+    icon: <Zap className="w-5 h-5 text-cyan-400" strokeWidth={1.75} />
   },
   {
     id: "warehouse",
-    title: "Smart Hub Sorting",
-    description: "From your door to our smart hub. Advanced AI-driven sorting systems categorize your parcel, ensuring it takes the most efficient route to its destination.",
+    title: "Hub Sorting & Routing",
+    description: "Automated hub intake classifies parcels by destination corridor, weight class, and service tier for direct line-haul dispatch.",
     visual: WarehouseVisual,
-    icon: <PackageCheck className="w-6 h-6 text-purple-400" />
+    icon: <PackageCheck className="w-5 h-5 text-cyan-400" strokeWidth={1.75} />
   },
   {
     id: "customs",
-    title: "Global Compliance",
-    description: "Crossing borders with ease. We manage all documentation and customs requirements in the background, securing rapid clearance for international shipments.",
+    title: "Customs & Clearance",
+    description: "Pre-cleared commercial invoices, HS code verification, and electronic customs filing to keep cross-border cargo moving on schedule.",
     visual: CustomsVisual,
-    icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />
+    icon: <ShieldCheck className="w-5 h-5 text-cyan-400" strokeWidth={1.75} />
   },
   {
     id: "transit",
     title: "International Transit",
-    description: "The long-haul leg. Whether by air or sea, your cargo is monitored 24/7 as it moves through our optimized global transportation network.",
+    description: "Air and sea line-haul movements monitored continuously across hub checkpoints with exception alerts.",
     visual: TransitVisual,
-    icon: <Globe2 className="w-6 h-6 text-blue-400" />
+    icon: <Globe2 className="w-5 h-5 text-cyan-400" strokeWidth={1.75} />
   },
   {
     id: "last-mile",
-    title: "Local Distribution",
-    description: "The final stretch. Arriving at the destination city, your package is loaded onto a local delivery vehicle for its final destination.",
+    title: "Local Fleet Dispatch",
+    description: "Upon arrival at the destination hub, shipments are routed onto dedicated local delivery fleets optimized by zone.",
     visual: LastMileVisual,
-    icon: <Truck className="w-6 h-6 text-orange-400" />
+    icon: <Truck className="w-5 h-5 text-cyan-400" strokeWidth={1.75} />
   },
   {
     id: "delivery",
-    title: "Door-to-Door Delivery",
-    description: "Mission accomplished. Your parcel is delivered directly to the recipient's hands, with instant digital confirmation and proof of delivery.",
+    title: "Proof of Delivery",
+    description: "Final handoff completed at the recipient's location with digital signature capture and live delivery confirmation.",
     visual: DeliveryVisual,
-    icon: <CheckCircle2 className="w-6 h-6 text-green-400" />
+    icon: <CheckCircle2 className="w-5 h-5 text-cyan-400" strokeWidth={1.75} />
   }
 ];
 
@@ -76,10 +76,15 @@ const wavePoints = Array.from({ length: WAVE_POINTS }).map((_, i) => {
   return `${x},${y}`;
 }).join(' ');
 
-export const ScrollNarrative = () => {
+export const ScrollNarrative = ({
+  onParcelFadeComplete,
+}: {
+  onParcelFadeComplete?: (faded: boolean) => void;
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const stepsContainerRef = useRef<HTMLDivElement>(null);
   const parcelRef = useRef<HTMLDivElement>(null);
+  const handedOffRef = useRef(false);
 
   useGSAP(() => {
     // Initial setup for the parcel
@@ -129,6 +134,13 @@ export const ScrollNarrative = () => {
             gsap.set(parcelRef.current, { opacity: 1 - opacityProgress });
           } else {
             gsap.set(parcelRef.current, { opacity: 1 });
+          }
+
+          // Notify parent once the upper parcel has completely faded out (and reset when scrolling back up)
+          const hasFaded = progress >= 0.99;
+          if (hasFaded !== handedOffRef.current) {
+            handedOffRef.current = hasFaded;
+            onParcelFadeComplete?.(hasFaded);
           }
 
           // Calculate rotation derivative for lean effect

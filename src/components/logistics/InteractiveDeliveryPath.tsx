@@ -6,34 +6,34 @@ const STAGES = [
     {
         id: 'pickup',
         title: 'Warehouse Pickup',
-        icon: <MapPin className="w-6 h-6" />,
-        description: 'Your shipment is safely picked up and scanned at the origin warehouse, initiating the digital tracking journey.',
-        color: 'from-blue-500 to-cyan-500'
+        icon: <MapPin className="w-5 h-5" strokeWidth={1.75} />,
+        description: 'Cargo is scanned at the origin facility, generating the digital airway bill and chain-of-custody record.',
+        color: 'from-cyan-500 to-cyan-400'
     },
     {
         id: 'sorting',
-        title: 'Global Hub Sorting',
-        icon: <Truck className="w-6 h-6" />,
-        description: 'Advanced automated sorting systems categorize your parcel for the fastest international route across our global network.',
-        color: 'from-cyan-500 to-teal-500'
+        title: 'Regional Hub Sorting',
+        icon: <Truck className="w-5 h-5" strokeWidth={1.75} />,
+        description: 'Automated hub classification routes shipments onto the next outbound air, ocean, or land corridor.',
+        color: 'from-cyan-500 to-cyan-400'
     },
     {
         id: 'customs',
         title: 'Customs Clearance',
-        icon: <ShieldCheck className="w-6 h-6" />,
-        description: 'Expert documentation handling and digital clearance processes ensure your goods pass through borders without delay.',
-        color: 'from-teal-500 to-emerald-500'
+        icon: <ShieldCheck className="w-5 h-5" strokeWidth={1.75} />,
+        description: 'Electronic customs filing and compliance verification clear cargo through destination borders.',
+        color: 'from-cyan-500 to-cyan-400'
     },
     {
         id: 'delivery',
-        title: 'Final Destination',
-        icon: <CheckCircle2 className="w-6 h-6" />,
-        description: 'The final mile delivery is completed with real-time proof of delivery and doorstep notification.',
-        color: 'from-emerald-500 to-green-500'
+        title: 'Final Delivery',
+        icon: <CheckCircle2 className="w-5 h-5" strokeWidth={1.75} />,
+        description: 'Last-mile dispatch completes delivery with timestamped digital proof of receipt.',
+        color: 'from-cyan-500 to-cyan-400'
     }
 ];
 
-export const InteractiveDeliveryPath = () => {
+export const InteractiveDeliveryPath = ({ isVisible = true }: { isVisible?: boolean }) => {
     const [activeStage, setActiveStage] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const constraintsRef = useRef<HTMLDivElement>(null);
@@ -57,33 +57,26 @@ export const InteractiveDeliveryPath = () => {
     }, [boxX, activeStage]);
 
     return (
-        <div className="py-24 px-4 md:px-8 relative z-10 bg-slate-950/50 border-y border-white/5 overflow-hidden">
+        <div className="py-24 px-6 relative z-10 bg-zinc-950/60 border-y border-white/10 overflow-hidden">
             <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-20">
-                    <motion.span 
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="text-cyan-400 font-bold tracking-[0.2em] uppercase text-sm mb-4 block"
-                    >
-                        Interactive Experience
-                    </motion.span>
-                    <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-cyan-400">
-                        Track the Journey
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-semibold mb-4 text-white tracking-tight">
+                        Track each milestone
                     </h2>
-                    <p className="text-white/50 max-w-2xl mx-auto text-lg md:text-xl font-medium">
-                        Drag the courier box along the path to witness how we handle your shipment at every critical milestone.
+                    <p className="text-zinc-400 max-w-xl mx-auto text-base md:text-lg leading-relaxed">
+                        Drag the shipment marker along the route to inspect each stage of the corridor.
                     </p>
                 </div>
 
                 {/* Path Container */}
-                <div className="relative mb-24 h-40 flex items-center" ref={containerRef}>
+                <div className="relative mb-20 h-40 flex items-center" ref={containerRef}>
                     <div className="absolute inset-0 flex items-center pointer-events-none" ref={constraintsRef}>
                         {/* Background Path Line */}
-                        <div className="relative w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                        <div className="relative w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
                             <motion.div 
-                                className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 shadow-[0_0_15px_rgba(34,211,238,0.5)]"
+                                className="absolute top-0 left-0 h-full bg-cyan-400"
                                 animate={{ width: `${(activeStage / (STAGES.length - 1)) * 100}%` }}
-                                transition={{ type: "spring", stiffness: 50, damping: 20 }}
+                                transition={{ duration: 0.3, ease: "easeOut" }}
                             />
                         </div>
                     </div>
@@ -138,13 +131,17 @@ export const InteractiveDeliveryPath = () => {
                         dragConstraints={containerRef}
                         dragElastic={0.1}
                         dragMomentum={false}
-                        initial={{ y: -100, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 1.5, type: "spring", bounce: 0.4 }}
-                        style={{ x: boxX, touchAction: 'none' }}
+                        initial={{ y: -24, opacity: 0, scale: 0.92 }}
+                        animate={
+                            isVisible
+                                ? { y: 0, opacity: 1, scale: 1 }
+                                : { y: -24, opacity: 0, scale: 0.92 }
+                        }
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        style={{ x: boxX, touchAction: 'none', pointerEvents: isVisible ? 'auto' : 'none' }}
                         className="absolute left-0 z-50 cursor-grab active:cursor-grabbing group"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.96 }}
                     >
                         <div className="relative">
                             <motion.div 

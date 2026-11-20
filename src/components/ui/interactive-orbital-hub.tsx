@@ -91,12 +91,12 @@ export default function InteractiveOrbitalHub({ width = 340, height = 340, class
       }
     });
 
-    // Jeddah Highlights (Famous Landmarks) orbiting in 3D space
+    // Regional Hub Highlights (Middle East & GCC Hubs) orbiting in 3D space
     const landmarks: LandmarkNode[] = [
-      { name: "Al-Balad", ringIndex: 0, angle: 0, speed: 0.004, size: 3, color: "#34d399", glowColor: "rgba(52, 211, 153, 0.4)" }, // Emerald Green
-      { name: "King Fahd's Fountain", ringIndex: 1, angle: Math.PI * 0.6, speed: -0.003, size: 3, color: "#60a5fa", glowColor: "rgba(96, 165, 250, 0.4)" }, // Bright Blue
-      { name: "Jeddah Yacht Club", ringIndex: 2, angle: Math.PI * 1.2, speed: 0.002, size: 3, color: "#fbbf24", glowColor: "rgba(251, 191, 36, 0.4)" }, // Gold
-      { name: "Red Sea Corniche", ringIndex: 3, angle: Math.PI * 1.8, speed: -0.0025, size: 3, color: "#2dd4bf", glowColor: "rgba(45, 212, 191, 0.4)" } // Teal
+      { name: "Riyadh Hub", ringIndex: 0, angle: 0, speed: 0.004, size: 3, color: "#34d399", glowColor: "rgba(52, 211, 153, 0.4)" }, // Emerald Green
+      { name: "Dubai DIFC", ringIndex: 1, angle: Math.PI * 0.6, speed: -0.003, size: 3, color: "#60a5fa", glowColor: "rgba(96, 165, 250, 0.4)" }, // Bright Blue
+      { name: "Doha Gateway", ringIndex: 2, angle: Math.PI * 1.2, speed: 0.002, size: 3, color: "#fbbf24", glowColor: "rgba(251, 191, 36, 0.4)" }, // Gold
+      { name: "Abu Dhabi Hub", ringIndex: 3, angle: Math.PI * 1.8, speed: -0.0025, size: 3, color: "#2dd4bf", glowColor: "rgba(45, 212, 191, 0.4)" } // Teal
     ]
 
     // Helper functions for 3D rotation and projection
@@ -301,7 +301,7 @@ export default function InteractiveOrbitalHub({ width = 340, height = 340, class
         }
       })
 
-      // Update and project Jeddah landmarks (3D Rotating Text labels)
+      // Update and project regional hub nodes (3D Rotating Text labels)
       landmarks.forEach((landmark) => {
         landmark.angle += landmark.speed
         const ring = rings[landmark.ringIndex]
@@ -401,7 +401,7 @@ export default function InteractiveOrbitalHub({ width = 340, height = 340, class
       // Tech details text overlay
       context.fillStyle = "rgba(52, 211, 153, 0.35)" // Emerald accent text
       context.font = "8px monospace"
-      context.fillText("JEDDAH RADAR // ONLINE", 24, 30)
+      context.fillText("MIDDLE EAST // REGIONAL RADAR", 24, 30)
 
       animationFrameId = requestAnimationFrame(render)
     }

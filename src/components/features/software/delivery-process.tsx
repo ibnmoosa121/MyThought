@@ -27,15 +27,15 @@ const steps = [
     image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=75&w=800&auto=format&fit=crop"
   },
   {
-    title: "AI-Driven Engineering",
-    desc: "Smart Automation & Prediction",
+    title: "Applied AI & Automation",
+    desc: "Model Integration & RAG Pipelines",
     tech: ["OpenAI API", "TensorFlow", "Vector Search", "RAG Pipelines", "AutoML"],
     color: "bg-pink-500",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=75&w=800&auto=format&fit=crop"
   },
   {
-    title: "Global Scalability",
-    desc: "Multi-Region Availability",
+    title: "Multi-Region Scalability",
+    desc: "High-Availability Infrastructure",
     color: "bg-emerald-500",
     tech: ["CDN", "Load Balancing", "Auto-Scaling", "Geo-Replication", "99.99% Uptime"],
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=75&w=800&auto=format&fit=crop"
@@ -66,15 +66,15 @@ export default function DeliveryProcess() {
 
       <div className="container mx-auto px-4 pt-20 md:pt-32 text-center max-w-4xl relative z-10">
         <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20">
-          <span className="text-sm font-bold tracking-widest text-primary uppercase">Technical Excellence</span>
+          <span className="text-xs font-mono tracking-wider text-primary uppercase">Engineering Standards</span>
         </div>
         <ScrollRevealText
-          text="Engineering the Future"
-          className="text-4xl md:text-7xl font-bold mb-8 text-white tracking-tight"
+          text="Production Engineering"
+          className="text-4xl md:text-6xl font-semibold mb-6 text-white tracking-tight"
         />
         <ScrollRevealText
-          text="We build robust, scalable, and secure software ecosystems designed to drive digital transformation and sustainable growth."
-          className="text-lg md:text-2xl text-white/70 leading-relaxed mx-auto max-w-3xl"
+          text="We architect, secure, and deploy reliable software systems engineered for high-throughput enterprise workloads."
+          className="text-lg md:text-xl text-white/70 leading-relaxed mx-auto max-w-3xl"
           delay={0.2}
         />
       </div>

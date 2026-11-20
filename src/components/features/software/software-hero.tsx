@@ -44,8 +44,8 @@ export const SoftwareHero = () => {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="flex flex-col items-center"
                 >
-                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white leading-tight tracking-tight uppercase">
-                        Software & <br />
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight tracking-tight">
+                        Software &amp; <br />
                         <span className={`bg-gradient-to-r ${service.theme.gradient} bg-clip-text text-transparent`}>
                             Technology
                         </span>
@@ -57,7 +57,7 @@ export const SoftwareHero = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5, duration: 1 }}
                     >
-                        From idea to implementation, we develop cutting-edge software solutions that unlock new opportunities and maximize your business's full potential.
+                        From architecture to production, we engineer custom software platforms, cloud systems, and enterprise applications built for reliability and scale.
                     </motion.p>
 
                     <motion.div
@@ -68,15 +68,15 @@ export const SoftwareHero = () => {
                     >
                         <button
                             onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-                            className={`px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-1`}
+                            className={`px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors`}
                         >
-                            {service.cta}
+                            Explore Capabilities
                         </button>
                         <button
                             onClick={() => navigate('/contact', { state: { from: 'software' } })}
-                            className="px-10 py-4 bg-neutral-900/80 hover:bg-neutral-800 text-white font-bold rounded-xl border border-neutral-800 transition-all hover:-translate-y-1"
+                            className="px-8 py-3.5 bg-neutral-900/80 hover:bg-neutral-800 text-white font-semibold rounded-xl border border-neutral-800 transition-colors"
                         >
-                            Get Started
+                            Start a Project
                         </button>
                     </motion.div>
                 </motion.div>

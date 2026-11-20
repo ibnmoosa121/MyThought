@@ -6,33 +6,33 @@ import { useRef } from "react";
 const steps = [
     {
         number: "01",
-        title: "Discovery & Strategy",
-        description: "We begin with deep market analysis and technical feasibility studies to align your vision with scalable architecture."
+        title: "Discovery & Architecture",
+        description: "We conduct technical feasibility reviews and system mapping to align requirements with a scalable architecture."
     },
     {
         number: "02",
-        title: "User-Centric Design",
-        description: "Creating intuitive UI/UX prototypes that map the user journey and ensure seamless interaction."
+        title: "Interface & Systems Design",
+        description: "Interactive UI/UX prototypes and data models to validate user flows and system behavior early."
     },
     {
         number: "03",
-        title: "Agile Engineering",
-        description: "Iterative development sprints with bi-weekly deliverables, ensuring transparency and adaptability."
+        title: "Iterative Engineering",
+        description: "Focused development sprints with bi-weekly releases, keeping delivery transparent and testable."
     },
     {
         number: "04",
-        title: "Rigorous QA Testing",
-        description: "Comprehensive automated and manual testing cycles to guarantee performance, security, and bug-free code."
+        title: "Automated & Manual QA",
+        description: "Comprehensive regression, security, and load testing cycles to ensure production stability."
     },
     {
         number: "05",
-        title: "DevOps Deployment",
-        description: "Automated CI/CD pipelines for zero-downtime releases and robust cloud infrastructure setup."
+        title: "CI/CD & Cloud Deployment",
+        description: "Automated deployment pipelines for zero-downtime releases and hardened cloud infrastructure."
     },
     {
         number: "06",
-        title: "Evolution & Support",
-        description: "Continuous monitoring, feature enhancements, and proactive maintenance to scale with your growth."
+        title: "Operations & Support",
+        description: "Continuous observability, performance tuning, and ongoing feature iteration as usage scales."
     }
 ];
 
@@ -56,21 +56,19 @@ export const SoftwareMethodology = () => {
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        className="text-primary font-bold tracking-widest uppercase text-sm mb-4"
+                        className="text-primary font-mono text-xs tracking-wider uppercase mb-3"
                     >
-                        Our Methodology
+                        Delivery Methodology
                     </motion.p>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-bold text-white uppercase italic tracking-tighter"
+                        className="text-4xl md:text-5xl font-semibold text-white tracking-tight"
                     >
-                        From vision to reality
+                        How we deliver
                     </motion.h2>
-                    <p className="mt-6 text-zinc-400 max-w-2xl mx-auto text-lg">
-                        Innovative strategic approach that transforms your business through technology,
-                        high-quality solutions, and continuous support. We follow a detailed roadmap
-                        from concept to implementation.
+                    <p className="mt-5 text-zinc-400 max-w-2xl mx-auto text-base md:text-lg">
+                        A structured six-stage delivery cycle from technical discovery through production deployment and ongoing operational support.
                     </p>
                 </div>
 
@@ -107,7 +105,7 @@ export const SoftwareMethodology = () => {
                                     <div className={`inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs mb-3 uppercase tracking-widest`}>
                                         Phase {step.number}
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 uppercase tracking-tight">
+                                    <h3 className="text-xl md:text-2xl font-semibold text-white mb-2 tracking-tight">
                                         {step.title}
                                     </h3>
                                     <p className="text-zinc-400 text-sm leading-relaxed max-w-md mx-auto md:mx-0">

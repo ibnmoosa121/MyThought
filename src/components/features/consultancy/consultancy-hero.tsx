@@ -7,39 +7,39 @@ const consultants = [
     {
         id: "cap",
         name: "Human Capital",
-        specialty: "TALENT ORCHESTRATION",
+        specialty: "Workforce Strategy",
         image: "/assets/images/gulf-human-capital.webp",
-        color: "#10B981", // Islamic Emerald
+        color: "#10B981",
         keyword: "STRATEGY"
     },
     {
         id: "ops",
-        name: "Sovereign Ops",
-        specialty: "STRATEGIC ADVISORY",
+        name: "Institutional Ops",
+        specialty: "Operational Advisory",
         image: "/assets/images/gulf-sovereign-ops.webp",
-        color: "#004D40", // Islamic Emerald
+        color: "#10B981",
         keyword: "INSIGHT"
     },
     {
         id: "reg",
-        name: "Institutional Reg",
-        specialty: "GOVERNANCE & RISK",
+        name: "Governance & Risk",
+        specialty: "Regulatory Compliance",
         image: "/assets/images/gulf-institutional-reg.webp",
-        color: "#34D399", // Light Emerald
+        color: "#34D399",
         keyword: "COMPLY"
     },
     {
         id: "dig",
-        name: "Digital Frontier",
-        specialty: "TRANSFORMATION",
+        name: "Digital Systems",
+        specialty: "Enterprise Transformation",
         image: "/assets/images/gulf-digital-frontier.webp",
-        color: "#14B8A6", // Teal
-        keyword: "EVOLVE"
+        color: "#14B8A6",
+        keyword: "SYSTEMS"
     },
     {
         id: "exp",
         name: "Regional Growth",
-        specialty: "MARKET ASCENSION",
+        specialty: "Market Entry",
         image: "/assets/images/gulf-regional-growth.webp",
         color: "#059669",
         keyword: "EXPAND"
@@ -139,42 +139,30 @@ export const ConsultancyHero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80" />
             </div>
 
-            {/* Floating Title (Large low-opacity background text) */}
-            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none z-10 overflow-hidden">
-                <motion.h2
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{
-                        opacity: hoveredId ? 0.08 : 0.04,
-                        scale: hoveredId ? 1.05 : 1,
-                        y: hoveredId ? -20 : 0
-                    }}
-                    className="text-[25vw] font-black italic uppercase leading-none tracking-tighter text-[#10B981] whitespace-nowrap blur-[2px]"
-                >
-                    {hoveredId ? consultants.find(c => c.id === hoveredId)?.keyword : "CONSULT"}
-                </motion.h2>
-            </div>
-
             <div className="relative z-20 container mx-auto px-4 md:px-6 h-full flex flex-col justify-between py-12">
                 <div className="max-w-4xl mt-12 md:mt-0">
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
+                        initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-[#10B981]/30 text-[#10B981] text-[10px] font-bold uppercase tracking-[0.3em] mb-6 backdrop-blur-sm`}
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 border border-[#10B981]/30 text-[#10B981] text-xs font-mono mb-5 backdrop-blur-sm"
                     >
                         Regional Advisory
                     </motion.div>
                     <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl sm:text-7xl md:text-[9rem] font-black text-white italic uppercase leading-[0.85] md:leading-[0.75] tracking-tighter mb-4"
+                        className="text-5xl sm:text-6xl md:text-7xl font-semibold text-white leading-[1.05] tracking-tight mb-4"
                     >
-                        Gulf <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] via-[#10B981] to-[#34D399] animate-gradient-x bg-[length:200%_auto]">Advisory</span>
+                        Gulf{" "}
+                        <span className="text-[#10B981]">Advisory</span>
                     </motion.h1>
+                    <p className="text-zinc-400 text-base md:text-lg max-w-xl leading-relaxed">
+                        Market entry, regulatory alignment, and operational execution across Saudi Arabia, the UAE, and South/Southeast Asia.
+                    </p>
                 </div>
 
-                {/* The Grid of Shadows */}
-                <div className="flex-1 w-full grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-12 mt-8 mb-12 md:mb-0">
+                {/* The Grid */}
+                <div className="flex-1 w-full grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mt-8 mb-12 md:mb-0">
                     {consultants.map((consultant, idx) => {
                         const isActive = hoveredId === consultant.id;
                         return (
@@ -183,46 +171,29 @@ export const ConsultancyHero = () => {
                                 onMouseEnter={() => setHoveredId(consultant.id)}
                                 onMouseLeave={() => setHoveredId(null)}
                                 onClick={() => scrollToSection(consultant.id)}
-                                className={`relative group cursor-pointer overflow-hidden rounded-3xl border transition-all duration-500 bg-white/5 backdrop-blur-sm ${idx === 4 ? 'col-span-2 md:col-span-1' : ''} ${isActive ? 'border-white/30 bg-white/10' : 'border-white/10 hover:border-white/20'}`}
-                                whileHover={{ scale: 1.02 }}
+                                className={`relative group cursor-pointer overflow-hidden rounded-xl border transition-colors duration-200 bg-zinc-950/60 backdrop-blur-sm ${idx === 4 ? 'col-span-2 md:col-span-1' : ''} ${isActive ? 'border-white/30 bg-zinc-900/80' : 'border-white/10 hover:border-white/20'}`}
                             >
-                                {/* Inner Glow when hovered */}
-                                <motion.div
-                                    className="absolute inset-0 blur-3xl pointer-events-none transition-opacity duration-700"
-                                    style={{
-                                        backgroundColor: consultant.color,
-                                        opacity: isActive ? 0.2 : 0
-                                    }}
-                                />
-
-                                {/* The Image (Shadow by default) */}
+                                {/* The Image */}
                                 <div className="absolute inset-0 w-full h-full">
-                                    <motion.img
+                                    <img
                                         src={consultant.image}
                                         alt={consultant.name}
-                                        className={`w-full h-full object-cover transition-all duration-700 ease-out ${isActive ? 'brightness-100 grayscale-0 opacity-100' : 'brightness-50 grayscale opacity-20'}`}
+                                        className={`w-full h-full object-cover transition-all duration-300 ${isActive ? 'brightness-100 grayscale-0 opacity-90' : 'brightness-50 grayscale opacity-25'}`}
                                     />
-                                    <div className={`absolute inset-0 bg-gradient-to-t transition-all duration-500 ${isActive ? 'from-black/80 via-black/40' : 'from-black/60 via-transparent to-transparent'}`} />
+                                    <div className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-200 ${isActive ? 'from-black/85 via-black/40 to-transparent' : 'from-black/75 via-transparent to-transparent'}`} />
                                 </div>
 
                                 {/* The Essence Text */}
-                                <div className={`absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 z-30 transition-all duration-500 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-60'}`}>
-                                    <motion.span
-                                        className="block text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mb-1"
+                                <div className={`absolute bottom-5 md:bottom-6 left-5 md:left-6 right-5 md:right-6 z-30 transition-all duration-200 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-80'}`}>
+                                    <span
+                                        className="block text-xs font-mono mb-1"
                                         style={{ color: consultant.color }}
                                     >
                                         {consultant.specialty}
-                                    </motion.span>
-                                    <h3 className="text-lg md:text-xl font-black text-white italic uppercase tracking-tighter leading-none">
+                                    </span>
+                                    <h3 className="text-base md:text-lg font-semibold text-white tracking-tight leading-snug">
                                         {consultant.name}
                                     </h3>
-                                </div>
-
-                                {/* Parallax Depth Keyword */}
-                                <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 pointer-events-none ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                                    <span className="text-6xl md:text-8xl font-black text-white/5 uppercase tracking-tighter scale-150 rotate-[-10deg]">
-                                        {consultant.keyword}
-                                    </span>
                                 </div>
                             </motion.div>
                         );

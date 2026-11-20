@@ -3,9 +3,16 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import path from 'path'
+import fs from 'fs'
+
+const realRoot = fs.realpathSync(__dirname)
+if (process.cwd().toLowerCase() !== realRoot.toLowerCase()) {
+  process.chdir(realRoot)
+}
 
 // https://vite.dev/config/
 export default defineConfig({
+  root: realRoot,
   plugins: [
     tailwindcss(), 
     react(),
@@ -18,7 +25,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(realRoot, "./src"),
     },
   },
   // Updated base path for GitHub Pages under the 'MyThought' repository

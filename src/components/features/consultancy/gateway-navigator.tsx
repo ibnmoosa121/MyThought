@@ -11,8 +11,7 @@ import {
     Building2,
     BarChart3,
     Activity,
-    Globe2,
-    Network
+    Globe2
 } from "lucide-react";
 
 const Counter = ({ value }: { value: number }) => {
@@ -38,7 +37,7 @@ const Counter = ({ value }: { value: number }) => {
         };
     }, [value]);
 
-    return <span className="text-6xl font-black text-white italic leading-none">{displayValue}</span>;
+    return <span className="text-4xl md:text-5xl font-semibold text-white tabular-nums leading-none">{displayValue}</span>;
 };
 
 export interface RegionData {
@@ -72,51 +71,51 @@ const regions: RegionData[] = [
         cameraTarget: { phi: 224.98, theta: 18.69 },
         sectors: ["Vision 2030", "Giga Projects", "FinTech", "Energy"],
         opportunitySlot: {
-            title: "Smart Infrastructure",
-            desc: "NEOM and Red Sea development contracts are peaking.",
+            title: "Infrastructure & Tech",
+            desc: "Enterprise procurement and Vision 2030 infrastructure buildouts across the Kingdom.",
             icon: Building2
         },
         compliance: 92,
         legacy: 18,
-        synergy: "Connects with India for Tech Talent Export.",
+        synergy: "Paired with engineering delivery hubs in India.",
         connections: ["india"]
     },
     {
         id: "dubai",
-        name: "Dubai/GCC",
+        name: "Dubai / UAE",
         fullName: "United Arab Emirates",
         color: "from-emerald-400/20 to-emerald-800/40",
         accent: "#34D399",
         location: { lat: 25.2048, lng: 55.2708 }, // Dubai
         cameraTarget: { phi: 216.67, theta: 26.06 },
-        sectors: ["Real Estate", "Web3", "Logistics", "Hospitality"],
+        sectors: ["Real Estate", "FinTech", "Logistics", "Hospitality"],
         opportunitySlot: {
-            title: "Secondary Markets",
-            desc: "DIFC is seeing record-breaking hedge fund entries.",
+            title: "Financial & Trade Hubs",
+            desc: "DIFC and free-zone structuring for institutional capital and cross-border commerce.",
             icon: BarChart3
         },
         compliance: 98,
         legacy: 25,
-        synergy: "Nodes back to Indonesia for Logistics Scaling.",
+        synergy: "Connected to Southeast Asia for regional logistics expansion.",
         connections: ["indonesia"]
     },
     {
         id: "india",
         name: "India",
-        fullName: "Global Workforce Hub",
+        fullName: "Engineering & Ops Hub",
         color: "from-teal-600/20 to-teal-950/40",
         accent: "#0D9488",
         location: { lat: 28.6139, lng: 77.2090 }, // Delhi
         cameraTarget: { phi: 192.32, theta: 20.98 },
-        sectors: ["SaaS", "DeepTech", "Manufacturing", "EV"],
+        sectors: ["SaaS", "Engineering", "Manufacturing", "Mobility"],
         opportunitySlot: {
-            title: "Global Capability Centers",
-            desc: "Bangalore expansion for Fortune 500 tech stacks.",
+            title: "Capability Centers",
+            desc: "Dedicated technical delivery teams supporting enterprise software and GCC expansion.",
             icon: Zap
         },
         compliance: 85,
         legacy: 15,
-        synergy: "Feeding KSA with scalable implementation teams.",
+        synergy: "Supplying KSA and UAE programs with vetted technical specialists.",
         connections: ["ksa"]
     },
     {
@@ -165,18 +164,18 @@ export const GatewayNavigator = () => {
 
             <div className="container mx-auto px-6 relative z-10">
                 {/* Header */}
-                <div className="text-center mb-10 md:mb-14 space-y-4">
+                <div className="text-center mb-10 md:mb-14 space-y-3">
                     <motion.span
                         key={activeRegion.id + "-label"}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-white/40 block"
+                        className="text-xs font-mono text-zinc-400 block"
                     >
-                        Market Intelligence Dashboard
+                        Regional Coverage
                     </motion.span>
-                    <h2 className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-[0.85] md:leading-none">
+                    <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
                         Gateway{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Navigator</span>
+                        <span className="text-zinc-400">Navigator</span>
                     </h2>
                 </div>
 
@@ -189,22 +188,22 @@ export const GatewayNavigator = () => {
                                 <button
                                     key={region.id}
                                     onClick={() => setActiveRegion(region)}
-                                    className={`relative flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-5 rounded-2xl text-left transition-all duration-500 whitespace-nowrap min-w-[140px] lg:min-w-0 ${
+                                    className={`relative flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-5 rounded-xl text-left transition-colors duration-200 whitespace-nowrap min-w-[140px] lg:min-w-0 ${
                                         isActive 
-                                            ? "bg-white/10 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)] scale-[1.02]" 
-                                            : "bg-white/5 border-white/5 hover:bg-white/10 opacity-60 hover:opacity-100"
+                                            ? "bg-white/10 border-white/25" 
+                                            : "bg-white/5 border-white/10 hover:bg-white/10 opacity-75 hover:opacity-100"
                                     } border backdrop-blur-md`}
                                 >
                                     <div className="flex flex-col">
-                                        <span className={`text-[10px] font-black uppercase tracking-widest mb-1 transition-colors ${isActive ? 'text-white' : 'text-zinc-500'}`}>
+                                        <span className={`text-xs font-mono mb-0.5 transition-colors ${isActive ? 'text-zinc-300' : 'text-zinc-500'}`}>
                                             {region.fullName.split(' ')[0]}
                                         </span>
-                                        <span className={`text-xl font-black italic uppercase tracking-tight transition-colors ${isActive ? 'text-white' : 'text-zinc-400'}`}>
+                                        <span className={`text-lg font-semibold tracking-tight transition-colors ${isActive ? 'text-white' : 'text-zinc-400'}`}>
                                             {region.name}
                                         </span>
                                     </div>
                                     {isActive && (
-                                        <motion.div layoutId="activeRegionIndicator" className="hidden md:block w-1.5 h-1.5 rounded-full mt-2 md:mt-0" style={{ backgroundColor: region.accent }} />
+                                        <motion.div layoutId="activeRegionIndicator" className="hidden md:block w-2 h-2 rounded-full mt-2 md:mt-0" style={{ backgroundColor: region.accent }} />
                                     )}
                                 </button>
                             );
@@ -216,36 +215,35 @@ export const GatewayNavigator = () => {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeRegion.id}
-                                initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: -20, scale: 0.98 }}
-                                transition={{ duration: 0.4, ease: "easeOut" }}
-                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -12 }}
+                                transition={{ duration: 0.3, ease: "easeOut" }}
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
                             >
                                 {/* Main Identity Card (Row 1, Col 1-2) */}
-                                <div className="md:col-span-2 p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl relative overflow-hidden group">
-                                    <div className="absolute inset-0 opacity-20 bg-gradient-to-br transition-all duration-1000 group-hover:opacity-40" style={{ backgroundImage: `linear-gradient(to bottom right, transparent, ${activeRegion.accent})` }} />
-                                    <div className="relative z-10 flex flex-col h-full justify-between gap-8">
+                                <div className="md:col-span-2 p-6 md:p-8 rounded-2xl bg-zinc-950/90 border border-white/10 relative overflow-hidden group">
+                                    <div className="relative z-10 flex flex-col h-full justify-between gap-6">
                                         <div className="flex justify-between items-start">
                                             <div>
-                                                <div className="flex items-center gap-3 mb-4">
-                                                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: activeRegion.accent }} />
-                                                    <span className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.3em]">Active Node</span>
+                                                <div className="flex items-center gap-2.5 mb-3">
+                                                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeRegion.accent }} />
+                                                    <span className="text-xs font-mono text-zinc-400">Active Corridor</span>
                                                 </div>
-                                                <h3 className="text-4xl md:text-6xl font-black italic text-white uppercase tracking-tighter leading-none mb-2">
+                                                <h3 className="text-3xl md:text-4xl font-semibold text-white tracking-tight leading-none mb-2">
                                                     {activeRegion.name}
                                                 </h3>
-                                                <p className="text-zinc-400 text-sm font-bold uppercase tracking-widest">
+                                                <p className="text-zinc-400 text-sm font-medium">
                                                     {activeRegion.fullName}
                                                 </p>
                                             </div>
-                                            <div className="hidden md:flex w-12 h-12 rounded-2xl bg-white/5 border border-white/10 items-center justify-center text-white/50 group-hover:text-white transition-colors">
-                                                <ArrowUpRight size={24} />
+                                            <div className="hidden md:flex w-10 h-10 rounded-lg bg-white/5 border border-white/10 items-center justify-center text-white/50 group-hover:text-white transition-colors">
+                                                <ArrowUpRight size={18} />
                                             </div>
                                         </div>
-                                        <div className="flex flex-wrap gap-2 md:gap-3">
+                                        <div className="flex flex-wrap gap-2">
                                             {activeRegion.sectors.map((sector) => (
-                                                <span key={sector} className="px-3 py-1.5 md:px-4 md:py-2 rounded-xl bg-black/50 border border-white/10 text-[9px] md:text-[10px] text-white/80 font-black uppercase tracking-widest backdrop-blur-md">
+                                                <span key={sector} className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-zinc-300 font-medium">
                                                     {sector}
                                                 </span>
                                             ))}
@@ -254,19 +252,16 @@ export const GatewayNavigator = () => {
                                 </div>
 
                                 {/* Prime Opportunity Card (Row 1-2, Col 3) */}
-                                <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 p-8 rounded-[2rem] bg-zinc-900 border border-white/10 relative overflow-hidden flex flex-col justify-between group">
-                                    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
-                                        <activeRegion.opportunitySlot.icon size={180} />
-                                    </div>
-                                    <div className="relative z-10 mb-8 md:mb-12">
-                                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl mb-6 md:mb-8 flex items-center justify-center" style={{ backgroundColor: `${activeRegion.accent}20`, color: activeRegion.accent }}>
-                                            <TrendingUp size={20} />
+                                <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 p-6 md:p-8 rounded-2xl bg-zinc-900 border border-white/10 relative overflow-hidden flex flex-col justify-between group">
+                                    <div className="relative z-10 mb-6">
+                                        <div className="w-10 h-10 rounded-lg mb-5 flex items-center justify-center" style={{ backgroundColor: `${activeRegion.accent}20`, color: activeRegion.accent }}>
+                                            <TrendingUp size={18} />
                                         </div>
-                                        <h4 className="text-[9px] md:text-[10px] text-zinc-500 font-black uppercase tracking-[0.3em] mb-3 md:mb-4">Prime Sector</h4>
-                                        <h3 className="text-2xl md:text-3xl font-black italic text-white uppercase leading-none tracking-tighter mb-3 md:mb-4">
+                                        <h4 className="text-xs font-mono text-zinc-400 mb-2">Primary Focus</h4>
+                                        <h3 className="text-xl md:text-2xl font-semibold text-white tracking-tight leading-snug mb-3">
                                             {activeRegion.opportunitySlot.title}
                                         </h3>
-                                        <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">
+                                        <p className="text-zinc-400 text-sm leading-relaxed">
                                             {activeRegion.opportunitySlot.desc}
                                         </p>
                                     </div>
@@ -275,7 +270,7 @@ export const GatewayNavigator = () => {
                                             <motion.div 
                                                 initial={{ width: 0 }}
                                                 animate={{ width: "100%" }}
-                                                transition={{ duration: 1.5, ease: "easeOut" }}
+                                                transition={{ duration: 0.8, ease: "easeOut" }}
                                                 className="h-full" 
                                                 style={{ backgroundColor: activeRegion.accent }} 
                                             />
@@ -284,51 +279,48 @@ export const GatewayNavigator = () => {
                                 </div>
 
                                 {/* Metrics Card 1: Compliance */}
-                                <div className="p-6 md:p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl flex flex-col justify-between gap-6">
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <ShieldCheck size={18} />
-                                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Compliance</span>
+                                <div className="p-6 rounded-2xl bg-zinc-950/90 border border-white/10 flex flex-col justify-between gap-4">
+                                    <div className="flex items-center gap-2.5 text-zinc-400">
+                                        <ShieldCheck size={16} />
+                                        <span className="text-xs font-mono">Compliance Index</span>
                                     </div>
-                                    <div className="flex items-end gap-2">
+                                    <div className="flex items-baseline gap-1">
                                         <Counter value={activeRegion.compliance} />
-                                        <span className="text-xl md:text-2xl font-black text-white/50 italic mb-1">%</span>
+                                        <span className="text-lg font-medium text-zinc-400">%</span>
                                     </div>
                                 </div>
 
                                 {/* Metrics Card 2: Growth / Legacy */}
-                                <div className="p-6 md:p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl flex flex-col justify-between gap-6">
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <Activity size={18} />
-                                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Growth Index</span>
+                                <div className="p-6 rounded-2xl bg-zinc-950/90 border border-white/10 flex flex-col justify-between gap-4">
+                                    <div className="flex items-center gap-2.5 text-zinc-400">
+                                        <Activity size={16} />
+                                        <span className="text-xs font-mono">Growth Index</span>
                                     </div>
-                                    <div className="flex items-end gap-2">
-                                        <span className="text-xl md:text-2xl font-black text-white/50 italic mb-1">+</span>
+                                    <div className="flex items-baseline gap-1">
+                                        <span className="text-lg font-medium text-zinc-400">+</span>
                                         <Counter value={activeRegion.legacy} />
-                                        <span className="text-lg md:text-xl font-black text-white/50 italic mb-1">pts</span>
+                                        <span className="text-sm font-medium text-zinc-400 ml-1">pts</span>
                                     </div>
                                 </div>
 
                                 {/* Synergy & Connections Card (Row 3, Col 1-3) */}
-                                <div className="md:col-span-2 lg:col-span-3 p-6 md:p-8 rounded-[2rem] border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 relative overflow-hidden" style={{ backgroundColor: `${activeRegion.accent}15` }}>
-                                    <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
-                                        <Network size={200} />
-                                    </div>
+                                <div className="md:col-span-2 lg:col-span-3 p-6 md:p-8 rounded-2xl border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden bg-zinc-950/90">
                                     <div className="relative z-10 flex-1">
-                                        <div className="flex items-center gap-3 text-white/60 mb-3 md:mb-4">
-                                            <Globe2 size={18} />
-                                            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">Cross-Border Synergy</span>
+                                        <div className="flex items-center gap-2.5 text-zinc-400 mb-2">
+                                            <Globe2 size={16} />
+                                            <span className="text-xs font-mono">Cross-Border Synergy</span>
                                         </div>
-                                        <p className="text-lg md:text-2xl text-white font-bold italic leading-tight max-w-3xl">
-                                            &ldquo;{activeRegion.synergy}&rdquo;
+                                        <p className="text-base md:text-lg text-white font-medium leading-snug max-w-3xl">
+                                            {activeRegion.synergy}
                                         </p>
                                     </div>
-                                    <div className="relative z-10 flex flex-wrap gap-3 w-full md:w-auto">
+                                    <div className="relative z-10 flex flex-wrap gap-2.5 w-full md:w-auto">
                                         {activeRegion.connections.map(connId => {
                                             const conn = regions.find(r => r.id === connId);
                                             return conn ? (
-                                                <div key={conn.id} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-3 md:px-6 md:py-4 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md">
-                                                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full animate-pulse" style={{ backgroundColor: conn.accent }} />
-                                                    <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">{conn.name}</span>
+                                                <div key={conn.id} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+                                                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: conn.accent }} />
+                                                    <span className="text-xs font-medium text-white">{conn.name}</span>
                                                 </div>
                                             ) : null;
                                         })}

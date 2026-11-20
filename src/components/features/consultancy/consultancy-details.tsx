@@ -125,57 +125,57 @@ const details = [
     {
         id: "cap",
         name: "Human Capital",
-        title: "Talent Orchestration & Culture",
-        desc: "Building a workforce for the next century. We specialize in localized leadership development and cultural alignment for global organizations entering the Gulf market.",
+        title: "Workforce Strategy & Culture",
+        desc: "Localized leadership development, nationalization planning, and organizational alignment for global teams entering the Gulf market.",
         icon: AnimatedHumanCapital,
         color: "text-[#10B981]",
         bg: "bg-[#10B981]/10",
         video: "https://player.vimeo.com/external/370331493.sd.mp4?s=34d73507153997171d3396f2a89990a2f4da8e8a&profile_id=139&oauth2_token_id=57447761",
-        features: ["Nationalization Strategy", "Executive Placement", "Performance Architecture", "Culture Mapping"]
+        features: ["Nationalization Strategy", "Executive Placement", "Performance Frameworks", "Culture Alignment"]
     },
     {
         id: "ops",
-        name: "Sovereign Ops",
-        title: "Sovereign & Institutional Advisory",
-        desc: "Institutional-grade financial advice for the region's largest entities. We navigate the unique fiscal landscape of KSA and UAE with precision-built sovereign wealth frameworks.",
+        name: "Institutional Ops",
+        title: "Institutional & Operational Advisory",
+        desc: "Operational and financial advisory tailored to the regulatory and fiscal frameworks of Saudi Arabia and the UAE.",
         icon: AnimatedSovereignOps,
-        color: "text-[#004D40]",
-        bg: "bg-[#004D40]/10",
+        color: "text-[#10B981]",
+        bg: "bg-[#10B981]/10",
         video: "https://player.vimeo.com/external/434045526.sd.mp4?s=c1638290f6534571f1118a8008a09904990d18d4&profile_id=139&oauth2_token_id=57447761",
-        features: ["Wealth Engineering", "Operational Excellence", "Regional Risk Models", "Capital Optimization"]
+        features: ["Capital Structuring", "Operational Efficiency", "Regional Risk Models", "Resource Allocation"]
     },
     {
         id: "reg",
-        name: "Institutional Reg",
-        title: "Governance & Strategic Compliance",
-        desc: "Ironclad legal security for complex regional operations. We harmonize international standards with local jurisdictional requirements to protect your regional legacy.",
+        name: "Governance & Risk",
+        title: "Governance & Regulatory Compliance",
+        desc: "Cross-border legal structuring, contract governance, and regulatory alignment across GCC jurisdictions.",
         icon: AnimatedReg,
         color: "text-[#34D399]",
         bg: "bg-[#34D399]/10",
         video: "https://player.vimeo.com/external/449171784.sd.mp4?s=74f7d4323c3164996417387cc6b7a26c4f74d47c&profile_id=139&oauth2_token_id=57447761",
-        features: ["Cross-Border Strategy", "Contract Engineering", "Jurisdictional Nav", "IP Fortressing"]
+        features: ["Cross-Border Strategy", "Contract Governance", "Jurisdictional Setup", "IP Protection"]
     },
     {
         id: "dig",
-        name: "Digital Frontier",
-        title: "Frontier Tech & AI Strategy",
-        desc: "Integrating artificial intelligence into the heart of regional enterprise. We build the digital infrastructure that powers the Gulf's futuristic vision of connected cities.",
+        name: "Digital Systems",
+        title: "Enterprise Tech & AI Strategy",
+        desc: "Applied AI strategy, workflow automation, and enterprise systems integration for regional operations.",
         icon: AnimatedFrontier,
         color: "text-[#14B8A6]",
         bg: "bg-[#14B8A6]/10",
         video: "https://player.vimeo.com/external/517090025.sd.mp4?s=d009214D1f6e1f062B72C76C87C3C5831BE0C675&profile_id=139&oauth2_token_id=57447761",
-        features: ["Vision 2030 AI Roadmap", "Workflow Automation", "Smart City Integration", "Cyber Resilience"]
+        features: ["AI Adoption Roadmaps", "Workflow Automation", "Systems Integration", "Cyber Resilience"]
     },
     {
         id: "exp",
         name: "Regional Growth",
-        title: "Market Ascension & Scaling",
-        desc: "Dominate the region. Our expansion specialists provide the local networking and intelligence needed to scale from Riyadh to Muscat and beyond.",
+        title: "Market Entry & Scaling",
+        desc: "Territory analysis, commercial partnerships, and market-entry execution across Saudi Arabia, the UAE, and neighboring GCC markets.",
         icon: AnimatedGrowth,
         color: "text-[#059669]",
         bg: "bg-[#059669]/10",
         video: "https://player.vimeo.com/external/462102174.sd.mp4?s=69f33ae1f79F1f162B72C76C87C3C5831BE0C675&profile_id=139&oauth2_token_id=57447761",
-        features: ["GCC Territory Analysis", "Localized Branding", "Strategic Partnerships", "Scale Orchestration"]
+        features: ["GCC Territory Analysis", "Market Positioning", "Strategic Partnerships", "Operations Scaling"]
     }
 ];
 
@@ -199,116 +199,104 @@ export const ConsultancyDetails = () => {
     return (
         <div className="bg-black py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="space-y-16 md:space-y-32">
+                <div className="space-y-16 md:space-y-24">
                     {detailsState.map((detail, idx) => {
                         const isPulsing = activePulse === idx;
                         return (
                             <section
                                 key={detail.id}
                                 id={`${detail.id}-details`}
-                                className="relative scroll-mt-32 p-4 sm:p-8 md:p-16 rounded-[2.5rem] md:rounded-[4rem] group"
+                                className="relative scroll-mt-32 p-6 sm:p-8 md:p-12 rounded-2xl border border-white/10 bg-zinc-950/60 group"
                             >
-                                {/* Section Specific Arabesque Background */}
-                                <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] rounded-[2.5rem] md:rounded-[4rem] pointer-events-none group-hover:opacity-[0.05] transition-opacity duration-700" />
-                                <div className={`absolute inset-0 ${detail.bg} transition-opacity duration-1000 rounded-[2.5rem] md:rounded-[4rem] blur-2xl z-0 ${isPulsing ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
-
-                                <div className="relative z-10 flex flex-col lg:flex-row gap-12 md:gap-16 items-center">
+                                <div className="relative z-10 flex flex-col lg:flex-row gap-10 md:gap-12 items-center">
                                     {/* Visual Side */}
                                     <motion.div
-                                        initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                                        initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         className="flex-1 w-full"
                                     >
-                                        <div className="relative aspect-square md:aspect-video rounded-[2rem] md:rounded-3xl overflow-hidden border border-white/10 group bg-zinc-900">
+                                        <div className="relative aspect-square md:aspect-video rounded-xl overflow-hidden border border-white/10 group bg-zinc-900">
                                             {detail.video && (
                                                 <video
                                                     autoPlay
                                                     loop
                                                     muted
                                                     playsInline
-                                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isPulsing ? 'opacity-60' : 'opacity-40 group-hover:opacity-60'}`}
+                                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isPulsing ? 'opacity-60' : 'opacity-40 group-hover:opacity-60'}`}
                                                 >
                                                     <source src={detail.video} type="video/mp4" />
                                                 </video>
                                             )}
-                                            <div className={`absolute inset-0 ${detail.bg} transition-opacity duration-700 ${isPulsing ? 'opacity-40' : 'opacity-20 group-hover:opacity-40'}`} />
+                                            <div className={`absolute inset-0 ${detail.bg} transition-opacity duration-500 ${isPulsing ? 'opacity-40' : 'opacity-20 group-hover:opacity-40'}`} />
                                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                                <div className="w-32 h-32 md:w-48 md:h-48">
+                                                <div className="w-28 h-28 md:w-40 md:h-40">
                                                     <detail.icon color={detail.color} />
                                                 </div>
-                                            </div>
-
-                                            {/* Floating Elements - Hidden on mobile for cleaner look */}
-                                            <div className="absolute top-10 right-10 hidden md:flex gap-2">
-                                                {[1, 2, 3].map((i) => (
-                                                    <div key={i} className={`w-2 h-2 rounded-full ${detail.bg} animate-pulse`} style={{ animationDelay: `${i * 0.5}s` }} />
-                                                ))}
                                             </div>
                                         </div>
                                     </motion.div>
 
                                     {/* Content Side */}
                                     <motion.div
-                                        initial={{ opacity: 0, x: idx % 2 === 0 ? 50 : -50 }}
+                                        initial={{ opacity: 0, x: idx % 2 === 0 ? 30 : -30 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
-                                        className={`flex-1 space-y-6 md:space-y-8 ${idx % 2 === 0 ? 'lg:order-first' : ''}`}
+                                        className={`flex-1 space-y-6 ${idx % 2 === 0 ? 'lg:order-first' : ''}`}
                                     >
                                         <div>
-                                            <span className={`text-[10px] md:text-sm font-black uppercase tracking-[0.3em] ${detail.color} mb-4 block`}>
+                                            <span className={`text-xs font-mono ${detail.color} mb-3 block`}>
                                                 {detail.name}
                                             </span>
-                                            <h2 className="text-2xl sm:text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-[0.95] md:leading-none mb-6">
+                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-tight leading-tight mb-4">
                                                 {detail.title}
                                             </h2>
-                                            <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl">
+                                            <p className="text-zinc-400 text-base leading-relaxed max-w-xl">
                                                 {detail.desc}
                                             </p>
                                         </div>
 
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                             {detail.features.map((feature, fIdx) => (
-                                                <div key={fIdx} className="flex items-center gap-3 text-white/70 group">
-                                                    <div className={`w-1.5 h-1.5 rounded-full ${detail.bg} group-hover:scale-150 transition-transform`} />
-                                                    <span className="text-xs md:text-sm font-medium tracking-tight uppercase group-hover:text-white transition-colors">{feature}</span>
+                                                <div key={fIdx} className="flex items-center gap-2.5 text-zinc-300">
+                                                    <div className={`w-1.5 h-1.5 rounded-full ${detail.bg} border border-current ${detail.color}`} />
+                                                    <span className="text-sm font-medium">{feature}</span>
                                                 </div>
                                             ))}
                                         </div>
 
                                         {/* Dynamic Inquiry Flow */}
-                                        <div className="relative h-16">
+                                        <div className="relative min-h-[48px] pt-2">
                                             <AnimatePresence mode="wait">
                                                 {!detail.status ? (
                                                     <motion.button
                                                         key="btn"
                                                         initial={{ opacity: 0 }}
                                                         animate={{ opacity: 1 }}
-                                                        exit={{ opacity: 0, y: -20 }}
+                                                        exit={{ opacity: 0 }}
                                                         onClick={() => {
                                                             setDetailsState(prev => prev.map((item, i) => 
                                                                 i === idx ? { ...item, status: 'email' } : item
                                                             ));
                                                         }}
-                                                        className={`flex items-center gap-4 px-8 md:px-10 py-4 md:py-5 rounded-full border border-white/10 text-white font-black uppercase italic text-[10px] md:text-xs tracking-[0.2em] transition-all group overflow-hidden relative`}
+                                                        className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-lg border border-white/15 bg-white/5 text-white font-medium text-sm hover:bg-white hover:text-black transition-colors duration-150 cursor-pointer"
                                                     >
-                                                        <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                                                        <span className="relative z-10 group-hover:text-black transition-colors">Inquire Section</span>
-                                                        <ArrowRight size={18} className="relative z-10 group-hover:text-black group-hover:translate-x-2 transition-all" />
+                                                        <span>Request briefing</span>
+                                                        <ArrowRight size={16} />
                                                     </motion.button>
                                                 ) : detail.status === 'email' ? (
                                                     <motion.div
                                                         key="input"
-                                                        initial={{ opacity: 0, y: 20 }}
+                                                        initial={{ opacity: 0, y: 6 }}
                                                         animate={{ opacity: 1, y: 0 }}
-                                                        exit={{ opacity: 0, scale: 0.95 }}
-                                                        className="flex items-center gap-2 w-full max-w-md bg-white/5 border border-white/10 rounded-full p-1 pl-6"
+                                                        exit={{ opacity: 0 }}
+                                                        className="flex items-center gap-2 w-full max-w-md bg-white/5 border border-white/15 rounded-lg p-1 pl-3"
                                                     >
                                                         <input 
                                                             autoFocus
                                                             type="email"
-                                                            placeholder="ENTER YOUR EMAIL"
-                                                            className="bg-transparent border-none outline-none text-white text-[10px] uppercase font-bold w-full placeholder:text-white/20"
+                                                            placeholder="Work email"
+                                                            className="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-zinc-500"
                                                             onKeyDown={(e) => {
                                                                 if (e.key === 'Enter') {
                                                                     setDetailsState(prev => prev.map((item, i) => 
@@ -323,7 +311,7 @@ export const ConsultancyDetails = () => {
                                                                     i === idx ? { ...item, status: 'success' } : item
                                                                 ));
                                                             }}
-                                                            className="bg-white text-black px-6 py-3 rounded-full text-[10px] font-black uppercase italic hover:scale-105 transition-transform"
+                                                            className="bg-white text-black px-4 py-2 rounded-md text-xs font-medium hover:bg-zinc-200 transition-colors shrink-0"
                                                         >
                                                             Submit
                                                         </button>
@@ -331,13 +319,13 @@ export const ConsultancyDetails = () => {
                                                 ) : (
                                                     <motion.div
                                                         key="success"
-                                                        initial={{ opacity: 0, x: 20 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        className="flex items-center gap-3 text-white"
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        className="flex items-center gap-2.5 text-zinc-200"
                                                     >
-                                                        <div className={`w-2 h-2 rounded-full ${detail.bg} animate-ping`} />
-                                                        <span className="text-[10px] md:text-xs font-black uppercase italic tracking-widest leading-relaxed">
-                                                            We will get in touch with you personally on this.
+                                                        <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                                                        <span className="text-sm font-medium">
+                                                            Request received. Our advisory team will reach out shortly.
                                                         </span>
                                                     </motion.div>
                                                 )}
@@ -345,11 +333,6 @@ export const ConsultancyDetails = () => {
                                         </div>
                                     </motion.div>
                                 </div>
-
-                                {/* Decorative line */}
-                                {idx < details.length - 1 && (
-                                    <div className="absolute -bottom-8 md:-bottom-16 left-1/2 -translate-x-1/2 w-40 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                                )}
                             </section>
                         );
                     })}

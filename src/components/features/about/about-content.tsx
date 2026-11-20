@@ -8,7 +8,7 @@ import DecryptedText from "../../ui/decrypted-text";
 import InteractiveOrbitalHub from "../../ui/interactive-orbital-hub";
 
 const stats = [
-    { label: "Regional HQ", value: "Jeddah", icon: MapPin, sub: "Heart of the Gulf" },
+    { label: "Regional Presence", value: "Middle East", icon: MapPin, sub: "Operating Across the Gulf" },
     { label: "Expert Divisions", value: "7+", icon: Layers, sub: "Comprehensive Solutions" },
     { label: "Vision Alignment", value: "2030", icon: Target, sub: "Thriving Innovations" },
 ];
@@ -77,7 +77,7 @@ export const AboutContent = () => {
                         />
                         <div className="space-y-6 text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl">
                             <p>
-                                Based in the thriving hub of <span className="text-white">Jeddah, Saudi Arabia</span>, Stebup emerged from a singular vision: to dismantle the status quo of digital delivery across the Gulf region.
+                                With an active presence across the <span className="text-white">Middle East and GCC</span>, Stebup emerged from a singular vision: to dismantle the status quo of digital delivery across the Gulf region.
                             </p>
                             <p>
                                 Today, we operate as a multi-disciplinary powerhouse covering <span className="text-white">software development, AI analytics, fintech, design,</span> and <span className="text-white">strategic consultancy</span>. We thrive on bridging the gap between ambitious regional goals—like <span className="text-white">Vision 2030</span>—and market-dominating reality.
@@ -226,24 +226,24 @@ export const AboutContent = () => {
                                 <MapPin size={28} />
                             </div>
                             <div className="space-y-4">
-                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40">Our Hub</span>
+                                <span className="text-xs font-black uppercase tracking-[0.4em] text-white/40">Regional Presence</span>
                                 <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
-                                    Jeddah <br />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-500">Headquarters</span>
+                                    Middle East <br />
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-500">Operations</span>
                                 </h2>
                             </div>
                             <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl">
-                                Positioned in the commercial capital of Saudi Arabia, our headquarters connects global talent with local insights. We operate at the vibrant intersection of culture and technology to deliver transformative digital solutions across the Gulf.
+                                Positioned across key commercial markets in the Middle East, our network connects global talent with local insights. We operate at the vibrant intersection of culture and technology to deliver transformative digital solutions across the Gulf.
                             </p>
                             <div className="pt-4 flex flex-wrap gap-3">
                                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-white font-black uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default">
-                                    Saudi Arabia
+                                    Middle East
                                 </span>
                                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-white font-black uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default">
-                                    Jeddah Hub
+                                    GCC Network
                                 </span>
                                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-white font-black uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default">
-                                    Gulf Coverage
+                                    Regional Coverage
                                 </span>
                             </div>
                         </div>
