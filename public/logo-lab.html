@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <title>Stebup — Logo Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #F6F5F2;
@@ -430,10 +430,176 @@
       border-color: var(--text-main);
     }
 
+    /* Export Kit (#85) Styles */
+    .kit-wrap {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .kit-banner {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .kit-banner h2 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .kit-banner p {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.5;
+    }
+    .kit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .kit-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .kit-card.full { grid-column: 1 / -1; }
+    .kit-previews {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .kit-preview {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #FFFFFF;
+      position: relative;
+    }
+    .kit-preview.is-dark {
+      background: #0B0B0E;
+      border-left: 1px solid var(--border);
+    }
+    .kit-preview-tag {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      font-size: 10px;
+      font-weight: 600;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      color: #71717A;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .kit-preview svg.kit-word-svg {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+    }
+    .kit-preview svg.kit-mark-svg {
+      width: 84px;
+      height: 84px;
+    }
+    .kit-favicon-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 24px;
+      padding: 32px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--stage-bg);
+      flex-wrap: wrap;
+    }
+    .kit-fav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      color: var(--text-muted);
+    }
+    .kit-card-body {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .kit-card-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .kit-card-body p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .kit-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .kit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .kit-btn:hover {
+      border-color: var(--text-main);
+      background: rgba(128, 128, 128, 0.08);
+    }
+    .kit-btn.primary {
+      background: var(--text-main);
+      color: var(--card-bg);
+      border-color: var(--text-main);
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+    .kit-btn.primary:hover {
+      opacity: 0.88;
+    }
+    .kit-code {
+      background: #0B0B0E;
+      color: #E4E4E7;
+      padding: 16px 20px;
+      border-radius: 10px;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 0;
+    }
+
     @media (max-width: 768px) {
       header { padding: 14px 16px; }
       .tab-bar, .tab-desc-banner, .container { padding: 0 16px; }
-      .grid { grid-template-columns: 1fr; }
+      .grid, .kit-grid, .kit-previews { grid-template-columns: 1fr; }
+      .kit-preview.is-dark { border-left: none; border-top: 1px solid var(--border); }
     }
   </style>
 </head>
@@ -478,6 +644,9 @@
     </button>
     <button class="tab-btn" onclick="setTab('improvised', this)">
       Improvised <span class="tab-count">13</span>
+    </button>
+    <button class="tab-btn" onclick="setTab('kit85', this)">
+      Export Kit (#85) <span class="tab-count">ZIP</span>
     </button>
   </nav>
 
@@ -578,7 +747,7 @@
         cat: "improvised",
         catLabel: "From #60 · Single Stroke",
         title: "Continuous Single-Stroke Diagonal 'EB'",
-        desc: "Refines #60: mathematically parallel 16px slanted spine with 45° terminals forms E in one unbroken stroke, separated by an 8px parallel channel from B.",
+        desc: "Refines #60: mathematically parallel 16px slanted spine with 45Â° terminals forms E in one unbroken stroke, separated by an 8px parallel channel from B.",
         svg: `
           <!-- Mathematically Parallel 16px Single-Stroke Slanted E (Color 2) -->
           <path d="
@@ -595,7 +764,7 @@
         "improvised",
         "From #41 · Optical Balance",
         "Swiss-Grid Optical 'STEBUP' (Stepped Progression)",
-        "Refines #41: applies a subtle Swiss-grid golden progression on E's slips (138→133→128) paired with optically trapped stemless B-rounds.",
+        "Refines #41: applies a subtle Swiss-grid golden progression on E's slips (138â†’133â†’128) paired with optically trapped stemless B-rounds.",
         `
           <rect x="138" y="28" width="38" height="14" rx="2" fill="var(--c2)" />
           <rect x="133" y="53" width="43" height="14" rx="2" fill="var(--c2)" />
@@ -608,9 +777,9 @@
       makeWordConcept(
         "71",
         "improvised",
-        "From #45 · Kinetic 9° Tilt",
-        "Kinetic 9° Slanted 'STEBUP' (Forward Tech Velocity)",
-        "Refines #45: applies a dynamic 9° forward slant with unified 14px stroke weight across STEBUP and balanced 7px diagonal E–B spacing.",
+        "From #45 · Kinetic 9Â° Tilt",
+        "Kinetic 9Â° Slanted 'STEBUP' (Forward Tech Velocity)",
+        "Refines #45: applies a dynamic 9Â° forward slant with unified 14px stroke weight across STEBUP and balanced 7px diagonal E–B spacing.",
         `
           <rect x="128" y="78" width="42" height="14" rx="2.5" fill="var(--c2)" />
           <rect x="134" y="53" width="42" height="14" rx="2.5" fill="var(--c2)" />
@@ -685,7 +854,7 @@
         cat: "improvised",
         catLabel: "From #03 · Kinetic Pillars",
         title: "Kinetic 3-Pillar + Tapered Arcs 'B'",
-        desc: "Refines #03: equalizes all pillar and B gaps to a crisp 5px rhythm with pill-capped progress bars and a 7° forward velocity lean.",
+        desc: "Refines #03: equalizes all pillar and B gaps to a crisp 5px rhythm with pill-capped progress bars and a 7Â° forward velocity lean.",
         svg: `
           <g transform="translate(64,64) skewX(-7) translate(-64,-64)">
             <rect x="14" y="70" width="14" height="40" rx="7" fill="var(--c2)" />
@@ -768,43 +937,43 @@
       makeWordConcept(
         "85",
         "improvised",
-        "From #80 · Neural STEBUP",
-        "AI Neural Node-Step 'STEBUP' (Unified 14px PCB Spine)",
-        "Upgrades #85 to studio-grade perfection: unifies E's 3 ascending slips to full 14px typographic weight, punches true transparent neural pin-nodes via evenodd geometry, and links them with crisp orthogonal circuit traces into machined stemless B rounds.",
+        "Improvised · Stepped Wordmark",
+        "Stepped 'STEBUP' — Neo-Grotesk Wordmark & Node Spine",
+        "Pairs Space Grotesk Bold letterforms with a custom stepped 'EB' ligature—three ascending bars linked by orthogonal connectors into a stemless geometric B.",
         `
           <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M148 28 H176 A4 4 0 0 1 180 32 V38 A4 4 0 0 1 176 42 H148 A4 4 0 0 1 144 38 V32 A4 4 0 0 1 148 28 Z
-            M151 32.4 A2.6 2.6 0 1 0 151 37.6 A2.6 2.6 0 1 0 151 32.4 Z
-            M135 53 H176 A4 4 0 0 1 180 57 V63 A4 4 0 0 1 176 67 H135 A4 4 0 0 1 131 63 V57 A4 4 0 0 1 135 53 Z
-            M138 57.4 A2.6 2.6 0 1 0 138 62.6 A2.6 2.6 0 1 0 138 57.4 Z
-            M122 78 H176 A4 4 0 0 1 180 82 V88 A4 4 0 0 1 176 92 H122 A4 4 0 0 1 118 88 V82 A4 4 0 0 1 122 78 Z
-            M125 82.4 A2.6 2.6 0 1 0 125 87.6 A2.6 2.6 0 1 0 125 82.4 Z
+            M148 28 H177 A3 3 0 0 1 180 31 V37 A3 3 0 0 1 177 40 H148 A3 3 0 0 1 145 37 V31 A3 3 0 0 1 148 28 Z
+            M151 31.8 A2.2 2.2 0 1 0 151 36.2 A2.2 2.2 0 1 0 151 31.8 Z
+            M136 54 H177 A3 3 0 0 1 180 57 V63 A3 3 0 0 1 177 66 H136 A3 3 0 0 1 133 63 V57 A3 3 0 0 1 136 54 Z
+            M139 57.8 A2.2 2.2 0 1 0 139 62.2 A2.2 2.2 0 1 0 139 57.8 Z
+            M124 80 H177 A3 3 0 0 1 180 83 V89 A3 3 0 0 1 177 92 H124 A3 3 0 0 1 121 89 V83 A3 3 0 0 1 124 80 Z
+            M127 83.8 A2.2 2.2 0 1 0 127 88.2 A2.2 2.2 0 1 0 127 83.8 Z
           " fill="var(--c2)" />
-          <path d="M125 78 V60 H131 M138 53 V35 H144" fill="none" stroke="var(--c2)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
-          <circle cx="125" cy="60" r="2.4" fill="var(--c2)" />
-          <circle cx="138" cy="35" r="2.4" fill="var(--c2)" />
+          <path d="M127 80 V60 H133 M139 54 V34 H145" fill="none" stroke="var(--c2)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="127" cy="60" r="2.1" fill="var(--c2)" />
+          <circle cx="139" cy="34" r="2.1" fill="var(--c2)" />
           <path d="
-            M188.5 28 H216 C230 28 239 34 239 44 C239 51 234.5 56.5 226 59.5 C235.5 62.5 241 68.5 241 76.5 C241 86 231 92 216 92 H188.5 C187.1 92 186 90.9 186 89.5 V80.5 C186 79.1 187.1 78 188.5 78 H214 C221 78 224.5 75.5 224.5 72 C224.5 68.5 221 66.5 214 66.5 H188.5 C187.1 66.5 186 65.4 186 64 V56 C186 54.6 187.1 53.5 188.5 53.5 H213 C219.5 53.5 223 51 223 47.5 C223 44 219.5 42 213 42 H188.5 C187.1 42 186 40.9 186 39.5 V30.5 C186 29.1 187.1 28 188.5 28 Z
+            M188 28 H215 C228.5 28 237 34 237 43.5 C237 50.5 232.5 55.8 224.5 58.8 C234 61.8 239 67.8 239 76 C239 85.8 229.5 92 215 92 H188 C186.9 92 186 91.1 186 90 V82 C186 80.9 186.9 80 188 80 H213.5 C220.5 80 224 77.5 224 73 C224 68.5 220.5 66 213.5 66 H188 C186.9 66 186 65.1 186 64 V56 C186 54.9 186.9 54 188 54 H212.5 C219 54 222.5 51.5 222.5 47 C222.5 42.8 219 40 212.5 40 H188 C186.9 40 186 39.1 186 38 V30 C186 28.9 186.9 28 188 28 Z
           " fill="var(--c1)" />
         `,
         `
           ${GUIDE_LINES}
-          <g transform="translate(-5,0)">${ST_PATH}</g>
+          <text x="128" y="92" text-anchor="end" fill="var(--c1)" font-family="'Space Grotesk', sans-serif" font-size="91" font-weight="700" letter-spacing="-3.5">ST</text>
           <path fill-rule="evenodd" clip-rule="evenodd" d="
-            M148 28 H176 A4 4 0 0 1 180 32 V38 A4 4 0 0 1 176 42 H148 A4 4 0 0 1 144 38 V32 A4 4 0 0 1 148 28 Z
-            M151 32.4 A2.6 2.6 0 1 0 151 37.6 A2.6 2.6 0 1 0 151 32.4 Z
-            M135 53 H176 A4 4 0 0 1 180 57 V63 A4 4 0 0 1 176 67 H135 A4 4 0 0 1 131 63 V57 A4 4 0 0 1 135 53 Z
-            M138 57.4 A2.6 2.6 0 1 0 138 62.6 A2.6 2.6 0 1 0 138 57.4 Z
-            M122 78 H176 A4 4 0 0 1 180 82 V88 A4 4 0 0 1 176 92 H122 A4 4 0 0 1 118 88 V82 A4 4 0 0 1 122 78 Z
-            M125 82.4 A2.6 2.6 0 1 0 125 87.6 A2.6 2.6 0 1 0 125 82.4 Z
+            M148 28 H177 A3 3 0 0 1 180 31 V37 A3 3 0 0 1 177 40 H148 A3 3 0 0 1 145 37 V31 A3 3 0 0 1 148 28 Z
+            M151 31.8 A2.2 2.2 0 1 0 151 36.2 A2.2 2.2 0 1 0 151 31.8 Z
+            M136 54 H177 A3 3 0 0 1 180 57 V63 A3 3 0 0 1 177 66 H136 A3 3 0 0 1 133 63 V57 A3 3 0 0 1 136 54 Z
+            M139 57.8 A2.2 2.2 0 1 0 139 62.2 A2.2 2.2 0 1 0 139 57.8 Z
+            M124 80 H177 A3 3 0 0 1 180 83 V89 A3 3 0 0 1 177 92 H124 A3 3 0 0 1 121 89 V83 A3 3 0 0 1 124 80 Z
+            M127 83.8 A2.2 2.2 0 1 0 127 88.2 A2.2 2.2 0 1 0 127 83.8 Z
           " fill="var(--c2)" />
-          <path d="M125 78 V60 H131 M138 53 V35 H144" fill="none" stroke="var(--c2)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
-          <circle cx="125" cy="60" r="2.4" fill="var(--c2)" />
-          <circle cx="138" cy="35" r="2.4" fill="var(--c2)" />
+          <path d="M127 80 V60 H133 M139 54 V34 H145" fill="none" stroke="var(--c2)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="127" cy="60" r="2.1" fill="var(--c2)" />
+          <circle cx="139" cy="34" r="2.1" fill="var(--c2)" />
           <path d="
-            M188.5 28 H216 C230 28 239 34 239 44 C239 51 234.5 56.5 226 59.5 C235.5 62.5 241 68.5 241 76.5 C241 86 231 92 216 92 H188.5 C187.1 92 186 90.9 186 89.5 V80.5 C186 79.1 187.1 78 188.5 78 H214 C221 78 224.5 75.5 224.5 72 C224.5 68.5 221 66.5 214 66.5 H188.5 C187.1 66.5 186 65.4 186 64 V56 C186 54.6 187.1 53.5 188.5 53.5 H213 C219.5 53.5 223 51 223 47.5 C223 44 219.5 42 213 42 H188.5 C187.1 42 186 40.9 186 39.5 V30.5 C186 29.1 187.1 28 188.5 28 Z
+            M188 28 H215 C228.5 28 237 34 237 43.5 C237 50.5 232.5 55.8 224.5 58.8 C234 61.8 239 67.8 239 76 C239 85.8 229.5 92 215 92 H188 C186.9 92 186 91.1 186 90 V82 C186 80.9 186.9 80 188 80 H213.5 C220.5 80 224 77.5 224 73 C224 68.5 220.5 66 213.5 66 H188 C186.9 66 186 65.1 186 64 V56 C186 54.9 186.9 54 188 54 H212.5 C219 54 222.5 51.5 222.5 47 C222.5 42.8 219 40 212.5 40 H188 C186.9 40 186 39.1 186 38 V30 C186 28.9 186.9 28 188 28 Z
           " fill="var(--c1)" />
-          <g transform="translate(6,0)">${UP_PATH}</g>
+          <text x="244" y="92" text-anchor="start" fill="var(--c1)" font-family="'Space Grotesk', sans-serif" font-size="91" font-weight="700" letter-spacing="-3.5">UP</text>
         `
       )
     ];
@@ -832,10 +1001,14 @@
         document.body.classList.remove('auto-mixed');
         document.body.classList.remove('show-lockup');
       }
-      render();
+    render();
     }
 
     function render() {
+      if (activeTab === 'kit85') {
+        renderKit85();
+        return;
+      }
       const allowedCats = tabGroups[activeTab] || [];
       const filtered = concepts.filter(c => allowedCats.includes(c.cat));
 
@@ -925,6 +1098,7 @@
         document.querySelectorAll('.control-group:first-child .btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
       }
+      if (activeTab === 'kit85') renderKit85();
     }
 
     function customColor() {
@@ -933,6 +1107,7 @@
       document.documentElement.style.setProperty('--c1', c1);
       document.documentElement.style.setProperty('--c2', c2);
       document.querySelectorAll('.control-group:first-child .btn').forEach(b => b.classList.remove('active'));
+      if (activeTab === 'kit85') renderKit85();
     }
 
     function setView(mode) {
@@ -972,6 +1147,413 @@
       a.download = `stebup-wordmark-${id}.svg`;
       a.click();
       URL.revokeObjectURL(url);
+    }
+
+    // ─── Export Kit (#85): SVGs, Favicons, PNGs & Zero-Dependency ZIP ───
+    function getKitColors() {
+      const c1 = getComputedStyle(document.documentElement).getPropertyValue('--c1').trim() || '#111113';
+      const c2 = getComputedStyle(document.documentElement).getPropertyValue('--c2').trim() || '#71717A';
+      return {
+        inkDark: '#111113',
+        inkLight: '#F4F4F6',
+        c1,
+        c2
+      };
+    }
+
+    function build85MarkPaths(primaryColor, accentColor) {
+      return `
+        <path fill-rule="evenodd" clip-rule="evenodd" d="
+          M148 28 H177 A3 3 0 0 1 180 31 V37 A3 3 0 0 1 177 40 H148 A3 3 0 0 1 145 37 V31 A3 3 0 0 1 148 28 Z
+          M151 31.8 A2.2 2.2 0 1 0 151 36.2 A2.2 2.2 0 1 0 151 31.8 Z
+          M136 54 H177 A3 3 0 0 1 180 57 V63 A3 3 0 0 1 177 66 H136 A3 3 0 0 1 133 63 V57 A3 3 0 0 1 136 54 Z
+          M139 57.8 A2.2 2.2 0 1 0 139 62.2 A2.2 2.2 0 1 0 139 57.8 Z
+          M124 80 H177 A3 3 0 0 1 180 83 V89 A3 3 0 0 1 177 92 H124 A3 3 0 0 1 121 89 V83 A3 3 0 0 1 124 80 Z
+          M127 83.8 A2.2 2.2 0 1 0 127 88.2 A2.2 2.2 0 1 0 127 83.8 Z
+        " fill="${accentColor}" />
+        <path d="M127 80 V60 H133 M139 54 V34 H145" fill="none" stroke="${accentColor}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="127" cy="60" r="2.1" fill="${accentColor}" />
+        <circle cx="139" cy="34" r="2.1" fill="${accentColor}" />
+        <path d="
+          M188 28 H215 C228.5 28 237 34 237 43.5 C237 50.5 232.5 55.8 224.5 58.8 C234 61.8 239 67.8 239 76 C239 85.8 229.5 92 215 92 H188 C186.9 92 186 91.1 186 90 V82 C186 80.9 186.9 80 188 80 H213.5 C220.5 80 224 77.5 224 73 C224 68.5 220.5 66 213.5 66 H188 C186.9 66 186 65.1 186 64 V56 C186 54.9 186.9 54 188 54 H212.5 C219 54 222.5 51.5 222.5 47 C222.5 42.8 219 40 212.5 40 H188 C186.9 40 186 39.1 186 38 V30 C186 28.9 186.9 28 188 28 Z
+        " fill="${primaryColor}" />
+      `;
+    }
+
+    function build85WordmarkSvg(theme) {
+      const { inkDark, inkLight, c2 } = getKitColors();
+      const primary = theme === 'dark' ? inkLight : inkDark;
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 120" fill="none">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');</style>
+  </defs>
+  <text x="128" y="92" text-anchor="end" fill="${primary}" font-family="'Space Grotesk', sans-serif" font-size="91" font-weight="700" letter-spacing="-3.5">ST</text>
+  ${build85MarkPaths(primary, c2)}
+  <text x="244" y="92" text-anchor="start" fill="${primary}" font-family="'Space Grotesk', sans-serif" font-size="91" font-weight="700" letter-spacing="-3.5">UP</text>
+</svg>`;
+    }
+
+    function build85MarkSvg(theme) {
+      const { inkDark, inkLight, c2 } = getKitColors();
+      const primary = theme === 'dark' ? inkLight : inkDark;
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="112 12 136 96" fill="none">
+  ${build85MarkPaths(primary, c2)}
+</svg>`;
+    }
+
+    function build85FaviconSvg() {
+      const { c2 } = getKitColors();
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="28" fill="#0B0B0E" />
+  <g transform="translate(-85, 16) scale(0.82)">
+    ${build85MarkPaths('#F4F4F6', c2)}
+  </g>
+</svg>`;
+    }
+
+    function buildManifestJson() {
+      return JSON.stringify({
+        name: "Stebup",
+        short_name: "Stebup",
+        icons: [
+          { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+          { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" }
+        ],
+        theme_color: "#0B0B0E",
+        background_color: "#0B0B0E",
+        display: "standalone"
+      }, null, 2);
+    }
+
+    const HTML_HEAD_SNIPPET = `<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0B0B0E" />`;
+
+    function triggerDownloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadKitText(content, filename, mime) {
+      triggerDownloadBlob(new Blob([content], { type: mime }), filename);
+    }
+
+    function svgToPngBlob(svgStr, width, height) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.clearRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
+          URL.revokeObjectURL(url);
+          canvas.toBlob(b => (b ? resolve(b) : reject(new Error('PNG export failed'))), 'image/png');
+        };
+        img.onerror = (err) => {
+          URL.revokeObjectURL(url);
+          reject(err);
+        };
+        img.src = url;
+      });
+    }
+
+    // Renders the wordmark directly to Canvas using the loaded Space Grotesk font so PNGs match 100%
+    async function wordmark85ToPngBlob(theme, width = 1600) {
+      await document.fonts.ready;
+      const height = Math.round((width / 370) * 120);
+      const scale = width / 370;
+      const { inkDark, inkLight, c2 } = getKitColors();
+      const primary = theme === 'dark' ? inkLight : inkDark;
+
+      const markOnlySvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 120" fill="none">${build85MarkPaths(primary, c2)}</svg>`;
+      const markBlob = await svgToPngBlob(markOnlySvg, width, height);
+      const markImg = await createImageBitmap(markBlob);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(markImg, 0, 0);
+
+      ctx.fillStyle = primary;
+      ctx.font = `700 ${91 * scale}px "Space Grotesk", sans-serif`;
+      ctx.letterSpacing = `${-3.5 * scale}px`;
+      ctx.textBaseline = 'alphabetic';
+
+      ctx.textAlign = 'right';
+      ctx.fillText('ST', 128 * scale, 92 * scale);
+
+      ctx.textAlign = 'left';
+      ctx.fillText('UP', 244 * scale, 92 * scale);
+
+      return new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    }
+
+    async function downloadFaviconPng(size, filename) {
+      const blob = await svgToPngBlob(build85FaviconSvg(), size, size);
+      triggerDownloadBlob(blob, filename);
+    }
+
+    async function downloadWordmarkPng(theme) {
+      const blob = await wordmark85ToPngBlob(theme, 1600);
+      triggerDownloadBlob(blob, `stebup-wordmark-${theme}-1600w.png`);
+    }
+
+    // Minimal zero-dependency ZIP (STORE method, RFC 1952 CRC32)
+    function createZipBlob(files) {
+      const crcTable = new Uint32Array(256);
+      for (let i = 0; i < 256; i++) {
+        let c = i;
+        for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+        crcTable[i] = c >>> 0;
+      }
+      const crc32 = (bytes) => {
+        let c = 0xFFFFFFFF;
+        for (let i = 0; i < bytes.length; i++) c = crcTable[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+        return (c ^ 0xFFFFFFFF) >>> 0;
+      };
+
+      const enc = new TextEncoder();
+      const localParts = [];
+      const centralParts = [];
+      let offset = 0;
+
+      for (const file of files) {
+        const nameBytes = enc.encode(file.name);
+        const data = file.bytes;
+        const crc = crc32(data);
+
+        const lh = new Uint8Array(30 + nameBytes.length);
+        const lv = new DataView(lh.buffer);
+        lv.setUint32(0, 0x04034b50, true);
+        lv.setUint16(4, 20, true);
+        lv.setUint16(6, 0, true);
+        lv.setUint16(8, 0, true);
+        lv.setUint16(10, 0, true);
+        lv.setUint16(12, 0, true);
+        lv.setUint32(14, crc, true);
+        lv.setUint32(18, data.length, true);
+        lv.setUint32(22, data.length, true);
+        lv.setUint16(26, nameBytes.length, true);
+        lv.setUint16(28, 0, true);
+        lh.set(nameBytes, 30);
+
+        localParts.push(lh, data);
+
+        const ch = new Uint8Array(46 + nameBytes.length);
+        const cv = new DataView(ch.buffer);
+        cv.setUint32(0, 0x02014b50, true);
+        cv.setUint16(4, 20, true);
+        cv.setUint16(6, 20, true);
+        cv.setUint16(8, 0, true);
+        cv.setUint16(10, 0, true);
+        cv.setUint16(12, 0, true);
+        cv.setUint16(14, 0, true);
+        cv.setUint32(16, crc, true);
+        cv.setUint32(20, data.length, true);
+        cv.setUint32(24, data.length, true);
+        cv.setUint16(28, nameBytes.length, true);
+        cv.setUint16(30, 0, true);
+        cv.setUint16(32, 0, true);
+        cv.setUint16(34, 0, true);
+        cv.setUint16(36, 0, true);
+        cv.setUint32(38, 0, true);
+        cv.setUint32(42, offset, true);
+        ch.set(nameBytes, 46);
+
+        centralParts.push(ch);
+        offset += lh.length + data.length;
+      }
+
+      const centralSize = centralParts.reduce((s, p) => s + p.length, 0);
+      const eocd = new Uint8Array(22);
+      const ev = new DataView(eocd.buffer);
+      ev.setUint32(0, 0x06054b50, true);
+      ev.setUint16(4, 0, true);
+      ev.setUint16(6, 0, true);
+      ev.setUint16(8, files.length, true);
+      ev.setUint16(10, files.length, true);
+      ev.setUint32(12, centralSize, true);
+      ev.setUint32(16, offset, true);
+      ev.setUint16(20, 0, true);
+
+      return new Blob([...localParts, ...centralParts, eocd], { type: 'application/zip' });
+    }
+
+    async function downloadFullKit85(btn) {
+      const origText = btn.textContent;
+      btn.textContent = 'Building ZIP...';
+      btn.disabled = true;
+      try {
+        const enc = new TextEncoder();
+        const favSvg = build85FaviconSvg();
+        const [png16, png32, png180, png192, png512, wordLightPng, wordDarkPng] = await Promise.all([
+          svgToPngBlob(favSvg, 16, 16).then(b => b.arrayBuffer()),
+          svgToPngBlob(favSvg, 32, 32).then(b => b.arrayBuffer()),
+          svgToPngBlob(favSvg, 180, 180).then(b => b.arrayBuffer()),
+          svgToPngBlob(favSvg, 192, 192).then(b => b.arrayBuffer()),
+          svgToPngBlob(favSvg, 512, 512).then(b => b.arrayBuffer()),
+          wordmark85ToPngBlob('light', 1600).then(b => b.arrayBuffer()),
+          wordmark85ToPngBlob('dark', 1600).then(b => b.arrayBuffer())
+        ]);
+
+        const zipBlob = createZipBlob([
+          { name: 'svg/stebup-wordmark-light.svg', bytes: enc.encode(build85WordmarkSvg('light')) },
+          { name: 'svg/stebup-wordmark-dark.svg', bytes: enc.encode(build85WordmarkSvg('dark')) },
+          { name: 'svg/stebup-mark-light.svg', bytes: enc.encode(build85MarkSvg('light')) },
+          { name: 'svg/stebup-mark-dark.svg', bytes: enc.encode(build85MarkSvg('dark')) },
+          { name: 'favicon/favicon.svg', bytes: enc.encode(favSvg) },
+          { name: 'favicon/favicon-16x16.png', bytes: new Uint8Array(png16) },
+          { name: 'favicon/favicon-32x32.png', bytes: new Uint8Array(png32) },
+          { name: 'favicon/apple-touch-icon.png', bytes: new Uint8Array(png180) },
+          { name: 'favicon/android-chrome-192x192.png', bytes: new Uint8Array(png192) },
+          { name: 'favicon/android-chrome-512x512.png', bytes: new Uint8Array(png512) },
+          { name: 'favicon/site.webmanifest', bytes: enc.encode(buildManifestJson()) },
+          { name: 'png/stebup-wordmark-light-1600w.png', bytes: new Uint8Array(wordLightPng) },
+          { name: 'png/stebup-wordmark-dark-1600w.png', bytes: new Uint8Array(wordDarkPng) },
+          { name: 'head-snippet.html', bytes: enc.encode(HTML_HEAD_SNIPPET) }
+        ]);
+        triggerDownloadBlob(zipBlob, 'stebup-logo-85-kit.zip');
+      } finally {
+        btn.textContent = origText;
+        btn.disabled = false;
+      }
+    }
+
+    function copyHeadSnippet(btn) {
+      navigator.clipboard.writeText(HTML_HEAD_SNIPPET).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => (btn.textContent = orig), 1500);
+      });
+    }
+
+    function renderKit85() {
+      const wordLight = build85WordmarkSvg('light');
+      const wordDark = build85WordmarkSvg('dark');
+      const markLight = build85MarkSvg('light');
+      const markDark = build85MarkSvg('dark');
+      const favSvg = build85FaviconSvg();
+
+      grid.innerHTML = `
+        <div class="kit-wrap">
+          <div class="kit-banner">
+            <div>
+              <h2>Stebup #85 — Production Logo &amp; Favicon Kit</h2>
+              <p>Uses your active color palette from the toolbar above. Download the complete ZIP bundle (14 files: SVGs, PNGs, favicons, manifest, and HTML snippet) or grab individual assets below.</p>
+            </div>
+            <button class="kit-btn primary" onclick="downloadFullKit85(this)">Download Full Kit (.zip)</button>
+          </div>
+
+          <div class="kit-grid">
+            <!-- Card 1: Full Wordmark -->
+            <div class="kit-card full">
+              <div class="kit-previews">
+                <div class="kit-preview">
+                  <span class="kit-preview-tag">Light surface</span>
+                  ${wordLight.replace('<svg ', '<svg class="kit-word-svg" ')}
+                </div>
+                <div class="kit-preview is-dark">
+                  <span class="kit-preview-tag">Dark surface</span>
+                  ${wordDark.replace('<svg ', '<svg class="kit-word-svg" ')}
+                </div>
+              </div>
+              <div class="kit-card-body">
+                <h3>Full STEBUP Wordmark</h3>
+                <p>Primary website header, pitch deck, and brand lockup in scalable SVG and 1600px transparent PNG.</p>
+                <div class="kit-actions">
+                  <button class="kit-btn" onclick="downloadKitText(build85WordmarkSvg('light'), 'stebup-wordmark-light.svg', 'image/svg+xml')">wordmark-light.svg</button>
+                  <button class="kit-btn" onclick="downloadKitText(build85WordmarkSvg('dark'), 'stebup-wordmark-dark.svg', 'image/svg+xml')">wordmark-dark.svg</button>
+                  <button class="kit-btn" onclick="downloadWordmarkPng('light')">wordmark-light-1600w.png</button>
+                  <button class="kit-btn" onclick="downloadWordmarkPng('dark')">wordmark-dark-1600w.png</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Standalone EB Mark -->
+            <div class="kit-card">
+              <div class="kit-previews">
+                <div class="kit-preview">
+                  <span class="kit-preview-tag">Light</span>
+                  ${markLight.replace('<svg ', '<svg class="kit-mark-svg" ')}
+                </div>
+                <div class="kit-preview is-dark">
+                  <span class="kit-preview-tag">Dark</span>
+                  ${markDark.replace('<svg ', '<svg class="kit-mark-svg" ')}
+                </div>
+              </div>
+              <div class="kit-card-body">
+                <h3>Standalone EB Symbol</h3>
+                <p>Compact geometric monogram for social avatars, app launchers, and watermarks.</p>
+                <div class="kit-actions">
+                  <button class="kit-btn" onclick="downloadKitText(build85MarkSvg('light'), 'stebup-mark-light.svg', 'image/svg+xml')">stebup-mark-light.svg</button>
+                  <button class="kit-btn" onclick="downloadKitText(build85MarkSvg('dark'), 'stebup-mark-dark.svg', 'image/svg+xml')">stebup-mark-dark.svg</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Favicon Suite -->
+            <div class="kit-card">
+              <div class="kit-favicon-row">
+                <div class="kit-fav-item">
+                  <div style="width:16px;height:16px;">${favSvg}</div>
+                  <span>16px</span>
+                </div>
+                <div class="kit-fav-item">
+                  <div style="width:32px;height:32px;">${favSvg}</div>
+                  <span>32px</span>
+                </div>
+                <div class="kit-fav-item">
+                  <div style="width:48px;height:48px;">${favSvg}</div>
+                  <span>48px</span>
+                </div>
+                <div class="kit-fav-item">
+                  <div style="width:72px;height:72px;">${favSvg}</div>
+                  <span>180px</span>
+                </div>
+              </div>
+              <div class="kit-card-body">
+                <h3>Favicon &amp; PWA Icons</h3>
+                <p>Drop directly into <code>public/</code> for crisp browser tabs, iOS home screens, and Android manifests.</p>
+                <div class="kit-actions">
+                  <button class="kit-btn" onclick="downloadKitText(build85FaviconSvg(), 'favicon.svg', 'image/svg+xml')">favicon.svg</button>
+                  <button class="kit-btn" onclick="downloadFaviconPng(16, 'favicon-16x16.png')">16×16.png</button>
+                  <button class="kit-btn" onclick="downloadFaviconPng(32, 'favicon-32x32.png')">32×32.png</button>
+                  <button class="kit-btn" onclick="downloadFaviconPng(180, 'apple-touch-icon.png')">apple-180.png</button>
+                  <button class="kit-btn" onclick="downloadFaviconPng(192, 'android-chrome-192x192.png')">192.png</button>
+                  <button class="kit-btn" onclick="downloadFaviconPng(512, 'android-chrome-512x512.png')">512.png</button>
+                  <button class="kit-btn" onclick="downloadKitText(buildManifestJson(), 'site.webmanifest', 'application/manifest+json')">site.webmanifest</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: HTML Head Snippet -->
+            <div class="kit-card full">
+              <div class="kit-card-body">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+                  <h3>HTML &lt;head&gt; Setup Snippet</h3>
+                  <div class="kit-actions">
+                    <button class="kit-btn" onclick="copyHeadSnippet(this)">Copy snippet</button>
+                    <button class="kit-btn" onclick="downloadKitText(HTML_HEAD_SNIPPET, 'head-snippet.html', 'text/html')">head-snippet.html</button>
+                  </div>
+                </div>
+                <pre class="kit-code">${HTML_HEAD_SNIPPET.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     render();
